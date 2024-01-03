@@ -5,17 +5,26 @@ using System;
 
 public class GameGrid : MonoBehaviour
 {
+    [Header("Generation Value Params")]
     [SerializeField] private int gridHeight;
     [SerializeField] private int gridWidth;
     [SerializeField] private float gridSpacing;
     [SerializeField] private float delayBetweenCellSpawn;
-    [SerializeField] private float gridDistance = 10;
+    [SerializeField] private Vector3 gridRotation;
+
+    [Header("Generation PrefabParams")]
     [SerializeField] private GameObject gridCellPrefab;
-    [SerializeField] private GameObject [,] gameGrid;
+
+
+
+    private GameObject [,] gameGridGameObjects;
+    private GridCell [,] gameGridCells;
 
     void Start()
     {
-        gameGrid = new GameObject[gridHeight, gridWidth];
+        gameGridGameObjects = new GameObject[gridHeight, gridWidth];
+        gameGridCells = new GridCell[gridHeight, gridWidth];
+
         StartCoroutine(CreateGrid());
 
     }
@@ -33,14 +42,18 @@ public class GameGrid : MonoBehaviour
     {
         StopAllCoroutines();
 
-        foreach (GameObject GO in gameGrid)
+        foreach (Transform child in transform)
         {
-            Destroy(GO);
+            Destroy(child.gameObject);
         }
 
-        Array.Clear(gameGrid, 0, gameGrid.Length);
+        Array.Clear(gameGridGameObjects, 0, gameGridGameObjects.Length);
+        Array.Clear(gameGridCells, 0, gameGridCells.Length);
 
-        gameGrid = new GameObject[gridHeight, gridWidth];
+        gameGridGameObjects = new GameObject[gridHeight, gridWidth];
+        gameGridCells = new GridCell[gridHeight, gridWidth];
+        transform.rotation = Quaternion.Euler(Vector3.zero);
+        transform.position = Vector3.zero;
     }
     private IEnumerator CreateGrid()
     {
@@ -54,18 +67,49 @@ public class GameGrid : MonoBehaviour
         {
             for (int x = 0; x < gridWidth; x++)
             {
-                gameGrid[x, y] = Instantiate(gridCellPrefab, transform);
-                gameGrid[x, y].name = "Grid Cell ( X: " + x.ToString() + " , Y: " + y.ToString() + ")";
-                gameGrid[x, y].transform.localEulerAngles = Vector3.zero;
-                gameGrid[x, y].transform.localPosition = new Vector3(x * gridSpacing, y * gridSpacing);
+                gameGridGameObjects[x, y] = Instantiate(gridCellPrefab, transform);
+                gameGridGameObjects[x, y].name = "Grid Cell ( X: " + x.ToString() + " , Y: " + y.ToString() + ")";
+                gameGridGameObjects[x, y].transform.localEulerAngles = Vector3.zero;
+                gameGridGameObjects[x, y].transform.localPosition = new Vector3(x * gridSpacing, y * gridSpacing);
+
+                if(gameGridGameObjects[x, y].TryGetComponent<GridCell>(out GridCell createdCell))
+                {
+                    gameGridCells[x,y] = createdCell;
+                    createdCell.SetXYInGrid(x,y);
+                }
 
                 yield return new WaitForSeconds(delayBetweenCellSpawn);
             }
         }
 
-        float lastCellX = gameGrid[gridHeight - 1, gridWidth - 1].transform.localPosition.x;
-        float lastCellY = gameGrid[gridHeight - 1, gridWidth - 1].transform.localPosition.y;
+        float lastCellX = gameGridGameObjects[gridHeight - 1, gridWidth - 1].transform.localPosition.x;
+        float lastCellY = gameGridGameObjects[gridHeight - 1, gridWidth - 1].transform.localPosition.y;
 
         transform.position = new Vector3(-(lastCellX / 2), 0 , Camera.main.transform.position.y - (lastCellY / 2));
+        transform.CenterOnChildred();
+
+        transform.rotation = Quaternion.Euler(gridRotation.x, gridRotation.y, gridRotation.z);
     }
+
+    #region Public Actions
+    public void OverrideSpecificCell(Vector2Int posInArray, GridCell newCell, GameObject newObejct)
+    {
+        gameGridGameObjects[posInArray.x, posInArray.y] = newObejct;
+        gameGridCells[posInArray.x, posInArray.y] = newCell;
+    }
+
+    public void SetGridParamsFromUI(int height, int width, int spacing)
+    {
+        gridHeight = height;
+        gridWidth = width;
+        gridSpacing = spacing;
+    }
+    #endregion
+
+    #region Return Data
+    public GridCell[,] ReturnCellsArray()
+    {
+        return gameGridCells;
+    }
+    #endregion
 }
