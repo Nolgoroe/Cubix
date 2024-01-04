@@ -71,7 +71,8 @@ public class ToolGameGrid : MonoBehaviour
     {
         ClearGrid();
 
-        StartCoroutine(CreateGrid());
+        //StartCoroutine(CreateGrid());
+        CreateGrid();
     }
 
     private void ClearGrid()
@@ -98,12 +99,12 @@ public class ToolGameGrid : MonoBehaviour
         gameGridCellsList.Clear();
     }
 
-    private IEnumerator CreateGrid()
+    private void CreateGrid()
     {
         if(gridCellPrefab == null)
         {
             Debug.LogError("Must have prefab!");
-            yield break;
+            return;
         }
 
         for (int y = 0; y < gridHeight; y++)
@@ -121,7 +122,7 @@ public class ToolGameGrid : MonoBehaviour
                     createdCell.SetXYInGrid(x,y);
                 }
 
-                yield return new WaitForSeconds(delayBetweenCellSpawn);
+                //yield return new WaitForSeconds(delayBetweenCellSpawn);
             }
         }
 

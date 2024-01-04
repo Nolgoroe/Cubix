@@ -17,7 +17,7 @@ public class LevelCreationToolUI : MonoBehaviour
     [SerializeField] string prefabPath;
 
     [Header("Drawing")]
-    [SerializeField] TMP_Dropdown dropDown;
+    [SerializeField] TMP_Dropdown dropDownCellType;
 
     [Header("Grid Generation")]
     [SerializeField] TMP_InputField inputHeight;
@@ -26,6 +26,9 @@ public class LevelCreationToolUI : MonoBehaviour
 
     [Header("Waypoints")]
     [SerializeField] TMP_InputField inputWaypointIndex;
+
+    [Header("Level Data")]
+    [SerializeField] TMP_Dropdown dropDownLevelList;
 
     [Header("General")]
     [SerializeField] TMP_InputField levelName;
@@ -39,19 +42,19 @@ public class LevelCreationToolUI : MonoBehaviour
 
     public void Dropdown_IndexChangedCellType()
     {
-        int index = dropDown.value;
+        int index = dropDownCellType.value;
         TypeOfCell typeOfCell = (TypeOfCell)index;
         referenceObject.controls.SetCurrentTypeOfCellSelected(typeOfCell);
     }
     public void Dropdown_IndexChangedLevel()
     {
-        int index = dropDown.value;
+        int index = dropDownCellType.value;
         TypeOfCell typeOfCell = (TypeOfCell)index;
         referenceObject.controls.SetCurrentTypeOfCellSelected(typeOfCell);
     }
     public void SetDropdownToValue(int value)
     {
-        dropDown.value = value;
+        dropDownCellType.value = value;
     }
     public void UpdateGridSpawnData()
     {
@@ -103,7 +106,17 @@ public class LevelCreationToolUI : MonoBehaviour
 
 
 
+    public void LoadSelectedLevel()
+    {
+        int index = dropDownLevelList.value;
+        
+        if(referenceObject.gameGrid)
+        {
+            Destroy(referenceObject.gameGrid.gameObject);
+        }
 
+        Instantiate(referenceObject.levelList[index]);
+    }
 
 #if UNITY_EDITOR
     public void CreatePrefabFromGridTool()
@@ -121,12 +134,14 @@ public class LevelCreationToolUI : MonoBehaviour
         string[] enumName = Enum.GetNames(typeof (TypeOfCell));
         List<string> nameList = new List<string>(enumName);
 
-        dropDown.AddOptions(nameList);
+        dropDownCellType.AddOptions(nameList);
     }
     private void PopupateLevelPrefabList()
     {
+        referenceObject.LoadLevelsToList();
+
         List<string> namesList = referenceObject.levelList.Select(gameObject => gameObject.name).ToList();
 
-        dropDown.AddOptions(namesList);
+        dropDownLevelList.AddOptions(namesList);
     }
 }

@@ -25,7 +25,7 @@ public class ToolReferencerObject : MonoBehaviour
     }
 
     [ContextMenu("Load Levels To List")]
-    private void LoadLevelsToList()
+    public void LoadLevelsToList()
     {
 #if UNITY_EDITOR
 
