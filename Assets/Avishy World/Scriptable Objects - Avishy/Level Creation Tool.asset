@@ -23,6 +23,8 @@ MonoBehaviour:
     color: {r: 0, g: 0.50077295, b: 1, a: 1}
   - typeOfCell: 4
     color: {r: 1, g: 1, b: 1, a: 1}
+  - typeOfCell: 5
+    color: {r: 1, g: 0, b: 0.8533907, a: 1}
   colorToPrefabList:
   - color: {r: 1, g: 0, b: 0, a: 1}
     prefab: {fileID: 3902819553308001029, guid: 968e3ec3b26181b4f81130bfef5e1daa,
@@ -39,3 +41,19 @@ MonoBehaviour:
   - color: {r: 1, g: 1, b: 1, a: 1}
     prefab: {fileID: 9212971577064700083, guid: 7cf0fb1025b0a754db9b6928b9c8e445,
       type: 3}
+  - color: {r: 1, g: 0, b: 0.8533907, a: 1}
+    prefab: {fileID: 8322110550208146185, guid: 793123ff491d0ac4a98be31230e4a99f,
+      type: 3}
+  typeToMaterialList:
+  - typeOfCell: 0
+    mat: {fileID: 2100000, guid: 8ccbb04e2ba7f8642b14607a0c774177, type: 2}
+  - typeOfCell: 1
+    mat: {fileID: 2100000, guid: 95fdab29ff7fd444c921dd3b59a09e6d, type: 2}
+  - typeOfCell: 2
+    mat: {fileID: 2100000, guid: 458cacd09afd9044c82c2bcd3bd42fd4, type: 2}
+  - typeOfCell: 3
+    mat: {fileID: 2100000, guid: 7ee69a8e3aa1ff344a2b33d01795298b, type: 2}
+  - typeOfCell: 4
+    mat: {fileID: 2100000, guid: 87fa03f5d07e5ed42a2e17177704a888, type: 2}
+  - typeOfCell: 5
+    mat: {fileID: 2100000, guid: 2d17ae4166480fc4e9898120b62a6a22, type: 2}

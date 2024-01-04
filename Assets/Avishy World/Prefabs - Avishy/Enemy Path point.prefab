@@ -121,3 +121,7 @@ MonoBehaviour:
   positionXYInGridArray: {x: 0, y: 0}
   gameObjectOnCell: {fileID: 0}
   isOccupied: 0
+  cellType: 0
+  waypointPrefab: {fileID: 8322110550208146185, guid: 793123ff491d0ac4a98be31230e4a99f,
+    type: 3}
+  spawnedWaypoint: {fileID: 0}
