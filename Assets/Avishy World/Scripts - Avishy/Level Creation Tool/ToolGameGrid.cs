@@ -65,6 +65,7 @@ public class ToolGameGrid : MonoBehaviour
 
 
 
+        Camera.main.transform.rotation = Quaternion.Euler(45, 0, 0);
 
         refreshMaterials = true;
     }
@@ -93,6 +94,9 @@ public class ToolGameGrid : MonoBehaviour
         gameGridCells = new ToolGridCell[gridWidth, gridHeight];
         transform.rotation = Quaternion.Euler(Vector3.zero);
         transform.position = Vector3.zero;
+
+        Camera.main.transform.position = Vector3.zero;
+        Camera.main.transform.rotation = Quaternion.Euler(45,0,0);
     }
 
     public void ClearDataBeforeLevelGeneration()
@@ -108,6 +112,8 @@ public class ToolGameGrid : MonoBehaviour
             Debug.LogError("Must have prefab!");
             yield break;
         }
+
+        transform.name = "New Level";
 
         yield return new WaitForEndOfFrame(); // we do this to let the data clear from the destroy before continue
         for (int y = 0; y < gridHeight; y++)

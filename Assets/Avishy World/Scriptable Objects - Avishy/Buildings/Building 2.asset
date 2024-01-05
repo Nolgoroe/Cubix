@@ -15,6 +15,7 @@ MonoBehaviour:
   buildingName: bla 2
   buildingPrefab: {fileID: 1389560630091689330, guid: 0343c9633a2f31e4caecf7bf47cfbc80,
     type: 3}
-  visualPrefab: {fileID: 0}
+  visualPrefab: {fileID: 1389560630091689330, guid: db5285b295670124c9fdec15e702fffe,
+    type: 3}
   width: 2
   height: 1

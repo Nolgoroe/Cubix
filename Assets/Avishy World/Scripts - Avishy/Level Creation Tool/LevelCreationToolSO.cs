@@ -138,7 +138,7 @@ public class LevelCreationToolSO : ScriptableObject
 
     public GameObject SpawnPrefabByColor(Color color)
     {
-        colorToPrefabCombo foundCombo = colorToPrefabList.Where(combo => combo.color == color).FirstOrDefault();
+        colorToPrefabCombo foundCombo = colorToPrefabList.Where(combo => ColorUtility.ToHtmlStringRGBA(combo.color) == ColorUtility.ToHtmlStringRGBA(color)).FirstOrDefault();
         return foundCombo.prefab;
     }
 

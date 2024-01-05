@@ -117,6 +117,19 @@ public class LevelCreationToolUI : MonoBehaviour
 
         GameObject go = Instantiate(referenceObject.levelList[index]);
         levelName.text = referenceObject.levelList[index].name;
+
+        ToolGameGrid grid;
+        go.TryGetComponent<ToolGameGrid>(out grid);
+
+        if(grid)
+        {
+            Camera.main.transform.position = new Vector3(0, grid.transform.position.y + 20, grid.transform.position.z - 20);
+        }
+    }
+
+    public void ResetLevelName()
+    {
+        levelName.text = "";
     }
 
 #if UNITY_EDITOR
@@ -131,6 +144,8 @@ public class LevelCreationToolUI : MonoBehaviour
             return;
         }
         PrefabUtility.SaveAsPrefabAsset(referenceObject.toolGameGrid.gameObject, path);
+
+        PopupateLevelPrefabList();
     }
 #endif
 
@@ -147,6 +162,7 @@ public class LevelCreationToolUI : MonoBehaviour
 
         List<string> namesList = referenceObject.levelList.Select(gameObject => gameObject.name).ToList();
 
+        dropDownLevelList.ClearOptions();
         dropDownLevelList.AddOptions(namesList);
     }
 }

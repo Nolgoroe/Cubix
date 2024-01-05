@@ -33,17 +33,32 @@ public class LevelCreationToolControls : MonoBehaviour
     [Header("Build Mode Data")]
     [SerializeField] private int currentBuildingIndex;
     [SerializeField] private List<BuildingsSO> buildingsList;
+    [SerializeField] private List<GameObject> rotatingBuildingList;
     [SerializeField] private BuildingsSO.Dir currentDir = BuildingsSO.Dir.Down;
+    [SerializeField] private Transform rotatingBuildingParent;
+
     private BuildingsSO CurrentBuildingSelected;
 
     private Vector3 positionOfMouse;
 
     private void Start()
     {
+        rotatingBuildingList = new List<GameObject>();
+
         GameObject go = Instantiate(toolGameGridPrefab);
         go.TryGetComponent<ToolGameGrid>(out referenceObject.toolGameGrid);
 
+
+        foreach (BuildingsSO building in buildingsList)
+        {
+            GameObject rotatingBuilding = Instantiate(building.visualPrefab, rotatingBuildingParent);
+            rotatingBuilding.gameObject.SetActive(false);
+            rotatingBuildingList.Add(rotatingBuilding);
+        }
+
+
         CurrentBuildingSelected = buildingsList[0];
+        rotatingBuildingList[0].SetActive(true);
     }
     private void Update()
     {
@@ -59,6 +74,7 @@ public class LevelCreationToolControls : MonoBehaviour
             if(referenceObject.toolGameGrid)
             {
                 referenceObject.toolGameGrid.InitNewGrid();
+                referenceObject.toolUI.ResetLevelName();
             }
             else
             {
@@ -106,7 +122,7 @@ public class LevelCreationToolControls : MonoBehaviour
         {
             currentCellHovered.ChangeCellColor(referenceObject.levelCreationToolSO.ConvertTypeToColor(currentTypeOfCellSelected));
         }
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButtonDown(1))
         {
             currentCellHovered.ChangeCellColor(referenceObject.levelCreationToolSO.ConvertTypeToColor(TypeOfCell.None));
         }
@@ -180,6 +196,8 @@ public class LevelCreationToolControls : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.T))
         {
+            rotatingBuildingList[currentBuildingIndex].SetActive(false);
+
             currentBuildingIndex++;
 
             if(currentBuildingIndex > buildingsList.Count - 1)
@@ -188,6 +206,8 @@ public class LevelCreationToolControls : MonoBehaviour
             }
 
             CurrentBuildingSelected = buildingsList[currentBuildingIndex];
+
+            rotatingBuildingList[currentBuildingIndex].SetActive(true);
         }
     }
     private void DrawingWaypoinyControls()
