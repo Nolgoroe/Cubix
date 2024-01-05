@@ -28,26 +28,37 @@ public class LevelCreationToolControls : MonoBehaviour
     [Header("Draw Data")]
     [SerializeField] private TypeOfCell currentTypeOfCellSelected;
     [SerializeField] private bool isDrawingWaypoints;
+    [SerializeField] private bool isInBuildMode;
 
+    [Header("Build Mode Data")]
+    [SerializeField] private int currentBuildingIndex;
+    [SerializeField] private List<BuildingsSO> buildingsList;
+    [SerializeField] private BuildingsSO.Dir currentDir = BuildingsSO.Dir.Down;
+    private BuildingsSO CurrentBuildingSelected;
 
     private Vector3 positionOfMouse;
 
+    private void Start()
+    {
+        GameObject go = Instantiate(toolGameGridPrefab);
+        go.TryGetComponent<ToolGameGrid>(out referenceObject.toolGameGrid);
 
+        CurrentBuildingSelected = buildingsList[0];
+    }
     private void Update()
     {
-
-
+        //Create new grid on press X
         if (Input.GetKeyDown(KeyCode.X))
         {
-            if (referenceObject.gameGrid == null)
+            if (referenceObject.toolGameGrid == null)
             {
                 GameObject go = Instantiate(toolGameGridPrefab);
-                go.TryGetComponent<ToolGameGrid>(out referenceObject.gameGrid);
+                go.TryGetComponent<ToolGameGrid>(out referenceObject.toolGameGrid);
             }
 
-            if(referenceObject.gameGrid)
+            if(referenceObject.toolGameGrid)
             {
-                referenceObject.gameGrid.InitNewGrid();
+                referenceObject.toolGameGrid.InitNewGrid();
             }
             else
             {
@@ -55,23 +66,31 @@ public class LevelCreationToolControls : MonoBehaviour
             }
         }
 
-
+        //Detect cells i'm hovering above
         MouseOverGridCell();
 
+        //Switch controls by modes
         if (currentCellHovered)
         {
             Vector3 cellPos = currentCellHovered.transform.position;
             cellIndicator.transform.position = new Vector3(cellPos.x, cellPos.y + 0.75f, cellPos.z);
+            cellIndicator.transform.rotation = currentCellHovered.transform.rotation;
 
-            if(isDrawingWaypoints)
+            if (isDrawingWaypoints)
             {
                 DrawingWaypoinyControls();
+            }
+            else if(isInBuildMode)
+            {
+                BuildModeControls();
             }
             else
             {
                 NormalControls();
             }
 
+            //Detect middle mouse to "Select" a cell
+            // currently only really valid for enemy spawner as that is how we move to draw waypoint mode
             if (Input.GetMouseButton(2))
             {
                 currentCellSelected = currentCellHovered;
@@ -92,8 +111,89 @@ public class LevelCreationToolControls : MonoBehaviour
             currentCellHovered.ChangeCellColor(referenceObject.levelCreationToolSO.ConvertTypeToColor(TypeOfCell.None));
         }
     }
+    private void BuildModeControls()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            List<Vector2Int> gridPosList = CurrentBuildingSelected.GetGridPositionList(currentCellHovered.ReturnPosInGridArray(), currentDir);
+            ToolGridCell[,] temp2DArray = referenceObject.toolGameGrid.ReturnCellsArray();
+
+            Vector2 gridWidthHeight = referenceObject.toolGameGrid.ReturnGridWidthAndHeight();
+            
+            foreach (Vector2Int gridPos in gridPosList)
+            {
+
+                if(gridPos.x >= gridWidthHeight.x || gridPos.x < 0 || 
+                    gridPos.y >= gridWidthHeight.y || gridPos.y < 0)
+                {
+                    return;
+                }
+                if(temp2DArray[gridPos.x, gridPos.y].ReturnIsOccupied())
+                {
+                    return;
+                }
+            }
+
+
+            Vector2 rotationOffset = CurrentBuildingSelected.GetRotationOffset(currentDir); // gets the amount on X and Y that the object needs to move according to it's dircetion and size
+            Vector3 poisitonToAddByRotationOffset = new Vector3(rotationOffset.x, 0, rotationOffset.y); //we only move objects on X and Z.
+            Vector3 correctionToCellPivot = new Vector3(-0.5f, 0, -0.5f); // we want to force the pivot of the building to be on the EDGE of a cell. this fixes rotations into slots.
+            
+            // the position of the building is the position of the cell + the position in the prefab
+            // + the position fixed by the corrected pivot + the position we need to add by the direction and rotation we are facing.
+            // we add the position by rotation since our pivot is at the edge of the building and cell.
+            // so for example, if we are looking left, when we add 90 degrees, our left edge of the building would be at the bottom right edge of cell we clicked on.
+            // so we'll need to move it, by it's width, a few steps towards the Z.
+            Vector3 buildingPos = correctionToCellPivot +
+                currentCellHovered.transform.position + 
+                CurrentBuildingSelected.buildingPrefab.transform.position +
+                poisitonToAddByRotationOffset;
+
+            Transform buildingParent = referenceObject.toolGameGrid.ReturnBuildingsParent();
+            PlacedObject placedObject = PlacedObject.Create(buildingPos, currentCellHovered.ReturnPosInGridArray(), currentDir, CurrentBuildingSelected, buildingParent);
+
+            foreach (Vector2Int gridPos in gridPosList)
+            {
+                temp2DArray[gridPos.x, gridPos.y].PopulateGridCell(placedObject);
+            }
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            PlacedObject placedObject = currentCellHovered.ReturnPlacedObject();
+            if (placedObject)
+            {
+                placedObject.DestroySelf();
+
+                List<Vector2Int> gridPosList = placedObject.GetGridPositionsList();// this will return all of the cells that are part of this building by it's width and height
+
+                foreach (Vector2Int gridPos in gridPosList)
+                {
+                    referenceObject.toolGameGrid.ReturnCellsArray()[gridPos.x, gridPos.y].EmptyGridCell();
+                }
+            }
+        }
+
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            currentDir = BuildingsSO.GetNextDir(currentDir);
+            Debug.Log(currentDir);
+        }
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+            currentBuildingIndex++;
+
+            if(currentBuildingIndex > buildingsList.Count - 1)
+            {
+                currentBuildingIndex = 0;
+            }
+
+            CurrentBuildingSelected = buildingsList[currentBuildingIndex];
+        }
+    }
     private void DrawingWaypoinyControls()
     {
+        if (currentSpawnerSelected == null) return;
+
         if (Input.GetMouseButtonDown(0))
         {
             currentCellHovered.DisplayAsWaypoint(true);
@@ -107,6 +207,8 @@ public class LevelCreationToolControls : MonoBehaviour
     }
     private void MiddileClickOnCell(ToolGridCell cell)
     {
+        currentSpawnerSelected = null; //only set spawner when middile clicking a spawner
+
         switch (cell.ReturnTypeOfCell())
         {
             case TypeOfCell.enemyPath:
@@ -159,9 +261,9 @@ public class LevelCreationToolControls : MonoBehaviour
     [ContextMenu("Generate The Level")]
     public void GenerateTheLevel()
     {
-        referenceObject.gameGrid.ClearDataBeforeLevelGeneration();
+        referenceObject.toolGameGrid.ClearDataBeforeLevelGeneration();
 
-        foreach (ToolGridCell cell in referenceObject.gameGrid.ReturnCellsArray())
+        foreach (ToolGridCell cell in referenceObject.toolGameGrid.ReturnCellsArray())
         {
             GameObject toSpawn = referenceObject.levelCreationToolSO.SpawnPrefabByColor(cell.ReturnCellColor());
 
@@ -175,9 +277,10 @@ public class LevelCreationToolControls : MonoBehaviour
                 createdCell.CopyOtherGridCell(cell);
             }
 
-            newObject.transform.position = cell.transform.position;
+            //newObject.transform.position = cell.transform.position;
+            newObject.transform.localPosition = new Vector3(cell.transform.localPosition.x, cell.transform.localPosition.y, toSpawn.transform.position.z);
 
-            referenceObject.gameGrid.OverrideSpecificCell(cell.ReturnPosInGridArray(), createdCell, newObject);
+            referenceObject.toolGameGrid.OverrideSpecificCell(cell.ReturnPosInGridArray(), createdCell, newObject);
 
 
             Destroy(cell.gameObject);
@@ -187,6 +290,30 @@ public class LevelCreationToolControls : MonoBehaviour
     public void SetCurrentTypeOfCellSelected(TypeOfCell typeOfCell)
     {
         currentTypeOfCellSelected = typeOfCell;
+
+        switch (typeOfCell)
+        {
+            case TypeOfCell.enemyPath:
+                isDrawingWaypoints = false;
+                break;
+            case TypeOfCell.enemySpawner:
+                isDrawingWaypoints = false;
+                break;
+            case TypeOfCell.Obstacle:
+                isDrawingWaypoints = false;
+                break;
+            case TypeOfCell.PlayerBase:
+                isDrawingWaypoints = false;
+                break;
+            case TypeOfCell.None:
+                isDrawingWaypoints = false;
+                break;
+            case TypeOfCell.Waypoints:
+                isDrawingWaypoints = true;
+                break;
+            default:
+                break;
+        }
     }
 
 
@@ -213,6 +340,13 @@ public class LevelCreationToolControls : MonoBehaviour
         {
             currentSpawnerSelected.DeleteSpecificPath(index);
         }
+    }
+
+
+
+    public void SwtichToBuildMode(bool goToBuildMode)
+    {
+        isInBuildMode = goToBuildMode;
     }
 
 }

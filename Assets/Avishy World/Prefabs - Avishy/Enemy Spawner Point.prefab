@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 9138847365563700820}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -127,6 +127,8 @@ MonoBehaviour:
   waypointPrefab: {fileID: 8322110550208146185, guid: 793123ff491d0ac4a98be31230e4a99f,
     type: 3}
   spawnedWaypoint: {fileID: 0}
+  renderer: {fileID: 4457188143176528486}
   enemyPaths: []
   currentPathBeingCreated:
     waypoints: []
+  currentPathIndex: -1

@@ -13,14 +13,14 @@ public class ToolReferencerObject : MonoBehaviour
     public LevelCreationToolUI toolUI;
 
     [Header ("Automatic")]
-    public ToolGameGrid gameGrid;
+    public ToolGameGrid toolGameGrid;
     public List<GameObject> levelList;
 
     private void Update()
     {
-        if (gameGrid == null)
+        if (toolGameGrid == null)
         {
-            gameGrid = FindObjectOfType<ToolGameGrid>();
+            toolGameGrid = FindObjectOfType<ToolGameGrid>();
         }
     }
 

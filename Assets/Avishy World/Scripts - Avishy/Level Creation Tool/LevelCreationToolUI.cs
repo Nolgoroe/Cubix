@@ -66,7 +66,7 @@ public class LevelCreationToolUI : MonoBehaviour
         int.TryParse(inputWidth.text, out width);
         int.TryParse(inputSpacing.text, out spacing);
 
-        referenceObject.gameGrid.SetGridParamsFromUI(height, width, spacing);
+        referenceObject.toolGameGrid.SetGridParamsFromUI(height, width, spacing);
     }
     public void UpdateLevelName()
     {
@@ -110,12 +110,13 @@ public class LevelCreationToolUI : MonoBehaviour
     {
         int index = dropDownLevelList.value;
         
-        if(referenceObject.gameGrid)
+        if(referenceObject.toolGameGrid)
         {
-            Destroy(referenceObject.gameGrid.gameObject);
+            Destroy(referenceObject.toolGameGrid.gameObject);
         }
 
-        Instantiate(referenceObject.levelList[index]);
+        GameObject go = Instantiate(referenceObject.levelList[index]);
+        levelName.text = referenceObject.levelList[index].name;
     }
 
 #if UNITY_EDITOR
@@ -123,11 +124,15 @@ public class LevelCreationToolUI : MonoBehaviour
     {
         string path = prefabPath + "/"+ decidedLevelName +".prefab";
         Debug.Log(path);
-        PrefabUtility.SaveAsPrefabAsset(referenceObject.gameGrid.gameObject, path);
+
+        if(decidedLevelName == "")
+        {
+            Debug.LogError("No Level Name");
+            return;
+        }
+        PrefabUtility.SaveAsPrefabAsset(referenceObject.toolGameGrid.gameObject, path);
     }
 #endif
-
-
 
     private void PopupateCellTypesDropdownList()
     {

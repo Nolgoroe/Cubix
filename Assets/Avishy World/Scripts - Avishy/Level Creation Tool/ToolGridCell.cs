@@ -9,7 +9,7 @@ public class ToolGridCell : MonoBehaviour
     [SerializeField] private Vector2Int positionXYInGridArray;
 
     [Header("Live Gameplay Data")]
-    [SerializeField] private GameObject gameObjectOnCell;
+    [SerializeField] private PlacedObject placedObject;
     [SerializeField] private bool isOccupied;
     [SerializeField] private TypeOfCell cellType;
 
@@ -31,7 +31,7 @@ public class ToolGridCell : MonoBehaviour
         cellMat = renderer.materials[0];
     }
 
-    #region Actions
+    #region Public Actions
     public void SetXYInGrid(int x, int y)
     {
         positionXYInGridArray.x = x;
@@ -62,13 +62,28 @@ public class ToolGridCell : MonoBehaviour
     public void CopyOtherGridCell(ToolGridCell otherCell)
     {
         positionXYInGridArray = otherCell.positionXYInGridArray;
-        gameObjectOnCell = otherCell.gameObjectOnCell;
+        placedObject = otherCell.placedObject;
         //isOccupied = otherCell.isOccupied; for now this is set initially in prefabs.
     }
 
     public void ChangeMat(Material newMat)
     {
         renderer.material = newMat;
+    }
+
+    public void PopulateGridCell(PlacedObject toPlaceOnCell)
+    {
+        ChangeCellColor(Color.red);
+        placedObject = toPlaceOnCell;
+        isOccupied = true;
+    }
+    public void EmptyGridCell()
+    {
+        isOccupied = false;
+        placedObject = null;
+
+        ChangeCellColor(Color.white);
+
     }
     #endregion
 
@@ -77,9 +92,9 @@ public class ToolGridCell : MonoBehaviour
     {
         return positionXYInGridArray;
     }
-    public GameObject ReturnGameObjectOnCell()
+    public PlacedObject ReturnPlacedObject()
     {
-        return gameObjectOnCell;
+        return placedObject;
     }
     public bool ReturnIsOccupied()
     {

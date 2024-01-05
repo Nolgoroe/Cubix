@@ -27,7 +27,7 @@ MonoBehaviour:
     color: {r: 1, g: 0, b: 0.8533907, a: 1}
   colorToPrefabList:
   - color: {r: 1, g: 0, b: 0, a: 1}
-    prefab: {fileID: 3902819553308001029, guid: 968e3ec3b26181b4f81130bfef5e1daa,
+    prefab: {fileID: 3934025228936847065, guid: 86f4b3f34d39ff34ba6d4a910f7c07e7,
       type: 3}
   - color: {r: 0, g: 0, b: 0, a: 1}
     prefab: {fileID: 9138847365563700820, guid: 52fa7374f23d9514fb88762393a0fe2f,
