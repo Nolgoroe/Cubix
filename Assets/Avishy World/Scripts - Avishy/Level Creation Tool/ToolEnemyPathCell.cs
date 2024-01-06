@@ -150,18 +150,18 @@ public class ToolEnemyPathCell : ToolGridCell
 
         pathMeshSides = GetConnectedPathSides();
 
-        GameObject toSpawn = ToolReferencerObject.Instance.levelCreationToolSO.ReturnPrefabByPathSides(pathMeshSides);
-        
-        if(toSpawn)
-        {
-            GameObject spawned = Instantiate(toSpawn, transform.position, Quaternion.identity, transform.parent);
+        GameObject toSpawn = ToolReferencerObject.Instance.levelCreationToolSO.ReturnPrefabByPathSides(pathMeshSides); // this will go away when we do mesh.
 
-            ToolEnemyPathCell enemyPathCell;
-            spawned.TryGetComponent<ToolEnemyPathCell>(out enemyPathCell);
+        if (toSpawn) // this will go away when we do mesh.
+        {
+            GameObject spawned = Instantiate(toSpawn, transform.position, Quaternion.identity, transform.parent); // this will go away when we do mesh.
+
+            ToolEnemyPathCell enemyPathCell; // this will go away when we do mesh.
+            spawned.TryGetComponent<ToolEnemyPathCell>(out enemyPathCell); // this will go away when we do mesh.
 
             if (enemyPathCell)
             {
-                enemyPathCell.CopyOtherGridCell(this);
+                enemyPathCell.CopyOtherGridCell(this); // this will go away when we do mesh.
             }
 
         }

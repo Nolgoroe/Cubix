@@ -28,6 +28,8 @@ public struct typeToMaterialCombo
 [Serializable]
 public struct PathSidesToMesh
 {
+    // this will hold a mesh reference instead of a gameobject in the future.
+
     public PathSides side;
     public GameObject prefabPathSide; // this might turn into a mesh
 }
@@ -190,6 +192,8 @@ public class LevelCreationToolSO : ScriptableObject
     }
     public GameObject ReturnPrefabByPathSides(PathSides side)
     {
+        ///this function will return a mesh in the future.
+
         PathSidesToMesh foundCombo = pathSidesToMeshes.Where(combo => combo.side == side).FirstOrDefault();
 
         return foundCombo.prefabPathSide;
