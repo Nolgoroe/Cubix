@@ -91,6 +91,7 @@ public class ToolEnemySpawnerCell : ToolGridCell
         if (enemyPaths.Count <= 0 || index > enemyPaths.Count - 1) yield break;
 
         waypointTransforms.Clear();
+        yield return new WaitForSeconds(0.5f);
 
         if (show)
         {
@@ -106,6 +107,7 @@ public class ToolEnemySpawnerCell : ToolGridCell
             currentPathBeingCreated = new EnemyPath();
             currentPathBeingCreated.waypoints = new List<ToolGridCell>();
 
+            yield return new WaitForSeconds(0.5f);
             currentPathBeingCreated.waypoints.AddRange(enemyPaths[index].waypoints);
             
             currentPathIndex = index;

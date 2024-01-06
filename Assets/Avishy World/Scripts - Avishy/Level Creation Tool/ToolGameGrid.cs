@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 public class ToolGameGrid : MonoBehaviour
 {
@@ -109,12 +110,15 @@ public class ToolGameGrid : MonoBehaviour
 
         Camera.main.transform.position = Vector3.zero;
         Camera.main.transform.rotation = Quaternion.Euler(45,0,0);
+
+        gameGridCellsList.Clear();
+        enemySpawners.Clear();
     }
 
     public void ClearDataBeforeLevelGeneration()
     {
         //we don't add the 2D arrays here since we ovveride their data in the "OverrideSpecificCell" funciton
-        gameGridCellsList.Clear();
+        //gameGridCellsList.Clear();
 
     }
 
@@ -139,19 +143,26 @@ public class ToolGameGrid : MonoBehaviour
 
         foreach (ToolGridCell cell in gameGridCells)
         {
+            //find the prefab we want to spawn and it's cell type
             GameObject toSpawn = ToolReferencerObject.Instance.levelCreationToolSO.SpawnPrefabByColor(cell.ReturnCellColor());
+            toSpawn.TryGetComponent<ToolGridCell>(out ToolGridCell tempCell);
 
-            if (toSpawn == null) continue;
+            //if the prefab we want to spawn is null or if the types are the same, we don't do anything to this cell.
+            if (toSpawn == null || cell.ReturnTypeOfCell() == tempCell.ReturnTypeOfCell()) continue;
+
+            int cellToSwapIndex = gameGridCellsList.IndexOf(gameGridCellsList.Where(x => x == cell).FirstOrDefault());
+
 
             GameObject newObject = Instantiate(toSpawn, cellsParent);
-
             newObject.TryGetComponent<ToolGridCell>(out ToolGridCell createdCell);
+
             if (createdCell != null)
             {
                 createdCell.CopyOtherGridCell(cell);
+
+                gameGridCellsList[cellToSwapIndex] = createdCell;
             }
 
-            //newObject.transform.position = cell.transform.position;
             newObject.transform.localPosition = new Vector3(cell.transform.localPosition.x, cell.transform.localPosition.y, toSpawn.transform.position.z);
 
             OverrideSpecificCell(cell.ReturnPosInGridArray(), createdCell, newObject);
@@ -159,24 +170,50 @@ public class ToolGameGrid : MonoBehaviour
 
             Destroy(cell.gameObject);
 
-            switch (createdCell.ReturnTypeOfCell())
-            {
-                case TypeOfCell.enemyPath:
-                    break;
-                case TypeOfCell.enemySpawner:
-                    enemySpawners.Add(createdCell as ToolEnemySpawnerCell);
-                    break;
-                case TypeOfCell.Obstacle:
-                    break;
-                case TypeOfCell.PlayerBase:
-                    break;
-                case TypeOfCell.None:
-                    break;
-                case TypeOfCell.Waypoints:
-                    break;
-                default:
-                    break;
-            }
+            SwapDataFromNewCreation(cell, createdCell);
+        }
+    }
+
+    private void SwapDataFromNewCreation(ToolGridCell cell, ToolGridCell createdCell)
+    {
+        //remove previous cell data from lists and such
+        switch (cell.ReturnTypeOfCell())
+        {
+            case TypeOfCell.enemyPath:
+                break;
+            case TypeOfCell.enemySpawner:
+                enemySpawners.Remove(cell as ToolEnemySpawnerCell);
+                break;
+            case TypeOfCell.Obstacle:
+                break;
+            case TypeOfCell.PlayerBase:
+                break;
+            case TypeOfCell.None:
+                break;
+            case TypeOfCell.Waypoints:
+                break;
+            default:
+                break;
+        }
+
+        // Add new cell created to cells and sucl
+        switch (createdCell.ReturnTypeOfCell())
+        {
+            case TypeOfCell.enemyPath:
+                break;
+            case TypeOfCell.enemySpawner:
+                enemySpawners.Add(createdCell as ToolEnemySpawnerCell);
+                break;
+            case TypeOfCell.Obstacle:
+                break;
+            case TypeOfCell.PlayerBase:
+                break;
+            case TypeOfCell.None:
+                break;
+            case TypeOfCell.Waypoints:
+                break;
+            default:
+                break;
         }
     }
 
@@ -204,6 +241,8 @@ public class ToolGameGrid : MonoBehaviour
                 {
                     gameGridCells[x,y] = createdCell;
                     createdCell.SetXYInGrid(x,y);
+
+                    gameGridCellsList.Add(createdCell);
                 }
 
                 //yield return new WaitForSeconds(delayBetweenCellSpawn);
@@ -223,13 +262,13 @@ public class ToolGameGrid : MonoBehaviour
     }
 
     #region Public Actions
-    public void OverrideSpecificCell(Vector2Int posInArray, ToolGridCell newCell, GameObject newObejct)
+    private void OverrideSpecificCell(Vector2Int posInArray, ToolGridCell newCell, GameObject newObejct)
     {
         gameGridGameObjects[posInArray.x, posInArray.y] = newObejct;
         gameGridCells[posInArray.x, posInArray.y] = newCell;
 
 
-        gameGridCellsList.Add(newCell);
+        //gameGridCellsList.Add(newCell);
     }
 
     public void SetGridParamsFromUI(int height, int width, int spacing)
