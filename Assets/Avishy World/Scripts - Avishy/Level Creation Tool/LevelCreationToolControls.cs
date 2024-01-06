@@ -230,7 +230,7 @@ public class LevelCreationToolControls : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(1))
         {
-            currentSpawnerSelected.RemoveFromEnemyPath(currentCellHovered);
+            StartCoroutine(currentSpawnerSelected.RemoveFromEnemyPath(currentCellHovered));
         }
     }
     private void MiddileClickOnCell(ToolGridCell cell)
@@ -349,7 +349,7 @@ public class LevelCreationToolControls : MonoBehaviour
     {
         if (currentSpawnerSelected)
         {
-            currentSpawnerSelected.DeleteSpecificPath(index);
+            StartCoroutine(currentSpawnerSelected.DeleteSpecificPath(index));
         }
     }
     public void SwitchToAndFromBuildMode()

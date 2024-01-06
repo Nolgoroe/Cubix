@@ -41,15 +41,18 @@ public class ToolEnemySpawnerCell : ToolGridCell
 
         RotateWaypoints(); //TEMP HERE!
     }
-    public void RemoveFromEnemyPath(ToolGridCell toRemove)
+    public IEnumerator RemoveFromEnemyPath(ToolGridCell toRemove)
     {
-        if (currentPathBeingCreated.waypoints.Count <= 0) return;
+        if (currentPathBeingCreated.waypoints.Count <= 0) yield break;
 
         if (toRemove.ReturnSpawnedWaypoint())
             waypointTransforms.Remove(toRemove.ReturnSpawnedWaypoint());
 
-        toRemove.DisplayAsWaypoint(false);
         currentPathBeingCreated.waypoints.Remove(toRemove);
+
+        yield return new WaitForSeconds(0.5f);
+
+        toRemove.DisplayAsWaypoint(false);
 
         RotateWaypoints(); //TEMP HERE!
     }
@@ -87,28 +90,19 @@ public class ToolEnemySpawnerCell : ToolGridCell
     {
         if (enemyPaths.Count <= 0 || index > enemyPaths.Count - 1) yield break;
 
-        foreach (EnemyPath path in enemyPaths)
-        {
-            foreach (ToolGridCell cell in path.waypoints)
-            {
-                cell.DisplayAsWaypoint(false);
-            }
-        }
-
-        yield return new WaitForSeconds(0.5f);
-
-        if (currentPathBeingCreated.waypoints.Count > 0)
-        {
-            foreach (ToolGridCell cell in currentPathBeingCreated.waypoints)
-            {
-                cell.DisplayAsWaypoint(false);
-            }
-            yield return new WaitForSeconds(0.5f);
-        }
-
+        waypointTransforms.Clear();
 
         if (show)
         {
+            if (currentPathBeingCreated.waypoints.Count > 0)
+            {
+                foreach (ToolGridCell cell in currentPathBeingCreated.waypoints)
+                {
+                    cell.DisplayAsWaypoint(false);
+                }
+                yield return new WaitForSeconds(0.5f);
+            }
+
             currentPathBeingCreated = new EnemyPath();
             currentPathBeingCreated.waypoints = new List<ToolGridCell>();
 
@@ -123,6 +117,8 @@ public class ToolEnemySpawnerCell : ToolGridCell
                 currentPathBeingCreated.waypoints.Remove(cell);
             }
 
+            yield return new WaitForSeconds(0.5f);
+
             currentPathBeingCreated = new EnemyPath();
             currentPathBeingCreated.waypoints = new List<ToolGridCell>();
         }
@@ -134,11 +130,14 @@ public class ToolEnemySpawnerCell : ToolGridCell
 
         yield return new WaitForSeconds(0.5f);
 
-        waypointTransforms.Clear();
-
         foreach (ToolGridCell cell in currentPathBeingCreated.waypoints)
         {
             waypointTransforms.Add(cell.ReturnSpawnedWaypoint());
+        }
+
+        if(show)
+        {
+            RotateWaypoints();
         }
 
     }
@@ -160,11 +159,11 @@ public class ToolEnemySpawnerCell : ToolGridCell
         currentPathBeingCreated.waypoints = new List<ToolGridCell>();
     }
 
-    public void DeleteSpecificPath(int index)
+    public IEnumerator DeleteSpecificPath(int index)
     {
-        if (enemyPaths.Count <= 0 || index > enemyPaths.Count - 1) return;
+        if (enemyPaths.Count <= 0 || index > enemyPaths.Count - 1) yield break;
 
-        StartCoroutine(DisplaySpecificPath(false, index));
+        yield return StartCoroutine(DisplaySpecificPath(false, index));
 
         enemyPaths.Remove(enemyPaths[index]);
     }

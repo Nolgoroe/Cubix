@@ -25,6 +25,7 @@ public class LevelCreationToolUI : MonoBehaviour
 
     [Header("Waypoints")]
     [SerializeField] TMP_InputField inputWaypointIndex;
+    [SerializeField] Button deleteWaypointsButton;
 
     [Header("Level Data")]
     [SerializeField] TMP_Dropdown dropDownLevelList;
@@ -98,6 +99,16 @@ public class LevelCreationToolUI : MonoBehaviour
         if (index <= -1) return;
 
         ToolReferencerObject.Instance.controls.CallDeleteSpecificPath(index);
+
+        deleteWaypointsButton.interactable = false;
+
+        StartCoroutine(ReActivateButton(2, deleteWaypointsButton));
+    }
+
+    private IEnumerator ReActivateButton(int time, Button button)
+    {
+        yield return new WaitForSeconds(time);
+        button.interactable = true;
     }
 
 
