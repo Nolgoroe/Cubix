@@ -135,6 +135,7 @@ public class ToolGameGrid : MonoBehaviour
     public void GenerateTheLevel()
     {
         ClearDataBeforeLevelGeneration();
+        CleanupBeforePrefab();
 
         foreach (ToolGridCell cell in gameGridCells)
         {

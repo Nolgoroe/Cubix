@@ -74,7 +74,6 @@ public class ToolGridCell : MonoBehaviour
 
     public void PopulateGridCell(PlacedObject toPlaceOnCell)
     {
-        ChangeCellColor(Color.red);
         placedObject = toPlaceOnCell;
         isOccupied = true;
     }

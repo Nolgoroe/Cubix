@@ -16,6 +16,7 @@ public class LevelCreationToolControls : MonoBehaviour
 {
     [Header("Needed References")]
     [SerializeField] private GameObject toolGameGridPrefab;
+    [SerializeField] private BuildingGhost buildingGhost;
 
     [Header("Cell Detection")]
     [SerializeField] private GameObject cellIndicator;
@@ -57,6 +58,7 @@ public class LevelCreationToolControls : MonoBehaviour
 
 
         CurrentBuildingSelected = buildingsList[0];
+        buildingGhost.SetCurrentBuilding(CurrentBuildingSelected);
         rotatingBuildingList[0].SetActive(true);
     }
     private void Update()
@@ -205,6 +207,7 @@ public class LevelCreationToolControls : MonoBehaviour
             }
 
             CurrentBuildingSelected = buildingsList[currentBuildingIndex];
+            buildingGhost.SetCurrentBuilding(CurrentBuildingSelected);
 
             rotatingBuildingList[currentBuildingIndex].SetActive(true);
         }
@@ -308,11 +311,6 @@ public class LevelCreationToolControls : MonoBehaviour
         }
         ToolReferencerObject.Instance.toolUI.SetDropdownToValue((int)currentTypeOfCellSelected);
     }
-
-
-
-
-
     public void CallSavePathCreated()
     {
         if (currentSpawnerSelected)
@@ -334,15 +332,21 @@ public class LevelCreationToolControls : MonoBehaviour
             currentSpawnerSelected.DeleteSpecificPath(index);
         }
     }
-
-
-
     public void SwitchToAndFromBuildMode()
     {
         isInBuildMode = !isInBuildMode;
-
+        buildingGhost.ToggleGhost();
         SetCurrentTypeOfCellSelected(TypeOfCell.None);
         ToolReferencerObject.Instance.toolUI.ToggleBuildModeToggle(isInBuildMode);
+    }
+
+    public ToolGridCell ReturnCurrentCellHovered()
+    {
+        return currentCellHovered;
+    }
+    public BuildingsSO.Dir ReturnCurrentDir()
+    {
+        return currentDir;
     }
 
 }
