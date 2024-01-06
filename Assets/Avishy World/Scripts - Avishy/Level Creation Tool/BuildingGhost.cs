@@ -53,7 +53,7 @@ public class BuildingGhost : MonoBehaviour {
         }
 
         if (currentBuilding != null) {
-            visual = Instantiate(currentBuilding.buildingPrefab, Vector3.zero, Quaternion.identity);
+            visual = Instantiate(currentBuilding.visualPrefab, Vector3.zero, Quaternion.identity);
             visual.transform.parent = transform;
             visual.transform.localPosition = Vector3.zero;
             visual.transform.localEulerAngles = Vector3.zero;

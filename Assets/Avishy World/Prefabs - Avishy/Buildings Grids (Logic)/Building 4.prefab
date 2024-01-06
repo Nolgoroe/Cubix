@@ -199,7 +199,7 @@ GameObject:
   m_Component:
   - component: {fileID: 130362046272053742}
   - component: {fileID: -3340599458904558796}
-  - component: {fileID: 6297145017272758055}
+  - component: {fileID: 543096182272899269}
   m_Layer: 0
   m_Name: Building 4
   m_TagString: Untagged
@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   originPoint: {x: 0, y: 0}
---- !u!65 &6297145017272758055
+--- !u!65 &543096182272899269
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
