@@ -19,3 +19,4 @@ MonoBehaviour:
     type: 3}
   width: 3
   height: 2
+  snapToGrid: 1

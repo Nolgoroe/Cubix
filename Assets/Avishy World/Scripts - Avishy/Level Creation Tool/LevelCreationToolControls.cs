@@ -132,46 +132,54 @@ public class LevelCreationToolControls : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            List<Vector2Int> gridPosList = CurrentBuildingSelected.GetGridPositionList(currentCellHovered.ReturnPosInGridArray(), currentDir);
-            ToolGridCell[,] temp2DArray = ToolReferencerObject.Instance.toolGameGrid.ReturnCellsArray();
+            Transform buildingParent = ToolReferencerObject.Instance.toolGameGrid.ReturnBuildingsParent();
 
-            Vector2 gridWidthHeight = ToolReferencerObject.Instance.toolGameGrid.ReturnGridWidthAndHeight();
-            
-            foreach (Vector2Int gridPos in gridPosList)
+            if (CurrentBuildingSelected.snapToGrid)
             {
+                List<Vector2Int> gridPosList = CurrentBuildingSelected.GetGridPositionList(currentCellHovered.ReturnPosInGridArray(), currentDir);
+                ToolGridCell[,] temp2DArray = ToolReferencerObject.Instance.toolGameGrid.ReturnCellsArray();
 
-                if(gridPos.x >= gridWidthHeight.x || gridPos.x < 0 || 
-                    gridPos.y >= gridWidthHeight.y || gridPos.y < 0)
+                Vector2 gridWidthHeight = ToolReferencerObject.Instance.toolGameGrid.ReturnGridWidthAndHeight();
+
+                foreach (Vector2Int gridPos in gridPosList)
                 {
-                    return;
+
+                    if (gridPos.x >= gridWidthHeight.x || gridPos.x < 0 ||
+                        gridPos.y >= gridWidthHeight.y || gridPos.y < 0)
+                    {
+                        return;
+                    }
+                    if (temp2DArray[gridPos.x, gridPos.y].ReturnIsOccupied())
+                    {
+                        return;
+                    }
                 }
-                if(temp2DArray[gridPos.x, gridPos.y].ReturnIsOccupied())
+
+
+                Vector2 rotationOffset = CurrentBuildingSelected.GetRotationOffset(currentDir); // gets the amount on X and Y that the object needs to move according to it's dircetion and size
+                Vector3 poisitonToAddByRotationOffset = new Vector3(rotationOffset.x, 0, rotationOffset.y); //we only move objects on X and Z.
+                Vector3 correctionToCellPivot = new Vector3(-0.5f, 0, -0.5f); // we want to force the pivot of the building to be on the EDGE of a cell. this fixes rotations into slots.
+
+                // the position of the building is the position of the cell + the position in the prefab
+                // + the position fixed by the corrected pivot + the position we need to add by the direction and rotation we are facing.
+                // we add the position by rotation since our pivot is at the edge of the building and cell.
+                // so for example, if we are looking left, when we add 90 degrees, our left edge of the building would be at the bottom right edge of cell we clicked on.
+                // so we'll need to move it, by it's width, a few steps towards the Z.
+                Vector3 buildingPos = correctionToCellPivot +
+                    currentCellHovered.transform.position +
+                    CurrentBuildingSelected.buildingPrefab.transform.position +
+                    poisitonToAddByRotationOffset;
+
+                PlacedObject placedObject = PlacedObject.Create(buildingPos, currentCellHovered.ReturnPosInGridArray(), currentDir, CurrentBuildingSelected, buildingParent);
+
+                foreach (Vector2Int gridPos in gridPosList)
                 {
-                    return;
+                    temp2DArray[gridPos.x, gridPos.y].PopulateGridCell(placedObject);
                 }
             }
-
-
-            Vector2 rotationOffset = CurrentBuildingSelected.GetRotationOffset(currentDir); // gets the amount on X and Y that the object needs to move according to it's dircetion and size
-            Vector3 poisitonToAddByRotationOffset = new Vector3(rotationOffset.x, 0, rotationOffset.y); //we only move objects on X and Z.
-            Vector3 correctionToCellPivot = new Vector3(-0.5f, 0, -0.5f); // we want to force the pivot of the building to be on the EDGE of a cell. this fixes rotations into slots.
-            
-            // the position of the building is the position of the cell + the position in the prefab
-            // + the position fixed by the corrected pivot + the position we need to add by the direction and rotation we are facing.
-            // we add the position by rotation since our pivot is at the edge of the building and cell.
-            // so for example, if we are looking left, when we add 90 degrees, our left edge of the building would be at the bottom right edge of cell we clicked on.
-            // so we'll need to move it, by it's width, a few steps towards the Z.
-            Vector3 buildingPos = correctionToCellPivot +
-                currentCellHovered.transform.position + 
-                CurrentBuildingSelected.buildingPrefab.transform.position +
-                poisitonToAddByRotationOffset;
-
-            Transform buildingParent = ToolReferencerObject.Instance.toolGameGrid.ReturnBuildingsParent();
-            PlacedObject placedObject = PlacedObject.Create(buildingPos, currentCellHovered.ReturnPosInGridArray(), currentDir, CurrentBuildingSelected, buildingParent);
-
-            foreach (Vector2Int gridPos in gridPosList)
+            else
             {
-                temp2DArray[gridPos.x, gridPos.y].PopulateGridCell(placedObject);
+                PlacedObject placedObject = PlacedObject.Create(MouseOverWorldNormal(), currentDir, CurrentBuildingSelected, buildingParent);
             }
         }
         if (Input.GetMouseButtonDown(1))
@@ -276,6 +284,18 @@ public class LevelCreationToolControls : MonoBehaviour
         }
 
         return currentCellHovered;
+    }
+    public Vector3 MouseOverWorldNormal()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, Mathf.Infinity, gridCellLayer))
+        {
+            Debug.Log(hitInfo.point);
+            return hitInfo.point;
+        }
+
+        return Vector3.zero;
     }
 
     public void CallGenerateLevel()

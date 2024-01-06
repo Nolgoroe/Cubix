@@ -15,6 +15,7 @@ public class BuildingsSO : ScriptableObject
     public GameObject visualPrefab;
     public int width;
     public int height;
+    public bool snapToGrid;
 
     public int GetRotationAngle(Dir dir)
     {

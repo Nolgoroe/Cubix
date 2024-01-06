@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3c8eef2949cbd843b2c5fe5a4eea388, type: 3}
-  m_Name: Building 1
+  m_Name: Building 4
   m_EditorClassIdentifier: 
-  buildingName: bla 1
-  buildingPrefab: {fileID: 8275266634945486183, guid: 797b35a7a77409a46aa62bf71d9dc61d,
+  buildingName: bla 4
+  buildingPrefab: {fileID: 8267868439711103776, guid: 266f19672faa719459aa89b95c0c5939,
     type: 3}
-  visualPrefab: {fileID: 8275266634945486183, guid: ec8166a8e9863154a8820340a665a358,
+  visualPrefab: {fileID: 8267868439711103776, guid: e0106383f874a3c40b019bf9c6cc8ca7,
     type: 3}
-  width: 2
-  height: 2
-  snapToGrid: 1
+  width: -1
+  height: -1
+  snapToGrid: 0

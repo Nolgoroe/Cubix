@@ -23,6 +23,20 @@ public class PlacedObject : MonoBehaviour
 
         return placedObject;
     }
+    public static PlacedObject Create(Vector3 worldPos, BuildingsSO.Dir dir, BuildingsSO buildingSO, Transform parent)
+    {
+        //This gives us the rotation of the object by it's direction. we only rotate around the Y axis.
+        // example - if we want an object to look life - it's rotation should be 90 on the Y.
+        Quaternion RotationByDir = Quaternion.Euler(0, buildingSO.GetRotationAngle(dir), 0);
+
+        GameObject createdBuilding = Instantiate(buildingSO.buildingPrefab, worldPos, RotationByDir, parent);
+
+        PlacedObject placedObject = createdBuilding.GetComponent<PlacedObject>();
+        placedObject.buildingSO = buildingSO;
+        placedObject.dir = dir;
+
+        return placedObject;
+    }
 
     public List<Vector2Int> GetGridPositionsList()
     {
@@ -31,5 +45,15 @@ public class PlacedObject : MonoBehaviour
     public void DestroySelf()
     {
         Destroy(gameObject);
+    }
+
+    private void OnMouseOver()
+    {
+        if (buildingSO.snapToGrid) return; //here we also need to take care of grid elements, not just spawned meshes.
+
+        if(Input.GetMouseButtonDown(1))
+        {
+            DestroySelf();
+        }
     }
 }

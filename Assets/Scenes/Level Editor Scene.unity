@@ -5469,6 +5469,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4cd881fa91488544fadbe45d4a6ec143, type: 2}
   - {fileID: 11400000, guid: be84835b8652d6a4a8e305aceaebabc1, type: 2}
   - {fileID: 11400000, guid: 13de7390433ff224998c26aaf64c5ea0, type: 2}
+  - {fileID: 11400000, guid: b4b0e03f3c9a5f84688bfde22c8ecb77, type: 2}
   rotatingBuildingList: []
   currentDir: 0
   rotatingBuildingParent: {fileID: 977720478}
@@ -7826,7 +7827,7 @@ Transform:
   m_GameObject: {fileID: 1798974555}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.17372015, y: -0.31505394, z: -0.64706993}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

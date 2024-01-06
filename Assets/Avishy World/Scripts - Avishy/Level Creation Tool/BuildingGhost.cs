@@ -17,20 +17,33 @@ public class BuildingGhost : MonoBehaviour {
 
         BuildingsSO.Dir currentDir = ToolReferencerObject.Instance.controls.ReturnCurrentDir();
 
-        Vector2 rotationOffset = currentBuilding.GetRotationOffset(currentDir); // gets the amount on X and Y that the object needs to move according to it's dircetion and size
-        Vector3 poisitonToAddByRotationOffset = new Vector3(rotationOffset.x, 0, rotationOffset.y); //we only move objects on X and Z.
-        Vector3 correctionToCellPivot = new Vector3(-0.5f, 0, -0.5f); // we want to force the pivot of the building to be on the EDGE of a cell. this fixes rotations into slots.
+        if (currentBuilding.snapToGrid)
+        {
 
-        Vector3 buildingPos = correctionToCellPivot +
-                currentCell.transform.position +
-                currentBuilding.buildingPrefab.transform.position +
-                poisitonToAddByRotationOffset;
+            Vector2 rotationOffset = currentBuilding.GetRotationOffset(currentDir); // gets the amount on X and Y that the object needs to move according to it's dircetion and size
+            Vector3 poisitonToAddByRotationOffset = new Vector3(rotationOffset.x, 0, rotationOffset.y); //we only move objects on X and Z.
+            Vector3 correctionToCellPivot = new Vector3(-0.5f, 0, -0.5f); // we want to force the pivot of the building to be on the EDGE of a cell. this fixes rotations into slots.
 
-        transform.position = Vector3.Lerp(transform.position, buildingPos, Time.deltaTime * 15f);
+            Vector3 buildingPos = correctionToCellPivot +
+                    currentCell.transform.position +
+                    currentBuilding.buildingPrefab.transform.position +
+                    poisitonToAddByRotationOffset;
+
+            transform.position = Vector3.Lerp(transform.position, buildingPos, Time.deltaTime * 15f);
 
 
-        Quaternion RotationByDir = Quaternion.Euler(0, currentBuilding.GetRotationAngle(currentDir), 0);
-        transform.rotation = Quaternion.Lerp(transform.rotation, RotationByDir, Time.deltaTime * 15f);
+            Quaternion RotationByDir = Quaternion.Euler(0, currentBuilding.GetRotationAngle(currentDir), 0);
+            transform.rotation = Quaternion.Lerp(transform.rotation, RotationByDir, Time.deltaTime * 15f);
+        }
+        else
+        {
+            Vector3 worldMousePos = ToolReferencerObject.Instance.controls.MouseOverWorldNormal();
+            Vector3 buildingPos = worldMousePos + currentBuilding.buildingPrefab.transform.position;
+            transform.position = Vector3.Lerp(transform.position, buildingPos, Time.deltaTime * 15f);
+
+            Quaternion RotationByDir = Quaternion.Euler(0, currentBuilding.GetRotationAngle(currentDir), 0);
+            transform.rotation = Quaternion.Lerp(transform.rotation, RotationByDir, Time.deltaTime * 15f);
+        }
     }
 
     private void RefreshVisual() {
