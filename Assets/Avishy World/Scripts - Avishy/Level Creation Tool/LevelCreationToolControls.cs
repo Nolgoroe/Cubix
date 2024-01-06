@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public enum TypeOfCell
 {
@@ -72,7 +73,7 @@ public class LevelCreationToolControls : MonoBehaviour
                 go.TryGetComponent<ToolGameGrid>(out ToolReferencerObject.Instance.toolGameGrid);
             }
 
-            if(ToolReferencerObject.Instance.toolGameGrid)
+            if (ToolReferencerObject.Instance.toolGameGrid)
             {
                 ToolReferencerObject.Instance.toolGameGrid.InitNewGrid();
                 ToolReferencerObject.Instance.toolUI.ResetLevelName();
@@ -83,6 +84,8 @@ public class LevelCreationToolControls : MonoBehaviour
             }
         }
 
+        if (EventSystem.current.IsPointerOverGameObject() || CameraControls.isDuringCamMovement) return; // this checks if the mouse pointer is over ui object
+        Debug.Log("Check");
         //Detect cells i'm hovering above
         MouseOverGridCell();
 

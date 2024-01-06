@@ -25,12 +25,20 @@ public struct typeToMaterialCombo
     public Material mat;
 }
 
+[Serializable]
+public struct PathSidesToMesh
+{
+    public PathSides side;
+    public GameObject prefabPathSide; // this might turn into a mesh
+}
+
 [CreateAssetMenu(fileName = "Level Creation Tool", menuName = "ScriptableObjects/LevelCreationToolColors")]
 public class LevelCreationToolSO : ScriptableObject
 {
     [SerializeField] private List<typeToColorCombo> typeToColorList = new List<typeToColorCombo>();
     [SerializeField] private List<colorToPrefabCombo> colorToPrefabList = new List<colorToPrefabCombo>();
     [SerializeField] private List<typeToMaterialCombo> typeToMaterialList = new List<typeToMaterialCombo>();
+    [SerializeField] private List<PathSidesToMesh> pathSidesToMeshes = new List<PathSidesToMesh>();
 
     [ContextMenu("Create Number Of Combo's")]
     private void CreateTypeToColorCombos()
@@ -128,6 +136,38 @@ public class LevelCreationToolSO : ScriptableObject
         }
 
         #endregion
+
+        #region Path Type To Mesh
+        List<PathSidesToMesh> tempSidesToMeshList = new List<PathSidesToMesh>();
+
+        if (pathSidesToMeshes.Count > 0)
+        {
+            tempSidesToMeshList.AddRange(pathSidesToMeshes);
+        }
+
+        pathSidesToMeshes.Clear();
+
+        foreach (PathSides side in Enum.GetValues(typeof(PathSides)))
+        {
+            PathSidesToMesh sidesToMesh = new PathSidesToMesh();
+            sidesToMesh.side = side;
+
+            if (tempSidesToMeshList.Count > 0)
+            {
+                foreach (PathSidesToMesh combo in tempSidesToMeshList)
+                {
+                    if (combo.side == side)
+                    {
+                        sidesToMesh.prefabPathSide = combo.prefabPathSide;
+                    }
+                }
+            }
+
+
+            pathSidesToMeshes.Add(sidesToMesh);
+        }
+        #endregion
+
     }
 
     public Color ConvertTypeToColor(TypeOfCell typeToSearch)
@@ -147,5 +187,11 @@ public class LevelCreationToolSO : ScriptableObject
         typeToMaterialCombo foundCombo = typeToMaterialList.Where(combo => combo.typeOfCell == cellType).FirstOrDefault();
 
         return foundCombo.mat;
+    }
+    public GameObject ReturnPrefabByPathSides(PathSides side)
+    {
+        PathSidesToMesh foundCombo = pathSidesToMeshes.Where(combo => combo.side == side).FirstOrDefault();
+
+        return foundCombo.prefabPathSide;
     }
 }

@@ -6,7 +6,7 @@ public class ToolGridCell : MonoBehaviour
 {
 
     [Header ("Placement Data")]
-    [SerializeField] private Vector2Int positionXYInGridArray;
+    [SerializeField] protected Vector2Int positionXYInGridArray;
 
     [Header("Live Gameplay Data")]
     [SerializeField] private PlacedObject placedObject;

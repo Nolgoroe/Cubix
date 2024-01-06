@@ -30,6 +30,7 @@ public class ToolGameGrid : MonoBehaviour
 
     [Header("Enemies")]
     [SerializeField] private List<ToolEnemySpawnerCell> enemySpawners;
+    [SerializeField] private List<ToolEnemyPathCell> enemyPathCells;
 
     private GameObject [,] gameGridGameObjects;
     private ToolGridCell [,] gameGridCells;
@@ -50,6 +51,7 @@ public class ToolGameGrid : MonoBehaviour
         gameGridCells = new ToolGridCell[gridWidth, gridHeight];
         levelCreationTool = ToolReferencerObject.Instance.levelCreationToolSO;
         enemySpawners = new List<ToolEnemySpawnerCell>();
+        enemyPathCells = new List<ToolEnemyPathCell>();
 
         if (gameGridCellsList.Count > 0)
         {
@@ -112,6 +114,7 @@ public class ToolGameGrid : MonoBehaviour
         Camera.main.transform.rotation = Quaternion.Euler(45,0,0);
 
         gameGridCellsList.Clear();
+        enemyPathCells.Clear();
         enemySpawners.Clear();
     }
 
@@ -172,6 +175,11 @@ public class ToolGameGrid : MonoBehaviour
 
             SwapDataFromNewCreation(cell, createdCell);
         }
+
+        foreach (ToolEnemyPathCell enemyPathCell in enemyPathCells)
+        {
+            enemyPathCell.DecideOnPathMesh();
+        }
     }
 
     private void SwapDataFromNewCreation(ToolGridCell cell, ToolGridCell createdCell)
@@ -180,6 +188,7 @@ public class ToolGameGrid : MonoBehaviour
         switch (cell.ReturnTypeOfCell())
         {
             case TypeOfCell.enemyPath:
+                enemyPathCells.Remove(cell as ToolEnemyPathCell);
                 break;
             case TypeOfCell.enemySpawner:
                 enemySpawners.Remove(cell as ToolEnemySpawnerCell);
@@ -200,6 +209,7 @@ public class ToolGameGrid : MonoBehaviour
         switch (createdCell.ReturnTypeOfCell())
         {
             case TypeOfCell.enemyPath:
+                enemyPathCells.Add(createdCell as ToolEnemyPathCell);
                 break;
             case TypeOfCell.enemySpawner:
                 enemySpawners.Add(createdCell as ToolEnemySpawnerCell);
