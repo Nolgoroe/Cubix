@@ -72,6 +72,12 @@ public class ToolGridCell : MonoBehaviour
 
         renderer.material = cellMat;
     }
+    public void PermaChangeMat(Material newMat)
+    {
+        renderer.material = newMat;
+
+        cellMat = newMat;
+    }
 
     public void PopulateGridCell(PlacedObject toPlaceOnCell)
     {

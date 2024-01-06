@@ -304,7 +304,7 @@ public class ToolGameGrid : MonoBehaviour
     {
         foreach (ToolGridCell cell in gameGridCellsList)
         {
-            cell.ChangeMat(levelCreationTool.ReturnMatByType(cell.ReturnTypeOfCell()));
+            cell.PermaChangeMat(levelCreationTool.ReturnMatByType(cell.ReturnTypeOfCell()));
         }
     }
 }
