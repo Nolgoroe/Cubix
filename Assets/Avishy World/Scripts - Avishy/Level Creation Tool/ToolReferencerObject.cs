@@ -8,6 +8,8 @@ using UnityEditor;
 #endif
 public class ToolReferencerObject : MonoBehaviour
 {
+    public static ToolReferencerObject Instance;
+
     public LevelCreationToolControls controls;
     public LevelCreationToolSO levelCreationToolSO;
     public LevelCreationToolUI toolUI;
@@ -16,6 +18,10 @@ public class ToolReferencerObject : MonoBehaviour
     public ToolGameGrid toolGameGrid;
     public List<GameObject> levelList;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Update()
     {
         if (toolGameGrid == null)

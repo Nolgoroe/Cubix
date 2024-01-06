@@ -16,7 +16,6 @@ public class LevelCreationToolControls : MonoBehaviour
 {
     [Header("Needed References")]
     [SerializeField] private GameObject toolGameGridPrefab;
-    [SerializeField] ToolReferencerObject referenceObject;
 
     [Header("Cell Detection")]
     [SerializeField] private GameObject cellIndicator;
@@ -46,7 +45,7 @@ public class LevelCreationToolControls : MonoBehaviour
         rotatingBuildingList = new List<GameObject>();
 
         GameObject go = Instantiate(toolGameGridPrefab);
-        go.TryGetComponent<ToolGameGrid>(out referenceObject.toolGameGrid);
+        go.TryGetComponent<ToolGameGrid>(out ToolReferencerObject.Instance.toolGameGrid);
 
 
         foreach (BuildingsSO building in buildingsList)
@@ -65,16 +64,16 @@ public class LevelCreationToolControls : MonoBehaviour
         //Create new grid on press X
         if (Input.GetKeyDown(KeyCode.X))
         {
-            if (referenceObject.toolGameGrid == null)
+            if (ToolReferencerObject.Instance.toolGameGrid == null)
             {
                 GameObject go = Instantiate(toolGameGridPrefab);
-                go.TryGetComponent<ToolGameGrid>(out referenceObject.toolGameGrid);
+                go.TryGetComponent<ToolGameGrid>(out ToolReferencerObject.Instance.toolGameGrid);
             }
 
-            if(referenceObject.toolGameGrid)
+            if(ToolReferencerObject.Instance.toolGameGrid)
             {
-                referenceObject.toolGameGrid.InitNewGrid();
-                referenceObject.toolUI.ResetLevelName();
+                ToolReferencerObject.Instance.toolGameGrid.InitNewGrid();
+                ToolReferencerObject.Instance.toolUI.ResetLevelName();
             }
             else
             {
@@ -120,11 +119,11 @@ public class LevelCreationToolControls : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            currentCellHovered.ChangeCellColor(referenceObject.levelCreationToolSO.ConvertTypeToColor(currentTypeOfCellSelected));
+            currentCellHovered.ChangeCellColor(ToolReferencerObject.Instance.levelCreationToolSO.ConvertTypeToColor(currentTypeOfCellSelected));
         }
         if (Input.GetMouseButtonDown(1))
         {
-            currentCellHovered.ChangeCellColor(referenceObject.levelCreationToolSO.ConvertTypeToColor(TypeOfCell.None));
+            currentCellHovered.ChangeCellColor(ToolReferencerObject.Instance.levelCreationToolSO.ConvertTypeToColor(TypeOfCell.None));
         }
     }
     private void BuildModeControls()
@@ -132,9 +131,9 @@ public class LevelCreationToolControls : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             List<Vector2Int> gridPosList = CurrentBuildingSelected.GetGridPositionList(currentCellHovered.ReturnPosInGridArray(), currentDir);
-            ToolGridCell[,] temp2DArray = referenceObject.toolGameGrid.ReturnCellsArray();
+            ToolGridCell[,] temp2DArray = ToolReferencerObject.Instance.toolGameGrid.ReturnCellsArray();
 
-            Vector2 gridWidthHeight = referenceObject.toolGameGrid.ReturnGridWidthAndHeight();
+            Vector2 gridWidthHeight = ToolReferencerObject.Instance.toolGameGrid.ReturnGridWidthAndHeight();
             
             foreach (Vector2Int gridPos in gridPosList)
             {
@@ -165,7 +164,7 @@ public class LevelCreationToolControls : MonoBehaviour
                 CurrentBuildingSelected.buildingPrefab.transform.position +
                 poisitonToAddByRotationOffset;
 
-            Transform buildingParent = referenceObject.toolGameGrid.ReturnBuildingsParent();
+            Transform buildingParent = ToolReferencerObject.Instance.toolGameGrid.ReturnBuildingsParent();
             PlacedObject placedObject = PlacedObject.Create(buildingPos, currentCellHovered.ReturnPosInGridArray(), currentDir, CurrentBuildingSelected, buildingParent);
 
             foreach (Vector2Int gridPos in gridPosList)
@@ -184,7 +183,7 @@ public class LevelCreationToolControls : MonoBehaviour
 
                 foreach (Vector2Int gridPos in gridPosList)
                 {
-                    referenceObject.toolGameGrid.ReturnCellsArray()[gridPos.x, gridPos.y].EmptyGridCell();
+                    ToolReferencerObject.Instance.toolGameGrid.ReturnCellsArray()[gridPos.x, gridPos.y].EmptyGridCell();
                 }
             }
         }
@@ -216,12 +215,10 @@ public class LevelCreationToolControls : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            currentCellHovered.DisplayAsWaypoint(true);
             currentSpawnerSelected.AddToEnemyPath(currentCellHovered);
         }
         if (Input.GetMouseButtonDown(1))
         {
-            currentCellHovered.DisplayAsWaypoint(false);
             currentSpawnerSelected.RemoveFromEnemyPath(currentCellHovered);
         }
     }
@@ -260,7 +257,7 @@ public class LevelCreationToolControls : MonoBehaviour
                 break;
         }
 
-        referenceObject.toolUI.SetDropdownToValue((int)currentTypeOfCellSelected);
+        ToolReferencerObject.Instance.toolUI.SetDropdownToValue((int)currentTypeOfCellSelected);
     }
 
     private ToolGridCell MouseOverGridCell()
@@ -278,35 +275,10 @@ public class LevelCreationToolControls : MonoBehaviour
         return currentCellHovered;
     }
 
-    [ContextMenu("Generate The Level")]
-    public void GenerateTheLevel()
+    public void CallGenerateLevel()
     {
-        referenceObject.toolGameGrid.ClearDataBeforeLevelGeneration();
-
-        foreach (ToolGridCell cell in referenceObject.toolGameGrid.ReturnCellsArray())
-        {
-            GameObject toSpawn = referenceObject.levelCreationToolSO.SpawnPrefabByColor(cell.ReturnCellColor());
-
-            if (toSpawn == null) continue;
-
-            GameObject newObject = Instantiate(toSpawn, cell.transform.parent);
-
-            newObject.TryGetComponent<ToolGridCell>(out ToolGridCell createdCell);
-            if(createdCell != null)
-            {
-                createdCell.CopyOtherGridCell(cell);
-            }
-
-            //newObject.transform.position = cell.transform.position;
-            newObject.transform.localPosition = new Vector3(cell.transform.localPosition.x, cell.transform.localPosition.y, toSpawn.transform.position.z);
-
-            referenceObject.toolGameGrid.OverrideSpecificCell(cell.ReturnPosInGridArray(), createdCell, newObject);
-
-
-            Destroy(cell.gameObject);
-        }
+        ToolReferencerObject.Instance.toolGameGrid.GenerateTheLevel();
     }
-
     public void SetCurrentTypeOfCellSelected(TypeOfCell typeOfCell)
     {
         currentTypeOfCellSelected = typeOfCell;
@@ -334,6 +306,7 @@ public class LevelCreationToolControls : MonoBehaviour
             default:
                 break;
         }
+        ToolReferencerObject.Instance.toolUI.SetDropdownToValue((int)currentTypeOfCellSelected);
     }
 
 
@@ -351,7 +324,7 @@ public class LevelCreationToolControls : MonoBehaviour
     {
         if (currentSpawnerSelected)
         {
-            currentSpawnerSelected.DisplaySpecificPath(show, index);
+            StartCoroutine(currentSpawnerSelected.DisplaySpecificPath(show, index));
         }
     }
     public void CallDeleteSpecificPath(int index)
@@ -364,9 +337,12 @@ public class LevelCreationToolControls : MonoBehaviour
 
 
 
-    public void SwtichToBuildMode(bool goToBuildMode)
+    public void SwitchToAndFromBuildMode()
     {
-        isInBuildMode = goToBuildMode;
+        isInBuildMode = !isInBuildMode;
+
+        SetCurrentTypeOfCellSelected(TypeOfCell.None);
+        ToolReferencerObject.Instance.toolUI.ToggleBuildModeToggle(isInBuildMode);
     }
 
 }

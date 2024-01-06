@@ -18,7 +18,7 @@ public class ToolGridCell : MonoBehaviour
     [SerializeField] private GameObject spawnedWaypoint;
     [SerializeField] private MeshRenderer renderer;
 
-    private Material cellMat;
+    [SerializeField] private Material cellMat;
 
     private void OnValidate()
     {
@@ -47,8 +47,8 @@ public class ToolGridCell : MonoBehaviour
         if(isWaypoint)
         {
             if (spawnedWaypoint) return;
-            spawnedWaypoint = Instantiate(waypointPrefab, transform);
-            spawnedWaypoint.transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+            spawnedWaypoint = Instantiate(waypointPrefab, ToolReferencerObject.Instance.toolGameGrid.ReturnWaypointsParent());
+            spawnedWaypoint.transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);      
         }
         else
         {
@@ -69,6 +69,7 @@ public class ToolGridCell : MonoBehaviour
     public void ChangeMat(Material newMat)
     {
         renderer.material = newMat;
+        cellMat = newMat;
     }
 
     public void PopulateGridCell(PlacedObject toPlaceOnCell)
@@ -104,6 +105,15 @@ public class ToolGridCell : MonoBehaviour
     public Color ReturnCellColor()
     {
         return cellMat.color;
+    }
+    public Transform ReturnSpawnedWaypoint()
+    {
+        if(spawnedWaypoint)
+        {
+            return spawnedWaypoint.transform;
+        }
+
+        return null;
     }
     public TypeOfCell ReturnTypeOfCell()
     {

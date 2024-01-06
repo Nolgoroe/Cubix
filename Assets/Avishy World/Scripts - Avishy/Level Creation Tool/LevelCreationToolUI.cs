@@ -13,7 +13,6 @@ using UnityEditor;
 public class LevelCreationToolUI : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] ToolReferencerObject referenceObject;
     [SerializeField] string prefabPath;
 
     [Header("Drawing")]
@@ -34,6 +33,9 @@ public class LevelCreationToolUI : MonoBehaviour
     [SerializeField] TMP_InputField levelName;
     [SerializeField] string decidedLevelName;
 
+    [Header("Build Mode")]
+    [SerializeField] Toggle inBuildModeToggle;
+
     private void Start()
     {
         PopupateCellTypesDropdownList();
@@ -44,13 +46,7 @@ public class LevelCreationToolUI : MonoBehaviour
     {
         int index = dropDownCellType.value;
         TypeOfCell typeOfCell = (TypeOfCell)index;
-        referenceObject.controls.SetCurrentTypeOfCellSelected(typeOfCell);
-    }
-    public void Dropdown_IndexChangedLevel()
-    {
-        int index = dropDownCellType.value;
-        TypeOfCell typeOfCell = (TypeOfCell)index;
-        referenceObject.controls.SetCurrentTypeOfCellSelected(typeOfCell);
+        ToolReferencerObject.Instance.controls.SetCurrentTypeOfCellSelected(typeOfCell);
     }
     public void SetDropdownToValue(int value)
     {
@@ -66,7 +62,7 @@ public class LevelCreationToolUI : MonoBehaviour
         int.TryParse(inputWidth.text, out width);
         int.TryParse(inputSpacing.text, out spacing);
 
-        referenceObject.toolGameGrid.SetGridParamsFromUI(height, width, spacing);
+        ToolReferencerObject.Instance.toolGameGrid.SetGridParamsFromUI(height, width, spacing);
     }
     public void UpdateLevelName()
     {
@@ -79,7 +75,7 @@ public class LevelCreationToolUI : MonoBehaviour
     }
     public void SaveWaypointsPathButton()
     {
-        referenceObject.controls.CallSavePathCreated();
+        ToolReferencerObject.Instance.controls.CallSavePathCreated();
     }
 
 
@@ -91,7 +87,7 @@ public class LevelCreationToolUI : MonoBehaviour
 
         if (index <= -1) return;
 
-        referenceObject.controls.CallDisplaySpecificPath(show, index);
+        ToolReferencerObject.Instance.controls.CallDisplaySpecificPath(show, index);
     }
     public void DeletePathByIndex()
     {
@@ -101,7 +97,7 @@ public class LevelCreationToolUI : MonoBehaviour
 
         if (index <= -1) return;
 
-        referenceObject.controls.CallDeleteSpecificPath(index);
+        ToolReferencerObject.Instance.controls.CallDeleteSpecificPath(index);
     }
 
 
@@ -110,13 +106,13 @@ public class LevelCreationToolUI : MonoBehaviour
     {
         int index = dropDownLevelList.value;
         
-        if(referenceObject.toolGameGrid)
+        if(ToolReferencerObject.Instance.toolGameGrid)
         {
-            Destroy(referenceObject.toolGameGrid.gameObject);
+            Destroy(ToolReferencerObject.Instance.toolGameGrid.gameObject);
         }
 
-        GameObject go = Instantiate(referenceObject.levelList[index]);
-        levelName.text = referenceObject.levelList[index].name;
+        GameObject go = Instantiate(ToolReferencerObject.Instance.levelList[index]);
+        levelName.text = ToolReferencerObject.Instance.levelList[index].name;
 
         ToolGameGrid grid;
         go.TryGetComponent<ToolGameGrid>(out grid);
@@ -132,18 +128,26 @@ public class LevelCreationToolUI : MonoBehaviour
         levelName.text = "";
     }
 
-#if UNITY_EDITOR
-    public void CreatePrefabFromGridTool()
+    public void CallCreatePrefabFromGridTool()
     {
+        StartCoroutine(CreatePrefabFromGridTool());
+    }
+
+#if UNITY_EDITOR
+    public IEnumerator CreatePrefabFromGridTool()
+    {
+        ToolReferencerObject.Instance.toolGameGrid.CleanupBeforePrefab();
+        yield return new WaitForSeconds(2); //VERY TEMP HARDCODED
+
         string path = prefabPath + "/"+ decidedLevelName +".prefab";
         Debug.Log(path);
 
         if(decidedLevelName == "")
         {
             Debug.LogError("No Level Name");
-            return;
+            yield break;
         }
-        PrefabUtility.SaveAsPrefabAsset(referenceObject.toolGameGrid.gameObject, path);
+        PrefabUtility.SaveAsPrefabAsset(ToolReferencerObject.Instance.toolGameGrid.gameObject, path);
 
         PopupateLevelPrefabList();
     }
@@ -158,11 +162,16 @@ public class LevelCreationToolUI : MonoBehaviour
     }
     private void PopupateLevelPrefabList()
     {
-        referenceObject.LoadLevelsToList();
+        ToolReferencerObject.Instance.LoadLevelsToList();
 
-        List<string> namesList = referenceObject.levelList.Select(gameObject => gameObject.name).ToList();
+        List<string> namesList = ToolReferencerObject.Instance.levelList.Select(gameObject => gameObject.name).ToList();
 
         dropDownLevelList.ClearOptions();
         dropDownLevelList.AddOptions(namesList);
+    }
+
+    public void ToggleBuildModeToggle(bool isOn)
+    {
+        inBuildModeToggle.isOn = isOn;
     }
 }

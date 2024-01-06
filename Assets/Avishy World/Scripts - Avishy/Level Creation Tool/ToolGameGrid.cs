@@ -6,8 +6,7 @@ using System;
 public class ToolGameGrid : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private LevelCreationToolSO levelCreationToolColors; // we keep this here since we need a reference to it in the prefab
-    [SerializeField] private ToolReferencerObject referencer; // we keep this here since we need a reference to it in the prefab
+    [SerializeField] private LevelCreationToolSO levelCreationTool; // we keep this here since we need a reference to it in the prefab
 
     [Header("Generation Value Params")]
     [SerializeField] private int gridHeight;
@@ -22,8 +21,14 @@ public class ToolGameGrid : MonoBehaviour
     [SerializeField] private GameObject gridCellPrefab;
     [SerializeField] private bool refreshMaterials;
 
+    [Header("Waypoints")]
+    [SerializeField] private Transform waypointsParent;
+
     [Header("Buildings")]
     [SerializeField] private Transform buildingParent;
+
+    [Header("Enemies")]
+    [SerializeField] private List<ToolEnemySpawnerCell> enemySpawners;
 
     private GameObject [,] gameGridGameObjects;
     private ToolGridCell [,] gameGridCells;
@@ -39,12 +44,11 @@ public class ToolGameGrid : MonoBehaviour
     }
     void Awake()
     {
-        referencer = FindObjectOfType<ToolReferencerObject>();
-
         //These do not serialize = will not save in prefab, so we use the serialized and saved list in order to load the level data
         gameGridGameObjects = new GameObject[gridWidth, gridHeight];
         gameGridCells = new ToolGridCell[gridWidth, gridHeight];
-        levelCreationToolColors = referencer.levelCreationToolSO;
+        levelCreationTool = ToolReferencerObject.Instance.levelCreationToolSO;
+        enemySpawners = new List<ToolEnemySpawnerCell>();
 
         if (gameGridCellsList.Count > 0)
         {
@@ -86,6 +90,14 @@ public class ToolGameGrid : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+        foreach (Transform child in buildingParent)
+        {
+            Destroy(child.gameObject);
+        }
+        foreach (Transform child in waypointsParent)
+        {
+            Destroy(child.gameObject);
+        }
 
         Array.Clear(gameGridGameObjects, 0, gameGridGameObjects.Length);
         Array.Clear(gameGridCells, 0, gameGridCells.Length);
@@ -103,6 +115,68 @@ public class ToolGameGrid : MonoBehaviour
     {
         //we don't add the 2D arrays here since we ovveride their data in the "OverrideSpecificCell" funciton
         gameGridCellsList.Clear();
+
+    }
+
+    public void CleanupBeforePrefab()
+    {
+        foreach (Transform child in waypointsParent)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (ToolEnemySpawnerCell enemySpawner in enemySpawners)
+        {
+            StartCoroutine(enemySpawner.ClearAllTempData());
+        }
+    }
+
+    [ContextMenu("Generate The Level")]
+    public void GenerateTheLevel()
+    {
+        ClearDataBeforeLevelGeneration();
+
+        foreach (ToolGridCell cell in gameGridCells)
+        {
+            GameObject toSpawn = ToolReferencerObject.Instance.levelCreationToolSO.SpawnPrefabByColor(cell.ReturnCellColor());
+
+            if (toSpawn == null) continue;
+
+            GameObject newObject = Instantiate(toSpawn, cellsParent);
+
+            newObject.TryGetComponent<ToolGridCell>(out ToolGridCell createdCell);
+            if (createdCell != null)
+            {
+                createdCell.CopyOtherGridCell(cell);
+            }
+
+            //newObject.transform.position = cell.transform.position;
+            newObject.transform.localPosition = new Vector3(cell.transform.localPosition.x, cell.transform.localPosition.y, toSpawn.transform.position.z);
+
+            OverrideSpecificCell(cell.ReturnPosInGridArray(), createdCell, newObject);
+            createdCell.ChangeMat(ToolReferencerObject.Instance.levelCreationToolSO.ReturnMatByType(createdCell.ReturnTypeOfCell()));
+
+            Destroy(cell.gameObject);
+
+            switch (createdCell.ReturnTypeOfCell())
+            {
+                case TypeOfCell.enemyPath:
+                    break;
+                case TypeOfCell.enemySpawner:
+                    enemySpawners.Add(createdCell as ToolEnemySpawnerCell);
+                    break;
+                case TypeOfCell.Obstacle:
+                    break;
+                case TypeOfCell.PlayerBase:
+                    break;
+                case TypeOfCell.None:
+                    break;
+                case TypeOfCell.Waypoints:
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
     private IEnumerator CreateGrid()
@@ -179,6 +253,10 @@ public class ToolGameGrid : MonoBehaviour
     {
         return buildingParent;
     }
+    public Transform ReturnWaypointsParent()
+    {
+        return waypointsParent;
+    }
     #endregion
 
 
@@ -186,7 +264,7 @@ public class ToolGameGrid : MonoBehaviour
     {
         foreach (ToolGridCell cell in gameGridCellsList)
         {
-            cell.ChangeMat(levelCreationToolColors.ReturnMatByType(cell.ReturnTypeOfCell()));
+            cell.ChangeMat(levelCreationTool.ReturnMatByType(cell.ReturnTypeOfCell()));
         }
     }
 }
