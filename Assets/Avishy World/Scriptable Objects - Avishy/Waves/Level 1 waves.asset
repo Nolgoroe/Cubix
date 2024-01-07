@@ -15,13 +15,16 @@ MonoBehaviour:
   waves:
   - numOfEnemies: 10
     delayBetweenEnemies: 0.8
+    delayBetweenWaves: 1
     enemyPrefab: {fileID: 2611690900157945380, guid: 7c5d42700ca9c11498a2ba9873f6b8d2,
       type: 3}
   - numOfEnemies: 20
     delayBetweenEnemies: 0.5
+    delayBetweenWaves: 3
     enemyPrefab: {fileID: 2611690900157945380, guid: 7c5d42700ca9c11498a2ba9873f6b8d2,
       type: 3}
   - numOfEnemies: 50
     delayBetweenEnemies: 0.1
+    delayBetweenWaves: 10
     enemyPrefab: {fileID: 2611690900157945380, guid: 7c5d42700ca9c11498a2ba9873f6b8d2,
       type: 3}

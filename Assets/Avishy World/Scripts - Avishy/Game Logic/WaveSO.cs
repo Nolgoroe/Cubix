@@ -7,6 +7,7 @@ public struct WaveData
 {
     public int numOfEnemies;
     public float delayBetweenEnemies;
+    public float delayBetweenWaves;
     public GameObject enemyPrefab;
 }
 

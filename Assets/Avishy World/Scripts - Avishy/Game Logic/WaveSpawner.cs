@@ -13,13 +13,16 @@ public class WaveSpawner : MonoBehaviour
     {
         currentLevelEnemySpawners = GridManager.Instance.ReturnLevelEnemySpawners();
         currentIndexInWave = 0;
+
+        ContextStartWave();
     }
+
     [ContextMenu("Start Next Wave")]
     private void ContextStartWave()
     {
         if (currentIndexInWave > waveSO.waves.Count - 1)
         {
-            Debug.Log("You Won! no more waves! weeeeee");
+            Debug.Log("no more waves! weeeeee");
             return;
         }
 
@@ -41,7 +44,11 @@ public class WaveSpawner : MonoBehaviour
                 selectedSpawner.CallSpawnEnemy(waveSO.waves[currentIndexInWave].enemyPrefab);
             }
 
+            yield return new WaitForSeconds(waveSO.waves[currentIndexInWave].delayBetweenWaves);
+
             currentIndexInWave++;
+
+            ContextStartWave();
         }
     }
 }
