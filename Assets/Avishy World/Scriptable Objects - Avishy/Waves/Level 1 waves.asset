@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Level 1 waves
   m_EditorClassIdentifier: 
   waves:
-  - numOfEnemies: 1
-    delayBetweenEnemies: 0.8
+  - numOfEnemies: 2
+    delayBetweenEnemies: 3
     delayBetweenWaves: 10
     enemyPrefab: {fileID: 2611690900157945380, guid: 7c5d42700ca9c11498a2ba9873f6b8d2,
       type: 3}

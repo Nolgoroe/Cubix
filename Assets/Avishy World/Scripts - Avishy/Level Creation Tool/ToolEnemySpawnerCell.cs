@@ -151,7 +151,7 @@ public class ToolEnemySpawnerCell : ToolGridCell
 
     }
 
-    public IEnumerator ClearAllTempData()
+    public IEnumerator ClearAllData()
     {
         if (currentPathBeingCreated.waypoints.Count > 0)
         {

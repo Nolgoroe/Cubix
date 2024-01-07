@@ -141,7 +141,7 @@ public class LevelCreationToolControls : MonoBehaviour
             if (CurrentBuildingSelected.snapToGrid)
             {
                 List<Vector2Int> gridPosList = CurrentBuildingSelected.GetGridPositionList(currentCellHovered.ReturnPosInGridArray(), currentBuildingDir);
-                ToolGridCell[,] temp2DArray = ToolReferencerObject.Instance.toolGameGrid.ReturnCellsArray();
+                ToolGridCell[,] local2DArray = ToolReferencerObject.Instance.toolGameGrid.ReturnCellsArray();
 
                 Vector2 gridWidthHeight = ToolReferencerObject.Instance.toolGameGrid.ReturnGridWidthAndHeight();
 
@@ -153,7 +153,7 @@ public class LevelCreationToolControls : MonoBehaviour
                     {
                         return;
                     }
-                    if (temp2DArray[gridPos.x, gridPos.y].ReturnIsOccupied())
+                    if (local2DArray[gridPos.x, gridPos.y].ReturnIsOccupied())
                     {
                         return;
                     }
@@ -178,7 +178,7 @@ public class LevelCreationToolControls : MonoBehaviour
 
                 foreach (Vector2Int gridPos in gridPosList)
                 {
-                    temp2DArray[gridPos.x, gridPos.y].PopulateGridCell(placedObject);
+                    local2DArray[gridPos.x, gridPos.y].PopulateGridCell(placedObject);
                 }
 
                 ToolReferencerObject.Instance.toolGameGrid.AddRemoveToPlacedObjectList(true, placedObject);

@@ -7,8 +7,9 @@ public class EnemyParent : MonoBehaviour
 {
     [Header("Enemy Stats")]// this is all temp - will be an SO later... maybe
     [SerializeField] private float Speed;
-    [SerializeField] private Transform target;
+    [SerializeField] private float enemyHealth = 3;
     [SerializeField] private int enemyDamage;
+    [SerializeField] private Transform target;
 
     [Header("Path Data")]
     [SerializeField] private int waypointIndex;
@@ -65,7 +66,15 @@ public class EnemyParent : MonoBehaviour
 
 
 
+    public void RecieveDMG(float amount)
+    {
+        enemyHealth -= amount;
 
+        if(enemyHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
     public void InitEnemy(List<GridCell> waypoints)
     {
         waypointsList = waypoints;

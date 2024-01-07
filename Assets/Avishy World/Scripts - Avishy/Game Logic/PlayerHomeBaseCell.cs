@@ -6,8 +6,9 @@ public class PlayerHomeBaseCell : GridCell
 {
     [SerializeField] int playerHealth;
 
-    private void Start() //temp
+    protected override void Start() //temp
     {
+        base.Start();
         playerHealth = 10; 
     }
 

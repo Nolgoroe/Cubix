@@ -139,7 +139,7 @@ public class ToolGameGrid : MonoBehaviour
 
         foreach (ToolEnemySpawnerCell enemySpawner in enemySpawners)
         {
-            StartCoroutine(enemySpawner.ClearAllTempData());
+            StartCoroutine(enemySpawner.ClearAllData());
         }
     }
 
@@ -153,10 +153,10 @@ public class ToolGameGrid : MonoBehaviour
         {
             //find the prefab we want to spawn and it's cell type
             GameObject toSpawn = ToolReferencerObject.Instance.levelCreationToolSO.SpawnPrefabByColor(cell.ReturnCellColor());
-            toSpawn.TryGetComponent<ToolGridCell>(out ToolGridCell tempCell);
+            toSpawn.TryGetComponent<ToolGridCell>(out ToolGridCell localCell);
 
             //if the prefab we want to spawn is null or if the types are the same, we don't do anything to this cell.
-            if (toSpawn == null || cell.ReturnTypeOfCell() == tempCell.ReturnTypeOfCell()) continue;
+            if (toSpawn == null || cell.ReturnTypeOfCell() == localCell.ReturnTypeOfCell()) continue;
 
             int cellToSwapIndex = gameGridCellsList.IndexOf(gameGridCellsList.Where(x => x == cell).FirstOrDefault());
 

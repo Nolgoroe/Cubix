@@ -84,6 +84,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &3304193834037475531
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4163122995529695945}
+  m_Layer: 0
+  m_Name: Fire Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4163122995529695945
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3304193834037475531}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.37000006, z: 1.7180003}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4673304482024023148}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4177816146485888192
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,6 +209,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3967836657821840162}
+  - component: {fileID: 1522715074809902721}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -202,6 +234,30 @@ Transform:
   - {fileID: 885636509101874787}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1522715074809902721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6522023093456695046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 703e99503e2cb38408b18fdcc2d85094, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTarget: {fileID: 0}
+  range: 5
+  rotationSpeed: 15
+  fireRate: 1
+  fireCountDown: 0
+  partToRotate: {fileID: 4673304482024023148}
+  enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  bulletPrefab: {fileID: 7708210154099484369, guid: 9bcf34bfa6e4bd44aa6c08573074440f,
+    type: 3}
+  firePoint: {fileID: 4163122995529695945}
 --- !u!1 &7961905663027756871
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,5 +288,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5169762838605882207}
+  - {fileID: 4163122995529695945}
   m_Father: {fileID: 3967836657821840162}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
