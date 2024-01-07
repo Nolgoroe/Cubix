@@ -4,7 +4,8 @@ using UnityEngine;
 
 public enum ResourceType{Coins, Scraps }
 
-public class ResourceData : MonoBehaviour
+[System.Serializable]
+public class ResourceData 
 {
     public ResourceType Type;
     public int Value;

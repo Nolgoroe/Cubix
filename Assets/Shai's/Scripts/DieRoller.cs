@@ -9,6 +9,7 @@ public class DieRoller : MonoBehaviour
     [SerializeField] private Vector3 rotationForceMin;
     [SerializeField] private Vector3 rotationForceMax;
     [SerializeField] private float throwForce;
+    [SerializeField] private float tpHeight;
     [SerializeField] private bool constraintX;
     [SerializeField] private bool constraintY;
     [SerializeField] private bool constraintZ;
@@ -38,7 +39,10 @@ public class DieRoller : MonoBehaviour
 
     private void Roll()
     {
+        die.OnRollStart.Invoke();
+        die.RB.ResetCenterOfMass();
         StartCoroutine(ChangeMassAtTop());
+        die.transform.position += Vector3.up * tpHeight;
         Vector3 throwVec = new Vector3(0, throwForce, 0);
 
         Vector3 rotForce = new Vector3();

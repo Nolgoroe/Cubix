@@ -1655,8 +1655,9 @@ MonoBehaviour:
   die: {fileID: 1600104242}
   posConstraintRange: {x: 0, y: 3, z: 0}
   rotationForceMin: {x: 0, y: 0, z: 0}
-  rotationForceMax: {x: 5, y: 5, z: 5}
-  throwForce: 5
+  rotationForceMax: {x: 1, y: 1, z: 1}
+  throwForce: 7
+  tpHeight: 0.5
   constraintX: 1
   constraintY: 0
   constraintZ: 1

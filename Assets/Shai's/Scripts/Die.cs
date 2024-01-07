@@ -14,6 +14,8 @@ public class Die : MonoBehaviour
     [SerializeField] private DieElement element;
 
     private bool _isMoving;
+    private float _reqStagnantTime = 1;
+    private float _stagnantTimer;
 
     public bool IsMoving { get { return _isMoving; } }
     public Rigidbody RB { get { return _rb; } }
@@ -21,7 +23,7 @@ public class Die : MonoBehaviour
 
     private void Start()
     {
-        OnRollEnd.AddListener(_rb.ResetCenterOfMass);
+        OnRollStart.AddListener(SetMovingTrue);
     }
 
     private void LateUpdate()
@@ -31,17 +33,36 @@ public class Die : MonoBehaviour
 
     private void CheckState()
     {
-        if (_isMoving && Mathf.Approximately(_rb.velocity.magnitude, 0))
+        if (_isMoving)
         {
-            _isMoving = false;
-            OnRollEnd.Invoke();
-        }
-        else if (!_isMoving && !Mathf.Approximately(_rb.velocity.magnitude, 0))
-        {
-            _isMoving = true;
-            OnRollStart.Invoke();
+            if (_rb.velocity.magnitude < 0.001f)
+            {
+                _stagnantTimer += Time.deltaTime;
+
+                if (_stagnantTimer >= _reqStagnantTime)
+                {
+                    _isMoving = false;
+                    OnRollEnd.Invoke();
+                    _stagnantTimer = 0;
+                    Debug.Log("Roll ended");
+                }
+            }
+            else if(_stagnantTimer > 0)
+            {
+                _stagnantTimer = 0;
+            }
         }
     }
 
+    private void SetMovingTrue()
+    {
+        Debug.Log("Roll started");
+        _isMoving = true;
+    }
+
+    public DieFaceValue GetTopValue()
+    {
+
+    }
 }
 

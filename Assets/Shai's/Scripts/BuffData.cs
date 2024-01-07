@@ -4,7 +4,8 @@ using UnityEngine;
 
 public enum BuffType { Speed, Damage, Fire}
 
-public class BuffData : MonoBehaviour
+[System.Serializable]
+public class BuffData 
 {
     public BuffType Type;
     public int Value;
