@@ -37,8 +37,8 @@ public class ToolGameGrid : MonoBehaviour
     [SerializeField] private List<ToolEnemySpawnerCell> enemySpawners;
     [SerializeField] private List<ToolEnemyPathCell> enemyPathCells;
 
-    private GameObject [,] toolGridGameObjects;
-    private ToolGridCell [,] toolGridCells;
+    private GameObject [,] toolGridGameObjectsArray;
+    private ToolGridCell [,] toolGridCellsArray;
 
 
     private void OnValidate()
@@ -52,8 +52,8 @@ public class ToolGameGrid : MonoBehaviour
     void Awake()
     {
         //These do not serialize = will not save in prefab, so we use the serialized and saved list in order to load the level data
-        toolGridGameObjects = new GameObject[gridWidth, gridHeight];
-        toolGridCells = new ToolGridCell[gridWidth, gridHeight];
+        toolGridGameObjectsArray = new GameObject[gridWidth, gridHeight];
+        toolGridCellsArray = new ToolGridCell[gridWidth, gridHeight];
         levelCreationTool = ToolReferencerObject.Instance.levelCreationToolSO;
         enemySpawners = new List<ToolEnemySpawnerCell>();
         enemyPathCells = new List<ToolEnemyPathCell>();
@@ -64,8 +64,8 @@ public class ToolGameGrid : MonoBehaviour
             {
                 int x = cell.ReturnPosInGridArray().x;
                 int y = cell.ReturnPosInGridArray().y;
-                toolGridCells[x, y] = cell;
-                toolGridGameObjects[x, y] = cell.gameObject;
+                toolGridCellsArray[x, y] = cell;
+                toolGridGameObjectsArray[x, y] = cell.gameObject;
 
             }
         }
@@ -107,11 +107,11 @@ public class ToolGameGrid : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        Array.Clear(toolGridGameObjects, 0, toolGridGameObjects.Length);
-        Array.Clear(toolGridCells, 0, toolGridCells.Length);
+        Array.Clear(toolGridGameObjectsArray, 0, toolGridGameObjectsArray.Length);
+        Array.Clear(toolGridCellsArray, 0, toolGridCellsArray.Length);
 
-        toolGridGameObjects = new GameObject[gridWidth, gridHeight];
-        toolGridCells = new ToolGridCell[gridWidth, gridHeight];
+        toolGridGameObjectsArray = new GameObject[gridWidth, gridHeight];
+        toolGridCellsArray = new ToolGridCell[gridWidth, gridHeight];
         transform.rotation = Quaternion.Euler(Vector3.zero);
         transform.position = Vector3.zero;
 
@@ -149,7 +149,7 @@ public class ToolGameGrid : MonoBehaviour
         ClearDataBeforeLevelGeneration();
         CleanupBeforePrefab();
 
-        foreach (ToolGridCell cell in toolGridCells)
+        foreach (ToolGridCell cell in toolGridCellsArray)
         {
             //find the prefab we want to spawn and it's cell type
             GameObject toSpawn = ToolReferencerObject.Instance.levelCreationToolSO.SpawnPrefabByColor(cell.ReturnCellColor());
@@ -247,14 +247,14 @@ public class ToolGameGrid : MonoBehaviour
         {
             for (int x = 0; x < gridWidth; x++)
             {
-                toolGridGameObjects[x, y] = Instantiate(gridCellPrefab, cellsParent);
-                toolGridGameObjects[x, y].name = "Grid Cell ( X: " + x.ToString() + " , Y: " + y.ToString() + ")";
-                toolGridGameObjects[x, y].transform.localEulerAngles = Vector3.zero;
-                toolGridGameObjects[x, y].transform.localPosition = new Vector3(x * gridSpacing, y * gridSpacing);
+                toolGridGameObjectsArray[x, y] = Instantiate(gridCellPrefab, cellsParent);
+                toolGridGameObjectsArray[x, y].name = "Grid Cell ( X: " + x.ToString() + " , Y: " + y.ToString() + ")";
+                toolGridGameObjectsArray[x, y].transform.localEulerAngles = Vector3.zero;
+                toolGridGameObjectsArray[x, y].transform.localPosition = new Vector3(x * gridSpacing, y * gridSpacing);
 
-                if(toolGridGameObjects[x, y].TryGetComponent<ToolGridCell>(out ToolGridCell createdCell))
+                if(toolGridGameObjectsArray[x, y].TryGetComponent<ToolGridCell>(out ToolGridCell createdCell))
                 {
-                    toolGridCells[x,y] = createdCell;
+                    toolGridCellsArray[x,y] = createdCell;
                     createdCell.SetXYInGrid(x,y);
 
                     gameGridCellsList.Add(createdCell);
@@ -264,8 +264,8 @@ public class ToolGameGrid : MonoBehaviour
             }
         }
 
-        float lastCellX = toolGridGameObjects[gridWidth - 1, gridHeight - 1].transform.localPosition.x;
-        float lastCellY = toolGridGameObjects[gridWidth - 1, gridHeight - 1].transform.localPosition.y;
+        float lastCellX = toolGridGameObjectsArray[gridWidth - 1, gridHeight - 1].transform.localPosition.x;
+        float lastCellY = toolGridGameObjectsArray[gridWidth - 1, gridHeight - 1].transform.localPosition.y;
 
         transform.position = new Vector3(-(lastCellX / 2), 0 , Camera.main.transform.position.y - (lastCellY / 2));
         transform.CenterOnChildred();
@@ -279,8 +279,8 @@ public class ToolGameGrid : MonoBehaviour
     #region Public Actions
     private void OverrideSpecificCell(Vector2Int posInArray, ToolGridCell newCell, GameObject newObejct)
     {
-        toolGridGameObjects[posInArray.x, posInArray.y] = newObejct;
-        toolGridCells[posInArray.x, posInArray.y] = newCell;
+        toolGridGameObjectsArray[posInArray.x, posInArray.y] = newObejct;
+        toolGridCellsArray[posInArray.x, posInArray.y] = newCell;
 
 
         //gameGridCellsList.Add(newCell);
@@ -297,12 +297,16 @@ public class ToolGameGrid : MonoBehaviour
     #region Return Data
     public ToolGridCell[,] ReturnCellsArray()
     {
-        return toolGridCells;
+        return toolGridCellsArray;
     }
 
     public Vector2 ReturnGridWidthAndHeight()
     {
         return new Vector2(gridWidth, gridHeight);
+    }
+    public float ReturnSpacing()
+    {
+        return gridSpacing;
     }
     public Transform ReturnBuildingsParent()
     {
@@ -343,28 +347,71 @@ public class ToolGameGrid : MonoBehaviour
     private void CreatePrefabFromGridTool()
     {
         Debug.Log("Creating game level now");
-        //this is where we start changing all the data of every object under this level parent.
 
-        foreach (ToolEnemySpawnerCell toolEnemySpawner in enemySpawners)
-        {
-            // create the game enemy spawner SCRIPT
-            // transfer all relavent data FROM tool enemy spawner TO game enemy spawner SCRIPT
-            // finished enemy spawners.
-        }
+        GridManager gridManager = new GridManager();
+        gridManager = gameObject.AddComponent<GridManager>();
+        gridManager.CopyOtherGrid(this);
 
         foreach (ToolGridCell toolGridCell in gameGridCellsList)
         {
-            // create the game cell object SCRIPT by it's type - normal cell type, player base type, obstacle type, etc...
-            // transfer all relavent data FROM tool grid cell TO new cell SCRIPT
-            // finished grid cells.
+            switch (toolGridCell.ReturnTypeOfCell())
+            {
+                case TypeOfCell.enemyPath:
+                    GridCell enemyPathCell = new GridCell();
+                    enemyPathCell = toolGridCell.gameObject.AddComponent<GridCell>();
+                    enemyPathCell.CopyDataFromToolCell(toolGridCell);
+
+                    gridManager.AddCellToGridCellList(enemyPathCell);
+                    break;
+                case TypeOfCell.enemySpawner:
+                    EnemySpawnerCell spawnerCell = new EnemySpawnerCell();
+                    spawnerCell = toolGridCell.gameObject.AddComponent<EnemySpawnerCell>();
+
+                    spawnerCell.CopyDataFromToolCell(toolGridCell);
+
+                    gridManager.AddCellToGridCellList(spawnerCell);
+                    break;
+                case TypeOfCell.Obstacle:
+                    GridCell obstacleGridCell = new GridCell();
+                    obstacleGridCell = toolGridCell.gameObject.AddComponent<GridCell>();
+                    obstacleGridCell.CopyDataFromToolCell(toolGridCell);
+
+                    gridManager.AddCellToGridCellList(obstacleGridCell);
+
+                    break;
+                case TypeOfCell.PlayerBase:
+                    //This is where we add player home base logic
+                    PlayerHomeBaseCell playerBaseCell = new PlayerHomeBaseCell();
+                    playerBaseCell = toolGridCell.gameObject.AddComponent<PlayerHomeBaseCell>();
+                    playerBaseCell.CopyDataFromToolCell(toolGridCell);
+
+                    gridManager.AddCellToGridCellList(playerBaseCell);
+
+                    break;
+                case TypeOfCell.None:
+                    //This is where we add normal game cell logic
+                    GridCell gridCell = new GridCell();
+                    gridCell = toolGridCell.gameObject.AddComponent<GridCell>();
+                    gridCell.CopyDataFromToolCell(toolGridCell);
+
+                    gridManager.AddCellToGridCellList(gridCell);
+
+                    break;
+                default:
+                    break;
+            }
+
+            DestroyImmediate(toolGridCell);
         }
 
         foreach (PlacedObject placedObject in placedObjectList)
         {
+             if (placedObject == null) continue;
+
             //clear all scripts and colliders from each building.
 
             //remove all colliders from object and it's childern.
-            Collider[] colList = transform.GetComponentsInChildren<Collider>();
+            Collider[] colList = placedObject.transform.GetComponentsInChildren<Collider>();
             foreach (Collider collider in colList)
             {
                 DestroyImmediate(collider);
@@ -373,8 +420,17 @@ public class ToolGameGrid : MonoBehaviour
             DestroyImmediate(placedObject);
         }
 
+        EditorUtility.SetDirty(gridManager.gameObject);
 
+        CleanMainParent();
+
+        DestroyImmediate(this);
     }
 #endif
 
+    private void CleanMainParent()
+    {
+        DestroyImmediate(waypointsParent.gameObject);
+        //DestroyImmediate(buildingParent.gameObject);
+    }
 }

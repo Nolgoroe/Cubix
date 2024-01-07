@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Dir
+{
+    Down, Up, Left, Right
+}
+
 [CreateAssetMenu(fileName = "Buildings SO", menuName = "ScriptableObjects/Buildings")]
 public class BuildingsSO : ScriptableObject
 {
-    public enum Dir
-    {
-        Down, Up, Left, Right
-    }
 
     public string buildingName;
     public GameObject buildingPrefab;

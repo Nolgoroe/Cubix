@@ -28,10 +28,8 @@ public struct typeToMaterialCombo
 [Serializable]
 public struct PathSidesToMesh
 {
-    // this will hold a mesh reference instead of a gameobject in the future.
-
     public PathSides side;
-    public GameObject prefabPathSide; // this might turn into a mesh
+    public Mesh MeshPathSide; 
 }
 
 [CreateAssetMenu(fileName = "Level Creation Tool", menuName = "ScriptableObjects/LevelCreationToolColors")]
@@ -160,7 +158,7 @@ public class LevelCreationToolSO : ScriptableObject
                 {
                     if (combo.side == side)
                     {
-                        sidesToMesh.prefabPathSide = combo.prefabPathSide;
+                        sidesToMesh.MeshPathSide = combo.MeshPathSide;
                     }
                 }
             }
@@ -190,12 +188,10 @@ public class LevelCreationToolSO : ScriptableObject
 
         return foundCombo.mat;
     }
-    public GameObject ReturnPrefabByPathSides(PathSides side)
+    public Mesh ReturnPrefabByPathSides(PathSides side)
     {
-        ///this function will return a mesh in the future.
-
         PathSidesToMesh foundCombo = pathSidesToMeshes.Where(combo => combo.side == side).FirstOrDefault();
 
-        return foundCombo.prefabPathSide;
+        return foundCombo.MeshPathSide;
     }
 }

@@ -15,7 +15,7 @@ public class BuildingGhost : MonoBehaviour {
 
         if(currentCell == null) return;
 
-        BuildingsSO.Dir currentDir = ToolReferencerObject.Instance.controls.ReturnCurrentDir();
+        Dir currentDir = ToolReferencerObject.Instance.controls.ReturnCurrentDir();
 
         if (currentBuilding.snapToGrid)
         {

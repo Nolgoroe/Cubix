@@ -121,15 +121,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   positionXYInGridArray: {x: 0, y: 0}
+  pathMeshSides: 0
   placedObject: {fileID: 0}
   isOccupied: 1
   cellType: 1
+  currentDir: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   spawnedWaypoint: {fileID: 0}
   renderer: {fileID: 4457188143176528486}
+  cellMat: {fileID: 0}
   enemyPaths: []
+  currentPathIndex: -1
   currentPathBeingCreated:
     waypoints: []
-  currentPathIndex: -1
   waypointTransforms: []

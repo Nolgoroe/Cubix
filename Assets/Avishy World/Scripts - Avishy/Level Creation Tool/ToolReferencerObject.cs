@@ -37,7 +37,7 @@ public class ToolReferencerObject : MonoBehaviour
 
         levelList.Clear();
 
-        string[] foldersToSearchIn = new string[] { "Assets/Avishy World/Level Prefabs" };
+        string[] foldersToSearchIn = new string[] { "Assets/Avishy World/Tool Level Prefabs" };
 
         levelList = AssetDatabase.FindAssets("t:prefab", foldersToSearchIn)
             .Select(p => AssetDatabase.GUIDToAssetPath(p))

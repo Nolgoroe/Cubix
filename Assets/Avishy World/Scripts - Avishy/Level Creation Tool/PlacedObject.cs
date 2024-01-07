@@ -6,9 +6,9 @@ public class PlacedObject : MonoBehaviour
 {
     [SerializeField] private BuildingsSO buildingSO;
     [SerializeField] Vector2Int originPoint;
-    private BuildingsSO.Dir dir;
+    private Dir dir;
 
-    public static PlacedObject Create(Vector3 worldPos, Vector2Int origin, BuildingsSO.Dir dir, BuildingsSO buildingSO, Transform parent)
+    public static PlacedObject Create(Vector3 worldPos, Vector2Int origin, Dir dir, BuildingsSO buildingSO, Transform parent)
     {
         //This gives us the rotation of the object by it's direction. we only rotate around the Y axis.
         // example - if we want an object to look life - it's rotation should be 90 on the Y.
@@ -23,7 +23,7 @@ public class PlacedObject : MonoBehaviour
 
         return placedObject;
     }
-    public static PlacedObject Create(Vector3 worldPos, BuildingsSO.Dir dir, BuildingsSO buildingSO, Transform parent)
+    public static PlacedObject Create(Vector3 worldPos, Dir dir, BuildingsSO buildingSO, Transform parent)
     {
         //This gives us the rotation of the object by it's direction. we only rotate around the Y axis.
         // example - if we want an object to look life - it's rotation should be 90 on the Y.

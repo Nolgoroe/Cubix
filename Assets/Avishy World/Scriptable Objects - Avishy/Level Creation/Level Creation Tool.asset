@@ -58,50 +58,50 @@ MonoBehaviour:
     mat: {fileID: 2100000, guid: 2d17ae4166480fc4e9898120b62a6a22, type: 2}
   pathSidesToMeshes:
   - side: 0
-    prefabPathSide: {fileID: 7140543137896267853, guid: 07313f89399ef154b9f563b6d3598df1,
+    MeshPathSide: {fileID: 7441872425307282358, guid: 5bf73357a53acd2499ed7085368dac97,
       type: 3}
   - side: 1
-    prefabPathSide: {fileID: 1387848039818515801, guid: abfde9bb13119464a874bb7b39e52850,
+    MeshPathSide: {fileID: 7441872425307282358, guid: 5bf73357a53acd2499ed7085368dac97,
       type: 3}
   - side: 2
-    prefabPathSide: {fileID: 4933277404862683063, guid: 625d101999c847d49bb3733ef6e0722b,
+    MeshPathSide: {fileID: 7441872425307282358, guid: 5bf73357a53acd2499ed7085368dac97,
       type: 3}
   - side: 3
-    prefabPathSide: {fileID: 5722455746172237440, guid: ab17ffca72b7e5e41bb6849e1a7df6a0,
+    MeshPathSide: {fileID: 7441872425307282358, guid: 5bf73357a53acd2499ed7085368dac97,
       type: 3}
   - side: 4
-    prefabPathSide: {fileID: 648669192836624293, guid: 32e6f235fc8131945b28a1323c9df9dc,
+    MeshPathSide: {fileID: 7694086888350655961, guid: 5bf73357a53acd2499ed7085368dac97,
       type: 3}
   - side: 5
-    prefabPathSide: {fileID: 1904769140795983305, guid: 378ca4cffc6e8d34c8e520a558ccf1f0,
+    MeshPathSide: {fileID: 7694086888350655961, guid: 5bf73357a53acd2499ed7085368dac97,
       type: 3}
   - side: 6
-    prefabPathSide: {fileID: 8544616900524648991, guid: 6b88eb8de166e4f4d92cc67a076fa7df,
+    MeshPathSide: {fileID: 7694086888350655961, guid: 5bf73357a53acd2499ed7085368dac97,
       type: 3}
   - side: 7
-    prefabPathSide: {fileID: 1334299679501423551, guid: 7495b959dd094a349ab2c515b53f0a35,
+    MeshPathSide: {fileID: 7694086888350655961, guid: 5bf73357a53acd2499ed7085368dac97,
       type: 3}
   - side: 8
-    prefabPathSide: {fileID: 1542338503966503403, guid: de6cafed9ab8258478fef71ee88e5601,
+    MeshPathSide: {fileID: 5270276842832185954, guid: 5bf73357a53acd2499ed7085368dac97,
       type: 3}
   - side: 9
-    prefabPathSide: {fileID: 2140664670786123629, guid: 451b4a532d4135746979088b322821ec,
+    MeshPathSide: {fileID: 5270276842832185954, guid: 5bf73357a53acd2499ed7085368dac97,
       type: 3}
   - side: 10
-    prefabPathSide: {fileID: 2740373912308168843, guid: 4aa54bbe4c403384e95689dcae92d6f9,
+    MeshPathSide: {fileID: 5270276842832185954, guid: 5bf73357a53acd2499ed7085368dac97,
       type: 3}
   - side: 11
-    prefabPathSide: {fileID: 2836112538761105986, guid: 45f688fb4abff7e4da7b71e2001d6ea2,
+    MeshPathSide: {fileID: 5270276842832185954, guid: 5bf73357a53acd2499ed7085368dac97,
       type: 3}
   - side: 12
-    prefabPathSide: {fileID: 8042259654829406086, guid: eb8ee4c43c466e746bfaff101dc819d5,
+    MeshPathSide: {fileID: 5270276842832185954, guid: 5bf73357a53acd2499ed7085368dac97,
       type: 3}
   - side: 13
-    prefabPathSide: {fileID: 5298422061109660150, guid: 50987be2aee680348a50939271e7c6d5,
+    MeshPathSide: {fileID: 5270276842832185954, guid: 5bf73357a53acd2499ed7085368dac97,
       type: 3}
   - side: 14
-    prefabPathSide: {fileID: 942075011809202539, guid: ad885b2d6a4bb384386a3f67fd05c79a,
+    MeshPathSide: {fileID: 2931434816610534804, guid: 5bf73357a53acd2499ed7085368dac97,
       type: 3}
   - side: 15
-    prefabPathSide: {fileID: 4933277404862683063, guid: 63037aa31e7e7bc41ac334870f12ea84,
+    MeshPathSide: {fileID: 7694086888350655961, guid: 5bf73357a53acd2499ed7085368dac97,
       type: 3}

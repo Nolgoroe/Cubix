@@ -5303,7 +5303,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbe294dd31d427c469c6221da44bcb23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabPath: Assets/Avishy World/Tool Level Prefabs
   dropDownCellType: {fileID: 659632266}
   inputHeight: {fileID: 484317128}
   inputWidth: {fileID: 825833418}
@@ -5597,7 +5596,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 13de7390433ff224998c26aaf64c5ea0, type: 2}
   - {fileID: 11400000, guid: b4b0e03f3c9a5f84688bfde22c8ecb77, type: 2}
   rotatingBuildingList: []
-  currentDir: 0
+  currentBuildingDir: 0
   rotatingBuildingParent: {fileID: 977720478}
 --- !u!4 &1357347916
 Transform:
