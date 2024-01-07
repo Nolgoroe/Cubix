@@ -39,6 +39,11 @@ public class GridCell : MonoBehaviour
         return positionXYInGridArray;
     }
 
+    public TypeOfCell ReturnTypeOfCell()
+    {
+        return cellType;
+    }
+
     public virtual void CopyDataFromToolCell(ToolGridCell toolGridCell)
     {
         positionXYInGridArray = toolGridCell.ReturnPosInGridArray();

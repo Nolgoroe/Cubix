@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class PlayerHomeBaseCell : GridCell
 {
+    [SerializeField] int playerHealth;
+
+    private void Start() //temp
+    {
+        playerHealth = 10; 
+    }
 
 
 
@@ -24,10 +30,15 @@ public class PlayerHomeBaseCell : GridCell
 
 
 
+    public void RecieveDamage(EnemyParent enemy)
+    {
+        playerHealth -= enemy.ReturnEnemyDMG();
 
-
-
-
+        if (playerHealth <= 0)
+        {
+            Debug.Log("You have lost!");
+        }
+    }
 
     public override void CopyDataFromToolCell(ToolGridCell toolGridCell)
     {

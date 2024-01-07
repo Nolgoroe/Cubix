@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5621635043389688583}
   - component: {fileID: 7431803286844216169}
   m_Layer: 6
-  m_Name: Cell Indicator
+  m_Name: Tool Cell Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

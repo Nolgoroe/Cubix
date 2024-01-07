@@ -66,6 +66,8 @@ public class ToolGridCell : MonoBehaviour
         renderer = GetComponent<MeshRenderer>();
 
         cellMat = renderer.materials[0];
+
+        if (cellType != TypeOfCell.enemyPath) return;
         Quaternion RotationByDir = Quaternion.Euler(0, 0, GetRotationAngle());
         transform.localRotation = RotationByDir;
     }
