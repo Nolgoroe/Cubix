@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DiceRoller : MonoBehaviour
+public class DieRoller : MonoBehaviour
 {
-    [SerializeField] private Rigidbody rb;
+    [SerializeField] private Die die;
     [SerializeField] private Vector3 posConstraintRange;
     [SerializeField] private Vector3 rotationForceMin;
     [SerializeField] private Vector3 rotationForceMax;
@@ -12,6 +12,9 @@ public class DiceRoller : MonoBehaviour
     [SerializeField] private bool constraintX;
     [SerializeField] private bool constraintY;
     [SerializeField] private bool constraintZ;
+
+    [SerializeField] private Vector3 massCenter;
+
 
     private Vector3 _ogPos;
 
@@ -22,7 +25,7 @@ public class DiceRoller : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (rb.velocity.magnitude != 0 || rb.angularVelocity.magnitude != 0)
+        if (die.RB.velocity.magnitude != 0 || die.RB.angularVelocity.magnitude != 0)
         {
             Contraint();
         }
@@ -35,6 +38,7 @@ public class DiceRoller : MonoBehaviour
 
     private void Roll()
     {
+        StartCoroutine(ChangeMassAtTop());
         Vector3 throwVec = new Vector3(0, throwForce, 0);
 
         Vector3 rotForce = new Vector3();
@@ -42,8 +46,8 @@ public class DiceRoller : MonoBehaviour
         rotForce.y = Random.Range(rotationForceMin.y, rotationForceMax.y);
         rotForce.z = Random.Range(rotationForceMin.z, rotationForceMax.z);
 
-        rb.AddForce(throwVec, ForceMode.Impulse);
-        rb.AddTorque(rotForce, ForceMode.Impulse);
+        die.RB.AddForce(throwVec, ForceMode.Impulse);
+        die.RB.AddTorque(rotForce, ForceMode.Impulse);
     }
 
     private void Contraint()
@@ -76,4 +80,14 @@ public class DiceRoller : MonoBehaviour
 
         transform.position = newPos;
     }
+
+    private IEnumerator ChangeMassAtTop()
+    {
+        yield return new WaitUntil(()=> die.RB.velocity.y < 0 && die.IsMoving);
+        die.RB.centerOfMass = massCenter;
+        Debug.Log("change mass");
+    }
+
 }
+
+
