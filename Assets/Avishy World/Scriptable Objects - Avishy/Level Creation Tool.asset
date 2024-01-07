@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 263f03001b6607e49b0e8eb42f561fcf, type: 3}
+  m_Name: Level Creation Tool
+  m_EditorClassIdentifier: 
+  typeToColorList:
+  - typeOfCell: 0
+    color: {r: 1, g: 0, b: 0, a: 1}
+  - typeOfCell: 1
+    color: {r: 0, g: 0, b: 0, a: 1}
+  - typeOfCell: 2
+    color: {r: 0.17515802, g: 1, b: 0, a: 1}
+  - typeOfCell: 3
+    color: {r: 0, g: 0.50077295, b: 1, a: 1}
+  - typeOfCell: 4
+    color: {r: 1, g: 1, b: 1, a: 1}
+  - typeOfCell: 5
+    color: {r: 1, g: 0, b: 0.8533907, a: 1}
+  colorToPrefabList:
+  - color: {r: 1, g: 0, b: 0, a: 1}
+    prefab: {fileID: 3934025228936847065, guid: 86f4b3f34d39ff34ba6d4a910f7c07e7,
+      type: 3}
+  - color: {r: 0, g: 0, b: 0, a: 1}
+    prefab: {fileID: 9138847365563700820, guid: 52fa7374f23d9514fb88762393a0fe2f,
+      type: 3}
+  - color: {r: 0.17515802, g: 1, b: 0, a: 1}
+    prefab: {fileID: 5321493171148017575, guid: 1f7b8c88b80b2cc469e1b26623b9cc23,
+      type: 3}
+  - color: {r: 0, g: 0.50077295, b: 1, a: 1}
+    prefab: {fileID: 6086178004726300133, guid: b402b833013857b4da1bf7b498a856ec,
+      type: 3}
+  - color: {r: 1, g: 1, b: 1, a: 1}
+    prefab: {fileID: 9212971577064700083, guid: 7cf0fb1025b0a754db9b6928b9c8e445,
+      type: 3}
+  - color: {r: 1, g: 0, b: 0.8533907, a: 1}
+    prefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df, type: 3}
+  typeToMaterialList:
+  - typeOfCell: 0
+    mat: {fileID: 2100000, guid: 8ccbb04e2ba7f8642b14607a0c774177, type: 2}
+  - typeOfCell: 1
+    mat: {fileID: 2100000, guid: 95fdab29ff7fd444c921dd3b59a09e6d, type: 2}
+  - typeOfCell: 2
+    mat: {fileID: 2100000, guid: 458cacd09afd9044c82c2bcd3bd42fd4, type: 2}
+  - typeOfCell: 3
+    mat: {fileID: 2100000, guid: 7ee69a8e3aa1ff344a2b33d01795298b, type: 2}
+  - typeOfCell: 4
+    mat: {fileID: 2100000, guid: 87fa03f5d07e5ed42a2e17177704a888, type: 2}
+  - typeOfCell: 5
+    mat: {fileID: 2100000, guid: 2d17ae4166480fc4e9898120b62a6a22, type: 2}
+  pathSidesToMeshes:
+  - side: 0
+    prefabPathSide: {fileID: 7140543137896267853, guid: 07313f89399ef154b9f563b6d3598df1,
+      type: 3}
+  - side: 1
+    prefabPathSide: {fileID: 1387848039818515801, guid: abfde9bb13119464a874bb7b39e52850,
+      type: 3}
+  - side: 2
+    prefabPathSide: {fileID: 4933277404862683063, guid: 625d101999c847d49bb3733ef6e0722b,
+      type: 3}
+  - side: 3
+    prefabPathSide: {fileID: 5722455746172237440, guid: ab17ffca72b7e5e41bb6849e1a7df6a0,
+      type: 3}
+  - side: 4
+    prefabPathSide: {fileID: 648669192836624293, guid: 32e6f235fc8131945b28a1323c9df9dc,
+      type: 3}
+  - side: 5
+    prefabPathSide: {fileID: 1904769140795983305, guid: 378ca4cffc6e8d34c8e520a558ccf1f0,
+      type: 3}
+  - side: 6
+    prefabPathSide: {fileID: 8544616900524648991, guid: 6b88eb8de166e4f4d92cc67a076fa7df,
+      type: 3}
+  - side: 7
+    prefabPathSide: {fileID: 1334299679501423551, guid: 7495b959dd094a349ab2c515b53f0a35,
+      type: 3}
+  - side: 8
+    prefabPathSide: {fileID: 1542338503966503403, guid: de6cafed9ab8258478fef71ee88e5601,
+      type: 3}
+  - side: 9
+    prefabPathSide: {fileID: 2140664670786123629, guid: 451b4a532d4135746979088b322821ec,
+      type: 3}
+  - side: 10
+    prefabPathSide: {fileID: 2740373912308168843, guid: 4aa54bbe4c403384e95689dcae92d6f9,
+      type: 3}
+  - side: 11
+    prefabPathSide: {fileID: 2836112538761105986, guid: 45f688fb4abff7e4da7b71e2001d6ea2,
+      type: 3}
+  - side: 12
+    prefabPathSide: {fileID: 8042259654829406086, guid: eb8ee4c43c466e746bfaff101dc819d5,
+      type: 3}
+  - side: 13
+    prefabPathSide: {fileID: 5298422061109660150, guid: 50987be2aee680348a50939271e7c6d5,
+      type: 3}
+  - side: 14
+    prefabPathSide: {fileID: 942075011809202539, guid: ad885b2d6a4bb384386a3f67fd05c79a,
+      type: 3}
+  - side: 15
+    prefabPathSide: {fileID: 4933277404862683063, guid: 63037aa31e7e7bc41ac334870f12ea84,
+      type: 3}
