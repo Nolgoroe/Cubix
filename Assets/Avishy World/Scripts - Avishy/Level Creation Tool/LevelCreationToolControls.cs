@@ -179,10 +179,13 @@ public class LevelCreationToolControls : MonoBehaviour
                 {
                     temp2DArray[gridPos.x, gridPos.y].PopulateGridCell(placedObject);
                 }
+
+                ToolReferencerObject.Instance.toolGameGrid.AddRemoveToPlacedObjectList(true, placedObject);
             }
             else
             {
                 PlacedObject placedObject = PlacedObject.Create(MouseOverWorldNormal(), currentDir, CurrentBuildingSelected, buildingParent);
+                ToolReferencerObject.Instance.toolGameGrid.AddRemoveToPlacedObjectList(true, placedObject);
             }
         }
         if (Input.GetMouseButtonDown(1))
@@ -190,6 +193,8 @@ public class LevelCreationToolControls : MonoBehaviour
             PlacedObject placedObject = currentCellHovered.ReturnPlacedObject();
             if (placedObject)
             {
+                ToolReferencerObject.Instance.toolGameGrid.AddRemoveToPlacedObjectList(false, placedObject);
+
                 placedObject.DestroySelf();
 
                 List<Vector2Int> gridPosList = placedObject.GetGridPositionsList();// this will return all of the cells that are part of this building by it's width and height

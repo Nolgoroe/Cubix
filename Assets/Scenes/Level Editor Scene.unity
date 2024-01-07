@@ -5303,7 +5303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbe294dd31d427c469c6221da44bcb23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabPath: Assets/Avishy World/Level Prefabs
+  prefabPath: Assets/Avishy World/Tool Level Prefabs
   dropDownCellType: {fileID: 659632266}
   inputHeight: {fileID: 484317128}
   inputWidth: {fileID: 825833418}

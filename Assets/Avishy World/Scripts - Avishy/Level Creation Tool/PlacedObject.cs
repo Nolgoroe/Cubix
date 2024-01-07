@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlacedObject : MonoBehaviour
 {
-    private BuildingsSO buildingSO;
+    [SerializeField] private BuildingsSO buildingSO;
     [SerializeField] Vector2Int originPoint;
     private BuildingsSO.Dir dir;
 
@@ -44,7 +44,7 @@ public class PlacedObject : MonoBehaviour
     }
     public void DestroySelf()
     {
-        Destroy(gameObject);
+        Destroy(gameObject, 0.5f);
     }
 
     private void OnMouseOver()

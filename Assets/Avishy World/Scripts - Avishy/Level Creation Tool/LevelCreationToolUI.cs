@@ -12,8 +12,8 @@ using UnityEditor;
 
 public class LevelCreationToolUI : MonoBehaviour
 {
-    [Header("References")]
-    [SerializeField] string prefabPath;
+    public const string pathToLevelToolPrefabFolder = "Assets/Avishy World/Tool Level Prefabs";
+    public const string pathToGameLevelPrefabFolder = "Assets/Avishy World/Game Level Prefabs";
 
     [Header("Drawing")]
     [SerializeField] TMP_Dropdown dropDownCellType;
@@ -150,15 +150,20 @@ public class LevelCreationToolUI : MonoBehaviour
         ToolReferencerObject.Instance.toolGameGrid.CleanupBeforePrefab();
         yield return new WaitForSeconds(2); //VERY TEMP HARDCODED
 
-        string path = prefabPath + "/"+ decidedLevelName +".prefab";
-        Debug.Log(path);
+        string levelName = "/" + decidedLevelName + ".prefab";
+        string[] paths = new string[] { pathToLevelToolPrefabFolder + levelName,
+                                        pathToGameLevelPrefabFolder + levelName };
 
         if(decidedLevelName == "")
         {
             Debug.LogError("No Level Name");
             yield break;
         }
-        PrefabUtility.SaveAsPrefabAsset(ToolReferencerObject.Instance.toolGameGrid.gameObject, path);
+
+        foreach (string path in paths)
+        {
+            PrefabUtility.SaveAsPrefabAsset(ToolReferencerObject.Instance.toolGameGrid.gameObject, path);
+        }
 
         PopupateLevelPrefabList();
     }
