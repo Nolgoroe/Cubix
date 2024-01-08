@@ -240,6 +240,12 @@ public class ToolGameGrid : MonoBehaviour
             yield break;
         }
 
+        if (gridWidth <= 0 || gridHeight <= 0 || gridSpacing <= 0)
+        {
+            ToolReferencerObject.Instance.toolUI.CallDisplaySystemMessage("Must set Height, Width and Spacing to values more than 0!");
+            yield break;
+        }
+
         transform.name = "New Level";
 
         yield return new WaitForEndOfFrame(); // we do this to let the data clear from the destroy before continue

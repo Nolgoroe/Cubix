@@ -85,11 +85,17 @@ public class ToolEnemySpawnerCell : ToolGridCell
         currentPathBeingCreated.waypoints.Clear();
         waypointTransforms.Clear();
         currentPathIndex = -1;
+
+        ToolReferencerObject.Instance.toolUI.DisplayAmountOfPathsOnSpawner(ReturnEnemyPaths().Count);
     }
 
     public IEnumerator DisplaySpecificPath(bool show, int index)
     {
-        if (enemyPaths.Count <= 0 || index > enemyPaths.Count - 1) yield break;
+        if (enemyPaths.Count <= 0 || index > enemyPaths.Count - 1)
+        {
+            ToolReferencerObject.Instance.toolUI.CallDisplaySystemMessage("There are no waypoints at this index");
+            yield break;
+        }
 
         waypointTransforms.Clear();
         yield return new WaitForSeconds(0.5f);
@@ -172,11 +178,17 @@ public class ToolEnemySpawnerCell : ToolGridCell
 
     public IEnumerator DeleteSpecificPath(int index)
     {
-        if (enemyPaths.Count <= 0 || index > enemyPaths.Count - 1) yield break;
+        if (enemyPaths.Count <= 0 || index > enemyPaths.Count - 1)
+        {
+            ToolReferencerObject.Instance.toolUI.CallDisplaySystemMessage("There are no waypoints at this index");
+            yield break;
+        }
 
         yield return StartCoroutine(DisplaySpecificPath(false, index));
 
         enemyPaths.Remove(enemyPaths[index]);
+
+        ToolReferencerObject.Instance.toolUI.DisplayAmountOfPathsOnSpawner(ReturnEnemyPaths().Count);
     }
 
     public List<EnemyPath> ReturnEnemyPaths()
