@@ -7,6 +7,7 @@ public class DieFace : MonoBehaviour
     public SpriteRenderer FaceDisplay;
     public ResourceData Resource;
     public BuffData Buff;
+    public int val;
 
     public DieFaceValue GetFaceValue()
     {

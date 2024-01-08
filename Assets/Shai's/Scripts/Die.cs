@@ -44,6 +44,7 @@ public class Die : MonoBehaviour
                     _isMoving = false;
                     OnRollEnd.Invoke();
                     _stagnantTimer = 0;
+                    GetTopValue();
                     Debug.Log("Roll ended");
                 }
             }
@@ -62,7 +63,24 @@ public class Die : MonoBehaviour
 
     public DieFaceValue GetTopValue()
     {
+        DieFace topFace = null;
+        float lowestAngle = float.MaxValue;
+        Vector3 tmpFaceVec;
+        float tmpAngle;
+        foreach (var face in faces)
+        {
+            tmpFaceVec = face.transform.position - transform.position;
+            tmpAngle = Vector3.Angle(Vector3.up, tmpFaceVec);
 
+            if (tmpAngle < lowestAngle)
+            {
+                lowestAngle = tmpAngle;
+                topFace = face;
+            }
+        }
+
+
+        return topFace.GetFaceValue();
     }
 }
 
