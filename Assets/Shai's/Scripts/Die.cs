@@ -67,7 +67,7 @@ public class Die : MonoBehaviour
         float lowestAngle = float.MaxValue;
         Vector3 tmpFaceVec;
         float tmpAngle;
-        foreach (var face in faces)
+        foreach (var face in faces)//find the face with the angle closest to up
         {
             tmpFaceVec = face.transform.position - transform.position;
             tmpAngle = Vector3.Angle(Vector3.up, tmpFaceVec);
@@ -78,9 +78,13 @@ public class Die : MonoBehaviour
                 topFace = face;
             }
         }
-
-
+        Debug.Log(topFace.val);
         return topFace.GetFaceValue();
+    }
+
+    public DieFace[] GetAllFaces()
+    {
+        return faces.ToArray();
     }
 }
 
