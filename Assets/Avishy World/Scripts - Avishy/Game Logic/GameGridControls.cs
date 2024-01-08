@@ -33,11 +33,23 @@ public class GameGridControls : MonoBehaviour
         {
             if(!currentCellHovered.ReturnIsOccipied())
             {
+                //this is where we will run checks by towerType (range/Melee) to see if we can place that tower there
+                // or if we have specific slots, we don't need this step.
+
                 Vector3 cellpos = currentCellHovered.transform.position;
 
                 Vector3 pos = new Vector3(cellpos.x, cellpos.y + 0.5f, cellpos.z); // temp here
 
                 GameObject go = Instantiate(towerPrefab, pos, Quaternion.identity);
+
+                TowerBaseParent towerSpawned;
+                go.TryGetComponent<TowerBaseParent>(out towerSpawned);
+
+                if(towerSpawned)
+                {
+                    towerSpawned.InitTowerData(currentCellHovered.ReturnPositionInGridArray());
+                }
+
                 currentCellHovered.SetAsOccupied(go);
             }
         }

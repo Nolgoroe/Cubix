@@ -120,8 +120,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 3
-  target: {fileID: 0}
+  range: 0.5
+  playerTroopsLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  enemyHealth: 3
   enemyDamage: 1
+  target: {fileID: 0}
+  currentTarget: {fileID: 0}
   waypointIndex: 0
   waypointDetectionRadius: 0.3
   waypointsList: []

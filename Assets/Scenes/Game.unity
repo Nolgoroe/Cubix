@@ -199,37 +199,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &182786091
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 182786092}
-  m_Layer: 0
-  m_Name: Grid Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &182786092
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 182786091}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &285779205
 GameObject:
   m_ObjectHideFlags: 0
@@ -878,7 +847,7 @@ MonoBehaviour:
   gridCellLayer:
     serializedVersion: 2
     m_Bits: 64
-  towerPrefab: {fileID: 6522023093456695046, guid: b5f073b2db9341040a103acce7e8c296,
+  towerPrefab: {fileID: 1946607158863623217, guid: 2067f10773695944f9d341e15ada6888,
     type: 3}
   currentCellHovered: {fileID: 0}
 --- !u!4 &1756797249
@@ -930,7 +899,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0, y: -30}
+  m_AnchoredPosition: {x: 0, y: -30}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1937499321
@@ -1069,7 +1038,6 @@ SceneRoots:
   - {fileID: 339383145}
   - {fileID: 1548779738}
   - {fileID: 136588374}
-  - {fileID: 182786092}
   - {fileID: 1756797249}
   - {fileID: 2100736642}
   - {fileID: 285779209}
