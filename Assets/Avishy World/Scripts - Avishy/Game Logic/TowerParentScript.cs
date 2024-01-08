@@ -27,14 +27,14 @@ public class TowerParentScript : MonoBehaviour
         //locking on target
         Vector3 direction = currentTarget.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
-        Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * rotationSpeed).eulerAngles;
+        Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * (rotationSpeed * GameManager.gameSpeed)).eulerAngles;
 
         partToRotate.rotation = Quaternion.Euler(0, rotation.y, 0);
 
         if(fireCountDown <= 0)
         {
             Shoot();
-            fireCountDown = 1 / fireRate;
+            fireCountDown = (1 / fireRate) / GameManager.gameSpeed;
         }
 
         fireCountDown -= Time.deltaTime;

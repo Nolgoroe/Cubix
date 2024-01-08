@@ -20,7 +20,7 @@ public class EnemyParent : MonoBehaviour
     private void FixedUpdate()
     {
         Vector3 direction = target.position - transform.position;
-        transform.Translate(direction.normalized * Speed * Time.fixedDeltaTime, Space.World);
+        transform.Translate((direction.normalized * Speed * GameManager.gameSpeed) * Time.fixedDeltaTime, Space.World);
         transform.position = new Vector3(transform.position.x, 0.25f, transform.position.z);
 
 

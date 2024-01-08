@@ -21,7 +21,7 @@ public class TowerBullet : MonoBehaviour
 
 
         Vector3 direction = currentTarget.position - transform.position;
-        float distanceThisFrame = speed * Time.deltaTime; // used to calculate my position in this frame to prevent overshooting
+        float distanceThisFrame = (speed * GameManager.gameSpeed) * Time.deltaTime; // used to calculate my position in this frame to prevent overshooting
 
         //direction.magnitude is the current distance to our taget. 
         //if that current distance is less than the amount we want to move, that means we've hit the target and that next frame we'll pass it.

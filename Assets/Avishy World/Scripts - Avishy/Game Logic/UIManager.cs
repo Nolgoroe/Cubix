@@ -1,18 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static UIManager Instance;
+
+    [SerializeField] private TMP_Text timerText;
+
+    private void Start()
     {
-        
+        Instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DisplayTimerText(bool show)
     {
-        
+        timerText.gameObject.SetActive(show);
+    }
+
+    public void SetWaveCountdownText(float time)
+    {
+        timerText.text = Mathf.Round(time).ToString();
     }
 }
