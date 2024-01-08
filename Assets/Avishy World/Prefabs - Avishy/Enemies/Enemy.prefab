@@ -121,11 +121,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 3
   range: 0.5
+  enemyHealth: 3
+  attackRate: 1
+  currentAttackCooldown: 0
+  enemyDamage: 1
+  ignoresTroops: 0
   playerTroopsLayer:
     serializedVersion: 2
     m_Bits: 256
-  enemyHealth: 3
-  enemyDamage: 1
   target: {fileID: 0}
   currentTarget: {fileID: 0}
   waypointIndex: 0

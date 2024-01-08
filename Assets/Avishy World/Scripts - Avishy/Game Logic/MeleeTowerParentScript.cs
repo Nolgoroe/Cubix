@@ -46,10 +46,14 @@ public class MeleeTowerParentScript : TowerBaseParent
 
         foreach (Vector2Int pos in directions)
         {
-            GridCell cell = GridManager.Instance.ReturnCellAtVector(pos);
-            if (cell.ReturnTypeOfCell() == TypeOfCell.enemyPath)
+            if(pos.x > -1 && pos.x < GridManager.Instance.ReturnWidthHeight().x
+                && pos.y >-1 && pos.y < GridManager.Instance.ReturnWidthHeight().y)
             {
-                connectedPathCells.Add(cell);
+                GridCell cell = GridManager.Instance.ReturnCellAtVector(pos);
+                if (cell.ReturnTypeOfCell() == TypeOfCell.enemyPath)
+                {
+                    connectedPathCells.Add(cell);
+                }
             }
         }
     }

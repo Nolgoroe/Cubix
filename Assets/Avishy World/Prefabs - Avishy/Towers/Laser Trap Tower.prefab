@@ -61,9 +61,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b574c345e9f01694a969899f7bf232e8, type: 2}
-  - {fileID: 2100000, guid: d7663575da14af64ba33afd209796a72, type: 2}
-  - {fileID: 2100000, guid: e0df6938235e158469074f89d8c0cc39, type: 2}
+  - {fileID: 2100000, guid: fb56f3b11aa15304590b53069ad6f3d3, type: 2}
+  - {fileID: 2100000, guid: 3a571caded975854695fd22a28a2beda, type: 2}
+  - {fileID: 2100000, guid: 9196e780a115a8448963e835681f188c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 7279867585857080166}
   - component: {fileID: 4272115524551225624}
   m_Layer: 0
-  m_Name: Cyber Tower
+  m_Name: Laser Trap Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,9 +133,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCellOnPos: {x: 0, y: 0}
   connectedPathCells: []
-  troopPrefab: {fileID: 7708210154099484369, guid: 4bd4c38c9eda12c469279339bd5379f0,
+  troopPrefab: {fileID: 7708210154099484369, guid: c5902af6230497249affd5fdf7290ee1,
     type: 3}
-  maxNumOfTroops: 3
+  maxNumOfTroops: 1
   spawnRate: 1
   currentSpawnCooldown: 0
   currentNumOfTroops: 0

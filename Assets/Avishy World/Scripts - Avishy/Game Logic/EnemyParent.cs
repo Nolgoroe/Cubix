@@ -12,6 +12,7 @@ public class EnemyParent : MonoBehaviour
     [SerializeField] protected float attackRate = 1;
     [SerializeField] protected float currentAttackCooldown = 0;
     [SerializeField] private int enemyDamage;
+    [SerializeField] private bool ignoresTroops;
     [SerializeField] private LayerMask playerTroopsLayer;
     [SerializeField] private Transform target;
 
@@ -42,7 +43,7 @@ public class EnemyParent : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (currentTarget) return;
+        if (!ignoresTroops && currentTarget) return;
 
         Vector3 direction = target.position - transform.position;
         transform.Translate((direction.normalized * Speed * GameManager.gameSpeed) * Time.fixedDeltaTime, Space.World);

@@ -8,18 +8,18 @@ public class TowerTroop : MonoBehaviour
     //this might turn to a parent script for any and all "tower troops" in the future for different towers that require differnt troops
 
     [Header("Live data")]
-    [SerializeField] private Transform currentTarget;
-    [SerializeField] private MeleeTowerParentScript connectedTower;
+    [SerializeField] protected Transform currentTarget;
+    [SerializeField] protected MeleeTowerParentScript connectedTower;
 
     [Header("Preset Data")] // this is temp - might be scriptable object
     [SerializeField] private float range = 15;
     [SerializeField] private float damage = 1;
-    [SerializeField] private float health = 3;
+    [SerializeField] protected float health = 3;
     [SerializeField] protected float attackRate = 1;
     [SerializeField] protected float currentAttackCooldown = 0;
     [SerializeField] private LayerMask enemyLayerMask;
 
-    private void Update()
+    protected virtual void Update()
     {
         UpdateTarget();
 
