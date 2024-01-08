@@ -246,8 +246,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 703e99503e2cb38408b18fdcc2d85094, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentTarget: {fileID: 0}
   currentCellOnPos: {x: 0, y: 0}
+  currentTarget: {fileID: 0}
   range: 5
   rotationSpeed: 15
   fireRate: 1
@@ -256,7 +256,7 @@ MonoBehaviour:
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 128
-  towerAttackingObject: {fileID: 7708210154099484369, guid: 9bcf34bfa6e4bd44aa6c08573074440f,
+  bulletPrefab: {fileID: 7708210154099484369, guid: 9bcf34bfa6e4bd44aa6c08573074440f,
     type: 3}
   firePoint: {fileID: 4163122995529695945}
 --- !u!1 &7961905663027756871

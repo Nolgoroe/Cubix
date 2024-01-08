@@ -847,8 +847,12 @@ MonoBehaviour:
   gridCellLayer:
     serializedVersion: 2
     m_Bits: 64
-  towerPrefab: {fileID: 1946607158863623217, guid: 662a26214b55e9e49bbfc4d89455534f,
-    type: 3}
+  currentTowerPrefab: {fileID: 0}
+  towerPrefabs:
+  - {fileID: 6522023093456695046, guid: b5f073b2db9341040a103acce7e8c296, type: 3}
+  - {fileID: 1946607158863623217, guid: 2067f10773695944f9d341e15ada6888, type: 3}
+  - {fileID: 1946607158863623217, guid: 662a26214b55e9e49bbfc4d89455534f, type: 3}
+  indexInTowersList: 0
   currentCellHovered: {fileID: 0}
 --- !u!4 &1756797249
 Transform:

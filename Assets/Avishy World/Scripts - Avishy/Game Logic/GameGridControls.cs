@@ -7,7 +7,9 @@ public class GameGridControls : MonoBehaviour
 {
     [Header("Preset Data")]
     [SerializeField] private LayerMask gridCellLayer;
-    [SerializeField] private GameObject towerPrefab;// temp here - think of a place to hold all the towers available and choose.
+    [SerializeField] private GameObject currentTowerPrefab;// temp here - think of a place to hold all the towers available and choose.
+    [SerializeField] private List<GameObject> towerPrefabs;// temp here - used for checks
+    [SerializeField] private int indexInTowersList;// temp here - used for checks
 
     [Header("Automated data")]
     [SerializeField] private GridCell currentCellHovered;
@@ -17,8 +19,22 @@ public class GameGridControls : MonoBehaviour
 
     private Vector3 positionOfMouse;
 
+    private void Start()
+    {
+        currentTowerPrefab = towerPrefabs[indexInTowersList];
+    }
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.X))
+        {
+            indexInTowersList++;
+            if(indexInTowersList >= towerPrefabs.Count)
+            {
+                indexInTowersList = 0;
+            }
+            currentTowerPrefab = towerPrefabs[indexInTowersList];
+
+        }
         MouseOverGridCell();
 
         if (currentCellHovered)
@@ -40,7 +56,7 @@ public class GameGridControls : MonoBehaviour
 
                 Vector3 pos = new Vector3(cellpos.x, cellpos.y + 0.5f, cellpos.z); // temp here
 
-                GameObject go = Instantiate(towerPrefab, pos, Quaternion.identity);
+                GameObject go = Instantiate(currentTowerPrefab, pos, Quaternion.identity);
 
                 TowerBaseParent towerSpawned;
                 go.TryGetComponent<TowerBaseParent>(out towerSpawned);
