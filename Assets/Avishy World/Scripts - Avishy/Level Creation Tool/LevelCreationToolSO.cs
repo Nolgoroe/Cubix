@@ -28,10 +28,8 @@ public struct typeToMaterialCombo
 [Serializable]
 public struct PathSidesToMesh
 {
-    // this will hold a mesh reference instead of a gameobject in the future.
-
     public PathSides side;
-    public GameObject prefabPathSide; // this might turn into a mesh
+    public Mesh MeshPathSide; 
 }
 
 [CreateAssetMenu(fileName = "Level Creation Tool", menuName = "ScriptableObjects/LevelCreationToolColors")]
@@ -46,11 +44,11 @@ public class LevelCreationToolSO : ScriptableObject
     private void CreateTypeToColorCombos()
     {
         #region Type To Color
-        List<typeToColorCombo> tempTypeToColor = new List<typeToColorCombo>();
+        List<typeToColorCombo> localTypeToColor = new List<typeToColorCombo>();
 
         if (typeToColorList.Count > 0)
         {
-            tempTypeToColor.AddRange(typeToColorList);
+            localTypeToColor.AddRange(typeToColorList);
         }
 
         typeToColorList.Clear();
@@ -61,9 +59,9 @@ public class LevelCreationToolSO : ScriptableObject
             typeToColor.typeOfCell = cellType;
             typeToColor.color = new Color(0,0,0,1);
 
-            if (tempTypeToColor.Count > 0)
+            if (localTypeToColor.Count > 0)
             {
-                foreach (typeToColorCombo combo in tempTypeToColor)
+                foreach (typeToColorCombo combo in localTypeToColor)
                 {
                     if (cellType == combo.typeOfCell)
                     {
@@ -78,11 +76,11 @@ public class LevelCreationToolSO : ScriptableObject
 
 
         #region Color To Prefab
-        List<colorToPrefabCombo> tempColorToPrefab = new List<colorToPrefabCombo>();
+        List<colorToPrefabCombo> localColorToPrefab = new List<colorToPrefabCombo>();
 
         if (colorToPrefabList.Count > 0)
         {
-            tempColorToPrefab.AddRange(colorToPrefabList);
+            localColorToPrefab.AddRange(colorToPrefabList);
         }
 
         colorToPrefabList.Clear();
@@ -91,9 +89,9 @@ public class LevelCreationToolSO : ScriptableObject
             colorToPrefabCombo colorToPrefab = new colorToPrefabCombo();
             colorToPrefab.color = typeToColorCombo.color;
 
-            if(tempColorToPrefab.Count > 0)
+            if(localColorToPrefab.Count > 0)
             {
-                foreach (colorToPrefabCombo combo in tempColorToPrefab)
+                foreach (colorToPrefabCombo combo in localColorToPrefab)
                 {
                     if (combo.color == colorToPrefab.color)
                     {
@@ -109,11 +107,11 @@ public class LevelCreationToolSO : ScriptableObject
         #endregion
 
         #region Type To Material
-        List<typeToMaterialCombo> tempTypeToMaterial = new List<typeToMaterialCombo>();
+        List<typeToMaterialCombo> localTypeToMaterial = new List<typeToMaterialCombo>();
         
         if(typeToMaterialList.Count > 0)
         {
-            tempTypeToMaterial.AddRange(typeToMaterialList);
+            localTypeToMaterial.AddRange(typeToMaterialList);
         }
 
         typeToMaterialList.Clear();
@@ -123,9 +121,9 @@ public class LevelCreationToolSO : ScriptableObject
             typeToMaterialCombo typeToMat = new typeToMaterialCombo();
             typeToMat.typeOfCell = cellType;
 
-            if (tempTypeToMaterial.Count > 0)
+            if (localTypeToMaterial.Count > 0)
             {
-                foreach (typeToMaterialCombo combo in tempTypeToMaterial)
+                foreach (typeToMaterialCombo combo in localTypeToMaterial)
                 {
                     if (cellType == combo.typeOfCell)
                     {
@@ -140,11 +138,11 @@ public class LevelCreationToolSO : ScriptableObject
         #endregion
 
         #region Path Type To Mesh
-        List<PathSidesToMesh> tempSidesToMeshList = new List<PathSidesToMesh>();
+        List<PathSidesToMesh> localSidesToMeshList = new List<PathSidesToMesh>();
 
         if (pathSidesToMeshes.Count > 0)
         {
-            tempSidesToMeshList.AddRange(pathSidesToMeshes);
+            localSidesToMeshList.AddRange(pathSidesToMeshes);
         }
 
         pathSidesToMeshes.Clear();
@@ -154,13 +152,13 @@ public class LevelCreationToolSO : ScriptableObject
             PathSidesToMesh sidesToMesh = new PathSidesToMesh();
             sidesToMesh.side = side;
 
-            if (tempSidesToMeshList.Count > 0)
+            if (localSidesToMeshList.Count > 0)
             {
-                foreach (PathSidesToMesh combo in tempSidesToMeshList)
+                foreach (PathSidesToMesh combo in localSidesToMeshList)
                 {
                     if (combo.side == side)
                     {
-                        sidesToMesh.prefabPathSide = combo.prefabPathSide;
+                        sidesToMesh.MeshPathSide = combo.MeshPathSide;
                     }
                 }
             }
@@ -190,12 +188,10 @@ public class LevelCreationToolSO : ScriptableObject
 
         return foundCombo.mat;
     }
-    public GameObject ReturnPrefabByPathSides(PathSides side)
+    public Mesh ReturnPrefabByPathSides(PathSides side)
     {
-        ///this function will return a mesh in the future.
-
         PathSidesToMesh foundCombo = pathSidesToMeshes.Where(combo => combo.side == side).FirstOrDefault();
 
-        return foundCombo.prefabPathSide;
+        return foundCombo.MeshPathSide;
     }
 }

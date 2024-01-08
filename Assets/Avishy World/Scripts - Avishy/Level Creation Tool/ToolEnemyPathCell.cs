@@ -9,22 +9,21 @@ public enum PathSides
     left,  
     down,  
     right,  
-    upLeft,  
-    upRight,  
-    downLeft,  
-    downRight,  
-    upLeftRight,  
-    upLeftDown,   
-    upRightDown,   
-    downLeftRight,  
+    leftUp, 
+    rightUp,  
+    leftDown,  
+    rightDown,  
+    leftRightUp,  
+    leftUpDown,   
+    rightUpDown,   
+    leftRightDown,  
     downLeftUp,
     downRightUp,
-    upRightLeftDown,
+    leftRightUpDown,
     None
 }
 public class ToolEnemyPathCell : ToolGridCell
 {
-    [SerializeField] PathSides pathMeshSides;
 
     private PathSides GetConnectedPathSides()
     {
@@ -49,7 +48,7 @@ public class ToolEnemyPathCell : ToolGridCell
         }
 
         //check left
-        if (currentX - 1 > 0)
+        if (currentX - 1 > -1)
         {
             if (gameGridCellsArray[currentX - 1, currentY].ReturnTypeOfCell() == TypeOfCell.enemyPath)
             {
@@ -58,7 +57,7 @@ public class ToolEnemyPathCell : ToolGridCell
         }
 
         //check down
-        if (currentY - 1 > 0)
+        if (currentY - 1 > -1)
         {
             if (gameGridCellsArray[currentX, currentY - 1].ReturnTypeOfCell() == TypeOfCell.enemyPath)
             {
@@ -79,23 +78,23 @@ public class ToolEnemyPathCell : ToolGridCell
         #region Decide on path sides by all options
         if (connectUp & connectRight && connectLeft && connectDown)
         {
-            pathSides = PathSides.upRightLeftDown;
+            pathSides = PathSides.leftRightUpDown;
         }
         else if(connectUp & connectLeft && connectDown)
         {
-            pathSides = PathSides.upLeftDown;
+            pathSides = PathSides.leftUpDown;
         }
         else if(connectUp & connectRight && connectDown)
         {
-            pathSides = PathSides.upRightDown;
+            pathSides = PathSides.rightUpDown;
         }
         else if(connectUp & connectLeft && connectRight)
         {
-            pathSides = PathSides.upLeftRight;
+            pathSides = PathSides.leftRightUp;
         }
         else if(connectDown & connectLeft && connectRight)
         {
-            pathSides = PathSides.downLeftRight;
+            pathSides = PathSides.leftRightDown;
         }
         else if(connectDown & connectLeft && connectUp)
         {
@@ -107,19 +106,19 @@ public class ToolEnemyPathCell : ToolGridCell
         }
         else if(connectDown & connectLeft)
         {
-            pathSides = PathSides.downLeft;
+            pathSides = PathSides.leftDown;
         }
         else if(connectDown & connectRight)
         {
-            pathSides = PathSides.downRight;
+            pathSides = PathSides.rightDown;
         }
         else if(connectUp & connectLeft)
         {
-            pathSides = PathSides.upLeft;
+            pathSides = PathSides.leftUp;
         }
         else if(connectUp & connectRight)
         {
-            pathSides = PathSides.upRight;
+            pathSides = PathSides.rightUp;
         }
         else if(connectUp)
         {
@@ -140,6 +139,7 @@ public class ToolEnemyPathCell : ToolGridCell
 
         #endregion
 
+        pathMeshSides = pathSides;
         return pathSides;
     }
 
@@ -147,25 +147,15 @@ public class ToolEnemyPathCell : ToolGridCell
     {
         //This function will change to change the mesh of this object instead of spawining a new one and passing on data.
 
+        MeshFilter meshFilter = GetComponent<MeshFilter>();
+        if (meshFilter == null) return;
 
         pathMeshSides = GetConnectedPathSides();
 
-        GameObject toSpawn = ToolReferencerObject.Instance.levelCreationToolSO.ReturnPrefabByPathSides(pathMeshSides); // this will go away when we do mesh.
+        Mesh newMesh = ToolReferencerObject.Instance.levelCreationToolSO.ReturnPrefabByPathSides(pathMeshSides); // this will go away when we do mesh.
+        meshFilter.mesh = newMesh;
 
-        if (toSpawn) // this will go away when we do mesh.
-        {
-            GameObject spawned = Instantiate(toSpawn, transform.position, Quaternion.identity, transform.parent); // this will go away when we do mesh.
-
-            ToolEnemyPathCell enemyPathCell; // this will go away when we do mesh.
-            spawned.TryGetComponent<ToolEnemyPathCell>(out enemyPathCell); // this will go away when we do mesh.
-
-            if (enemyPathCell)
-            {
-                enemyPathCell.CopyOtherGridCell(this); // this will go away when we do mesh.
-            }
-
-        }
-
-        gameObject.SetActive(false); //in the future we won't need this since we'll just swap the mesh
+        Quaternion RotationByDir = Quaternion.Euler(0, 0, GetRotationAngle());
+        transform.localRotation = RotationByDir;
     }
 }

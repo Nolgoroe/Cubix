@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-struct EnemyPath
+public struct EnemyPath
 {
-    public List<ToolGridCell> waypoints;
+    public List<Vector2Int> waypoints;
 }
 
 public class ToolEnemySpawnerCell : ToolGridCell
@@ -21,20 +21,20 @@ public class ToolEnemySpawnerCell : ToolGridCell
     {
         waypointTransforms = new List<Transform>();
     }
-    public void AddToEnemyPath(ToolGridCell toAdd)
+    public void AddToEnemyPath(ToolGridCell toAdd, Vector2Int ToAddPos)
     {
-        if (currentPathBeingCreated.waypoints.Contains(toAdd) || toAdd.ReturnTypeOfCell() == TypeOfCell.enemySpawner) return;
+        if (currentPathBeingCreated.waypoints.Contains(ToAddPos) || toAdd.ReturnTypeOfCell() == TypeOfCell.enemySpawner) return;
 
         if(currentPathBeingCreated.waypoints.Count == 0)
         {
             DisplayAsWaypoint(true);
-            currentPathBeingCreated.waypoints.Add(this);
+            currentPathBeingCreated.waypoints.Add(positionXYInGridArray);
 
             if(ReturnSpawnedWaypoint())
                 waypointTransforms.Add(ReturnSpawnedWaypoint());
         }
         toAdd.DisplayAsWaypoint(true);
-        currentPathBeingCreated.waypoints.Add(toAdd);
+        currentPathBeingCreated.waypoints.Add(ToAddPos);
 
         if (ReturnSpawnedWaypoint())
             waypointTransforms.Add(toAdd.ReturnSpawnedWaypoint());
@@ -48,7 +48,7 @@ public class ToolEnemySpawnerCell : ToolGridCell
         if (toRemove.ReturnSpawnedWaypoint())
             waypointTransforms.Remove(toRemove.ReturnSpawnedWaypoint());
 
-        currentPathBeingCreated.waypoints.Remove(toRemove);
+        currentPathBeingCreated.waypoints.Remove(toRemove.ReturnPosInGridArray());
 
         yield return new WaitForSeconds(0.5f);
 
@@ -70,12 +70,13 @@ public class ToolEnemySpawnerCell : ToolGridCell
         else
         {
             EnemyPath newPath = new EnemyPath();
-            newPath.waypoints = new List<ToolGridCell>();
+            newPath.waypoints = new List<Vector2Int>();
             newPath.waypoints.AddRange(currentPathBeingCreated.waypoints);
             enemyPaths.Add(newPath);
 
-            foreach (ToolGridCell cell in currentPathBeingCreated.waypoints)
+            foreach (Vector2Int waypoint in currentPathBeingCreated.waypoints)
             {
+                ToolGridCell cell = ToolReferencerObject.Instance.toolGameGrid.ReturnCellsArray()[waypoint.x, waypoint.y];
                 cell.DisplayAsWaypoint(false);
             }
         }
@@ -97,15 +98,17 @@ public class ToolEnemySpawnerCell : ToolGridCell
         {
             if (currentPathBeingCreated.waypoints.Count > 0)
             {
-                foreach (ToolGridCell cell in currentPathBeingCreated.waypoints)
+                foreach (Vector2Int waypoint in currentPathBeingCreated.waypoints)
                 {
+                    ToolGridCell cell = ToolReferencerObject.Instance.toolGameGrid.ReturnCellsArray()[waypoint.x, waypoint.y];
+
                     cell.DisplayAsWaypoint(false);
                 }
                 yield return new WaitForSeconds(0.5f);
             }
 
             currentPathBeingCreated = new EnemyPath();
-            currentPathBeingCreated.waypoints = new List<ToolGridCell>();
+            currentPathBeingCreated.waypoints = new List<Vector2Int>();
 
             yield return new WaitForSeconds(0.5f);
             currentPathBeingCreated.waypoints.AddRange(enemyPaths[index].waypoints);
@@ -114,7 +117,7 @@ public class ToolEnemySpawnerCell : ToolGridCell
         }
         else
         {
-            foreach (ToolGridCell cell in enemyPaths[index].waypoints)
+            foreach (Vector2Int cell in enemyPaths[index].waypoints)
             {
                 currentPathBeingCreated.waypoints.Remove(cell);
             }
@@ -122,18 +125,22 @@ public class ToolEnemySpawnerCell : ToolGridCell
             yield return new WaitForSeconds(0.5f);
 
             currentPathBeingCreated = new EnemyPath();
-            currentPathBeingCreated.waypoints = new List<ToolGridCell>();
+            currentPathBeingCreated.waypoints = new List<Vector2Int>();
         }
 
-        foreach (ToolGridCell cell in enemyPaths[index].waypoints)
+        foreach (Vector2Int waypoint in enemyPaths[index].waypoints)
         {
+            ToolGridCell cell = ToolReferencerObject.Instance.toolGameGrid.ReturnCellsArray()[waypoint.x, waypoint.y];
+
             cell.DisplayAsWaypoint(show);
         }
 
         yield return new WaitForSeconds(0.5f);
 
-        foreach (ToolGridCell cell in currentPathBeingCreated.waypoints)
+        foreach (Vector2Int waypoint in currentPathBeingCreated.waypoints)
         {
+            ToolGridCell cell = ToolReferencerObject.Instance.toolGameGrid.ReturnCellsArray()[waypoint.x, waypoint.y];
+
             waypointTransforms.Add(cell.ReturnSpawnedWaypoint());
         }
 
@@ -144,12 +151,14 @@ public class ToolEnemySpawnerCell : ToolGridCell
 
     }
 
-    public IEnumerator ClearAllTempData()
+    public IEnumerator ClearAllData()
     {
         if (currentPathBeingCreated.waypoints.Count > 0)
         {
-            foreach (ToolGridCell cell in currentPathBeingCreated.waypoints)
+            foreach (Vector2Int waypoint in currentPathBeingCreated.waypoints)
             {
+                ToolGridCell cell = ToolReferencerObject.Instance.toolGameGrid.ReturnCellsArray()[waypoint.x, waypoint.y];
+
                 cell.DisplayAsWaypoint(false);
             }
 
@@ -158,7 +167,7 @@ public class ToolEnemySpawnerCell : ToolGridCell
 
         waypointTransforms.Clear();
         currentPathBeingCreated = new EnemyPath();
-        currentPathBeingCreated.waypoints = new List<ToolGridCell>();
+        currentPathBeingCreated.waypoints = new List<Vector2Int>();
     }
 
     public IEnumerator DeleteSpecificPath(int index)
@@ -168,6 +177,11 @@ public class ToolEnemySpawnerCell : ToolGridCell
         yield return StartCoroutine(DisplaySpecificPath(false, index));
 
         enemyPaths.Remove(enemyPaths[index]);
+    }
+
+    public List<EnemyPath> ReturnEnemyPaths()
+    {
+        return enemyPaths;
     }
 
     [ContextMenu("Rotate now!")]

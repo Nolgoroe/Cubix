@@ -35,7 +35,7 @@ public class LevelCreationToolControls : MonoBehaviour
     [SerializeField] private int currentBuildingIndex;
     [SerializeField] private List<BuildingsSO> buildingsList;
     [SerializeField] private List<GameObject> rotatingBuildingList;
-    [SerializeField] private BuildingsSO.Dir currentDir = BuildingsSO.Dir.Down;
+    [SerializeField] private Dir currentBuildingDir = Dir.Down;
     [SerializeField] private Transform rotatingBuildingParent;
 
     private BuildingsSO CurrentBuildingSelected;
@@ -131,6 +131,7 @@ public class LevelCreationToolControls : MonoBehaviour
             currentCellHovered.ChangeCellColor(ToolReferencerObject.Instance.levelCreationToolSO.ConvertTypeToColor(TypeOfCell.None));
         }
     }
+
     private void BuildModeControls()
     {
         if (Input.GetMouseButtonDown(0))
@@ -139,8 +140,8 @@ public class LevelCreationToolControls : MonoBehaviour
 
             if (CurrentBuildingSelected.snapToGrid)
             {
-                List<Vector2Int> gridPosList = CurrentBuildingSelected.GetGridPositionList(currentCellHovered.ReturnPosInGridArray(), currentDir);
-                ToolGridCell[,] temp2DArray = ToolReferencerObject.Instance.toolGameGrid.ReturnCellsArray();
+                List<Vector2Int> gridPosList = CurrentBuildingSelected.GetGridPositionList(currentCellHovered.ReturnPosInGridArray(), currentBuildingDir);
+                ToolGridCell[,] local2DArray = ToolReferencerObject.Instance.toolGameGrid.ReturnCellsArray();
 
                 Vector2 gridWidthHeight = ToolReferencerObject.Instance.toolGameGrid.ReturnGridWidthAndHeight();
 
@@ -152,14 +153,14 @@ public class LevelCreationToolControls : MonoBehaviour
                     {
                         return;
                     }
-                    if (temp2DArray[gridPos.x, gridPos.y].ReturnIsOccupied())
+                    if (local2DArray[gridPos.x, gridPos.y].ReturnIsOccupied())
                     {
                         return;
                     }
                 }
 
 
-                Vector2 rotationOffset = CurrentBuildingSelected.GetRotationOffset(currentDir); // gets the amount on X and Y that the object needs to move according to it's dircetion and size
+                Vector2 rotationOffset = CurrentBuildingSelected.GetRotationOffset(currentBuildingDir); // gets the amount on X and Y that the object needs to move according to it's dircetion and size
                 Vector3 poisitonToAddByRotationOffset = new Vector3(rotationOffset.x, 0, rotationOffset.y); //we only move objects on X and Z.
                 Vector3 correctionToCellPivot = new Vector3(-0.5f, 0, -0.5f); // we want to force the pivot of the building to be on the EDGE of a cell. this fixes rotations into slots.
 
@@ -173,16 +174,19 @@ public class LevelCreationToolControls : MonoBehaviour
                     CurrentBuildingSelected.buildingPrefab.transform.position +
                     poisitonToAddByRotationOffset;
 
-                PlacedObject placedObject = PlacedObject.Create(buildingPos, currentCellHovered.ReturnPosInGridArray(), currentDir, CurrentBuildingSelected, buildingParent);
+                PlacedObject placedObject = PlacedObject.Create(buildingPos, currentCellHovered.ReturnPosInGridArray(), currentBuildingDir, CurrentBuildingSelected, buildingParent);
 
                 foreach (Vector2Int gridPos in gridPosList)
                 {
-                    temp2DArray[gridPos.x, gridPos.y].PopulateGridCell(placedObject);
+                    local2DArray[gridPos.x, gridPos.y].PopulateGridCell(placedObject);
                 }
+
+                ToolReferencerObject.Instance.toolGameGrid.AddRemoveToPlacedObjectList(true, placedObject);
             }
             else
             {
-                PlacedObject placedObject = PlacedObject.Create(MouseOverWorldNormal(), currentDir, CurrentBuildingSelected, buildingParent);
+                PlacedObject placedObject = PlacedObject.Create(MouseOverWorldNormal(), currentBuildingDir, CurrentBuildingSelected, buildingParent);
+                ToolReferencerObject.Instance.toolGameGrid.AddRemoveToPlacedObjectList(true, placedObject);
             }
         }
         if (Input.GetMouseButtonDown(1))
@@ -190,6 +194,8 @@ public class LevelCreationToolControls : MonoBehaviour
             PlacedObject placedObject = currentCellHovered.ReturnPlacedObject();
             if (placedObject)
             {
+                ToolReferencerObject.Instance.toolGameGrid.AddRemoveToPlacedObjectList(false, placedObject);
+
                 placedObject.DestroySelf();
 
                 List<Vector2Int> gridPosList = placedObject.GetGridPositionsList();// this will return all of the cells that are part of this building by it's width and height
@@ -203,8 +209,8 @@ public class LevelCreationToolControls : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.R))
         {
-            currentDir = BuildingsSO.GetNextDir(currentDir);
-            Debug.Log(currentDir);
+            currentBuildingDir = BuildingsSO.GetNextDir(currentBuildingDir);
+            Debug.Log(currentBuildingDir);
         }
         if(Input.GetKeyDown(KeyCode.T))
         {
@@ -229,7 +235,7 @@ public class LevelCreationToolControls : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            currentSpawnerSelected.AddToEnemyPath(currentCellHovered);
+            currentSpawnerSelected.AddToEnemyPath(currentCellHovered, currentCellHovered.ReturnPosInGridArray());
         }
         if (Input.GetMouseButtonDown(1))
         {
@@ -367,9 +373,9 @@ public class LevelCreationToolControls : MonoBehaviour
     {
         return currentCellHovered;
     }
-    public BuildingsSO.Dir ReturnCurrentDir()
+    public Dir ReturnCurrentDir()
     {
-        return currentDir;
+        return currentBuildingDir;
     }
 
 }
