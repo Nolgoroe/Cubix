@@ -189,6 +189,8 @@ public class LevelCreationToolUI : MonoBehaviour
             PrefabUtility.SaveAsPrefabAsset(ToolReferencerObject.Instance.toolGameGrid.gameObject, path);
         }
 
+        CallDisplaySystemMessage("Level has been saved");
+
         PopupateLevelPrefabList();
     }
 #endif
