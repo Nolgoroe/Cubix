@@ -60,6 +60,7 @@ public class GridCell : MonoBehaviour
     {
         return occupiedByTower;
     }
+
     public void SetAsOccupied(GameObject objectToPlace)
     {
         objectOnCell = objectToPlace;
@@ -67,6 +68,7 @@ public class GridCell : MonoBehaviour
 
         occupiedByTower = true; // temp here
     }
+
     public void EmptyCell()
     {
         if(objectOnCell)

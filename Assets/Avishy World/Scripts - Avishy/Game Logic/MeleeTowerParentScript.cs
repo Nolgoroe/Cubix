@@ -30,6 +30,41 @@ public class MeleeTowerParentScript : TowerBaseParent
         }
     }
 
+    private void SpawnTroop()
+    {
+        if (connectedPathCells.Count <= 0) return;
+
+        int randomIndex = 0;
+        float randomPosValueX = UnityEngine.Random.Range(-0.3f, 0.3f); //temp hardcoded
+        float randomPosValueZ = UnityEngine.Random.Range(-0.3f, 0.3f); //temp hardcoded
+        Vector3 randomPos = new Vector3(randomPosValueX, 0.25f, randomPosValueZ);
+
+        if (connectedPathCells.Count >= 0)
+        {
+            randomIndex = UnityEngine.Random.Range(0, connectedPathCells.Count);
+
+            GameObject go = Instantiate(troopPrefab, connectedPathCells[randomIndex].transform.position + randomPos, Quaternion.identity);
+
+            TowerTroop troop;
+            go.TryGetComponent<TowerTroop>(out troop);
+
+            if (troop)
+            {
+                troop.InitTroopData(this);
+            }
+        }
+
+        currentNumOfTroops++;
+    }
+
+
+
+
+
+
+
+
+
     public override void InitTowerData(Vector2Int positionOfCell)
     {
         currentCellOnPos = positionOfCell;
@@ -56,33 +91,6 @@ public class MeleeTowerParentScript : TowerBaseParent
                 }
             }
         }
-    }
-
-    private void SpawnTroop()
-    {
-        if (connectedPathCells.Count <= 0) return;
-        
-        int randomIndex = 0;
-        float randomPosValueX = UnityEngine.Random.Range(-0.3f, 0.3f); //temp hardcoded
-        float randomPosValueZ = UnityEngine.Random.Range(-0.3f, 0.3f); //temp hardcoded
-        Vector3 randomPos = new Vector3(randomPosValueX, 0.25f, randomPosValueZ);
-
-        if (connectedPathCells.Count >= 0)
-        {
-            randomIndex = UnityEngine.Random.Range(0, connectedPathCells.Count);
-
-            GameObject go = Instantiate(troopPrefab, connectedPathCells[randomIndex].transform.position + randomPos, Quaternion.identity);
-
-            TowerTroop troop;
-            go.TryGetComponent<TowerTroop>(out troop);
-
-            if(troop)
-            {
-                troop.InitTroopData(this);
-            }
-        }
-
-        currentNumOfTroops++;
     }
 
     public void LoseTroop()

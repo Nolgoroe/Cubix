@@ -78,7 +78,7 @@ public class GridManager : MonoBehaviour
 
 
 
-    public GridCell ReturnCellAtIndex(Vector2Int vector)
+    public GridCell ReturnCellFromList(Vector2Int vector)
     {
         int cellToSwapIndex = gameGridCellsList.IndexOf(gameGridCellsList.Where(x => x.ReturnPositionInGridArray() == vector).FirstOrDefault());
 
@@ -110,6 +110,7 @@ public class GridManager : MonoBehaviour
     {
         gameGridCellsList.Add(cell);
     }
+
 
     public void CopyOtherGrid(ToolGameGrid toolGameGrid)
     {
