@@ -15,7 +15,7 @@ MonoBehaviour:
   waves:
   - numOfEnemies: 0
     delayBetweenEnemies: 0
-    delayBetweenWaves: 15
+    delayBetweenWaves: 5
     enemyPrefab: {fileID: 0}
   - numOfEnemies: 2
     delayBetweenEnemies: 3

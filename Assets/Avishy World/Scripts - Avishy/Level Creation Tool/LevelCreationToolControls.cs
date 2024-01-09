@@ -258,7 +258,8 @@ public class LevelCreationToolControls : MonoBehaviour
                 currentTypeOfCellSelected = TypeOfCell.Waypoints;
                 isDrawingWaypoints = true;
 
-                ///start new path here.
+                //Set the amount of waypoints text here.
+                ToolReferencerObject.Instance.toolUI.DisplayAmountOfPathsOnSpawner(currentSpawnerSelected.ReturnEnemyPaths().Count);
                 break;
             case TypeOfCell.Obstacle:
                 isDrawingWaypoints = false;

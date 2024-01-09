@@ -26,6 +26,7 @@ public class LevelCreationToolUI : MonoBehaviour
     [Header("Waypoints")]
     [SerializeField] TMP_InputField inputWaypointIndex;
     [SerializeField] Button deleteWaypointsButton;
+    [SerializeField] TMP_Text amountOfWaypoints;
 
     [Header("Level Data")]
     [SerializeField] TMP_Dropdown dropDownLevelList;
@@ -33,6 +34,7 @@ public class LevelCreationToolUI : MonoBehaviour
     [Header("General")]
     [SerializeField] TMP_InputField levelName;
     [SerializeField] string decidedLevelName;
+    [SerializeField] TMP_Text systemText;
 
     [Header("Build Mode")]
     [SerializeField] Toggle inBuildModeToggle;
@@ -41,6 +43,8 @@ public class LevelCreationToolUI : MonoBehaviour
     {
         PopupateCellTypesDropdownList();
         PopupateLevelPrefabList();
+
+        StartCoroutine(DisplaySystemMessage("Welcome to our level creation tool! have fun!"));
     }
 
     public void Dropdown_IndexChangedCellType()
@@ -139,6 +143,24 @@ public class LevelCreationToolUI : MonoBehaviour
         levelName.text = "";
     }
 
+    public void CallDisplaySystemMessage(string message)
+    {
+        StartCoroutine(DisplaySystemMessage(message));
+    }
+    private IEnumerator DisplaySystemMessage(string message)
+    {
+        systemText.text = message;
+        systemText.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(3);
+        systemText.gameObject.SetActive(false);
+
+    }
+    public void DisplayAmountOfPathsOnSpawner(int amount)
+    {
+        amountOfWaypoints.text = "Amount of waypoint lists: " + amount.ToString();
+    }
+
     public void CallCreatePrefabFromGridTool()
     {
         StartCoroutine(CreatePrefabFromGridTool());
@@ -147,6 +169,13 @@ public class LevelCreationToolUI : MonoBehaviour
 #if UNITY_EDITOR
     public IEnumerator CreatePrefabFromGridTool()
     {
+        if (decidedLevelName == "")
+        {
+            Debug.LogError("No Level Name");
+            StartCoroutine(DisplaySystemMessage("Must set a level name before saving!"));
+            yield break;
+        }
+
         ToolReferencerObject.Instance.toolGameGrid.CleanupBeforePrefab();
         yield return new WaitForSeconds(2); //VERY TEMP HARDCODED
 
@@ -154,16 +183,13 @@ public class LevelCreationToolUI : MonoBehaviour
         string[] paths = new string[] { pathToLevelToolPrefabFolder + levelName,
                                         pathToGameLevelPrefabFolder + levelName };
 
-        if(decidedLevelName == "")
-        {
-            Debug.LogError("No Level Name");
-            yield break;
-        }
 
         foreach (string path in paths)
         {
             PrefabUtility.SaveAsPrefabAsset(ToolReferencerObject.Instance.toolGameGrid.gameObject, path);
         }
+
+        CallDisplaySystemMessage("Level has been saved");
 
         PopupateLevelPrefabList();
     }

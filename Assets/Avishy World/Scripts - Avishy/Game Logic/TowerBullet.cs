@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class TowerBullet : MonoBehaviour
 {
+    //this might turn to a parent script for any and all "tower bullets" in the future for different towers that require differnt bullets
+
     [SerializeField] Transform currentTarget;
 
     [SerializeField] float speed = 10;

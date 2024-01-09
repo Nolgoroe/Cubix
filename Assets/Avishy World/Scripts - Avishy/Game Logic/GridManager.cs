@@ -98,6 +98,10 @@ public class GridManager : MonoBehaviour
     {
         return enemySpawnerCells;
     }
+    public Vector2Int ReturnWidthHeight()
+    {
+        return new Vector2Int(gridWidth, gridHeight);
+    }
 
 
 

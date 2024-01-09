@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerParentScript : MonoBehaviour
+public class RangeTowerParentScript : TowerBaseParent
 {
     [Header ("Live data")]
     [SerializeField] private Transform currentTarget;
@@ -11,15 +11,15 @@ public class TowerParentScript : MonoBehaviour
     [Header("Preset Data")] // this is temp - might be scriptable object
     [SerializeField] private float range = 15;
     [SerializeField] private float rotationSpeed = 15;
-    [SerializeField] private float fireRate = 1;
-    [SerializeField] private float fireCountDown = 0;
+    [SerializeField] protected float fireRate = 1;
+    [SerializeField] protected float fireCountDown = 0;
     [SerializeField] private Transform partToRotate;
     [SerializeField] private LayerMask enemyLayerMask;
-    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] protected GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
 
 
-    private void Update()
+    protected virtual void Update()
     {
         UpdateTarget();
         if (currentTarget == null) return;
@@ -83,6 +83,10 @@ public class TowerParentScript : MonoBehaviour
         }
     }
 
+    public override void InitTowerData(Vector2Int positionOfCell)
+    {
+        currentCellOnPos = positionOfCell;
+    }
 
     private void OnDrawGizmosSelected()
     {
