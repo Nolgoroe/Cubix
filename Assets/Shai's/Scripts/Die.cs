@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public enum DieElement { Water, Fire, Poison }
 
+[RequireComponent(typeof(Rigidbody), typeof(MeshCollider))]
 public class Die : MonoBehaviour
 {
     public UnityEvent OnRollStart;
