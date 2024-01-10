@@ -52,33 +52,9 @@ public class GameGridControls : MonoBehaviour
         {
             if(!currentCellHovered.ReturnIsOccipied())
             {
-                TowerBaseParent towerSpawned;
+                if (!CheckCanPlaceTowerOnCell()) return;
 
-                currentTowerPrefab.TryGetComponent<TowerBaseParent>(out towerSpawned);
-
-                if (currentCellHovered.ReturnCellTypeColor() != CellTypeColor.Neutral &&
-                    currentCellHovered.ReturnCellTypeColor() != towerSpawned.ReturnCellColorType())
-                {
-                    return;
-                }
-
-                //this is where we will run checks by towerType (range/Melee) to see if we can place that tower there
-                // or if we have specific slots, we don't need this step.
-
-                Vector3 cellpos = currentCellHovered.transform.position;
-
-                Vector3 pos = new Vector3(cellpos.x, cellpos.y + 0.5f, cellpos.z); // temp here
-
-                GameObject go = Instantiate(currentTowerPrefab, pos, Quaternion.identity);
-
-                go.TryGetComponent<TowerBaseParent>(out towerSpawned);
-
-                if(towerSpawned)
-                {
-                    towerSpawned.InitTowerData(currentCellHovered.ReturnPositionInGridArray());
-                }
-
-                currentCellHovered.SetAsOccupied(go);
+                InstantiateTower();
             }
         }
 
@@ -89,6 +65,39 @@ public class GameGridControls : MonoBehaviour
                 currentCellHovered.EmptyCell();
             }
         }
+    }
+
+    private bool CheckCanPlaceTowerOnCell()
+    {
+        TowerBaseParent towerSpawned;
+
+        currentTowerPrefab.TryGetComponent<TowerBaseParent>(out towerSpawned);
+
+        if (currentCellHovered.ReturnCellTypeColor() != CellTypeColor.Neutral &&
+            currentCellHovered.ReturnCellTypeColor() != towerSpawned.ReturnCellColorType())
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    private void InstantiateTower()
+    {
+        Vector3 cellpos = currentCellHovered.transform.position;
+        Vector3 fixedPos = new Vector3(cellpos.x, cellpos.y + 0.5f, cellpos.z); // temp here
+
+        GameObject go = Instantiate(currentTowerPrefab, fixedPos, Quaternion.identity);
+
+        TowerBaseParent towerSpawned;
+        go.TryGetComponent<TowerBaseParent>(out towerSpawned);
+
+        if (towerSpawned)
+        {
+            towerSpawned.InitTowerData(currentCellHovered.ReturnPositionInGridArray());
+        }
+
+        currentCellHovered.SetAsOccupied(go);
     }
 
     private GridCell MouseOverGridCell()
