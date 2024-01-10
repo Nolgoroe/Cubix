@@ -119,12 +119,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   positionXYInGridArray: {x: 0, y: 0}
+  pathMeshSides: 0
   placedObject: {fileID: 0}
   isOccupied: 1
   cellType: 0
+  currentDir: 0
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
-  spawnedWaypoint: {fileID: 0}
+  slotTypeSpriteRenderer: {fileID: 0}
   renderer: {fileID: 6885064019033257047}
-  cellMat: {fileID: 0}
-  pathMeshSides: 0
+  cellMat: {fileID: 2100000, guid: 8ccbb04e2ba7f8642b14607a0c774177, type: 2}
+  spawnedWaypoint: {fileID: 0}
