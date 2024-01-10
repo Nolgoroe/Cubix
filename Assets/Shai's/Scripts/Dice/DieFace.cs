@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class DieFace : MonoBehaviour
 {
-    public int val;
-    [SerializeField] private SpriteRenderer FaceDisplay;
+    [SerializeField] private SpriteRenderer faceIcon;
+    [SerializeField] private TMP_Text valueText;
     [SerializeField] private ResourceData resource;
     [SerializeField] private BuffData buff;
 
@@ -19,10 +20,11 @@ public class DieFace : MonoBehaviour
         resource = _resource;
     }
 
-    public void SetResource(ResourceType type, int value)
+    public void SetResource(ResourceType type, int value, Sprite icon)
     {
         resource.Type = type;
         resource.Value = value;
+        resource.Icon = icon;
     }
 
     public void SetBuff(BuffData _buff)
@@ -30,10 +32,23 @@ public class DieFace : MonoBehaviour
         buff = _buff;
     }
 
-    public void SetBuff(BuffType type, int value)
+    public void SetBuff(BuffType type, int value, Sprite icon)
     {
         buff.Type = type;
         buff.Value = value;
+        buff.Icon = icon;
+    }
+
+    public void DisplayBuff()
+    {
+        faceIcon.sprite = buff.Icon;
+        valueText.text = "+" + buff.Value.ToString();
+    }
+
+    public void DisplayResource()
+    {
+        faceIcon.sprite = resource.Icon;
+        valueText.text = "+" + resource.Value.ToString();
     }
 
 }

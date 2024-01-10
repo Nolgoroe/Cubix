@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 
 public enum DieElement { Water, Fire, Poison }
 
@@ -10,6 +11,8 @@ public class Die : MonoBehaviour
 {
     public UnityEvent OnRollStart;
     public UnityEvent OnRollEnd;
+    public bool isLocked;
+    [SerializeField] private TMP_Text resText;
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private List<DieFace> faces;
     [SerializeField] private DieElement element;
@@ -40,7 +43,7 @@ public class Die : MonoBehaviour
             {
                 _stagnantTimer += Time.deltaTime;
 
-                if (_stagnantTimer >= _reqStagnantTime)
+                if (_stagnantTimer >= _reqStagnantTime)//if die stands still for more than x seconds apply rndRoll logic
                 {
                     _isMoving = false;
                     OnRollEnd.Invoke();
@@ -79,7 +82,9 @@ public class Die : MonoBehaviour
                 topFace = face;
             }
         }
-        Debug.Log(topFace.val);
+        resText.text = ("D" + faces.Count +": Resource: " + 
+            topFace.GetFaceValue().Resource.Value + topFace.GetFaceValue().Resource.Type.ToString() + 
+            ", Buff: " + topFace.GetFaceValue().Buff.Value + topFace.GetFaceValue().Buff.Type.ToString());
         return topFace.GetFaceValue();
     }
 
@@ -87,5 +92,24 @@ public class Die : MonoBehaviour
     {
         return faces.ToArray();
     }
+
+    [ContextMenu("DisplayBuffs")]
+    public void DisplayBuffs()
+    {
+        foreach (var face in faces)
+        {
+            face.DisplayBuff();
+        }
+    }
+
+    [ContextMenu("DisplayResources")]
+    public void DisplayResources()
+    {
+        foreach (var face in faces)
+        {
+            face.DisplayResource();
+        }
+    }
+
 }
 

@@ -182,16 +182,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ad0f040987029840a65521cf2cc0a79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  val: 5
-  FaceDisplay: {fileID: 0}
+  faceIcon: {fileID: 6356400990233392719}
+  valueText: {fileID: 4009381229489638499}
   resource:
     Type: 0
     Value: 0
-    FrameMaterial: {fileID: 0}
+    Icon: {fileID: -1631459450, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   buff:
     Type: 0
     Value: 0
-    Icon: {fileID: 0}
+    Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
 --- !u!1 &655531495064444268
 GameObject:
   m_ObjectHideFlags: 0
@@ -1250,16 +1250,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ad0f040987029840a65521cf2cc0a79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  val: 6
-  FaceDisplay: {fileID: 0}
+  faceIcon: {fileID: 9168579827646714913}
+  valueText: {fileID: 5669300244147977402}
   resource:
     Type: 0
     Value: 0
-    FrameMaterial: {fileID: 0}
+    Icon: {fileID: -1631459450, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   buff:
     Type: 0
     Value: 0
-    Icon: {fileID: 0}
+    Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
 --- !u!1 &2321158175463363880
 GameObject:
   m_ObjectHideFlags: 0
@@ -1562,16 +1562,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ad0f040987029840a65521cf2cc0a79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  val: 7
-  FaceDisplay: {fileID: 0}
+  faceIcon: {fileID: 7566351830366706546}
+  valueText: {fileID: 7374464877290801249}
   resource:
     Type: 0
     Value: 0
-    FrameMaterial: {fileID: 0}
+    Icon: {fileID: -1631459450, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   buff:
     Type: 0
     Value: 0
-    Icon: {fileID: 0}
+    Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
 --- !u!1 &2570921261926590831
 GameObject:
   m_ObjectHideFlags: 0
@@ -2264,16 +2264,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ad0f040987029840a65521cf2cc0a79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  val: 3
-  FaceDisplay: {fileID: 0}
+  faceIcon: {fileID: 9221461808989676429}
+  valueText: {fileID: 5404794083262310970}
   resource:
     Type: 0
     Value: 0
-    FrameMaterial: {fileID: 0}
+    Icon: {fileID: -1631459450, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   buff:
     Type: 0
     Value: 0
-    Icon: {fileID: 0}
+    Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
 --- !u!1 &3860539470573900344
 GameObject:
   m_ObjectHideFlags: 0
@@ -3155,16 +3155,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ad0f040987029840a65521cf2cc0a79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  val: 8
-  FaceDisplay: {fileID: 0}
+  faceIcon: {fileID: 4410111300552001943}
+  valueText: {fileID: 6317112617123233666}
   resource:
     Type: 0
     Value: 0
-    FrameMaterial: {fileID: 0}
+    Icon: {fileID: -1631459450, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   buff:
     Type: 0
     Value: 0
-    Icon: {fileID: 0}
+    Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
 --- !u!1 &5964086922060593029
 GameObject:
   m_ObjectHideFlags: 0
@@ -3635,16 +3635,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ad0f040987029840a65521cf2cc0a79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  val: 4
-  FaceDisplay: {fileID: 0}
+  faceIcon: {fileID: 8564760579867130333}
+  valueText: {fileID: 8090824075328234258}
   resource:
     Type: 0
     Value: 0
-    FrameMaterial: {fileID: 0}
+    Icon: {fileID: -1631459450, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   buff:
     Type: 0
     Value: 0
-    Icon: {fileID: 0}
+    Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
 --- !u!1 &6573715656492814182
 GameObject:
   m_ObjectHideFlags: 0
@@ -4250,16 +4250,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ad0f040987029840a65521cf2cc0a79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  val: 2
-  FaceDisplay: {fileID: 0}
+  faceIcon: {fileID: 2910586079299681350}
+  valueText: {fileID: 231911684525747476}
   resource:
     Type: 0
     Value: 0
-    FrameMaterial: {fileID: 0}
+    Icon: {fileID: -1631459450, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   buff:
     Type: 0
     Value: 0
-    Icon: {fileID: 0}
+    Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
 --- !u!1 &6895173316381504982
 GameObject:
   m_ObjectHideFlags: 0
@@ -4370,6 +4370,7 @@ MonoBehaviour:
   OnRollEnd:
     m_PersistentCalls:
       m_Calls: []
+  isLocked: 0
   _rb: {fileID: 438417151495276943}
   faces:
   - {fileID: 2971588039562428847}
@@ -4501,16 +4502,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ad0f040987029840a65521cf2cc0a79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  val: 1
-  FaceDisplay: {fileID: 0}
+  faceIcon: {fileID: 6865067999491426837}
+  valueText: {fileID: 7589163067684883694}
   resource:
     Type: 0
     Value: 0
-    FrameMaterial: {fileID: 0}
+    Icon: {fileID: -1631459450, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   buff:
     Type: 0
     Value: 0
-    Icon: {fileID: 0}
+    Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
 --- !u!1 &7106071339389030683
 GameObject:
   m_ObjectHideFlags: 0

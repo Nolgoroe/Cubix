@@ -37,24 +37,27 @@ public class DieRoller : MonoBehaviour
         Roll();
     }
 
-    private void Roll()
+    public void Roll()
     {
-        die.OnRollStart.Invoke();
-        die.RB.ResetCenterOfMass();
-        StartCoroutine(ChangeMassAtTop());
-        die.transform.position += Vector3.up * tpHeight;
-        Vector3 throwVec = new Vector3(0, throwForce, 0);
+        if (!die.isLocked)
+        {
+            die.OnRollStart.Invoke();
+            die.RB.ResetCenterOfMass();
+            StartCoroutine(ChangeMassAtTop());//Change mass only on apex of throw to look more organic
+            die.transform.position += Vector3.up * tpHeight;
+            Vector3 throwVec = new Vector3(0, throwForce, 0);
 
-        Vector3 rotForce = new Vector3();
-        rotForce.x = Random.Range(rotationForceMin.x, rotationForceMax.x);
-        rotForce.y = Random.Range(rotationForceMin.y, rotationForceMax.y);
-        rotForce.z = Random.Range(rotationForceMin.z, rotationForceMax.z);
+            Vector3 rotForce = new Vector3();
+            rotForce.x = Random.Range(rotationForceMin.x, rotationForceMax.x);
+            rotForce.y = Random.Range(rotationForceMin.y, rotationForceMax.y);
+            rotForce.z = Random.Range(rotationForceMin.z, rotationForceMax.z);
 
-        die.RB.AddForce(throwVec, ForceMode.Impulse);
-        die.RB.AddTorque(rotForce, ForceMode.Impulse);
+            die.RB.AddForce(throwVec, ForceMode.Impulse);
+            die.RB.AddTorque(rotForce, ForceMode.Impulse);
+        }
     }
 
-    private void Contraint()
+    private void Contraint()//constraint selected axis's to a range within origin position
     {
         Vector3 newPos = transform.position;
 
@@ -87,7 +90,7 @@ public class DieRoller : MonoBehaviour
 
     private IEnumerator ChangeMassAtTop()
     {
-        yield return new WaitUntil(()=> die.RB.velocity.y < 0 && die.IsMoving);
+        yield return new WaitUntil(() => die.RB.velocity.y < 0 && die.IsMoving);
         die.RB.centerOfMass = massCenter;
         Debug.Log("change mass");
     }

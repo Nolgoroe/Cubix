@@ -9,5 +9,5 @@ public class ResourceData
 {
     public ResourceType Type;
     public int Value;
-    public Material FrameMaterial;
+    public Sprite Icon;
 }
