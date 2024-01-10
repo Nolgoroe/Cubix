@@ -26,6 +26,8 @@ public class EnemyParent : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.gameSpeed == 0) return;
+
         UpdateTarget();
 
         if (currentAttackCooldown > 0)
@@ -43,6 +45,8 @@ public class EnemyParent : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (GameManager.gameSpeed == 0) return;
+
         if (!ignoresTroops && currentTarget) return;
 
         Vector3 direction = target.position - transform.position;

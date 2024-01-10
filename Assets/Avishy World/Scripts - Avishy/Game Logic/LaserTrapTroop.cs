@@ -15,6 +15,8 @@ public class LaserTrapTroop : TowerTroop
 
     protected override void Update()
     {
+        if (GameManager.gameSpeed == 0) return;
+
         base.Update();
 
         if(currentTarget)

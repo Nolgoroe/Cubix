@@ -29,4 +29,9 @@ public class UIManager : MonoBehaviour
     {
         towerText.text = text;
     }
+
+    public void ChangeGameSpeed(int speed)
+    {
+        GameManager.Instance.gameSpeedTemp = speed;
+    }
 }
