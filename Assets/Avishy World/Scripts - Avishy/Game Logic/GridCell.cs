@@ -9,6 +9,8 @@ public class GridCell : MonoBehaviour
     [SerializeField] private TypeOfCell cellType;
     [SerializeField] private Color hoverColor;
     [SerializeField] private Color startColor;
+    [SerializeField] private SpriteRenderer slotTypeSpriteRenderer;
+    [SerializeField] private CellTypeColor cellTypeColor;
 
     [Header("Live Data")]
     [SerializeField] private bool isOccupied;
@@ -52,6 +54,10 @@ public class GridCell : MonoBehaviour
     {
         return cellType;
     }
+    public CellTypeColor ReturnCellTypeColor()
+    {
+        return cellTypeColor;
+    }
     public bool ReturnIsOccipied()
     {
         return isOccupied;
@@ -90,5 +96,18 @@ public class GridCell : MonoBehaviour
         positionXYInGridArray = toolGridCell.ReturnPosInGridArray();
         isOccupied = toolGridCell.ReturnIsOccupied();
         cellType = toolGridCell.ReturnTypeOfCell();
+        cellTypeColor = toolGridCell.ReturnCellTypeColor();
+
+        slotTypeSpriteRenderer = toolGridCell.ReturnSlotTypeSpriteRenderer();
+
+        if (slotTypeSpriteRenderer == null) return;
+
+        slotTypeSpriteRenderer.color = toolGridCell.ReturnTypeOfCellColor();
+        if(cellTypeColor == CellTypeColor.None)
+        {
+            //this means that the cell is not a cell that can accept a tower.. so it's occupied
+            isOccupied = true;
+            slotTypeSpriteRenderer.gameObject.SetActive(false);
+        }
     }
 }

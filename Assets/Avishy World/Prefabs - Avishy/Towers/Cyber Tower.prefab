@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCellOnPos: {x: 0, y: 0}
+  requiredCellColorType: 2
   connectedPathCells: []
   troopPrefab: {fileID: 7708210154099484369, guid: 4bd4c38c9eda12c469279339bd5379f0,
     type: 3}

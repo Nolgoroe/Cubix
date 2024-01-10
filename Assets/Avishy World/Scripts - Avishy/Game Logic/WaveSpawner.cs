@@ -29,6 +29,8 @@ public class WaveSpawner : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.gameSpeed == 0) return;
+
         if (!waveDone || levelComplete) return;
         
         if(currentCountdown <= 0)
@@ -68,6 +70,11 @@ public class WaveSpawner : MonoBehaviour
 
             for (int i = 0; i < waveSO.waves[currentIndexInWave].numOfEnemies; i++)
             {
+                while (GameManager.gameSpeed == 0)
+                {
+                    yield return null;
+                }
+
                 selectedSpawner.CallSpawnEnemy(waveSO.waves[currentIndexInWave].enemyPrefab);
                 yield return new WaitForSeconds(waveSO.waves[currentIndexInWave].delayBetweenEnemies / GameManager.gameSpeed);
             }

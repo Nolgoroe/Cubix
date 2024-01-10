@@ -105,3 +105,14 @@ MonoBehaviour:
   - side: 15
     MeshPathSide: {fileID: 7694086888350655961, guid: 5bf73357a53acd2499ed7085368dac97,
       type: 3}
+  typeOfCellColors:
+  - cellTypeColor: 0
+    color: {r: 0.5723658, g: 0.3120995, b: 0.7971698, a: 1}
+  - cellTypeColor: 1
+    color: {r: 1, g: 0.97682905, b: 0, a: 1}
+  - cellTypeColor: 2
+    color: {r: 0, g: 0.8726415, b: 0.6793055, a: 1}
+  - cellTypeColor: 3
+    color: {r: 0.5424528, g: 0.5424528, b: 0.5424528, a: 1}
+  - cellTypeColor: 4
+    color: {r: 1, g: 1, b: 1, a: 1}

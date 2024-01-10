@@ -15,7 +15,9 @@ public class TowerBullet : MonoBehaviour
     
     void Update()
     {
-        if(currentTarget == null)
+        if (GameManager.gameSpeed == 0) return;
+
+        if (currentTarget == null)
         {
             Destroy(gameObject);
             return;

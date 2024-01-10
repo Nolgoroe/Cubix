@@ -247,6 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCellOnPos: {x: 0, y: 0}
+  requiredCellColorType: 1
   currentTarget: {fileID: 0}
   range: 5
   rotationSpeed: 15
