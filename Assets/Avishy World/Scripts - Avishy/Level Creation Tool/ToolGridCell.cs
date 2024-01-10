@@ -49,12 +49,15 @@ public class ToolGridCell : MonoBehaviour
     [SerializeField] private bool isOccupied;
     [SerializeField] private TypeOfCell cellType;
     [SerializeField] private Dir currentDir = Dir.Down;
+    [SerializeField] private CellTypeColor cellTypeColor;
 
     [Header("Generation Data")]
     [SerializeField] private GameObject waypointPrefab;
     [SerializeField] private GameObject spawnedWaypoint;
-    [SerializeField] private MeshRenderer renderer;
+    [SerializeField] private SpriteRenderer slotTypeSpriteRenderer;
 
+    [Header("Automated Data")]
+    [SerializeField] private MeshRenderer renderer;
     [SerializeField] private Material cellMat;
 
     private void OnValidate()
@@ -63,6 +66,8 @@ public class ToolGridCell : MonoBehaviour
     }
     private void Start()
     {
+        cellTypeColor = CellTypeColor.None;
+
         renderer = GetComponent<MeshRenderer>();
 
         cellMat = renderer.materials[0];
@@ -81,6 +86,27 @@ public class ToolGridCell : MonoBehaviour
     public void ChangeCellColor(Color toChange)
     {
         cellMat.color = toChange;
+    }
+    public void ChangeCellTypeColor(CellTypeColor _cellTypeColor)
+    {
+        cellTypeColor = _cellTypeColor;
+
+        if (_cellTypeColor == CellTypeColor.None) return;
+
+
+        switch (_cellTypeColor)
+        {
+            case CellTypeColor.Purple:
+                break;
+            case CellTypeColor.Yellow:
+                break;
+            case CellTypeColor.Cyan:
+                break;
+            case CellTypeColor.Neutral:
+                break;
+            default:
+                break;
+        }
     }
 
     public void DisplayAsWaypoint(bool isWaypoint)

@@ -10,7 +10,16 @@ public enum TypeOfCell
     Obstacle,
     PlayerBase,
     None,
-    Waypoints
+    Waypoints,
+    CellType
+}
+public enum CellTypeColor
+{
+    Purple,
+    Yellow,
+    Cyan,
+    Neutral,
+    None
 }
 
 public class LevelCreationToolControls : MonoBehaviour
@@ -28,8 +37,10 @@ public class LevelCreationToolControls : MonoBehaviour
 
     [Header("Draw Data")]
     [SerializeField] private TypeOfCell currentTypeOfCellSelected;
+    [SerializeField] private CellTypeColor currentCellColorTypeSelected;
     [SerializeField] private bool isDrawingWaypoints;
     [SerializeField] private bool isInBuildMode;
+    [SerializeField] private bool isInDefiningCellTypes;
 
     [Header("Build Mode Data")]
     [SerializeField] private int currentBuildingIndex;
@@ -103,6 +114,10 @@ public class LevelCreationToolControls : MonoBehaviour
             else if(isInBuildMode)
             {
                 BuildModeControls();
+            }
+            else if(isInDefiningCellTypes)
+            {
+                DefiningCellTypeControls();
             }
             else
             {
@@ -242,6 +257,19 @@ public class LevelCreationToolControls : MonoBehaviour
             StartCoroutine(currentSpawnerSelected.RemoveFromEnemyPath(currentCellHovered));
         }
     }
+
+    private void DefiningCellTypeControls()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            currentCellHovered.ChangeCellTypeColor(currentCellColorTypeSelected);
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            currentCellHovered.ChangeCellTypeColor(CellTypeColor.None);
+        }
+    }
     private void MiddileClickOnCell(ToolGridCell cell)
     {
         currentSpawnerSelected = null; //only set spawner when middile clicking a spawner
@@ -319,28 +347,37 @@ public class LevelCreationToolControls : MonoBehaviour
         switch (typeOfCell)
         {
             case TypeOfCell.enemyPath:
-                isDrawingWaypoints = false;
                 break;
             case TypeOfCell.enemySpawner:
-                isDrawingWaypoints = false;
                 break;
             case TypeOfCell.Obstacle:
-                isDrawingWaypoints = false;
                 break;
             case TypeOfCell.PlayerBase:
-                isDrawingWaypoints = false;
                 break;
             case TypeOfCell.None:
-                isDrawingWaypoints = false;
                 break;
             case TypeOfCell.Waypoints:
                 isDrawingWaypoints = true;
+                break;
+            case TypeOfCell.CellType:
+                isInDefiningCellTypes = true;
                 break;
             default:
                 break;
         }
         ToolReferencerObject.Instance.toolUI.SetDropdownToValue((int)currentTypeOfCellSelected);
     }
+
+    public void SetCurrentCellTypeColor(CellTypeColor cellColor)
+    {
+        currentCellColorTypeSelected = cellColor;
+    }
+    public void ResetControlState()
+    {
+        isDrawingWaypoints = false;
+        isInDefiningCellTypes = false;
+    }
+
     public void CallSavePathCreated()
     {
         if (currentSpawnerSelected)
