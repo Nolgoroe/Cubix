@@ -27,7 +27,7 @@ MonoBehaviour:
     delayBetweenWaves: 5.5
     enemyPrefab: {fileID: 2611690900157945380, guid: 7c5d42700ca9c11498a2ba9873f6b8d2,
       type: 3}
-  - numOfEnemies: 50
+  - numOfEnemies: 1000
     delayBetweenEnemies: 0.1
     delayBetweenWaves: 20.5
     enemyPrefab: {fileID: 2611690900157945380, guid: 7c5d42700ca9c11498a2ba9873f6b8d2,

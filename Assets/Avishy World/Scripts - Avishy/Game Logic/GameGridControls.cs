@@ -23,6 +23,8 @@ public class GameGridControls : MonoBehaviour
     private void Start()
     {
         currentTowerPrefab = towerPrefabs[indexInTowersList];
+
+        UIManager.Instance.SetTowerText(currentTowerPrefab.name); //Temp
     }
 
     private void Update()
@@ -36,6 +38,7 @@ public class GameGridControls : MonoBehaviour
             }
             currentTowerPrefab = towerPrefabs[indexInTowersList];
 
+            UIManager.Instance.SetTowerText(currentTowerPrefab.name); //Temp
         }
 
         MouseOverGridCell();

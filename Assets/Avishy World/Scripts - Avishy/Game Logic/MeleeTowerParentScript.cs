@@ -96,6 +96,11 @@ public class MeleeTowerParentScript : TowerBaseParent
     public void LoseTroop()
     {
         currentNumOfTroops--;
+
+        if(currentNumOfTroops < 0)
+        {
+            currentNumOfTroops = 0;
+        }
     }
 
 }
