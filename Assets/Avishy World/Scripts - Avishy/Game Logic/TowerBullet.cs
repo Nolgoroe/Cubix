@@ -51,6 +51,12 @@ public class TowerBullet : MonoBehaviour
         Destroy(gameObject);
     }
 
+
+
+
+
+
+
     public void InitBullet(Transform target)
     {
         currentTarget = target;

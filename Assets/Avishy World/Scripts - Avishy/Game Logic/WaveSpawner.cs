@@ -15,11 +15,12 @@ public class WaveSpawner : MonoBehaviour
     float timeForNextWave = 0;
     float currentCountdown = 0;
 
-    private void Start() //temp
+    private void Start() 
     {
-        currentLevelEnemySpawners = GridManager.Instance.ReturnLevelEnemySpawners();
-        currentIndexInWave = 0;
+        currentLevelEnemySpawners = GridManager.Instance.ReturnLevelEnemySpawners();//temp
+        currentIndexInWave = 0;//temp
 
+        //temp
         timeForNextWave = waveSO.waves[currentIndexInWave].delayBetweenWaves / GameManager.gameSpeed;
         currentCountdown = timeForNextWave;
 

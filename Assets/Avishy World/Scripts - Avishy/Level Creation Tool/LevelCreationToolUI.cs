@@ -17,6 +17,7 @@ public class LevelCreationToolUI : MonoBehaviour
 
     [Header("Drawing")]
     [SerializeField] TMP_Dropdown dropDownCellType;
+    [SerializeField] TMP_Dropdown dropDownCellTypeColor;
 
     [Header("Grid Generation")]
     [SerializeField] TMP_InputField inputHeight;
@@ -43,6 +44,7 @@ public class LevelCreationToolUI : MonoBehaviour
     {
         PopupateCellTypesDropdownList();
         PopupateLevelPrefabList();
+        PopupateCellTypeCellColorDropdownList();
 
         StartCoroutine(DisplaySystemMessage("Welcome to our level creation tool! have fun!"));
     }
@@ -51,12 +53,21 @@ public class LevelCreationToolUI : MonoBehaviour
     {
         int index = dropDownCellType.value;
         TypeOfCell typeOfCell = (TypeOfCell)index;
+        ToolReferencerObject.Instance.controls.ResetControlState();
         ToolReferencerObject.Instance.controls.SetCurrentTypeOfCellSelected(typeOfCell);
     }
+    public void Dropdown_IndexChangedCellTypeColor()
+    {
+        int index = dropDownCellTypeColor.value;
+        CellTypeColor cellTypeColor = (CellTypeColor)index;
+        ToolReferencerObject.Instance.controls.SetCurrentCellTypeColor(cellTypeColor);
+    }
+
     public void SetDropdownToValue(int value)
     {
         dropDownCellType.value = value;
     }
+
     public void UpdateGridSpawnData()
     {
         int height = 0;
@@ -206,10 +217,18 @@ public class LevelCreationToolUI : MonoBehaviour
     {
         ToolReferencerObject.Instance.LoadLevelsToList();
 
-        List<string> namesList = ToolReferencerObject.Instance.levelList.Select(gameObject => gameObject.name).ToList();
+        List<string> nameList = ToolReferencerObject.Instance.levelList.Select(gameObject => gameObject.name).ToList();
 
         dropDownLevelList.ClearOptions();
-        dropDownLevelList.AddOptions(namesList);
+        dropDownLevelList.AddOptions(nameList);
+    }
+
+    private void PopupateCellTypeCellColorDropdownList()
+    {
+        string[] enumName = Enum.GetNames(typeof(CellTypeColor));
+        List<string> nameList = new List<string>(enumName);
+
+        dropDownCellTypeColor.AddOptions(nameList);
     }
 
     public void ToggleBuildModeToggle(bool isOn)

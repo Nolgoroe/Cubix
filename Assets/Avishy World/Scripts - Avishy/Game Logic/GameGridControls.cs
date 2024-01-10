@@ -16,13 +16,15 @@ public class GameGridControls : MonoBehaviour
 
 
 
-
     private Vector3 positionOfMouse;
+
+
 
     private void Start()
     {
         currentTowerPrefab = towerPrefabs[indexInTowersList];
     }
+
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.X))
@@ -35,6 +37,7 @@ public class GameGridControls : MonoBehaviour
             currentTowerPrefab = towerPrefabs[indexInTowersList];
 
         }
+
         MouseOverGridCell();
 
         if (currentCellHovered)

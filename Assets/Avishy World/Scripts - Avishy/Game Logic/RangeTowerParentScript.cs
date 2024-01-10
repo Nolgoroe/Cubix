@@ -83,6 +83,12 @@ public class RangeTowerParentScript : TowerBaseParent
         }
     }
 
+
+
+
+
+
+
     public override void InitTowerData(Vector2Int positionOfCell)
     {
         currentCellOnPos = positionOfCell;

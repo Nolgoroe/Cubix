@@ -38,13 +38,6 @@ public class TowerTroop : MonoBehaviour
 
     }
 
-    //this will need to change to a "type" of towers that can spawn troops, think of a better way,
-    //what will happen if we have another tower except the cyber tower that spawns troops, this can't stay only "CyberTower"
-    public void InitTroopData(MeleeTowerParentScript tower)  
-    {
-        connectedTower = tower;
-    }
-
     private void Attack()
     {
         EnemyParent enemyHit;
@@ -53,18 +46,6 @@ public class TowerTroop : MonoBehaviour
         if (enemyHit)
         {
             enemyHit.RecieveDMG(damage);
-        }
-    }
-
-    public void RecieveDMG(int damage)
-    {
-        health -= damage;
-
-        if(health <= 0)
-        {
-            connectedTower.LoseTroop();
-            Destroy(gameObject);
-            return;
         }
     }
 
@@ -93,6 +74,28 @@ public class TowerTroop : MonoBehaviour
         else
         {
             currentTarget = null;
+        }
+    }
+
+
+
+
+
+
+    public void InitTroopData(MeleeTowerParentScript tower)
+    {
+        connectedTower = tower;
+    }
+
+    public void RecieveDMG(int damage)
+    {
+        health -= damage;
+
+        if (health <= 0)
+        {
+            connectedTower.LoseTroop();
+            Destroy(gameObject);
+            return;
         }
     }
 

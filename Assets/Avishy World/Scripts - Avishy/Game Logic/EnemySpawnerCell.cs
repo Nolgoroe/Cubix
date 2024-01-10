@@ -61,10 +61,6 @@ public class EnemySpawnerCell : GridCell
 
 
 
-    public void CallSpawnEnemy(GameObject enemyPrefab)
-    {
-        SpawnEnemy(enemyPrefab);
-    }
     public void InitWaypointData()
     {
         if (enemyPathcells == null || enemyPathcells.Count == 0)
@@ -76,12 +72,17 @@ public class EnemySpawnerCell : GridCell
 
                 foreach (Vector2Int vector in V2Path.waypoints)
                 {
-                    newPath.pathCells.Add(GridManager.Instance.ReturnCellAtIndex(vector));
+                    newPath.pathCells.Add(GridManager.Instance.ReturnCellFromList(vector));
                 }
 
                 enemyPathcells.Add(newPath);
             }
         }
+    }
+
+    public void CallSpawnEnemy(GameObject enemyPrefab)
+    {
+        SpawnEnemy(enemyPrefab);
     }
 
     public override void CopyDataFromToolCell(ToolGridCell toolGridCell)
