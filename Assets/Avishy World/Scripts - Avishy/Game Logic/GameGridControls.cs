@@ -52,6 +52,16 @@ public class GameGridControls : MonoBehaviour
         {
             if(!currentCellHovered.ReturnIsOccipied())
             {
+                TowerBaseParent towerSpawned;
+
+                currentTowerPrefab.TryGetComponent<TowerBaseParent>(out towerSpawned);
+
+                if (currentCellHovered.ReturnCellTypeColor() != CellTypeColor.Neutral &&
+                    currentCellHovered.ReturnCellTypeColor() != towerSpawned.ReturnCellColorType())
+                {
+                    return;
+                }
+
                 //this is where we will run checks by towerType (range/Melee) to see if we can place that tower there
                 // or if we have specific slots, we don't need this step.
 
@@ -61,7 +71,6 @@ public class GameGridControls : MonoBehaviour
 
                 GameObject go = Instantiate(currentTowerPrefab, pos, Quaternion.identity);
 
-                TowerBaseParent towerSpawned;
                 go.TryGetComponent<TowerBaseParent>(out towerSpawned);
 
                 if(towerSpawned)

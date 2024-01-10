@@ -31,6 +31,12 @@ public struct PathSidesToMesh
     public PathSides side;
     public Mesh MeshPathSide; 
 }
+[Serializable]
+public struct TypeOfCellColorToColor
+{
+    public CellTypeColor cellTypeColor;
+    public Color color; 
+}
 
 [CreateAssetMenu(fileName = "Level Creation Tool", menuName = "ScriptableObjects/LevelCreationToolColors")]
 public class LevelCreationToolSO : ScriptableObject
@@ -39,6 +45,8 @@ public class LevelCreationToolSO : ScriptableObject
     [SerializeField] private List<colorToPrefabCombo> colorToPrefabList = new List<colorToPrefabCombo>();
     [SerializeField] private List<typeToMaterialCombo> typeToMaterialList = new List<typeToMaterialCombo>();
     [SerializeField] private List<PathSidesToMesh> pathSidesToMeshes = new List<PathSidesToMesh>();
+    
+    [SerializeField] private List<TypeOfCellColorToColor> typeOfCellColors = new List<TypeOfCellColorToColor>();
 
     [ContextMenu("Create Number Of Combo's")]
     private void CreateTypeToColorCombos()
@@ -168,6 +176,42 @@ public class LevelCreationToolSO : ScriptableObject
         }
         #endregion
 
+
+    }
+
+    [ContextMenu("Create Cell type Combo's")]
+    private void CreateCellTypeCombos()
+    {
+        #region Cell Types Color To Color
+        List<TypeOfCellColorToColor> localCellTypeColorList = new List<TypeOfCellColorToColor>();
+
+        if (typeOfCellColors.Count > 0)
+        {
+            localCellTypeColorList.AddRange(typeOfCellColors);
+        }
+
+        typeOfCellColors.Clear();
+
+        foreach (CellTypeColor cellTypeColor in Enum.GetValues(typeof(CellTypeColor)))
+        {
+            TypeOfCellColorToColor newCombo = new TypeOfCellColorToColor();
+            newCombo.cellTypeColor = cellTypeColor;
+
+            if (localCellTypeColorList.Count > 0)
+            {
+                foreach (TypeOfCellColorToColor localColorCombo in localCellTypeColorList)
+                {
+                    if (newCombo.cellTypeColor == localColorCombo.cellTypeColor)
+                    {
+                        newCombo.color = localColorCombo.color;
+                        newCombo.color.a = 1;
+                    }
+                }
+            }
+
+            typeOfCellColors.Add(newCombo);
+        }
+        #endregion
     }
 
     public Color ConvertTypeToColor(TypeOfCell typeToSearch)
@@ -193,5 +237,11 @@ public class LevelCreationToolSO : ScriptableObject
         PathSidesToMesh foundCombo = pathSidesToMeshes.Where(combo => combo.side == side).FirstOrDefault();
 
         return foundCombo.MeshPathSide;
+    }
+    public Color ReturnColorByCellTypeColor(CellTypeColor cellTypeColor)
+    {
+        TypeOfCellColorToColor foundCombo = typeOfCellColors.Where(combo => combo.cellTypeColor == cellTypeColor).FirstOrDefault();
+
+        return foundCombo.color;
     }
 }

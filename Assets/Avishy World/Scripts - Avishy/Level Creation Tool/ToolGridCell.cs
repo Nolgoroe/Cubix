@@ -53,12 +53,12 @@ public class ToolGridCell : MonoBehaviour
 
     [Header("Generation Data")]
     [SerializeField] private GameObject waypointPrefab;
-    [SerializeField] private GameObject spawnedWaypoint;
     [SerializeField] private SpriteRenderer slotTypeSpriteRenderer;
 
     [Header("Automated Data")]
     [SerializeField] private MeshRenderer renderer;
     [SerializeField] private Material cellMat;
+    [SerializeField] private GameObject spawnedWaypoint;
 
     private void OnValidate()
     {
@@ -89,24 +89,14 @@ public class ToolGridCell : MonoBehaviour
     }
     public void ChangeCellTypeColor(CellTypeColor _cellTypeColor)
     {
+        //slotTypeSpriteRenderer.gameObject.SetActive(false);
         cellTypeColor = _cellTypeColor;
 
-        if (_cellTypeColor == CellTypeColor.None) return;
+        //slotTypeSpriteRenderer.gameObject.SetActive(true);
 
+        Color color = ToolReferencerObject.Instance.levelCreationToolSO.ReturnColorByCellTypeColor(cellTypeColor);
 
-        switch (_cellTypeColor)
-        {
-            case CellTypeColor.Purple:
-                break;
-            case CellTypeColor.Yellow:
-                break;
-            case CellTypeColor.Cyan:
-                break;
-            case CellTypeColor.Neutral:
-                break;
-            default:
-                break;
-        }
+        slotTypeSpriteRenderer.color = color;
     }
 
     public void DisplayAsWaypoint(bool isWaypoint)
@@ -191,6 +181,20 @@ public class ToolGridCell : MonoBehaviour
     public TypeOfCell ReturnTypeOfCell()
     {
         return cellType;
+    }
+    public CellTypeColor ReturnCellTypeColor()
+    {
+        return cellTypeColor;
+    }
+    public Color ReturnTypeOfCellColor()
+    {
+        if (!slotTypeSpriteRenderer) return Color.white;
+        return slotTypeSpriteRenderer.color;
+    }
+    public SpriteRenderer ReturnSlotTypeSpriteRenderer()
+    {
+        if (!slotTypeSpriteRenderer) return null;
+        return slotTypeSpriteRenderer;
     }
 
     #endregion
