@@ -11,10 +11,10 @@ public class ToolGridCell : MonoBehaviour
             case PathSides.left: return 90;
             case PathSides.down: return 0;
             case PathSides.right: return -90;
-            case PathSides.leftUp: return 0;
-            case PathSides.rightUp: return -90;
-            case PathSides.leftDown: return 90;
-            case PathSides.rightDown: return -180;
+            case PathSides.leftUp: return 180;
+            case PathSides.rightUp: return 90;
+            case PathSides.leftDown: return -90;
+            case PathSides.rightDown: return 0;
             case PathSides.leftRightUp: return 90;
             case PathSides.leftUpDown: return 180;
             case PathSides.rightUpDown: return 0;
@@ -120,6 +120,11 @@ public class ToolGridCell : MonoBehaviour
     {
         positionXYInGridArray = otherCell.positionXYInGridArray;
         placedObject = otherCell.placedObject;
+
+
+        cellMat = renderer.materials[0];
+
+        cellMat.color = otherCell.cellMat.color;
         //isOccupied = otherCell.isOccupied; for now this is set initially in prefabs.
     }
 
