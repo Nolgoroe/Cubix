@@ -15,6 +15,7 @@ public class EnemyParent : MonoBehaviour
     [Header("Enemy Stats")]// this is all temp - will be an SO later... maybe
     [SerializeField] private float Speed;
     [SerializeField] private float range = 0.5f;
+    [SerializeField] private float rotationSpeed = 2;
     [SerializeField] private float enemyHealth = 3;
     [SerializeField] protected float attackRate = 1;
     [SerializeField] protected float currentAttackCooldown = 0;
@@ -55,16 +56,29 @@ public class EnemyParent : MonoBehaviour
     {
         if (GameManager.gameSpeed == 0) return;
 
-        if (!ignoresTroops && currentTarget) return;
-
-        Vector3 direction = target.position - transform.position;
-        transform.Translate((direction.normalized * Speed * GameManager.gameSpeed) * Time.fixedDeltaTime, Space.World);
-        transform.position = new Vector3(transform.position.x, 0.25f, transform.position.z);
-
-
-        if (Vector3.Distance(transform.position, target.position) < waypointDetectionRadius)
+        if (!ignoresTroops && currentTarget)
         {
-            GetNextWaypoint();
+            Vector3 direction = currentTarget.position - transform.position;
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+
+            transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * (rotationSpeed * GameManager.gameSpeed));
+
+            return;
+        }
+        else
+        {
+            Vector3 direction = target.position - transform.position;
+            transform.Translate((direction.normalized * Speed * GameManager.gameSpeed) * Time.fixedDeltaTime, Space.World);
+            transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+
+            transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * (rotationSpeed * GameManager.gameSpeed));
+
+            if (Vector3.Distance(transform.position, target.position) < waypointDetectionRadius)
+            {
+                GetNextWaypoint();
+            }
         }
     }
     private void Attack()

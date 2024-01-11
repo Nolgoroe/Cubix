@@ -42,7 +42,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6086178004726300133}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 6855d509715aa0a4e96fc3771b6b411e, type: 3}
 --- !u!23 &2342187938475789888
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7ee69a8e3aa1ff344a2b33d01795298b, type: 2}
+  - {fileID: 2100000, guid: 4cee7a5983b187943adc589b9cb1f084, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -126,8 +126,10 @@ MonoBehaviour:
   isOccupied: 1
   cellType: 3
   currentDir: 0
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
-  spawnedWaypoint: {fileID: 0}
+  slotTypeSpriteRenderer: {fileID: 0}
   renderer: {fileID: 2342187938475789888}
   cellMat: {fileID: 0}
+  spawnedWaypoint: {fileID: 0}

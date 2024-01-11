@@ -1,0 +1,1510 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &11204821214835843
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 466295366588175179}
+  m_Layer: 8
+  m_Name: bishopKnight_index02Right
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &466295366588175179
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11204821214835843}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.021131871, y: 0.018581549, z: 0.7506716, w: 0.660076}
+  m_LocalPosition: {x: -0.1708201, y: 1.7763567e-16, z: -0.0039314018}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6073331295664071467}
+  m_Father: {fileID: 5381261232296049533}
+  m_LocalEulerAnglesHint: {x: -3.1984541, y: -0.4129318, z: 97.3603}
+--- !u!1 &467009365275883359
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8636984540851727040}
+  m_Layer: 8
+  m_Name: bishopKnight_Skirt01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8636984540851727040
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467009365275883359}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.31406796, y: 0.9494005, z: -5.1913575e-16, w: -2.1606394e-15}
+  m_LocalPosition: {x: 0.19508648, y: -0.056565862, z: 5.0993745e-16}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6110790280455472337}
+  m_Father: {fileID: 566763917249219971}
+  m_LocalEulerAnglesHint: {x: 12.739481, y: -173.25078, z: 50.612644}
+--- !u!1 &614768032733832947
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5832827565647373386}
+  m_Layer: 8
+  m_Name: bishopKnight_middle01Right
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5832827565647373386
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614768032733832947}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.56479675, y: 0.8102404, z: -0.08475438, w: -0.13165098}
+  m_LocalPosition: {x: 0.27533305, y: 0.049324043, z: -0.093210235}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5448770033414090935}
+  m_Father: {fileID: 7487699328080045706}
+  m_LocalEulerAnglesHint: {x: -0.65142214, y: -161.99525, z: 69.65542}
+--- !u!1 &751121357974766846
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 443224983077136671}
+  m_Layer: 8
+  m_Name: bishopKnight_Skirt03
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &443224983077136671
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751121357974766846}
+  serializedVersion: 2
+  m_LocalRotation: {x: -1.9174416e-15, y: 1.7877792e-16, z: 0.008301649, w: 0.99996555}
+  m_LocalPosition: {x: -0.53845674, y: 4.973799e-16, z: -2.77223e-16}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3165852765544326882}
+  - {fileID: 4972209988244515543}
+  - {fileID: 1753597838131115582}
+  - {fileID: 3383891737956036413}
+  m_Father: {fileID: 6110790280455472337}
+  m_LocalEulerAnglesHint: {x: -0.7783577, y: 1.3341848, z: 10.1287}
+--- !u!1 &875311514411255015
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 566763917249219971}
+  m_Layer: 8
+  m_Name: bishopKnight_root
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &566763917249219971
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875311514411255015}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.42944258, y: 0.6343525, z: -0.36034516, w: 0.532285}
+  m_LocalPosition: {x: 0.025426337, y: 1.2149503, z: -0.18947156}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8636984540851727040}
+  - {fileID: 507056381255576716}
+  m_Father: {fileID: 2991553795375845980}
+  m_LocalEulerAnglesHint: {x: -2.7953677, y: 93.18314, z: -67.25478}
+--- !u!1 &1091443967677803060
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4197512456916913604}
+  m_Layer: 8
+  m_Name: bishopKnight_lowerArmRight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4197512456916913604
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091443967677803060}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.16901375, y: -0.2274691, z: 0.6196313, w: 0.7319489}
+  m_LocalPosition: {x: -0.6804208, y: 1.4210854e-16, z: -5.684342e-16}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7487699328080045706}
+  m_Father: {fileID: 4976419544325590717}
+  m_LocalEulerAnglesHint: {x: 37.612137, y: -0.7181087, z: 92.25907}
+--- !u!1 &1169109287972163483
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2401037060105493481}
+  m_Layer: 8
+  m_Name: bishopKnight_middle03Right
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2401037060105493481
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169109287972163483}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0.10852294, w: 0.99409395}
+  m_LocalPosition: {x: -0.16726719, y: 0.0011656828, z: -0.008909221}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5448770033414090935}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 12.460353}
+--- !u!1 &1467679262607948930
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2746392580227808766}
+  m_Layer: 8
+  m_Name: bishopKnight_thumb01Right
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2746392580227808766
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467679262607948930}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.36843857, y: 0.67732096, z: 0.51292884, w: 0.3773504}
+  m_LocalPosition: {x: 0.15471725, y: -0.04888744, z: 0.103290565}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5106102095981547813}
+  m_Father: {fileID: 7487699328080045706}
+  m_LocalEulerAnglesHint: {x: -24.631083, y: 102.00177, z: 77.14025}
+--- !u!1 &1697915818969525395
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3440544215804625338}
+  m_Layer: 8
+  m_Name: bishopKnight_ring02Right
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3440544215804625338
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697915818969525395}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.0018909974, y: 0.006908343, z: 0.7399069, w: 0.67267114}
+  m_LocalPosition: {x: -0.1819506, y: -0.003910316, z: -0.00451264}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 412009354557281230}
+  m_Father: {fileID: 5434870174805393079}
+  m_LocalEulerAnglesHint: {x: -0.7315209, y: 0.37221196, z: 95.44782}
+--- !u!1 &1731208778388432085
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8129087635736198103}
+  m_Layer: 8
+  m_Name: bishopKnight_lowerArmLeft
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8129087635736198103
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731208778388432085}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.14143758, y: 0.2181934, z: 0.57692516, w: 0.77430254}
+  m_LocalPosition: {x: -0.6804202, y: 4.796163e-16, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8431658569842644095}
+  m_Father: {fileID: 9017554258642903287}
+  m_LocalEulerAnglesHint: {x: -40.730312, y: -31.527447, z: 135.74588}
+--- !u!1 &2270043776489810819
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5129748260032726719}
+  m_Layer: 8
+  m_Name: bishopKnight_head
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5129748260032726719
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2270043776489810819}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.1185828, y: -0.7091558, z: -0.003858146, w: 0.6949974}
+  m_LocalPosition: {x: -0.1948942, y: -3.141931e-16, z: 2.3358399e-15}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5972311625300416764}
+  m_LocalEulerAnglesHint: {x: 2.5527406, y: -89.32636, z: 3.8860674}
+--- !u!1 &2331364057174590315
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 507056381255576716}
+  m_Layer: 8
+  m_Name: bishopKnight_spine01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &507056381255576716
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2331364057174590315}
+  serializedVersion: 2
+  m_LocalRotation: {x: 7.771561e-16, y: -7.8062556e-17, z: -0.10453627, w: 0.9945211}
+  m_LocalPosition: {x: -0.22498019, y: 0, z: 2.664535e-16}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2926056626078931052}
+  m_Father: {fileID: 566763917249219971}
+  m_LocalEulerAnglesHint: {x: 4.0250053, y: 1.519396, z: -10.365772}
+--- !u!1 &2740119206493395947
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5448770033414090935}
+  m_Layer: 8
+  m_Name: bishopKnight_middle02Right
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5448770033414090935
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2740119206493395947}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0.73433405, w: 0.67878824}
+  m_LocalPosition: {x: -0.1819506, y: -0.003910316, z: -0.00451264}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2401037060105493481}
+  m_Father: {fileID: 5832827565647373386}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 94.501945}
+--- !u!1 &2834814402743519069
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8431658569842644095}
+  m_Layer: 8
+  m_Name: bishopKnight_handLeft
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8431658569842644095
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2834814402743519069}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.15005092, y: -0.12632766, z: -0.27454126, w: 0.9413571}
+  m_LocalPosition: {x: -0.6435743, y: -3.4638957e-16, z: -8.5265126e-16}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1554707475616348759}
+  m_Father: {fileID: 8129087635736198103}
+  m_LocalEulerAnglesHint: {x: 33.361275, y: -51.849144, z: -73.643585}
+--- !u!1 &3415334759543371752
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1753597838131115582}
+  m_Layer: 8
+  m_Name: bishopKnight_SkirtRear
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1753597838131115582
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3415334759543371752}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.091617994, y: 0.7011463, z: 0.091617994, w: 0.7011463}
+  m_LocalPosition: {x: -0.14245562, y: 0.5612413, z: -1.2666542e-15}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 443224983077136671}
+  m_LocalEulerAnglesHint: {x: -14.88919, y: 90, z: 0}
+--- !u!1 &3707128401142855357
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9017554258642903287}
+  m_Layer: 8
+  m_Name: bishopKnight_upperArmLeft
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9017554258642903287
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3707128401142855357}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.20998254, y: -0.18614878, z: 0.06749903, w: 0.9574445}
+  m_LocalPosition: {x: -0.21855882, y: -1.4321877e-16, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8129087635736198103}
+  m_Father: {fileID: 5853163032047120695}
+  m_LocalEulerAnglesHint: {x: 32.89361, y: -36.148952, z: -3.1860662}
+--- !u!1 &3890336031960834179
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7487699328080045706}
+  m_Layer: 8
+  m_Name: bishopKnight_handRight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7487699328080045706
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3890336031960834179}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.07290314, y: 0.9052402, z: -0.4128038, w: -0.06941512}
+  m_LocalPosition: {x: -0.64357305, y: -8.2600594e-16, z: 2.842171e-16}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5381261232296049533}
+  - {fileID: 5832827565647373386}
+  - {fileID: 5434870174805393079}
+  - {fileID: 6042707333379793883}
+  - {fileID: 2746392580227808766}
+  m_Father: {fileID: 4197512456916913604}
+  m_LocalEulerAnglesHint: {x: 39.679993, y: -129.54445, z: 45.20761}
+--- !u!1 &4580661327640279511
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6110790280455472337}
+  m_Layer: 8
+  m_Name: bishopKnight_Skirt02
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6110790280455472337
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4580661327640279511}
+  serializedVersion: 2
+  m_LocalRotation: {x: -2.7930988e-16, y: -1.4614715e-15, z: -0.26424906, w: 0.9644545}
+  m_LocalPosition: {x: -0.46675998, y: 1.7763567e-16, z: 7.637183e-18}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 443224983077136671}
+  m_Father: {fileID: 8636984540851727040}
+  m_LocalEulerAnglesHint: {x: -1.5918193e-13, y: -1.4761041e-13, z: -52.926685}
+--- !u!1 &4817347236467407866
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4976419544325590717}
+  m_Layer: 8
+  m_Name: bishopKnight_upperArmRight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4976419544325590717
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4817347236467407866}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.03187694, y: 0.8330062, z: 0.40996954, w: -0.37014797}
+  m_LocalPosition: {x: 0.1900143, y: -0.0005266288, z: -0.10799126}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4197512456916913604}
+  m_Father: {fileID: 5853163032047120695}
+  m_LocalEulerAnglesHint: {x: -25.79702, y: -124.95768, z: -12.787079}
+--- !u!1 &4988825391841004476
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 916750052815513997}
+  - component: {fileID: 5094061235529114357}
+  m_Layer: 8
+  m_Name: Bishop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &916750052815513997
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4988825391841004476}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2991553795375845980}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!137 &5094061235529114357
+SkinnedMeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4988825391841004476}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 3
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 6dde8a74ee2c4433b62a4c9b27a167f1, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  serializedVersion: 2
+  m_Quality: 0
+  m_UpdateWhenOffscreen: 0
+  m_SkinnedMotionVectors: 1
+  m_Mesh: {fileID: -7929665542823436400, guid: db39d76c3a2c436fa76587eab2502f8f, type: 3}
+  m_Bones:
+  - {fileID: 566763917249219971}
+  - {fileID: 507056381255576716}
+  - {fileID: 2926056626078931052}
+  - {fileID: 5853163032047120695}
+  - {fileID: 9017554258642903287}
+  - {fileID: 8129087635736198103}
+  - {fileID: 8431658569842644095}
+  - {fileID: 1554707475616348759}
+  - {fileID: 4976419544325590717}
+  - {fileID: 4197512456916913604}
+  - {fileID: 7487699328080045706}
+  - {fileID: 5381261232296049533}
+  - {fileID: 466295366588175179}
+  - {fileID: 6073331295664071467}
+  - {fileID: 5832827565647373386}
+  - {fileID: 5448770033414090935}
+  - {fileID: 2401037060105493481}
+  - {fileID: 5434870174805393079}
+  - {fileID: 3440544215804625338}
+  - {fileID: 412009354557281230}
+  - {fileID: 6042707333379793883}
+  - {fileID: 2746392580227808766}
+  - {fileID: 5106102095981547813}
+  - {fileID: 6930001321369250021}
+  - {fileID: 8165475666696067983}
+  - {fileID: 563876632052741657}
+  - {fileID: 5972311625300416764}
+  - {fileID: 5129748260032726719}
+  - {fileID: 8636984540851727040}
+  - {fileID: 6110790280455472337}
+  - {fileID: 443224983077136671}
+  - {fileID: 3165852765544326882}
+  - {fileID: 4972209988244515543}
+  - {fileID: 1753597838131115582}
+  - {fileID: 3383891737956036413}
+  m_BlendShapeWeights: []
+  m_RootBone: {fileID: 566763917249219971}
+  m_AABB:
+    m_Center: {x: -0.29721838, y: -0.44376785, z: 0.10150838}
+    m_Extent: {x: 1.6848795, y: 1.3990197, z: 1.5823447}
+  m_DirtyAABB: 0
+--- !u!1 &5310804858297225747
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 563876632052741657}
+  m_Layer: 8
+  m_Name: bishopKnight_neck02
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &563876632052741657
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5310804858297225747}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.00054702675, y: -0.02468158, z: -0.05841035, w: 0.9979874}
+  m_LocalPosition: {x: -0.19023758, y: -7.105427e-17, z: -1.1990408e-16}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5972311625300416764}
+  m_Father: {fileID: 8165475666696067983}
+  m_LocalEulerAnglesHint: {x: -0.10264392, y: -2.8274217, z: -6.696655}
+--- !u!1 &5436043332505735516
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5106102095981547813}
+  m_Layer: 8
+  m_Name: bishopKnight_thumb02Right
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5106102095981547813
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5436043332505735516}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.06572676, y: -0.08109434, z: 0.7561621, w: 0.64600515}
+  m_LocalPosition: {x: -0.21583097, y: -0.008139599, z: 0.0024690286}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6930001321369250021}
+  m_Father: {fileID: 2746392580227808766}
+  m_LocalEulerAnglesHint: {x: 11.979432, y: -0.31479922, z: 98.95104}
+--- !u!1 &6090778456484450583
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5381261232296049533}
+  m_Layer: 8
+  m_Name: bishopKnight_index01Right
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5381261232296049533
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6090778456484450583}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.5765985, y: 0.8162967, z: -0.019935323, w: -0.028222648}
+  m_LocalPosition: {x: 0.2969968, y: 0.033071764, z: 0.005238868}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 466295366588175179}
+  m_Father: {fileID: 7487699328080045706}
+  m_LocalEulerAnglesHint: {x: 0.0000016394135, y: -176.03967, z: 70.47164}
+--- !u!1 &6324800000764800177
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1946766193176898505}
+  - component: {fileID: 3138051213253633367}
+  - component: {fileID: 8477482338154610203}
+  m_Layer: 8
+  m_Name: Bishop_Spear
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1946766193176898505
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6324800000764800177}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.000030178291, y: -0.0011635353, z: -0.6815092, w: 0.7318086}
+  m_LocalPosition: {x: -1.9895197e-15, y: 1.2967404e-15, z: -6.792788e-14}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6042707333379793883}
+  m_LocalEulerAnglesHint: {x: -0.09339667, y: -0.095216006, z: -85.92337}
+--- !u!33 &3138051213253633367
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6324800000764800177}
+  m_Mesh: {fileID: 8973125684353788261, guid: db39d76c3a2c436fa76587eab2502f8f, type: 3}
+--- !u!23 &8477482338154610203
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6324800000764800177}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 6dde8a74ee2c4433b62a4c9b27a167f1, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &6805847448413804835
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3383891737956036413}
+  m_Layer: 8
+  m_Name: bishopKnight_SkirtRight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3383891737956036413
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6805847448413804835}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7011463, y: 0.091617994, z: -0.7011463, w: 0.091617994}
+  m_LocalPosition: {x: -0.0038344404, y: 0.000057894387, z: -0.423378}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 443224983077136671}
+  m_LocalEulerAnglesHint: {x: 14.88919, y: -90, z: 180}
+--- !u!1 &6863771528009629971
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6930001321369250021}
+  m_Layer: 8
+  m_Name: bishopKnight_thumb03Right
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6930001321369250021
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6863771528009629971}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.022692626, y: -0.017620776, z: 0.27237985, w: 0.96176076}
+  m_LocalPosition: {x: -0.16012079, y: 0.00005022703, z: 0.023707215}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5106102095981547813}
+  m_LocalEulerAnglesHint: {x: 3.0523782, y: -1.2355359, z: 31.59234}
+--- !u!1 &6891297254237860932
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 412009354557281230}
+  m_Layer: 8
+  m_Name: bishopKnight_ring03Right
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &412009354557281230
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6891297254237860932}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0.12958373, w: 0.9915685}
+  m_LocalPosition: {x: -0.16725746, y: 0.0011812189, z: -0.0090879705}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3440544215804625338}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 14.891076}
+--- !u!1 &7539242173392672939
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2926056626078931052}
+  m_Layer: 8
+  m_Name: bishopKnight_spine02
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2926056626078931052
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7539242173392672939}
+  serializedVersion: 2
+  m_LocalRotation: {x: 7.1991024e-17, y: 5.3993268e-17, z: -0.122710414, w: 0.99244255}
+  m_LocalPosition: {x: -0.25439173, y: 4.2632563e-16, z: 7.549516e-16}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5853163032047120695}
+  m_Father: {fileID: 507056381255576716}
+  m_LocalEulerAnglesHint: {x: -0.03357454, y: -1.7221286, z: -13.347027}
+--- !u!1 &7685002961806434221
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4972209988244515543}
+  m_Layer: 8
+  m_Name: bishopKnight_SkirtLeft
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4972209988244515543
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7685002961806434221}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.091617994, y: 0.7011463, z: 0.091617994, w: 0.7011463}
+  m_LocalPosition: {x: -0.0038344213, y: 0.00005801522, z: 0.42337835}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 443224983077136671}
+  m_LocalEulerAnglesHint: {x: -14.88919, y: 90, z: 0}
+--- !u!1 &7749091083004117142
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6073331295664071467}
+  m_Layer: 8
+  m_Name: bishopKnight_index03Right
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6073331295664071467
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7749091083004117142}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0.07691598, w: 0.9970376}
+  m_LocalPosition: {x: -0.15437303, y: 0.0052229087, z: -0.011639541}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 466295366588175179}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 8.822635}
+--- !u!1 &8103367557317463289
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5853163032047120695}
+  m_Layer: 8
+  m_Name: bishopKnight_spine03
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5853163032047120695
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8103367557317463289}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.013948288, y: -0.7921959, z: 0.0115268305, w: 0.6099985}
+  m_LocalPosition: {x: -0.24205898, y: 2.0428103e-16, z: 7.3718807e-16}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8165475666696067983}
+  - {fileID: 9017554258642903287}
+  - {fileID: 4976419544325590717}
+  m_Father: {fileID: 2926056626078931052}
+  m_LocalEulerAnglesHint: {x: 8.334132, y: -103.051125, z: -1.6228124}
+--- !u!1 &8164477123472528948
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5696546587177462340}
+  - component: {fileID: 9117390635836702760}
+  - component: {fileID: 1234600486935157232}
+  m_Layer: 8
+  m_Name: Bishop_Shield
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5696546587177462340
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8164477123472528948}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.103817075, y: -0.050878897, z: -0.7495936, w: 0.6517229}
+  m_LocalPosition: {x: 0.22171852, y: -0.17595865, z: 0.03865919}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1554707475616348759}
+  m_LocalEulerAnglesHint: {x: 3.3848987, y: -12.846928, z: -98.37164}
+--- !u!33 &9117390635836702760
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8164477123472528948}
+  m_Mesh: {fileID: -59476725874219714, guid: db39d76c3a2c436fa76587eab2502f8f, type: 3}
+--- !u!23 &1234600486935157232
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8164477123472528948}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 6dde8a74ee2c4433b62a4c9b27a167f1, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &8425342904263200654
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2991553795375845980}
+  - component: {fileID: 2414494070296813841}
+  - component: {fileID: 8379512747699266837}
+  - component: {fileID: 4343717081267964315}
+  m_Layer: 8
+  m_Name: Melee troop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2991553795375845980
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8425342904263200654}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 916750052815513997}
+  - {fileID: 566763917249219971}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2414494070296813841
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8425342904263200654}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: db39d76c3a2c436fa76587eab2502f8f, type: 3}
+  m_Controller: {fileID: 9100000, guid: 37e6b3e039904a6d99b204b48649d9b5, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8379512747699266837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8425342904263200654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 670813385d340814bafcefcebdab8b2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTarget: {fileID: 0}
+  connectedTower: {fileID: 0}
+  range: 1.3
+  damage: 1
+  health: 3
+  attackRate: 1
+  currentAttackCooldown: 0
+  rotationSpeed: 10
+  enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!135 &4343717081267964315
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8425342904263200654}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.7
+  m_Center: {x: 0, y: 1.31, z: 0}
+--- !u!1 &8670223112830027133
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5434870174805393079}
+  m_Layer: 8
+  m_Name: bishopKnight_ring01Right
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5434870174805393079
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8670223112830027133}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.57394934, y: 0.7821668, z: -0.13385971, w: -0.20218517}
+  m_LocalPosition: {x: 0.23957743, y: 0.037934702, z: -0.18975425}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3440544215804625338}
+  m_Father: {fileID: 7487699328080045706}
+  m_LocalEulerAnglesHint: {x: -1.299971, y: -151.96156, z: 72.21739}
+--- !u!1 &8737489785147149064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3165852765544326882}
+  m_Layer: 8
+  m_Name: bishopKnight_SkirtFront
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3165852765544326882
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8737489785147149064}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.091617994, y: 0.7011463, z: 0.091617994, w: 0.7011463}
+  m_LocalPosition: {x: 0.08800419, y: -0.33540636, z: -2.7394078e-16}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 443224983077136671}
+  m_LocalEulerAnglesHint: {x: -14.88919, y: 90, z: 0}
+--- !u!1 &8783967471879673797
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5972311625300416764}
+  m_Layer: 8
+  m_Name: bishopKnight_neck03
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5972311625300416764
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8783967471879673797}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0012091638, y: 0.01762117, z: -0.034760993, w: 0.99923956}
+  m_LocalPosition: {x: -0.20362735, y: 3.5527136e-17, z: 2.877698e-15}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5129748260032726719}
+  m_Father: {fileID: 563876632052741657}
+  m_LocalEulerAnglesHint: {x: 0.2086462, y: 2.0133119, z: -3.9810748}
+--- !u!1 &9128831394775627298
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8165475666696067983}
+  m_Layer: 8
+  m_Name: bishopKnight_neck01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8165475666696067983
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9128831394775627298}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.08360501, y: 0.79972184, z: 0.065711886, w: 0.59087825}
+  m_LocalPosition: {x: 0.038422797, y: -0.011325403, z: 0.14542352}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 563876632052741657}
+  m_Father: {fileID: 5853163032047120695}
+  m_LocalEulerAnglesHint: {x: 0.123144865, y: 104.53786, z: 12.208812}
+--- !u!1 &9175629811657820330
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1554707475616348759}
+  m_Layer: 8
+  m_Name: bishopKnight_shield
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1554707475616348759
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9175629811657820330}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.005071427, y: 0.17536242, z: 0.028459271, w: 0.9840795}
+  m_LocalPosition: {x: -0.093927436, y: 3.5527136e-17, z: 2.2737367e-15}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5696546587177462340}
+  m_Father: {fileID: 8431658569842644095}
+  m_LocalEulerAnglesHint: {x: -1.1438576, y: 20.176985, z: 3.1095076}
+--- !u!1 &9196336417780982364
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6042707333379793883}
+  m_Layer: 8
+  m_Name: bishopKnight_Spear
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6042707333379793883
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9196336417780982364}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.000000043505796, y: 0.13575567, z: 0.00000068939096, w: 0.9907424}
+  m_LocalPosition: {x: 0.26513788, y: -0.09135332, z: -0.08391862}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1946766193176898505}
+  m_Father: {fileID: 7487699328080045706}
+  m_LocalEulerAnglesHint: {x: 0.00000009336466, y: 15.604574, z: 0.0000014666053}

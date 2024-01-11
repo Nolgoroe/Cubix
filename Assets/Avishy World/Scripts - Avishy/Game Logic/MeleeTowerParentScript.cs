@@ -39,13 +39,15 @@ public class MeleeTowerParentScript : TowerBaseParent
         int randomIndex = 0;
         float randomPosValueX = UnityEngine.Random.Range(-0.3f, 0.3f); //temp hardcoded
         float randomPosValueZ = UnityEngine.Random.Range(-0.3f, 0.3f); //temp hardcoded
-        Vector3 randomPos = new Vector3(randomPosValueX, 0.25f, randomPosValueZ);
+        Vector3 randomPos = new Vector3(randomPosValueX, 0, randomPosValueZ);
 
         if (connectedPathCells.Count >= 0)
         {
             randomIndex = UnityEngine.Random.Range(0, connectedPathCells.Count);
 
-            GameObject go = Instantiate(troopPrefab, connectedPathCells[randomIndex].transform.position + randomPos, Quaternion.identity);
+            GameObject go = Instantiate(troopPrefab,
+                troopPrefab.transform.position + connectedPathCells[randomIndex].transform.position + randomPos, 
+                Quaternion.identity);
 
             TowerTroop troop;
             go.TryGetComponent<TowerTroop>(out troop);
