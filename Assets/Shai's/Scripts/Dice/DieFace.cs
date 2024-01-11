@@ -5,10 +5,13 @@ using TMPro;
 
 public class DieFace : MonoBehaviour
 {
+    [SerializeField] private Transform displayObject;
     [SerializeField] private SpriteRenderer faceIcon;
     [SerializeField] private TMP_Text valueText;
     [SerializeField] private ResourceData resource;
     [SerializeField] private BuffData buff;
+
+    public Transform DisplayObject { get { return displayObject; } }
 
     public DieFaceValue GetFaceValue()
     {

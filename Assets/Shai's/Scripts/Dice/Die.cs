@@ -12,6 +12,7 @@ public class Die : MonoBehaviour
     public UnityEvent OnRollStart;
     public UnityEvent OnRollEnd;
     public bool isLocked;
+    [SerializeField] private Camera diceCam;
     [SerializeField] private TMP_Text resText;
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private List<DieFace> faces;
@@ -20,6 +21,7 @@ public class Die : MonoBehaviour
     private bool _isMoving;
     private float _reqStagnantTime = 1;
     private float _stagnantTimer;
+    private DieFace _currentTopFace;
 
     public bool IsMoving { get { return _isMoving; } }
     public Rigidbody RB { get { return _rb; } }
@@ -34,6 +36,9 @@ public class Die : MonoBehaviour
     private void LateUpdate()
     {
         CheckState();
+        Debug.ClearDeveloperConsole();//testing
+        Debug.Log(_currentTopFace?.DisplayObject.rotation.eulerAngles);//testing
+        Debug.Log("cam: " + diceCam.transform.rotation.eulerAngles);//testing
     }
 
     private void CheckState()
@@ -68,7 +73,6 @@ public class Die : MonoBehaviour
 
     public DieFaceValue GetTopValue()
     {
-        DieFace topFace = null;
         float lowestAngle = float.MaxValue;
         Vector3 tmpFaceVec;
         float tmpAngle;
@@ -80,13 +84,13 @@ public class Die : MonoBehaviour
             if (tmpAngle < lowestAngle)
             {
                 lowestAngle = tmpAngle;
-                topFace = face;
+                _currentTopFace = face;
             }
         }
-        resText.text = ("D" + faces.Count +": Resource: " + 
-            topFace.GetFaceValue().Resource.Value + topFace.GetFaceValue().Resource.Type.ToString() + 
-            ", Buff: " + topFace.GetFaceValue().Buff.Value + topFace.GetFaceValue().Buff.Type.ToString());
-        return topFace.GetFaceValue();
+        resText.text = ("D" + faces.Count +": Resource: " +
+            _currentTopFace.GetFaceValue().Resource.Value + _currentTopFace.GetFaceValue().Resource.Type.ToString() + 
+            ", Buff: " + _currentTopFace.GetFaceValue().Buff.Value + _currentTopFace.GetFaceValue().Buff.Type.ToString());
+        return _currentTopFace.GetFaceValue();
     }
 
     public DieFace[] GetAllFaces()
@@ -111,6 +115,14 @@ public class Die : MonoBehaviour
             face.DisplayResource();
         }
     }
+
+    private void AdjustRotation()
+    {
+
+    }
+
+
+
 
 }
 
