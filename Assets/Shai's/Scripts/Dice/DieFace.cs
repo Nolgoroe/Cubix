@@ -42,13 +42,13 @@ public class DieFace : MonoBehaviour
     public void DisplayBuff()
     {
         faceIcon.sprite = buff.Icon;
-        valueText.text = "+" + buff.Value.ToString();
+        valueText.text = "+" + buff.Value;
     }
 
     public void DisplayResource()
     {
         faceIcon.sprite = resource.Icon;
-        valueText.text = "+" + resource.Value.ToString();
+        valueText.text = "+" + resource.Value;
     }
 
 }

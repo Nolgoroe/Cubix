@@ -28,6 +28,7 @@ public class Die : MonoBehaviour
     private void Start()
     {
         OnRollStart.AddListener(SetMovingTrue);
+        DisplayResources();//for build purpose
     }
 
     private void LateUpdate()
