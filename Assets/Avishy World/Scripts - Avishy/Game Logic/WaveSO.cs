@@ -8,7 +8,7 @@ public class WaveData
     //public int numOfEnemies;
     public float delayBetweenEnemies;
     public float delayBetweenWaves;
-    public List<EnemyWaveData> enemyWaveData;
+    public List<EnemyWaveData> enemyWaveDataList;
 }
 [System.Serializable]
 public class EnemyWaveData
