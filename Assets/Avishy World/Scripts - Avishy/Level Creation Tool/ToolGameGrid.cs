@@ -55,8 +55,16 @@ public class ToolGameGrid : MonoBehaviour
         toolGridGameObjectsArray = new GameObject[gridWidth, gridHeight];
         toolGridCellsArray = new ToolGridCell[gridWidth, gridHeight];
         levelCreationTool = ToolReferencerObject.Instance.levelCreationToolSO;
-        enemySpawners = new List<ToolEnemySpawnerCell>();
-        enemyPathCells = new List<ToolEnemyPathCell>();
+
+        if(enemySpawners == null || enemySpawners.Count == 0)
+        {
+            enemySpawners = new List<ToolEnemySpawnerCell>();
+        }
+
+        if(enemyPathCells == null || enemyPathCells.Count == 0)
+        {
+            enemyPathCells = new List<ToolEnemyPathCell>();
+        }
 
         if (gameGridCellsList.Count > 0)
         {
@@ -184,6 +192,12 @@ public class ToolGameGrid : MonoBehaviour
         foreach (ToolEnemyPathCell enemyPathCell in enemyPathCells)
         {
             enemyPathCell.DecideOnPathMesh();
+        }
+
+        for (int i = 0; i < enemySpawners.Count; i++)
+        {
+            enemySpawners[i].name = "Enemy Spawner " + i;
+            enemySpawners[i].SetSpawnerNumberText(i);
         }
     }
 
@@ -321,6 +335,10 @@ public class ToolGameGrid : MonoBehaviour
     public Transform ReturnWaypointsParent()
     {
         return waypointsParent;
+    }
+    public List<ToolEnemySpawnerCell> ReturnEnemySpawners()
+    {
+        return enemySpawners;
     }
     #endregion
 

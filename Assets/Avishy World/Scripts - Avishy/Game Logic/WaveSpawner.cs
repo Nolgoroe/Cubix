@@ -61,32 +61,35 @@ public class WaveSpawner : MonoBehaviour
 
     private IEnumerator StartWave()
     {
-        if(currentLevelEnemySpawners.Count > 0)
-        {
-            waveDone = false;
+        yield break;
+        //if(currentLevelEnemySpawners.Count > 0)
+        //{
+        //    waveDone = false;
 
-            int randomNum = Random.Range(0, currentLevelEnemySpawners.Count);
-            selectedSpawner = currentLevelEnemySpawners[randomNum];
+        //    int randomNum = Random.Range(0, currentLevelEnemySpawners.Count);
+        //    selectedSpawner = currentLevelEnemySpawners[randomNum];
 
-            for (int i = 0; i < waveSO.waves[currentIndexInWave].numOfEnemies; i++)
-            {
-                while (GameManager.gameSpeed == 0)
-                {
-                    yield return null;
-                }
+        //    //This will need work.
 
-                selectedSpawner.CallSpawnEnemy(waveSO.waves[currentIndexInWave].enemyPrefab);
-                yield return new WaitForSeconds(waveSO.waves[currentIndexInWave].delayBetweenEnemies / GameManager.gameSpeed);
-            }
+        //    for (int i = 0; i < waveSO.waves[currentIndexInWave].numOfEnemies; i++)
+        //    {
+        //        while (GameManager.gameSpeed == 0)
+        //        {
+        //            yield return null;
+        //        }
 
-            timeForNextWave = waveSO.waves[currentIndexInWave].delayBetweenWaves;
-            currentCountdown = timeForNextWave;
+        //        selectedSpawner.CallSpawnEnemy(waveSO.waves[currentIndexInWave].enemyWaveData[0].enemyPrefabs.gameObject);
+        //        yield return new WaitForSeconds(waveSO.waves[currentIndexInWave].delayBetweenEnemies / GameManager.gameSpeed);
+        //    }
 
-            UIManager.Instance.DisplayTimerText(true);
+        //    timeForNextWave = waveSO.waves[currentIndexInWave].delayBetweenWaves;
+        //    currentCountdown = timeForNextWave;
 
-            waveDone = true;
+        //    UIManager.Instance.DisplayTimerText(true);
 
-            currentIndexInWave++;
-        }
+        //    waveDone = true;
+
+        //    currentIndexInWave++;
+        //}
     }
 }

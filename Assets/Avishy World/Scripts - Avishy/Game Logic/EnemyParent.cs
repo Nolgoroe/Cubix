@@ -3,6 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EnemyTypes
+{
+    None,
+    basicEnemy,
+    flying,
+    swimming
+}
 public class EnemyParent : MonoBehaviour
 {
     [Header("Enemy Stats")]// this is all temp - will be an SO later... maybe
@@ -15,6 +22,7 @@ public class EnemyParent : MonoBehaviour
     [SerializeField] private bool ignoresTroops;
     [SerializeField] private LayerMask playerTroopsLayer;
     [SerializeField] private Transform target;
+    [SerializeField] private EnemyTypes enemyType;
 
     [Header("Live Data")]
     [SerializeField] private Transform currentTarget;
@@ -152,6 +160,10 @@ public class EnemyParent : MonoBehaviour
     public int ReturnEnemyDMG()
     {
         return enemyDamage;
+    }
+    public EnemyTypes RetrunEnemyType()
+    {
+        return enemyType;
     }
 
 
