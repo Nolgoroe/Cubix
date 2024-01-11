@@ -84,6 +84,7 @@ public class Die : MonoBehaviour
                 _currentTopFace = face;
             }
         }
+        AdjustRotation();
         resText.text = ("D" + faces.Count +": Resource: " +
             _currentTopFace.GetFaceValue().Resource.Value + _currentTopFace.GetFaceValue().Resource.Type.ToString() + 
             ", Buff: " + _currentTopFace.GetFaceValue().Buff.Value + _currentTopFace.GetFaceValue().Buff.Type.ToString());
@@ -115,6 +116,8 @@ public class Die : MonoBehaviour
 
     private void AdjustRotation()
     {
+        float tmpAngle = 180 - Vector3.Angle(Vector3.back, _currentTopFace.transform.up * -1);
+        transform.Rotate(Vector3.up * tmpAngle, Space.World);
 
     }
 
