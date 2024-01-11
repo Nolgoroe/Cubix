@@ -1239,7 +1239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f01b0c61ce979f42a5a35c241d9a3ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveSO: {fileID: 11400000, guid: 09f27c33204af3544ae7006eabf5ec5d, type: 2}
+  waveSO: {fileID: 11400000, guid: c3717339f3d5cec47b87d5e4289a7c5c, type: 2}
   currentLevelEnemySpawners: []
   currentIndexInWave: 0
 --- !u!1 &559570117
@@ -3030,6 +3030,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSpeedTemp: 1
+  allEnemies:
+  - {fileID: 6970131831519416425, guid: 7c5d42700ca9c11498a2ba9873f6b8d2, type: 3}
 --- !u!1 &1553985056
 GameObject:
   m_ObjectHideFlags: 0
