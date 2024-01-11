@@ -36,9 +36,6 @@ public class Die : MonoBehaviour
     private void LateUpdate()
     {
         CheckState();
-        Debug.ClearDeveloperConsole();//testing
-        Debug.Log(_currentTopFace?.DisplayObject.rotation.eulerAngles);//testing
-        Debug.Log("cam: " + diceCam.transform.rotation.eulerAngles);//testing
     }
 
     private void CheckState()
