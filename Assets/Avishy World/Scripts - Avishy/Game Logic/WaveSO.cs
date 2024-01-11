@@ -3,12 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public struct WaveData
+public class WaveData
 {
-    public int numOfEnemies;
+    //public int numOfEnemies;
     public float delayBetweenEnemies;
     public float delayBetweenWaves;
-    public GameObject enemyPrefab;
+    public List<EnemyWaveData> enemyWaveData;
+}
+[System.Serializable]
+public class EnemyWaveData
+{
+    public int amountOfThisEnemy;
+    public int enemySpawnerIndex;
+    public int enemyPathIndex;
+    public EnemyTypes enemyType;
 }
 
 [CreateAssetMenu(fileName = "Wave Creation", menuName = "ScriptableObjects/Waves")]

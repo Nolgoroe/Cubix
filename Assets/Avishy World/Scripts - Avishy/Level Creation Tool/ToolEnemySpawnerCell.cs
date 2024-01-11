@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 [System.Serializable]
 public struct EnemyPath
@@ -16,6 +17,9 @@ public class ToolEnemySpawnerCell : ToolGridCell
 
     [SerializeField] private EnemyPath currentPathBeingCreated;
     [SerializeField] private List<Transform> waypointTransforms;
+
+
+    [SerializeField] private TMP_Text spawnerNumberText;
 
     private void Start()
     {
@@ -194,6 +198,10 @@ public class ToolEnemySpawnerCell : ToolGridCell
     public List<EnemyPath> ReturnEnemyPaths()
     {
         return enemyPaths;
+    }
+    public void SetSpawnerNumberText(int num)
+    {
+        spawnerNumberText.text = num.ToString();
     }
 
     [ContextMenu("Rotate now!")]
