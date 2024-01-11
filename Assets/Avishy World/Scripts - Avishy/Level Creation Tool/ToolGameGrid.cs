@@ -189,6 +189,7 @@ public class ToolGameGrid : MonoBehaviour
             SwapDataFromNewCreation(cell, createdCell);
         }
 
+
         foreach (ToolEnemyPathCell enemyPathCell in enemyPathCells)
         {
             enemyPathCell.DecideOnPathMesh();
@@ -388,6 +389,9 @@ public class ToolGameGrid : MonoBehaviour
                     gridManager.AddCellToGridCellList(enemyPathCell);
                     break;
                 case TypeOfCell.enemySpawner:
+                    ToolEnemySpawnerCell toolSpawnerCell = toolGridCell.GetComponent<ToolEnemySpawnerCell>();
+                    toolSpawnerCell.DestroySpawnerNumberText();
+
                     EnemySpawnerCell spawnerCell = new EnemySpawnerCell();
                     spawnerCell = toolGridCell.gameObject.AddComponent<EnemySpawnerCell>();
 

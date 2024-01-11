@@ -2166,6 +2166,7 @@ MonoBehaviour:
   gameSpeedTemp: 1
   allEnemies:
   - {fileID: 3658538233447746505, guid: 28dbcd9d9baf6fd4eb936028550e7bd4, type: 3}
+  - {fileID: 3294606807999378091, guid: d385643dec2673b41be9061461bcf71c, type: 3}
 --- !u!1 &1553985056
 GameObject:
   m_ObjectHideFlags: 0

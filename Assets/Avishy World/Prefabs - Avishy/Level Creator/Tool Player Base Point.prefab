@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 762747901008754958}
   - component: {fileID: 2342187938475789888}
   - component: {fileID: 7072191962697513245}
-  - component: {fileID: 7473079598249532822}
+  - component: {fileID: 2059856670743097457}
   m_Layer: 6
   m_Name: Tool Player Base Point
   m_TagString: PlayerBase
@@ -108,7 +108,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &7473079598249532822
+--- !u!114 &2059856670743097457
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,7 +117,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6086178004726300133}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: daada71077e6faa45b1d4eb4c9183f8c, type: 3}
+  m_Script: {fileID: 11500000, guid: ffc16cdb3f7a0ca40aeaef4678af49a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   positionXYInGridArray: {x: 0, y: 0}

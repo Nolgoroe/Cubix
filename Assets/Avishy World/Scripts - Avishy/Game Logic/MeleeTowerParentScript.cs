@@ -15,7 +15,56 @@ public class MeleeTowerParentScript : TowerBaseParent
     [SerializeField] protected float currentSpawnCooldown = 0;
     [SerializeField] int currentNumOfTroops;
 
+    private void Start()
+    {
+        GridCell[,] gameGridCellsArray = GridManager.Instance.ReturnGridCellsArray();
 
+        int currentX = currentCellOnPos.x;
+        int currentY = currentCellOnPos.y;
+
+        //check up
+        if (currentY + 1 < GridManager.Instance.ReturnWidthHeight().y)
+        {
+            if (gameGridCellsArray[currentX, currentY + 1].ReturnTypeOfCell() == TypeOfCell.enemyPath)
+            {
+                transform.LookAt(gameGridCellsArray[currentX, currentY + 1].transform);
+                return;
+            }
+        }
+
+        //check left
+        if (currentX - 1 > -1)
+        {
+            if (gameGridCellsArray[currentX - 1, currentY].ReturnTypeOfCell() == TypeOfCell.enemyPath)
+            {
+                transform.LookAt(gameGridCellsArray[currentX - 1, currentY].transform);
+
+                return;
+            }
+        }
+
+        //check down
+        if (currentY - 1 > -1)
+        {
+            if (gameGridCellsArray[currentX, currentY - 1].ReturnTypeOfCell() == TypeOfCell.enemyPath)
+            {
+                transform.LookAt(gameGridCellsArray[currentX, currentY - 1].transform);
+
+                return;
+            }
+        }
+
+        //check right
+        if (currentX + 1 < GridManager.Instance.ReturnWidthHeight().x)
+        {
+            if (gameGridCellsArray[currentX + 1, currentY].ReturnTypeOfCell() == TypeOfCell.enemyPath)
+            {
+                transform.LookAt(gameGridCellsArray[currentX + 1, currentY].transform);
+
+                return;
+            }
+        }
+    }
     protected virtual void Update()
     {
         if (GameManager.gameSpeed == 0) return;

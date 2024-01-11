@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: 3903826879709936249}
   - component: {fileID: 9026110825086918088}
   m_Layer: 0
-  m_Name: Electric tower
+  m_Name: Electric Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -375,7 +375,7 @@ MonoBehaviour:
   partToRotate: {fileID: 7347483994104308712}
   enemyLayerMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 640
   bulletPrefab: {fileID: 8738765509755949027, guid: ffd86ef737692d240910bed6013ae161,
     type: 3}
   firePoint: {fileID: 464846896448047404}

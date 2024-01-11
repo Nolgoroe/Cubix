@@ -27,12 +27,18 @@ public class EnemyParent : MonoBehaviour
 
     [Header("Live Data")]
     [SerializeField] private Transform currentTarget;
+    [SerializeField] private float startingHeight;
 
     [Header("Path Data")]
+    [SerializeField] private Transform pathChecker;
     [SerializeField] private int waypointIndex;
     [SerializeField] private float waypointDetectionRadius;
     [SerializeField] private List<GridCell> waypointsList;
 
+    private void Start()
+    {
+        startingHeight = transform.position.y;
+    }
     private void Update()
     {
         if (GameManager.gameSpeed == 0) return;
@@ -69,13 +75,15 @@ public class EnemyParent : MonoBehaviour
         {
             Vector3 direction = target.position - transform.position;
             transform.Translate((direction.normalized * Speed * GameManager.gameSpeed) * Time.fixedDeltaTime, Space.World);
-            transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+            transform.position = new Vector3(transform.position.x, startingHeight, transform.position.z);
 
             Quaternion lookRotation = Quaternion.LookRotation(direction);
 
-            transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * (rotationSpeed * GameManager.gameSpeed));
+            Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * (rotationSpeed * GameManager.gameSpeed)).eulerAngles;
 
-            if (Vector3.Distance(transform.position, target.position) < waypointDetectionRadius)
+            transform.rotation = Quaternion.Euler(0, rotation.y, 0);
+
+            if (Vector3.Distance(pathChecker.transform.position, target.position) < waypointDetectionRadius)
             {
                 GetNextWaypoint();
             }

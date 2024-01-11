@@ -191,6 +191,37 @@ Transform:
   - {fileID: 2990387703815774742}
   m_Father: {fileID: 6239240431167806051}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &525508384392273772
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 342230582100450706}
+  m_Layer: 7
+  m_Name: Path Checker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &342230582100450706
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525508384392273772}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 213285872204540042}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &531351910465069540
 GameObject:
   m_ObjectHideFlags: 0
@@ -1089,6 +1120,7 @@ Transform:
   m_Children:
   - {fileID: 4281784867148150308}
   - {fileID: 7260304559184620874}
+  - {fileID: 342230582100450706}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &6379953333476390814
@@ -1126,7 +1158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 3
   range: 1.3
-  rotationSpeed: 10
+  rotationSpeed: 8
   enemyHealth: 30
   attackRate: 1
   currentAttackCooldown: 0
@@ -1138,8 +1170,10 @@ MonoBehaviour:
   target: {fileID: 0}
   enemyType: 1
   currentTarget: {fileID: 0}
+  startingHeight: 0
+  pathChecker: {fileID: 342230582100450706}
   waypointIndex: 0
-  waypointDetectionRadius: 0.3
+  waypointDetectionRadius: 0.2
   waypointsList: []
 --- !u!135 &3529437956976199065
 SphereCollider:

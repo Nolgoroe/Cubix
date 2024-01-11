@@ -94,6 +94,10 @@ public class GridManager : MonoBehaviour
     {
         return GridCellsArray[vector.x, vector.y];
     }
+    public GridCell[,] ReturnGridCellsArray()
+    {
+        return GridCellsArray;
+    }
     public List<EnemySpawnerCell> ReturnLevelEnemySpawners()
     {
         return enemySpawnerCells;
