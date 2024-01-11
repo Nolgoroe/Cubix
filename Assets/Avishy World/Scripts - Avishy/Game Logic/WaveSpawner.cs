@@ -61,35 +61,52 @@ public class WaveSpawner : MonoBehaviour
 
     private IEnumerator StartWave()
     {
-        yield break;
-        //if(currentLevelEnemySpawners.Count > 0)
-        //{
-        //    waveDone = false;
+        if (currentLevelEnemySpawners.Count > 0)
+        {
+            waveDone = false;
 
-        //    int randomNum = Random.Range(0, currentLevelEnemySpawners.Count);
-        //    selectedSpawner = currentLevelEnemySpawners[randomNum];
+            foreach (EnemyWaveData enemyWaveData in waveSO.waves[currentIndexInWave].enemyWaveDataList)
+            {
+                selectedSpawner = currentLevelEnemySpawners[enemyWaveData.enemySpawnerIndex];
 
-        //    //This will need work.
+                for (int i = 0; i < enemyWaveData.amountOfThisEnemy; i++)
+                {
+                    while (GameManager.gameSpeed == 0)
+                    {
+                        yield return null;
+                    }
 
-        //    for (int i = 0; i < waveSO.waves[currentIndexInWave].numOfEnemies; i++)
-        //    {
-        //        while (GameManager.gameSpeed == 0)
-        //        {
-        //            yield return null;
-        //        }
+                    GameObject enemyToSpawn = GameManager.Instance.ReturnEnemyByType(enemyWaveData.enemyType);
+                    selectedSpawner.CallSpawnEnemy(enemyToSpawn);
+                    yield return new WaitForSeconds(waveSO.waves[currentIndexInWave].delayBetweenEnemies / GameManager.gameSpeed);
+                }
+            }
 
-        //        selectedSpawner.CallSpawnEnemy(waveSO.waves[currentIndexInWave].enemyWaveData[0].enemyPrefabs.gameObject);
-        //        yield return new WaitForSeconds(waveSO.waves[currentIndexInWave].delayBetweenEnemies / GameManager.gameSpeed);
-        //    }
 
-        //    timeForNextWave = waveSO.waves[currentIndexInWave].delayBetweenWaves;
-        //    currentCountdown = timeForNextWave;
 
-        //    UIManager.Instance.DisplayTimerText(true);
 
-        //    waveDone = true;
 
-        //    currentIndexInWave++;
-        //}
+
+
+
+
+
+
+
+
+
+
+            //This will need work.
+
+
+            timeForNextWave = waveSO.waves[currentIndexInWave].delayBetweenWaves;
+            currentCountdown = timeForNextWave;
+
+            UIManager.Instance.DisplayTimerText(true);
+
+            waveDone = true;
+
+            currentIndexInWave++;
+        }
     }
 }

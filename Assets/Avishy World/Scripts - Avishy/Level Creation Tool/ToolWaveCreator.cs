@@ -100,13 +100,13 @@ public class ToolWaveCreator : MonoBehaviour
         }
 
 
-        waveList[currentWaveSelectedIndex].enemyWaveData.Add(enemyData);
+        waveList[currentWaveSelectedIndex].enemyWaveDataList.Add(enemyData);
     }
     public void RemoveEnemyFromWave(EnemyWaveData data)
     {
-        if (waveList[currentWaveSelectedIndex].enemyWaveData.Contains(data))
+        if (waveList[currentWaveSelectedIndex].enemyWaveDataList.Contains(data))
         {
-            waveList[currentWaveSelectedIndex].enemyWaveData.Remove(data);
+            waveList[currentWaveSelectedIndex].enemyWaveDataList.Remove(data);
         }
     }
 
@@ -126,9 +126,9 @@ public class ToolWaveCreator : MonoBehaviour
         cooldownAtEndWave.text = waveList[index].delayBetweenWaves.ToString();
         cooldownBetweenEnemies.text = waveList[index].delayBetweenEnemies.ToString();
 
-        if(waveList[index].enemyWaveData == null || waveList[index].enemyWaveData.Count == 0)
+        if(waveList[index].enemyWaveDataList == null || waveList[index].enemyWaveDataList.Count == 0)
         {
-            waveList[index].enemyWaveData = new List<EnemyWaveData>();
+            waveList[index].enemyWaveDataList = new List<EnemyWaveData>();
         }
 
         foreach (Transform child in enemyInwaveUIContent)
@@ -136,7 +136,7 @@ public class ToolWaveCreator : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        foreach (EnemyWaveData enemyWaveData in waveList[index].enemyWaveData)
+        foreach (EnemyWaveData enemyWaveData in waveList[index].enemyWaveDataList)
         {
             GameObject go = Instantiate(enemyInwaveUIPrefab, enemyInwaveUIContent);
 
