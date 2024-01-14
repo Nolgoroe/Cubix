@@ -322,7 +322,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8632826726976933010, guid: 689fef2560927b64fa1dcdbfd47bd915,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 480981518}
   m_SourcePrefab: {fileID: 100100000, guid: 689fef2560927b64fa1dcdbfd47bd915, type: 3}
 --- !u!1 &111242067
 GameObject:
@@ -1091,6 +1095,33 @@ MonoBehaviour:
   waveSO: {fileID: 11400000, guid: c3717339f3d5cec47b87d5e4289a7c5c, type: 2}
   currentLevelEnemySpawners: []
   currentIndexInWave: 0
+--- !u!1 &480981516 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8632826726976933010, guid: 689fef2560927b64fa1dcdbfd47bd915,
+    type: 3}
+  m_PrefabInstance: {fileID: 103465233}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &480981518
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 480981516}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0.5, y: 0, z: 0.5}
 --- !u!1 &559570117
 GameObject:
   m_ObjectHideFlags: 0
@@ -2161,7 +2192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameSpeedTemp: 1
   allEnemies:
-  - {fileID: 6970131831519416425, guid: 7c5d42700ca9c11498a2ba9873f6b8d2, type: 3}
+  - {fileID: 3658538233447746505, guid: 28dbcd9d9baf6fd4eb936028550e7bd4, type: 3}
 --- !u!1 &1553985056
 GameObject:
   m_ObjectHideFlags: 0
@@ -2329,9 +2360,9 @@ MonoBehaviour:
     m_Bits: 64
   currentTowerPrefab: {fileID: 0}
   towerPrefabs:
-  - {fileID: 6522023093456695046, guid: b5f073b2db9341040a103acce7e8c296, type: 3}
-  - {fileID: 1946607158863623217, guid: 2067f10773695944f9d341e15ada6888, type: 3}
-  - {fileID: 1946607158863623217, guid: 662a26214b55e9e49bbfc4d89455534f, type: 3}
+  - {fileID: 6136590268412096838, guid: b5f073b2db9341040a103acce7e8c296, type: 3}
+  - {fileID: 6184677392383019963, guid: 1eb9a3481d08d3f4d88d91c0c5673c44, type: 3}
+  - {fileID: 6543322448406103679, guid: a73571feaaefd0746904ed2002b90da1, type: 3}
   indexInTowersList: 0
   currentCellHovered: {fileID: 0}
 --- !u!4 &1756797249

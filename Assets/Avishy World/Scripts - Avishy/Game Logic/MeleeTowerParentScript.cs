@@ -15,7 +15,56 @@ public class MeleeTowerParentScript : TowerBaseParent
     [SerializeField] protected float currentSpawnCooldown = 0;
     [SerializeField] int currentNumOfTroops;
 
+    private void Start()
+    {
+        GridCell[,] gameGridCellsArray = GridManager.Instance.ReturnGridCellsArray();
 
+        int currentX = currentCellOnPos.x;
+        int currentY = currentCellOnPos.y;
+
+        //check up
+        if (currentY + 1 < GridManager.Instance.ReturnWidthHeight().y)
+        {
+            if (gameGridCellsArray[currentX, currentY + 1].ReturnTypeOfCell() == TypeOfCell.enemyPath)
+            {
+                transform.LookAt(gameGridCellsArray[currentX, currentY + 1].transform);
+                return;
+            }
+        }
+
+        //check left
+        if (currentX - 1 > -1)
+        {
+            if (gameGridCellsArray[currentX - 1, currentY].ReturnTypeOfCell() == TypeOfCell.enemyPath)
+            {
+                transform.LookAt(gameGridCellsArray[currentX - 1, currentY].transform);
+
+                return;
+            }
+        }
+
+        //check down
+        if (currentY - 1 > -1)
+        {
+            if (gameGridCellsArray[currentX, currentY - 1].ReturnTypeOfCell() == TypeOfCell.enemyPath)
+            {
+                transform.LookAt(gameGridCellsArray[currentX, currentY - 1].transform);
+
+                return;
+            }
+        }
+
+        //check right
+        if (currentX + 1 < GridManager.Instance.ReturnWidthHeight().x)
+        {
+            if (gameGridCellsArray[currentX + 1, currentY].ReturnTypeOfCell() == TypeOfCell.enemyPath)
+            {
+                transform.LookAt(gameGridCellsArray[currentX + 1, currentY].transform);
+
+                return;
+            }
+        }
+    }
     protected virtual void Update()
     {
         if (GameManager.gameSpeed == 0) return;
@@ -39,13 +88,15 @@ public class MeleeTowerParentScript : TowerBaseParent
         int randomIndex = 0;
         float randomPosValueX = UnityEngine.Random.Range(-0.3f, 0.3f); //temp hardcoded
         float randomPosValueZ = UnityEngine.Random.Range(-0.3f, 0.3f); //temp hardcoded
-        Vector3 randomPos = new Vector3(randomPosValueX, 0.25f, randomPosValueZ);
+        Vector3 randomPos = new Vector3(randomPosValueX, 0, randomPosValueZ);
 
         if (connectedPathCells.Count >= 0)
         {
             randomIndex = UnityEngine.Random.Range(0, connectedPathCells.Count);
 
-            GameObject go = Instantiate(troopPrefab, connectedPathCells[randomIndex].transform.position + randomPos, Quaternion.identity);
+            GameObject go = Instantiate(troopPrefab,
+                troopPrefab.transform.position + connectedPathCells[randomIndex].transform.position + randomPos, 
+                Quaternion.identity);
 
             TowerTroop troop;
             go.TryGetComponent<TowerTroop>(out troop);

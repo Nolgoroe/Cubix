@@ -17,6 +17,7 @@ public class TowerTroop : MonoBehaviour
     [SerializeField] protected float health = 3;
     [SerializeField] protected float attackRate = 1;
     [SerializeField] protected float currentAttackCooldown = 0;
+    [SerializeField] protected float rotationSpeed = 10;
     [SerializeField] private LayerMask enemyLayerMask;
 
     protected virtual void Update()
@@ -31,6 +32,11 @@ public class TowerTroop : MonoBehaviour
         }
 
         if (currentTarget == null) return;
+
+        Vector3 direction = currentTarget.position - transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+
+        transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * (rotationSpeed * GameManager.gameSpeed));
 
         if (currentAttackCooldown <= 0)
         {

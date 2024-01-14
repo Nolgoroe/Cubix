@@ -19,7 +19,7 @@ public class EnemySpawnerCell : GridCell
         if (enemyPaths.Count == 0) return;
 
         EnemyParent enemy = new EnemyParent();
-        GameObject go = Instantiate(enemyPrefab, transform.position, transform.rotation);
+        GameObject go = Instantiate(enemyPrefab, transform.position + enemyPrefab.transform.position, transform.rotation);
 
         go.TryGetComponent<EnemyParent>(out enemy);
 

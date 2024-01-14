@@ -88,9 +88,11 @@ public class GameGridControls : MonoBehaviour
     private void InstantiateTower()
     {
         Vector3 cellpos = currentCellHovered.transform.position;
-        Vector3 fixedPos = new Vector3(cellpos.x, cellpos.y + 0.5f, cellpos.z); // temp here
 
-        GameObject go = Instantiate(currentTowerPrefab, fixedPos, Quaternion.identity);
+        GameObject go = Instantiate(currentTowerPrefab, cellpos, Quaternion.identity);
+
+        Vector3 fixedPos = new Vector3(cellpos.x, currentTowerPrefab.transform.position.y, cellpos.z); // temp here
+        go.transform.position = fixedPos;
 
         TowerBaseParent towerSpawned;
         go.TryGetComponent<TowerBaseParent>(out towerSpawned);

@@ -203,6 +203,10 @@ public class ToolEnemySpawnerCell : ToolGridCell
     {
         spawnerNumberText.text = num.ToString();
     }
+    public void DestroySpawnerNumberText()
+    {
+        DestroyImmediate(spawnerNumberText.gameObject);
+    }
 
     [ContextMenu("Rotate now!")]
     private void RotateWaypoints()
