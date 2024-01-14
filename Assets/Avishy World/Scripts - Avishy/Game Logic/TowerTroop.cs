@@ -11,7 +11,7 @@ public class TowerTroop : MonoBehaviour
     [SerializeField] protected Transform currentTarget;
     [SerializeField] protected MeleeTowerParentScript connectedTower;
 
-    [Header("Preset Data")] // this is temp - might be scriptable object
+    [Header("Preset Data")] 
     [SerializeField] private float range = 15;
     [SerializeField] private float damage = 1;
     [SerializeField] protected float health = 3;

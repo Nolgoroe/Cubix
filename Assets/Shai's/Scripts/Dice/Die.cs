@@ -18,12 +18,13 @@ public class Die : MonoBehaviour
 
     public bool isLocked;
     [SerializeField] private Camera diceCam;
-    [SerializeField] private TMP_Text resText;
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private List<DieFace> faces;
     [SerializeField] private DieElement element;
     [SerializeField] private TowerBaseParent towerPrefabConnected;        //new avishy
     [SerializeField] private float _reqStagnantTime = 1;
+    [SerializeField] private Outline outline;
+    [SerializeField] private SpriteRenderer lockRenderer;
 
     private bool _isMoving;
     private bool _isInWorld;
@@ -105,9 +106,7 @@ public class Die : MonoBehaviour
             }
         }
         AdjustRotation();
-        resText.text = ("D" + faces.Count +": Resource: " +
-            _currentTopFace.GetFaceValue().Resource.Value + _currentTopFace.GetFaceValue().Resource.Type.ToString() + 
-            ", Buff: " + _currentTopFace.GetFaceValue().Buff.Value + _currentTopFace.GetFaceValue().Buff.Type.ToString());
+
         return _currentTopFace.GetFaceValue();
     }
 
@@ -138,6 +137,16 @@ public class Die : MonoBehaviour
     {        //new avishy
 
         OnDragStartEvent?.Invoke();
+    }
+
+    private void OnMouseOver()
+    {
+        outline.SetOutlineMode(Outline.Mode.OutlineVisible);
+    }
+
+    private void OnMouseExit()
+    {
+        outline.SetOutlineMode(Outline.Mode.OutlineHidden);
     }
 
     private void AdjustRotation()
@@ -205,6 +214,12 @@ public class Die : MonoBehaviour
     }
 
 
+
+    public void LockDie(bool isLocking)
+    {
+        isLocked = isLocking ? true : false;
+        lockRenderer.gameObject.SetActive(isLocking ? true : false);
+    }
 
     public GameObject ReturnTowerPrefab()
     {        //new avishy

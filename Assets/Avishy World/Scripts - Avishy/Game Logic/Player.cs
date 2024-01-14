@@ -1,13 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public static Player Instance;
 
     [SerializeField] private List<Die> allDieInPlay;
     [SerializeField] private int coins;
     [SerializeField] private int scraps;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     void Start()
     {
@@ -40,4 +47,24 @@ public class Player : MonoBehaviour
                 break;
         }
     }
+
+    public void RecieveRandomResource()
+    {
+        ResourceType[]  myEnums = (ResourceType[])System.Enum.GetValues(typeof(ResourceType));
+
+        int randomResource = UnityEngine.Random.Range(0, myEnums.Length);
+
+        switch (myEnums[randomResource])
+        {
+            case ResourceType.Coins:
+                coins += 10;
+                break;
+            case ResourceType.Scraps:
+                scraps += 10;
+                break;
+            default:
+                break;
+        }
+    }
+
 }
