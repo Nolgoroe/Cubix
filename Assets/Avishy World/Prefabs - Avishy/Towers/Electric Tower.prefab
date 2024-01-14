@@ -1,5 +1,58 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &545563423890034604
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 743869364411836055}
+  - component: {fileID: 1409247199283844043}
+  m_Layer: 6
+  m_Name: Cube floor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &743869364411836055
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 545563423890034604}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.96, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7518328502312561098}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1409247199283844043
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 545563423890034604}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3, y: 0.3, z: 3}
+  m_Center: {x: 0, y: -0.355441, z: 0}
 --- !u!1 &831115963651937320
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,7 +65,7 @@ GameObject:
   - component: {fileID: 664714458768576348}
   - component: {fileID: 7771555244165172211}
   - component: {fileID: 8495130434795092112}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Guns
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +154,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
@@ -115,7 +168,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 464846896448047404}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Fire point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +202,7 @@ GameObject:
   - component: {fileID: 6807320601254666168}
   - component: {fileID: 8997061060884196557}
   - component: {fileID: 5860840105684148427}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Part to rotate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -240,7 +293,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
@@ -258,7 +311,7 @@ GameObject:
   - component: {fileID: 4335706923179404943}
   - component: {fileID: 3903826879709936249}
   - component: {fileID: 9026110825086918088}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Electric Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,6 +332,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7347483994104308712}
+  - {fileID: 743869364411836055}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8960634945485243533
@@ -348,7 +402,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
@@ -367,6 +421,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCellOnPos: {x: 0, y: 0}
   requiredCellColorType: 1
+  towerDie: {fileID: 0}
   currentTarget: {fileID: 0}
   range: 5
   rotationSpeed: 15

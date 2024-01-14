@@ -9,19 +9,27 @@ public enum DieElement { Water, Fire, Poison }
 [RequireComponent(typeof(Rigidbody), typeof(MeshCollider))]
 public class Die : MonoBehaviour
 {
-    public UnityEvent OnRollStart;
-    public UnityEvent OnRollEnd;
+    public UnityEvent OnRollStartEvent;
+    public UnityEvent<Die> OnRollEndEvent;
+    public UnityEvent OnDragStartEvent;
+    public UnityEvent OnDragEndEvent;
+    public UnityEvent OnPlaceEvent;
+    public UnityEvent OnDestroyDieEvent;
+
     public bool isLocked;
     [SerializeField] private Camera diceCam;
     [SerializeField] private TMP_Text resText;
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private List<DieFace> faces;
     [SerializeField] private DieElement element;
+    [SerializeField] private TowerBaseParent towerPrefabConnected;        //new avishy
+    [SerializeField] private float _reqStagnantTime = 1;
 
     private bool _isMoving;
-    private float _reqStagnantTime = 1;
+    private bool _isInWorld;
     private float _stagnantTimer;
     private DieFace _currentTopFace;
+    private Vector3 originalPos;
 
     public bool IsMoving { get { return _isMoving; } }
     public Rigidbody RB { get { return _rb; } }
@@ -29,8 +37,20 @@ public class Die : MonoBehaviour
 
     private void Start()
     {
-        OnRollStart.AddListener(SetMovingTrue);
+        //new avishy
+        OnRollStartEvent.AddListener(SetMovingTrue);
+
+        OnDragStartEvent.AddListener(SetValuesOnDragStart);
+
+        OnDragEndEvent.AddListener(SetValuesOnDragEnd);
+
+        OnPlaceEvent.AddListener(SetValuesOnPlacement);
+
+        OnDestroyDieEvent.AddListener(OnDestroyDie);
+
         DisplayResources();//for build purpose
+
+        originalPos = transform.localPosition;
     }
 
     private void LateUpdate()
@@ -49,7 +69,7 @@ public class Die : MonoBehaviour
                 if (_stagnantTimer >= _reqStagnantTime)//if die stands still for more than x seconds apply rndRoll logic
                 {
                     _isMoving = false;
-                    OnRollEnd.Invoke();
+                    OnRollEndEvent?.Invoke(this);
                     _stagnantTimer = 0;
                     GetTopValue();
                     Debug.Log("Roll ended");
@@ -114,15 +134,87 @@ public class Die : MonoBehaviour
         }
     }
 
+    private void OnMouseDown()
+    {        //new avishy
+
+        OnDragStartEvent?.Invoke();
+    }
+
     private void AdjustRotation()
     {
-        float tmpAngle = 180 - Vector3.Angle(Vector3.back, _currentTopFace.transform.up * -1);
-        transform.Rotate(Vector3.up * tmpAngle, Space.World);
+        //float tmpAngle = 180 - Vector3.Angle(Vector3.back, _currentTopFace.transform.up * -1);
+        //transform.Rotate(Vector3.up * tmpAngle, Space.World);
 
     }
 
 
 
+    private void SetValuesOnDragStart()
+    {        //new avishy
 
+        RB.isKinematic = true;
+        transform.localScale = new Vector3(0.5f, 0.5f, 0.5f); // temp here
+
+        GameGridControls.Instance.SetCurrentDieDragging(this);
+
+        ChangeLayerRecursive(transform, "Default");
+
+    }
+    private void SetValuesOnDragEnd()
+    {        //new avishy
+
+        RB.isKinematic = false;
+        transform.localScale = new Vector3(1, 1, 1); // temp here
+
+        transform.localPosition = originalPos;
+
+        ChangeLayerRecursive(transform, "Dice");
+    }
+
+    private void SetValuesOnPlacement()
+    {        //new avishy
+        DisplayBuffs();
+        RB.isKinematic = false;
+        _isInWorld = true;
+        ChangeLayerRecursive(transform, "Default");
+    }
+
+    private void ChangeLayerRecursive(Transform trans, string nameOfLayer)
+    {        //new avishy
+
+        //the string nameOfLayer might change to layermask or even int of layer
+
+        foreach (Transform child in trans)
+        {
+            child.gameObject.layer = LayerMask.NameToLayer(nameOfLayer);
+            ChangeLayerRecursive(child, nameOfLayer);
+        }
+    }
+
+    private void OnDestroyDie()
+    {        //new avishy
+
+        OnRollStartEvent.RemoveAllListeners();
+        OnRollEndEvent.RemoveAllListeners();
+        OnDragStartEvent.RemoveAllListeners();
+        OnDragEndEvent.RemoveAllListeners();
+        OnPlaceEvent.RemoveAllListeners();
+        OnDestroyDieEvent.RemoveAllListeners();
+
+        Destroy(gameObject);
+    }
+
+
+
+    public GameObject ReturnTowerPrefab()
+    {        //new avishy
+
+        return towerPrefabConnected.gameObject;
+    }
+
+    public bool ReturnInWorld()
+    {
+        return _isInWorld;
+    }
 }
 

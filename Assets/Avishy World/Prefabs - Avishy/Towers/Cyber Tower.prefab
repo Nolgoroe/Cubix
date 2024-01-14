@@ -1,5 +1,58 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2439677764167842363
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 410567124767511374}
+  - component: {fileID: 1642124683698170419}
+  m_Layer: 6
+  m_Name: Cube floor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &410567124767511374
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2439677764167842363}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.588, z: 0}
+  m_LocalScale: {x: 0.29999998, y: 0.29999998, z: 0.29999998}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5735393779112238096}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1642124683698170419
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2439677764167842363}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3, y: 0.289118, z: 3}
+  m_Center: {x: 0, y: 3.5, z: 0}
 --- !u!1 &6184677392383019963
 GameObject:
   m_ObjectHideFlags: 0
@@ -13,8 +66,8 @@ GameObject:
   - component: {fileID: 5611375314416910697}
   - component: {fileID: 8795440148078373385}
   - component: {fileID: 1663077381566298067}
-  m_Layer: 0
-  m_Name: Cyber tower
+  m_Layer: 11
+  m_Name: Cyber Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,6 +86,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 410567124767511374}
   - {fileID: 2351080591486962943}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -103,7 +157,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
@@ -122,6 +176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCellOnPos: {x: 0, y: 0}
   requiredCellColorType: 2
+  towerDie: {fileID: 0}
   connectedPathCells: []
   troopPrefab: {fileID: 8425342904263200654, guid: 880e3787047504344a32a7cd14e6eb16,
     type: 3}
@@ -140,7 +195,7 @@ GameObject:
   - component: {fileID: 2351080591486962943}
   - component: {fileID: 2863390803058211379}
   - component: {fileID: 1213924365521227159}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SM_Prop_Medical_Tube_Glass_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

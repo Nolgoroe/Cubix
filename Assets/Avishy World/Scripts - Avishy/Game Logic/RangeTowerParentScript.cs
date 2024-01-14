@@ -18,7 +18,6 @@ public class RangeTowerParentScript : TowerBaseParent
     [SerializeField] protected GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
 
-
     protected virtual void Update()
     {
         if (GameManager.gameSpeed == 0) return;
@@ -90,14 +89,40 @@ public class RangeTowerParentScript : TowerBaseParent
 
 
 
-    public override void InitTowerData(Vector2Int positionOfCell)
-    {
+    public override void InitTowerData(Vector2Int positionOfCell, Die connectedDie)
+    {        //new avishy
+
         currentCellOnPos = positionOfCell;
+
+        towerDie = connectedDie;
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
+    }
+
+    public override void RecieveBuffAfterRoll(Die die)
+    {
+        DieFaceValue dieFaceVakue = towerDie.GetTopValue();
+
+        switch (dieFaceVakue.Buff.Type)
+        {
+            case BuffType.Speed:
+                break;
+            case BuffType.Damage:
+                break;
+            case BuffType.Fire:
+                break;
+            case BuffType.AttackSpeed:
+                //add attack speed to relavent tower
+                fireRate += 0.1f;
+                break;
+            default:
+                break;
+        }
+
+
     }
 }
