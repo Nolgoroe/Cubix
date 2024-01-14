@@ -118,7 +118,7 @@ public class MeleeTowerParentScript : TowerBaseParent
 
 
 
-    public override void InitTowerData(Vector2Int positionOfCell)
+    public override void InitTowerData(Vector2Int positionOfCell, Die connectedDie)
     {
         currentCellOnPos = positionOfCell;
 
@@ -144,6 +144,9 @@ public class MeleeTowerParentScript : TowerBaseParent
                 }
             }
         }
+        //new avishy
+
+        towerDie = connectedDie;
     }
 
     public void LoseTroop()
@@ -156,4 +159,8 @@ public class MeleeTowerParentScript : TowerBaseParent
         }
     }
 
+    public override void RecieveBuffAfterRoll(Die die)
+    {
+        throw new NotImplementedException();
+    }
 }

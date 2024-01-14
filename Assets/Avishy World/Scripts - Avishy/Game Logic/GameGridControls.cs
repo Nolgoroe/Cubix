@@ -5,65 +5,91 @@ using UnityEngine;
 
 public class GameGridControls : MonoBehaviour
 {
+    public static GameGridControls Instance;
+
     [Header("Preset Data")]
     [SerializeField] private LayerMask gridCellLayer;
-    [SerializeField] private GameObject currentTowerPrefab;// temp here - think of a place to hold all the towers available and choose.
-    [SerializeField] private List<GameObject> towerPrefabs;// temp here - used for checks
-    [SerializeField] private int indexInTowersList;// temp here - used for checks
+    [SerializeField] private GameObject currentTowerPrefab;
 
     [Header("Automated data")]
     [SerializeField] private GridCell currentCellHovered;
+    [SerializeField] private Die currentDieDragging;
 
 
 
     private Vector3 positionOfMouse;
 
 
-
-    private void Start()
+    private void Awake()
     {
-        currentTowerPrefab = towerPrefabs[indexInTowersList];
-
-        UIManager.Instance.SetTowerText(currentTowerPrefab.name); //Temp
+        Instance = this;
     }
+
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.X))
-        {
-            indexInTowersList++;
-            if(indexInTowersList >= towerPrefabs.Count)
-            {
-                indexInTowersList = 0;
-            }
-            currentTowerPrefab = towerPrefabs[indexInTowersList];
-
-            UIManager.Instance.SetTowerText(currentTowerPrefab.name); //Temp
-        }
-
         MouseOverGridCell();
 
-        if (currentCellHovered)
+        NormalControls();
+
+        if(currentDieDragging)        //new avishy
         {
-            NormalControls();
-        }
+            Vector3 screenPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y,  Camera.main.transform.position.y);
+            Ray ray = Camera.main.ScreenPointToRay(screenPos);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, 1000, gridCellLayer))
+            {
+                Vector3 offset = new Vector3(0, 0.5f, 0);
+                currentDieDragging.transform.position = hit.point + offset;
+            }
+            else
+            {
+                Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
+
+                currentDieDragging.transform.position = worldPos;
+
+            }
+        } 
     }
 
     private void NormalControls()
-    {
-        if (Input.GetMouseButton(0))
-        {
-            if(!currentCellHovered.ReturnIsOccipied())
-            {
-                if (!CheckCanPlaceTowerOnCell()) return;
+    {        //new avishy
 
-                InstantiateTower();
+        if (currentDieDragging)
+        {
+            if (Input.GetMouseButtonUp(0))
+            {
+                if (currentCellHovered && !currentCellHovered.ReturnIsOccipied())
+                {
+                    if (!CheckCanPlaceTowerOnCell())
+                    {
+                        //release die back to player zone
+                        currentDieDragging.OnDragEndEvent?.Invoke();
+                        SetCurrentDieDragging(null);
+                        return;
+                    }
+
+
+                    InstantiateTower();
+
+                    //currentDieDragging.OnDestroyDieEvent?.Invoke();
+
+                    SetCurrentDieDragging(null);
+                }
+                else
+                {
+                    //release die back to player zone
+                    currentDieDragging.OnDragEndEvent?.Invoke();
+                    SetCurrentDieDragging(null);
+
+                }
             }
         }
 
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButtonDown(1))
         {
-            if(currentCellHovered.ReturnIsOccipied() && currentCellHovered.ReturnIsOccipiedByTower())
+            if (currentCellHovered && currentCellHovered.ReturnIsOccipied() && currentCellHovered.ReturnIsOccipiedByTower())
             {
                 currentCellHovered.EmptyCell();
             }
@@ -99,7 +125,12 @@ public class GameGridControls : MonoBehaviour
 
         if (towerSpawned)
         {
-            towerSpawned.InitTowerData(currentCellHovered.ReturnPositionInGridArray());
+            towerSpawned.InitTowerData(currentCellHovered.ReturnPositionInGridArray(), currentDieDragging);
+            //new avishy
+
+            //End die drag and return it's values to be able to be rolled
+            currentDieDragging.OnPlaceEvent?.Invoke();
+            SetCurrentDieDragging(null);
         }
 
         currentCellHovered.SetAsOccupied(go);
@@ -118,5 +149,24 @@ public class GameGridControls : MonoBehaviour
         }
 
         return currentCellHovered;
+    }
+    public GridCell ReturnCurrentCell()
+    {        //new avishy
+
+        return currentCellHovered;
+    }
+
+    public void SetCurrentDieDragging(Die dieToDrag)
+    {        //new avishy
+
+        if (dieToDrag)
+        {
+            currentDieDragging = dieToDrag;
+            currentTowerPrefab = dieToDrag.ReturnTowerPrefab();
+        }
+        else
+        {
+            currentDieDragging = null;
+        }
     }
 }

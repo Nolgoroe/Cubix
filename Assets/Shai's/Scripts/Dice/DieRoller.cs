@@ -20,8 +20,13 @@ public class DieRoller : MonoBehaviour
     private Vector3 _ogPos;
 
     private void Start()
-    {
+    {        //new avishy
+
         _ogPos = transform.position;
+
+        die.OnDragStartEvent.AddListener(OnConnectedDieStartDragging);
+        die.OnDragEndEvent.AddListener(OnConnectedDieEndDragging);
+        die.OnPlaceEvent.AddListener(OnConnectedDiePlace);
     }
 
     private void LateUpdate()
@@ -32,16 +37,11 @@ public class DieRoller : MonoBehaviour
         }
     }
 
-    private void OnMouseDown()
-    {
-        Roll();
-    }
-
     public void Roll()
     {
         if (!die.isLocked)
         {
-            die.OnRollStart.Invoke();
+            die.OnRollStartEvent.Invoke();
             die.RB.ResetCenterOfMass();
             StartCoroutine(ChangeMassAtTop());//Change mass only on apex of throw to look more organic
             die.transform.position += Vector3.up * tpHeight;
@@ -95,6 +95,36 @@ public class DieRoller : MonoBehaviour
         Debug.Log("change mass");
     }
 
+    private void OnConnectedDieStartDragging()
+    {        //new avishy
+
+        constraintX = false;
+        constraintY = false;
+        constraintZ = false;
+    }
+    private void OnConnectedDieEndDragging()
+    {        //new avishy
+
+        constraintX = true;
+        constraintY = false;
+        constraintZ = true;
+    }
+    private void OnConnectedDiePlace()
+    {        //new avishy
+
+        //maybe better way?
+        Vector3 pos = GameGridControls.Instance.ReturnCurrentCell().transform.position;
+
+        _ogPos = pos;
+
+        Vector3 offset = new Vector3(0, 4, 0); //temp
+        transform.position = transform.position + offset;
+
+        //for now it's the same as end dragging but we might want extra logic here so I seperated it.
+        constraintX = true;
+        constraintY = false;
+        constraintZ = true;
+    }
 }
 
 

@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
 
     [SerializeField] private TMP_Text timerText;
-    [SerializeField] private TMP_Text towerText;
+    //[SerializeField] private TMP_Text towerText;
 
     private void Start()
     {
@@ -25,10 +25,10 @@ public class UIManager : MonoBehaviour
     {
         timerText.text = Mathf.Round(time).ToString();
     }
-    public void SetTowerText(string text)
-    {
-        towerText.text = text;
-    }
+    //public void SetTowerText(string text)
+    //{
+    //    towerText.text = text;
+    //}
 
     public void ChangeGameSpeed(int speed)
     {

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3769497106922200325}
   - component: {fileID: 8327928483984017357}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 632152547674300196}
   - component: {fileID: 5948315110727767615}
   - component: {fileID: 5025084524125920620}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: D8_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ee99e325a81704b4788b9a4237401ee7, type: 2}
+  - {fileID: 2100000, guid: 12221e435a3bdf84a9f6090b32cd02dc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -187,11 +187,11 @@ MonoBehaviour:
   valueText: {fileID: 4009381229489638499}
   resource:
     Type: 0
-    Value: 0
+    Value: 1
     Icon: {fileID: -1631459450, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   buff:
     Type: 0
-    Value: 0
+    Value: 1
     Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
 --- !u!1 &655531495064444268
 GameObject:
@@ -202,7 +202,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7638472993532846718}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,7 +235,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 686794903956103865}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268,7 +268,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1633701494153669928}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Display_tamir
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -283,7 +283,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 828227397131007674}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.11591565, y: 0.8804772, z: 0.27984515, w: -0.3647056}
+  m_LocalRotation: {x: 0.28658414, y: 0.3638066, z: -0.118706994, w: 0.87830687}
   m_LocalPosition: {x: 0.0009998828, y: -0.0009999573, z: 0.0010001361}
   m_LocalScale: {x: 1, y: -1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -291,7 +291,7 @@ Transform:
   - {fileID: 9147079463288644117}
   - {fileID: 8505432194454714255}
   m_Father: {fileID: 896768955935586501}
-  m_LocalEulerAnglesHint: {x: 35.264, y: 135, z: 0}
+  m_LocalEulerAnglesHint: {x: 36.142, y: 45, z: 0}
 --- !u!1 &956115122257767101
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,7 +302,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7172565443253132539}
   - component: {fileID: 1032696281721048638}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -387,7 +387,7 @@ GameObject:
   - component: {fileID: 585995667969598806}
   - component: {fileID: 4840481852532871105}
   - component: {fileID: 6317112617123233666}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -558,7 +558,7 @@ GameObject:
   - component: {fileID: 6109584113276183607}
   - component: {fileID: 6866568624550193193}
   - component: {fileID: 2531278459156641965}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -728,7 +728,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3437856047279252040}
   - component: {fileID: 7566351830366706546}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -791,7 +791,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+  m_Sprite: {fileID: -1631459450, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.9490196}
   m_FlipX: 0
   m_FlipY: 0
@@ -812,7 +812,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8127254853616539940}
   - component: {fileID: 4410111300552001943}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -875,7 +875,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+  m_Sprite: {fileID: -1631459450, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.9490196}
   m_FlipX: 0
   m_FlipY: 0
@@ -896,7 +896,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7395878979987626469}
   - component: {fileID: 9168579827646714913}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -959,7 +959,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+  m_Sprite: {fileID: -1631459450, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.9490196}
   m_FlipX: 0
   m_FlipY: 0
@@ -980,7 +980,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9147079463288644117}
   - component: {fileID: 2910586079299681350}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1043,7 +1043,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+  m_Sprite: {fileID: -1631459450, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.9490196}
   m_FlipX: 0
   m_FlipY: 0
@@ -1063,7 +1063,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4586471672090619397}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1096,7 +1096,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3620284889257097149}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Display_tamir
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1129,7 +1129,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1434443467450780964}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1165,7 +1165,7 @@ GameObject:
   - component: {fileID: 6119072859802619801}
   - component: {fileID: 7461850050094661472}
   - component: {fileID: 1006702723831539946}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: D8_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1217,7 +1217,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ee99e325a81704b4788b9a4237401ee7, type: 2}
+  - {fileID: 2100000, guid: 12221e435a3bdf84a9f6090b32cd02dc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1256,11 +1256,11 @@ MonoBehaviour:
   valueText: {fileID: 5669300244147977402}
   resource:
     Type: 0
-    Value: 0
+    Value: 5
     Icon: {fileID: -1631459450, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   buff:
     Type: 0
-    Value: 0
+    Value: 5
     Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
 --- !u!1 &2321158175463363880
 GameObject:
@@ -1273,7 +1273,7 @@ GameObject:
   - component: {fileID: 1370716270396817949}
   - component: {fileID: 621242142514949505}
   - component: {fileID: 7168050767855158958}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1442,7 +1442,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1767470336425612074}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1478,7 +1478,7 @@ GameObject:
   - component: {fileID: 8836031676286792256}
   - component: {fileID: 806391039214534055}
   - component: {fileID: 4032190632782062280}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: D8_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1530,7 +1530,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ee99e325a81704b4788b9a4237401ee7, type: 2}
+  - {fileID: 2100000, guid: 12221e435a3bdf84a9f6090b32cd02dc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1569,11 +1569,11 @@ MonoBehaviour:
   valueText: {fileID: 7374464877290801249}
   resource:
     Type: 0
-    Value: 0
+    Value: 6
     Icon: {fileID: -1631459450, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   buff:
     Type: 0
-    Value: 0
+    Value: 3
     Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
 --- !u!1 &2570921261926590831
 GameObject:
@@ -1585,7 +1585,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4527744387029908510}
   - component: {fileID: 3259183751294759357}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1670,7 +1670,7 @@ GameObject:
   - component: {fileID: 7143366189930823136}
   - component: {fileID: 1574734823743573746}
   - component: {fileID: 7589163067684883694}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1841,7 +1841,7 @@ GameObject:
   - component: {fileID: 4134968317228346470}
   - component: {fileID: 3352097757016866151}
   - component: {fileID: 8090824075328234258}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2011,7 +2011,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8279930465154574260}
   - component: {fileID: 3181195018959621541}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2095,7 +2095,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8920369483672387696}
   - component: {fileID: 6865067999491426837}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2158,7 +2158,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+  m_Sprite: {fileID: -1631459450, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.9490196}
   m_FlipX: 0
   m_FlipY: 0
@@ -2181,7 +2181,7 @@ GameObject:
   - component: {fileID: 1521390815448426637}
   - component: {fileID: 1402174700770758322}
   - component: {fileID: 7285864735366223729}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: D8_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2233,7 +2233,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ee99e325a81704b4788b9a4237401ee7, type: 2}
+  - {fileID: 2100000, guid: 12221e435a3bdf84a9f6090b32cd02dc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2272,11 +2272,11 @@ MonoBehaviour:
   valueText: {fileID: 5404794083262310970}
   resource:
     Type: 0
-    Value: 0
+    Value: 76
     Icon: {fileID: -1631459450, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   buff:
     Type: 0
-    Value: 0
+    Value: 23
     Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
 --- !u!1 &3860539470573900344
 GameObject:
@@ -2287,7 +2287,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8584105584152372663}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Display_tamir
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2302,7 +2302,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3860539470573900344}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.27984524, y: -0.36470538, z: -0.1159156, w: -0.8804773}
+  m_LocalRotation: {x: 0.11910971, y: -0.8779891, z: 0.2875563, w: 0.36367497}
   m_LocalPosition: {x: -0.0009997487, y: -0.0009999573, z: -0.0010001212}
   m_LocalScale: {x: 1, y: -1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2310,7 +2310,7 @@ Transform:
   - {fileID: 4189298254946852543}
   - {fileID: 4134968317228346470}
   m_Father: {fileID: 1701440458554999176}
-  m_LocalEulerAnglesHint: {x: 35.264, y: 135, z: 0}
+  m_LocalEulerAnglesHint: {x: 36.269, y: -135, z: 0}
 --- !u!1 &4175226732329199670
 GameObject:
   m_ObjectHideFlags: 0
@@ -2322,7 +2322,7 @@ GameObject:
   - component: {fileID: 8505432194454714255}
   - component: {fileID: 5905279823440147814}
   - component: {fileID: 231911684525747476}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2491,7 +2491,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5503396447089095509}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Display_tamir
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2526,7 +2526,7 @@ GameObject:
   - component: {fileID: 7870600172411188243}
   - component: {fileID: 6581859479735791137}
   - component: {fileID: 8593890684304756034}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2697,7 +2697,7 @@ GameObject:
   - component: {fileID: 8298697108044073425}
   - component: {fileID: 4272060600151038821}
   - component: {fileID: 7374464877290801249}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2868,7 +2868,7 @@ GameObject:
   - component: {fileID: 8923608109923168705}
   - component: {fileID: 457168485793804979}
   - component: {fileID: 7243655091872748588}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3037,7 +3037,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4491015325767393494}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Display_tamir
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3073,7 +3073,7 @@ GameObject:
   - component: {fileID: 726070368789833672}
   - component: {fileID: 5580322752317608937}
   - component: {fileID: 2434004894817855641}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: D8_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3125,7 +3125,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ee99e325a81704b4788b9a4237401ee7, type: 2}
+  - {fileID: 2100000, guid: 12221e435a3bdf84a9f6090b32cd02dc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3164,11 +3164,11 @@ MonoBehaviour:
   valueText: {fileID: 6317112617123233666}
   resource:
     Type: 0
-    Value: 0
+    Value: 41
     Icon: {fileID: -1631459450, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   buff:
     Type: 0
-    Value: 0
+    Value: 12
     Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
 --- !u!1 &5964086922060593029
 GameObject:
@@ -3180,7 +3180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3081433606741125589}
   - component: {fileID: 9221461808989676429}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3243,7 +3243,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+  m_Sprite: {fileID: -1631459450, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.9490196}
   m_FlipX: 0
   m_FlipY: 0
@@ -3264,7 +3264,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8155352075288841865}
   - component: {fileID: 8934944704336285601}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3349,7 +3349,7 @@ GameObject:
   - component: {fileID: 902502414944409671}
   - component: {fileID: 3217084704511247024}
   - component: {fileID: 5669300244147977402}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3518,7 +3518,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5728616681380011764}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3554,7 +3554,7 @@ GameObject:
   - component: {fileID: 7168144796098956619}
   - component: {fileID: 6646556091922366402}
   - component: {fileID: 5123930129949325235}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: D8_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3606,7 +3606,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ee99e325a81704b4788b9a4237401ee7, type: 2}
+  - {fileID: 2100000, guid: 12221e435a3bdf84a9f6090b32cd02dc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3645,11 +3645,11 @@ MonoBehaviour:
   valueText: {fileID: 8090824075328234258}
   resource:
     Type: 0
-    Value: 0
+    Value: 43
     Icon: {fileID: -1631459450, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   buff:
     Type: 0
-    Value: 0
+    Value: 33
     Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
 --- !u!1 &6573715656492814182
 GameObject:
@@ -3661,7 +3661,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4260409636979827012}
   - component: {fileID: 8789237737733471663}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3745,7 +3745,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4834898815008649195}
   - component: {fileID: 4250788065341578116}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3830,7 +3830,7 @@ GameObject:
   - component: {fileID: 7976199067517044186}
   - component: {fileID: 3175691764931578805}
   - component: {fileID: 5404794083262310970}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4000,7 +4000,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3414355944158012353}
   - component: {fileID: 7551693465637550993}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4084,7 +4084,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4943122606653084231}
   - component: {fileID: 6356400990233392719}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4147,7 +4147,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+  m_Sprite: {fileID: -1631459450, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.9490196}
   m_FlipX: 0
   m_FlipY: 0
@@ -4170,7 +4170,7 @@ GameObject:
   - component: {fileID: 5385536243550333203}
   - component: {fileID: 146915271096878973}
   - component: {fileID: 105816855067285842}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: D8_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4222,7 +4222,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ee99e325a81704b4788b9a4237401ee7, type: 2}
+  - {fileID: 2100000, guid: 12221e435a3bdf84a9f6090b32cd02dc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4261,11 +4261,11 @@ MonoBehaviour:
   valueText: {fileID: 231911684525747476}
   resource:
     Type: 0
-    Value: 0
+    Value: 4
     Icon: {fileID: -1631459450, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   buff:
     Type: 0
-    Value: 0
+    Value: 67
     Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
 --- !u!1 &6895173316381504982
 GameObject:
@@ -4280,7 +4280,7 @@ GameObject:
   - component: {fileID: 438417151495276943}
   - component: {fileID: 7359763932789077676}
   - component: {fileID: 3904737591059714462}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: D8_dice_mdl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4297,8 +4297,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: -0.82378566, y: 0.85, z: -2.3756607}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.2, y: 1.1999998, z: 1.2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 714231421084607347}
   - {fileID: 896768955935586501}
@@ -4371,10 +4371,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f8c02a00140d6b40848ff1625bb6a21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnRollStart:
+  OnRollStartEvent:
     m_PersistentCalls:
       m_Calls: []
-  OnRollEnd:
+  OnRollEndEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDragStartEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDestroyDieEvent:
     m_PersistentCalls:
       m_Calls: []
   isLocked: 0
@@ -4391,6 +4397,11 @@ MonoBehaviour:
   - {fileID: 4032190632782062280}
   - {fileID: 2434004894817855641}
   element: 0
+  towerPrefabConnected: {fileID: 1663077381566298067, guid: 1eb9a3481d08d3f4d88d91c0c5673c44,
+    type: 3}
+  layerToHit:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &3904737591059714462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4405,13 +4416,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   die: {fileID: 7359763932789077676}
   posConstraintRange: {x: 0, y: 0, z: 0}
-  rotationForceMin: {x: 0, y: 0, z: 0}
+  rotationForceMin: {x: -1, y: -1, z: -1}
   rotationForceMax: {x: 1, y: 1, z: 1}
   throwForce: 7
   tpHeight: 0.5
-  constraintX: 0
+  constraintX: 1
   constraintY: 0
-  constraintZ: 0
+  constraintZ: 1
   massCenter: {x: 0, y: 0, z: 0}
 --- !u!1 &6914431283497879898
 GameObject:
@@ -4425,7 +4436,7 @@ GameObject:
   - component: {fileID: 419857613215423551}
   - component: {fileID: 1293781095424484987}
   - component: {fileID: 2971588039562428847}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: D8_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4477,7 +4488,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ee99e325a81704b4788b9a4237401ee7, type: 2}
+  - {fileID: 2100000, guid: 12221e435a3bdf84a9f6090b32cd02dc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4516,11 +4527,11 @@ MonoBehaviour:
   valueText: {fileID: 7589163067684883694}
   resource:
     Type: 0
-    Value: 0
+    Value: 12
     Icon: {fileID: -1631459450, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   buff:
     Type: 0
-    Value: 0
+    Value: 4
     Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
 --- !u!1 &7106071339389030683
 GameObject:
@@ -4533,7 +4544,7 @@ GameObject:
   - component: {fileID: 9059740510182137958}
   - component: {fileID: 5799031082907890208}
   - component: {fileID: 6927172018146729948}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4702,7 +4713,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3067906462468517472}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4737,7 +4748,7 @@ GameObject:
   - component: {fileID: 7644313168858462318}
   - component: {fileID: 7483347216052244048}
   - component: {fileID: 5772292031325546857}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4906,7 +4917,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4757728658672189240}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Display_tamir
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4921,7 +4932,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7614110353456094676}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.11591566, y: 0.88047725, z: 0.27984518, w: 0.3647056}
+  m_LocalRotation: {x: 0.28537044, y: -0.36397028, z: 0.11820425, w: 0.878702}
   m_LocalPosition: {x: -0.001000002, y: -0.0009999573, z: 0.0009998828}
   m_LocalScale: {x: 1, y: -1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4929,7 +4940,7 @@ Transform:
   - {fileID: 3081433606741125589}
   - {fileID: 7976199067517044186}
   m_Father: {fileID: 5855161200160843557}
-  m_LocalEulerAnglesHint: {x: 35.264, y: 135, z: 0}
+  m_LocalEulerAnglesHint: {x: 35.984, y: -45, z: 0}
 --- !u!1 &7887444488351969497
 GameObject:
   m_ObjectHideFlags: 0
@@ -4939,7 +4950,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3998748498937948064}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Display_tamir
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4974,7 +4985,7 @@ GameObject:
   - component: {fileID: 4205992750034376213}
   - component: {fileID: 8204534813335861165}
   - component: {fileID: 4009381229489638499}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5145,7 +5156,7 @@ GameObject:
   - component: {fileID: 6385498070224649808}
   - component: {fileID: 2752858022488760684}
   - component: {fileID: 7219707664904391812}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5316,7 +5327,7 @@ GameObject:
   - component: {fileID: 7777006889341854913}
   - component: {fileID: 1613286757443004497}
   - component: {fileID: 6806964438104372124}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5485,7 +5496,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1274050171690203088}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5519,7 +5530,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4189298254946852543}
   - component: {fileID: 8564760579867130333}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5582,7 +5593,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+  m_Sprite: {fileID: -1631459450, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.9490196}
   m_FlipX: 0
   m_FlipY: 0
@@ -5602,7 +5613,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 466554171400642414}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Display_tamir
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5617,7 +5628,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8856849833130781650}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.27984518, y: 0.36470532, z: 0.115915574, w: -0.88047725}
+  m_LocalRotation: {x: 0.115947604, y: 0.8804527, z: -0.27992234, w: 0.36469543}
   m_LocalPosition: {x: 0.0009998977, y: -0.0009999573, z: -0.0009998679}
   m_LocalScale: {x: 1, y: -1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5625,4 +5636,4 @@ Transform:
   - {fileID: 8920369483672387696}
   - {fileID: 7143366189930823136}
   m_Father: {fileID: 714231421084607347}
-  m_LocalEulerAnglesHint: {x: 35.264, y: 135, z: 0}
+  m_LocalEulerAnglesHint: {x: 35.274, y: 135, z: 0}
