@@ -27,10 +27,13 @@ public class Die : MonoBehaviour
     [SerializeField] private SpriteRenderer lockRenderer;
 
     private bool _isMoving;
+    private bool _isDragging;
     private bool _isInWorld;
     private float _stagnantTimer;
     private DieFace _currentTopFace;
     private Vector3 originalPos;
+    private float timeTillStartDrag = 0.2f;
+    private float currentTimeTillStartDrag = 0;
 
     public bool IsMoving { get { return _isMoving; } }
     public Rigidbody RB { get { return _rb; } }
@@ -133,10 +136,16 @@ public class Die : MonoBehaviour
         }
     }
 
-    private void OnMouseDown()
-    {        //new avishy
+    private void OnMouseDrag()
+    {
+        if (isLocked) return;
+        currentTimeTillStartDrag += Time.deltaTime;
 
-        OnDragStartEvent?.Invoke();
+        if(currentTimeTillStartDrag >= timeTillStartDrag)
+        {
+            OnDragStartEvent?.Invoke();
+            _isDragging = true;
+        }
     }
 
     private void OnMouseOver()
@@ -147,6 +156,29 @@ public class Die : MonoBehaviour
     private void OnMouseExit()
     {
         outline.SetOutlineMode(Outline.Mode.OutlineHidden);
+    }
+
+    private void OnMouseUp()
+    {
+        currentTimeTillStartDrag = 0;
+        if (_isDragging)
+        {
+            _isDragging = false;
+
+            return;
+        }
+
+        if (isLocked)
+        {
+            LockDie(false);
+        }
+        else
+        {
+            LockDie(true);
+        }
+
+        //select die for locking here
+        Debug.Log("Mouse up");
     }
 
     private void AdjustRotation()

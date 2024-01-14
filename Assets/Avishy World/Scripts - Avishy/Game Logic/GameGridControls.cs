@@ -15,6 +15,8 @@ public class GameGridControls : MonoBehaviour
     [SerializeField] private GridCell currentCellHovered;
     [SerializeField] private Die currentDieDragging;
 
+    [SerializeField] private List<Die> currentDieToLock;
+
 
 
     private Vector3 positionOfMouse;
