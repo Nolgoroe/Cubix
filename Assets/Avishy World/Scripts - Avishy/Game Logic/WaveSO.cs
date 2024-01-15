@@ -22,6 +22,5 @@ public class EnemyWaveData
 [CreateAssetMenu(fileName = "Wave Creation", menuName = "ScriptableObjects/Waves")]
 public class WaveSO : ScriptableObject
 {
-    //this is temp for now - need data from adar about how the waves will be created adn what data they need
     public List<WaveData> waves;
 }

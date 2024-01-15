@@ -15,6 +15,8 @@ public class GameGridControls : MonoBehaviour
     [SerializeField] private GridCell currentCellHovered;
     [SerializeField] private Die currentDieDragging;
 
+    [SerializeField] private List<Die> currentDieToLock;
+
 
 
     private Vector3 positionOfMouse;
@@ -62,16 +64,12 @@ public class GameGridControls : MonoBehaviour
             {
                 if (currentCellHovered && !currentCellHovered.ReturnIsOccipied())
                 {
-                    if (!CheckCanPlaceTowerOnCell())
-                    {
-                        //release die back to player zone
-                        currentDieDragging.OnDragEndEvent?.Invoke();
-                        SetCurrentDieDragging(null);
-                        return;
-                    }
-
-
                     InstantiateTower();
+
+                    if (CheckCanPlaceTowerOnCell())
+                    {
+                        Player.Instance.RecieveRandomResource();
+                    }
 
                     //currentDieDragging.OnDestroyDieEvent?.Invoke();
 
@@ -111,13 +109,14 @@ public class GameGridControls : MonoBehaviour
         return true;
     }
 
+
     private void InstantiateTower()
     {
         Vector3 cellpos = currentCellHovered.transform.position;
 
         GameObject go = Instantiate(currentTowerPrefab, cellpos, Quaternion.identity);
 
-        Vector3 fixedPos = new Vector3(cellpos.x, currentTowerPrefab.transform.position.y, cellpos.z); // temp here
+        Vector3 fixedPos = new Vector3(cellpos.x, currentTowerPrefab.transform.position.y, cellpos.z);
         go.transform.position = fixedPos;
 
         TowerBaseParent towerSpawned;
@@ -138,6 +137,13 @@ public class GameGridControls : MonoBehaviour
 
     private GridCell MouseOverGridCell()
     {
+        if(currentCellHovered)
+        {
+            currentCellHovered.OnMouseHover(false);
+        }
+
+        GridCell currentCell = currentCellHovered;
+
         currentCellHovered = null;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -146,6 +152,11 @@ public class GameGridControls : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hitInfo, Mathf.Infinity, gridCellLayer))
         {
             hitInfo.transform.TryGetComponent<GridCell>(out currentCellHovered);
+        }
+
+        if(currentCellHovered)
+        {
+            currentCellHovered.OnMouseHover(true);
         }
 
         return currentCellHovered;

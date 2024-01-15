@@ -188,7 +188,7 @@ public class LevelCreationToolUI : MonoBehaviour
         }
 
         ToolReferencerObject.Instance.toolGameGrid.CleanupBeforePrefab();
-        yield return new WaitForSeconds(2); //VERY TEMP HARDCODED
+        yield return new WaitForSeconds(2); 
 
         string levelName = "/" + decidedLevelName + ".prefab";
         string[] paths = new string[] { pathToLevelToolPrefabFolder + levelName,

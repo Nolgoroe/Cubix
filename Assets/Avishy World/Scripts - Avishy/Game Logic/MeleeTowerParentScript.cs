@@ -161,6 +161,22 @@ public class MeleeTowerParentScript : TowerBaseParent
 
     public override void RecieveBuffAfterRoll(Die die)
     {
-        throw new NotImplementedException();
+        DieFaceValue dieFaceVakue = towerDie.GetTopValue();
+
+        switch (dieFaceVakue.Buff.Type)
+        {
+            case BuffType.Speed:
+                break;
+            case BuffType.Damage:
+                break;
+            case BuffType.Fire:
+                break;
+            case BuffType.AttackSpeed:
+                //add attack speed to relavent tower
+                spawnRate += 0.1f;
+                break;
+            default:
+                break;
+        }
     }
 }

@@ -43,7 +43,7 @@ public class ToolEnemySpawnerCell : ToolGridCell
         if (ReturnSpawnedWaypoint())
             waypointTransforms.Add(toAdd.ReturnSpawnedWaypoint());
 
-        RotateWaypoints(); //TEMP HERE!
+        RotateWaypoints();
     }
     public IEnumerator RemoveFromEnemyPath(ToolGridCell toRemove)
     {
@@ -58,7 +58,7 @@ public class ToolEnemySpawnerCell : ToolGridCell
 
         toRemove.DisplayAsWaypoint(false);
 
-        RotateWaypoints(); //TEMP HERE!
+        RotateWaypoints();
     }
 
     [ContextMenu("Save Path")]

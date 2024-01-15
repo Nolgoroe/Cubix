@@ -8,7 +8,7 @@ public class RangeTowerParentScript : TowerBaseParent
     [Header ("Live data")]
     [SerializeField] private Transform currentTarget;
 
-    [Header("Preset Data")] // this is temp - might be scriptable object
+    [Header("Preset Data")] 
     [SerializeField] private float range = 15;
     [SerializeField] private float rotationSpeed = 15;
     [SerializeField] protected float fireRate = 1;
@@ -122,7 +122,5 @@ public class RangeTowerParentScript : TowerBaseParent
             default:
                 break;
         }
-
-
     }
 }

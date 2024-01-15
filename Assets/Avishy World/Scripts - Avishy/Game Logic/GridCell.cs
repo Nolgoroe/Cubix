@@ -20,29 +20,21 @@ public class GridCell : MonoBehaviour
 
     private Renderer rend;
 
+    private void OnValidate()
+    {
+        if(rend == null)
+        rend = GetComponent<Renderer>();
+    }
     protected virtual void Start()
     {
-        rend = GetComponent<Renderer>();
         startColor = rend.material.color;
     }
 
 
-    private void OnMouseEnter()
+    public void OnMouseHover(bool isHoveredOn)
     {
-        rend.material.color = hoverColor;
+        rend.material.color = isHoveredOn ? hoverColor : startColor;
     }
-
-    private void OnMouseExit()
-    {
-        rend.material.color = startColor;
-    }
-
-
-
-
-
-
-
 
 
     public Vector2Int ReturnPositionInGridArray()
@@ -72,7 +64,7 @@ public class GridCell : MonoBehaviour
         objectOnCell = objectToPlace;
         isOccupied = true;
 
-        occupiedByTower = true; // temp here
+        occupiedByTower = true;
     }
 
     public void EmptyCell()
@@ -84,7 +76,7 @@ public class GridCell : MonoBehaviour
 
         isOccupied = false;
 
-        //temp here
+        
         if(occupiedByTower)
         {
             occupiedByTower = false;
@@ -98,6 +90,10 @@ public class GridCell : MonoBehaviour
         cellType = toolGridCell.ReturnTypeOfCell();
         cellTypeColor = toolGridCell.ReturnCellTypeColor();
 
+
+        rend.sharedMaterial.color = Color.white;
+
+
         slotTypeSpriteRenderer = toolGridCell.ReturnSlotTypeSpriteRenderer();
 
         if (slotTypeSpriteRenderer == null) return;
@@ -106,8 +102,10 @@ public class GridCell : MonoBehaviour
         if(cellTypeColor == CellTypeColor.None)
         {
             //this means that the cell is not a cell that can accept a tower.. so it's occupied
-            isOccupied = true;
+            //isOccupied = true;
             slotTypeSpriteRenderer.gameObject.SetActive(false);
         }
+
+
     }
 }

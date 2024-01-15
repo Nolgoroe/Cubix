@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
-
+using Highlighters;
+using Highlighters_URP;
 public enum DieElement { Water, Fire, Poison }
 
 [RequireComponent(typeof(Rigidbody), typeof(MeshCollider))]
@@ -18,18 +19,22 @@ public class Die : MonoBehaviour
 
     public bool isLocked;
     [SerializeField] private Camera diceCam;
-    [SerializeField] private TMP_Text resText;
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private List<DieFace> faces;
     [SerializeField] private DieElement element;
     [SerializeField] private TowerBaseParent towerPrefabConnected;        //new avishy
     [SerializeField] private float _reqStagnantTime = 1;
+    [SerializeField] private SpriteRenderer lockRenderer;
+    [SerializeField] private HighlighterTrigger highlightTrigger;
 
     private bool _isMoving;
+    private bool _isDragging;
     private bool _isInWorld;
     private float _stagnantTimer;
     private DieFace _currentTopFace;
     private Vector3 originalPos;
+    private float timeTillStartDrag = 0.2f;
+    private float currentTimeTillStartDrag = 0;
 
     public bool IsMoving { get { return _isMoving; } }
     public Rigidbody RB { get { return _rb; } }
@@ -51,6 +56,13 @@ public class Die : MonoBehaviour
         DisplayResources();//for build purpose
 
         originalPos = transform.localPosition;
+
+        highlightTrigger.OnTriggeringStarted += test;
+    }
+
+    private void test()
+    {
+        Debug.Log(highlightTrigger.IsCurrentlyTriggered);
     }
 
     private void LateUpdate()
@@ -105,9 +117,7 @@ public class Die : MonoBehaviour
             }
         }
         AdjustRotation();
-        resText.text = ("D" + faces.Count +": Resource: " +
-            _currentTopFace.GetFaceValue().Resource.Value + _currentTopFace.GetFaceValue().Resource.Type.ToString() + 
-            ", Buff: " + _currentTopFace.GetFaceValue().Buff.Value + _currentTopFace.GetFaceValue().Buff.Type.ToString());
+
         return _currentTopFace.GetFaceValue();
     }
 
@@ -134,10 +144,49 @@ public class Die : MonoBehaviour
         }
     }
 
-    private void OnMouseDown()
-    {        //new avishy
+    private void OnMouseDrag()
+    {
+        if (isLocked) return;
+        currentTimeTillStartDrag += Time.deltaTime;
 
-        OnDragStartEvent?.Invoke();
+        if(currentTimeTillStartDrag >= timeTillStartDrag)
+        {
+            OnDragStartEvent?.Invoke();
+            _isDragging = true;
+        }
+    }
+
+    private void OnMouseOver()
+    {
+        //outline.SetOutlineMode(Outline.Mode.OutlineVisible);
+    }
+
+    private void OnMouseExit()
+    {
+        //outline.SetOutlineMode(Outline.Mode.OutlineHidden);
+    }
+
+    private void OnMouseUp()
+    {
+        currentTimeTillStartDrag = 0;
+        if (_isDragging)
+        {
+            _isDragging = false;
+
+            return;
+        }
+
+        if (isLocked)
+        {
+            LockDie(false);
+        }
+        else
+        {
+            LockDie(true);
+        }
+
+        //select die for locking here
+        Debug.Log("Mouse up");
     }
 
     private void AdjustRotation()
@@ -205,6 +254,12 @@ public class Die : MonoBehaviour
     }
 
 
+
+    public void LockDie(bool isLocking)
+    {
+        isLocked = isLocking ? true : false;
+        lockRenderer.gameObject.SetActive(isLocking ? true : false);
+    }
 
     public GameObject ReturnTowerPrefab()
     {        //new avishy
