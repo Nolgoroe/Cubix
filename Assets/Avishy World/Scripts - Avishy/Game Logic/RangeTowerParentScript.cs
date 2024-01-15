@@ -18,6 +18,12 @@ public class RangeTowerParentScript : TowerBaseParent
     [SerializeField] protected GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
 
+    private void Start()
+    {
+        //radius is half of the diameter of a circle
+        if(rangeIndicator)
+            rangeIndicator.localScale = new Vector3(range * 2 / rangeIndicator.lossyScale.x, range * 2 / rangeIndicator.lossyScale.y, range * 2 / rangeIndicator.lossyScale.z);
+    }
     protected virtual void Update()
     {
         if (GameManager.gameSpeed == 0) return;
@@ -97,7 +103,7 @@ public class RangeTowerParentScript : TowerBaseParent
         towerDie = connectedDie;
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);

@@ -55,6 +55,8 @@ public class Die : MonoBehaviour
 
         originalPos = transform.localPosition;
 
+        diceCam = GameManager.Instance.ReturnDiceCamera();
+
     }
 
 

@@ -40,12 +40,10 @@ public class GridCell : MonoBehaviour
         if (outline)
             outline.enabled = isHoveredOn ? true : false;
 
-        if(isHoveredOn)
+        if(outline && isHoveredOn)
         {
             outline.SetOutlineMode(Outline.Mode.OutlineAll);
         }
-
-        //rend.material.color = isHoveredOn ? hoverColor : startColor;
     }
 
 

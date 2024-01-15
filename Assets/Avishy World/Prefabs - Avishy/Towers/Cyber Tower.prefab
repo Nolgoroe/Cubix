@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 410567124767511374}
   - component: {fileID: 1642124683698170419}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Cube floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,6 +177,7 @@ MonoBehaviour:
   currentCellOnPos: {x: 0, y: 0}
   requiredCellColorType: 2
   towerDie: {fileID: 0}
+  rangeIndicator: {fileID: 0}
   connectedPathCells: []
   troopPrefab: {fileID: 8425342904263200654, guid: 880e3787047504344a32a7cd14e6eb16,
     type: 3}

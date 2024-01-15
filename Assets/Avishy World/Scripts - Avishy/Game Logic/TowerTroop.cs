@@ -18,8 +18,15 @@ public class TowerTroop : MonoBehaviour
     [SerializeField] protected float attackRate = 1;
     [SerializeField] protected float currentAttackCooldown = 0;
     [SerializeField] protected float rotationSpeed = 10;
+    [SerializeField] protected Transform rangeIndicator;
     [SerializeField] private LayerMask enemyLayerMask;
 
+    private void Start()
+    {
+        if (rangeIndicator)
+            rangeIndicator.localScale = new Vector3(range * 2 / rangeIndicator.lossyScale.x, range * 2 / rangeIndicator.lossyScale.y, range * 2 / rangeIndicator.lossyScale.z);
+
+    }
     protected virtual void Update()
     {
         if (GameManager.gameSpeed == 0) return;
