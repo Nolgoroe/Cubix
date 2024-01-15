@@ -102,7 +102,7 @@ public class GridCell : MonoBehaviour
         if(cellTypeColor == CellTypeColor.None)
         {
             //this means that the cell is not a cell that can accept a tower.. so it's occupied
-            //isOccupied = true;
+            isOccupied = true;
             slotTypeSpriteRenderer.gameObject.SetActive(false);
         }
 

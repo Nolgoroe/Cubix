@@ -60,6 +60,8 @@ public class ToolGridCell : MonoBehaviour
     [SerializeField] private Material cellMat;
     [SerializeField] private GameObject spawnedWaypoint;
 
+    [Header("General Data")]
+    [SerializeField] private Behaviour[] componenetsToActivateOnMakePrefab;
     private void OnValidate()
     {
         renderer = GetComponent<MeshRenderer>();
@@ -153,6 +155,13 @@ public class ToolGridCell : MonoBehaviour
 
         ChangeCellColor(Color.white);
 
+    }
+    public void EnableAllGameComponents()
+    {
+        foreach (Behaviour component in componenetsToActivateOnMakePrefab)
+        {
+            component.enabled = true;
+        }
     }
     #endregion
 

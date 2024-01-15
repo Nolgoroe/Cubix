@@ -220,6 +220,11 @@ MonoBehaviour:
   renderer: {fileID: 2275211085348866706}
   cellMat: {fileID: 0}
   spawnedWaypoint: {fileID: 0}
+  componenetsToActivateOnMakePrefab:
+  - {fileID: 5667261923999023891}
+  - {fileID: 6625230457877126905}
+  - {fileID: 5830198043385410403}
+  - {fileID: 4747026449173146178}
 --- !u!114 &5667261923999023891
 MonoBehaviour:
   m_ObjectHideFlags: 0

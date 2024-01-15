@@ -379,6 +379,8 @@ public class ToolGameGrid : MonoBehaviour
 
         foreach (ToolGridCell toolGridCell in gameGridCellsList)
         {
+            toolGridCell.EnableAllGameComponents();
+
             switch (toolGridCell.ReturnTypeOfCell())
             {
                 case TypeOfCell.enemyPath:
