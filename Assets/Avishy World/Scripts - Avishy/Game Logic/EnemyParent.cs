@@ -12,7 +12,7 @@ public enum EnemyTypes
 }
 public class EnemyParent : MonoBehaviour
 {
-    [Header("Enemy Stats")]// this is all temp - will be an SO later... maybe
+    [Header("Enemy Stats")]
     [SerializeField] private float Speed;
     [SerializeField] private float range = 0.5f;
     [SerializeField] private float rotationSpeed = 2;
@@ -104,7 +104,6 @@ public class EnemyParent : MonoBehaviour
     {
         if(waypointIndex >= waypointsList.Count - 1)
         {
-            //Destroy(gameObject);
             return;
         }
 
