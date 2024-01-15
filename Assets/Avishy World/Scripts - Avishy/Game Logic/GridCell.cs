@@ -20,9 +20,13 @@ public class GridCell : MonoBehaviour
 
     private Renderer rend;
 
+    private void OnValidate()
+    {
+        if(rend == null)
+        rend = GetComponent<Renderer>();
+    }
     protected virtual void Start()
     {
-        rend = GetComponent<Renderer>();
         startColor = rend.material.color;
     }
 
@@ -86,6 +90,10 @@ public class GridCell : MonoBehaviour
         cellType = toolGridCell.ReturnTypeOfCell();
         cellTypeColor = toolGridCell.ReturnCellTypeColor();
 
+
+        rend.sharedMaterial.color = Color.white;
+
+
         slotTypeSpriteRenderer = toolGridCell.ReturnSlotTypeSpriteRenderer();
 
         if (slotTypeSpriteRenderer == null) return;
@@ -97,5 +105,7 @@ public class GridCell : MonoBehaviour
             //isOccupied = true;
             slotTypeSpriteRenderer.gameObject.SetActive(false);
         }
+
+
     }
 }

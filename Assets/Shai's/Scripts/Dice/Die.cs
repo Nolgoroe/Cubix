@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
-
+using Highlighters;
+using Highlighters_URP;
 public enum DieElement { Water, Fire, Poison }
 
 [RequireComponent(typeof(Rigidbody), typeof(MeshCollider))]
@@ -23,8 +24,8 @@ public class Die : MonoBehaviour
     [SerializeField] private DieElement element;
     [SerializeField] private TowerBaseParent towerPrefabConnected;        //new avishy
     [SerializeField] private float _reqStagnantTime = 1;
-    [SerializeField] private Outline outline;
     [SerializeField] private SpriteRenderer lockRenderer;
+    [SerializeField] private HighlighterTrigger highlightTrigger;
 
     private bool _isMoving;
     private bool _isDragging;
@@ -55,6 +56,13 @@ public class Die : MonoBehaviour
         DisplayResources();//for build purpose
 
         originalPos = transform.localPosition;
+
+        highlightTrigger.OnTriggeringStarted += test;
+    }
+
+    private void test()
+    {
+        Debug.Log(highlightTrigger.IsCurrentlyTriggered);
     }
 
     private void LateUpdate()
@@ -150,12 +158,12 @@ public class Die : MonoBehaviour
 
     private void OnMouseOver()
     {
-        outline.SetOutlineMode(Outline.Mode.OutlineVisible);
+        //outline.SetOutlineMode(Outline.Mode.OutlineVisible);
     }
 
     private void OnMouseExit()
     {
-        outline.SetOutlineMode(Outline.Mode.OutlineHidden);
+        //outline.SetOutlineMode(Outline.Mode.OutlineHidden);
     }
 
     private void OnMouseUp()
