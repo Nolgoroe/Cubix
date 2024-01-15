@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public int gameSpeedTemp = 1;// Temp
 
     [SerializeField] private List<EnemyParent> allEnemies;
+    [SerializeField] private Camera mainCamera; //temp
+    [SerializeField] private Camera diceCamera; //temp
 
     private void Awake()
     {
@@ -31,7 +33,10 @@ public class GameManager : MonoBehaviour
 
 
 
-
+    public Camera ReturnDiceCamera()
+    {
+        return diceCamera;
+    }
 
     public GameObject ReturnEnemyByType(EnemyTypes type)
     {

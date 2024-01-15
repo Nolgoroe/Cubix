@@ -379,8 +379,6 @@ public class ToolGameGrid : MonoBehaviour
 
         foreach (ToolGridCell toolGridCell in gameGridCellsList)
         {
-            toolGridCell.EnableAllGameComponents();
-
             switch (toolGridCell.ReturnTypeOfCell())
             {
                 case TypeOfCell.enemyPath:
@@ -431,7 +429,7 @@ public class ToolGameGrid : MonoBehaviour
                     break;
             }
 
-            DestroyImmediate(toolGridCell);
+            DestroyImmediate(toolGridCell, true);
         }
 
         foreach (PlacedObject placedObject in placedObjectList)
@@ -454,13 +452,13 @@ public class ToolGameGrid : MonoBehaviour
 
         CleanMainParent();
 
-        DestroyImmediate(this);
+        DestroyImmediate(this, true);
     }
 #endif
 
     private void CleanMainParent()
     {
-        DestroyImmediate(waypointsParent.gameObject);
+        DestroyImmediate(waypointsParent.gameObject, true);
         //DestroyImmediate(buildingParent.gameObject);
     }
 }

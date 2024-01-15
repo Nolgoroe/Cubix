@@ -453,16 +453,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 687700336}
     m_Modifications:
-    - target: {fileID: 974496482194868561, guid: 30f61d566fa189c4182947b8e23103e5,
-        type: 3}
-      propertyPath: myCamera
-      value: 
-      objectReference: {fileID: 984943767}
-    - target: {fileID: 4511837017999286429, guid: 30f61d566fa189c4182947b8e23103e5,
-        type: 3}
-      propertyPath: myCamera
-      value: 
-      objectReference: {fileID: 365183594}
     - target: {fileID: 5556330122468636267, guid: 30f61d566fa189c4182947b8e23103e5,
         type: 3}
       propertyPath: diceCam
@@ -527,6 +517,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9168484862997919747, guid: 30f61d566fa189c4182947b8e23103e5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9168484862997919747, guid: 30f61d566fa189c4182947b8e23103e5,
+        type: 3}
+      propertyPath: outlineMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9168484862997919747, guid: 30f61d566fa189c4182947b8e23103e5,
+        type: 3}
+      propertyPath: outlineWidth
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1216,7 +1221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f01b0c61ce979f42a5a35c241d9a3ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveSO: {fileID: 11400000, guid: c3717339f3d5cec47b87d5e4289a7c5c, type: 2}
+  waveSO: {fileID: 11400000, guid: 79a43c70b586b714c9fa99e231edd9ce, type: 2}
   currentLevelEnemySpawners: []
   currentIndexInWave: 0
 --- !u!1 &357553308
@@ -1364,7 +1369,7 @@ GameObject:
   - component: {fileID: 365183594}
   - component: {fileID: 365183595}
   m_Layer: 0
-  m_Name: DiceCamera
+  m_Name: Dice Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2508,6 +2513,74 @@ Transform:
   - {fileID: 1052621887}
   m_Father: {fileID: 1285840839}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &692475458
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 441601548821697970, guid: 0fb6d096a9a86c34286420f3b4ee1bf8,
+        type: 3}
+      propertyPath: m_Name
+      value: test
+      objectReference: {fileID: 0}
+    - target: {fileID: 2296024291057411638, guid: 0fb6d096a9a86c34286420f3b4ee1bf8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2296024291057411638, guid: 0fb6d096a9a86c34286420f3b4ee1bf8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2296024291057411638, guid: 0fb6d096a9a86c34286420f3b4ee1bf8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2296024291057411638, guid: 0fb6d096a9a86c34286420f3b4ee1bf8,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2296024291057411638, guid: 0fb6d096a9a86c34286420f3b4ee1bf8,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2296024291057411638, guid: 0fb6d096a9a86c34286420f3b4ee1bf8,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2296024291057411638, guid: 0fb6d096a9a86c34286420f3b4ee1bf8,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2296024291057411638, guid: 0fb6d096a9a86c34286420f3b4ee1bf8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2296024291057411638, guid: 0fb6d096a9a86c34286420f3b4ee1bf8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2296024291057411638, guid: 0fb6d096a9a86c34286420f3b4ee1bf8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0fb6d096a9a86c34286420f3b4ee1bf8, type: 3}
 --- !u!1 &718769225
 GameObject:
   m_ObjectHideFlags: 0
@@ -3147,7 +3220,7 @@ Camera:
   m_GameObject: {fileID: 984943765}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -4428,6 +4501,8 @@ MonoBehaviour:
   allEnemies:
   - {fileID: 3658538233447746505, guid: 28dbcd9d9baf6fd4eb936028550e7bd4, type: 3}
   - {fileID: 3294606807999378091, guid: d385643dec2673b41be9061461bcf71c, type: 3}
+  mainCamera: {fileID: 984943767}
+  diceCamera: {fileID: 365183594}
 --- !u!1 &1553985056
 GameObject:
   m_ObjectHideFlags: 0
@@ -4645,11 +4720,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 687700336}
     m_Modifications:
-    - target: {fileID: 5846772064455462014, guid: 89c80393a1704c540a3de66fa30dd966,
+    - target: {fileID: 2362081514624229054, guid: 89c80393a1704c540a3de66fa30dd966,
         type: 3}
-      propertyPath: myCamera
-      value: 
-      objectReference: {fileID: 365183594}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2362081514624229054, guid: 89c80393a1704c540a3de66fa30dd966,
+        type: 3}
+      propertyPath: outlineMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2362081514624229054, guid: 89c80393a1704c540a3de66fa30dd966,
+        type: 3}
+      propertyPath: outlineWidth
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4933146070151026219, guid: 89c80393a1704c540a3de66fa30dd966,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5936457677700954628, guid: 89c80393a1704c540a3de66fa30dd966,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4705,6 +4795,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: D8_dice_mdl
       objectReference: {fileID: 0}
+    - target: {fileID: 7359763932789077676, guid: 89c80393a1704c540a3de66fa30dd966,
+        type: 3}
+      propertyPath: diceCam
+      value: 
+      objectReference: {fileID: 365183594}
+    - target: {fileID: 7359763932789077676, guid: 89c80393a1704c540a3de66fa30dd966,
+        type: 3}
+      propertyPath: lockRenderer
+      value: 
+      objectReference: {fileID: 1052621888}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5518,3 +5618,4 @@ SceneRoots:
   - {fileID: 812181904}
   - {fileID: 1285840839}
   - {fileID: 796144809}
+  - {fileID: 692475458}

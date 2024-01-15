@@ -205,7 +205,7 @@ public class ToolEnemySpawnerCell : ToolGridCell
     }
     public void DestroySpawnerNumberText()
     {
-        DestroyImmediate(spawnerNumberText.gameObject);
+        DestroyImmediate(spawnerNumberText.gameObject, true);
     }
 
     [ContextMenu("Rotate now!")]

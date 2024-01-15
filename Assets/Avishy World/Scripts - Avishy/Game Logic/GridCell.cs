@@ -11,6 +11,7 @@ public class GridCell : MonoBehaviour
     [SerializeField] private Color startColor;
     [SerializeField] private SpriteRenderer slotTypeSpriteRenderer;
     [SerializeField] private CellTypeColor cellTypeColor;
+    [SerializeField] private Outline outline;
 
     [Header("Live Data")]
     [SerializeField] private bool isOccupied;
@@ -22,8 +23,11 @@ public class GridCell : MonoBehaviour
 
     private void OnValidate()
     {
-        if(rend == null)
-        rend = GetComponent<Renderer>();
+        if (rend == null)
+            rend = GetComponent<Renderer>();
+
+        if (outline == null)
+            outline = GetComponent<Outline>();
     }
     protected virtual void Start()
     {
@@ -33,7 +37,15 @@ public class GridCell : MonoBehaviour
 
     public void OnMouseHover(bool isHoveredOn)
     {
-        rend.material.color = isHoveredOn ? hoverColor : startColor;
+        if (outline)
+            outline.enabled = isHoveredOn ? true : false;
+
+        if(isHoveredOn)
+        {
+            outline.SetOutlineMode(Outline.Mode.OutlineAll);
+        }
+
+        //rend.material.color = isHoveredOn ? hoverColor : startColor;
     }
 
 
@@ -91,8 +103,13 @@ public class GridCell : MonoBehaviour
         cellTypeColor = toolGridCell.ReturnCellTypeColor();
 
 
-        rend.sharedMaterial.color = Color.white;
-
+        //rend.material.color = Color.white;
+        outline = GetComponent<Outline>(); //temp
+        if(outline)
+        {
+            outline.enabled = false;
+            outline.SetOutlineMode(Outline.Mode.OutlineAll);
+        }
 
         slotTypeSpriteRenderer = toolGridCell.ReturnSlotTypeSpriteRenderer();
 
