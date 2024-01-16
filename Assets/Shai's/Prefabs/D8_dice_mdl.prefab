@@ -4557,7 +4557,7 @@ MonoBehaviour:
   - {fileID: 4032190632782062280}
   - {fileID: 2434004894817855641}
   element: 0
-  towerPrefabConnected: {fileID: 1663077381566298067, guid: 1eb9a3481d08d3f4d88d91c0c5673c44,
+  towerPrefabConnected: {fileID: 7544678564594478742, guid: 80d1f37f29ffab84db83beb313155a00,
     type: 3}
   _reqStagnantTime: 1
   lockRenderer: {fileID: 0}

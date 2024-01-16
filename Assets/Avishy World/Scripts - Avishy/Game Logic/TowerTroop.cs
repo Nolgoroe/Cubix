@@ -21,7 +21,7 @@ public class TowerTroop : MonoBehaviour
     [SerializeField] protected Transform rangeIndicator;
     [SerializeField] private LayerMask enemyLayerMask;
 
-    private void Start()
+    virtual protected void Start()
     {
         if (rangeIndicator)
         {

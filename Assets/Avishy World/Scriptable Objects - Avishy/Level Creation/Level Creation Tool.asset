@@ -47,11 +47,11 @@ MonoBehaviour:
   - typeOfCell: 0
     mat: {fileID: 2100000, guid: e2a89766ae5b4a74fbe5769d9eb6d77a, type: 2}
   - typeOfCell: 1
-    mat: {fileID: 2100000, guid: 32325f89619e00e4a8b9d25be264cfdf, type: 2}
+    mat: {fileID: 2100000, guid: 5bb31a7632a44594593063faa16548ec, type: 2}
   - typeOfCell: 2
     mat: {fileID: 2100000, guid: 458cacd09afd9044c82c2bcd3bd42fd4, type: 2}
   - typeOfCell: 3
-    mat: {fileID: 2100000, guid: 4cee7a5983b187943adc589b9cb1f084, type: 2}
+    mat: {fileID: 2100000, guid: 5bb31a7632a44594593063faa16548ec, type: 2}
   - typeOfCell: 4
     mat: {fileID: 2100000, guid: 87fa03f5d07e5ed42a2e17177704a888, type: 2}
   - typeOfCell: 5
