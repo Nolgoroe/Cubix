@@ -167,6 +167,19 @@ public class ToolWaveCreator : MonoBehaviour
         }
 
         string path = "Assets/Avishy World/Scriptable Objects - Avishy/Waves/newSO.asset";
+
+        string guid = AssetDatabase.AssetPathToGUID(path, AssetPathToGUIDOptions.OnlyExistingAssets);
+
+        int numWave = 0;
+
+        do
+        {
+            numWave++;
+            path = "Assets/Avishy World/Scriptable Objects - Avishy/Waves/newSO" + numWave + ".asset";
+            guid = AssetDatabase.AssetPathToGUID(path, AssetPathToGUIDOptions.OnlyExistingAssets);
+
+        } while (guid != "");
+
         AssetDatabase.CreateAsset(wave, path);
         AssetDatabase.SaveAssets();
 

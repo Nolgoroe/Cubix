@@ -7,10 +7,10 @@ public class LaserTrapTroop : TowerTroop
     [SerializeField] float lifetime = 2;
     [SerializeField] bool activated = false;
 
-    void Start()
+    override protected void Start()
     {
         health = Mathf.Infinity;
-
+        base.Start();
     }
 
     protected override void Update()
@@ -30,7 +30,7 @@ public class LaserTrapTroop : TowerTroop
 
             if (lifetime < 0)
             {
-                connectedTower.LoseTroop();
+                connectedTower.LoseTroop(this);
                 Destroy(gameObject);
                 return;
             }

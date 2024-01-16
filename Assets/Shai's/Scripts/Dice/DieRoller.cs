@@ -20,7 +20,7 @@ public class DieRoller : MonoBehaviour
     private Vector3 _ogPos;
 
     private void Start()
-    {        //new avishy
+    {        
 
         _ogPos = transform.position;
 
@@ -39,7 +39,7 @@ public class DieRoller : MonoBehaviour
 
     public void Roll()
     {
-        if (!die.isLocked)
+        if (!die.isLocked && isActiveAndEnabled)
         {
             die.OnRollStartEvent.Invoke();
             die.RB.ResetCenterOfMass();
@@ -96,21 +96,21 @@ public class DieRoller : MonoBehaviour
     }
 
     private void OnConnectedDieStartDragging()
-    {        //new avishy
+    {       
 
         constraintX = false;
         constraintY = false;
         constraintZ = false;
     }
     private void OnConnectedDieEndDragging()
-    {        //new avishy
+    {        
 
         constraintX = true;
         constraintY = false;
         constraintZ = true;
     }
     private void OnConnectedDiePlace()
-    {        //new avishy
+    {        
 
         //maybe better way?
         Vector3 pos = GameGridControls.Instance.ReturnCurrentCell().transform.position;
@@ -124,6 +124,8 @@ public class DieRoller : MonoBehaviour
         constraintX = true;
         constraintY = false;
         constraintZ = true;
+
+        //gameObject.SetActive(false);
     }
 }
 

@@ -59,7 +59,7 @@ public class Outline : MonoBehaviour {
   [SerializeField]
   private Color outlineColor = Color.white;
 
-  [SerializeField, Range(0f, 10f)]
+  [SerializeField, Range(0f, 100f)]
   private float outlineWidth = 2f;
 
   [Header("Optional")]
@@ -109,10 +109,13 @@ public class Outline : MonoBehaviour {
       materials.Add(outlineFillMaterial);
 
       renderer.materials = materials.ToArray();
-    }
-  }
 
-  void OnValidate() {
+    }
+
+        UpdateMaterialProperties();
+    }
+
+    void OnValidate() {
 
     // Update material properties
     needsUpdate = true;
@@ -306,7 +309,6 @@ public class Outline : MonoBehaviour {
         break;
     }
   }
-
 
     public void SetOutlineMode(Mode mode)
     {

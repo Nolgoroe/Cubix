@@ -193,4 +193,9 @@ public class EnemyParent : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
     }
+
+    private void OnDestroy()
+    {
+        WaveManager.Instance.ChangeEnemyCount(-1);
+    }
 }

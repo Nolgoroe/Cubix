@@ -22,7 +22,7 @@ MonoBehaviour:
   - typeOfCell: 3
     color: {r: 0, g: 0.50077295, b: 1, a: 1}
   - typeOfCell: 4
-    color: {r: 1, g: 1, b: 1, a: 1}
+    color: {r: 0.7764706, g: 0.79607844, b: 1, a: 1}
   - typeOfCell: 5
     color: {r: 1, g: 0, b: 0.8533907, a: 1}
   colorToPrefabList:
@@ -38,7 +38,7 @@ MonoBehaviour:
   - color: {r: 0, g: 0.50077295, b: 1, a: 1}
     prefab: {fileID: 6086178004726300133, guid: b402b833013857b4da1bf7b498a856ec,
       type: 3}
-  - color: {r: 1, g: 1, b: 1, a: 1}
+  - color: {r: 0.7764706, g: 0.79607844, b: 1, a: 1}
     prefab: {fileID: 9212971577064700083, guid: 7cf0fb1025b0a754db9b6928b9c8e445,
       type: 3}
   - color: {r: 1, g: 0, b: 0.8533907, a: 1}
@@ -47,13 +47,13 @@ MonoBehaviour:
   - typeOfCell: 0
     mat: {fileID: 2100000, guid: e2a89766ae5b4a74fbe5769d9eb6d77a, type: 2}
   - typeOfCell: 1
-    mat: {fileID: 2100000, guid: 32325f89619e00e4a8b9d25be264cfdf, type: 2}
+    mat: {fileID: 2100000, guid: 5bb31a7632a44594593063faa16548ec, type: 2}
   - typeOfCell: 2
     mat: {fileID: 2100000, guid: 458cacd09afd9044c82c2bcd3bd42fd4, type: 2}
   - typeOfCell: 3
-    mat: {fileID: 2100000, guid: 4cee7a5983b187943adc589b9cb1f084, type: 2}
+    mat: {fileID: 2100000, guid: 5bb31a7632a44594593063faa16548ec, type: 2}
   - typeOfCell: 4
-    mat: {fileID: 2100000, guid: 06d40dc2e1401784eb420a0d2d5d7235, type: 2}
+    mat: {fileID: 2100000, guid: 87fa03f5d07e5ed42a2e17177704a888, type: 2}
   - typeOfCell: 5
     mat: {fileID: 2100000, guid: 2d17ae4166480fc4e9898120b62a6a22, type: 2}
   pathSidesToMeshes:

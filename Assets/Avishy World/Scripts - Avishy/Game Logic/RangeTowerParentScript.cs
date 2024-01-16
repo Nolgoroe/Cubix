@@ -18,6 +18,16 @@ public class RangeTowerParentScript : TowerBaseParent
     [SerializeField] protected GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
 
+    protected override void Start()
+    {
+        base.Start();
+        //radius is half of the diameter of a circle
+        if(rangeIndicator)
+        {
+            rangeIndicator.localScale = new Vector3(range * 2 / transform.localScale.x, range * 2 / transform.localScale.y, range * 2 / transform.localScale.z);
+            rangeIndicator.gameObject.SetActive(false);
+        }
+    }
     protected virtual void Update()
     {
         if (GameManager.gameSpeed == 0) return;
@@ -88,16 +98,17 @@ public class RangeTowerParentScript : TowerBaseParent
 
 
 
-
     public override void InitTowerData(Vector2Int positionOfCell, Die connectedDie)
-    {        //new avishy
+    {        
 
         currentCellOnPos = positionOfCell;
 
         towerDie = connectedDie;
+
+        SpawnBuffCubeOnCreation();
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
@@ -105,9 +116,9 @@ public class RangeTowerParentScript : TowerBaseParent
 
     public override void RecieveBuffAfterRoll(Die die)
     {
-        DieFaceValue dieFaceVakue = towerDie.GetTopValue();
+        DieFaceValue dieFaceValue = towerDie.GetTopValue();
 
-        switch (dieFaceVakue.Buff.Type)
+        switch (dieFaceValue.Buff.Type)
         {
             case BuffType.Speed:
                 break;
@@ -122,5 +133,13 @@ public class RangeTowerParentScript : TowerBaseParent
             default:
                 break;
         }
+
+        AddNewTowerBuff(dieFaceValue, die);
+    }
+
+    public override void OnHoverOverOccupyingCell(bool isHover)
+    {
+        if (rangeIndicator)
+            rangeIndicator.gameObject.SetActive(isHover ? true : false);
     }
 }

@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class RollersManager : MonoBehaviour
 {
+    public static RollersManager Instance;
+
     [SerializeField] private List<DieRoller> rollers;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     public void Roll()
     {
