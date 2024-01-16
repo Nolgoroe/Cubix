@@ -89,6 +89,7 @@ public class ToolGridCell : MonoBehaviour
     }
     public void ChangeCellTypeColor(CellTypeColor _cellTypeColor)
     {
+        if (slotTypeSpriteRenderer == null) return;
         //slotTypeSpriteRenderer.gameObject.SetActive(false);
         cellTypeColor = _cellTypeColor;
 

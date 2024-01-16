@@ -11,19 +11,23 @@ public class GridCell : MonoBehaviour
     [SerializeField] private Color startColor;
     [SerializeField] private SpriteRenderer slotTypeSpriteRenderer;
     [SerializeField] private CellTypeColor cellTypeColor;
+    [SerializeField] private Outline outline;
 
     [Header("Live Data")]
     [SerializeField] private bool isOccupied;
     [SerializeField] private bool occupiedByTower;
-    [SerializeField] private GameObject objectOnCell;
+    [SerializeField] private TowerBaseParent towerOnCell;
 
 
     private Renderer rend;
 
     private void OnValidate()
     {
-        if(rend == null)
-        rend = GetComponent<Renderer>();
+        if (rend == null)
+            rend = GetComponent<Renderer>();
+
+        if (outline == null)
+            outline = GetComponent<Outline>();
     }
     protected virtual void Start()
     {
@@ -31,9 +35,35 @@ public class GridCell : MonoBehaviour
     }
 
 
-    public void OnMouseHover(bool isHoveredOn)
+    public void SetOnMouseHover(bool isHoveredOn)
     {
-        rend.material.color = isHoveredOn ? hoverColor : startColor;
+        if (outline)
+            outline.enabled = isHoveredOn ? true : false;
+
+        if(isHoveredOn)
+        {
+            if (outline)
+            {
+                outline.SetOutlineMode(Outline.Mode.OutlineAll);
+            }
+
+            if (occupiedByTower)
+            {
+                UIManager.Instance.DisplayTowerBuffData(true, towerOnCell);
+            }
+        }
+        else
+        {
+            if (occupiedByTower)
+            {
+                UIManager.Instance.DisplayTowerBuffData(false, towerOnCell);
+            }
+        }
+
+        if(towerOnCell)
+        {
+            towerOnCell.OnHoverOverOccupyingCell(isHoveredOn);
+        }
     }
 
 
@@ -58,26 +88,30 @@ public class GridCell : MonoBehaviour
     {
         return occupiedByTower;
     }
-
-    public void SetAsOccupied(GameObject objectToPlace)
+    public TowerBaseParent ReturnTowerOnCell()
     {
-        objectOnCell = objectToPlace;
+        return towerOnCell;
+    }
+
+    public void SetAsOccupied(TowerBaseParent towerToPlace)
+    {
+        towerOnCell = towerToPlace;
         isOccupied = true;
 
-        occupiedByTower = true;
+        occupiedByTower = true; //temp
     }
 
     public void EmptyCell()
     {
-        if(objectOnCell)
+        if(towerOnCell)
         {
-            Destroy(objectOnCell);
+            Destroy(towerOnCell);
         }
 
         isOccupied = false;
 
         
-        if(occupiedByTower)
+        if(occupiedByTower) //temp
         {
             occupiedByTower = false;
         }
@@ -91,8 +125,13 @@ public class GridCell : MonoBehaviour
         cellTypeColor = toolGridCell.ReturnCellTypeColor();
 
 
-        rend.sharedMaterial.color = Color.white;
-
+        //rend.material.color = Color.white;
+        outline = GetComponent<Outline>(); //temp
+        if(outline)
+        {
+            outline.enabled = false;
+            outline.SetOutlineMode(Outline.Mode.OutlineAll);
+        }
 
         slotTypeSpriteRenderer = toolGridCell.ReturnSlotTypeSpriteRenderer();
 
@@ -102,7 +141,7 @@ public class GridCell : MonoBehaviour
         if(cellTypeColor == CellTypeColor.None)
         {
             //this means that the cell is not a cell that can accept a tower.. so it's occupied
-            //isOccupied = true;
+            isOccupied = true;
             slotTypeSpriteRenderer.gameObject.SetActive(false);
         }
 

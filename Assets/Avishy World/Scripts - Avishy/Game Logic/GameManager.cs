@@ -12,7 +12,13 @@ public class GameManager : MonoBehaviour
     public int gameSpeedTemp = 1;// Temp
 
     [SerializeField] private List<EnemyParent> allEnemies;
+    [SerializeField] private Camera mainCamera; //temp
+    [SerializeField] private Camera diceCamera; //temp
 
+    [SerializeField] List<RangeTowerParentScript> summonedRangeTowers;
+    [SerializeField] List<MeleeTowerParentScript> summonedMeleeTowers;
+
+    public static bool playerTurn = true;
     private void Awake()
     {
         Instance = this;
@@ -27,11 +33,60 @@ public class GameManager : MonoBehaviour
 
 
 
+    public void SetPlayerTurn(bool isPlayerTurn)
+    {
+        playerTurn = isPlayerTurn;
 
+        if (isPlayerTurn)
+        {
+            foreach (TowerBaseParent tower in summonedRangeTowers)
+            {
+                tower.OnStartPlayerTurn();
+            }
 
+            foreach (TowerBaseParent tower in summonedMeleeTowers)
+            {
+                tower.OnStartPlayerTurn();
+            }
+        }
+        else
+        {
+            foreach (TowerBaseParent tower in summonedRangeTowers)
+            {
+                tower.OnEndPlayerTurn();
+            }
 
+            foreach (TowerBaseParent tower in summonedMeleeTowers)
+            {
+                tower.OnEndPlayerTurn();
+            }
+        }
+    }
 
+    public void AddTowerToRelaventList(TowerBaseParent tower)
+    {
+        switch (tower)
+        {
+            case RangeTowerParentScript rangeTower:
+                summonedRangeTowers.Add(rangeTower);
+                break;
+            case MeleeTowerParentScript meleeTower:
+                summonedMeleeTowers.Add(meleeTower);
+                break;
+            default:
+                break;
+        }
+    }
 
+    public List<MeleeTowerParentScript> ReturnMeleeTowersList()
+    {
+        return summonedMeleeTowers;
+    }
+
+    public Camera ReturnDiceCamera()
+    {
+        return diceCamera;
+    }
 
     public GameObject ReturnEnemyByType(EnemyTypes type)
     {

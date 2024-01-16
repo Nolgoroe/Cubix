@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
 
     private void AddResourcesAfterRoll(Die die)
     {
+        //maybe this needs a fix since all dice will all this function even if they are part of the world.
         if (die.ReturnInWorld()) return;
 
 

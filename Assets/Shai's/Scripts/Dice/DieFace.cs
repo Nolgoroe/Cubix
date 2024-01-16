@@ -33,6 +33,10 @@ public class DieFace : MonoBehaviour
     public void SetBuff(BuffData _buff)
     {
         buff = _buff;
+        buff.Type = _buff.Type;
+        buff.Value = _buff.Value;
+        buff.Icon = _buff.Icon;
+
     }
 
     public void SetBuff(BuffType type, int value, Sprite icon)

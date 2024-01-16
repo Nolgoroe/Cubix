@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class MeleeTowerParentScript : TowerBaseParent
 {
@@ -14,9 +15,11 @@ public class MeleeTowerParentScript : TowerBaseParent
     [SerializeField] protected float spawnRate = 1;
     [SerializeField] protected float currentSpawnCooldown = 0;
     [SerializeField] int currentNumOfTroops;
+    [SerializeField] List<TowerTroop> currentTowerTroops;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         GridCell[,] gameGridCellsArray = GridManager.Instance.ReturnGridCellsArray();
 
         int currentX = currentCellOnPos.x;
@@ -104,6 +107,7 @@ public class MeleeTowerParentScript : TowerBaseParent
             if (troop)
             {
                 troop.InitTroopData(this);
+                currentTowerTroops.Add(troop);
             }
         }
 
@@ -144,12 +148,14 @@ public class MeleeTowerParentScript : TowerBaseParent
                 }
             }
         }
-        //new avishy
+        
 
         towerDie = connectedDie;
+
+        SpawnBuffCubeOnCreation();
     }
 
-    public void LoseTroop()
+    public void LoseTroop(TowerTroop lostTroop)
     {
         currentNumOfTroops--;
 
@@ -157,13 +163,25 @@ public class MeleeTowerParentScript : TowerBaseParent
         {
             currentNumOfTroops = 0;
         }
+
     }
 
+    public void CleanTroopsAtWaveStart()
+    {
+        for (int i = currentTowerTroops.Count - 1; i >= 0; i--)
+        {
+            if (currentTowerTroops[i] == null)
+            {
+                currentTowerTroops.RemoveAt(i);
+            }
+
+        }
+    }
     public override void RecieveBuffAfterRoll(Die die)
     {
-        DieFaceValue dieFaceVakue = towerDie.GetTopValue();
+        DieFaceValue dieFaceValue = towerDie.GetTopValue();
 
-        switch (dieFaceVakue.Buff.Type)
+        switch (dieFaceValue.Buff.Type)
         {
             case BuffType.Speed:
                 break;
@@ -177,6 +195,16 @@ public class MeleeTowerParentScript : TowerBaseParent
                 break;
             default:
                 break;
+        }
+
+        AddNewTowerBuff(dieFaceValue, die);
+    }
+
+    public override void OnHoverOverOccupyingCell(bool isHover)
+    {
+        foreach (TowerTroop troop in currentTowerTroops)
+        {
+            troop.OnHoverOverParentTower(isHover);
         }
     }
 }

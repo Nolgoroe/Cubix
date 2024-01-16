@@ -30,7 +30,7 @@ public class LaserTrapTroop : TowerTroop
 
             if (lifetime < 0)
             {
-                connectedTower.LoseTroop();
+                connectedTower.LoseTroop(this);
                 Destroy(gameObject);
                 return;
             }
