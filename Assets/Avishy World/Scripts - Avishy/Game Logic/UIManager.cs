@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
 
     [SerializeField] private TMP_Text timerText;
+    [SerializeField] private TowerToolTipUI towerBuffDataHolderObject;
 
     private void Start()
     {
@@ -28,5 +29,19 @@ public class UIManager : MonoBehaviour
     public void ChangeGameSpeed(int speed)
     {
         GameManager.Instance.gameSpeedTemp = speed;
+    }
+
+    public void DisplayTowerBuffData(bool isDisplay, TowerBaseParent tower)
+    {
+        if(isDisplay && !towerBuffDataHolderObject.gameObject.activeInHierarchy)
+        {
+            towerBuffDataHolderObject.gameObject.SetActive(true);
+            towerBuffDataHolderObject.DisplayTowerBuffs(tower);
+        }
+
+        if(!isDisplay && towerBuffDataHolderObject.gameObject.activeInHierarchy)
+        {
+            towerBuffDataHolderObject.gameObject.SetActive(false);
+        }
     }
 }

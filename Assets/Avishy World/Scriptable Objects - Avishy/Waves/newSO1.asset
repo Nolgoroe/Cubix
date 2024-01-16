@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: newSO1
   m_EditorClassIdentifier: 
   waves:
-  - delayBetweenEnemies: 0.2
-    delayBetweenWaves: 10
+  - delayBetweenEnemies: 0
+    delayBetweenWaves: 0
+    enemyWaveDataList: []
+  - delayBetweenEnemies: 0.1
+    delayBetweenWaves: 50
     enemyWaveDataList:
     - amountOfThisEnemy: 10
       enemySpawnerIndex: 0
@@ -24,10 +27,10 @@ MonoBehaviour:
       enemySpawnerIndex: 0
       enemyPathIndex: 0
       enemyType: 2
-  - delayBetweenEnemies: 1
+  - delayBetweenEnemies: 0.1
     delayBetweenWaves: 25
     enemyWaveDataList:
-    - amountOfThisEnemy: 500
+    - amountOfThisEnemy: 20
       enemySpawnerIndex: 0
       enemyPathIndex: 0
       enemyType: 1

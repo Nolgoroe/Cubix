@@ -24,7 +24,10 @@ public class TowerTroop : MonoBehaviour
     private void Start()
     {
         if (rangeIndicator)
+        {
             rangeIndicator.localScale = new Vector3(range * 2 / rangeIndicator.lossyScale.x, range * 2 / rangeIndicator.lossyScale.y, range * 2 / rangeIndicator.lossyScale.z);
+            rangeIndicator.gameObject.SetActive(false);
+        }
 
     }
     protected virtual void Update()
@@ -95,7 +98,13 @@ public class TowerTroop : MonoBehaviour
 
 
 
-
+    public void OnHoverOverParentTower(bool isHover)
+    {
+        if (rangeIndicator)
+        {
+            rangeIndicator.gameObject.SetActive(isHover ? true : false);
+        }
+    }
 
     public void InitTroopData(MeleeTowerParentScript tower)
     {
@@ -108,8 +117,10 @@ public class TowerTroop : MonoBehaviour
 
         if (health <= 0)
         {
-            connectedTower.LoseTroop();
+            connectedTower.LoseTroop(this);
+
             Destroy(gameObject);
+
             return;
         }
     }

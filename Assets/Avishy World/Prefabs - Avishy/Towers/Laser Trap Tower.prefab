@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3412145908782752499
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2509837581091810194}
+  m_Layer: 11
+  m_Name: Result dice holder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2509837581091810194
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3412145908782752499}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.65, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1398479585067685354}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6543322448406103679
 GameObject:
   m_ObjectHideFlags: 0
@@ -34,6 +65,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8738622746865378123}
+  - {fileID: 2509837581091810194}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4832550438699313958
@@ -124,6 +156,8 @@ MonoBehaviour:
   requiredCellColorType: 0
   towerDie: {fileID: 0}
   rangeIndicator: {fileID: 0}
+  resultDiceHolder: {fileID: 2509837581091810194}
+  currentTowerBuffs: []
   connectedPathCells: []
   troopPrefab: {fileID: 622676621953558938, guid: c5902af6230497249affd5fdf7290ee1,
     type: 3}
@@ -131,6 +165,7 @@ MonoBehaviour:
   spawnRate: 1
   currentSpawnCooldown: 0
   currentNumOfTroops: 0
+  currentTowerTroops: []
 --- !u!1 &7448535587416160941
 GameObject:
   m_ObjectHideFlags: 0

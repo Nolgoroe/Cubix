@@ -16,7 +16,7 @@ public class GridCell : MonoBehaviour
     [Header("Live Data")]
     [SerializeField] private bool isOccupied;
     [SerializeField] private bool occupiedByTower;
-    [SerializeField] private GameObject objectOnCell;
+    [SerializeField] private TowerBaseParent towerOnCell;
 
 
     private Renderer rend;
@@ -35,14 +35,34 @@ public class GridCell : MonoBehaviour
     }
 
 
-    public void OnMouseHover(bool isHoveredOn)
+    public void SetOnMouseHover(bool isHoveredOn)
     {
         if (outline)
             outline.enabled = isHoveredOn ? true : false;
 
-        if(outline && isHoveredOn)
+        if(isHoveredOn)
         {
-            outline.SetOutlineMode(Outline.Mode.OutlineAll);
+            if (outline)
+            {
+                outline.SetOutlineMode(Outline.Mode.OutlineAll);
+            }
+
+            if (occupiedByTower)
+            {
+                UIManager.Instance.DisplayTowerBuffData(true, towerOnCell);
+            }
+        }
+        else
+        {
+            if (occupiedByTower)
+            {
+                UIManager.Instance.DisplayTowerBuffData(false, towerOnCell);
+            }
+        }
+
+        if(towerOnCell)
+        {
+            towerOnCell.OnHoverOverOccupyingCell(isHoveredOn);
         }
     }
 
@@ -68,26 +88,30 @@ public class GridCell : MonoBehaviour
     {
         return occupiedByTower;
     }
-
-    public void SetAsOccupied(GameObject objectToPlace)
+    public TowerBaseParent ReturnTowerOnCell()
     {
-        objectOnCell = objectToPlace;
+        return towerOnCell;
+    }
+
+    public void SetAsOccupied(TowerBaseParent towerToPlace)
+    {
+        towerOnCell = towerToPlace;
         isOccupied = true;
 
-        occupiedByTower = true;
+        occupiedByTower = true; //temp
     }
 
     public void EmptyCell()
     {
-        if(objectOnCell)
+        if(towerOnCell)
         {
-            Destroy(objectOnCell);
+            Destroy(towerOnCell);
         }
 
         isOccupied = false;
 
         
-        if(occupiedByTower)
+        if(occupiedByTower) //temp
         {
             occupiedByTower = false;
         }

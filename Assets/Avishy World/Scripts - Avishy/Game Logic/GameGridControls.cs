@@ -34,7 +34,7 @@ public class GameGridControls : MonoBehaviour
 
         NormalControls();
 
-        if(currentDieDragging)        //new avishy
+        if(currentDieDragging)
         {
             Vector3 screenPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y,  Camera.main.transform.position.y);
             Ray ray = Camera.main.ScreenPointToRay(screenPos);
@@ -56,7 +56,7 @@ public class GameGridControls : MonoBehaviour
     }
 
     private void NormalControls()
-    {        //new avishy
+    {
 
         if (currentDieDragging)
         {
@@ -125,21 +125,21 @@ public class GameGridControls : MonoBehaviour
         if (towerSpawned)
         {
             towerSpawned.InitTowerData(currentCellHovered.ReturnPositionInGridArray(), currentDieDragging);
-            //new avishy
+            
 
             //End die drag and return it's values to be able to be rolled
             currentDieDragging.OnPlaceEvent?.Invoke();
             SetCurrentDieDragging(null);
-        }
 
-        currentCellHovered.SetAsOccupied(go);
+            currentCellHovered.SetAsOccupied(towerSpawned);
+        }
     }
 
     private GridCell MouseOverGridCell()
     {
         if(currentCellHovered)
         {
-            currentCellHovered.OnMouseHover(false);
+            currentCellHovered.SetOnMouseHover(false);
         }
 
         GridCell currentCell = currentCellHovered;
@@ -156,19 +156,19 @@ public class GameGridControls : MonoBehaviour
 
         if(currentCellHovered)
         {
-            currentCellHovered.OnMouseHover(true);
+            currentCellHovered.SetOnMouseHover(true);
         }
 
         return currentCellHovered;
     }
     public GridCell ReturnCurrentCell()
-    {        //new avishy
+    {        
 
         return currentCellHovered;
     }
 
     public void SetCurrentDieDragging(Die dieToDrag)
-    {        //new avishy
+    {       
 
         if (dieToDrag)
         {

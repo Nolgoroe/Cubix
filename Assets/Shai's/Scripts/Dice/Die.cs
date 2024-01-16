@@ -5,7 +5,7 @@ using UnityEngine.Events;
 using TMPro;
 public enum DieElement { Water, Fire, Poison }
 
-[RequireComponent(typeof(Rigidbody), typeof(MeshCollider))]
+//[RequireComponent(typeof(Rigidbody), typeof(MeshCollider))]
 public class Die : MonoBehaviour
 {
     public UnityEvent OnRollStartEvent;
@@ -20,10 +20,11 @@ public class Die : MonoBehaviour
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private List<DieFace> faces;
     [SerializeField] private DieElement element;
-    [SerializeField] private TowerBaseParent towerPrefabConnected;        //new avishy
+    [SerializeField] private TowerBaseParent towerPrefabConnected;
     [SerializeField] private float _reqStagnantTime = 1;
     [SerializeField] private SpriteRenderer lockRenderer;
     [SerializeField] private Outline outline;
+    [SerializeField] private Color diceColor;
 
     private bool _isMoving;
     private bool _isDragging;
@@ -40,14 +41,16 @@ public class Die : MonoBehaviour
 
     private void Start()
     {
-        //new avishy
+        
         OnRollStartEvent.AddListener(SetMovingTrue);
 
         OnDragStartEvent.AddListener(SetValuesOnDragStart);
+        OnDragStartEvent.AddListener(SetMovingFalse);
 
         OnDragEndEvent.AddListener(SetValuesOnDragEnd);
 
         OnPlaceEvent.AddListener(SetValuesOnPlacement);
+        OnPlaceEvent.AddListener(SetMovingFalse);
 
         OnDestroyDieEvent.AddListener(OnDestroyDie);
 
@@ -93,6 +96,11 @@ public class Die : MonoBehaviour
     {
         Debug.Log("Roll started");
         _isMoving = true;
+    }
+    private void SetMovingFalse()
+    {
+        Debug.Log("Roll started");
+        _isMoving = false;
     }
 
     public DieFaceValue GetTopValue()
@@ -194,7 +202,7 @@ public class Die : MonoBehaviour
 
 
     private void SetValuesOnDragStart()
-    {        //new avishy
+    {
 
         RB.isKinematic = true;
         transform.localScale = new Vector3(0.5f, 0.5f, 0.5f); // temp here
@@ -205,8 +213,7 @@ public class Die : MonoBehaviour
 
     }
     private void SetValuesOnDragEnd()
-    {        //new avishy
-
+    {
         RB.isKinematic = false;
         transform.localScale = new Vector3(1, 1, 1); // temp here
 
@@ -216,7 +223,7 @@ public class Die : MonoBehaviour
     }
 
     private void SetValuesOnPlacement()
-    {        //new avishy
+    {
         DisplayBuffs();
         RB.isKinematic = false;
         _isInWorld = true;
@@ -224,7 +231,7 @@ public class Die : MonoBehaviour
     }
 
     private void ChangeLayerRecursive(Transform trans, string nameOfLayer)
-    {        //new avishy
+    {
 
         //the string nameOfLayer might change to layermask or even int of layer
 
@@ -236,7 +243,7 @@ public class Die : MonoBehaviour
     }
 
     private void OnDestroyDie()
-    {        //new avishy
+    {
 
         OnRollStartEvent.RemoveAllListeners();
         OnRollEndEvent.RemoveAllListeners();
@@ -257,7 +264,7 @@ public class Die : MonoBehaviour
     }
 
     public GameObject ReturnTowerPrefab()
-    {        //new avishy
+    {
 
         return towerPrefabConnected.gameObject;
     }
@@ -265,6 +272,10 @@ public class Die : MonoBehaviour
     public bool ReturnInWorld()
     {
         return _isInWorld;
+    }
+    public Color ReturnDiceColor()
+    {
+        return diceColor;
     }
 }
 
