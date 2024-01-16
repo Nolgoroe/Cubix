@@ -82,6 +82,12 @@ public class WaveManager : MonoBehaviour
         // this is the player's turn.
         yield return new WaitUntil(() => GameManager.playerTurn == false);
 
+        //disable all spawner danger Icons
+        foreach (EnemySpawnerCell spawnerCell in currentLevelEnemySpawners)
+        {
+            spawnerCell.DisplayDangerIcon(false);
+        }
+
         if (currentLevelEnemySpawners.Count > 0)
         {
             waveDone = false;
@@ -120,7 +126,9 @@ public class WaveManager : MonoBehaviour
 
             yield return new WaitUntil(() => currentAmountOfEnemies == 0);
 
-            GameManager.Instance.SetPlayerTurn(true);
+            StartCoroutine(GameManager.Instance.SetPlayerTurn(true));
+
+            AtWaveEnd();
         }
     }
 
@@ -132,13 +140,18 @@ public class WaveManager : MonoBehaviour
         }
     }
 
+    private void AtWaveEnd()
+    {
+        foreach (EnemySpawnerCell spawnerCell in currentLevelEnemySpawners)
+        {
+            spawnerCell.DisplayDangerIcon(false);
+        }
 
-
-
-
-
-
-
+        foreach (EnemyWaveData waveData in waveSO.waves[currentIndexInWave].enemyWaveDataList)
+        {
+            currentLevelEnemySpawners[waveData.enemySpawnerIndex].DisplayDangerIcon(true);
+        }
+    }
 
 
     public void ChangeEnemyCount(int amount)

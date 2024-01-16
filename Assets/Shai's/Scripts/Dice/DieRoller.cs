@@ -27,6 +27,8 @@ public class DieRoller : MonoBehaviour
         die.OnDragStartEvent.AddListener(OnConnectedDieStartDragging);
         die.OnDragEndEvent.AddListener(OnConnectedDieEndDragging);
         die.OnPlaceEvent.AddListener(OnConnectedDiePlace);
+
+        RollersManager.Instance.AddDiceToResources(this);
     }
 
     private void LateUpdate()
@@ -110,7 +112,9 @@ public class DieRoller : MonoBehaviour
         constraintZ = true;
     }
     private void OnConnectedDiePlace()
-    {        
+    {
+        RollersManager.Instance.RemoveDiceToResources(this);
+        RollersManager.Instance.AddDiceToWorld(this);
 
         //maybe better way?
         Vector3 pos = GameGridControls.Instance.ReturnCurrentCell().transform.position;
@@ -125,7 +129,7 @@ public class DieRoller : MonoBehaviour
         constraintY = false;
         constraintZ = true;
 
-        //gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 }
 
