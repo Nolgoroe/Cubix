@@ -5194,6 +5194,12 @@ PrefabInstance:
       propertyPath: lockRenderer
       value: 
       objectReference: {fileID: 1052621888}
+    - target: {fileID: 7359763932789077676, guid: 89c80393a1704c540a3de66fa30dd966,
+        type: 3}
+      propertyPath: towerPrefabConnected
+      value: 
+      objectReference: {fileID: 3604278371290302878, guid: a73571feaaefd0746904ed2002b90da1,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
