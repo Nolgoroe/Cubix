@@ -1394,9 +1394,9 @@ MonoBehaviour:
   currentTarget: {fileID: 0}
   connectedTower: {fileID: 0}
   range: 1.3
-  damage: 1
-  health: 3
-  attackRate: 1
+  damage: 10
+  health: 15
+  attackRate: 3
   currentAttackCooldown: 0
   rotationSpeed: 10
   rangeIndicator: {fileID: 8916942059906036733}

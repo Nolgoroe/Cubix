@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52928e39ecddb594dbb5a2a28765ca69, type: 3}
+  m_Name: newSO2
+  m_EditorClassIdentifier: 
+  waves:
+  - delayBetweenEnemies: 1
+    delayBetweenWaves: 30
+    enemyWaveDataList:
+    - amountOfThisEnemy: 4
+      enemySpawnerIndex: 0
+      enemyPathIndex: 0
+      enemyType: 1
+  - delayBetweenEnemies: 1
+    delayBetweenWaves: 30
+    enemyWaveDataList:
+    - amountOfThisEnemy: 7
+      enemySpawnerIndex: 0
+      enemyPathIndex: 0
+      enemyType: 1
+  - delayBetweenEnemies: 1
+    delayBetweenWaves: 30
+    enemyWaveDataList:
+    - amountOfThisEnemy: 9
+      enemySpawnerIndex: 0
+      enemyPathIndex: 0
+      enemyType: 1
+  - delayBetweenEnemies: 1
+    delayBetweenWaves: 30
+    enemyWaveDataList:
+    - amountOfThisEnemy: 4
+      enemySpawnerIndex: 0
+      enemyPathIndex: 0
+      enemyType: 0
+    - amountOfThisEnemy: 1
+      enemySpawnerIndex: 0
+      enemyPathIndex: 0
+      enemyType: 2
+  - delayBetweenEnemies: 1
+    delayBetweenWaves: 30
+    enemyWaveDataList:
+    - amountOfThisEnemy: 3
+      enemySpawnerIndex: 0
+      enemyPathIndex: 0
+      enemyType: 2
+  - delayBetweenEnemies: 1
+    delayBetweenWaves: 30
+    enemyWaveDataList:
+    - amountOfThisEnemy: 6
+      enemySpawnerIndex: 0
+      enemyPathIndex: 0
+      enemyType: 1
+    - amountOfThisEnemy: 3
+      enemySpawnerIndex: 0
+      enemyPathIndex: 0
+      enemyType: 2
+    - amountOfThisEnemy: 5
+      enemySpawnerIndex: 0
+      enemyPathIndex: 0
+      enemyType: 1
+  - delayBetweenEnemies: 1
+    delayBetweenWaves: 30
+    enemyWaveDataList:
+    - amountOfThisEnemy: 6
+      enemySpawnerIndex: 0
+      enemyPathIndex: 0
+      enemyType: 1
+    - amountOfThisEnemy: 3
+      enemySpawnerIndex: 0
+      enemyPathIndex: 0
+      enemyType: 2
+    - amountOfThisEnemy: 5
+      enemySpawnerIndex: 0
+      enemyPathIndex: 0
+      enemyType: 1
