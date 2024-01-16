@@ -18,13 +18,14 @@ public class WorldGrid : MonoBehaviour
         ClearGrid();
         _grid = new SiteNode[gridSize.x, gridSize.x];
 
-        for (int x = 0; x < gridSize.x; x++)
+        for (int y = 0; y < gridSize.y; y++)
         {
-            for (int y = 0; y < gridSize.y; y++)
+            for (int x = 0; x < gridSize.x; x++)
             {
                 SiteNode tmpNode;
                 Vector3 nodePos = GetRandomPosAtSlot(x, y);
                 Instantiate(siteNodePrefab, nodePos, Quaternion.identity, transform).TryGetComponent<SiteNode>(out tmpNode);
+                tmpNode.gridPos = new Vector2(x, y);
                 _grid[x, y] = tmpNode;
             }
         }
@@ -32,6 +33,7 @@ public class WorldGrid : MonoBehaviour
 
     private void OnValidate()
     {
+        //limit grid and slot size editing
         if (gridSize.x <= 0) { gridSize.x = 1; }
         if (gridSize.y <= 0) { gridSize.y = 1; }
 
@@ -50,6 +52,54 @@ public class WorldGrid : MonoBehaviour
         resPos.y += Random.Range(-slotSize.y, slotSize.y);
 
         return resPos;
+    }
+
+    [ContextMenu("ConnectNodes")]
+    public void ConnectNodes()
+    {
+        for (int y = 0; y < gridSize.y; y++)
+        {
+            for (int x = 0; x < gridSize.x; x++)
+            {
+                SiteNode currentNode = _grid[x, y];
+
+                if (y > 0 && currentNode.entryLinks == 0)//delete unlinked nodes and skip rest of logic
+                {
+                    _grid[x, y] = null;
+                    Destroy(currentNode.gameObject);
+                    continue;
+                }
+
+                if (y < gridSize.y - 1)
+                {
+
+                    //get three nodes straight above current node
+                    List<SiteNode> Upper3Nodes = new List<SiteNode>();
+                    if (x > 0) { Upper3Nodes.Add(_grid?[x - 1, y + 1]); }
+                    Upper3Nodes.Add(_grid?[x, y + 1]);
+                    if (x < gridSize.x - 1) { Upper3Nodes.Add(_grid?[x + 1, y + 1]); }
+
+                    //Choose one random node to link
+                    SiteNode tmpNode = null;
+                    tmpNode = Upper3Nodes[Random.Range(0, Upper3Nodes.Count)];
+                    currentNode.CreateLink(tmpNode);
+                    Upper3Nodes.Remove(tmpNode);
+
+                    //try to link rest of nodes
+                    foreach (var node in Upper3Nodes)
+                    {
+                        if (currentNode.LinksSum < currentNode.MaxLinks)
+                        {
+                            float rand = Random.Range(0, 1f);
+                            if (rand <= node.chanceToLink)
+                            {
+                                currentNode.CreateLink(node);
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private void ClearGrid()

@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.8352941}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -88,3 +88,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa832968730a9cc4785c7cb590ae503e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridPos: {x: 0, y: 0}
+  rect: {fileID: 8842622998691324711}
+  mapLinePrefab: {fileID: 2435942467119948087, guid: ae10fee6c1ee39745bf9c5adc7bfacfb,
+    type: 3}
+  entryLinks: 0
+  exitLinks: 0
+  chanceToLink: 0.059
+  nextNodes: []
+  maxLinks: 4
