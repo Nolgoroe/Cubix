@@ -9,6 +9,10 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
 
     [Header("Wave UI")]
+    [SerializeField] private Transform winScreen;
+    [SerializeField] private Transform loseScreen;
+
+    [Header("Wave UI")]
     [SerializeField] private TMP_Text timerText;
 
     [Header("Tower UI")]
@@ -44,6 +48,9 @@ public class UIManager : MonoBehaviour
         TogglePauseMenu(false);
 
         UpdateResources(0, 0, 0); //temp?
+
+        winScreen.gameObject.SetActive(false);
+        loseScreen.gameObject.SetActive(false);
     }
 
     public void DisplayTimerText(bool show)
@@ -56,10 +63,6 @@ public class UIManager : MonoBehaviour
         timerText.text = Mathf.Round(time).ToString();
     }
 
-    public void ChangeGameSpeed(int speed)
-    {
-        GameManager.Instance.gameSpeedTemp = speed;
-    }
 
     public void DisplayTowerBuffData(bool isDisplay, TowerBaseParent tower)
     {
@@ -143,5 +146,11 @@ public class UIManager : MonoBehaviour
     public void UpdatePlayerHealth(int currentHealth, int maxHealth)
     {
         playerHealthText.text = currentHealth.ToString() + "/" + maxHealth.ToString();
+    }
+
+    public void DisplayEndGameScreen(bool success)
+    {
+        winScreen.gameObject.SetActive(success ? true : false);
+        loseScreen.gameObject.SetActive(success ? false : true);
     }
 }

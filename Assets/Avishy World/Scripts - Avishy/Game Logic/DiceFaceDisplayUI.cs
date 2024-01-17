@@ -35,7 +35,7 @@ public class DiceFaceDisplayUI : MonoBehaviour
             else
             {
                 textAmount.gameObject.SetActive(true);
-                textAmount.text = diceFaceValue.Buff.Value.ToString();
+                textAmount.text = diceFaceValue.Buff.Value.ToString() + "%";
             }
         }
     }

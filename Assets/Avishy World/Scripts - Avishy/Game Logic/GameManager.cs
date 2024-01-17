@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] List<MeleeTowerParentScript> summonedMeleeTowers;
 
     public static bool playerTurn = true;
+    public static bool isDead = false;
+
+    public static bool gamePaused = isDead || gameSpeed == 0;
     private void Awake()
     {
         Instance = this;
@@ -31,10 +34,14 @@ public class GameManager : MonoBehaviour
         WaveManager.Instance.InitWaveManager();
         UIManager.Instance.InitUIManager();
         DiceManager.Instance.InitDiceManager();
+
+        isDead = false;
     }
 
     private void Update()
     {
+        gamePaused = isDead || gameSpeed == 0;
+
         gameSpeed = gameSpeedTemp;
 
         if(Input.GetKeyDown(KeyCode.R))
@@ -46,13 +53,10 @@ public class GameManager : MonoBehaviour
 
 
 
-    public void CallSetPlayerTurn(bool isPlayerTurn)
-    {
-        //called from button
-        StartCoroutine(SetPlayerTurn(isPlayerTurn));
-    }
     public IEnumerator SetPlayerTurn(bool isPlayerTurn)
     {
+        ChangeGameSpeed(1);
+
         playerTurn = isPlayerTurn;
 
         if (isPlayerTurn)
@@ -129,5 +133,10 @@ public class GameManager : MonoBehaviour
     {
         int random = Random.Range(0, allTowersPrefabs.Count);
         return allTowersPrefabs[random];
+    }
+
+    public void ChangeGameSpeed(int speed)
+    {
+        gameSpeedTemp = speed;
     }
 }

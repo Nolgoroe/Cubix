@@ -46,7 +46,7 @@ public class WaveManager : MonoBehaviour
     }
     private void Update()
     {
-        if (GameManager.gameSpeed == 0) return;
+        if (GameManager.gamePaused) return;
 
         if (!waveDone || levelComplete) return;
 
@@ -75,11 +75,12 @@ public class WaveManager : MonoBehaviour
     [ContextMenu("Start Next Wave")]
     public void StartNextWave()
     {
-        //this might not need to be here when we have end of level logic. temp
+        //this is reached when we try to start a wave but finished them all, meaning we won
         if (currentIndexInWave > waveSO.waves.Count - 1)
         {
             Debug.Log("no more waves! weeeeee");
             levelComplete = true;
+            UIManager.Instance.DisplayEndGameScreen(true);
             return;
         }
 
@@ -102,8 +103,6 @@ public class WaveManager : MonoBehaviour
 
         if (currentLevelEnemySpawners.Count > 0)
         {
-            waveDone = false;
-
             foreach (EnemyWaveData enemyWaveData in waveSO.waves[currentIndexInWave].enemyWaveDataList)
             {
                 selectedSpawner = currentLevelEnemySpawners[enemyWaveData.enemySpawnerIndex];
@@ -129,16 +128,7 @@ public class WaveManager : MonoBehaviour
             timeForNextWave = waveSO.waves[currentIndexInWave].delayBetweenWaves;
             currentCountdown = timeForNextWave;
 
-            waveDone = true;
-
             currentIndexInWave++;
-
-            if (currentIndexInWave > waveSO.waves.Count - 1)
-            {
-                Debug.Log("Finished all waves");
-                levelComplete = true;
-                yield break;
-            }
 
             //from this point on it's the players turn.
 
@@ -152,6 +142,10 @@ public class WaveManager : MonoBehaviour
 
     private void BeforeWaveStart()
     {
+        waveDone = false;
+
+        StartCoroutine(GameManager.Instance.SetPlayerTurn(false));
+
         foreach (MeleeTowerParentScript meleeTower in GameManager.Instance.ReturnMeleeTowersList())
         {
             meleeTower.CleanTroopsAtWaveStart();
@@ -160,10 +154,20 @@ public class WaveManager : MonoBehaviour
 
     private void AtWaveEnd()
     {
+        waveDone = true;
+
         foreach (EnemySpawnerCell spawnerCell in currentLevelEnemySpawners)
         {
             spawnerCell.DisplayDangerIcon(false);
         }
+
+        if (currentIndexInWave > waveSO.waves.Count - 1)
+        {
+            //No need to do after wave end if there is no next wave.
+
+            return;
+        }
+
 
         foreach (EnemyWaveData waveData in waveSO.waves[currentIndexInWave].enemyWaveDataList)
         {
@@ -175,5 +179,14 @@ public class WaveManager : MonoBehaviour
     public void ChangeEnemyCount(int amount)
     {
         currentAmountOfEnemies += amount;
+    }
+
+    public void StartWaveEarly()
+    {
+        if (!waveDone || levelComplete) return;
+
+        currentCountdown = 0;
+        UIManager.Instance.DisplayTimerText(false);
+        Player.Instance.RecieveRandomResource();
     }
 }

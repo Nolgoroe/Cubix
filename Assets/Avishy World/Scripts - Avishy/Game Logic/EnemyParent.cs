@@ -41,7 +41,7 @@ public class EnemyParent : MonoBehaviour
     }
     private void Update()
     {
-        if (GameManager.gameSpeed == 0) return;
+        if (GameManager.gamePaused) return;
 
         UpdateTarget();
 
@@ -60,7 +60,7 @@ public class EnemyParent : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (GameManager.gameSpeed == 0) return;
+        if (GameManager.gamePaused) return;
 
         if (!ignoresTroops && currentTarget)
         {

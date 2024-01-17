@@ -87,7 +87,7 @@ public class MeleeTowerParentScript : TowerBaseParent
     }
     protected virtual void Update()
     {
-        if (GameManager.gameSpeed == 0) return;
+        if (GameManager.gamePaused) return;
 
         if (currentNumOfTroops < maxNumOfTroops)
         {

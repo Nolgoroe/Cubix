@@ -80,6 +80,9 @@ public class PlayerHomeBaseCell : GridCell
         if (currentPlayerHealth <= 0)
         {
             Debug.Log("You have lost!");
+
+            UIManager.Instance.DisplayEndGameScreen(false);
+            GameManager.isDead = true;
             return;
         }
 

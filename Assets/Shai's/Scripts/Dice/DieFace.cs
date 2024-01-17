@@ -67,7 +67,7 @@ public class DieFace : MonoBehaviour
         {
             valueText.gameObject.SetActive(true);
 
-            valueText.text = "+" + buff.Value;
+            valueText.text = "+" + buff.Value + "%";
         }
     }
 

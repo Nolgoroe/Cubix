@@ -39,7 +39,7 @@ public class TowerTroop : MonoBehaviour
     }
     protected virtual void Update()
     {
-        if (GameManager.gameSpeed == 0) return;
+        if (GameManager.gamePaused) return;
 
         UpdateTarget();
 

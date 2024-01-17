@@ -106,6 +106,7 @@ public abstract class TowerBaseParent : MonoBehaviour
     public void OnStartPlayerTurn()
     {
         towerDie.gameObject.SetActive(true);
+
     }
     public void OnEndPlayerTurn()
     {
