@@ -75,9 +75,16 @@ public class WorldGrid : MonoBehaviour
 
                     //get three nodes straight above current node
                     List<SiteNode> Upper3Nodes = new List<SiteNode>();
-                    if (x > 0) { Upper3Nodes.Add(_grid?[x - 1, y + 1]); }
-                    Upper3Nodes.Add(_grid?[x, y + 1]);
-                    if (x < gridSize.x - 1) { Upper3Nodes.Add(_grid?[x + 1, y + 1]); }
+
+                    if (x > 0 && _grid[x - 1, y] 
+                        && !_grid[x - 1, y].nextNodes.Contains(_grid[x, y + 1])) //this makes sure that there will be no line crossing
+                    {
+                        Upper3Nodes.Add(_grid[x - 1, y + 1]); 
+                    }
+
+                    Upper3Nodes.Add(_grid[x, y + 1]);
+                    if (x < gridSize.x - 1) { Upper3Nodes.Add(_grid[x + 1, y + 1]); }
+
 
                     //Choose one random node to link
                     SiteNode tmpNode = null;
@@ -117,5 +124,23 @@ public class WorldGrid : MonoBehaviour
                 }
             }
         }
+    }
+
+    public List<SiteNode> GetAllNodes()
+    {
+        List<SiteNode> allNodes = new List<SiteNode>();
+
+        for (int x = 0; x < gridSize.x; x++)
+        {
+            for (int y = 0; y < gridSize.y; y++)
+            {
+                if (_grid[x,y] != null)
+                {
+                    allNodes.Add(_grid[x, y]);
+                }
+            }
+        }
+
+        return allNodes;
     }
 }

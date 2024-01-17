@@ -5,7 +5,7 @@ using UnityEngine;
 public class MapLine : MonoBehaviour
 {
     [SerializeField] private UILineRenderer lRenderer;
-    private SiteNode originNode;
+    public SiteNode originNode;
     private SiteNode connectedNode;
 
     public void Init(SiteNode _originNode, SiteNode _connectedNode)

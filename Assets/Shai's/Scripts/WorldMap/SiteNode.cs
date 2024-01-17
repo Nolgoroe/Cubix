@@ -12,6 +12,7 @@ public class SiteNode : MonoBehaviour
     [Header("Progression")]
     public int entryLinks;
     public int exitLinks;
+    public int singleLinkStreak;
     [Range(0,1)]public float chanceToLink;
     public List<SiteNode> nextNodes = new List<SiteNode>();
     [SerializeField] private int maxLinks;
@@ -24,6 +25,15 @@ public class SiteNode : MonoBehaviour
 
     #endregion
 
+
+    private void OnDestroy()
+    {
+        foreach (var line in lines)
+        {
+            Destroy(line.gameObject);
+        }
+    }
+
     public void LinkNode(SiteNode otherNode)
     {
         nextNodes.Add(otherNode);
@@ -32,6 +42,8 @@ public class SiteNode : MonoBehaviour
 
     public void CreateLink(SiteNode connectNode)
     {
+        nextNodes.Add(connectNode);
+
         MapLine newLine = null;
         GameObject newLineGO = Instantiate(mapLinePrefab, transform.position, Quaternion.identity, transform);
         newLineGO.TryGetComponent<MapLine>(out newLine);
@@ -41,4 +53,13 @@ public class SiteNode : MonoBehaviour
         exitLinks++;
         lines.Add(newLine);
     }
+
+    public void ChangeLinesParent(Transform parent)
+    {
+        foreach (var line in lines)
+        {
+            line.transform.SetParent(parent);
+        }
+    }
+
 }
