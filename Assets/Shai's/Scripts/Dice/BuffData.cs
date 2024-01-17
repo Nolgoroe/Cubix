@@ -8,6 +8,6 @@ public enum BuffType { None, Dmg, HP, time, Range}
 public class BuffData 
 {
     public BuffType Type;
-    public int Value;
+    public float Value;
     public Sprite Icon;
 }

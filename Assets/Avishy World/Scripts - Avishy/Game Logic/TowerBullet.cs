@@ -11,7 +11,7 @@ public class TowerBullet : MonoBehaviour
     [SerializeField] GameObject colldiedObject;
 
     [SerializeField] float speed = 10;
-    [SerializeField] float damage = 1;
+    [SerializeField] private float damage = 1;
     
     
     void Update()
@@ -66,8 +66,9 @@ public class TowerBullet : MonoBehaviour
     }
 
 
-    public void InitBullet(Transform target)
+    public void InitBullet(Transform target, float bulletDMG)
     {
         currentTarget = target;
+        damage = bulletDMG;
     }
 }

@@ -556,7 +556,6 @@ MonoBehaviour:
   requiredCellColorType: 1
   towerRequiredColor: {r: 1, g: 0.827451, b: 0, a: 1}
   towerDie: {fileID: 0}
-  resultDiceDisplay: {fileID: 0}
   rangeIndicator: {fileID: 4549348150687164023}
   resultDiceHolder: {fileID: 4330028423885064912}
   currentTowerBuffs: []
@@ -565,6 +564,7 @@ MonoBehaviour:
   rotationSpeed: 15
   fireRate: 1
   fireCountDown: 1
+  bulltDMG: 2
   partToRotate: {fileID: 1912396954125391134}
   enemyLayerMask:
     serializedVersion: 2

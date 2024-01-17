@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0c52002280ceed42adf58f782e7a246, type: 3}
+  m_Name: Laser D6
+  m_EditorClassIdentifier: 
+  towerPrefab: {fileID: 3604278371290302878, guid: a73571feaaefd0746904ed2002b90da1,
+    type: 3}
+  dieMaterial: {fileID: 2100000, guid: 3c28b1779aea3e642848366b538bdcb3, type: 2}
+  dieType: 0
+  resouceDataList:
+  - Type: 0
+    Value: 0
+    Icon: {fileID: 0}
+  - Type: 0
+    Value: 0
+    Icon: {fileID: 0}
+  - Type: 0
+    Value: 0
+    Icon: {fileID: 0}
+  - Type: 0
+    Value: 0
+    Icon: {fileID: 0}
+  - Type: 0
+    Value: 0
+    Icon: {fileID: 0}
+  - Type: 0
+    Value: 0
+    Icon: {fileID: 0}
+  buffDataList:
+  - Type: 0
+    Value: 0
+    Icon: {fileID: 0}
+  - Type: 0
+    Value: 0
+    Icon: {fileID: 0}
+  - Type: 3
+    Value: 5
+    Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+  - Type: 4
+    Value: 3
+    Icon: {fileID: -1439601924, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+  - Type: 1
+    Value: 5
+    Icon: {fileID: 775649512, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+  - Type: 1
+    Value: 5
+    Icon: {fileID: 775649512, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}

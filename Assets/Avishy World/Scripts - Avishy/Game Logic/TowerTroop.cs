@@ -12,25 +12,30 @@ public class TowerTroop : MonoBehaviour
     [SerializeField] protected MeleeTowerParentScript connectedTower;
 
     [Header("Preset Data")] 
-    [SerializeField] private float range = 15;
-    [SerializeField] private float damage = 1;
-    [SerializeField] protected float health = 3;
     [SerializeField] protected float attackRate = 1;
     [SerializeField] protected float currentAttackCooldown = 0;
     [SerializeField] protected float rotationSpeed = 10;
     [SerializeField] protected Transform rangeIndicator;
     [SerializeField] private LayerMask enemyLayerMask;
 
+    [SerializeField] protected float health = 3;
 
+    [SerializeField] private float range = 15;
+    [SerializeField] private float damage = 1;
     bool isDead;
+
     virtual protected void Start()
+    {
+        SetRangeIndicator();
+    }
+
+    private void SetRangeIndicator()
     {
         if (rangeIndicator)
         {
             rangeIndicator.localScale = new Vector3(range * 2 / transform.lossyScale.x, range * 2 / transform.lossyScale.y, range * 2 / transform.lossyScale.z);
             rangeIndicator.gameObject.SetActive(false);
         }
-
     }
     protected virtual void Update()
     {
@@ -108,9 +113,14 @@ public class TowerTroop : MonoBehaviour
         }
     }
 
-    public void InitTroopData(MeleeTowerParentScript tower)
+    public void InitTroopData(MeleeTowerParentScript tower, float _HP, float _range, float _dmg)
     {
         connectedTower = tower;
+        health = _HP;
+        range = _range;
+        damage = _dmg;
+
+        SetRangeIndicator();
     }
 
     public void RecieveDMG(int damage)

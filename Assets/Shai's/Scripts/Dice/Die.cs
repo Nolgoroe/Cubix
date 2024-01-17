@@ -61,7 +61,7 @@ public class Die : MonoBehaviour
 
         OnDestroyDieEvent.AddListener(OnDestroyDie);
 
-        DisplayResources();//for build purpose
+        DisplayResources(); //for build purpose
 
         originalPos = transform.localPosition;
         //originalScale = transform.localScale;
@@ -76,9 +76,26 @@ public class Die : MonoBehaviour
         towerPrefabConnected = diceData.towerPrefab;
         diceColor = diceData.dieMaterial.color;
 
-        foreach (DieFace face in faces)
+
+        switch (diceData.dieType)
         {
-            face.ChangeFaceMat(diceData.dieMaterial);
+            case DieType.D6:
+                SetDiceValue(6, diceData);
+                break;
+            case DieType.D8:
+                SetDiceValue(8, diceData);
+                break;
+            default:
+                break;
+        }
+
+    }
+
+    private void SetDiceValue(int amountOfFaces, DiceSO diceData)
+    {
+        for (int i = 0; i < amountOfFaces; i++)
+        {
+            faces[i].ChangeFaceMat(diceData.dieMaterial);
 
             int randomResourceFaceIndex = Random.Range(0, System.Enum.GetValues(typeof(ResourceType)).Length);
             ResourceData resourceData = new ResourceData();
@@ -86,18 +103,17 @@ public class Die : MonoBehaviour
             resourceData.Value = Random.Range(1, 10); //temp
             resourceData.Icon = DiceManager.Instance.ReturnIconByType(resourceData.Type);
 
-            face.SetResource(resourceData);
-            face.DisplayResource();
+            faces[i].SetResource(resourceData);
+            faces[i].DisplayResource();
 
-            randomResourceFaceIndex = Random.Range(0, System.Enum.GetValues(typeof(BuffType)).Length);
+
             BuffData buffData = new BuffData();
-            buffData.Type = (BuffType)randomResourceFaceIndex;
-            buffData.Value = Random.Range(1, 10); //temp
+            buffData.Type = diceData.buffDataList[i].Type;
+            buffData.Value = diceData.buffDataList[i].Value;
             buffData.Icon = DiceManager.Instance.ReturnIconByType(buffData.Type);
-            face.SetBuff(buffData);
+            faces[i].SetBuff(buffData);
         }
     }
-
     private void LateUpdate()
     {
         CheckState();

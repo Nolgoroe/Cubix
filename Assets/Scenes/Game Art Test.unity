@@ -370,6 +370,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dice Slot (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7933534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.60876137
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4727,27 +4767,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 747e243d13caf2a499ae7ea61d7e057d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allDiceSO:
-  - {fileID: 11400000, guid: c9945a74df352e04a959340385242da7, type: 2}
-  - {fileID: 11400000, guid: 8ea65ad390c770a4499a107654cd2191, type: 2}
-  - {fileID: 11400000, guid: dad15f1d9ec28a14ba0b206482db999d, type: 2}
   startingDice:
-  - diceType: 0
+  - diceSO: {fileID: 11400000, guid: c9945a74df352e04a959340385242da7, type: 2}
     dicePrefab: {fileID: 7206346690176520411, guid: 30f61d566fa189c4182947b8e23103e5,
       type: 3}
-  - diceType: 0
+  - diceSO: {fileID: 11400000, guid: 8ea65ad390c770a4499a107654cd2191, type: 2}
     dicePrefab: {fileID: 7206346690176520411, guid: 30f61d566fa189c4182947b8e23103e5,
       type: 3}
-  - diceType: 0
+  - diceSO: {fileID: 11400000, guid: dad15f1d9ec28a14ba0b206482db999d, type: 2}
     dicePrefab: {fileID: 7206346690176520411, guid: 30f61d566fa189c4182947b8e23103e5,
       type: 3}
-  - diceType: 0
+  - diceSO: {fileID: 11400000, guid: dad15f1d9ec28a14ba0b206482db999d, type: 2}
     dicePrefab: {fileID: 7206346690176520411, guid: 30f61d566fa189c4182947b8e23103e5,
       type: 3}
-  - diceType: 1
+  - diceSO: {fileID: 11400000, guid: e3d76e11d0a7eff408077d33057fc92a, type: 2}
     dicePrefab: {fileID: 6895173316381504982, guid: 89c80393a1704c540a3de66fa30dd966,
       type: 3}
-  - diceType: 1
+  - diceSO: {fileID: 11400000, guid: c47d6d562959687419e0a091e6324cc6, type: 2}
     dicePrefab: {fileID: 6895173316381504982, guid: 89c80393a1704c540a3de66fa30dd966,
       type: 3}
   diceSlots:
@@ -5192,6 +5228,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dice Slot (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7933534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.60876137
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6318,6 +6394,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dice Slot (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7933534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.60876137
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6391,6 +6507,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dice Slot (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7933534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.60876137
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6719,6 +6875,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dice Slot (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7933534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.60876137
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7813,6 +8009,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dice Slot
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7933534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.60876137
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796052154648488918, guid: 7246afe32b016b84b82a7b71378edfee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
