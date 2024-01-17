@@ -32,8 +32,12 @@ public class GameManager : MonoBehaviour
 
 
 
-
-    public void SetPlayerTurn(bool isPlayerTurn)
+    public void CallSetPlayerTurn(bool isPlayerTurn)
+    {
+        //called from button
+        StartCoroutine(SetPlayerTurn(isPlayerTurn));
+    }
+    public IEnumerator SetPlayerTurn(bool isPlayerTurn)
     {
         playerTurn = isPlayerTurn;
 
@@ -61,6 +65,9 @@ public class GameManager : MonoBehaviour
                 tower.OnEndPlayerTurn();
             }
         }
+
+        yield return new WaitForSeconds(2);
+        RollersManager.Instance.RollInWorld();
     }
 
     public void AddTowerToRelaventList(TowerBaseParent tower)
@@ -93,5 +100,14 @@ public class GameManager : MonoBehaviour
         EnemyParent enemy = allEnemies.Where(x => x.RetrunEnemyType() == type).FirstOrDefault();
 
         return enemy.gameObject;
+    }
+
+    public void CloseGame()
+    {
+        Application.Quit();
+    }
+    public void RestartRun()
+    {
+        Debug.Log("Restart game");
     }
 }

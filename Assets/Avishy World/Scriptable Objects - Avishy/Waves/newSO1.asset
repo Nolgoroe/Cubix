@@ -24,7 +24,7 @@ MonoBehaviour:
       enemyPathIndex: 0
       enemyType: 1
     - amountOfThisEnemy: 20
-      enemySpawnerIndex: 0
+      enemySpawnerIndex: 1
       enemyPathIndex: 0
       enemyType: 2
   - delayBetweenEnemies: 0.1

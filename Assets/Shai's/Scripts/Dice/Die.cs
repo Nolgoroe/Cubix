@@ -59,7 +59,6 @@ public class Die : MonoBehaviour
         originalPos = transform.localPosition;
 
         diceCam = GameManager.Instance.ReturnDiceCamera();
-
     }
 
 
@@ -162,11 +161,20 @@ public class Die : MonoBehaviour
     private void OnMouseOver()
     {
         outline.SetOutlineMode(Outline.Mode.OutlineVisible);
+
+
+        //display dice faces in ui here.
     }
 
     private void OnMouseExit()
     {
         outline.SetOutlineMode(Outline.Mode.OutlineHidden);
+
+        UIManager.Instance.DisplayDiceFacesUI(false, this);
+    }
+    private void OnMouseEnter()
+    {
+        UIManager.Instance.DisplayDiceFacesUI(true, this);
     }
 
     private void OnMouseUp()

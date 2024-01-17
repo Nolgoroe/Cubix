@@ -10,10 +10,21 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private TMP_Text timerText;
     [SerializeField] private TowerToolTipUI towerBuffDataHolderObject;
+    [SerializeField] private Transform diceFacesResourcesDisplayParent;
+    [SerializeField] private Transform diceFacesBuffDisplayParent;
+    [SerializeField] private DiceFaceDisplayUI diceFaceUiDisplayPreafb;
+
+    [Header("Pause Menu")]
+    [SerializeField] private Transform pauseMenu;
+
+
+    public static bool menuOpened = false;
 
     private void Start()
     {
         Instance = this;
+
+        TogglePauseMenu(false);
     }
 
     public void DisplayTimerText(bool show)
@@ -43,5 +54,68 @@ public class UIManager : MonoBehaviour
         {
             towerBuffDataHolderObject.gameObject.SetActive(false);
         }
+    }
+
+    public void DisplayDiceFacesUI(bool isDisplay, Die die)
+    {
+        if(isDisplay)
+        {
+            foreach (DieFace face in die.GetAllFaces())
+            {
+                GameObject go = Instantiate(diceFaceUiDisplayPreafb.gameObject, diceFacesResourcesDisplayParent);
+                DiceFaceDisplayUI displayUI;
+
+                go.TryGetComponent<DiceFaceDisplayUI>(out displayUI);
+
+                if(displayUI)
+                {
+                    displayUI.SetImage(face.GetFaceValue(), die, true);
+                }
+            }
+
+            foreach (DieFace face in die.GetAllFaces())
+            {
+                GameObject go = Instantiate(diceFaceUiDisplayPreafb.gameObject, diceFacesBuffDisplayParent);
+                DiceFaceDisplayUI displayUI;
+
+                go.TryGetComponent<DiceFaceDisplayUI>(out displayUI);
+
+                if(displayUI)
+                {
+                    displayUI.SetImage(face.GetFaceValue(), die, false);
+                }
+            }
+        }
+        else
+        {
+            foreach (Transform child in diceFacesResourcesDisplayParent)
+            {
+                Destroy(child.gameObject);
+            }
+
+            foreach (Transform child in diceFacesBuffDisplayParent)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+
+        diceFacesResourcesDisplayParent.gameObject.SetActive(isDisplay);
+        diceFacesBuffDisplayParent.gameObject.SetActive(isDisplay);
+    }
+
+    public void TogglePauseMenu(bool displayPause)
+    {
+        pauseMenu.gameObject.SetActive(displayPause ? true : false);
+
+        menuOpened = displayPause;
+    }
+
+    public void GoToMainMenu()
+    {
+        Debug.Log("Go to main menu");
+    }
+    public void OpenSettings()
+    {
+        Debug.Log("Open Settings");
     }
 }

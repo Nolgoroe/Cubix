@@ -13,6 +13,12 @@ public class EnemySpawnerCell : GridCell
     [SerializeField] private List<EnemyPath> enemyPaths;
 
     [SerializeField] private List<EnemyPathCells> enemyPathcells;
+    [SerializeField] Transform dangerIcon;
+
+    protected override void Start()
+    {
+        dangerIcon = transform.GetChild(0); // temp
+    }
 
     private void SpawnEnemy(GameObject enemyPrefab)
     {
@@ -85,6 +91,10 @@ public class EnemySpawnerCell : GridCell
         SpawnEnemy(enemyPrefab);
     }
 
+    public void DisplayDangerIcon(bool display)
+    {
+        dangerIcon.gameObject.SetActive(display);
+    }
     public override void CopyDataFromToolCell(ToolGridCell toolGridCell)
     {
         ToolEnemySpawnerCell toolSpawnerCell = toolGridCell as ToolEnemySpawnerCell;

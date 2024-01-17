@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GameGridControls : MonoBehaviour
 {
@@ -137,6 +138,8 @@ public class GameGridControls : MonoBehaviour
 
     private GridCell MouseOverGridCell()
     {
+        if (UIManager.menuOpened) return null;
+
         if(currentCellHovered)
         {
             currentCellHovered.SetOnMouseHover(false);
