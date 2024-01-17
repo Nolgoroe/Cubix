@@ -120,15 +120,15 @@ public class RangeTowerParentScript : TowerBaseParent
 
         switch (dieFaceValue.Buff.Type)
         {
-            case BuffType.Speed:
+            case BuffType.None:
                 break;
-            case BuffType.Damage:
+            case BuffType.Dmg:
                 break;
-            case BuffType.Fire:
+            case BuffType.Range:
                 break;
-            case BuffType.AttackSpeed:
-                //add attack speed to relavent tower
-                fireRate += 0.1f;
+            case BuffType.HP:
+                break;
+            case BuffType.time:
                 break;
             default:
                 break;

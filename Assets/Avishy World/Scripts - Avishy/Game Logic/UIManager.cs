@@ -8,11 +8,26 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
+    [Header("Wave UI")]
     [SerializeField] private TMP_Text timerText;
+
+    [Header("Tower UI")]
     [SerializeField] private TowerToolTipUI towerBuffDataHolderObject;
+
+    [Header("HP UI")]
+    [SerializeField] private TMP_Text playerHealthText;
+
+    [Header("Player Area UI")]
     [SerializeField] private Transform diceFacesResourcesDisplayParent;
     [SerializeField] private Transform diceFacesBuffDisplayParent;
-    [SerializeField] private DiceFaceDisplayUI diceFaceUiDisplayPreafb;
+
+    [Header("Resources UI")]
+    [SerializeField] private TMP_Text ironText;
+    [SerializeField] private TMP_Text energyText;
+    [SerializeField] private TMP_Text lightningText;
+
+    [Header("Prefabs")]
+    [SerializeField] private DiceFaceDisplayUI diceFaceUIDisplayPreafb;
 
     [Header("Pause Menu")]
     [SerializeField] private Transform pauseMenu;
@@ -20,11 +35,15 @@ public class UIManager : MonoBehaviour
 
     public static bool menuOpened = false;
 
-    private void Start()
+    private void Awake()
     {
         Instance = this;
-
+    }
+    private void Start()
+    {
         TogglePauseMenu(false);
+
+        UpdateResources(0, 0, 0); //temp?
     }
 
     public void DisplayTimerText(bool show)
@@ -62,27 +81,23 @@ public class UIManager : MonoBehaviour
         {
             foreach (DieFace face in die.GetAllFaces())
             {
-                GameObject go = Instantiate(diceFaceUiDisplayPreafb.gameObject, diceFacesResourcesDisplayParent);
-                DiceFaceDisplayUI displayUI;
+                GameObject resource = Instantiate(diceFaceUIDisplayPreafb.gameObject, diceFacesResourcesDisplayParent);
+                GameObject buff = Instantiate(diceFaceUIDisplayPreafb.gameObject, diceFacesBuffDisplayParent);
 
-                go.TryGetComponent<DiceFaceDisplayUI>(out displayUI);
+                DiceFaceDisplayUI displayUIResource;
+                DiceFaceDisplayUI displayUIBuff;
 
-                if(displayUI)
+                resource.TryGetComponent<DiceFaceDisplayUI>(out displayUIResource);
+                buff.TryGetComponent<DiceFaceDisplayUI>(out displayUIBuff);
+
+                if (displayUIResource)
                 {
-                    displayUI.SetImage(face.GetFaceValue(), die, true);
+                    displayUIResource.SetImage(face.GetFaceValue(), die, true);
                 }
-            }
 
-            foreach (DieFace face in die.GetAllFaces())
-            {
-                GameObject go = Instantiate(diceFaceUiDisplayPreafb.gameObject, diceFacesBuffDisplayParent);
-                DiceFaceDisplayUI displayUI;
-
-                go.TryGetComponent<DiceFaceDisplayUI>(out displayUI);
-
-                if(displayUI)
+                if (displayUIBuff)
                 {
-                    displayUI.SetImage(face.GetFaceValue(), die, false);
+                    displayUIBuff.SetImage(face.GetFaceValue(), die, false);
                 }
             }
         }
@@ -117,5 +132,16 @@ public class UIManager : MonoBehaviour
     public void OpenSettings()
     {
         Debug.Log("Open Settings");
+    }
+
+    public void UpdateResources(int _iron, int _energy, int _lightning)
+    {
+        ironText.text = _iron.ToString();
+        energyText.text = _energy.ToString();
+        lightningText.text = _lightning.ToString();
+    }
+    public void UpdatePlayerHealth(int currentHealth, int maxHealth)
+    {
+        playerHealthText.text = currentHealth.ToString() + "/" + maxHealth.ToString();
     }
 }

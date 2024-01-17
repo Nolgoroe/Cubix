@@ -101,7 +101,7 @@ public class GameGridControls : MonoBehaviour
 
         currentTowerPrefab.TryGetComponent<TowerBaseParent>(out towerSpawned);
 
-        if (currentCellHovered.ReturnCellTypeColor() != CellTypeColor.Neutral &&
+        if (currentCellHovered.ReturnCellTypeColor() == CellTypeColor.Neutral ||
             currentCellHovered.ReturnCellTypeColor() != towerSpawned.ReturnCellColorType())
         {
             return false;

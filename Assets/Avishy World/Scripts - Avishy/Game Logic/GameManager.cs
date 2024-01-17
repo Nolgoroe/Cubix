@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Camera mainCamera; //temp
     [SerializeField] private Camera diceCamera; //temp
 
+    [SerializeField] List<TowerBaseParent> allTowersPrefabs;
     [SerializeField] List<RangeTowerParentScript> summonedRangeTowers;
     [SerializeField] List<MeleeTowerParentScript> summonedMeleeTowers;
 
@@ -27,6 +29,11 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         gameSpeed = gameSpeedTemp;
+
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 
 
@@ -66,8 +73,8 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        yield return new WaitForSeconds(2);
-        RollersManager.Instance.RollInWorld();
+        yield return new WaitForSeconds(1f); //temp
+        DiceManager.Instance.RollInWorld();
     }
 
     public void AddTowerToRelaventList(TowerBaseParent tower)
@@ -109,5 +116,11 @@ public class GameManager : MonoBehaviour
     public void RestartRun()
     {
         Debug.Log("Restart game");
+    }
+
+    public TowerBaseParent ReturnRandomTowerPrefab()
+    {
+        int random = Random.Range(0, allTowersPrefabs.Count);
+        return allTowersPrefabs[random];
     }
 }

@@ -28,7 +28,7 @@ public class DieRoller : MonoBehaviour
         die.OnDragEndEvent.AddListener(OnConnectedDieEndDragging);
         die.OnPlaceEvent.AddListener(OnConnectedDiePlace);
 
-        RollersManager.Instance.AddDiceToResources(this);
+        DiceManager.Instance.AddDiceToResources(this);
     }
 
     private void LateUpdate()
@@ -41,6 +41,8 @@ public class DieRoller : MonoBehaviour
 
     public void Roll()
     {
+        die.RB.velocity = Vector3.zero;
+
         if (!die.isLocked && isActiveAndEnabled)
         {
             die.OnRollStartEvent.Invoke();
@@ -92,7 +94,7 @@ public class DieRoller : MonoBehaviour
 
     private IEnumerator ChangeMassAtTop()
     {
-        yield return new WaitUntil(() => die.RB.velocity.y < 0 && die.IsMoving);
+        yield return new WaitUntil(() => die.RB.velocity.y < 0 && die.IsRolling);
         die.RB.centerOfMass = massCenter;
         Debug.Log("change mass");
     }
@@ -113,8 +115,8 @@ public class DieRoller : MonoBehaviour
     }
     private void OnConnectedDiePlace()
     {
-        RollersManager.Instance.RemoveDiceToResources(this);
-        RollersManager.Instance.AddDiceToWorld(this);
+        DiceManager.Instance.RemoveDiceToResources(this);
+        DiceManager.Instance.AddDiceToWorld(this);
 
         //maybe better way?
         Vector3 pos = GameGridControls.Instance.ReturnCurrentCell().transform.position;

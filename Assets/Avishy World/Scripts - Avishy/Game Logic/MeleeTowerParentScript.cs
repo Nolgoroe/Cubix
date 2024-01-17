@@ -20,53 +20,56 @@ public class MeleeTowerParentScript : TowerBaseParent
     protected override void Start()
     {
         base.Start();
-        GridCell[,] gameGridCellsArray = GridManager.Instance.ReturnGridCellsArray();
 
-        int currentX = currentCellOnPos.x;
-        int currentY = currentCellOnPos.y;
+        #region rotation to path
+        //GridCell[,] gameGridCellsArray = GridManager.Instance.ReturnGridCellsArray();
 
-        //check up
-        if (currentY + 1 < GridManager.Instance.ReturnWidthHeight().y)
-        {
-            if (gameGridCellsArray[currentX, currentY + 1].ReturnTypeOfCell() == TypeOfCell.enemyPath)
-            {
-                transform.LookAt(gameGridCellsArray[currentX, currentY + 1].transform);
-                return;
-            }
-        }
+        //int currentX = currentCellOnPos.x;
+        //int currentY = currentCellOnPos.y;
 
-        //check left
-        if (currentX - 1 > -1)
-        {
-            if (gameGridCellsArray[currentX - 1, currentY].ReturnTypeOfCell() == TypeOfCell.enemyPath)
-            {
-                transform.LookAt(gameGridCellsArray[currentX - 1, currentY].transform);
+        ////check up
+        //if (currentY + 1 < GridManager.Instance.ReturnWidthHeight().y)
+        //{
+        //    if (gameGridCellsArray[currentX, currentY + 1].ReturnTypeOfCell() == TypeOfCell.enemyPath)
+        //    {
+        //        transform.LookAt(gameGridCellsArray[currentX, currentY + 1].transform);
+        //        return;
+        //    }
+        //}
 
-                return;
-            }
-        }
+        ////check left
+        //if (currentX - 1 > -1)
+        //{
+        //    if (gameGridCellsArray[currentX - 1, currentY].ReturnTypeOfCell() == TypeOfCell.enemyPath)
+        //    {
+        //        transform.LookAt(gameGridCellsArray[currentX - 1, currentY].transform);
 
-        //check down
-        if (currentY - 1 > -1)
-        {
-            if (gameGridCellsArray[currentX, currentY - 1].ReturnTypeOfCell() == TypeOfCell.enemyPath)
-            {
-                transform.LookAt(gameGridCellsArray[currentX, currentY - 1].transform);
+        //        return;
+        //    }
+        //}
 
-                return;
-            }
-        }
+        ////check down
+        //if (currentY - 1 > -1)
+        //{
+        //    if (gameGridCellsArray[currentX, currentY - 1].ReturnTypeOfCell() == TypeOfCell.enemyPath)
+        //    {
+        //        transform.LookAt(gameGridCellsArray[currentX, currentY - 1].transform);
 
-        //check right
-        if (currentX + 1 < GridManager.Instance.ReturnWidthHeight().x)
-        {
-            if (gameGridCellsArray[currentX + 1, currentY].ReturnTypeOfCell() == TypeOfCell.enemyPath)
-            {
-                transform.LookAt(gameGridCellsArray[currentX + 1, currentY].transform);
+        //        return;
+        //    }
+        //}
 
-                return;
-            }
-        }
+        ////check right
+        //if (currentX + 1 < GridManager.Instance.ReturnWidthHeight().x)
+        //{
+        //    if (gameGridCellsArray[currentX + 1, currentY].ReturnTypeOfCell() == TypeOfCell.enemyPath)
+        //    {
+        //        transform.LookAt(gameGridCellsArray[currentX + 1, currentY].transform);
+
+        //        return;
+        //    }
+        //}
+        #endregion
     }
     protected virtual void Update()
     {
@@ -159,10 +162,10 @@ public class MeleeTowerParentScript : TowerBaseParent
     {
         currentNumOfTroops--;
 
-        if(currentNumOfTroops < 0)
-        {
-            currentNumOfTroops = 0;
-        }
+        //if(currentNumOfTroops < 0)
+        //{
+        //    currentNumOfTroops = 0;
+        //}
 
     }
 
@@ -183,15 +186,15 @@ public class MeleeTowerParentScript : TowerBaseParent
 
         switch (dieFaceValue.Buff.Type)
         {
-            case BuffType.Speed:
+            case BuffType.None:
                 break;
-            case BuffType.Damage:
+            case BuffType.Dmg:
                 break;
-            case BuffType.Fire:
+            case BuffType.Range:
                 break;
-            case BuffType.AttackSpeed:
-                //add attack speed to relavent tower
-                spawnRate += 0.1f;
+            case BuffType.HP:
+                break;
+            case BuffType.time:
                 break;
             default:
                 break;

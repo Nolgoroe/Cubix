@@ -27,6 +27,8 @@ public class ResultDiceDisplay : MonoBehaviour
         Vector3 diretion = Camera.main.transform.position - transform.position;
 
         Debug.DrawLine(transform.position, diretion);
+
+        transform.LookAt(Camera.main.transform);
     }
 
     [ContextMenu("Now")]

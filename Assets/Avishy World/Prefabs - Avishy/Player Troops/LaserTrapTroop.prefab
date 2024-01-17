@@ -227,7 +227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentTarget: {fileID: 0}
   connectedTower: {fileID: 0}
-  range: 2
+  range: 1.6
   damage: 10
   health: 3
   attackRate: 50

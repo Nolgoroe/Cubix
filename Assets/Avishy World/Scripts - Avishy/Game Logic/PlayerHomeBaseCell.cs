@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerHomeBaseCell : GridCell
 {
     [SerializeField] int playerHealth;
+    [SerializeField] int currentPlayerHealth;
     [SerializeField] Transform dangerIcon;
     [SerializeField] LayerMask enemyLayerMask;
     [SerializeField] float detectionRange;
@@ -13,11 +14,14 @@ public class PlayerHomeBaseCell : GridCell
     {
         base.Start();
         playerHealth = 10;
+        currentPlayerHealth = playerHealth;
 
         dangerIcon = transform.GetChild(0); // temp
         enemyLayerMask |= (1 << LayerMask.NameToLayer("Flying Enemy")); // temp
         enemyLayerMask |= (1 << LayerMask.NameToLayer("Enemy")); // temp
         detectionRange = 5; // temp
+
+        UIManager.Instance.UpdatePlayerHealth(currentPlayerHealth, playerHealth);
     }
 
     private void Update()
@@ -64,12 +68,15 @@ public class PlayerHomeBaseCell : GridCell
 
     public void RecieveDamage(EnemyParent enemy)
     {
-        playerHealth -= enemy.ReturnEnemyDMG();
+        currentPlayerHealth -= enemy.ReturnEnemyDMG();
 
-        if (playerHealth <= 0)
+        if (currentPlayerHealth <= 0)
         {
             Debug.Log("You have lost!");
+            return;
         }
+
+        UIManager.Instance.UpdatePlayerHealth(currentPlayerHealth, playerHealth);
     }
 
     public override void CopyDataFromToolCell(ToolGridCell toolGridCell)

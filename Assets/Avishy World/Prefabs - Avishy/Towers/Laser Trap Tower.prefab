@@ -360,13 +360,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3271812195288528520}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.35917622, y: 0.0044412552, z: 0.014398966, w: 0.9331481}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 6.666666, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8937587347033396745}
-  m_LocalEulerAnglesHint: {x: -10.428, y: -142.739, z: -9.954}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3881631293152255660
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,6 +521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCellOnPos: {x: 0, y: 0}
   requiredCellColorType: 0
+  towerRequiredColor: {r: 0.49411765, g: 0.38039216, b: 1, a: 1}
   towerDie: {fileID: 0}
   resultDiceDisplay: {fileID: 0}
   rangeIndicator: {fileID: 0}

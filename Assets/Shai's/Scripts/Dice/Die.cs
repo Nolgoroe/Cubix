@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
 public enum DieElement { Water, Fire, Poison }
+public enum DieType { D6, D8 }
 
 //[RequireComponent(typeof(Rigidbody), typeof(MeshCollider))]
 public class Die : MonoBehaviour
@@ -20,13 +21,14 @@ public class Die : MonoBehaviour
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private List<DieFace> faces;
     [SerializeField] private DieElement element;
+    [SerializeField] private DieType DieType;
     [SerializeField] private TowerBaseParent towerPrefabConnected;
     [SerializeField] private float _reqStagnantTime = 1;
-    [SerializeField] private SpriteRenderer lockRenderer;
+    [SerializeField] private Transform lockRenderer;
     [SerializeField] private Outline outline;
     [SerializeField] private Color diceColor;
+    [SerializeField] private GameObject diceDisplay;
 
-    private bool _isMoving;
     private bool _isDragging;
     private bool _isInWorld;
     private float _stagnantTimer;
@@ -34,8 +36,10 @@ public class Die : MonoBehaviour
     private Vector3 originalPos;
     private float timeTillStartDrag = 0.2f;
     private float currentTimeTillStartDrag = 0;
+    private Quaternion targetQuat;
+    bool isRolling;
 
-    public bool IsMoving { get { return _isMoving; } }
+    public bool IsRolling { get { return isRolling; } }
     public Rigidbody RB { get { return _rb; } }
 
 
@@ -43,6 +47,7 @@ public class Die : MonoBehaviour
     {
         
         OnRollStartEvent.AddListener(SetMovingTrue);
+        OnRollEndEvent.AddListener(OrientCubeToCamrea);
 
         OnDragStartEvent.AddListener(SetValuesOnDragStart);
         OnDragStartEvent.AddListener(SetMovingFalse);
@@ -61,15 +66,51 @@ public class Die : MonoBehaviour
         diceCam = GameManager.Instance.ReturnDiceCamera();
     }
 
+    public void InitDiceInSlot(Transform lockTransform, DiceSO diceData)
+    {
+        lockRenderer = lockTransform;
+
+        towerPrefabConnected = diceData.towerPrefab;
+        diceColor = diceData.dieMaterial.color;
+
+        foreach (DieFace face in faces)
+        {
+            face.ChangeFaceMat(diceData.dieMaterial);
+
+            int randomResourceFaceIndex = Random.Range(0, System.Enum.GetValues(typeof(ResourceType)).Length);
+            ResourceData resourceData = new ResourceData();
+            resourceData.Type = (ResourceType)randomResourceFaceIndex;
+            resourceData.Value = Random.Range(1, 10); //temp
+            resourceData.Icon = DiceManager.Instance.ReturnIconByType(resourceData.Type);
+
+            face.SetResource(resourceData);
+            face.DisplayResource();
+
+            randomResourceFaceIndex = Random.Range(0, System.Enum.GetValues(typeof(BuffType)).Length);
+            BuffData buffData = new BuffData();
+            buffData.Type = (BuffType)randomResourceFaceIndex;
+            buffData.Value = Random.Range(1, 10); //temp
+            buffData.Icon = DiceManager.Instance.ReturnIconByType(buffData.Type);
+            face.SetBuff(buffData);
+        }
+    }
 
     private void LateUpdate()
     {
         CheckState();
+
+        if(!isRolling)
+        RotateAfterRoll();
+    }
+
+    private void RotateAfterRoll()
+    {
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetQuat, 0.2f);// speed is temp here
     }
 
     private void CheckState()
     {
-        if (_isMoving)
+        if (isRolling)
         {
             if (_rb.velocity.magnitude < 0.001f)
             {
@@ -77,7 +118,7 @@ public class Die : MonoBehaviour
 
                 if (_stagnantTimer >= _reqStagnantTime)//if die stands still for more than x seconds apply rndRoll logic
                 {
-                    _isMoving = false;
+                    isRolling = false;
                     OnRollEndEvent?.Invoke(this);
                     _stagnantTimer = 0;
                     GetTopValue();
@@ -93,13 +134,15 @@ public class Die : MonoBehaviour
 
     private void SetMovingTrue()
     {
+        RB.isKinematic = false;
+
         Debug.Log("Roll started");
-        _isMoving = true;
+        isRolling = true;
     }
     private void SetMovingFalse()
     {
         Debug.Log("Roll started");
-        _isMoving = false;
+        isRolling = false;
     }
 
     public DieFaceValue GetTopValue()
@@ -162,8 +205,6 @@ public class Die : MonoBehaviour
     {
         outline.SetOutlineMode(Outline.Mode.OutlineVisible);
 
-
-        //display dice faces in ui here.
     }
 
     private void OnMouseExit()
@@ -264,7 +305,14 @@ public class Die : MonoBehaviour
     }
 
 
+    private void OrientCubeToCamrea(Die die)
+    {
+        isRolling = false;
+        RB.isKinematic = true;
+        DieFaceValue faceValue = die.GetTopValue(); // _currentTopFace value is always set in this function. we call it to be safe that we don't use a null value 
 
+        targetQuat = Quaternion.Euler(die.ReturnCurrentTopFace().ReturnOrientationOnEndRoll());
+    }
     public void LockDie(bool isLocking)
     {
         isLocked = isLocking ? true : false;
@@ -284,6 +332,19 @@ public class Die : MonoBehaviour
     public Color ReturnDiceColor()
     {
         return diceColor;
+    }
+    public DieType ReturnDieType()
+    {
+        return DieType;
+    }
+
+    public DieFace ReturnCurrentTopFace()
+    {
+        return _currentTopFace;
+    }
+    public GameObject ReturnDiceDisplay()
+    {
+        return diceDisplay;
     }
 }
 
