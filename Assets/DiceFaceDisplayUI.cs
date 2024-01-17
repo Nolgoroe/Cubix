@@ -27,7 +27,16 @@ public class DiceFaceDisplayUI : MonoBehaviour
         {
             connectedImage.color = die.ReturnDiceColor() - Color.white * 0.2f; //temp
             iconImage.sprite = diceFaceValue.Buff.Icon;
-            textAmount.text = diceFaceValue.Buff.Value.ToString();
+
+            if (diceFaceValue.Buff.Type == BuffType.None)
+            {
+                textAmount.gameObject.SetActive(false);
+            }
+            else
+            {
+                textAmount.gameObject.SetActive(true);
+                textAmount.text = diceFaceValue.Buff.Value.ToString();
+            }
         }
     }
 }

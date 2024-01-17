@@ -21,11 +21,13 @@ public class TowerTroop : MonoBehaviour
     [SerializeField] protected Transform rangeIndicator;
     [SerializeField] private LayerMask enemyLayerMask;
 
+
+    bool isDead;
     virtual protected void Start()
     {
         if (rangeIndicator)
         {
-            rangeIndicator.localScale = new Vector3(range * 2 / rangeIndicator.lossyScale.x, range * 2 / rangeIndicator.lossyScale.y, range * 2 / rangeIndicator.lossyScale.z);
+            rangeIndicator.localScale = new Vector3(range * 2 / transform.lossyScale.x, range * 2 / transform.lossyScale.y, range * 2 / transform.lossyScale.z);
             rangeIndicator.gameObject.SetActive(false);
         }
 
@@ -113,16 +115,19 @@ public class TowerTroop : MonoBehaviour
 
     public void RecieveDMG(int damage)
     {
-        health -= damage;
-
+        if (isDead) return;
         if (health <= 0)
         {
-            connectedTower.LoseTroop(this);
-
+            isDead = true;
+            Debug.Log("Recieve dmg");
             Destroy(gameObject);
+
+            connectedTower.LoseTroop(this);
 
             return;
         }
+
+        health -= damage;
     }
 
     private void OnDrawGizmosSelected()

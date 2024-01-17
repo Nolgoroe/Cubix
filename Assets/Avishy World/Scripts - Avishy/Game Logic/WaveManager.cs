@@ -64,6 +64,7 @@ public class WaveManager : MonoBehaviour
     [ContextMenu("Start Next Wave")]
     public void StartNextWave()
     {
+        //this might not need to be here when we have end of level logic. temp
         if (currentIndexInWave > waveSO.waves.Count - 1)
         {
             Debug.Log("no more waves! weeeeee");
@@ -121,6 +122,13 @@ public class WaveManager : MonoBehaviour
             waveDone = true;
 
             currentIndexInWave++;
+
+            if (currentIndexInWave > waveSO.waves.Count - 1)
+            {
+                Debug.Log("Finished all waves");
+                levelComplete = true;
+                yield break;
+            }
 
             //from this point on it's the players turn.
 

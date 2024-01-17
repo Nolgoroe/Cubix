@@ -8,15 +8,16 @@ public class Player : MonoBehaviour
     public static Player Instance;
 
     [SerializeField] private List<Die> allDieInPlay;
-    [SerializeField] private int coins;
-    [SerializeField] private int scraps;
+    [SerializeField] private int iron;
+    [SerializeField] private int energy;
+    [SerializeField] private int lightning;
 
     private void Awake()
     {
         Instance = this;
     }
 
-    void Start()
+    public void ConnectPlayerAndDice()
     {
         allDieInPlay = new List<Die>();
         allDieInPlay.AddRange(FindObjectsOfType<Die>());
@@ -26,7 +27,6 @@ public class Player : MonoBehaviour
             die.OnRollEndEvent.AddListener(AddResourcesAfterRoll);
         }
     }
-
 
     private void AddResourcesAfterRoll(Die die)
     {
@@ -38,15 +38,20 @@ public class Player : MonoBehaviour
 
         switch (dieFaceVakue.Resource.Type)
         {
-            case ResourceType.Coins:
-                coins+= dieFaceVakue.Resource.Value;
+            case ResourceType.Iron:
+                iron += dieFaceVakue.Resource.Value;
                 break;
-            case ResourceType.Scraps:
-                scraps += dieFaceVakue.Resource.Value;
+            case ResourceType.Energy:
+                energy += dieFaceVakue.Resource.Value;
+                break;
+            case ResourceType.Lightning:
+                lightning += dieFaceVakue.Resource.Value;
                 break;
             default:
                 break;
         }
+
+        UIManager.Instance.UpdateResources(iron, energy, lightning);
     }
 
     public void RecieveRandomResource()
@@ -57,15 +62,17 @@ public class Player : MonoBehaviour
 
         switch (myEnums[randomResource])
         {
-            case ResourceType.Coins:
-                coins += 10;
+            case ResourceType.Iron:
+                iron += 10;
                 break;
-            case ResourceType.Scraps:
-                scraps += 10;
+            case ResourceType.Energy:
+                energy += 10;
                 break;
             default:
                 break;
         }
+
+        UIManager.Instance.UpdateResources(iron, energy, lightning);
     }
 
 }

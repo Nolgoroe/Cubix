@@ -14,6 +14,7 @@ public abstract class TowerBaseParent : MonoBehaviour
 {
     [SerializeField] protected Vector2Int currentCellOnPos;
     [SerializeField] protected CellTypeColor requiredCellColorType;
+    [SerializeField] protected Color towerRequiredColor;
     [SerializeField] protected Die towerDie;
     [SerializeField] protected ResultDiceDisplay resultDiceDisplay;
     [SerializeField] protected Transform rangeIndicator;
@@ -43,9 +44,22 @@ public abstract class TowerBaseParent : MonoBehaviour
     }
     protected void SpawnBuffCubeOnCreation()
     {
+        //this switch is temp
+        //switch (towerDie.ReturnDieType())
+        //{
+        //    case DieType.D6:
+        //        resultDiceHolder.localRotation = Quaternion.Euler(new Vector3(45, 0, 0));
+        //        break;
+        //    case DieType.D8:
+        //        resultDiceHolder.localRotation = Quaternion.Euler(new Vector3(7,45,7));
+        //        break;
+        //    default:
+        //        break;
+        //}
+
         if(towerDie)
         {
-            GameObject go =  Instantiate(towerDie.gameObject, resultDiceHolder);
+            GameObject go =  Instantiate(towerDie.ReturnDiceDisplay(), resultDiceHolder);
             go.transform.localPosition = Vector3.zero;
             go.transform.localRotation = Quaternion.Euler(Vector3.zero);
 
@@ -98,5 +112,10 @@ public abstract class TowerBaseParent : MonoBehaviour
         towerDie.gameObject.SetActive(false);
         resultDiceHolder.gameObject.SetActive(false);
 
+    }
+
+    public Color ReturnTowerRequiredColor()
+    {
+        return towerRequiredColor;
     }
 }
