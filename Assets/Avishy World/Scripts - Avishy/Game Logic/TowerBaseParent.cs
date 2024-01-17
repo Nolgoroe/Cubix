@@ -16,7 +16,7 @@ public abstract class TowerBaseParent : MonoBehaviour
     [SerializeField] protected CellTypeColor requiredCellColorType;
     [SerializeField] protected Color towerRequiredColor;
     [SerializeField] protected Die towerDie;
-    [SerializeField] protected ResultDiceDisplay resultDiceDisplay;
+    //[SerializeField] protected ResultDiceDisplay resultDiceDisplay;
     [SerializeField] protected Transform rangeIndicator;
     [SerializeField] protected Transform resultDiceHolder;
     [SerializeField] protected List<TowerBuffDataHolder> currentTowerBuffs;
@@ -27,7 +27,7 @@ public abstract class TowerBaseParent : MonoBehaviour
         if (towerDie)
         {
             towerDie.OnRollEndEvent.AddListener(RecieveBuffAfterRoll);
-            towerDie.OnRollEndEvent.AddListener(DisplayBuffAfterRoll);
+            //towerDie.OnRollEndEvent.AddListener(DisplayBuffAfterRoll);
         }
 
         GameManager.Instance.AddTowerToRelaventList(this);
@@ -42,55 +42,55 @@ public abstract class TowerBaseParent : MonoBehaviour
 
         currentTowerBuffs.Add(holder);
     }
-    protected void SpawnBuffCubeOnCreation()
-    {
-        //this switch is temp
-        //switch (towerDie.ReturnDieType())
-        //{
-        //    case DieType.D6:
-        //        resultDiceHolder.localRotation = Quaternion.Euler(new Vector3(45, 0, 0));
-        //        break;
-        //    case DieType.D8:
-        //        resultDiceHolder.localRotation = Quaternion.Euler(new Vector3(7,45,7));
-        //        break;
-        //    default:
-        //        break;
-        //}
+    //protected void SpawnBuffCubeOnCreation()
+    //{
+    //    //this switch is temp
+    //    //switch (towerDie.ReturnDieType())
+    //    //{
+    //    //    case DieType.D6:
+    //    //        resultDiceHolder.localRotation = Quaternion.Euler(new Vector3(45, 0, 0));
+    //    //        break;
+    //    //    case DieType.D8:
+    //    //        resultDiceHolder.localRotation = Quaternion.Euler(new Vector3(7,45,7));
+    //    //        break;
+    //    //    default:
+    //    //        break;
+    //    //}
 
-        if(towerDie)
-        {
-            GameObject go =  Instantiate(towerDie.ReturnDiceDisplay(), resultDiceHolder);
-            go.transform.localPosition = Vector3.zero;
-            go.transform.localRotation = Quaternion.Euler(Vector3.zero);
+    //    if(towerDie)
+    //    {
+    //        GameObject go =  Instantiate(towerDie.gameObject, resultDiceHolder);
+    //        go.transform.localPosition = Vector3.zero;
+    //        go.transform.localRotation = Quaternion.Euler(Vector3.zero);
 
-            foreach (Component comp in go.GetComponents<Component>())
-            {
-                if (!(comp is Transform))
-                {
-                    Destroy(comp);
-                }
-            }
+    //        foreach (Component comp in go.GetComponents<Component>())
+    //        {
+    //            if (!(comp is Transform))
+    //            {
+    //                Destroy(comp);
+    //            }
+    //        }
 
-            ResultDiceDisplay diceDisplay = go.AddComponent<ResultDiceDisplay>();
-            diceDisplay.InitDiceDisplay(towerDie);
-            diceDisplay.GetCameraFacingValue();
+    //        ResultDiceDisplay diceDisplay = go.AddComponent<ResultDiceDisplay>();
+    //        diceDisplay.InitDiceDisplay(towerDie);
+    //        diceDisplay.GetCameraFacingValue();
 
-            resultDiceDisplay = diceDisplay;
-        }
+    //        resultDiceDisplay = diceDisplay;
+    //    }
 
-        resultDiceHolder.gameObject.SetActive(false);
-    }
+    //    resultDiceHolder.gameObject.SetActive(false);
+    //}
     public abstract void InitTowerData(Vector2Int positionOfCell, Die connectedDie);
     public abstract void RecieveBuffAfterRoll(Die die);
-    protected void DisplayBuffAfterRoll(Die die)
-    {
-        DieFaceValue dieFaceValue = die.GetTopValue();
+    //protected void DisplayBuffAfterRoll(Die die)
+    //{
+    //    DieFaceValue dieFaceValue = die.GetTopValue();
 
-        resultDiceHolder.gameObject.SetActive(true);
+    //    resultDiceHolder.gameObject.SetActive(true);
 
-        resultDiceDisplay.SetFaceData(dieFaceValue.Buff);
-        towerDie.gameObject.SetActive(false);
-    }
+    //    resultDiceDisplay.SetFaceData(dieFaceValue.Buff);
+    //    towerDie.gameObject.SetActive(false);
+    //}
     public abstract void OnHoverOverOccupyingCell(bool isHover);
 
     public CellTypeColor ReturnCellColorType()
@@ -109,13 +109,17 @@ public abstract class TowerBaseParent : MonoBehaviour
     }
     public void OnEndPlayerTurn()
     {
+        towerDie.ResetTransformData();
         towerDie.gameObject.SetActive(false);
         resultDiceHolder.gameObject.SetActive(false);
-
     }
 
     public Color ReturnTowerRequiredColor()
     {
         return towerRequiredColor;
+    }
+    public Transform ReturnResultDiceTransform()
+    {
+        return resultDiceHolder;
     }
 }

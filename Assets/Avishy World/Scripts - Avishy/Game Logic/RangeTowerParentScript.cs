@@ -105,7 +105,7 @@ public class RangeTowerParentScript : TowerBaseParent
 
         towerDie = connectedDie;
 
-        SpawnBuffCubeOnCreation();
+        //SpawnBuffCubeOnCreation();
     }
 
     private void OnDrawGizmos()

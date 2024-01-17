@@ -32,7 +32,7 @@ public class DiceManager : MonoBehaviour
         Instance = this;
     }
 
-    private void Start()
+    public void InitDiceManager()
     {
         resourceTypeToIcon = new Dictionary<ResourceType, Sprite>();
         buffTypeToIcon = new Dictionary<BuffType, Sprite>();

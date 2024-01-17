@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - delayBetweenEnemies: 0
-    delayBetweenWaves: 0
+    delayBetweenWaves: 10
     enemyWaveDataList: []
   - delayBetweenEnemies: 0.1
-    delayBetweenWaves: 50
+    delayBetweenWaves: 25
     enemyWaveDataList:
     - amountOfThisEnemy: 10
       enemySpawnerIndex: 0

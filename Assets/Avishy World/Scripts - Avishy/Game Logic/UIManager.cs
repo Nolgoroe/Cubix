@@ -39,7 +39,7 @@ public class UIManager : MonoBehaviour
     {
         Instance = this;
     }
-    private void Start()
+    public void InitUIManager()
     {
         TogglePauseMenu(false);
 

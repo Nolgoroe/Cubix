@@ -155,7 +155,7 @@ public class MeleeTowerParentScript : TowerBaseParent
 
         towerDie = connectedDie;
 
-        SpawnBuffCubeOnCreation();
+        //SpawnBuffCubeOnCreation();
     }
 
     public void LoseTroop(TowerTroop lostTroop)

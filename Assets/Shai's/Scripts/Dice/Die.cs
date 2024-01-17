@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
+
 public enum DieElement { Water, Fire, Poison }
 public enum DieType { D6, D8 }
 
@@ -27,13 +28,13 @@ public class Die : MonoBehaviour
     [SerializeField] private Transform lockRenderer;
     [SerializeField] private Outline outline;
     [SerializeField] private Color diceColor;
-    [SerializeField] private GameObject diceDisplay;
 
     private bool _isDragging;
     private bool _isInWorld;
     private float _stagnantTimer;
     private DieFace _currentTopFace;
     private Vector3 originalPos;
+    //private Vector3 originalScale;
     private float timeTillStartDrag = 0.2f;
     private float currentTimeTillStartDrag = 0;
     private Quaternion targetQuat;
@@ -48,6 +49,7 @@ public class Die : MonoBehaviour
         
         OnRollStartEvent.AddListener(SetMovingTrue);
         OnRollEndEvent.AddListener(OrientCubeToCamrea);
+        OnRollEndEvent.AddListener(TransformAfterRoll);
 
         OnDragStartEvent.AddListener(SetValuesOnDragStart);
         OnDragStartEvent.AddListener(SetMovingFalse);
@@ -62,6 +64,7 @@ public class Die : MonoBehaviour
         DisplayResources();//for build purpose
 
         originalPos = transform.localPosition;
+        //originalScale = transform.localScale;
 
         diceCam = GameManager.Instance.ReturnDiceCamera();
     }
@@ -98,14 +101,14 @@ public class Die : MonoBehaviour
     private void LateUpdate()
     {
         CheckState();
-
-        if(!isRolling)
-        RotateAfterRoll();
     }
 
-    private void RotateAfterRoll()
+    private void TransformAfterRoll(Die die)
     {
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetQuat, 0.2f);// speed is temp here
+        LeanTween.rotate(gameObject, targetQuat.eulerAngles, 0.2f);// speed is temp here
+
+        if(die._isInWorld)
+        LeanTween.scale(gameObject, transform.localScale * 2, 0.2f);// speed is temp here
     }
 
     private void CheckState()
@@ -263,7 +266,7 @@ public class Die : MonoBehaviour
     }
     private void SetValuesOnDragEnd()
     {
-        RB.isKinematic = false;
+        RB.isKinematic = true;
         transform.localScale = new Vector3(1, 1, 1); // temp here
 
         transform.localPosition = originalPos;
@@ -311,7 +314,16 @@ public class Die : MonoBehaviour
         RB.isKinematic = true;
         DieFaceValue faceValue = die.GetTopValue(); // _currentTopFace value is always set in this function. we call it to be safe that we don't use a null value 
 
-        targetQuat = Quaternion.Euler(die.ReturnCurrentTopFace().ReturnOrientationOnEndRoll());
+        if(!_isInWorld)
+        {
+            targetQuat = Quaternion.Euler(die.ReturnCurrentTopFace().ReturnOrientationOnEndRoll());
+        }
+        else
+        {
+            Vector3 direction = Camera.main.transform.position - transform.position;
+            Vector3 combine = die.ReturnCurrentTopFace().ReturnOrientationOnEndRollWorld() - direction;
+            targetQuat = Quaternion.Euler(combine);
+        }
     }
     public void LockDie(bool isLocking)
     {
@@ -342,9 +354,10 @@ public class Die : MonoBehaviour
     {
         return _currentTopFace;
     }
-    public GameObject ReturnDiceDisplay()
+
+    public void ResetTransformData()
     {
-        return diceDisplay;
+        transform.localScale = new Vector3(0.5f,0.5f,0.5f); //temp here
     }
 }
 

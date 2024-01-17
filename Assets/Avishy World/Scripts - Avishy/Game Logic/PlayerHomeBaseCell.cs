@@ -68,7 +68,14 @@ public class PlayerHomeBaseCell : GridCell
 
     public void RecieveDamage(EnemyParent enemy)
     {
-        currentPlayerHealth -= enemy.ReturnEnemyDMG();
+        currentPlayerHealth -= 1;
+
+        if (currentPlayerHealth <= 0)
+        {
+            currentPlayerHealth = 0;
+        }
+
+        UIManager.Instance.UpdatePlayerHealth(currentPlayerHealth, playerHealth);
 
         if (currentPlayerHealth <= 0)
         {
@@ -76,7 +83,6 @@ public class PlayerHomeBaseCell : GridCell
             return;
         }
 
-        UIManager.Instance.UpdatePlayerHealth(currentPlayerHealth, playerHealth);
     }
 
     public override void CopyDataFromToolCell(ToolGridCell toolGridCell)

@@ -24,7 +24,7 @@ public class WaveManager : MonoBehaviour
         Instance = this;
     }
 
-    private void Start() 
+    public void InitWaveManager() 
     {
         currentLevelEnemySpawners = GridManager.Instance.ReturnLevelEnemySpawners();
         currentIndexInWave = 0;
@@ -32,32 +32,43 @@ public class WaveManager : MonoBehaviour
         
         timeForNextWave = waveSO.waves[currentIndexInWave].delayBetweenWaves / GameManager.gameSpeed;
         currentCountdown = timeForNextWave;
-
-        //StartNextWave();
     }
 
+    private void Start()
+    {
+        StartCoroutine(tempOnStart());
+    }
+
+    IEnumerator tempOnStart()
+    {
+        yield return new WaitForSeconds(1);
+        StartNextWave();
+    }
     private void Update()
     {
         if (GameManager.gameSpeed == 0) return;
 
         if (!waveDone || levelComplete) return;
-        
-        if(/*currentCountdown <= 0 &&*/ !GameManager.playerTurn /*&& currentAmountOfEnemies == 0*/)
+
+        if (currentCountdown <= 0 && currentAmountOfEnemies == 0)
         {
-            //StartNextWave();
+            StartNextWave();
         }
 
-        //if(currentCountdown > 0 /*&& currentAmountOfEnemies == 0*/)
-        //{
-        //    currentCountdown -= Time.deltaTime * GameManager.gameSpeed;
+        if (currentCountdown > 0 && currentAmountOfEnemies == 0)
+        {
+            currentCountdown -= Time.deltaTime * GameManager.gameSpeed;
 
-        //    UIManager.Instance.SetWaveCountdownText(currentCountdown);
-        //}
-        //else
-        //{
-        //    //temp - this is called on update...
-        //    UIManager.Instance.DisplayTimerText(false);
-        //}
+            UIManager.Instance.SetWaveCountdownText(currentCountdown);
+
+            //temp - this is called on update...
+            UIManager.Instance.DisplayTimerText(true);
+        }
+        else
+        {
+            //temp - this is called on update...
+            UIManager.Instance.DisplayTimerText(false);
+        }
     }
 
 
@@ -81,7 +92,7 @@ public class WaveManager : MonoBehaviour
         BeforeWaveStart();
 
         // this is the player's turn.
-        yield return new WaitUntil(() => GameManager.playerTurn == false);
+        //yield return new WaitUntil(() => GameManager.playerTurn == false);
 
         //disable all spawner danger Icons
         foreach (EnemySpawnerCell spawnerCell in currentLevelEnemySpawners)
@@ -112,12 +123,11 @@ public class WaveManager : MonoBehaviour
                 }
             }
 
-           //This will need work.
+            //This will need work.
 
 
-            //timeForNextWave = waveSO.waves[currentIndexInWave].delayBetweenWaves;
-            //currentCountdown = timeForNextWave;
-            //UIManager.Instance.DisplayTimerText(true);
+            timeForNextWave = waveSO.waves[currentIndexInWave].delayBetweenWaves;
+            currentCountdown = timeForNextWave;
 
             waveDone = true;
 

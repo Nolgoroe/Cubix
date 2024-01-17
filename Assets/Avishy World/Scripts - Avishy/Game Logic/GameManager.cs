@@ -26,6 +26,13 @@ public class GameManager : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        WaveManager.Instance.InitWaveManager();
+        UIManager.Instance.InitUIManager();
+        DiceManager.Instance.InitDiceManager();
+    }
+
     private void Update()
     {
         gameSpeed = gameSpeedTemp;
