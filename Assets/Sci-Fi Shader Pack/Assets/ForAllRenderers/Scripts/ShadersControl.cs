@@ -11,7 +11,7 @@ public class ShadersControl : MonoBehaviour {
 	void Update () {
 
         if (!doNow) return;
-        timer += Time.deltaTime;
+        timer += Time.deltaTime * GameManager.gameSpeed;
 
         
         Shader.SetGlobalFloat("_ShaderDisplacement", timer);
@@ -24,7 +24,7 @@ public class ShadersControl : MonoBehaviour {
             doNow = false;
         }
 
-        timerSciFi += Time.deltaTime;
+        timerSciFi += Time.deltaTime * GameManager.gameSpeed;
 
         Shader.SetGlobalFloat("_ShaderSciFi", timerSciFi);
         

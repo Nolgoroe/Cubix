@@ -76,13 +76,14 @@ public class WaveManager : MonoBehaviour
     public void StartNextWave()
     {
         //this is reached when we try to start a wave but finished them all, meaning we won
-        if (currentIndexInWave + 1 > waveSO.waves.Count - 1)
+        if (currentIndexInWave >= waveSO.waves.Count)
         {
             Debug.Log("no more waves! weeeeee");
             levelComplete = true;
             UIManager.Instance.DisplayEndGameScreen(true);
             return;
         }
+
 
         StartCoroutine(StartWave());
 
@@ -141,9 +142,8 @@ public class WaveManager : MonoBehaviour
 
     private void BeforeWaveStart()
     {
-        currentIndexInWave++;
 
-        UIManager.Instance.UpdateWaveCounter();
+        
 
         waveDone = false;
 
@@ -157,6 +157,8 @@ public class WaveManager : MonoBehaviour
 
     private void AtWaveEnd()
     {
+        currentIndexInWave++;
+
         waveDone = true;
 
         foreach (EnemySpawnerCell spawnerCell in currentLevelEnemySpawners)
@@ -164,12 +166,15 @@ public class WaveManager : MonoBehaviour
             spawnerCell.DisplayDangerIcon(false);
         }
 
-        if (currentIndexInWave > waveSO.waves.Count - 1)
+        if (currentIndexInWave == waveSO.waves.Count)
         {
             //No need to do after wave end if there is no next wave.
+            //UIManager.Instance.UpdateWaveCounter();
 
             return;
         }
+
+        UIManager.Instance.UpdateWaveCounter();
 
 
         foreach (EnemyWaveData waveData in waveSO.waves[currentIndexInWave].enemyWaveDataList)

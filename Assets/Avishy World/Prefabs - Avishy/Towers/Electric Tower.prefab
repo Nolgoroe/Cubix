@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 702567588747959280}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.23698097, z: 0.41994828}
+  m_LocalPosition: {x: 0, y: 0.2585, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -566,7 +566,7 @@ MonoBehaviour:
   rotationSpeed: 15
   fireRate: 1
   fireCountDown: 1
-  bulltDMG: 10
+  bulltDMG: 1
   partToRotate: {fileID: 1912396954125391134}
   enemyLayerMask:
     serializedVersion: 2

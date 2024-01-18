@@ -62,7 +62,7 @@ public class EnemyParent : MonoBehaviour
         rend.material = spawnMat;
 
         ShadersControl.doNow = true;
-        StartCoroutine(Helpers.SetMat(rend, defaultMat, timeToChangeToDefaultMatAtStart));
+        StartCoroutine(Helpers.SetMat(rend, defaultMat, timeToChangeToDefaultMatAtStart / GameManager.gameSpeed));
     }
     private void Update()
     {
@@ -168,10 +168,10 @@ public class EnemyParent : MonoBehaviour
             foreach (Renderer renderer in renderersToFadeOnHitPlayer)
             {
                 Helpers.SetMatImmediate(renderer, reachPlayerBaseMat);
-                Helpers.GeneralFloatValueTo(gameObject, renderer.material, 1, 0, timeToDieOnReachPlayerBase, LeanTweenType.linear, materialKeyReachBase);
+                Helpers.GeneralFloatValueTo(gameObject, renderer.material, 1, 0, timeToDieOnReachPlayerBase / GameManager.gameSpeed, LeanTweenType.linear, materialKeyReachBase);
             }
 
-            Destroy(gameObject, timeToDieOnReachPlayerBase);
+            Destroy(gameObject, timeToDieOnReachPlayerBase / GameManager.gameSpeed);
         }
     }
 
@@ -212,7 +212,7 @@ public class EnemyParent : MonoBehaviour
     {
         StopAllCoroutines();
         Helpers.SetMatImmediate(rend, hitMat);
-        Helpers.GeneralFloatValueTo(gameObject, rend.material, 10, 0, timeToDisplayHit, LeanTweenType.linear, materialKeyGetHit, AfterRecieveDMG);
+        Helpers.GeneralFloatValueTo(gameObject, rend.material, 10, 0, timeToDisplayHit / GameManager.gameSpeed, LeanTweenType.linear, materialKeyGetHit, AfterRecieveDMG);
 
         enemyHealth -= amount;
 
@@ -229,9 +229,9 @@ public class EnemyParent : MonoBehaviour
 
     private void AfterRecieveDMG()
     {
-        Helpers.GeneralFloatValueTo(gameObject, rend.material, 0, 10, timeToDisplayHit, LeanTweenType.linear, materialKeyGetHit);
+        Helpers.GeneralFloatValueTo(gameObject, rend.material, 0, 10, timeToDisplayHit / GameManager.gameSpeed, LeanTweenType.linear, materialKeyGetHit);
 
-        StartCoroutine(Helpers.SetMat(rend, defaultMat, timeToChangeToDefaultMatAfterHit));
+        StartCoroutine(Helpers.SetMat(rend, defaultMat, timeToChangeToDefaultMatAfterHit / GameManager.gameSpeed));
     }
     public void InitEnemy(List<GridCell> waypoints)
     {

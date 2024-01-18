@@ -23337,7 +23337,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minKillSpeed: 0
     maxKillSpeed: 10000
-    radiusScale: 1
+    radiusScale: 1.35
     collidesWith:
       serializedVersion: 2
       m_Bits: 640
@@ -24436,7 +24436,7 @@ ParticleSystem:
   serializedVersion: 8
   lengthInSec: 1
   simulationSpeed: 1
-  stopAction: 0
+  stopAction: 2
   cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -28246,7 +28246,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minKillSpeed: 0
     maxKillSpeed: 10000
-    radiusScale: 1
+    radiusScale: 1.35
     collidesWith:
       serializedVersion: 2
       m_Bits: 640
@@ -29356,7 +29356,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 8.44e-43, y: 7.1e-44, z: 0, w: 4.434087e-37}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 7.8e-44, z: 6.42e-42, w: -2.318883e-35}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0

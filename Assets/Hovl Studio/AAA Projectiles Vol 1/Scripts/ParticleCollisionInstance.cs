@@ -21,6 +21,12 @@ public class ParticleCollisionInstance : MonoBehaviour
     {
         part = GetComponent<ParticleSystem>();
     }
+
+    private void Update()
+    {
+        var main = part.main;
+        main.simulationSpeed = GameManager.gameSpeed;
+    }
     void OnParticleCollision(GameObject other)
     {
         TowerBullet bullet;

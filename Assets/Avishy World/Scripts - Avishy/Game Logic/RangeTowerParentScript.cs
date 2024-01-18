@@ -56,7 +56,7 @@ public class RangeTowerParentScript : TowerBaseParent
         //locking on target
         Vector3 direction = currentTarget.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
-        Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * (rotationSpeed * GameManager.gameSpeed)).eulerAngles;
+        Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * rotationSpeed * GameManager.gameSpeed).eulerAngles;
 
         partToRotate.rotation = Quaternion.Euler(rotation);
 
