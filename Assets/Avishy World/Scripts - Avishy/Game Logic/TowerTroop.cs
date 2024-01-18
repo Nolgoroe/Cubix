@@ -17,6 +17,7 @@ public class TowerTroop : MonoBehaviour
     [SerializeField] protected float rotationSpeed = 10;
     [SerializeField] protected Transform rangeIndicator;
     [SerializeField] private LayerMask enemyLayerMask;
+    [SerializeField] private Animator anim;
 
 
     [Header("Particles Data")]
@@ -82,6 +83,8 @@ public class TowerTroop : MonoBehaviour
 
         if (enemyHit)
         {
+            anim.SetTrigger("Attack Now");
+
             enemyHit.RecieveDMG(damage);
         }
     }

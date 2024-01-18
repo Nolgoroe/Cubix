@@ -294,6 +294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 2
   range: 1.3
+  stopRange: 0.5
   rotationSpeed: 3
   enemyHealth: 3
   attackRate: 1
@@ -308,16 +309,21 @@ MonoBehaviour:
   currentTarget: {fileID: 0}
   startingHeight: 0
   rend: {fileID: 3446773093743081899}
+  anim: {fileID: 4680804448991281243}
   pathChecker: {fileID: 1897557729096283724}
   waypointIndex: 0
   waypointDetectionRadius: 0.25
   waypointsList: []
   defaultMat: {fileID: 2100000, guid: 11e415f9062923445b774a15c9a03feb, type: 2}
-  timeToChangeToDefaultMat: 0.8
+  timeToChangeToDefaultMatAtStart: 0.8
   reachPlayerBaseMat: {fileID: 2100000, guid: 30407affe2ba272439df189210f2a930, type: 2}
   timeToDieOnReachPlayerBase: 0.4
-  materialKey: _Scale
+  materialKeyReachBase: _Scale
   spawnMat: {fileID: 2100000, guid: e29624f029220a346997ade00ae37269, type: 2}
+  hitMat: {fileID: 2100000, guid: 77dba4b6794844b48fe87c377fd5b6e1, type: 2}
+  timeToDisplayHit: 0.3
+  materialKeyGetHit: _RimPower
+  timeToChangeToDefaultMatAfterHit: 0.5
   renderersToFadeOnHitPlayer:
   - {fileID: 3446773093743081899}
   onDeathParticle: {fileID: 9031228643062741014, guid: c002b4cefc631f34a8eec20ccb27892e,

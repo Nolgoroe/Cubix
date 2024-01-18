@@ -39,10 +39,12 @@ public abstract class TowerBaseParent : MonoBehaviour
         GameManager.Instance.AddTowerToRelaventList(this);
 
         //spawn effect
-        Instantiate(onSpawnParticle, transform);
+        Vector3 newPos = new Vector3(transform.position.x, transform.position.y + 0.2f, transform.position.z);
+        Instantiate(onSpawnParticle, newPos, Quaternion.identity);
 
         LeanTween.scale(gameObject, originalScale, 0.5f).setEase(LeanTweenType.easeOutBounce);
     }
+
     protected void AddNewTowerBuff(DieFaceValue diceFaceValue, Die die)
     {
         TowerBuffDataHolder holder = new TowerBuffDataHolder();

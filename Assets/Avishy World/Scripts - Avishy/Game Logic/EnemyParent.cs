@@ -30,6 +30,7 @@ public class EnemyParent : MonoBehaviour
     [SerializeField] private Transform currentTarget;
     [SerializeField] private float startingHeight;
     [SerializeField] private Renderer rend;
+    [SerializeField] private Animator anim;
 
     [Header("Path Data")]
     [SerializeField] private Transform pathChecker;
@@ -39,11 +40,15 @@ public class EnemyParent : MonoBehaviour
 
     [Header("Materials Data")]
     [SerializeField] protected Material defaultMat;
-    [SerializeField] protected float timeToChangeToDefaultMat;
+    [SerializeField] protected float timeToChangeToDefaultMatAtStart;
     [SerializeField] protected Material reachPlayerBaseMat;
     [SerializeField] protected float timeToDieOnReachPlayerBase;
-    [SerializeField] protected string materialKey;
+    [SerializeField] protected string materialKeyReachBase;
     [SerializeField] protected Material spawnMat;
+    [SerializeField] protected Material hitMat;
+    [SerializeField] protected float timeToDisplayHit;
+    [SerializeField] protected string materialKeyGetHit;
+    [SerializeField] protected float timeToChangeToDefaultMatAfterHit;
     [SerializeField] protected Renderer[] renderersToFadeOnHitPlayer;
 
     [Header("Particles Data")]
@@ -57,7 +62,7 @@ public class EnemyParent : MonoBehaviour
         rend.material = spawnMat;
 
         ShadersControl.doNow = true;
-        StartCoroutine(Helpers.SetMat(rend, defaultMat, timeToChangeToDefaultMat));
+        StartCoroutine(Helpers.SetMat(rend, defaultMat, timeToChangeToDefaultMatAtStart));
     }
     private void Update()
     {
@@ -80,6 +85,8 @@ public class EnemyParent : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        anim.SetBool("Is Walking", false);
+
         if (GameManager.gamePaused) return;
 
         if (!ignoresTroops && currentTarget)
@@ -93,6 +100,8 @@ public class EnemyParent : MonoBehaviour
             Debug.Log(Vector3.Distance(transform.position, currentTarget.position));
             if(Vector3.Distance(transform.position, currentTarget.position) > stopRange)
             {
+                anim.SetBool("Is Walking", true);
+
                 transform.Translate((direction.normalized * Speed * GameManager.gameSpeed) * Time.fixedDeltaTime, Space.World);
             }
 
@@ -100,6 +109,8 @@ public class EnemyParent : MonoBehaviour
         }
         else
         {
+            anim.SetBool("Is Walking", true);
+
             Vector3 direction = target.position - transform.position;
             transform.Translate((direction.normalized * Speed * GameManager.gameSpeed) * Time.fixedDeltaTime, Space.World);
             transform.position = new Vector3(transform.position.x, startingHeight, transform.position.z);
@@ -123,6 +134,8 @@ public class EnemyParent : MonoBehaviour
 
         if (troopHit)
         {
+            anim.SetTrigger("Attack Now");
+
             troopHit.RecieveDMG(enemyDamage);
         }
     }
@@ -155,7 +168,7 @@ public class EnemyParent : MonoBehaviour
             foreach (Renderer renderer in renderersToFadeOnHitPlayer)
             {
                 Helpers.SetMatImmediate(renderer, reachPlayerBaseMat);
-                Helpers.GeneralFloatValueTo(gameObject, renderer.material, 1, 0, timeToDieOnReachPlayerBase, LeanTweenType.linear, materialKey);
+                Helpers.GeneralFloatValueTo(gameObject, renderer.material, 1, 0, timeToDieOnReachPlayerBase, LeanTweenType.linear, materialKeyReachBase);
             }
 
             Destroy(gameObject, timeToDieOnReachPlayerBase);
@@ -197,13 +210,28 @@ public class EnemyParent : MonoBehaviour
 
     public void RecieveDMG(float amount)
     {
+        StopAllCoroutines();
+        Helpers.SetMatImmediate(rend, hitMat);
+        Helpers.GeneralFloatValueTo(gameObject, rend.material, 10, 0, timeToDisplayHit, LeanTweenType.linear, materialKeyGetHit, AfterRecieveDMG);
+
         enemyHealth -= amount;
+
+        anim.SetTrigger("Get Hit");
 
         if(enemyHealth <= 0)
         {
             Instantiate(onDeathParticle, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
+
+
+    }
+
+    private void AfterRecieveDMG()
+    {
+        Helpers.GeneralFloatValueTo(gameObject, rend.material, 0, 10, timeToDisplayHit, LeanTweenType.linear, materialKeyGetHit);
+
+        StartCoroutine(Helpers.SetMat(rend, defaultMat, timeToChangeToDefaultMatAfterHit));
     }
     public void InitEnemy(List<GridCell> waypoints)
     {

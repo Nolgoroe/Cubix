@@ -228,7 +228,7 @@ MonoBehaviour:
   maxNumOfTroops: 1
   spawnRate: 1
   troopDMG: 1
-  troopHP: 1
+  troopHP: 10
   troopRange: 1.5
   currentSpawnCooldown: 0
   currentNumOfTroops: 0
