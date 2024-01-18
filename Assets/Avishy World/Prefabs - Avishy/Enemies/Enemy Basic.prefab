@@ -1179,15 +1179,15 @@ MonoBehaviour:
   waypointDetectionRadius: 0.2
   waypointsList: []
   defaultMat: {fileID: 2100000, guid: 11e415f9062923445b774a15c9a03feb, type: 2}
-  timeToChangeToDefaultMatAtStart: 0.8
   reachPlayerBaseMat: {fileID: 2100000, guid: 30407affe2ba272439df189210f2a930, type: 2}
-  timeToDieOnReachPlayerBase: 0.4
-  materialKeyReachBase: _Scale
   spawnMat: {fileID: 2100000, guid: e29624f029220a346997ade00ae37269, type: 2}
   hitMat: {fileID: 2100000, guid: 77dba4b6794844b48fe87c377fd5b6e1, type: 2}
+  timeToChangeToDefaultMatAtStart: 0.8
+  timeToDieOnReachPlayerBase: 0.4
   timeToDisplayHit: 0.3
-  materialKeyGetHit: _RimPower
   timeToChangeToDefaultMatAfterHit: 0.5
+  materialKeyGetHit: _RimPower
+  materialKeyReachBase: _Scale
   renderersToFadeOnHitPlayer:
   - {fileID: 1174288248164449539}
   - {fileID: 4811004605812957610}

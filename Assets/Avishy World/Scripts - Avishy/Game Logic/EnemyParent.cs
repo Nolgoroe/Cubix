@@ -40,15 +40,15 @@ public class EnemyParent : MonoBehaviour
 
     [Header("Materials Data")]
     [SerializeField] protected Material defaultMat;
-    [SerializeField] protected float timeToChangeToDefaultMatAtStart;
     [SerializeField] protected Material reachPlayerBaseMat;
-    [SerializeField] protected float timeToDieOnReachPlayerBase;
-    [SerializeField] protected string materialKeyReachBase;
     [SerializeField] protected Material spawnMat;
     [SerializeField] protected Material hitMat;
+    [SerializeField] protected float timeToChangeToDefaultMatAtStart;
+    [SerializeField] protected float timeToDieOnReachPlayerBase;
     [SerializeField] protected float timeToDisplayHit;
-    [SerializeField] protected string materialKeyGetHit;
     [SerializeField] protected float timeToChangeToDefaultMatAfterHit;
+    [SerializeField] protected string materialKeyGetHit;
+    [SerializeField] protected string materialKeyReachBase;
     [SerializeField] protected Renderer[] renderersToFadeOnHitPlayer;
 
     [Header("Particles Data")]
