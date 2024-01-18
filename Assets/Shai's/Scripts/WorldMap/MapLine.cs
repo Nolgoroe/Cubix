@@ -6,7 +6,7 @@ public class MapLine : MonoBehaviour
 {
     [SerializeField] private UILineRenderer lRenderer;
     public SiteNode originNode;
-    private SiteNode connectedNode;
+    public SiteNode connectedNode;
 
     public void Init(SiteNode _originNode, SiteNode _connectedNode)
     {

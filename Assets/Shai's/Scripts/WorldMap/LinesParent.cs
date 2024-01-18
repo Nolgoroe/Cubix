@@ -6,7 +6,6 @@ public class LinesParent : MonoBehaviour
 {
     [SerializeField] private WorldGrid nodeGrid;
 
-    [ContextMenu("Adopt Lines")]
     public void AdoptLines()
     {
         foreach (var node in nodeGrid.GetAllNodes())

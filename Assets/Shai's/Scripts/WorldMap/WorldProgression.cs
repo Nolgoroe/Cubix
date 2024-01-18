@@ -4,15 +4,49 @@ using UnityEngine;
 
 public class WorldProgression : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private WorldGrid worldGrid;
+    private List<SiteNode> openNodes = new List<SiteNode>();
+
+    public void Init()
     {
-        
+        openNodes.Clear();
+        foreach (var node in worldGrid.GetAllNodes())
+        {
+            SetNodeStatusOnStart(node);
+            node.OnClicked.AddListener(UpdateProgression);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void SetNodeStatusOnStart(SiteNode node)
     {
-        
+        if (node.gridPos.y == 0)
+        {
+            node.Unlock();
+            openNodes.Add(node);
+        }
+        else
+        {
+            node.Lock();
+        }
     }
+
+    private void UpdateProgression(SiteNode clickedNode)
+    {
+        //the node already updated himslef so no need to call his "Picked" method
+        openNodes.Remove(clickedNode);
+
+        //lock nodes that weren't picked and clear open nodes list
+        foreach (var node in openNodes)
+        {
+            node.Lock();
+        }
+        openNodes.Clear();
+
+        foreach (var node in clickedNode.nextNodes)
+        {
+            node.Unlock();
+            openNodes.Add(node);
+        }
+    }
+
 }

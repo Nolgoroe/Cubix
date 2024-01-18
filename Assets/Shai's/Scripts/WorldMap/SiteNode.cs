@@ -1,20 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class SiteNode : MonoBehaviour
 {
     [Header("BaseSettings")]
     public Vector2 gridPos;
     public RectTransform rect;
+    public Button button;
+    public UnityEvent<SiteNode> OnClicked;
     [SerializeField] private GameObject mapLinePrefab;
+    [SerializeField] private GameObject completedIcon;
+    [SerializeField] private Color lockedColor;
+    [SerializeField] private Color unlockedColor;
+    [SerializeField] private Image image;
 
     [Header("Progression")]
+    public bool isLocked;
     public int entryLinks;
     public int exitLinks;
     public int singleLinkStreak;
-    [Range(0,1)]public float chanceToLink;
     public List<SiteNode> nextNodes = new List<SiteNode>();
+    [Range(0, 1)] public float chanceToLink;
     [SerializeField] private int maxLinks;
     private List<MapLine> lines = new List<MapLine>();
 
@@ -34,11 +43,6 @@ public class SiteNode : MonoBehaviour
         }
     }
 
-    public void LinkNode(SiteNode otherNode)
-    {
-        nextNodes.Add(otherNode);
-
-    }
 
     public void CreateLink(SiteNode connectNode)
     {
@@ -62,4 +66,29 @@ public class SiteNode : MonoBehaviour
         }
     }
 
+    public void Lock()
+    {
+        isLocked = true;
+        image.color = lockedColor;
+    }
+    public void Unlock()
+    {
+        isLocked = false;
+        image.color = unlockedColor;
+    }
+
+    public void Pick()
+    {
+        isLocked = true;
+        completedIcon.SetActive(true);
+    }
+
+    public void InvokeClicked()
+    {
+        if (!isLocked)
+        {
+            Pick();
+            OnClicked.Invoke(this);
+        }
+    }
 }
