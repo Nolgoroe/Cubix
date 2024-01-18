@@ -13,12 +13,26 @@ public class MeleeTowerParentScript : TowerBaseParent
     [SerializeField] protected GameObject troopPrefab;
     [SerializeField] int maxNumOfTroops;
     [SerializeField] protected float spawnRate = 1;
+    [SerializeField] protected float troopDMG = 1;
+    [SerializeField] protected float troopHP = 1;
+    [SerializeField] protected float troopRange = 1;
     [SerializeField] protected float currentSpawnCooldown = 0;
     [SerializeField] int currentNumOfTroops;
     [SerializeField] List<TowerTroop> currentTowerTroops;
 
+
+    private float originalSpawnRate;
+    private float originalTroopHP;
+    private float originalTroopRange;
+    private float originalTroopDMG;
+
     protected override void Start()
     {
+        originalSpawnRate = spawnRate;
+        originalTroopHP = troopHP;
+        originalTroopRange = troopRange;
+        originalTroopDMG = troopDMG;
+
         base.Start();
 
         #region rotation to path
@@ -73,7 +87,7 @@ public class MeleeTowerParentScript : TowerBaseParent
     }
     protected virtual void Update()
     {
-        if (GameManager.gameSpeed == 0) return;
+        if (GameManager.gamePaused) return;
 
         if (currentNumOfTroops < maxNumOfTroops)
         {
@@ -109,7 +123,7 @@ public class MeleeTowerParentScript : TowerBaseParent
 
             if (troop)
             {
-                troop.InitTroopData(this);
+                troop.InitTroopData(this, troopHP, troopRange, troopDMG);
                 currentTowerTroops.Add(troop);
             }
         }
@@ -155,7 +169,7 @@ public class MeleeTowerParentScript : TowerBaseParent
 
         towerDie = connectedDie;
 
-        SpawnBuffCubeOnCreation();
+        //SpawnBuffCubeOnCreation();
     }
 
     public void LoseTroop(TowerTroop lostTroop)
@@ -189,12 +203,16 @@ public class MeleeTowerParentScript : TowerBaseParent
             case BuffType.None:
                 break;
             case BuffType.Dmg:
+                troopDMG += originalTroopDMG * (dieFaceValue.Buff.Value / 100);
                 break;
             case BuffType.Range:
+                troopRange += originalTroopRange * (dieFaceValue.Buff.Value / 100);
                 break;
             case BuffType.HP:
+                troopHP += originalTroopHP * (dieFaceValue.Buff.Value / 100);
                 break;
             case BuffType.time:
+                spawnRate -= originalSpawnRate * (dieFaceValue.Buff.Value / 100);
                 break;
             default:
                 break;

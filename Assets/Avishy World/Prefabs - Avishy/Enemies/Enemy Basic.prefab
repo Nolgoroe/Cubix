@@ -1159,10 +1159,10 @@ MonoBehaviour:
   Speed: 3
   range: 1.5
   rotationSpeed: 8
-  enemyHealth: 1200
+  enemyHealth: 12
   attackRate: 1
   currentAttackCooldown: 0
-  enemyDamage: 10
+  enemyDamage: 5
   ignoresTroops: 0
   playerTroopsLayer:
     serializedVersion: 2

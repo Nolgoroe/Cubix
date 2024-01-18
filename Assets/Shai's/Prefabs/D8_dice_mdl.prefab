@@ -111,6 +111,7 @@ MonoBehaviour:
     Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   renderer: {fileID: 5948315110727767615}
   orientationEndRoll: {x: 15, y: 60, z: 20}
+  orientationEndRollInWorld: {x: 15, y: 60, z: 20}
 --- !u!135 &7154853897263874914
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -336,7 +337,7 @@ MonoBehaviour:
   _SortingLayerID: 0
   _SortingOrder: 0
   m_hasFontAssetChanged: 0
-  m_renderer: {fileID: 3217084704511247024}
+  m_renderer: {fileID: 4840481852532871105}
   m_maskType: 0
 --- !u!1 &1294779796688707322
 GameObject:
@@ -818,6 +819,7 @@ MonoBehaviour:
     Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   renderer: {fileID: 7461850050094661472}
   orientationEndRoll: {x: -20, y: 140, z: 15}
+  orientationEndRollInWorld: {x: -20, y: 140, z: 15}
 --- !u!135 &5839090921573235003
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -950,6 +952,7 @@ MonoBehaviour:
     Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   renderer: {fileID: 806391039214534055}
   orientationEndRoll: {x: -15, y: -120, z: -20}
+  orientationEndRollInWorld: {x: -15, y: -120, z: -20}
 --- !u!135 &2686496043034668722
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1142,7 +1145,7 @@ MonoBehaviour:
   _SortingLayerID: 0
   _SortingOrder: 0
   m_hasFontAssetChanged: 0
-  m_renderer: {fileID: 3217084704511247024}
+  m_renderer: {fileID: 1574734823743573746}
   m_maskType: 0
 --- !u!1 &3222720271715366029
 GameObject:
@@ -1315,7 +1318,7 @@ MonoBehaviour:
   _SortingLayerID: 0
   _SortingOrder: 0
   m_hasFontAssetChanged: 0
-  m_renderer: {fileID: 3217084704511247024}
+  m_renderer: {fileID: 3352097757016866151}
   m_maskType: 0
 --- !u!1 &3665323620214523803
 GameObject:
@@ -1512,6 +1515,7 @@ MonoBehaviour:
     Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   renderer: {fileID: 1402174700770758322}
   orientationEndRoll: {x: -25, y: 140, z: -165}
+  orientationEndRollInWorld: {x: -25, y: 140, z: -165}
 --- !u!135 &3920453812179476402
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1737,7 +1741,7 @@ MonoBehaviour:
   _SortingLayerID: 0
   _SortingOrder: 0
   m_hasFontAssetChanged: 0
-  m_renderer: {fileID: 3217084704511247024}
+  m_renderer: {fileID: 5905279823440147814}
   m_maskType: 0
 --- !u!1 &4664525025060407525
 GameObject:
@@ -1943,7 +1947,7 @@ MonoBehaviour:
   _SortingLayerID: 0
   _SortingOrder: 0
   m_hasFontAssetChanged: 0
-  m_renderer: {fileID: 3217084704511247024}
+  m_renderer: {fileID: 4272060600151038821}
   m_maskType: 0
 --- !u!1 &5520437167056019454
 GameObject:
@@ -2089,6 +2093,7 @@ MonoBehaviour:
     Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   renderer: {fileID: 5580322752317608937}
   orientationEndRoll: {x: 20, y: -30, z: -20}
+  orientationEndRollInWorld: {x: 20, y: -30, z: -20}
 --- !u!135 &5367615208742894722
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2478,6 +2483,7 @@ MonoBehaviour:
     Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   renderer: {fileID: 6646556091922366402}
   orientationEndRoll: {x: 10, y: 60, z: -160}
+  orientationEndRollInWorld: {x: 10, y: 60, z: -160}
 --- !u!135 &4317146342107078436
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2670,7 +2676,7 @@ MonoBehaviour:
   _SortingLayerID: 0
   _SortingOrder: 0
   m_hasFontAssetChanged: 0
-  m_renderer: {fileID: 3217084704511247024}
+  m_renderer: {fileID: 3175691764931578805}
   m_maskType: 0
 --- !u!1 &6721051189053169419
 GameObject:
@@ -2867,6 +2873,7 @@ MonoBehaviour:
     Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   renderer: {fileID: 146915271096878973}
   orientationEndRoll: {x: -15, y: -120, z: 145}
+  orientationEndRollInWorld: {x: -15, y: -120, z: 145}
 --- !u!135 &3085556336959365312
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3031,8 +3038,6 @@ MonoBehaviour:
   lockRenderer: {fileID: 0}
   outline: {fileID: 2362081514624229054}
   diceColor: {r: 0.14509805, g: 0.8039216, b: 0.9529412, a: 1}
-  diceDisplay: {fileID: 4894536084524616016, guid: 215801855cdf90c4abd463e2cfdb13e1,
-    type: 3}
 --- !u!114 &3904737591059714462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3184,6 +3189,7 @@ MonoBehaviour:
     Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   renderer: {fileID: 1293781095424484987}
   orientationEndRoll: {x: 30, y: -45, z: 160}
+  orientationEndRollInWorld: {x: 30, y: -45, z: 160}
 --- !u!135 &8328979420217508278
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3442,7 +3448,7 @@ MonoBehaviour:
   _SortingLayerID: 0
   _SortingOrder: 0
   m_hasFontAssetChanged: 0
-  m_renderer: {fileID: 3217084704511247024}
+  m_renderer: {fileID: 8204534813335861165}
   m_maskType: 0
 --- !u!1 &8594328591771505619
 GameObject:

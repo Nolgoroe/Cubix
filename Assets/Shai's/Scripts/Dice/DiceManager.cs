@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class DiceTypeToPrefab
 {
-    public DieType diceType;
+    public DiceSO diceSO;
     public GameObject dicePrefab;
 }
 public class DiceManager : MonoBehaviour
@@ -13,7 +13,7 @@ public class DiceManager : MonoBehaviour
     public static DiceManager Instance;
 
     [Header("Preset data")]
-    [SerializeField] private List<DiceSO> allDiceSO;
+    //[SerializeField] private List<DiceSO> allDiceSO;
     [SerializeField] private List<DiceTypeToPrefab> startingDice;
     [SerializeField] private List<DiceSlot> diceSlots;
 
@@ -32,7 +32,7 @@ public class DiceManager : MonoBehaviour
         Instance = this;
     }
 
-    private void Start()
+    public void InitDiceManager()
     {
         resourceTypeToIcon = new Dictionary<ResourceType, Sprite>();
         buffTypeToIcon = new Dictionary<BuffType, Sprite>();
@@ -53,9 +53,7 @@ public class DiceManager : MonoBehaviour
             go.TryGetComponent<Die>(out Die newDie);
             if(newDie)
             {
-                int random = Random.Range(0, allDiceSO.Count);
-
-                newDie.InitDiceInSlot(diceSlots[i].ReturnLockTransform(), allDiceSO[random]);
+                newDie.InitDiceInSlot(diceSlots[i].ReturnLockTransform(), startingDice[i].diceSO);
             }
         }
 

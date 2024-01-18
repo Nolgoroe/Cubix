@@ -25,8 +25,8 @@ Transform:
   m_GameObject: {fileID: 283604659013019698}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.0999622, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.2, y: 2, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 584827902033360305}
@@ -556,7 +556,6 @@ MonoBehaviour:
   requiredCellColorType: 1
   towerRequiredColor: {r: 1, g: 0.827451, b: 0, a: 1}
   towerDie: {fileID: 0}
-  resultDiceDisplay: {fileID: 0}
   rangeIndicator: {fileID: 4549348150687164023}
   resultDiceHolder: {fileID: 4330028423885064912}
   currentTowerBuffs: []
@@ -565,6 +564,7 @@ MonoBehaviour:
   rotationSpeed: 15
   fireRate: 1
   fireCountDown: 1
+  bulltDMG: 2
   partToRotate: {fileID: 1912396954125391134}
   enemyLayerMask:
     serializedVersion: 2

@@ -12,6 +12,7 @@ public class DieFace : MonoBehaviour
     [SerializeField] private BuffData buff;
     [SerializeField] private MeshRenderer renderer;
     [SerializeField] private Vector3 orientationEndRoll;
+    [SerializeField] private Vector3 orientationEndRollInWorld;
 
     public Transform DisplayObject { get { return displayObject; } }
 
@@ -66,7 +67,7 @@ public class DieFace : MonoBehaviour
         {
             valueText.gameObject.SetActive(true);
 
-            valueText.text = "+" + buff.Value;
+            valueText.text = "+" + buff.Value + "%";
         }
     }
 
@@ -84,6 +85,10 @@ public class DieFace : MonoBehaviour
     public Vector3 ReturnOrientationOnEndRoll()
     {
         return orientationEndRoll;
+    }
+    public Vector3 ReturnOrientationOnEndRollWorld()
+    {
+        return orientationEndRollInWorld;
     }
 }
 

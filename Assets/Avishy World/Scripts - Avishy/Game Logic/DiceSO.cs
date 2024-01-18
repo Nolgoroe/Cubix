@@ -7,4 +7,8 @@ public class DiceSO : ScriptableObject
 {
     public TowerBaseParent towerPrefab;
     public Material dieMaterial;
+    public DieType dieType;
+
+    public List<ResourceData> resouceDataList;
+    public List<BuffData> buffDataList;
 }

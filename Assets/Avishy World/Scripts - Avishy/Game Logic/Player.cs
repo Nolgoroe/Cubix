@@ -68,6 +68,9 @@ public class Player : MonoBehaviour
             case ResourceType.Energy:
                 energy += 10;
                 break;
+            case ResourceType.Lightning:
+                lightning += 10;
+                break;
             default:
                 break;
         }

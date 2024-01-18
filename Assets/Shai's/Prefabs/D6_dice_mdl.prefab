@@ -144,6 +144,7 @@ MonoBehaviour:
     Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   renderer: {fileID: 8892968725009652666}
   orientationEndRoll: {x: -90, y: 180, z: 0}
+  orientationEndRollInWorld: {x: -90, y: 180, z: 0}
 --- !u!65 &2170572239980289161
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -918,6 +919,7 @@ MonoBehaviour:
     Icon: {fileID: 1196769475, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   renderer: {fileID: 3064111043193930614}
   orientationEndRoll: {x: 0, y: 180, z: 0}
+  orientationEndRollInWorld: {x: 0, y: 180, z: 0}
 --- !u!65 &2495691392963527833
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1333,8 +1335,6 @@ MonoBehaviour:
   lockRenderer: {fileID: 0}
   outline: {fileID: 9168484862997919747}
   diceColor: {r: 1, g: 0.827451, b: 0, a: 1}
-  diceDisplay: {fileID: 4971928272588160845, guid: 561b4a53554b60041b464d763522aa21,
-    type: 3}
 --- !u!114 &910382848661441555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1486,6 +1486,7 @@ MonoBehaviour:
     Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   renderer: {fileID: 8465667774675440854}
   orientationEndRoll: {x: 180, y: 180, z: 0}
+  orientationEndRollInWorld: {x: 180, y: 180, z: 0}
 --- !u!65 &537772459443466952
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1960,6 +1961,7 @@ MonoBehaviour:
     Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   renderer: {fileID: 8301140790227664500}
   orientationEndRoll: {x: 90, y: 0, z: 0}
+  orientationEndRollInWorld: {x: 90, y: 0, z: 0}
 --- !u!65 &6652758354335980366
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2431,6 +2433,7 @@ MonoBehaviour:
     Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   renderer: {fileID: 9094799540686689697}
   orientationEndRoll: {x: 0, y: 90, z: 90}
+  orientationEndRollInWorld: {x: 0, y: 90, z: 90}
 --- !u!65 &3933019129894505447
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2563,6 +2566,7 @@ MonoBehaviour:
     Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   renderer: {fileID: 8655416612908177980}
   orientationEndRoll: {x: 0, y: -90, z: -90}
+  orientationEndRollInWorld: {x: 0, y: -90, z: -90}
 --- !u!65 &1822737124977864334
 BoxCollider:
   m_ObjectHideFlags: 0
