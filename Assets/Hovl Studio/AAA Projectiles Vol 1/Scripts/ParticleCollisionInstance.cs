@@ -23,7 +23,12 @@ public class ParticleCollisionInstance : MonoBehaviour
     }
     void OnParticleCollision(GameObject other)
     {
-        int numCollisionEvents = part.GetCollisionEvents(other, collisionEvents);
+        TowerBullet bullet;
+        TryGetComponent<TowerBullet>(out bullet);
+        if (bullet)
+            bullet.OnCollidedWithObject(other);
+
+        int numCollisionEvents = part.GetCollisionEvents(other, collisionEvents);     
         for (int i = 0; i < numCollisionEvents; i++)
         {
             foreach (var effect in EffectsOnCollision)
@@ -43,14 +48,6 @@ public class ParticleCollisionInstance : MonoBehaviour
         if (DestoyMainEffect == true)
         {
             Destroy(gameObject, DestroyTimeDelay + 0.5f);
-        }
-
-        TowerBullet bullet;
-        TryGetComponent<TowerBullet>(out bullet);
-
-        if (bullet)
-        {
-            bullet.OnCollidedWithObject(other);
         }
     }
 }

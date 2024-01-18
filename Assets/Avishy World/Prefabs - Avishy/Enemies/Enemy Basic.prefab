@@ -991,7 +991,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7088349cfa854096b5d3128a8a3a56cd, type: 2}
+  - {fileID: 2100000, guid: 11e415f9062923445b774a15c9a03feb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1156,7 +1156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ef73575e600a0478f3bf7c8bc69977, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 3
+  Speed: 2
   range: 1.5
   rotationSpeed: 8
   enemyHealth: 12
@@ -1171,10 +1171,23 @@ MonoBehaviour:
   enemyType: 1
   currentTarget: {fileID: 0}
   startingHeight: 0
+  rend: {fileID: 1174288248164449539}
   pathChecker: {fileID: 342230582100450706}
   waypointIndex: 0
   waypointDetectionRadius: 0.2
   waypointsList: []
+  defaultMat: {fileID: 2100000, guid: 11e415f9062923445b774a15c9a03feb, type: 2}
+  timeToChangeToDefaultMat: 0.8
+  reachPlayerBaseMat: {fileID: 2100000, guid: 30407affe2ba272439df189210f2a930, type: 2}
+  timeToDieOnReachPlayerBase: 0.4
+  materialKey: _Scale
+  spawnMat: {fileID: 2100000, guid: e29624f029220a346997ade00ae37269, type: 2}
+  renderersToFadeOnHitPlayer:
+  - {fileID: 1174288248164449539}
+  - {fileID: 4811004605812957610}
+  onDeathParticle: {fileID: 9031228643062741014, guid: c002b4cefc631f34a8eec20ccb27892e,
+    type: 3}
+  timeToDie: 0.4
 --- !u!135 &3529437956976199065
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -307,10 +307,22 @@ MonoBehaviour:
   enemyType: 2
   currentTarget: {fileID: 0}
   startingHeight: 0
+  rend: {fileID: 3446773093743081899}
   pathChecker: {fileID: 1897557729096283724}
   waypointIndex: 0
   waypointDetectionRadius: 0.25
   waypointsList: []
+  defaultMat: {fileID: 2100000, guid: 11e415f9062923445b774a15c9a03feb, type: 2}
+  timeToChangeToDefaultMat: 0.8
+  reachPlayerBaseMat: {fileID: 2100000, guid: 30407affe2ba272439df189210f2a930, type: 2}
+  timeToDieOnReachPlayerBase: 0.4
+  materialKey: _Scale
+  spawnMat: {fileID: 2100000, guid: e29624f029220a346997ade00ae37269, type: 2}
+  renderersToFadeOnHitPlayer:
+  - {fileID: 3446773093743081899}
+  onDeathParticle: {fileID: 9031228643062741014, guid: c002b4cefc631f34a8eec20ccb27892e,
+    type: 3}
+  timeToDie: 0.4
 --- !u!135 &5381420352397952794
 SphereCollider:
   m_ObjectHideFlags: 0

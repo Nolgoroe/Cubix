@@ -42,7 +42,7 @@ public class RangeTowerParentScript : TowerBaseParent
         //radius is half of the diameter of a circle
         if (rangeIndicator)
         {
-            rangeIndicator.localScale = new Vector3(range * 2 / transform.localScale.x, range * 2 / transform.localScale.y, range * 2 / transform.localScale.z);
+            rangeIndicator.localScale = new Vector3(range * 2 / originalScale.x, range * 2 / originalScale.y, range * 2 / originalScale.z);
             rangeIndicator.gameObject.SetActive(false);
         }
     }

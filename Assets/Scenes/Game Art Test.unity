@@ -6204,6 +6204,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1548779738}
   - component: {fileID: 1548779739}
+  - component: {fileID: 1548779740}
+  - component: {fileID: 1548779741}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -6250,6 +6252,30 @@ MonoBehaviour:
   - {fileID: 3604278371290302878, guid: a73571feaaefd0746904ed2002b90da1, type: 3}
   summonedRangeTowers: []
   summonedMeleeTowers: []
+--- !u!114 &1548779740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548779737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9db4ee9b0cb0e4487a9946c06950f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1548779741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548779737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6406d144367baca4a80d1f4534616015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1553985056
 GameObject:
   m_ObjectHideFlags: 0

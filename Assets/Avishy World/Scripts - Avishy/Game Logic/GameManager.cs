@@ -70,6 +70,9 @@ public class GameManager : MonoBehaviour
             {
                 tower.OnStartPlayerTurn();
             }
+
+            yield return new WaitForSeconds(1f); //temp
+            DiceManager.Instance.RollInWorld();
         }
         else
         {
@@ -83,9 +86,6 @@ public class GameManager : MonoBehaviour
                 tower.OnEndPlayerTurn();
             }
         }
-
-        yield return new WaitForSeconds(1f); //temp
-        DiceManager.Instance.RollInWorld();
     }
 
     public void AddTowerToRelaventList(TowerBaseParent tower)

@@ -28,6 +28,7 @@ public class EnemyParent : MonoBehaviour
     [Header("Live Data")]
     [SerializeField] private Transform currentTarget;
     [SerializeField] private float startingHeight;
+    [SerializeField] private Renderer rend;
 
     [Header("Path Data")]
     [SerializeField] private Transform pathChecker;
@@ -35,9 +36,27 @@ public class EnemyParent : MonoBehaviour
     [SerializeField] private float waypointDetectionRadius;
     [SerializeField] private List<GridCell> waypointsList;
 
+    [Header("Materials Data")]
+    [SerializeField] protected Material defaultMat;
+    [SerializeField] protected float timeToChangeToDefaultMat;
+    [SerializeField] protected Material reachPlayerBaseMat;
+    [SerializeField] protected float timeToDieOnReachPlayerBase;
+    [SerializeField] protected string materialKey;
+    [SerializeField] protected Material spawnMat;
+    [SerializeField] protected Renderer[] renderersToFadeOnHitPlayer;
+
+    [Header("Particles Data")]
+    [SerializeField] protected GameObject onDeathParticle;
+    [SerializeField] protected float timeToDie;
+
     private void Start()
     {
         startingHeight = transform.position.y;
+
+        rend.material = spawnMat;
+
+        ShadersControl.doNow = true;
+        StartCoroutine(Helpers.SetMat(rend, defaultMat, timeToChangeToDefaultMat));
     }
     private void Update()
     {
@@ -125,7 +144,13 @@ public class EnemyParent : MonoBehaviour
                 playerBase.RecieveDamage(this);
             }
 
-            Destroy(gameObject);
+            foreach (Renderer renderer in renderersToFadeOnHitPlayer)
+            {
+                Helpers.SetMatImmediate(renderer, reachPlayerBaseMat);
+                Helpers.GeneralFloatValueTo(gameObject, renderer.material, 1, 0, timeToDieOnReachPlayerBase, LeanTweenType.linear, materialKey);
+            }
+
+            Destroy(gameObject, timeToDieOnReachPlayerBase);
         }
     }
 
@@ -168,6 +193,7 @@ public class EnemyParent : MonoBehaviour
 
         if(enemyHealth <= 0)
         {
+            Instantiate(onDeathParticle, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }
@@ -198,4 +224,13 @@ public class EnemyParent : MonoBehaviour
     {
         WaveManager.Instance.ChangeEnemyCount(-1);
     }
+
+
+
+
+
+
+
+
+
 }

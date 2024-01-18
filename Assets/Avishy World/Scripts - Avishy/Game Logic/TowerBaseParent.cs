@@ -21,9 +21,15 @@ public abstract class TowerBaseParent : MonoBehaviour
     [SerializeField] protected Transform resultDiceHolder;
     [SerializeField] protected List<TowerBuffDataHolder> currentTowerBuffs;
 
+    [SerializeField] protected ParticleSystem onSpawnParticle;
 
+
+    protected Vector3 originalScale;
     virtual protected void Start()
     {
+        originalScale = transform.localScale;
+        transform.localScale = Vector3.zero;
+
         if (towerDie)
         {
             towerDie.OnRollEndEvent.AddListener(RecieveBuffAfterRoll);
@@ -31,6 +37,11 @@ public abstract class TowerBaseParent : MonoBehaviour
         }
 
         GameManager.Instance.AddTowerToRelaventList(this);
+
+        //spawn effect
+        Instantiate(onSpawnParticle, transform);
+
+        LeanTween.scale(gameObject, originalScale, 0.5f).setEase(LeanTweenType.easeOutBounce);
     }
     protected void AddNewTowerBuff(DieFaceValue diceFaceValue, Die die)
     {
