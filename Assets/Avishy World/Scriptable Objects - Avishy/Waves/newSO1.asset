@@ -14,30 +14,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - delayBetweenEnemies: 0
-    delayBetweenWaves: 5000
+    delayBetweenWaves: 25
     enemyWaveDataList: []
-  - delayBetweenEnemies: 1
-    delayBetweenWaves: 5
+  - delayBetweenEnemies: 1.5
+    delayBetweenWaves: 25
     enemyWaveDataList:
-    - amountOfThisEnemy: 1
+    - amountOfThisEnemy: 10
       enemySpawnerIndex: 0
       enemyPathIndex: 0
       enemyType: 1
-    - amountOfThisEnemy: 1
+    - amountOfThisEnemy: 5
       enemySpawnerIndex: 0
       enemyPathIndex: 0
       enemyType: 2
-  - delayBetweenEnemies: 0.1
-    delayBetweenWaves: 5
+  - delayBetweenEnemies: 1.2
+    delayBetweenWaves: 20
     enemyWaveDataList:
-    - amountOfThisEnemy: 1
+    - amountOfThisEnemy: 25
       enemySpawnerIndex: 0
       enemyPathIndex: 0
       enemyType: 1
-  - delayBetweenEnemies: 0.1
+  - delayBetweenEnemies: 1
     delayBetweenWaves: 0
     enemyWaveDataList:
-    - amountOfThisEnemy: 1
+    - amountOfThisEnemy: 20
       enemySpawnerIndex: 0
       enemyPathIndex: 0
       enemyType: 1
+    - amountOfThisEnemy: 20
+      enemySpawnerIndex: 0
+      enemyPathIndex: 0
+      enemyType: 2

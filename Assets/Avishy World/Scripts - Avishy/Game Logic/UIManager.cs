@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Wave UI")]
     [SerializeField] private TMP_Text timerText;
+    [SerializeField] private TMP_Text waveCounterText;
 
     [Header("Tower UI")]
     [SerializeField] private TowerToolTipUI towerBuffDataHolderObject;
@@ -152,5 +153,12 @@ public class UIManager : MonoBehaviour
     {
         winScreen.gameObject.SetActive(success ? true : false);
         loseScreen.gameObject.SetActive(success ? false : true);
+    }
+    
+    public void UpdateWaveCounter()
+    {
+        int currentWave = WaveManager.Instance.ReturnCurrentWaveIndex();
+        int maxWaves = WaveManager.Instance.ReturnWaveCount();
+        waveCounterText.text = "Wave " + currentWave + "/" + maxWaves;
     }
 }

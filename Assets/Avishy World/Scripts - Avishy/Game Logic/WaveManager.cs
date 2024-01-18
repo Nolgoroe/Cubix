@@ -41,7 +41,7 @@ public class WaveManager : MonoBehaviour
 
     IEnumerator tempOnStart()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         StartNextWave();
     }
     private void Update()
@@ -76,7 +76,7 @@ public class WaveManager : MonoBehaviour
     public void StartNextWave()
     {
         //this is reached when we try to start a wave but finished them all, meaning we won
-        if (currentIndexInWave > waveSO.waves.Count - 1)
+        if (currentIndexInWave + 1 > waveSO.waves.Count - 1)
         {
             Debug.Log("no more waves! weeeeee");
             levelComplete = true;
@@ -128,7 +128,6 @@ public class WaveManager : MonoBehaviour
             timeForNextWave = waveSO.waves[currentIndexInWave].delayBetweenWaves;
             currentCountdown = timeForNextWave;
 
-            currentIndexInWave++;
 
             //from this point on it's the players turn.
 
@@ -142,6 +141,10 @@ public class WaveManager : MonoBehaviour
 
     private void BeforeWaveStart()
     {
+        currentIndexInWave++;
+
+        UIManager.Instance.UpdateWaveCounter();
+
         waveDone = false;
 
         StartCoroutine(GameManager.Instance.SetPlayerTurn(false));
@@ -188,5 +191,15 @@ public class WaveManager : MonoBehaviour
         currentCountdown = 0;
         UIManager.Instance.DisplayTimerText(false);
         Player.Instance.RecieveRandomResource();
+    }
+
+    public int ReturnCurrentWaveIndex()
+    {
+        return currentIndexInWave;
+    }
+
+    public int ReturnWaveCount()
+    {
+        return waveSO.waves.Count;
     }
 }

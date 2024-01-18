@@ -575,6 +575,7 @@ MonoBehaviour:
   winScreen: {fileID: 1185034522}
   loseScreen: {fileID: 1658664823}
   timerText: {fileID: 1937499321}
+  waveCounterText: {fileID: 1554970022}
   towerBuffDataHolderObject: {fileID: 1869110439}
   playerHealthText: {fileID: 609496941}
   diceFacesResourcesDisplayParent: {fileID: 2076793791}
