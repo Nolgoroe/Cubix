@@ -15,6 +15,7 @@ public class EnemyParent : MonoBehaviour
     [Header("Enemy Stats")]
     [SerializeField] private float Speed;
     [SerializeField] private float range = 0.5f;
+    [SerializeField] private float stopRange = 0.5f;
     [SerializeField] private float rotationSpeed = 2;
     [SerializeField] private float enemyHealth = 3;
     [SerializeField] protected float attackRate = 1;
@@ -84,9 +85,16 @@ public class EnemyParent : MonoBehaviour
         if (!ignoresTroops && currentTarget)
         {
             Vector3 direction = currentTarget.position - transform.position;
+            direction.y = 0;
             Quaternion lookRotation = Quaternion.LookRotation(direction);
 
             transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * (rotationSpeed * GameManager.gameSpeed));
+
+            Debug.Log(Vector3.Distance(transform.position, currentTarget.position));
+            if(Vector3.Distance(transform.position, currentTarget.position) > stopRange)
+            {
+                transform.Translate((direction.normalized * Speed * GameManager.gameSpeed) * Time.fixedDeltaTime, Space.World);
+            }
 
             return;
         }

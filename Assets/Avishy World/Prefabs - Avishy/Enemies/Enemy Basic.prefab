@@ -1158,8 +1158,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 2
   range: 1.5
+  stopRange: 0.65
   rotationSpeed: 8
-  enemyHealth: 12
+  enemyHealth: 1200
   attackRate: 1
   currentAttackCooldown: 0
   enemyDamage: 5
