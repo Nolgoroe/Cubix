@@ -38,7 +38,7 @@ public class WorldGrid : MonoBehaviour
     private void GenerateGrid()
     {
         ClearGrid();
-        _grid = new SiteNode[gridSize.x, gridSize.x];
+        _grid = new SiteNode[gridSize.x, gridSize.y];
 
         for (int y = 0; y < gridSize.y; y++)
         {

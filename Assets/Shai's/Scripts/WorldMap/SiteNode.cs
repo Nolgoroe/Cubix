@@ -16,6 +16,7 @@ public class SiteNode : MonoBehaviour
     [SerializeField] private Color lockedColor;
     [SerializeField] private Color unlockedColor;
     [SerializeField] private Image image;
+    [SerializeField] private BaseSite site;
 
     [Header("Progression")]
     public bool isLocked;
@@ -81,6 +82,7 @@ public class SiteNode : MonoBehaviour
     {
         isLocked = true;
         completedIcon.SetActive(true);
+        site.LaunchSite();
     }
 
     public void InvokeClicked()
