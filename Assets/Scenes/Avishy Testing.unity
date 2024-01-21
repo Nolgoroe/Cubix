@@ -385,6 +385,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7246afe32b016b84b82a7b71378edfee, type: 3}
+--- !u!1 &83717886
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 83717887}
+  m_Layer: 0
+  m_Name: Look at world D8
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &83717887
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83717886}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 20, z: -8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &114266196
 GameObject:
   m_ObjectHideFlags: 0
@@ -1561,6 +1592,37 @@ MonoBehaviour:
   currentLevelEnemySpawners: []
   currentIndexInWave: 0
   currentAmountOfEnemies: 0
+--- !u!1 &342873924
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 342873925}
+  m_Layer: 0
+  m_Name: Look at world D6
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &342873925
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342873924}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 20.72, z: -15.88}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &350156187
 GameObject:
   m_ObjectHideFlags: 0
@@ -6237,6 +6299,8 @@ MonoBehaviour:
   - {fileID: 3294606807999378091, guid: d385643dec2673b41be9061461bcf71c, type: 3}
   mainCamera: {fileID: 984943767}
   diceCamera: {fileID: 365183594}
+  diceLookAtD6: {fileID: 342873925}
+  diceLookAtD8: {fileID: 83717887}
   allTowersPrefabs:
   - {fileID: 7544678564594478742, guid: 80d1f37f29ffab84db83beb313155a00, type: 3}
   - {fileID: 7779022226387808478, guid: 7cb2a2d3c330104478cf0c451e0c362b, type: 3}
@@ -8317,3 +8381,5 @@ SceneRoots:
   - {fileID: 796144809}
   - {fileID: 1763429286}
   - {fileID: 933008555}
+  - {fileID: 83717887}
+  - {fileID: 342873925}

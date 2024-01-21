@@ -919,7 +919,7 @@ MonoBehaviour:
     Icon: {fileID: 1196769475, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   renderer: {fileID: 3064111043193930614}
   orientationEndRoll: {x: 0, y: 180, z: 0}
-  orientationEndRollInWorld: {x: 90, y: 0, z: 0}
+  orientationEndRollInWorld: {x: -87.5, y: 12, z: 152}
 --- !u!65 &2495691392963527833
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1487,7 +1487,7 @@ MonoBehaviour:
     Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   renderer: {fileID: 8465667774675440854}
   orientationEndRoll: {x: 180, y: 180, z: 0}
-  orientationEndRollInWorld: {x: -90, y: 0, z: 0}
+  orientationEndRollInWorld: {x: -28.5, y: 194, z: -38}
 --- !u!65 &537772459443466952
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1962,7 +1962,7 @@ MonoBehaviour:
     Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   renderer: {fileID: 8301140790227664500}
   orientationEndRoll: {x: 90, y: 0, z: 0}
-  orientationEndRollInWorld: {x: 180, y: 0, z: 0}
+  orientationEndRollInWorld: {x: -112, y: 183.5, z: 117}
 --- !u!65 &6652758354335980366
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2434,7 +2434,7 @@ MonoBehaviour:
     Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   renderer: {fileID: 9094799540686689697}
   orientationEndRoll: {x: 0, y: 90, z: 90}
-  orientationEndRollInWorld: {x: 180, y: -90, z: 0}
+  orientationEndRollInWorld: {x: -67.5, y: 284, z: -156}
 --- !u!65 &3933019129894505447
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2567,7 +2567,7 @@ MonoBehaviour:
     Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   renderer: {fileID: 8655416612908177980}
   orientationEndRoll: {x: 0, y: -90, z: -90}
-  orientationEndRollInWorld: {x: 0, y: 90, z: 0}
+  orientationEndRollInWorld: {x: -45, y: 106, z: 87}
 --- !u!65 &1822737124977864334
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -124,6 +124,7 @@ public class RangeTowerParentScript : TowerBaseParent
 
         towerDie = connectedDie;
 
+        towerDie.transform.SetParent(resultDiceHolder);
         //SpawnBuffCubeOnCreation();
     }
 

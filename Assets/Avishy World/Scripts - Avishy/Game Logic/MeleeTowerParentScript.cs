@@ -168,6 +168,7 @@ public class MeleeTowerParentScript : TowerBaseParent
         
 
         towerDie = connectedDie;
+        towerDie.transform.SetParent(resultDiceHolder);
 
         //SpawnBuffCubeOnCreation();
     }

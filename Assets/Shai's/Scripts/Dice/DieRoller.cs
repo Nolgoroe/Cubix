@@ -96,7 +96,7 @@ public class DieRoller : MonoBehaviour
     {
         yield return new WaitUntil(() => die.RB.velocity.y < 0 && die.IsRolling);
         die.RB.centerOfMass = massCenter;
-        Debug.Log("change mass");
+        //Debug.Log("change mass");
     }
 
     private void OnConnectedDieStartDragging()

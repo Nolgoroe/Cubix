@@ -118,9 +118,22 @@ public abstract class TowerBaseParent : MonoBehaviour
 
     public void OnStartPlayerTurn()
     {
-        towerDie.gameObject.SetActive(true);
+        resultDiceHolder.gameObject.SetActive(true);
 
+        towerDie.gameObject.SetActive(true);
     }
+
+    public void RotateTowardsCameraEndRoll()
+    {
+        //Vector3 direction = (GameManager.Instance.ReturnMainCamera().transform.position - resultDiceHolder.position);
+        Vector3 direction = GameManager.Instance.ReturnMainCamera().transform.position - towerDie.ReturnCurrentTopFace().transform.position;
+
+        Debug.DrawLine(resultDiceHolder.position, direction * 1000, Color.red, Mathf.Infinity);
+        //resultDiceHolder.LookAt(direction, Vector3.up);
+        Quaternion lookAt = Quaternion.LookRotation(direction);
+        LeanTween.rotate(resultDiceHolder.gameObject, lookAt.eulerAngles, 0.2f);
+    }
+
     public void OnEndPlayerTurn()
     {
         towerDie.ResetTransformData();

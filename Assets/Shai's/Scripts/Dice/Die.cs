@@ -24,6 +24,7 @@ public class Die : MonoBehaviour
     [SerializeField] private DieElement element;
     [SerializeField] private DieType DieType;
     [SerializeField] private TowerBaseParent towerPrefabConnected;
+    [SerializeField] private TowerBaseParent currentTowerParent;
     [SerializeField] private float _reqStagnantTime = 1;
     [SerializeField] private Transform lockTransform;
     [SerializeField] private Outline outline;
@@ -130,8 +131,10 @@ public class Die : MonoBehaviour
         }
         else
         {
-            Vector3 direction = (GameManager.Instance.ReturnMainCamera().transform.position - transform.position).normalized;
-            targetQuat = Quaternion.FromToRotation(Vector3.forward, direction) * Quaternion.Euler(die.ReturnCurrentTopFace().ReturnOrientationOnEndRollWorld());
+            targetQuat = Quaternion.Euler(die.ReturnCurrentTopFace().ReturnOrientationOnEndRoll());
+
+            //Vector3 direction = (GameManager.Instance.ReturnMainCamera().transform.position - transform.position).normalized;
+            //targetQuat = Quaternion.FromToRotation(Vector3.forward, direction);
         }
 
         RB.isKinematic = true;
@@ -139,12 +142,17 @@ public class Die : MonoBehaviour
 
     private void TransformAfterRoll(Die die)
     {
-        LeanTween.rotate(gameObject, die.targetQuat.eulerAngles, 1f);// speed is temp here
+        LeanTween.rotate(gameObject, die.targetQuat.eulerAngles, 0.2f).setOnComplete(TowerRotate);// speed is temp here
 
-        if(die._isInWorld)
+        if (die._isInWorld)
         LeanTween.scale(gameObject, transform.localScale * 2, 0.2f);// speed is temp here
     }
 
+    private void TowerRotate()
+    {
+        if (currentTowerParent)
+            currentTowerParent.RotateTowardsCameraEndRoll();
+    }
     private void CheckState()
     {
         if (isRolling)
@@ -159,7 +167,7 @@ public class Die : MonoBehaviour
                     OnRollEndEvent?.Invoke(this);
                     _stagnantTimer = 0;
                     GetTopValue();
-                    Debug.Log("Roll ended");
+                    //Debug.Log("Roll ended");
                 }
             }
             else if(_stagnantTimer > 0)
@@ -173,12 +181,12 @@ public class Die : MonoBehaviour
     {
         RB.isKinematic = false;
 
-        Debug.Log("Roll started");
+        //Debug.Log("Roll started");
         isRolling = true;
     }
     private void SetMovingFalse()
     {
-        Debug.Log("Roll started");
+        //Debug.Log("Roll ended");
         isRolling = false;
     }
 
@@ -316,6 +324,10 @@ public class Die : MonoBehaviour
         ChangeLayerRecursive(transform, "Default");
     }
 
+    public void InitDie(TowerBaseParent tower)
+    {
+        currentTowerParent = tower;
+    }
     private void ChangeLayerRecursive(Transform trans, string nameOfLayer)
     {
 

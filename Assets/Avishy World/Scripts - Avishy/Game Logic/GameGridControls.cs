@@ -117,7 +117,7 @@ public class GameGridControls : MonoBehaviour
 
         GameObject go = Instantiate(currentTowerPrefab, cellpos, Quaternion.identity);
 
-        Vector3 fixedPos = new Vector3(cellpos.x, currentTowerPrefab.transform.position.y, cellpos.z);
+        Vector3 fixedPos = new Vector3(cellpos.x, cellpos.y + currentTowerPrefab.transform.position.y, cellpos.z);
         go.transform.position = fixedPos;
 
         TowerBaseParent towerSpawned;
@@ -130,6 +130,8 @@ public class GameGridControls : MonoBehaviour
 
             //End die drag and return it's values to be able to be rolled
             currentDieDragging.OnPlaceEvent?.Invoke();
+            currentDieDragging.InitDie(towerSpawned);
+
             SetCurrentDieDragging(null);
 
             currentCellHovered.SetAsOccupied(towerSpawned);
