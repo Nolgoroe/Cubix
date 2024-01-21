@@ -17,23 +17,36 @@ public class TowerTroop : MonoBehaviour
     [SerializeField] protected float rotationSpeed = 10;
     [SerializeField] protected Transform rangeIndicator;
     [SerializeField] private LayerMask enemyLayerMask;
+    [SerializeField] private Animator anim;
 
-    [SerializeField] protected float health = 3;
 
-    [SerializeField] private float range = 15;
-    [SerializeField] private float damage = 1;
+    [Header("Particles Data")]
+    [SerializeField] protected GameObject onSpawnParticle;
+
+    protected float health = 3;
+    private float range = 15;
+    private float damage = 1;
     bool isDead;
+
+    Vector3 originalScale;
 
     virtual protected void Start()
     {
+        originalScale = transform.localScale;
+        transform.localScale = Vector3.zero;
+
         SetRangeIndicator();
+
+        Instantiate(onSpawnParticle, transform);
+
+        LeanTween.scale(gameObject, originalScale, 0.5f).setEase(LeanTweenType.easeOutBounce);
     }
 
     private void SetRangeIndicator()
     {
         if (rangeIndicator)
         {
-            rangeIndicator.localScale = new Vector3(range * 2 / transform.lossyScale.x, range * 2 / transform.lossyScale.y, range * 2 / transform.lossyScale.z);
+            rangeIndicator.localScale = new Vector3(range * 2 / originalScale.x, range * 2 / originalScale.y, range * 2 / originalScale.z);
             rangeIndicator.gameObject.SetActive(false);
         }
     }
@@ -70,6 +83,8 @@ public class TowerTroop : MonoBehaviour
 
         if (enemyHit)
         {
+            anim.SetTrigger("Attack Now");
+
             enemyHit.RecieveDMG(damage);
         }
     }
@@ -119,8 +134,6 @@ public class TowerTroop : MonoBehaviour
         health = _HP;
         range = _range;
         damage = _dmg;
-
-        SetRangeIndicator();
     }
 
     public void RecieveDMG(int damage)

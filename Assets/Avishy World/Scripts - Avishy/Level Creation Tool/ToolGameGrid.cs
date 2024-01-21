@@ -289,7 +289,8 @@ public class ToolGameGrid : MonoBehaviour
         float lastCellY = toolGridGameObjectsArray[gridWidth - 1, gridHeight - 1].transform.localPosition.y;
 
         transform.position = new Vector3(-(lastCellX / 2), 0 , Camera.main.transform.position.y - (lastCellY / 2));
-        transform.CenterOnChildred();
+        Helpers.CenterOnChildred(transform);
+        //transform.CenterOnChildred();
 
         Vector3 camPos = Camera.main.transform.position;
         Camera.main.transform.position = new Vector3(camPos.x, transform.position.y + 20, transform.position.z - 20);

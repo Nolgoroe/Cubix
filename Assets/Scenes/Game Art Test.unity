@@ -575,6 +575,7 @@ MonoBehaviour:
   winScreen: {fileID: 1185034522}
   loseScreen: {fileID: 1658664823}
   timerText: {fileID: 1937499321}
+  waveCounterText: {fileID: 1554970022}
   towerBuffDataHolderObject: {fileID: 1869110439}
   playerHealthText: {fileID: 609496941}
   diceFacesResourcesDisplayParent: {fileID: 2076793791}
@@ -4479,7 +4480,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -6204,6 +6205,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1548779738}
   - component: {fileID: 1548779739}
+  - component: {fileID: 1548779740}
+  - component: {fileID: 1548779741}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -6250,6 +6253,30 @@ MonoBehaviour:
   - {fileID: 3604278371290302878, guid: a73571feaaefd0746904ed2002b90da1, type: 3}
   summonedRangeTowers: []
   summonedMeleeTowers: []
+--- !u!114 &1548779740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548779737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9db4ee9b0cb0e4487a9946c06950f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1548779741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548779737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6406d144367baca4a80d1f4534616015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1553985056
 GameObject:
   m_ObjectHideFlags: 0
@@ -7001,6 +7028,55 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.957524, y: 8.802291, z: -3.622429}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1763429284
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1763429286}
+  - component: {fileID: 1763429285}
+  m_Layer: 0
+  m_Name: Global Volume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1763429285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763429284}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 9be9af7b83b13344da456a6f70fd408b, type: 2}
+--- !u!4 &1763429286
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763429284}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.951624, y: -8.987352, z: 5.308132}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8410,3 +8486,4 @@ SceneRoots:
   - {fileID: 1285840839}
   - {fileID: 796144809}
   - {fileID: 2120629192}
+  - {fileID: 1763429286}

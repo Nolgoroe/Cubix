@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 702567588747959280}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.23698097, z: 0.41994828}
+  m_LocalPosition: {x: 0, y: 0.2585, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -258,8 +258,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.000000021855694, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1.07, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 584827902033360305}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -559,12 +559,14 @@ MonoBehaviour:
   rangeIndicator: {fileID: 4549348150687164023}
   resultDiceHolder: {fileID: 4330028423885064912}
   currentTowerBuffs: []
+  onSpawnParticle: {fileID: 2126513307738344185, guid: 9acd4cff9a73e654095fbac641add6bd,
+    type: 3}
   currentTarget: {fileID: 0}
   range: 5
   rotationSpeed: 15
   fireRate: 1
   fireCountDown: 1
-  bulltDMG: 2
+  bulltDMG: 1
   partToRotate: {fileID: 1912396954125391134}
   enemyLayerMask:
     serializedVersion: 2
