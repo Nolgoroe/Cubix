@@ -27,6 +27,7 @@ public class LevelCreationToolControls : MonoBehaviour
     [Header("Needed References")]
     [SerializeField] private GameObject toolGameGridPrefab;
     [SerializeField] private BuildingGhost buildingGhost;
+    [SerializeField] private GameObject towerSpawnPrefab;
 
     [Header("Cell Detection")]
     [SerializeField] private GameObject cellIndicator;
@@ -114,10 +115,6 @@ public class LevelCreationToolControls : MonoBehaviour
             {
                 BuildModeControls();
             }
-            else if(isInDefiningCellTypes)
-            {
-                DefiningCellTypeControls();
-            }
             else
             {
                 NormalControls();
@@ -131,6 +128,11 @@ public class LevelCreationToolControls : MonoBehaviour
 
                 MiddileClickOnCell(currentCellSelected);
             }
+        }
+
+        if (isInDefiningCellTypes)
+        {
+            DefiningCellTypeControls();
         }
     }
 
@@ -259,14 +261,35 @@ public class LevelCreationToolControls : MonoBehaviour
 
     private void DefiningCellTypeControls()
     {
-        if (Input.GetMouseButton(0))
+        GridCell cell;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        positionOfMouse = Vector3.zero;
+
+        if (Input.GetMouseButtonDown(0))
         {
-            currentCellHovered.ChangeCellTypeColor(currentCellColorTypeSelected);
+            if (Physics.Raycast(ray, out RaycastHit hitInfo, Mathf.Infinity, gridCellLayer))
+            {
+                GameObject go = Instantiate(towerSpawnPrefab, hitInfo.point + towerSpawnPrefab.transform.position, towerSpawnPrefab.transform.rotation);
+                
+                go.transform.SetParent(ToolReferencerObject.Instance.gameGrid.transform);
+                go.TryGetComponent<GridCell>(out cell);
+                if(cell)
+                {
+                    cell.ChangeCellTypeColor(currentCellColorTypeSelected);
+                }       
+            }
         }
 
         if (Input.GetMouseButtonDown(1))
         {
-            currentCellHovered.ChangeCellTypeColor(CellTypeColor.None);
+            if (Physics.Raycast(ray, out RaycastHit hitInfo, Mathf.Infinity, gridCellLayer))
+            {
+                hitInfo.transform.gameObject.TryGetComponent<GridCell>(out cell);
+                if (cell)
+                {
+                    Destroy(cell.gameObject);
+                }
+            }
         }
     }
     private void MiddileClickOnCell(ToolGridCell cell)

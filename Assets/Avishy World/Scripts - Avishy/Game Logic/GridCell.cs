@@ -153,4 +153,19 @@ public class GridCell : MonoBehaviour
 
 
     }
+
+
+    // relavent for tool for tower placement
+    public void ChangeCellTypeColor(CellTypeColor _cellTypeColor)
+    {
+        if (slotTypeSpriteRenderer == null) return;
+        //slotTypeSpriteRenderer.gameObject.SetActive(false);
+        cellTypeColor = _cellTypeColor;
+
+        //slotTypeSpriteRenderer.gameObject.SetActive(true);
+
+        Color color = ToolReferencerObject.Instance.levelCreationToolSO.ReturnColorByCellTypeColor(cellTypeColor);
+
+        slotTypeSpriteRenderer.color = color;
+    }
 }

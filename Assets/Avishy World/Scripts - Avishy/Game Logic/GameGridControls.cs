@@ -58,7 +58,6 @@ public class GameGridControls : MonoBehaviour
 
     private void NormalControls()
     {
-
         if (currentDieDragging)
         {
             if (Input.GetMouseButtonUp(0))

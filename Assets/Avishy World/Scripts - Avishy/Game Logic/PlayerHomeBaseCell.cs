@@ -21,6 +21,7 @@ public class PlayerHomeBaseCell : GridCell
         enemyLayerMask |= (1 << LayerMask.NameToLayer("Enemy")); // temp
         detectionRange = 5; // temp
 
+        if(UIManager.Instance) // we check this so we don't get annoying error in tool creator when we place tower bases
         UIManager.Instance.UpdatePlayerHealth(currentPlayerHealth, playerHealth);
     }
 
