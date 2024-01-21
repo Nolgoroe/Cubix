@@ -97,7 +97,6 @@ public class EnemyParent : MonoBehaviour
 
             transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * (rotationSpeed * GameManager.gameSpeed));
 
-            Debug.Log(Vector3.Distance(transform.position, currentTarget.position));
             if(Vector3.Distance(transform.position, currentTarget.position) > stopRange)
             {
                 anim.SetBool("Is Walking", true);

@@ -25,14 +25,14 @@ public class Die : MonoBehaviour
     [SerializeField] private DieType DieType;
     [SerializeField] private TowerBaseParent towerPrefabConnected;
     [SerializeField] private float _reqStagnantTime = 1;
-    [SerializeField] private Transform lockRenderer;
+    [SerializeField] private Transform lockTransform;
     [SerializeField] private Outline outline;
     [SerializeField] private Color diceColor;
 
     private bool _isDragging;
     private bool _isInWorld;
     private float _stagnantTimer;
-    private DieFace _currentTopFace;
+    [SerializeField] private DieFace _currentTopFace;
     private Vector3 originalPos;
     //private Vector3 originalScale;
     private float timeTillStartDrag = 0.2f;
@@ -69,9 +69,9 @@ public class Die : MonoBehaviour
         diceCam = GameManager.Instance.ReturnDiceCamera();
     }
 
-    public void InitDiceInSlot(Transform lockTransform, DiceSO diceData)
+    public void InitDiceInSlot(Transform _lockTransform, DiceSO diceData)
     {
-        lockRenderer = lockTransform;
+        lockTransform = _lockTransform;
 
         towerPrefabConnected = diceData.towerPrefab;
         diceColor = diceData.dieMaterial.color;
@@ -119,9 +119,27 @@ public class Die : MonoBehaviour
         CheckState();
     }
 
+    private void OrientCubeToCamrea(Die die)
+    {
+        isRolling = false;
+        DieFaceValue faceValue = die.GetTopValue(); // _currentTopFace value is always set in this function. we call it to be safe that we don't use a null value 
+
+        if (!_isInWorld)
+        {
+            targetQuat = Quaternion.Euler(die.ReturnCurrentTopFace().ReturnOrientationOnEndRoll());
+        }
+        else
+        {
+            Vector3 direction = (GameManager.Instance.ReturnMainCamera().transform.position - transform.position).normalized;
+            targetQuat = Quaternion.FromToRotation(Vector3.forward, direction) * Quaternion.Euler(die.ReturnCurrentTopFace().ReturnOrientationOnEndRollWorld());
+        }
+
+        RB.isKinematic = true;
+    }
+
     private void TransformAfterRoll(Die die)
     {
-        LeanTween.rotate(gameObject, targetQuat.eulerAngles, 0.2f);// speed is temp here
+        LeanTween.rotate(gameObject, die.targetQuat.eulerAngles, 1f);// speed is temp here
 
         if(die._isInWorld)
         LeanTween.scale(gameObject, transform.localScale * 2, 0.2f);// speed is temp here
@@ -324,27 +342,10 @@ public class Die : MonoBehaviour
     }
 
 
-    private void OrientCubeToCamrea(Die die)
-    {
-        isRolling = false;
-        RB.isKinematic = true;
-        DieFaceValue faceValue = die.GetTopValue(); // _currentTopFace value is always set in this function. we call it to be safe that we don't use a null value 
-
-        if(!_isInWorld)
-        {
-            targetQuat = Quaternion.Euler(die.ReturnCurrentTopFace().ReturnOrientationOnEndRoll());
-        }
-        else
-        {
-            Vector3 direction = Camera.main.transform.position - transform.position;
-            Vector3 combine = die.ReturnCurrentTopFace().ReturnOrientationOnEndRollWorld() - direction;
-            targetQuat = Quaternion.Euler(combine);
-        }
-    }
     public void LockDie(bool isLocking)
     {
         isLocked = isLocking ? true : false;
-        lockRenderer.gameObject.SetActive(isLocking ? true : false);
+        lockTransform.gameObject.SetActive(isLocking ? true : false);
     }
 
     public GameObject ReturnTowerPrefab()

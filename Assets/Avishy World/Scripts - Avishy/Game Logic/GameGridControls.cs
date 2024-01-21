@@ -37,8 +37,8 @@ public class GameGridControls : MonoBehaviour
 
         if(currentDieDragging)
         {
-            Vector3 screenPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y,  Camera.main.transform.position.y);
-            Ray ray = Camera.main.ScreenPointToRay(screenPos);
+            Vector3 screenPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, GameManager.Instance.ReturnMainCamera().transform.position.y);
+            Ray ray = GameManager.Instance.ReturnMainCamera().ScreenPointToRay(screenPos);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, 1000, gridCellLayer))
@@ -48,7 +48,7 @@ public class GameGridControls : MonoBehaviour
             }
             else
             {
-                Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
+                Vector3 worldPos = GameManager.Instance.ReturnMainCamera().ScreenToWorldPoint(screenPos);
 
                 currentDieDragging.transform.position = worldPos;
 
@@ -148,7 +148,7 @@ public class GameGridControls : MonoBehaviour
         GridCell currentCell = currentCellHovered;
 
         currentCellHovered = null;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = GameManager.Instance.ReturnMainCamera().ScreenPointToRay(Input.mousePosition);
 
         positionOfMouse = Vector3.zero;
 
