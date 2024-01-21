@@ -157,7 +157,8 @@ public class UIManager : MonoBehaviour
     
     public void UpdateWaveCounter()
     {
-        int currentWave = WaveManager.Instance.ReturnCurrentWaveIndex();
+        int currentWave = WaveManager.Instance.ReturnCurrentWaveIndex() + 1;
+
         int maxWaves = WaveManager.Instance.ReturnWaveCount() - 1;
         waveCounterText.text = "Wave " + currentWave + "/" + maxWaves;
     }

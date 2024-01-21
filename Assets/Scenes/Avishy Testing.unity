@@ -1589,9 +1589,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveSO: {fileID: 11400000, guid: df936d024204d464e9f88b37b985228b, type: 2}
-  currentLevelEnemySpawners: []
+  currentWaveSO: {fileID: 0}
   currentIndexInWave: 0
+  currentLevelEnemySpawners: []
+  enemiesForWave: []
+  currentIndexOfEnemies: 0
   currentAmountOfEnemies: 0
+  enemySpawnTime: 0
+  currentEnemySpawnTime: 0
+  waveDone: 1
+  levelComplete: 0
+  timeForNextWave: 0
+  currentCountdown: 0
 --- !u!1 &342873924
 GameObject:
   m_ObjectHideFlags: 0
@@ -4314,6 +4323,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Test Big
       objectReference: {fileID: 0}
+    - target: {fileID: 5005709980883019501, guid: b711fdc736d396d4e9cc7a50a5e947e8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5439701900033567177, guid: b711fdc736d396d4e9cc7a50a5e947e8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6223222578617131404, guid: b711fdc736d396d4e9cc7a50a5e947e8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4363,6 +4382,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6303663556365034371, guid: b711fdc736d396d4e9cc7a50a5e947e8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6299,8 +6323,6 @@ MonoBehaviour:
   - {fileID: 3294606807999378091, guid: d385643dec2673b41be9061461bcf71c, type: 3}
   mainCamera: {fileID: 984943767}
   diceCamera: {fileID: 365183594}
-  diceLookAtD6: {fileID: 342873925}
-  diceLookAtD8: {fileID: 83717887}
   allTowersPrefabs:
   - {fileID: 7544678564594478742, guid: 80d1f37f29ffab84db83beb313155a00, type: 3}
   - {fileID: 7779022226387808478, guid: 7cb2a2d3c330104478cf0c451e0c362b, type: 3}

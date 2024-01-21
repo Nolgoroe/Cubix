@@ -10844,7 +10844,7 @@ MonoBehaviour:
   rend: {fileID: 722859714066235474}
   playerHealth: 0
   currentPlayerHealth: 0
-  dangerIcon: {fileID: 0}
+  dangerIcon: {fileID: 6482842350912796517}
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 0
@@ -34554,7 +34554,7 @@ MonoBehaviour:
     - {x: 17, y: 10}
     - {x: 24, y: 10}
   enemyPathcells: []
-  dangerIcon: {fileID: 0}
+  dangerIcon: {fileID: 5439701900033567177}
 --- !u!1 &2360589370039973308
 GameObject:
   m_ObjectHideFlags: 0
@@ -93620,7 +93620,7 @@ MonoBehaviour:
     - {x: 13, y: 10}
     - {x: 24, y: 10}
   enemyPathcells: []
-  dangerIcon: {fileID: 0}
+  dangerIcon: {fileID: 5005709980883019501}
 --- !u!1 &6294184936814604698
 GameObject:
   m_ObjectHideFlags: 0
@@ -124688,7 +124688,7 @@ MonoBehaviour:
     - {x: 17, y: 10}
     - {x: 24, y: 10}
   enemyPathcells: []
-  dangerIcon: {fileID: 0}
+  dangerIcon: {fileID: 6303663556365034371}
 --- !u!1 &8484887294450114362
 GameObject:
   m_ObjectHideFlags: 0

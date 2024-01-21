@@ -14,72 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - delayBetweenEnemies: 0
-    delayBetweenWaves: 30
-    enemyWaveDataList: []
-  - delayBetweenEnemies: 2
     delayBetweenWaves: 25
+    enemyWaveDataList: []
+  - delayBetweenEnemies: 1
+    delayBetweenWaves: 30
     enemyWaveDataList:
     - amountOfThisEnemy: 1
       enemySpawnerIndex: 0
       enemyPathIndex: 0
       enemyType: 1
-  - delayBetweenEnemies: 1.75
-    delayBetweenWaves: 25
-    enemyWaveDataList:
-    - amountOfThisEnemy: 10
-      enemySpawnerIndex: 1
-      enemyPathIndex: 0
-      enemyType: 1
-    - amountOfThisEnemy: 15
-      enemySpawnerIndex: 1
-      enemyPathIndex: 1
-      enemyType: 1
-    - amountOfThisEnemy: 20
-      enemySpawnerIndex: 1
-      enemyPathIndex: 2
-      enemyType: 1
-  - delayBetweenEnemies: 1.5
-    delayBetweenWaves: 25
-    enemyWaveDataList:
-    - amountOfThisEnemy: 10
-      enemySpawnerIndex: 2
-      enemyPathIndex: 0
-      enemyType: 1
-    - amountOfThisEnemy: 15
-      enemySpawnerIndex: 2
-      enemyPathIndex: 1
-      enemyType: 2
-    - amountOfThisEnemy: 20
-      enemySpawnerIndex: 2
-      enemyPathIndex: 2
-      enemyType: 2
-  - delayBetweenEnemies: 1.25
-    delayBetweenWaves: 25
-    enemyWaveDataList:
-    - amountOfThisEnemy: 10
-      enemySpawnerIndex: 0
-      enemyPathIndex: 0
-      enemyType: 1
-    - amountOfThisEnemy: 10
-      enemySpawnerIndex: 1
-      enemyPathIndex: 1
-      enemyType: 1
-    - amountOfThisEnemy: 10
-      enemySpawnerIndex: 2
-      enemyPathIndex: 2
-      enemyType: 1
   - delayBetweenEnemies: 1
     delayBetweenWaves: 0
     enemyWaveDataList:
+    - amountOfThisEnemy: 10
+      enemySpawnerIndex: 0
+      enemyPathIndex: 0
+      enemyType: 1
     - amountOfThisEnemy: 15
       enemySpawnerIndex: 0
       enemyPathIndex: 0
       enemyType: 2
-    - amountOfThisEnemy: 15
-      enemySpawnerIndex: 1
-      enemyPathIndex: 1
-      enemyType: 2
-    - amountOfThisEnemy: 15
-      enemySpawnerIndex: 2
-      enemyPathIndex: 2
-      enemyType: 1

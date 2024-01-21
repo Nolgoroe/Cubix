@@ -160,11 +160,11 @@ public class ToolWaveCreator : MonoBehaviour
     {
 
         WaveSO wave = new WaveSO();
-        wave.waves = new List<WaveData>();
+        wave.Waves = new List<WaveData>();
 
         foreach (WaveData waveData in waveList)
         {
-            wave.waves.Add(waveData);
+            wave.Waves.Add(waveData);
         }
 
         string path = "Assets/Avishy World/Scriptable Objects - Avishy/Waves/newSO.asset";
