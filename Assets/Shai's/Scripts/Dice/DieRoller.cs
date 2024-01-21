@@ -108,7 +108,6 @@ public class DieRoller : MonoBehaviour
     }
     private void OnConnectedDieEndDragging()
     {        
-
         constraintX = true;
         constraintY = false;
         constraintZ = true;

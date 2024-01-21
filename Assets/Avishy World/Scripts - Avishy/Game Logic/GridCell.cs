@@ -19,18 +19,24 @@ public class GridCell : MonoBehaviour
     [SerializeField] private TowerBaseParent towerOnCell;
 
 
-    private Renderer rend;
+    [SerializeField] private MeshRenderer rend;
 
     private void OnValidate()
     {
         if (rend == null)
-            rend = GetComponent<Renderer>();
+            rend = GetComponent<MeshRenderer>();
 
         if (outline == null)
             outline = GetComponent<Outline>();
     }
     protected virtual void Start()
     {
+        if (rend == null)
+            rend = GetComponent<MeshRenderer>();
+
+        if (outline == null)
+            outline = GetComponent<Outline>();
+
         startColor = rend.material.color;
     }
 

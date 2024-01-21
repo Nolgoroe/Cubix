@@ -172,11 +172,13 @@ public class LevelCreationToolUI : MonoBehaviour
         amountOfWaypoints.text = "Amount of waypoint lists: " + amount.ToString();
     }
 
+#if UNITY_EDITOR
+
     public void CallCreatePrefabFromGridTool()
     {
         StartCoroutine(CreatePrefabFromGridTool());
     }
-
+#endif
 #if UNITY_EDITOR
     public IEnumerator CreatePrefabFromGridTool()
     {

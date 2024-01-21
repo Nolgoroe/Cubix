@@ -116,7 +116,7 @@ public class WaveManager : MonoBehaviour
                     }
 
                     GameObject enemyToSpawn = GameManager.Instance.ReturnEnemyByType(enemyWaveData.enemyType);
-                    selectedSpawner.CallSpawnEnemy(enemyToSpawn);
+                    selectedSpawner.CallSpawnEnemy(enemyToSpawn, enemyWaveData.enemyPathIndex);
 
                     ChangeEnemyCount(1);
                     yield return new WaitForSeconds(waveSO.waves[currentIndexInWave].delayBetweenEnemies / GameManager.gameSpeed);

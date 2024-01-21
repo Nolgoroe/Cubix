@@ -271,7 +271,6 @@ public class Die : MonoBehaviour
 
     private void SetValuesOnDragStart()
     {
-
         RB.isKinematic = true;
         transform.localScale = new Vector3(0.5f, 0.5f, 0.5f); // temp here
 
@@ -282,7 +281,8 @@ public class Die : MonoBehaviour
     }
     private void SetValuesOnDragEnd()
     {
-        RB.isKinematic = true;
+        //called if we stopped dragging and DIDN'T place a tower.
+        RB.isKinematic = false;
         transform.localScale = new Vector3(1, 1, 1); // temp here
 
         transform.localPosition = originalPos;
@@ -349,7 +349,6 @@ public class Die : MonoBehaviour
 
     public GameObject ReturnTowerPrefab()
     {
-
         return towerPrefabConnected.gameObject;
     }
 

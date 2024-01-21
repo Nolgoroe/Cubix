@@ -13,7 +13,7 @@ public class PlayerHomeBaseCell : GridCell
     protected override void Start() //temp
     {
         base.Start();
-        playerHealth = 10000;
+        playerHealth = 1000;
         currentPlayerHealth = playerHealth;
 
         dangerIcon = transform.GetChild(0); // temp

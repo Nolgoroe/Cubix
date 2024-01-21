@@ -172,7 +172,6 @@ public class GameGridControls : MonoBehaviour
 
     public void SetCurrentDieDragging(Die dieToDrag)
     {       
-
         if (dieToDrag)
         {
             currentDieDragging = dieToDrag;

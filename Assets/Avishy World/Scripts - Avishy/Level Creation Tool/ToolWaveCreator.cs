@@ -153,6 +153,7 @@ public class ToolWaveCreator : MonoBehaviour
         waveCreatorUI.SetActive(isOn);
     }
 
+#if UNITY_EDITOR
 
     [ContextMenu("Save now!")]
     public void SaveWaveAsNew()
@@ -186,7 +187,7 @@ public class ToolWaveCreator : MonoBehaviour
 
         ClearOnSave();
     }
-
+#endif
     private void ClearOnSave()
     {
         waveCountInputText.text = "0";
