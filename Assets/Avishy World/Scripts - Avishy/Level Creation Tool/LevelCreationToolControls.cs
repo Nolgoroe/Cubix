@@ -100,6 +100,13 @@ public class LevelCreationToolControls : MonoBehaviour
         //Detect cells i'm hovering above
         MouseOverGridCell();
 
+        if (isInDefiningCellTypes)
+        {
+            DefiningCellTypeControls();
+
+            return;
+        }
+
         //Switch controls by modes
         if (currentCellHovered)
         {
@@ -128,11 +135,6 @@ public class LevelCreationToolControls : MonoBehaviour
 
                 MiddileClickOnCell(currentCellSelected);
             }
-        }
-
-        if (isInDefiningCellTypes)
-        {
-            DefiningCellTypeControls();
         }
     }
 
@@ -261,6 +263,8 @@ public class LevelCreationToolControls : MonoBehaviour
 
     private void DefiningCellTypeControls()
     {
+        if (!ToolReferencerObject.Instance.gameGrid) return;
+
         GridCell cell;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         positionOfMouse = Vector3.zero;
