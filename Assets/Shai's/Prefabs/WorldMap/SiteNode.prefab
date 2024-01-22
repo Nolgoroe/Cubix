@@ -184,7 +184,7 @@ MonoBehaviour:
   exitLinks: 0
   singleLinkStreak: 0
   nextNodes: []
-  chanceToLink: 0.681
+  chanceToLink: 0.303
   maxLinks: 4
 --- !u!114 &7562143748950493806
 MonoBehaviour:
