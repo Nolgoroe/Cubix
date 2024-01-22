@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class ChainLightning : MonoBehaviour
 {
+    [SerializeField] private LayerMask enemyLayer;
+
+    [SerializeField] private GameObject chainLightningEffect;
+    [SerializeField] private GameObject beenStruck;
+    [SerializeField] private int amountToChain = 5;
+    [SerializeField] private float damage = 11;
+    [SerializeField] private float damageLoss = 2;
+
+
     private SphereCollider collider;
-    public LayerMask enemyLayer;
-
-    public GameObject chainLightningEffect;
-    public GameObject beenStruck;
-    public int amountToChain = 5;
-    public float damage = 11;
-    public float damageLoss = 2;
-
     private GameObject startObject;
-    public GameObject endObject;
     private Animator anim;
-    public ParticleSystem particleSystem;
-    private int singleSpawns;
+    private int singleSpawns; // make sure we can't attack 2 enemies at once.
+    private GameObject endObject;
+    private ParticleSystem particleSystem;
 
     // Start is called before the first frame update
     void Start()
@@ -43,33 +44,35 @@ public class ChainLightning : MonoBehaviour
         {
             if(singleSpawns != 0)
             {
-                endObject = other.gameObject;
-                amountToChain -= 1;
+                amountToChain --;
+                singleSpawns--;
                 damage -= damageLoss;
-                Instantiate(chainLightningEffect, other.gameObject.transform.position, Quaternion.identity);
+
+
+                endObject = other.gameObject;
+
+
                 Instantiate(beenStruck, other.gameObject.transform);
+                Instantiate(chainLightningEffect, other.gameObject.transform.position, Quaternion.identity);
+
 
                 EnemyParent enemyHit;
                 other.TryGetComponent<EnemyParent>(out enemyHit);
-
                 if (enemyHit)
                 {
                     enemyHit.RecieveDMG(damage);
                 }
 
+
                 anim.StopPlayback();
                 collider.enabled = false;
-                singleSpawns --;
+
 
                 particleSystem.Play();
-
                 var emitParams = new ParticleSystem.EmitParams();
                 emitParams.position = startObject.transform.position;
-
                 particleSystem.Emit(emitParams, 1);
-
                 emitParams.position = endObject.transform.position;
-
                 particleSystem.Emit(emitParams, 1);
 
 
