@@ -127,7 +127,18 @@ public abstract class TowerBaseParent : MonoBehaviour
 
     public void RotateTowardsCameraEndRoll()
     {
-        Vector3 direction = GameManager.Instance.ReturnMainCamera().transform.position - towerDie.ReturnCurrentTopFace().transform.position;
+        Vector3 offset = Vector3.zero;
+        switch (towerDie.ReturnDieType())
+        {
+            case DieType.D6:
+                break;
+            case DieType.D8:
+                offset = new Vector3(0,25,0);
+                break;
+            default:
+                break;
+        }
+        Vector3 direction = (GameManager.Instance.ReturnMainCamera().transform.position + offset) - towerDie.ReturnCurrentTopFace().transform.position;
 
         Debug.DrawLine(resultDiceHolder.position, direction * 1000, Color.red, Mathf.Infinity);
         Quaternion lookAt = Quaternion.LookRotation(direction);

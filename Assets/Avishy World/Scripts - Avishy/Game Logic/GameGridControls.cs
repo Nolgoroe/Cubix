@@ -19,8 +19,6 @@ public class GameGridControls : MonoBehaviour
     [SerializeField] private List<Die> currentDieToLock;
 
 
-
-
     public bool rapidControls;
 
     private Vector3 positionOfMouse;

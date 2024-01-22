@@ -36,6 +36,9 @@ public class GameManager : MonoBehaviour
         DiceManager.Instance.InitDiceManager();
 
         isDead = false;
+
+        playerTurn = true;
+
     }
 
     private void Update()
