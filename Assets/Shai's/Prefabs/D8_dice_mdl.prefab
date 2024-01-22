@@ -3039,6 +3039,8 @@ MonoBehaviour:
   lockTransform: {fileID: 0}
   outline: {fileID: 2362081514624229054}
   diceColor: {r: 0.14509805, g: 0.8039216, b: 0.9529412, a: 1}
+  rangeIndicator: {fileID: 0}
+  scaleOnDrag: {x: 0.5, y: 0.5, z: 0.5}
   _currentTopFace: {fileID: 0}
 --- !u!114 &3904737591059714462
 MonoBehaviour:

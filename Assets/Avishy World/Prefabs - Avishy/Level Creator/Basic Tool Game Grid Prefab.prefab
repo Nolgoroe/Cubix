@@ -124,6 +124,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1250686822957639862}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7218864435978893265
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 529278902135039659}
+  m_Layer: 0
+  m_Name: Tower slots
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &529278902135039659
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7218864435978893265}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1250686822957639862}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7369130845250804221
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,6 +216,7 @@ MonoBehaviour:
   buildingParent: {fileID: 8637319438602730214}
   gamePartsParent: {fileID: 8985962056223416571}
   enemyPathParent: {fileID: 6648740709745148054}
+  towerSlotsParent: {fileID: 529278902135039659}
   enemySpawners: []
   enemyPathCells: []
 --- !u!1 &9006893787121049666
@@ -251,5 +283,6 @@ Transform:
   - {fileID: 8985962056223416571}
   - {fileID: 6648740709745148054}
   - {fileID: 102303785141378830}
+  - {fileID: 529278902135039659}
   m_Father: {fileID: 826804170720804466}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

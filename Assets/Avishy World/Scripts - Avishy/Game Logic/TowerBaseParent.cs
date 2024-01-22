@@ -23,6 +23,8 @@ public abstract class TowerBaseParent : MonoBehaviour
 
     [SerializeField] protected ParticleSystem onSpawnParticle;
 
+    [SerializeField] protected bool requiresPathCells;
+
 
     protected Vector3 originalScale;
     virtual protected void Start()
@@ -149,4 +151,13 @@ public abstract class TowerBaseParent : MonoBehaviour
     {
         return resultDiceHolder;
     }
+    public bool ReturnRequiresPathCells()
+    {
+        return requiresPathCells;
+    }
+
+    //public Vector3 ReturnOriginalTowerScale()
+    //{
+    //    return originalScale;
+    //}
 }

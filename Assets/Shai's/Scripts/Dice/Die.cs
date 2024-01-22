@@ -29,6 +29,8 @@ public class Die : MonoBehaviour
     [SerializeField] private Transform lockTransform;
     [SerializeField] private Outline outline;
     [SerializeField] private Color diceColor;
+    [SerializeField] private Transform rangeIndicator;
+    [SerializeField] private Vector3 scaleOnDrag;
 
     private bool _isDragging;
     private bool _isInWorld;
@@ -68,6 +70,34 @@ public class Die : MonoBehaviour
         //originalScale = transform.localScale;
 
         diceCam = GameManager.Instance.ReturnDiceCamera();
+
+        SetRangeIndicator();
+    }
+
+    private void SetRangeIndicator()
+    {
+        //radius is half of the diameter of a circle
+        if (rangeIndicator)
+        {
+            float range = 0;
+            Vector3 originalScale = Vector3.one;
+
+            switch (towerPrefabConnected)
+            {
+                case RangeTowerParentScript rangeTower:
+                    range = rangeTower.ReturnRangeTower();
+
+                    originalScale = scaleOnDrag;
+                    //originalScale = rangeTower.ReturnOriginalTowerScale();
+                        break;
+                default:
+                    break;
+            }
+
+
+            rangeIndicator.localScale = new Vector3(range * 2 / originalScale.x, range * 2 / originalScale.y, range * 2 / originalScale.z);
+            rangeIndicator.gameObject.SetActive(false);
+        }
     }
 
     public void InitDiceInSlot(Transform _lockTransform, DiceSO diceData)
@@ -236,7 +266,7 @@ public class Die : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        if (isLocked) return;
+        if (isLocked || !GameManager.playerTurn) return;
         currentTimeTillStartDrag += Time.deltaTime;
 
         if(currentTimeTillStartDrag >= timeTillStartDrag)
@@ -265,6 +295,8 @@ public class Die : MonoBehaviour
 
     private void OnMouseUp()
     {
+        if (!GameManager.playerTurn) return;
+
         currentTimeTillStartDrag = 0;
         if (_isDragging)
         {
@@ -298,29 +330,54 @@ public class Die : MonoBehaviour
     private void SetValuesOnDragStart()
     {
         RB.isKinematic = true;
-        transform.localScale = new Vector3(0.5f, 0.5f, 0.5f); // temp here
+        
+        if(rangeIndicator)
+        {
+            rangeIndicator.gameObject.SetActive(true);
+        }
+
+        transform.localScale = scaleOnDrag;
 
         GameGridControls.Instance.SetCurrentDieDragging(this);
 
+        GridManager.Instance.ToggleAllRelaventSlots(towerPrefabConnected.ReturnRequiresPathCells());
+
         ChangeLayerRecursive(transform, "Default");
+
 
     }
     private void SetValuesOnDragEnd()
     {
+        if (rangeIndicator)
+        {
+            rangeIndicator.gameObject.SetActive(false);
+        }
+
         //called if we stopped dragging and DIDN'T place a tower.
         RB.isKinematic = false;
         transform.localScale = new Vector3(1, 1, 1); // temp here
 
         transform.localPosition = originalPos;
 
+        GridManager.Instance.ActivateAllTowerBaseCells();
+
         ChangeLayerRecursive(transform, "Dice");
     }
 
     private void SetValuesOnPlacement()
     {
+        if (rangeIndicator)
+        {
+            rangeIndicator.gameObject.SetActive(false);
+        }
+
         DisplayBuffs();
         RB.isKinematic = false;
         _isInWorld = true;
+
+
+        GridManager.Instance.ActivateAllTowerBaseCells();
+
         ChangeLayerRecursive(transform, "Default");
     }
 
@@ -385,7 +442,7 @@ public class Die : MonoBehaviour
 
     public void ResetTransformData()
     {
-        transform.localScale = new Vector3(0.5f,0.5f,0.5f); //temp here
+        transform.localScale = scaleOnDrag;
     }
 }
 

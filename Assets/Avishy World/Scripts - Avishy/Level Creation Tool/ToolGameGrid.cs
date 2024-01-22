@@ -33,6 +33,7 @@ public class ToolGameGrid : MonoBehaviour
     [SerializeField] private Transform buildingParent;
     [SerializeField] private Transform gamePartsParent;
     [SerializeField] private Transform enemyPathParent;
+    [SerializeField] private Transform towerSlotsParent;
 
     [Header("Enemies")]
     [SerializeField] private List<ToolEnemySpawnerCell> enemySpawners;
@@ -438,6 +439,11 @@ public class ToolGameGrid : MonoBehaviour
 
                     gridManager.AddCellToGridCellList(gridCell);
 
+                    if(gridCell.ReturnCellTypeColor() != CellTypeColor.None)
+                    {
+                        gridCell.transform.SetParent(towerSlotsParent);
+                        gridManager.AddCellToTowerBaseCells(gridCell);
+                    }
                     break;
                 default:
                     break;

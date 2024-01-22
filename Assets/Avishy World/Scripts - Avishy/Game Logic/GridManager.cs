@@ -12,6 +12,7 @@ public class GridManager : MonoBehaviour
     [SerializeField] private float gridSpacing;
     [SerializeField] private List<GridCell> gameGridCellsList = new List<GridCell>();
     [SerializeField] private List<EnemySpawnerCell> enemySpawnerCells;
+    [SerializeField] List<GridCell> towerPlacementCells = new List<GridCell>();
 
     private GridCell[,] GridCellsArray;
 
@@ -114,6 +115,10 @@ public class GridManager : MonoBehaviour
     {
         gameGridCellsList.Add(cell);
     }
+    public void AddCellToTowerBaseCells(GridCell cell)
+    {
+        towerPlacementCells.Add(cell);
+    }
 
 
     public void CopyOtherGrid(ToolGameGrid toolGameGrid)
@@ -122,5 +127,29 @@ public class GridManager : MonoBehaviour
         gridHeight = (int)pos.y;
         gridWidth = (int)pos.x;
         gridSpacing = toolGameGrid.ReturnSpacing();
+    }
+
+    //for now this only takes care of the condition "needs paths" - in the future this will take care of more conditions
+    // temp
+    public void ToggleAllRelaventSlots(bool needsPaths)
+    {
+        if(needsPaths)
+        {
+            foreach (GridCell cell in towerPlacementCells)
+            {
+                if (!cell.ReturnNextToPath())
+                {
+                    cell.gameObject.SetActive(false);
+                }
+            }
+        }
+    }
+    public void ActivateAllTowerBaseCells()
+    {
+        foreach (GridCell cell in towerPlacementCells)
+        {
+            cell.gameObject.SetActive(true);
+
+        }
     }
 }

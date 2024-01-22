@@ -22,13 +22,16 @@ public class WaveManager : MonoBehaviour
 
 
 
-    private EnemySpawnerCell selectedSpawner;
+    [SerializeField] private EnemySpawnerCell selectedSpawner;
+    [SerializeField] private List<EnemySpawnerCell> selectedMultipleSpawners;
 
     [Header("Test data")]
+    [SerializeField] private bool testRandomSpawners = false;
     [SerializeField] private bool waveDone = true;
     [SerializeField] private bool levelComplete = false;
     [SerializeField] private float timeForNextWave = 0;
     [SerializeField] private float currentCountdown = 0;
+    private List<EnemySpawnerCell> tempSpawnersList;
 
     private void Awake()
     {
@@ -72,10 +75,17 @@ public class WaveManager : MonoBehaviour
             currentWaveSO.Waves.Add(waveData);
         }
 
-        foreach (EnemyWaveData waveData in waveSO.Waves[currentIndexInWave].enemyWaveDataList)
+        if (testRandomSpawners)
         {
-            currentLevelEnemySpawners[waveData.enemySpawnerIndex].DisplayDangerIcon(true);
+            DisplayRandomSpawnersDangerIcons();
+        }
+        else
+        {
+            foreach (EnemyWaveData waveData in waveSO.Waves[currentIndexInWave + 1].enemyWaveDataList)
+            {
+                currentLevelEnemySpawners[waveData.enemySpawnerIndex].DisplayDangerIcon(true);
 
+            }
         }
 
         enemiesForWave = new List<EnemyWaveData>();
@@ -105,6 +115,8 @@ public class WaveManager : MonoBehaviour
 
         if (currentCountdown <= 0)
         {
+            UIManager.Instance.DisplayTimerText(false);
+
             StartNextWave();
             return;
         }
@@ -115,13 +127,7 @@ public class WaveManager : MonoBehaviour
 
             UIManager.Instance.SetWaveCountdownText(currentCountdown);
 
-            //temp - this is called on update...
             UIManager.Instance.DisplayTimerText(true);
-        }
-        else
-        {
-            //temp - this is called on update...
-            UIManager.Instance.DisplayTimerText(false);
         }
     }
 
@@ -149,6 +155,18 @@ public class WaveManager : MonoBehaviour
     {
         if (GameManager.gameSpeed == 0) return;
 
+        if (testRandomSpawners)
+        {
+            RandomSpawnEnemies();
+        }
+        else
+        {
+            PredeterminedSpawnEnemies();
+        }
+    }
+
+    private void PredeterminedSpawnEnemies()
+    {
         if (currentLevelEnemySpawners.Count > 0 && currentIndexOfEnemies < enemiesForWave.Count)
         {
             selectedSpawner = currentLevelEnemySpawners[enemiesForWave[currentIndexOfEnemies].enemySpawnerIndex];
@@ -161,7 +179,36 @@ public class WaveManager : MonoBehaviour
                 ChangeEnemyCount(1); //add 1 to enemy count
 
                 enemiesForWave[currentIndexOfEnemies].amountOfThisEnemy--;
-                if(enemiesForWave[currentIndexOfEnemies].amountOfThisEnemy <= 0)
+                if (enemiesForWave[currentIndexOfEnemies].amountOfThisEnemy <= 0)
+                {
+                    currentIndexOfEnemies++;
+                }
+
+                currentEnemySpawnTime = enemySpawnTime;
+            }
+            else
+            {
+                currentEnemySpawnTime -= Time.deltaTime * GameManager.gameSpeed;
+            }
+        }
+    }
+
+    private void RandomSpawnEnemies()
+    {
+        if (selectedMultipleSpawners.Count > 0 && currentIndexOfEnemies < enemiesForWave.Count)
+        {
+            if (currentEnemySpawnTime < 0)
+            {
+                int randomSpawner = Random.Range(0, selectedMultipleSpawners.Count);
+                GameObject enemyToSpawn = GameManager.Instance.ReturnEnemyByType(enemiesForWave[currentIndexOfEnemies].enemyType);
+
+                int randomPath = Random.Range(0, selectedMultipleSpawners[randomSpawner].ReturnEnemyPathCellsList().Count);
+                selectedMultipleSpawners[randomSpawner].CallSpawnEnemy(enemyToSpawn, randomPath);
+
+                ChangeEnemyCount(1); //add 1 to enemy count
+
+                enemiesForWave[currentIndexOfEnemies].amountOfThisEnemy--;
+                if (enemiesForWave[currentIndexOfEnemies].amountOfThisEnemy <= 0)
                 {
                     currentIndexOfEnemies++;
                 }
@@ -228,13 +275,42 @@ public class WaveManager : MonoBehaviour
 
         UIManager.Instance.UpdateWaveCounter();
 
-
-        foreach (EnemyWaveData waveData in waveSO.Waves[currentIndexInWave].enemyWaveDataList)
+        if (testRandomSpawners)
         {
-            currentLevelEnemySpawners[waveData.enemySpawnerIndex].DisplayDangerIcon(true);
+            DisplayRandomSpawnersDangerIcons();
+        }
+        else
+        {
+            foreach (EnemyWaveData waveData in waveSO.Waves[currentIndexInWave].enemyWaveDataList)
+            {
+                currentLevelEnemySpawners[waveData.enemySpawnerIndex].DisplayDangerIcon(true);
+            }
         }
     }
 
+    private void DisplayRandomSpawnersDangerIcons()
+    {
+        selectedMultipleSpawners.Clear();
+        tempSpawnersList = new List<EnemySpawnerCell>();
+
+        int ramdomAmountOfSpawners = Random.Range(1, currentLevelEnemySpawners.Count + 1);
+
+        tempSpawnersList.AddRange(currentLevelEnemySpawners);
+
+
+        for (int i = 0; i < ramdomAmountOfSpawners; i++)
+        {
+            int randomSpawner = Random.Range(0, tempSpawnersList.Count);
+            selectedMultipleSpawners.Add(tempSpawnersList[randomSpawner]);
+
+            tempSpawnersList.RemoveAt(randomSpawner);
+        }
+
+        foreach (EnemySpawnerCell spawner in selectedMultipleSpawners)
+        {
+            spawner.DisplayDangerIcon(true);
+        }
+    }
 
     public void ChangeEnemyCount(int amount)
     {

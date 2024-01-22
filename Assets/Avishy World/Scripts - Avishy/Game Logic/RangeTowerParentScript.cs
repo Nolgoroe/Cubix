@@ -164,4 +164,9 @@ public class RangeTowerParentScript : TowerBaseParent
         if (rangeIndicator)
             rangeIndicator.gameObject.SetActive(isHover ? true : false);
     }
+    
+    public float ReturnRangeTower()
+    {
+        return range;
+    }
 }
