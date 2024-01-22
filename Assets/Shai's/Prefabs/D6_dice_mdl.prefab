@@ -1444,6 +1444,7 @@ MonoBehaviour:
   diceColor: {r: 1, g: 0.827451, b: 0, a: 1}
   rangeIndicator: {fileID: 2473994983393537120}
   scaleOnDrag: {x: 0.5, y: 0.5, z: 0.5}
+  scaleInPlayerBase: {x: 1, y: 1, z: 1}
   _currentTopFace: {fileID: 0}
 --- !u!114 &910382848661441555
 MonoBehaviour:

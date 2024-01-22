@@ -63,12 +63,12 @@ public class GameManager : MonoBehaviour
         {
             foreach (TowerBaseParent tower in summonedRangeTowers)
             {
-                tower.OnStartPlayerTurn();
+                StartCoroutine(tower.OnStartPlayerTurn());
             }
 
             foreach (TowerBaseParent tower in summonedMeleeTowers)
             {
-                tower.OnStartPlayerTurn();
+                StartCoroutine(tower.OnStartPlayerTurn());
             }
 
             yield return new WaitForSeconds(1f); //temp
@@ -101,6 +101,11 @@ public class GameManager : MonoBehaviour
             default:
                 break;
         }
+    }
+    public void ClearTowerToRelaventList()
+    {
+        summonedRangeTowers.Clear();
+        summonedMeleeTowers.Clear();
     }
 
     public List<MeleeTowerParentScript> ReturnMeleeTowersList()

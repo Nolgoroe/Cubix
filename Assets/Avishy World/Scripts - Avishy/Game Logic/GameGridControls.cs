@@ -20,6 +20,9 @@ public class GameGridControls : MonoBehaviour
 
 
 
+
+    public bool rapidControls;
+
     private Vector3 positionOfMouse;
 
 
@@ -113,10 +116,37 @@ public class GameGridControls : MonoBehaviour
     private void InstantiateTower()
     {
         Vector3 cellpos = currentCellHovered.transform.position;
+        Vector3 fixedPos = new Vector3(cellpos.x, cellpos.y + currentTowerPrefab.transform.position.y, cellpos.z);
 
+        if(rapidControls)
+        {
+            if (currentDieDragging.ReturnCurrentTowerParent())
+            {
+                currentDieDragging.ReturnCurrentTowerParent().gameObject.SetActive(true);
+                currentDieDragging.ReturnCurrentTowerParent().transform.position = fixedPos;
+                currentCellHovered.SetAsOccupied(currentDieDragging.ReturnCurrentTowerParent());
+
+                currentDieDragging.ReturnCurrentTowerParent().InitTowerData(currentCellHovered.ReturnPositionInGridArray(), currentDieDragging);
+
+                currentDieDragging.OnPlaceEvent?.Invoke();
+
+                SetCurrentDieDragging(null);
+            }
+            else
+            {
+                TowerSpawnAction(cellpos, fixedPos);
+            }
+        }
+        else
+        {
+            TowerSpawnAction(cellpos, fixedPos);
+        }
+    }
+
+    private void TowerSpawnAction(Vector3 cellpos, Vector3 fixedPos)
+    {
         GameObject go = Instantiate(currentTowerPrefab, cellpos, Quaternion.identity);
 
-        Vector3 fixedPos = new Vector3(cellpos.x, cellpos.y + currentTowerPrefab.transform.position.y, cellpos.z);
         go.transform.position = fixedPos;
 
         TowerBaseParent towerSpawned;
@@ -125,7 +155,7 @@ public class GameGridControls : MonoBehaviour
         if (towerSpawned)
         {
             towerSpawned.InitTowerData(currentCellHovered.ReturnPositionInGridArray(), currentDieDragging);
-            
+
 
             //End die drag and return it's values to be able to be rolled
             currentDieDragging.OnPlaceEvent?.Invoke();

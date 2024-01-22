@@ -30,7 +30,8 @@ public class Die : MonoBehaviour
     [SerializeField] private Outline outline;
     [SerializeField] private Color diceColor;
     [SerializeField] private Transform rangeIndicator;
-    [SerializeField] private Vector3 scaleOnDrag;
+    [SerializeField] private Vector3 scaleOnDrag = new Vector3(0.5f, 0.5f, 0.5f);
+    [SerializeField] private Vector3 scaleInPlayerBase = Vector3.one;
 
     private bool _isDragging;
     private bool _isInWorld;
@@ -41,7 +42,9 @@ public class Die : MonoBehaviour
     private float timeTillStartDrag = 0.2f;
     private float currentTimeTillStartDrag = 0;
     private Quaternion targetQuat;
+    [SerializeField] private Transform originalParent;
     bool isRolling;
+    DieRoller roller;
 
     public bool IsRolling { get { return isRolling; } }
     public Rigidbody RB { get { return _rb; } }
@@ -72,6 +75,8 @@ public class Die : MonoBehaviour
         diceCam = GameManager.Instance.ReturnDiceCamera();
 
         SetRangeIndicator();
+
+        roller = GetComponent<DieRoller>();
     }
 
     private void SetRangeIndicator()
@@ -119,6 +124,8 @@ public class Die : MonoBehaviour
             default:
                 break;
         }
+
+        originalParent = transform.parent;
 
     }
 
@@ -355,7 +362,7 @@ public class Die : MonoBehaviour
 
         //called if we stopped dragging and DIDN'T place a tower.
         RB.isKinematic = false;
-        transform.localScale = new Vector3(1, 1, 1); // temp here
+        transform.localScale = scaleInPlayerBase;
 
         transform.localPosition = originalPos;
 
@@ -443,6 +450,33 @@ public class Die : MonoBehaviour
     public void ResetTransformData()
     {
         transform.localScale = scaleOnDrag;
+    }
+    public void BackToPlayerArea()
+    {
+        if (rangeIndicator)
+        {
+            rangeIndicator.gameObject.SetActive(false);
+        }
+
+        RB.isKinematic = false;
+        RB.velocity = Vector3.zero;
+        transform.SetParent(originalParent);
+        transform.localPosition = originalPos;
+        _isInWorld = false;
+
+        roller.SetOGPos(transform);
+        transform.localScale = scaleInPlayerBase;
+
+        ChangeLayerRecursive(transform, "Dice");
+
+    }
+    public TowerBaseParent ReturnCurrentTowerParent()
+    {
+        return currentTowerParent;
+    }
+    public DieRoller ReturnDieRoller()
+    {
+        return roller;
     }
 }
 

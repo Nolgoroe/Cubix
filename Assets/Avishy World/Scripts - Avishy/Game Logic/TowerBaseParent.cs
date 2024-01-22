@@ -27,18 +27,40 @@ public abstract class TowerBaseParent : MonoBehaviour
 
 
     protected Vector3 originalScale;
+    private void OnEnable()
+    {
+        if (GameGridControls.Instance.rapidControls)
+        {
+            if (towerDie)
+            {
+                towerDie.OnRollEndEvent.AddListener(RecieveBuffAfterRoll);
+            }
+        }
+    }
+    private void OnDisable()
+    {
+        if (GameGridControls.Instance.rapidControls)
+        {
+            if (towerDie)
+            {
+                towerDie.OnRollEndEvent.RemoveListener(RecieveBuffAfterRoll);
+            }
+        }
+    }
     virtual protected void Start()
     {
         originalScale = transform.localScale;
         transform.localScale = Vector3.zero;
 
-        if (towerDie)
-        {
-            towerDie.OnRollEndEvent.AddListener(RecieveBuffAfterRoll);
-            //towerDie.OnRollEndEvent.AddListener(DisplayBuffAfterRoll);
-        }
-
         GameManager.Instance.AddTowerToRelaventList(this);
+
+        if(!GameGridControls.Instance.rapidControls)
+        {
+            if (towerDie)
+            {
+                towerDie.OnRollEndEvent.AddListener(RecieveBuffAfterRoll);
+            }
+        }
 
         //spawn effect
         Vector3 newPos = new Vector3(transform.position.x, transform.position.y + 0.2f, transform.position.z);
@@ -57,55 +79,8 @@ public abstract class TowerBaseParent : MonoBehaviour
 
         currentTowerBuffs.Add(holder);
     }
-    //protected void SpawnBuffCubeOnCreation()
-    //{
-    //    //this switch is temp
-    //    //switch (towerDie.ReturnDieType())
-    //    //{
-    //    //    case DieType.D6:
-    //    //        resultDiceHolder.localRotation = Quaternion.Euler(new Vector3(45, 0, 0));
-    //    //        break;
-    //    //    case DieType.D8:
-    //    //        resultDiceHolder.localRotation = Quaternion.Euler(new Vector3(7,45,7));
-    //    //        break;
-    //    //    default:
-    //    //        break;
-    //    //}
-
-    //    if(towerDie)
-    //    {
-    //        GameObject go =  Instantiate(towerDie.gameObject, resultDiceHolder);
-    //        go.transform.localPosition = Vector3.zero;
-    //        go.transform.localRotation = Quaternion.Euler(Vector3.zero);
-
-    //        foreach (Component comp in go.GetComponents<Component>())
-    //        {
-    //            if (!(comp is Transform))
-    //            {
-    //                Destroy(comp);
-    //            }
-    //        }
-
-    //        ResultDiceDisplay diceDisplay = go.AddComponent<ResultDiceDisplay>();
-    //        diceDisplay.InitDiceDisplay(towerDie);
-    //        diceDisplay.GetCameraFacingValue();
-
-    //        resultDiceDisplay = diceDisplay;
-    //    }
-
-    //    resultDiceHolder.gameObject.SetActive(false);
-    //}
     public abstract void InitTowerData(Vector2Int positionOfCell, Die connectedDie);
     public abstract void RecieveBuffAfterRoll(Die die);
-    //protected void DisplayBuffAfterRoll(Die die)
-    //{
-    //    DieFaceValue dieFaceValue = die.GetTopValue();
-
-    //    resultDiceHolder.gameObject.SetActive(true);
-
-    //    resultDiceDisplay.SetFaceData(dieFaceValue.Buff);
-    //    towerDie.gameObject.SetActive(false);
-    //}
     public abstract void OnHoverOverOccupyingCell(bool isHover);
 
     public CellTypeColor ReturnCellColorType()
@@ -118,22 +93,29 @@ public abstract class TowerBaseParent : MonoBehaviour
         return currentTowerBuffs;
     }
 
-    public void OnStartPlayerTurn()
+    public IEnumerator OnStartPlayerTurn()
     {
-        resultDiceHolder.gameObject.SetActive(true);
+        if(GameGridControls.Instance.rapidControls)
+        {
+            resultDiceHolder.gameObject.SetActive(true);
+            towerDie.gameObject.SetActive(true);
 
-        towerDie.gameObject.SetActive(true);
-    }
+            yield return new WaitForSeconds(7); // temp time
+            towerDie.BackToPlayerArea();
+            towerDie.DisplayResources();
+            //GameManager.Instance.ClearTowerToRelaventList();
+            DiceManager.Instance.ResetDiceToWorld();
+            DiceManager.Instance.AddDiceToResources(towerDie.ReturnDieRoller());
 
-    public void RotateTowardsCameraEndRoll()
-    {
-        //Vector3 direction = (GameManager.Instance.ReturnMainCamera().transform.position - resultDiceHolder.position);
-        Vector3 direction = GameManager.Instance.ReturnMainCamera().transform.position - towerDie.ReturnCurrentTopFace().transform.position;
-
-        Debug.DrawLine(resultDiceHolder.position, direction * 1000, Color.red, Mathf.Infinity);
-        //resultDiceHolder.LookAt(direction, Vector3.up);
-        Quaternion lookAt = Quaternion.LookRotation(direction);
-        LeanTween.rotate(resultDiceHolder.gameObject, lookAt.eulerAngles, 0.2f);
+            GridManager.Instance.ReturnCellAtVector(currentCellOnPos).ResetCellOnStartTurn();
+            gameObject.SetActive(false);
+            CleanTroopsCompletely();
+        }
+        else
+        {
+            resultDiceHolder.gameObject.SetActive(true);
+            towerDie.gameObject.SetActive(true);
+        }
     }
 
     public void OnEndPlayerTurn()
@@ -142,6 +124,16 @@ public abstract class TowerBaseParent : MonoBehaviour
         towerDie.gameObject.SetActive(false);
         resultDiceHolder.gameObject.SetActive(false);
     }
+
+    public void RotateTowardsCameraEndRoll()
+    {
+        Vector3 direction = GameManager.Instance.ReturnMainCamera().transform.position - towerDie.ReturnCurrentTopFace().transform.position;
+
+        Debug.DrawLine(resultDiceHolder.position, direction * 1000, Color.red, Mathf.Infinity);
+        Quaternion lookAt = Quaternion.LookRotation(direction);
+        LeanTween.rotate(resultDiceHolder.gameObject, lookAt.eulerAngles, 0.2f);
+    }
+
 
     public Color ReturnTowerRequiredColor()
     {
@@ -154,6 +146,11 @@ public abstract class TowerBaseParent : MonoBehaviour
     public bool ReturnRequiresPathCells()
     {
         return requiresPathCells;
+    }
+
+    public virtual void CleanTroopsCompletely()
+    {
+
     }
 
     //public Vector3 ReturnOriginalTowerScale()

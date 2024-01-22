@@ -119,6 +119,10 @@ public class GridManager : MonoBehaviour
     {
         towerPlacementCells.Add(cell);
     }
+    public void RemoveCellFromTowerBaseCells(GridCell cell)
+    {
+        towerPlacementCells.Remove(cell);
+    }
 
 
     public void CopyOtherGrid(ToolGameGrid toolGameGrid)

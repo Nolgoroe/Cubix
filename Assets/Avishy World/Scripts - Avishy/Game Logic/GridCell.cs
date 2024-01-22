@@ -182,14 +182,22 @@ public class GridCell : MonoBehaviour
     public void ChangeCellTypeColor(CellTypeColor _cellTypeColor)
     {
         if (slotTypeSpriteRenderer == null) return;
-        //slotTypeSpriteRenderer.gameObject.SetActive(false);
         cellTypeColor = _cellTypeColor;
 
-        //slotTypeSpriteRenderer.gameObject.SetActive(true);
 
         Color color = ToolReferencerObject.Instance.levelCreationToolSO.ReturnColorByCellTypeColor(cellTypeColor);
 
         slotTypeSpriteRenderer.color = color;
+    }
+    public void ResetCellOnStartTurn()
+    {
+        if (slotTypeSpriteRenderer == null) return;
+        cellTypeColor = CellTypeColor.None;
+        isOccupied = true;
+        occupiedByTower = false;
+        towerOnCell = null;
+        GridManager.Instance.RemoveCellFromTowerBaseCells(this);
+        slotTypeSpriteRenderer.gameObject.SetActive(false);
     }
     public bool ReturnNextToPath()
     {

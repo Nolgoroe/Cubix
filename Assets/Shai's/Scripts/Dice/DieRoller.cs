@@ -101,7 +101,6 @@ public class DieRoller : MonoBehaviour
 
     private void OnConnectedDieStartDragging()
     {       
-
         constraintX = false;
         constraintY = false;
         constraintZ = false;
@@ -131,6 +130,11 @@ public class DieRoller : MonoBehaviour
         constraintZ = true;
 
         gameObject.SetActive(false);
+    }
+
+    public void SetOGPos(Transform _transform)
+    {
+        _ogPos = _transform.position;
     }
 }
 

@@ -1599,7 +1599,7 @@ MonoBehaviour:
   currentEnemySpawnTime: 0
   selectedSpawner: {fileID: 0}
   selectedMultipleSpawners: []
-  testRandomSpawners: 0
+  testRandomSpawners: 1
   waveDone: 1
   levelComplete: 0
   timeForNextWave: 0
@@ -7022,6 +7022,7 @@ MonoBehaviour:
   currentCellHovered: {fileID: 0}
   currentDieDragging: {fileID: 0}
   currentDieToLock: []
+  rapidControls: 0
 --- !u!4 &1756797249
 Transform:
   m_ObjectHideFlags: 0

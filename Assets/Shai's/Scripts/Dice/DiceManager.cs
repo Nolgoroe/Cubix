@@ -84,7 +84,10 @@ public class DiceManager : MonoBehaviour
     //the next 4 functions are temp???? - try to find better way
     public void AddDiceToResources(DieRoller die) //temp
     {
-        resourceDice.Add(die);
+        if (!resourceDice.Contains(die))
+        {
+            resourceDice.Add(die);
+        }
     }
     public void RemoveDiceToResources(DieRoller die) //temp
     {
@@ -93,11 +96,18 @@ public class DiceManager : MonoBehaviour
 
     public void AddDiceToWorld(DieRoller die) //temp
     {
-        worldDice.Add(die);
+        if(!worldDice.Contains(die))
+        {
+            worldDice.Add(die);
+        }
     }
     public void RemoveDiceToWorld(DieRoller die) //temp
     {
         worldDice.Remove(die);
+    }
+    public void ResetDiceToWorld() //temp
+    {
+        worldDice.Clear();
     }
 
     public Sprite ReturnIconByType(ResourceType resourceType)

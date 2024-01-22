@@ -26,6 +26,13 @@ public class MeleeTowerParentScript : TowerBaseParent
     private float originalTroopRange;
     private float originalTroopDMG;
 
+    private void OnEnable()
+    {
+        currentNumOfTroops = 0;
+        currentTowerTroops.Clear();
+        connectedPathCells.Clear();
+    }
+
     protected override void Start()
     {
         originalSpawnRate = spawnRate;
@@ -193,6 +200,16 @@ public class MeleeTowerParentScript : TowerBaseParent
                 currentTowerTroops.RemoveAt(i);
             }
 
+        }
+    }
+    public override void CleanTroopsCompletely()
+    {
+        for (int i = currentTowerTroops.Count - 1; i >= 0; i--)
+        {
+            if(currentTowerTroops[i] != null)
+            Destroy(currentTowerTroops[i].gameObject);
+
+            currentTowerTroops.RemoveAt(i);
         }
     }
     public override void RecieveBuffAfterRoll(Die die)
