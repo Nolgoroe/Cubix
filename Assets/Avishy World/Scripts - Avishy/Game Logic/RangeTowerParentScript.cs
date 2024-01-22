@@ -71,8 +71,6 @@ public class RangeTowerParentScript : TowerBaseParent
 
     private void Shoot()
     {
-        Debug.Log("Shoot");
-
         GameObject go = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         
         TowerBullet bullet;
@@ -124,6 +122,7 @@ public class RangeTowerParentScript : TowerBaseParent
 
         towerDie = connectedDie;
 
+        towerDie.transform.SetParent(resultDiceHolder);
         //SpawnBuffCubeOnCreation();
     }
 

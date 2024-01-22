@@ -17,6 +17,7 @@ public class ToolReferencerObject : MonoBehaviour
 
     [Header ("Automatic")]
     public ToolGameGrid toolGameGrid;
+    public GridManager gameGrid;
     public List<GameObject> levelList;
     public List<GameObject> allEnemies;
 
@@ -35,6 +36,10 @@ public class ToolReferencerObject : MonoBehaviour
         if (toolGameGrid == null)
         {
             toolGameGrid = FindObjectOfType<ToolGameGrid>();
+        }
+        if (gameGrid == null)
+        {
+            gameGrid = FindObjectOfType<GridManager>();
         }
     }
 

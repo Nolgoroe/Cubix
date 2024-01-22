@@ -140,13 +140,13 @@ public class LevelCreationToolUI : MonoBehaviour
         GameObject go = Instantiate(ToolReferencerObject.Instance.levelList[index]);
         levelName.text = ToolReferencerObject.Instance.levelList[index].name;
 
-        ToolGameGrid grid;
-        go.TryGetComponent<ToolGameGrid>(out grid);
+        //ToolGameGrid grid;
+        //go.TryGetComponent<ToolGameGrid>(out grid);
 
-        if(grid)
-        {
-            Camera.main.transform.position = new Vector3(0, grid.transform.position.y + 20, grid.transform.position.z - 20);
-        }
+        //if(grid)
+        //{
+            //Camera.main.transform.position = new Vector3(0, grid.transform.position.y + 20, grid.transform.position.z - 20);
+        //}
     }
 
     public void ResetLevelName()
@@ -172,11 +172,13 @@ public class LevelCreationToolUI : MonoBehaviour
         amountOfWaypoints.text = "Amount of waypoint lists: " + amount.ToString();
     }
 
+#if UNITY_EDITOR
+
     public void CallCreatePrefabFromGridTool()
     {
         StartCoroutine(CreatePrefabFromGridTool());
     }
-
+#endif
 #if UNITY_EDITOR
     public IEnumerator CreatePrefabFromGridTool()
     {
@@ -187,19 +189,33 @@ public class LevelCreationToolUI : MonoBehaviour
             yield break;
         }
 
+        if(ToolReferencerObject.Instance.toolGameGrid)
         ToolReferencerObject.Instance.toolGameGrid.CleanupBeforePrefab();
         yield return new WaitForSeconds(2); 
 
         string levelName = "/" + decidedLevelName + ".prefab";
-        string[] paths = new string[] { pathToLevelToolPrefabFolder + levelName,
+
+
+        if(ToolReferencerObject.Instance.toolGameGrid)
+        {
+            string[] paths = new string[] { pathToLevelToolPrefabFolder + levelName,
                                         pathToGameLevelPrefabFolder + levelName };
 
-
-        foreach (string path in paths)
-        {
-            PrefabUtility.SaveAsPrefabAsset(ToolReferencerObject.Instance.toolGameGrid.gameObject, path);
+            foreach (string path in paths)
+            {
+                PrefabUtility.SaveAsPrefabAsset(ToolReferencerObject.Instance.toolGameGrid.gameObject, path);
+            }
         }
 
+        if(ToolReferencerObject.Instance.gameGrid)
+        {
+            string[] paths = new string[] { pathToLevelToolPrefabFolder + levelName,
+                                        pathToGameLevelPrefabFolder + levelName };
+            foreach (string path in paths)
+            {
+                PrefabUtility.SaveAsPrefabAsset(ToolReferencerObject.Instance.gameGrid.gameObject, path);
+            }
+        }
         CallDisplaySystemMessage("Level has been saved");
 
         PopupateLevelPrefabList();

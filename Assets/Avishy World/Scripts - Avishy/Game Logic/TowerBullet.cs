@@ -9,6 +9,7 @@ public class TowerBullet : MonoBehaviour
 
     [SerializeField] Transform currentTarget;
     [SerializeField] GameObject colldiedObject;
+    [SerializeField] GameObject chainLightningEffect; //temp here
 
     [SerializeField] float speed = 10;
     [SerializeField] private float damage = 1;
@@ -51,6 +52,8 @@ public class TowerBullet : MonoBehaviour
             enemyHit.RecieveDMG(damage);
         }
 
+        //this is temp here - will move to new bullet script. a bullet that will be shot on a different cooldown.
+        Instantiate(chainLightningEffect, currentTarget.transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 

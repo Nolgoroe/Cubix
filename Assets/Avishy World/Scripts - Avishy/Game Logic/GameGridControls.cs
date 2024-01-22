@@ -37,8 +37,8 @@ public class GameGridControls : MonoBehaviour
 
         if(currentDieDragging)
         {
-            Vector3 screenPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y,  Camera.main.transform.position.y);
-            Ray ray = Camera.main.ScreenPointToRay(screenPos);
+            Vector3 screenPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, GameManager.Instance.ReturnMainCamera().transform.position.y);
+            Ray ray = GameManager.Instance.ReturnMainCamera().ScreenPointToRay(screenPos);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, 1000, gridCellLayer))
@@ -48,7 +48,7 @@ public class GameGridControls : MonoBehaviour
             }
             else
             {
-                Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
+                Vector3 worldPos = GameManager.Instance.ReturnMainCamera().ScreenToWorldPoint(screenPos);
 
                 currentDieDragging.transform.position = worldPos;
 
@@ -58,7 +58,6 @@ public class GameGridControls : MonoBehaviour
 
     private void NormalControls()
     {
-
         if (currentDieDragging)
         {
             if (Input.GetMouseButtonUp(0))
@@ -117,7 +116,7 @@ public class GameGridControls : MonoBehaviour
 
         GameObject go = Instantiate(currentTowerPrefab, cellpos, Quaternion.identity);
 
-        Vector3 fixedPos = new Vector3(cellpos.x, currentTowerPrefab.transform.position.y, cellpos.z);
+        Vector3 fixedPos = new Vector3(cellpos.x, cellpos.y + currentTowerPrefab.transform.position.y, cellpos.z);
         go.transform.position = fixedPos;
 
         TowerBaseParent towerSpawned;
@@ -130,6 +129,8 @@ public class GameGridControls : MonoBehaviour
 
             //End die drag and return it's values to be able to be rolled
             currentDieDragging.OnPlaceEvent?.Invoke();
+            currentDieDragging.InitDie(towerSpawned);
+
             SetCurrentDieDragging(null);
 
             currentCellHovered.SetAsOccupied(towerSpawned);
@@ -148,7 +149,7 @@ public class GameGridControls : MonoBehaviour
         GridCell currentCell = currentCellHovered;
 
         currentCellHovered = null;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = GameManager.Instance.ReturnMainCamera().ScreenPointToRay(Input.mousePosition);
 
         positionOfMouse = Vector3.zero;
 
@@ -172,7 +173,6 @@ public class GameGridControls : MonoBehaviour
 
     public void SetCurrentDieDragging(Die dieToDrag)
     {       
-
         if (dieToDrag)
         {
             currentDieDragging = dieToDrag;

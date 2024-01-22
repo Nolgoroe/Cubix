@@ -83,6 +83,7 @@ public class TowerTroop : MonoBehaviour
 
         if (enemyHit)
         {
+            if(anim)
             anim.SetTrigger("Attack Now");
 
             enemyHit.RecieveDMG(damage);

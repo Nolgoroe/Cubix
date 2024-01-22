@@ -24,15 +24,16 @@ public class Die : MonoBehaviour
     [SerializeField] private DieElement element;
     [SerializeField] private DieType DieType;
     [SerializeField] private TowerBaseParent towerPrefabConnected;
+    [SerializeField] private TowerBaseParent currentTowerParent;
     [SerializeField] private float _reqStagnantTime = 1;
-    [SerializeField] private Transform lockRenderer;
+    [SerializeField] private Transform lockTransform;
     [SerializeField] private Outline outline;
     [SerializeField] private Color diceColor;
 
     private bool _isDragging;
     private bool _isInWorld;
     private float _stagnantTimer;
-    private DieFace _currentTopFace;
+    [SerializeField] private DieFace _currentTopFace;
     private Vector3 originalPos;
     //private Vector3 originalScale;
     private float timeTillStartDrag = 0.2f;
@@ -69,9 +70,9 @@ public class Die : MonoBehaviour
         diceCam = GameManager.Instance.ReturnDiceCamera();
     }
 
-    public void InitDiceInSlot(Transform lockTransform, DiceSO diceData)
+    public void InitDiceInSlot(Transform _lockTransform, DiceSO diceData)
     {
-        lockRenderer = lockTransform;
+        lockTransform = _lockTransform;
 
         towerPrefabConnected = diceData.towerPrefab;
         diceColor = diceData.dieMaterial.color;
@@ -119,14 +120,39 @@ public class Die : MonoBehaviour
         CheckState();
     }
 
+    private void OrientCubeToCamrea(Die die)
+    {
+        isRolling = false;
+        DieFaceValue faceValue = die.GetTopValue(); // _currentTopFace value is always set in this function. we call it to be safe that we don't use a null value 
+
+        if (!_isInWorld)
+        {
+            targetQuat = Quaternion.Euler(die.ReturnCurrentTopFace().ReturnOrientationOnEndRoll());
+        }
+        else
+        {
+            targetQuat = Quaternion.Euler(die.ReturnCurrentTopFace().ReturnOrientationOnEndRoll());
+
+            //Vector3 direction = (GameManager.Instance.ReturnMainCamera().transform.position - transform.position).normalized;
+            //targetQuat = Quaternion.FromToRotation(Vector3.forward, direction);
+        }
+
+        RB.isKinematic = true;
+    }
+
     private void TransformAfterRoll(Die die)
     {
-        LeanTween.rotate(gameObject, targetQuat.eulerAngles, 0.2f);// speed is temp here
+        LeanTween.rotate(gameObject, die.targetQuat.eulerAngles, 0.2f).setOnComplete(TowerRotate);// speed is temp here
 
-        if(die._isInWorld)
+        if (die._isInWorld)
         LeanTween.scale(gameObject, transform.localScale * 2, 0.2f);// speed is temp here
     }
 
+    private void TowerRotate()
+    {
+        if (currentTowerParent)
+            currentTowerParent.RotateTowardsCameraEndRoll();
+    }
     private void CheckState()
     {
         if (isRolling)
@@ -141,7 +167,7 @@ public class Die : MonoBehaviour
                     OnRollEndEvent?.Invoke(this);
                     _stagnantTimer = 0;
                     GetTopValue();
-                    Debug.Log("Roll ended");
+                    //Debug.Log("Roll ended");
                 }
             }
             else if(_stagnantTimer > 0)
@@ -155,12 +181,12 @@ public class Die : MonoBehaviour
     {
         RB.isKinematic = false;
 
-        Debug.Log("Roll started");
+        //Debug.Log("Roll started");
         isRolling = true;
     }
     private void SetMovingFalse()
     {
-        Debug.Log("Roll started");
+        //Debug.Log("Roll ended");
         isRolling = false;
     }
 
@@ -271,7 +297,6 @@ public class Die : MonoBehaviour
 
     private void SetValuesOnDragStart()
     {
-
         RB.isKinematic = true;
         transform.localScale = new Vector3(0.5f, 0.5f, 0.5f); // temp here
 
@@ -282,7 +307,8 @@ public class Die : MonoBehaviour
     }
     private void SetValuesOnDragEnd()
     {
-        RB.isKinematic = true;
+        //called if we stopped dragging and DIDN'T place a tower.
+        RB.isKinematic = false;
         transform.localScale = new Vector3(1, 1, 1); // temp here
 
         transform.localPosition = originalPos;
@@ -298,6 +324,10 @@ public class Die : MonoBehaviour
         ChangeLayerRecursive(transform, "Default");
     }
 
+    public void InitDie(TowerBaseParent tower)
+    {
+        currentTowerParent = tower;
+    }
     private void ChangeLayerRecursive(Transform trans, string nameOfLayer)
     {
 
@@ -324,32 +354,14 @@ public class Die : MonoBehaviour
     }
 
 
-    private void OrientCubeToCamrea(Die die)
-    {
-        isRolling = false;
-        RB.isKinematic = true;
-        DieFaceValue faceValue = die.GetTopValue(); // _currentTopFace value is always set in this function. we call it to be safe that we don't use a null value 
-
-        if(!_isInWorld)
-        {
-            targetQuat = Quaternion.Euler(die.ReturnCurrentTopFace().ReturnOrientationOnEndRoll());
-        }
-        else
-        {
-            Vector3 direction = Camera.main.transform.position - transform.position;
-            Vector3 combine = die.ReturnCurrentTopFace().ReturnOrientationOnEndRollWorld() - direction;
-            targetQuat = Quaternion.Euler(combine);
-        }
-    }
     public void LockDie(bool isLocking)
     {
         isLocked = isLocking ? true : false;
-        lockRenderer.gameObject.SetActive(isLocking ? true : false);
+        lockTransform.gameObject.SetActive(isLocking ? true : false);
     }
 
     public GameObject ReturnTowerPrefab()
     {
-
         return towerPrefabConnected.gameObject;
     }
 

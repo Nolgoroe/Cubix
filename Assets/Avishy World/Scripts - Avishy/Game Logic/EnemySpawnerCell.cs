@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-struct EnemyPathCells
+public struct EnemyPathCells
 {
     public List<GridCell> pathCells;
 }
@@ -20,7 +20,7 @@ public class EnemySpawnerCell : GridCell
         dangerIcon = transform.GetChild(0); // temp
     }
 
-    private void SpawnEnemy(GameObject enemyPrefab)
+    private void SpawnEnemy(GameObject enemyPrefab, int followPathIndex)
     {
         if (enemyPaths.Count == 0) return;
 
@@ -29,18 +29,10 @@ public class EnemySpawnerCell : GridCell
 
         go.TryGetComponent<EnemyParent>(out enemy);
 
+
         if(enemy)
         {
-            if(enemyPaths.Count > 1)
-            {
-                int randomNum = Random.Range(0, enemyPaths.Count);
-                enemy.InitEnemy(enemyPathcells[randomNum].pathCells);
-
-            }
-            else
-            {
-                enemy.InitEnemy(enemyPathcells[0].pathCells);
-            }
+            enemy.InitEnemy(enemyPathcells[followPathIndex].pathCells);
         }
     }
 
@@ -86,9 +78,9 @@ public class EnemySpawnerCell : GridCell
         }
     }
 
-    public void CallSpawnEnemy(GameObject enemyPrefab)
+    public void CallSpawnEnemy(GameObject enemyPrefab, int followPathIndex)
     {
-        SpawnEnemy(enemyPrefab);
+        SpawnEnemy(enemyPrefab, followPathIndex);
     }
 
     public void DisplayDangerIcon(bool display)
@@ -108,5 +100,10 @@ public class EnemySpawnerCell : GridCell
         enemyPaths = toolSpawnerCell.ReturnEnemyPaths();
 
         base.CopyDataFromToolCell(toolGridCell);
+    }
+
+    public List<EnemyPathCells> ReturnEnemyPathCellsList()
+    {
+        return enemyPathcells;
     }
 }

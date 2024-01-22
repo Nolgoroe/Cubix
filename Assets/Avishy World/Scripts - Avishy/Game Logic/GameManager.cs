@@ -13,8 +13,8 @@ public class GameManager : MonoBehaviour
     public int gameSpeedTemp = 1;// Temp
 
     [SerializeField] private List<EnemyParent> allEnemies;
-    [SerializeField] private Camera mainCamera; //temp
-    [SerializeField] private Camera diceCamera; //temp
+    [SerializeField] private Camera mainCamera;
+    [SerializeField] private Camera diceCamera;
 
     [SerializeField] List<TowerBaseParent> allTowersPrefabs;
     [SerializeField] List<RangeTowerParentScript> summonedRangeTowers;
@@ -108,6 +108,10 @@ public class GameManager : MonoBehaviour
         return summonedMeleeTowers;
     }
 
+    public Camera ReturnMainCamera()
+    {
+        return mainCamera;
+    }
     public Camera ReturnDiceCamera()
     {
         return diceCamera;

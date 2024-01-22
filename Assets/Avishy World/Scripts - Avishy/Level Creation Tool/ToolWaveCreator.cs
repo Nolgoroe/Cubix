@@ -153,17 +153,18 @@ public class ToolWaveCreator : MonoBehaviour
         waveCreatorUI.SetActive(isOn);
     }
 
+#if UNITY_EDITOR
 
     [ContextMenu("Save now!")]
     public void SaveWaveAsNew()
     {
 
         WaveSO wave = new WaveSO();
-        wave.waves = new List<WaveData>();
+        wave.Waves = new List<WaveData>();
 
         foreach (WaveData waveData in waveList)
         {
-            wave.waves.Add(waveData);
+            wave.Waves.Add(waveData);
         }
 
         string path = "Assets/Avishy World/Scriptable Objects - Avishy/Waves/newSO.asset";
@@ -186,7 +187,7 @@ public class ToolWaveCreator : MonoBehaviour
 
         ClearOnSave();
     }
-
+#endif
     private void ClearOnSave()
     {
         waveCountInputText.text = "0";

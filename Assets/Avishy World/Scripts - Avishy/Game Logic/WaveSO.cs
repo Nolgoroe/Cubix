@@ -22,5 +22,7 @@ public class EnemyWaveData
 [CreateAssetMenu(fileName = "Wave Creation", menuName = "ScriptableObjects/Waves")]
 public class WaveSO : ScriptableObject
 {
-    public List<WaveData> waves;
+    [SerializeField] private List<WaveData> waves;
+
+    public List<WaveData> Waves { get { return waves; } set { waves = value; } }
 }
