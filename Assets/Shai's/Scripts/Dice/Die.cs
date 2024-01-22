@@ -116,10 +116,10 @@ public class Die : MonoBehaviour
         switch (diceData.dieType)
         {
             case DieType.D6:
-                SetDiceValue(6, diceData);
+                SetDiceValueSpecific(6, diceData);
                 break;
             case DieType.D8:
-                SetDiceValue(8, diceData);
+                SetDiceValueSpecific(8, diceData);
                 break;
             default:
                 break;
@@ -129,7 +129,7 @@ public class Die : MonoBehaviour
 
     }
 
-    private void SetDiceValue(int amountOfFaces, DiceSO diceData)
+    private void SetDiceValueSpecific(int amountOfFaces, DiceSO diceData)
     {
         for (int i = 0; i < amountOfFaces; i++)
         {
@@ -142,7 +142,6 @@ public class Die : MonoBehaviour
             resourceData.Icon = DiceManager.Instance.ReturnIconByType(resourceData.Type);
 
             faces[i].SetResource(resourceData);
-            faces[i].DisplayResource();
 
 
             BuffData buffData = new BuffData();
@@ -150,6 +149,33 @@ public class Die : MonoBehaviour
             buffData.Value = diceData.buffDataList[i].Value;
             buffData.Icon = DiceManager.Instance.ReturnIconByType(buffData.Type);
             faces[i].SetBuff(buffData);
+
+            faces[i].DisplayResource();
+        }
+    }
+    private void SetDiceValueRandom(int amountOfFaces, DiceSO diceData)
+    {
+        for (int i = 0; i < amountOfFaces; i++)
+        {
+            faces[i].ChangeFaceMat(diceData.dieMaterial);
+
+            int randomResource = Random.Range(0, System.Enum.GetValues(typeof(ResourceType)).Length);
+            ResourceData resourceData = new ResourceData();
+            resourceData.Type = (ResourceType)randomResource;
+            resourceData.Value = Random.Range(1, 10); //temp
+            resourceData.Icon = DiceManager.Instance.ReturnIconByType(resourceData.Type);
+
+            faces[i].SetResource(resourceData);
+
+            int randomBuff = Random.Range(0, System.Enum.GetValues(typeof(BuffType)).Length);
+            BuffData buffData = new BuffData();
+            buffData.Type = (BuffType)randomBuff;
+            buffData.Value = Random.Range(1, 10); //temp
+            buffData.Icon = DiceManager.Instance.ReturnIconByType(buffData.Type);
+            faces[i].SetBuff(buffData);
+
+
+            faces[i].DisplayResource();
         }
     }
     private void LateUpdate()
