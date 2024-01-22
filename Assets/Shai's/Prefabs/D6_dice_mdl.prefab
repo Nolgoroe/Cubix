@@ -1331,6 +1331,7 @@ MonoBehaviour:
   DieType: 0
   towerPrefabConnected: {fileID: 7779022226387808478, guid: 7cb2a2d3c330104478cf0c451e0c362b,
     type: 3}
+  currentTowerParent: {fileID: 0}
   _reqStagnantTime: 0.5
   lockTransform: {fileID: 0}
   outline: {fileID: 9168484862997919747}

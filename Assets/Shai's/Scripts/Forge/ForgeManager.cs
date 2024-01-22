@@ -1,52 +1,97 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ForgeManager : MonoBehaviour
 {
-    [SerializeField] private List<ForgeDieData> dies;
+
+    //tmp text for representation
+    [SerializeField] private TMP_Text cubeNameTxt;
+    [SerializeField] private TMP_Text faceNumTxt;
+    [SerializeField] private TMP_Text resourceTypeTxt;
+    [SerializeField] private TMP_Text buffTypeTxt;
+    [SerializeField] private TMP_Text resourceValueTxt;
+    [SerializeField] private TMP_Text buffValueTxt;
+
+    [SerializeField] private List<ForgeDieData> dice;
     private int currentDieIndex;
 
+
+
+    public void Init(List<Die> _dice)
+    {
+        AssignDice(_dice);
+
+    }
+
+    public void AssignDice(List<Die> _dice)
+    {
+        dice.Clear();
+
+        //assign new
+        foreach (var die in _dice)
+        {
+            dice.Add(new ForgeDieData(die));
+        }
+    }
 
     public void SetDieIndex(int newIndex)
     {
         currentDieIndex = newIndex;
+        UpdateCurrentDieView();
+    }
+
+    public void ChangeDieIndexByStep(int step)
+    {
+        currentDieIndex += step;
+        UpdateCurrentDieView();
     }
 
     public void ChangeDieFaceIndexByStep(int step)
     {
-        dies[currentDieIndex].currentFaceindex += step;
+        dice[currentDieIndex].currentFaceindex += step;
     }
 
     private void UpdateCurrentDieView()
     {
-        
+        ForgeDieData currentforgeDie = dice[currentDieIndex];
+
+        cubeNameTxt.text = "Die: " + currentforgeDie.die.name;
+        faceNumTxt.text = currentforgeDie.currentFaceindex.ToString();
+        resourceTypeTxt.text = currentforgeDie.GetCurrentFace().GetFaceValue().Resource.Type.ToString();
+        buffTypeTxt.text = currentforgeDie.GetCurrentFace().GetFaceValue().Buff.Type.ToString();
+        resourceValueTxt.text = currentforgeDie.GetCurrentFace().GetFaceValue().Resource.Value.ToString();
+        buffValueTxt.text = currentforgeDie.GetCurrentFace().GetFaceValue().Buff.Value.ToString();
+
+
+
     }
 
     public void ChangeCurrentFacePair(ResourceData resource, BuffData buff)
     {
-        dies[currentDieIndex].GetCurrentFace().SetResource(resource);
-        dies[currentDieIndex].GetCurrentFace().SetBuff(buff);
+        dice[currentDieIndex].GetCurrentFace().SetResource(resource);
+        dice[currentDieIndex].GetCurrentFace().SetBuff(buff);
     }
     
     public void ChangeCurrentFaceResource(ResourceData resource)
     {
-        dies[currentDieIndex].GetCurrentFace().SetResource(resource);
+        dice[currentDieIndex].GetCurrentFace().SetResource(resource);
 
     }
 
     public void ChangeCurrentFaceBuff(BuffData buff)
     {
-        dies[currentDieIndex].GetCurrentFace().SetBuff(buff);
+        dice[currentDieIndex].GetCurrentFace().SetBuff(buff);
 
     }
 
     public void UpgradeCurrentDieFace()
     {
-        //idea: we should add each tower damage\resource a modidier that will increase/descrease its
-        //damage\amount by a percantage and this method will only increase it 
+        
     }
 
+    //increase number of faces
     public void UpgradeCurrentDie()
     {
 
@@ -56,10 +101,17 @@ public class ForgeManager : MonoBehaviour
     
 }
 
+[System.Serializable]
 public class ForgeDieData
 {
     public Die die;
     public int currentFaceindex;
+
+    public ForgeDieData(Die _die)
+    {
+        die = _die;
+        currentFaceindex = 0;
+    }
 
     public DieFace GetCurrentFace()
     {
