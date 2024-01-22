@@ -29,9 +29,10 @@ public class ToolGameGrid : MonoBehaviour
     [Header("Waypoints")]
     [SerializeField] private Transform waypointsParent;
 
-    [Header("Buildings")]
+    [Header("Parents")]
     [SerializeField] private Transform buildingParent;
-    [SerializeField] private List<PlacedObject> placedObjectList;
+    [SerializeField] private Transform gamePartsParent;
+    [SerializeField] private Transform enemyPathParent;
 
     [Header("Enemies")]
     [SerializeField] private List<ToolEnemySpawnerCell> enemySpawners;
@@ -39,6 +40,7 @@ public class ToolGameGrid : MonoBehaviour
 
     private GameObject [,] toolGridGameObjectsArray;
     private ToolGridCell [,] toolGridCellsArray;
+    private List<PlacedObject> placedObjectList;
 
 
     private void OnValidate()
@@ -88,6 +90,11 @@ public class ToolGameGrid : MonoBehaviour
         Camera.main.transform.rotation = Quaternion.Euler(45, 0, 0);
 
         refreshMaterials = true;
+    }
+
+    private void Start()
+    {
+        placedObjectList = new List<PlacedObject>();
     }
 
     public void InitNewGrid()
@@ -388,6 +395,8 @@ public class ToolGameGrid : MonoBehaviour
                     enemyPathCell.CopyDataFromToolCell(toolGridCell);
 
                     gridManager.AddCellToGridCellList(enemyPathCell);
+
+                    enemyPathCell.transform.SetParent(enemyPathParent);
                     break;
                 case TypeOfCell.enemySpawner:
                     ToolEnemySpawnerCell toolSpawnerCell = toolGridCell.GetComponent<ToolEnemySpawnerCell>();
@@ -399,6 +408,8 @@ public class ToolGameGrid : MonoBehaviour
                     spawnerCell.CopyDataFromToolCell(toolGridCell);
 
                     gridManager.AddCellToGridCellList(spawnerCell);
+
+                    spawnerCell.transform.SetParent(gamePartsParent);
                     break;
                 case TypeOfCell.Obstacle:
                     GridCell obstacleGridCell = new GridCell();
@@ -407,6 +418,7 @@ public class ToolGameGrid : MonoBehaviour
 
                     gridManager.AddCellToGridCellList(obstacleGridCell);
 
+                    obstacleGridCell.transform.SetParent(gamePartsParent);
                     break;
                 case TypeOfCell.PlayerBase:
                     //This is where we add player home base logic
@@ -415,6 +427,7 @@ public class ToolGameGrid : MonoBehaviour
                     playerBaseCell.CopyDataFromToolCell(toolGridCell);
 
                     gridManager.AddCellToGridCellList(playerBaseCell);
+                    playerBaseCell.transform.SetParent(gamePartsParent);
 
                     break;
                 case TypeOfCell.None:
@@ -433,20 +446,23 @@ public class ToolGameGrid : MonoBehaviour
             DestroyImmediate(toolGridCell, true);
         }
 
-        foreach (PlacedObject placedObject in placedObjectList)
+        if (placedObjectList != null)
         {
-             if (placedObject == null) continue;
-
-            //clear all scripts and colliders from each building.
-
-            //remove all colliders from object and it's childern.
-            Collider[] colList = placedObject.transform.GetComponentsInChildren<Collider>();
-            foreach (Collider collider in colList)
+            foreach (PlacedObject placedObject in placedObjectList)
             {
-                DestroyImmediate(collider);
-            }
+                if (placedObject == null) continue;
 
-            DestroyImmediate(placedObject);
+                //clear all scripts and colliders from each building.
+
+                //remove all colliders from object and it's childern.
+                Collider[] colList = placedObject.transform.GetComponentsInChildren<Collider>();
+                foreach (Collider collider in colList)
+                {
+                    DestroyImmediate(collider);
+                }
+
+                DestroyImmediate(placedObject);
+            }
         }
 
         EditorUtility.SetDirty(gridManager.gameObject);
