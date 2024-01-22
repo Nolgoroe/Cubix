@@ -3,6 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PlayerStats
+{
+    maxHP,
+    CurrentHP
+}
+
 public class Player : MonoBehaviour
 {
     public static Player Instance;
@@ -11,10 +17,20 @@ public class Player : MonoBehaviour
     [SerializeField] private int iron;
     [SerializeField] private int energy;
     [SerializeField] private int lightning;
+    [SerializeField] int playerHealth;
+    [SerializeField] int currentPlayerHealth;
 
     private void Awake()
     {
         Instance = this;
+    }
+
+    private void Start()
+    {
+        playerHealth = 1000; //temp
+        currentPlayerHealth = playerHealth;
+
+        UIManager.Instance.UpdatePlayerHealth(currentPlayerHealth, playerHealth);
     }
 
     public void ConnectPlayerAndDice()
@@ -78,4 +94,25 @@ public class Player : MonoBehaviour
         UIManager.Instance.UpdateResources(iron, energy, lightning);
     }
 
+
+    public void RecieveDMG(float amount)
+    {
+        currentPlayerHealth -= 1;
+
+        if (currentPlayerHealth <= 0)
+        {
+            currentPlayerHealth = 0;
+        }
+
+        UIManager.Instance.UpdatePlayerHealth(currentPlayerHealth, playerHealth);
+
+        if (currentPlayerHealth <= 0)
+        {
+            Debug.Log("You have lost!");
+
+            UIManager.Instance.DisplayEndGameScreen(false);
+            GameManager.isDead = true;
+            return;
+        }
+    }
 }
