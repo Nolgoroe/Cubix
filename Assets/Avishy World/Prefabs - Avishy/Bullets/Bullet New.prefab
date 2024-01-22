@@ -29382,6 +29382,13 @@ MonoBehaviour:
   useOnlyRotationOffset: 1
   UseFirePointRotation: 0
   DestoyMainEffect: 1
+  parts:
+  - {fileID: 1004941427649482221}
+  - {fileID: 799905194309524388}
+  - {fileID: 3102030470980736642}
+  - {fileID: 2902594375173146748}
+  - {fileID: 9166598657615548652}
+  - {fileID: 2208107184573765848}
 --- !u!114 &3057511303850532991
 MonoBehaviour:
   m_ObjectHideFlags: 0
