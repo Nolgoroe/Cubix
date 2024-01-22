@@ -71,8 +71,6 @@ public class RangeTowerParentScript : TowerBaseParent
 
     private void Shoot()
     {
-        Debug.Log("Shoot");
-
         GameObject go = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         
         TowerBullet bullet;

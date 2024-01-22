@@ -29426,5 +29426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentTarget: {fileID: 0}
   colldiedObject: {fileID: 0}
+  chainLightningEffect: {fileID: 8551618965700826368, guid: 3cea48a209eec4d4992b2e3b239d38d5,
+    type: 3}
   speed: 15
-  damage: 3
+  damage: 0
