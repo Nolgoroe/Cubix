@@ -71,6 +71,12 @@ public class DieFace : MonoBehaviour
         }
     }
 
+    public void UpgradeFace(int resourceToAdd, float damage)
+    {
+        resource.Value += resourceToAdd;
+        buff.Value += damage;
+    }
+
     public void DisplayResource()
     {
         faceIcon.sprite = resource.Icon;

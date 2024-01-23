@@ -5,8 +5,7 @@ using TMPro;
 
 public class ForgeManager : MonoBehaviour
 {
-
-    //tmp text for representation
+    [Header("Text Display")]
     [SerializeField] private TMP_Text cubeNameTxt;
     [SerializeField] private TMP_Text faceNumTxt;
     [SerializeField] private TMP_Text resourceTypeTxt;
@@ -14,15 +13,21 @@ public class ForgeManager : MonoBehaviour
     [SerializeField] private TMP_Text resourceValueTxt;
     [SerializeField] private TMP_Text buffValueTxt;
 
+    [Header("DieDisplay")]
+    [SerializeField] private DisplayDicePair d6Die;
+    [SerializeField] private DisplayDicePair d8Die;
+
+    private DisplayDicePair currentDisplayDice;
+
     [SerializeField] private List<ForgeDieData> dice;
     private int currentDieIndex;
-
-
+    private ResourceData _currentEditResource;
+    private BuffData _currentEditBuff;
 
     public void Init(List<Die> _dice)
     {
         AssignDice(_dice);
-
+        UpdateCurrentDieView();
     }
 
     public void AssignDice(List<Die> _dice)
@@ -45,51 +50,82 @@ public class ForgeManager : MonoBehaviour
     public void ChangeDieIndexByStep(int step)
     {
         currentDieIndex += step;
+        currentDieIndex = Mathf.Clamp(currentDieIndex, 0, dice.Count - 1);
         UpdateCurrentDieView();
     }
 
     public void ChangeDieFaceIndexByStep(int step)
     {
-        dice[currentDieIndex].currentFaceindex += step;
+        ForgeDieData currentforgeDie = dice[currentDieIndex];
+
+        currentforgeDie.currentFaceindex += step;
+        currentforgeDie.currentFaceindex = Mathf.Clamp(currentforgeDie.currentFaceindex, 0, currentforgeDie.die.GetAllFaces().Length - 1);
+        UpdateCurrentDieView();
     }
 
     private void UpdateCurrentDieView()
     {
-        ForgeDieData currentforgeDie = dice[currentDieIndex];
+        ForgeDieData currentDie = dice[currentDieIndex];
+        //temp text diplay, change it to actual die display later
+        cubeNameTxt.text = "Die: " + currentDie.die.name;
+        faceNumTxt.text = (currentDie.currentFaceindex + 1).ToString();
+        resourceTypeTxt.text = currentDie.GetCurrentFace().GetFaceValue().Resource.Type.ToString();
+        buffTypeTxt.text = currentDie.GetCurrentFace().GetFaceValue().Buff.Type.ToString();
+        resourceValueTxt.text = currentDie.GetCurrentFace().GetFaceValue().Resource.Value.ToString();
+        buffValueTxt.text = currentDie.GetCurrentFace().GetFaceValue().Buff.Value.ToString();
 
-        cubeNameTxt.text = "Die: " + currentforgeDie.die.name;
-        faceNumTxt.text = currentforgeDie.currentFaceindex.ToString();
-        resourceTypeTxt.text = currentforgeDie.GetCurrentFace().GetFaceValue().Resource.Type.ToString();
-        buffTypeTxt.text = currentforgeDie.GetCurrentFace().GetFaceValue().Buff.Type.ToString();
-        resourceValueTxt.text = currentforgeDie.GetCurrentFace().GetFaceValue().Resource.Value.ToString();
-        buffValueTxt.text = currentforgeDie.GetCurrentFace().GetFaceValue().Buff.Value.ToString();
-
-
-
+        //update display buff die
+        //currentDisplayDice.buffDie.UpdateDisplay(
+        //    currentDie.GetCurrentFace().
+        //    currentDie.GetCurrentFace().GetFaceValue().Buff.Type.ToString(),
+        //    currentDie.GetCurrentFace().GetFaceValue().Buff.Icon);
     }
 
-    public void ChangeCurrentFacePair(ResourceData resource, BuffData buff)
+    public void ChangeCurrentFacePair()
     {
-        dice[currentDieIndex].GetCurrentFace().SetResource(resource);
-        dice[currentDieIndex].GetCurrentFace().SetBuff(buff);
+        dice[currentDieIndex].GetCurrentFace().SetResource(_currentEditResource);
+        dice[currentDieIndex].GetCurrentFace().SetBuff(_currentEditBuff);
+
+        UpdateCurrentDieView();
     }
     
-    public void ChangeCurrentFaceResource(ResourceData resource)
+    public void ChangeCurrentFaceResource()
     {
-        dice[currentDieIndex].GetCurrentFace().SetResource(resource);
-
+        dice[currentDieIndex].GetCurrentFace().SetResource(_currentEditResource);
+        UpdateCurrentDieView();
+        dice[currentDieIndex].die.DisplayResources();
     }
 
-    public void ChangeCurrentFaceBuff(BuffData buff)
+    public void ChangeCurrentFaceBuff()
     {
-        dice[currentDieIndex].GetCurrentFace().SetBuff(buff);
+        dice[currentDieIndex].GetCurrentFace().SetBuff(_currentEditBuff);
+        UpdateCurrentDieView();
+        dice[currentDieIndex].die.DisplayBuffs();
 
     }
 
     public void UpgradeCurrentDieFace()
     {
-        
+        dice[currentDieIndex].GetCurrentFace().UpgradeFace(2, 2);
+        UpdateCurrentDieView();
+
     }
+    public void SetForgeCurrentEditFacePair(DieFaceValue faceValue)
+    {
+        _currentEditResource = faceValue.Resource;
+        _currentEditBuff = faceValue.Buff;
+    }
+
+    public void SetForgeCurrentEditResource(ResourceData resource)
+    {
+        _currentEditResource = resource;
+    }
+
+    public void SetForgeCurrentEditBuff(BuffData buff)
+    {
+        _currentEditBuff = buff;
+    }
+
 
     //increase number of faces
     public void UpgradeCurrentDie()
@@ -97,8 +133,6 @@ public class ForgeManager : MonoBehaviour
 
     }
 
-
-    
 }
 
 [System.Serializable]
@@ -117,4 +151,11 @@ public class ForgeDieData
     {
         return die.GetAllFaces()[currentFaceindex];
     }
+}
+
+[System.Serializable]
+public struct DisplayDicePair
+{
+    public ForgeDisplayDie buffDie;
+    public ForgeDisplayDie resourceDie;
 }
