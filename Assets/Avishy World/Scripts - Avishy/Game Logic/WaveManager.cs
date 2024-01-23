@@ -309,12 +309,6 @@ public class WaveManager : MonoBehaviour
             Player.Instance.AddResourcesFromDice(die);
         }
 
-
-
-
-
-
-
         currentIndexInWave++;
 
         //this is reached when we try to start a wave but finished them all, meaning we won
@@ -325,6 +319,8 @@ public class WaveManager : MonoBehaviour
             UIManager.Instance.DisplayEndGameScreen(true);
             return;
         }
+
+        SoundManager.Instance.CallActivateSoundTimed(Sounds.WaveStart);
 
         BeforeWaveStart();
 

@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
 
         playerTurn = true;
 
+        SoundManager.Instance.CallActivateSoundTimed(Sounds.GameStart);
     }
 
     private void Update()
