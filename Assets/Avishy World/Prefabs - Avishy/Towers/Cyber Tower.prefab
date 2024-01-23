@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCellOnPos: {x: 0, y: 0}
-  requiredCellColorType: 2
+  requiredCellColorType: 0
   towerRequiredColor: {r: 0.14509805, g: 0.8039216, b: 0.9529412, a: 1}
   towerDie: {fileID: 0}
   rangeIndicator: {fileID: 0}
@@ -191,6 +191,7 @@ MonoBehaviour:
   currentTowerBuffs: []
   onSpawnParticle: {fileID: 2126513307738344185, guid: 9acd4cff9a73e654095fbac641add6bd,
     type: 3}
+  requiresPathCells: 1
   connectedPathCells: []
   troopPrefab: {fileID: 8425342904263200654, guid: 880e3787047504344a32a7cd14e6eb16,
     type: 3}

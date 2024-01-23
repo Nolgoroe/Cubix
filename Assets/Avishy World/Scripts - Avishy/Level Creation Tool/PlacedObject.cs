@@ -8,6 +8,19 @@ public class PlacedObject : MonoBehaviour
     [SerializeField] Vector2Int originPoint;
     private Dir dir;
 
+
+    private void OnMouseOver()
+    {
+        if (buildingSO.snapToGrid) return; //here we also need to take care of grid elements, not just spawned meshes.
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            DestroySelf();
+        }
+    }
+
+
+
     public static PlacedObject Create(Vector3 worldPos, Vector2Int origin, Dir dir, BuildingsSO buildingSO, Transform parent)
     {
         //This gives us the rotation of the object by it's direction. we only rotate around the Y axis.
@@ -47,13 +60,4 @@ public class PlacedObject : MonoBehaviour
         Destroy(gameObject, 0.5f);
     }
 
-    private void OnMouseOver()
-    {
-        if (buildingSO.snapToGrid) return; //here we also need to take care of grid elements, not just spawned meshes.
-
-        if(Input.GetMouseButtonDown(1))
-        {
-            DestroySelf();
-        }
-    }
 }

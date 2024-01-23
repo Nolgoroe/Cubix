@@ -10,21 +10,32 @@ public class MeleeTowerParentScript : TowerBaseParent
     [SerializeField] List<GridCell> connectedPathCells;
 
     [Header("Troop Spawn Data")]
-    [SerializeField] protected GameObject troopPrefab;
-    [SerializeField] int maxNumOfTroops;
     [SerializeField] protected float spawnRate = 1;
+    [SerializeField] protected float currentSpawnCooldown = 0;
+    [SerializeField] int maxNumOfTroops;
+    [SerializeField] int currentNumOfTroops;
+    [SerializeField] List<TowerTroop> currentTowerTroops;
+
+    [Header("Troop Combat Data")]
     [SerializeField] protected float troopDMG = 1;
     [SerializeField] protected float troopHP = 1;
     [SerializeField] protected float troopRange = 1;
-    [SerializeField] protected float currentSpawnCooldown = 0;
-    [SerializeField] int currentNumOfTroops;
-    [SerializeField] List<TowerTroop> currentTowerTroops;
+
+    [Header("Preset Refs")]
+    [SerializeField] protected GameObject troopPrefab;
 
 
     private float originalSpawnRate;
     private float originalTroopHP;
     private float originalTroopRange;
     private float originalTroopDMG;
+
+    private void OnEnable()
+    {
+        currentNumOfTroops = 0;
+        currentTowerTroops.Clear();
+        connectedPathCells.Clear();
+    }
 
     protected override void Start()
     {
@@ -94,7 +105,7 @@ public class MeleeTowerParentScript : TowerBaseParent
             if (currentSpawnCooldown <= 0)
             {
                 SpawnTroop();
-                currentSpawnCooldown = (1 / spawnRate) / GameManager.gameSpeed;
+                currentSpawnCooldown = (1 * spawnRate) / GameManager.gameSpeed;
             }
 
             currentSpawnCooldown -= Time.deltaTime;
@@ -143,7 +154,7 @@ public class MeleeTowerParentScript : TowerBaseParent
     {
         currentCellOnPos = positionOfCell;
 
-        currentSpawnCooldown = (1 / spawnRate) / GameManager.gameSpeed;
+        currentSpawnCooldown = (1 * spawnRate) / GameManager.gameSpeed;
 
         //check left, right up and down for path cells
         Vector2Int checkDown = new Vector2Int(currentCellOnPos.x, currentCellOnPos.y - 1);
@@ -169,19 +180,11 @@ public class MeleeTowerParentScript : TowerBaseParent
 
         towerDie = connectedDie;
         towerDie.transform.SetParent(resultDiceHolder);
-
-        //SpawnBuffCubeOnCreation();
     }
 
     public void LoseTroop(TowerTroop lostTroop)
     {
         currentNumOfTroops--;
-
-        //if(currentNumOfTroops < 0)
-        //{
-        //    currentNumOfTroops = 0;
-        //}
-
     }
 
     public void CleanTroopsAtWaveStart()
@@ -193,6 +196,16 @@ public class MeleeTowerParentScript : TowerBaseParent
                 currentTowerTroops.RemoveAt(i);
             }
 
+        }
+    }
+    public override void CleanTroopsCompletely()
+    {
+        for (int i = currentTowerTroops.Count - 1; i >= 0; i--)
+        {
+            if(currentTowerTroops[i] != null)
+            Destroy(currentTowerTroops[i].gameObject);
+
+            currentTowerTroops.RemoveAt(i);
         }
     }
     public override void RecieveBuffAfterRoll(Die die)

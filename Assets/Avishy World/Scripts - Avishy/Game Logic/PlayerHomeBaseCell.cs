@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerHomeBaseCell : GridCell
 {
-    [SerializeField] int playerHealth;
-    [SerializeField] int currentPlayerHealth;
     [SerializeField] Transform dangerIcon;
     [SerializeField] LayerMask enemyLayerMask;
     [SerializeField] float detectionRange;
@@ -13,16 +11,12 @@ public class PlayerHomeBaseCell : GridCell
     protected override void Start() //temp
     {
         base.Start();
-        playerHealth = 1000;
-        currentPlayerHealth = playerHealth;
 
         dangerIcon = transform.GetChild(0); // temp
         enemyLayerMask |= (1 << LayerMask.NameToLayer("Flying Enemy")); // temp
         enemyLayerMask |= (1 << LayerMask.NameToLayer("Enemy")); // temp
         detectionRange = 5; // temp
 
-        if(UIManager.Instance) // we check this so we don't get annoying error in tool creator when we place tower bases
-        UIManager.Instance.UpdatePlayerHealth(currentPlayerHealth, playerHealth);
     }
 
     private void Update()
@@ -45,20 +39,6 @@ public class PlayerHomeBaseCell : GridCell
         return false;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -67,26 +47,13 @@ public class PlayerHomeBaseCell : GridCell
 
 
 
+
+
+
+
     public void RecieveDamage(EnemyParent enemy)
     {
-        currentPlayerHealth -= 1;
-
-        if (currentPlayerHealth <= 0)
-        {
-            currentPlayerHealth = 0;
-        }
-
-        UIManager.Instance.UpdatePlayerHealth(currentPlayerHealth, playerHealth);
-
-        if (currentPlayerHealth <= 0)
-        {
-            Debug.Log("You have lost!");
-
-            UIManager.Instance.DisplayEndGameScreen(false);
-            GameManager.isDead = true;
-            return;
-        }
-
+        Player.Instance.RecieveDMG(1);
     }
 
     public override void CopyDataFromToolCell(ToolGridCell toolGridCell)

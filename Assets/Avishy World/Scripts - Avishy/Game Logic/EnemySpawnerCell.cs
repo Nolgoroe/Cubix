@@ -15,9 +15,13 @@ public class EnemySpawnerCell : GridCell
     [SerializeField] private List<EnemyPathCells> enemyPathcells;
     [SerializeField] Transform dangerIcon;
 
-    protected override void Start()
+    private void Awake()
     {
         dangerIcon = transform.GetChild(0); // temp
+    }
+    protected override void Start()
+    {
+        // nothing on start but still overriding.
     }
 
     private void SpawnEnemy(GameObject enemyPrefab, int followPathIndex)
@@ -35,22 +39,6 @@ public class EnemySpawnerCell : GridCell
             enemy.InitEnemy(enemyPathcells[followPathIndex].pathCells);
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

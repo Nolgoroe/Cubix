@@ -27,7 +27,6 @@ public class LevelCreationToolControls : MonoBehaviour
     [Header("Needed References")]
     [SerializeField] private GameObject toolGameGridPrefab;
     [SerializeField] private BuildingGhost buildingGhost;
-    [SerializeField] private GameObject towerSpawnPrefab;
 
     [Header("Cell Detection")]
     [SerializeField] private GameObject cellIndicator;
@@ -100,13 +99,6 @@ public class LevelCreationToolControls : MonoBehaviour
         //Detect cells i'm hovering above
         MouseOverGridCell();
 
-        if (isInDefiningCellTypes)
-        {
-            DefiningCellTypeControls();
-
-            return;
-        }
-
         //Switch controls by modes
         if (currentCellHovered)
         {
@@ -121,6 +113,10 @@ public class LevelCreationToolControls : MonoBehaviour
             else if(isInBuildMode)
             {
                 BuildModeControls();
+            }
+            else if (isInDefiningCellTypes)
+            {
+                DefiningCellTypeControls();
             }
             else
             {
@@ -149,7 +145,6 @@ public class LevelCreationToolControls : MonoBehaviour
             currentCellHovered.ChangeCellColor(ToolReferencerObject.Instance.levelCreationToolSO.ConvertTypeToColor(TypeOfCell.None));
         }
     }
-
     private void BuildModeControls()
     {
         if (Input.GetMouseButtonDown(0))
@@ -260,40 +255,17 @@ public class LevelCreationToolControls : MonoBehaviour
             StartCoroutine(currentSpawnerSelected.RemoveFromEnemyPath(currentCellHovered));
         }
     }
-
     private void DefiningCellTypeControls()
     {
-        if (!ToolReferencerObject.Instance.gameGrid) return;
-
-        GridCell cell;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        positionOfMouse = Vector3.zero;
-
         if (Input.GetMouseButtonDown(0))
         {
-            if (Physics.Raycast(ray, out RaycastHit hitInfo, Mathf.Infinity, gridCellLayer))
-            {
-                GameObject go = Instantiate(towerSpawnPrefab, hitInfo.point + towerSpawnPrefab.transform.position, towerSpawnPrefab.transform.rotation);
-                
-                go.transform.SetParent(ToolReferencerObject.Instance.gameGrid.transform);
-                go.TryGetComponent<GridCell>(out cell);
-                if(cell)
-                {
-                    cell.ChangeCellTypeColor(currentCellColorTypeSelected);
-                }       
-            }
+            currentCellHovered.ChangeCellTypeColor(currentCellColorTypeSelected);
         }
 
         if (Input.GetMouseButtonDown(1))
         {
-            if (Physics.Raycast(ray, out RaycastHit hitInfo, Mathf.Infinity, gridCellLayer))
-            {
-                hitInfo.transform.gameObject.TryGetComponent<GridCell>(out cell);
-                if (cell)
-                {
-                    Destroy(cell.gameObject);
-                }
-            }
+            currentCellHovered.ChangeCellTypeColor(CellTypeColor.None);
+
         }
     }
     private void MiddileClickOnCell(ToolGridCell cell)
@@ -334,7 +306,6 @@ public class LevelCreationToolControls : MonoBehaviour
 
         ToolReferencerObject.Instance.toolUI.SetDropdownToValue((int)currentTypeOfCellSelected);
     }
-
     private ToolGridCell MouseOverGridCell()
     {
         currentCellHovered = null;
@@ -349,6 +320,10 @@ public class LevelCreationToolControls : MonoBehaviour
 
         return currentCellHovered;
     }
+
+
+
+
     public Vector3 MouseOverWorldNormal()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -361,7 +336,6 @@ public class LevelCreationToolControls : MonoBehaviour
 
         return Vector3.zero;
     }
-
     public void CallGenerateLevel()
     {
         ToolReferencerObject.Instance.toolGameGrid.GenerateTheLevel();
@@ -393,7 +367,6 @@ public class LevelCreationToolControls : MonoBehaviour
         }
         ToolReferencerObject.Instance.toolUI.SetDropdownToValue((int)currentTypeOfCellSelected);
     }
-
     public void SetCurrentCellTypeColor(CellTypeColor cellColor)
     {
         currentCellColorTypeSelected = cellColor;
@@ -403,7 +376,6 @@ public class LevelCreationToolControls : MonoBehaviour
         isDrawingWaypoints = false;
         isInDefiningCellTypes = false;
     }
-
     public void CallSavePathCreated()
     {
         if (currentSpawnerSelected)
@@ -432,7 +404,6 @@ public class LevelCreationToolControls : MonoBehaviour
         SetCurrentTypeOfCellSelected(TypeOfCell.None);
         ToolReferencerObject.Instance.toolUI.ToggleBuildModeToggle(isInBuildMode);
     }
-
     public ToolGridCell ReturnCurrentCellHovered()
     {
         return currentCellHovered;

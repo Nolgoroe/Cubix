@@ -17,29 +17,49 @@ public class Die : MonoBehaviour
     public UnityEvent OnPlaceEvent;
     public UnityEvent OnDestroyDieEvent;
 
-    public bool isLocked;
-    [SerializeField] private Camera diceCam;
-    [SerializeField] private Rigidbody _rb;
-    [SerializeField] private List<DieFace> faces;
-    [SerializeField] private DieElement element;
+
+    [Header("Dice Data")]
     [SerializeField] private DieType DieType;
+    [SerializeField] private DieElement element;
+    [SerializeField] private Color diceColor;
+    [SerializeField] private bool isLocked;
+
+    [Header("Dice Transform Data")]
+    [SerializeField] private Vector3 scaleOnDrag = new Vector3(0.5f, 0.5f, 0.5f);
+    [SerializeField] private Vector3 scaleInPlayerBase = Vector3.one;
+
+    [Header("Faces")]
+    [SerializeField] private List<DieFace> faces;
+    [SerializeField] private DieFace _currentTopFace;
+
+    [Header("Tower Connected")]
     [SerializeField] private TowerBaseParent towerPrefabConnected;
     [SerializeField] private TowerBaseParent currentTowerParent;
+
+    [Header("Roll Data")]
     [SerializeField] private float _reqStagnantTime = 1;
+
+    [Header("References")]
+    [SerializeField] private Camera diceCam;
+    [SerializeField] private Rigidbody _rb;
     [SerializeField] private Transform lockTransform;
     [SerializeField] private Outline outline;
-    [SerializeField] private Color diceColor;
+    [SerializeField] private Transform rangeIndicator;
+    [SerializeField] private Transform originalParent;
+
 
     private bool _isDragging;
     private bool _isInWorld;
-    private float _stagnantTimer;
-    [SerializeField] private DieFace _currentTopFace;
-    private Vector3 originalPos;
-    //private Vector3 originalScale;
+    private bool isRolling;
+
     private float timeTillStartDrag = 0.2f;
     private float currentTimeTillStartDrag = 0;
+    private float _stagnantTimer;
+
+    private Vector3 originalPos;
     private Quaternion targetQuat;
-    bool isRolling;
+
+    private DieRoller roller;
 
     public bool IsRolling { get { return isRolling; } }
     public Rigidbody RB { get { return _rb; } }
@@ -68,31 +88,43 @@ public class Die : MonoBehaviour
         //originalScale = transform.localScale;
 
         diceCam = GameManager.Instance.ReturnDiceCamera();
-    }
 
-    public void InitDiceInSlot(Transform _lockTransform, DiceSO diceData)
+        SetRangeIndicator();
+
+        roller = GetComponent<DieRoller>();
+    }
+    private void LateUpdate()
     {
-        lockTransform = _lockTransform;
-
-        towerPrefabConnected = diceData.towerPrefab;
-        diceColor = diceData.dieMaterial.color;
-
-
-        switch (diceData.dieType)
-        {
-            case DieType.D6:
-                SetDiceValue(6, diceData);
-                break;
-            case DieType.D8:
-                SetDiceValue(8, diceData);
-                break;
-            default:
-                break;
-        }
-
+        CheckState();
     }
 
-    private void SetDiceValue(int amountOfFaces, DiceSO diceData)
+    private void SetRangeIndicator()
+    {
+        //radius is half of the diameter of a circle
+        if (rangeIndicator)
+        {
+            float range = 0;
+            Vector3 originalScale = Vector3.one;
+
+            switch (towerPrefabConnected)
+            {
+                case RangeTowerParentScript rangeTower:
+                    range = rangeTower.ReturnRangeTower();
+
+                    originalScale = scaleOnDrag;
+                    //originalScale = rangeTower.ReturnOriginalTowerScale();
+                        break;
+                default:
+                    break;
+            }
+
+
+            rangeIndicator.localScale = new Vector3(range * 2 / originalScale.x, range * 2 / originalScale.y, range * 2 / originalScale.z);
+            rangeIndicator.gameObject.SetActive(false);
+        }
+    }
+
+    private void SetDiceValueSpecific(int amountOfFaces, DiceSO diceData)
     {
         for (int i = 0; i < amountOfFaces; i++)
         {
@@ -105,7 +137,6 @@ public class Die : MonoBehaviour
             resourceData.Icon = DiceManager.Instance.ReturnIconByType(resourceData.Type);
 
             faces[i].SetResource(resourceData);
-            faces[i].DisplayResource();
 
 
             BuffData buffData = new BuffData();
@@ -113,11 +144,34 @@ public class Die : MonoBehaviour
             buffData.Value = diceData.buffDataList[i].Value;
             buffData.Icon = DiceManager.Instance.ReturnIconByType(buffData.Type);
             faces[i].SetBuff(buffData);
+
+            faces[i].DisplayResource();
         }
     }
-    private void LateUpdate()
+    private void SetDiceValueRandom(int amountOfFaces, DiceSO diceData)
     {
-        CheckState();
+        for (int i = 0; i < amountOfFaces; i++)
+        {
+            faces[i].ChangeFaceMat(diceData.dieMaterial);
+
+            int randomResource = Random.Range(0, System.Enum.GetValues(typeof(ResourceType)).Length);
+            ResourceData resourceData = new ResourceData();
+            resourceData.Type = (ResourceType)randomResource;
+            resourceData.Value = Random.Range(1, 10); //temp
+            resourceData.Icon = DiceManager.Instance.ReturnIconByType(resourceData.Type);
+
+            faces[i].SetResource(resourceData);
+
+            int randomBuff = Random.Range(0, System.Enum.GetValues(typeof(BuffType)).Length);
+            BuffData buffData = new BuffData();
+            buffData.Type = (BuffType)randomBuff;
+            buffData.Value = Random.Range(1, 10); //temp
+            buffData.Icon = DiceManager.Instance.ReturnIconByType(buffData.Type);
+            faces[i].SetBuff(buffData);
+
+
+            faces[i].DisplayResource();
+        }
     }
 
     private void OrientCubeToCamrea(Die die)
@@ -190,6 +244,175 @@ public class Die : MonoBehaviour
         isRolling = false;
     }
 
+    private void OnMouseDrag()
+    {
+        if (isLocked || !GameManager.playerTurn) return;
+        currentTimeTillStartDrag += Time.deltaTime;
+
+        if(currentTimeTillStartDrag >= timeTillStartDrag)
+        {
+            OnDragStartEvent?.Invoke();
+            _isDragging = true;
+        }
+    }
+
+    private void OnMouseOver()
+    {
+        outline.SetOutlineMode(Outline.Mode.OutlineVisible);
+
+    }
+
+    private void OnMouseExit()
+    {
+        outline.SetOutlineMode(Outline.Mode.OutlineHidden);
+
+        UIManager.Instance.DisplayDiceFacesUI(false, this);
+    }
+    private void OnMouseEnter()
+    {
+        UIManager.Instance.DisplayDiceFacesUI(true, this);
+    }
+
+    private void OnMouseUp()
+    {
+        if (!GameManager.playerTurn) return;
+
+        currentTimeTillStartDrag = 0;
+        if (_isDragging)
+        {
+            _isDragging = false;
+
+            return;
+        }
+
+        if (isLocked)
+        {
+            LockDie(false);
+        }
+        else
+        {
+            LockDie(true);
+        }
+
+        //select die for locking here
+        Debug.Log("Mouse up");
+    }
+
+    private void AdjustRotation()
+    {
+        //float tmpAngle = 180 - Vector3.Angle(Vector3.back, _currentTopFace.transform.up * -1);
+        //transform.Rotate(Vector3.up * tmpAngle, Space.World);
+
+    }
+
+    private void SetValuesOnDragStart()
+    {
+        RB.isKinematic = true;
+        
+        if(rangeIndicator)
+        {
+            rangeIndicator.gameObject.SetActive(true);
+        }
+
+        transform.localScale = scaleOnDrag;
+
+        GameGridControls.Instance.SetCurrentDieDragging(this);
+
+        GridManager.Instance.ToggleAllRelaventSlots(towerPrefabConnected.ReturnRequiresPathCells());
+
+        ChangeLayerRecursive(transform, "Default");
+
+
+    }
+    private void SetValuesOnDragEnd()
+    {
+        if (rangeIndicator)
+        {
+            rangeIndicator.gameObject.SetActive(false);
+        }
+
+        //called if we stopped dragging and DIDN'T place a tower.
+        RB.isKinematic = false;
+        transform.localScale = scaleInPlayerBase;
+
+        transform.localPosition = originalPos;
+
+        GridManager.Instance.ActivateAllTowerBaseCells();
+
+        ChangeLayerRecursive(transform, "Dice");
+    }
+
+    private void SetValuesOnPlacement()
+    {
+        if (rangeIndicator)
+        {
+            rangeIndicator.gameObject.SetActive(false);
+        }
+
+        DisplayBuffs();
+        RB.isKinematic = false;
+        _isInWorld = true;
+
+
+        GridManager.Instance.ActivateAllTowerBaseCells();
+
+        ChangeLayerRecursive(transform, "Default");
+    }
+
+    private void ChangeLayerRecursive(Transform trans, string nameOfLayer)
+    {
+
+        //the string nameOfLayer might change to layermask or even int of layer
+
+        foreach (Transform child in trans)
+        {
+            child.gameObject.layer = LayerMask.NameToLayer(nameOfLayer);
+            ChangeLayerRecursive(child, nameOfLayer);
+        }
+    }
+
+    private void OnDestroyDie()
+    {
+
+        OnRollStartEvent.RemoveAllListeners();
+        OnRollEndEvent.RemoveAllListeners();
+        OnDragStartEvent.RemoveAllListeners();
+        OnDragEndEvent.RemoveAllListeners();
+        OnPlaceEvent.RemoveAllListeners();
+        OnDestroyDieEvent.RemoveAllListeners();
+
+        Destroy(gameObject);
+    }
+
+
+
+
+
+
+    public void InitDiceInSlot(Transform _lockTransform, DiceSO diceData)
+    {
+        lockTransform = _lockTransform;
+
+        towerPrefabConnected = diceData.towerPrefab;
+        diceColor = diceData.dieMaterial.color;
+
+
+        switch (diceData.dieType)
+        {
+            case DieType.D6:
+                SetDiceValueSpecific(6, diceData);
+                break;
+            case DieType.D8:
+                SetDiceValueSpecific(8, diceData);
+                break;
+            default:
+                break;
+        }
+
+        originalParent = transform.parent;
+
+    }
+
     public DieFaceValue GetTopValue()
     {
         float lowestAngle = float.MaxValue;
@@ -234,125 +457,10 @@ public class Die : MonoBehaviour
         }
     }
 
-    private void OnMouseDrag()
-    {
-        if (isLocked) return;
-        currentTimeTillStartDrag += Time.deltaTime;
-
-        if(currentTimeTillStartDrag >= timeTillStartDrag)
-        {
-            OnDragStartEvent?.Invoke();
-            _isDragging = true;
-        }
-    }
-
-    private void OnMouseOver()
-    {
-        outline.SetOutlineMode(Outline.Mode.OutlineVisible);
-
-    }
-
-    private void OnMouseExit()
-    {
-        outline.SetOutlineMode(Outline.Mode.OutlineHidden);
-
-        UIManager.Instance.DisplayDiceFacesUI(false, this);
-    }
-    private void OnMouseEnter()
-    {
-        UIManager.Instance.DisplayDiceFacesUI(true, this);
-    }
-
-    private void OnMouseUp()
-    {
-        currentTimeTillStartDrag = 0;
-        if (_isDragging)
-        {
-            _isDragging = false;
-
-            return;
-        }
-
-        if (isLocked)
-        {
-            LockDie(false);
-        }
-        else
-        {
-            LockDie(true);
-        }
-
-        //select die for locking here
-        Debug.Log("Mouse up");
-    }
-
-    private void AdjustRotation()
-    {
-        //float tmpAngle = 180 - Vector3.Angle(Vector3.back, _currentTopFace.transform.up * -1);
-        //transform.Rotate(Vector3.up * tmpAngle, Space.World);
-
-    }
-
-
-
-    private void SetValuesOnDragStart()
-    {
-        RB.isKinematic = true;
-        transform.localScale = new Vector3(0.5f, 0.5f, 0.5f); // temp here
-
-        GameGridControls.Instance.SetCurrentDieDragging(this);
-
-        ChangeLayerRecursive(transform, "Default");
-
-    }
-    private void SetValuesOnDragEnd()
-    {
-        //called if we stopped dragging and DIDN'T place a tower.
-        RB.isKinematic = false;
-        transform.localScale = new Vector3(1, 1, 1); // temp here
-
-        transform.localPosition = originalPos;
-
-        ChangeLayerRecursive(transform, "Dice");
-    }
-
-    private void SetValuesOnPlacement()
-    {
-        DisplayBuffs();
-        RB.isKinematic = false;
-        _isInWorld = true;
-        ChangeLayerRecursive(transform, "Default");
-    }
-
     public void InitDie(TowerBaseParent tower)
     {
         currentTowerParent = tower;
     }
-    private void ChangeLayerRecursive(Transform trans, string nameOfLayer)
-    {
-
-        //the string nameOfLayer might change to layermask or even int of layer
-
-        foreach (Transform child in trans)
-        {
-            child.gameObject.layer = LayerMask.NameToLayer(nameOfLayer);
-            ChangeLayerRecursive(child, nameOfLayer);
-        }
-    }
-
-    private void OnDestroyDie()
-    {
-
-        OnRollStartEvent.RemoveAllListeners();
-        OnRollEndEvent.RemoveAllListeners();
-        OnDragStartEvent.RemoveAllListeners();
-        OnDragEndEvent.RemoveAllListeners();
-        OnPlaceEvent.RemoveAllListeners();
-        OnDestroyDieEvent.RemoveAllListeners();
-
-        Destroy(gameObject);
-    }
-
 
     public void LockDie(bool isLocking)
     {
@@ -385,7 +493,39 @@ public class Die : MonoBehaviour
 
     public void ResetTransformData()
     {
-        transform.localScale = new Vector3(0.5f,0.5f,0.5f); //temp here
+        transform.localScale = scaleOnDrag;
+    }
+    public void BackToPlayerArea()
+    {
+        if (rangeIndicator)
+        {
+            rangeIndicator.gameObject.SetActive(false);
+        }
+
+        RB.isKinematic = false;
+        RB.velocity = Vector3.zero;
+        transform.SetParent(originalParent);
+        transform.localPosition = originalPos;
+        _isInWorld = false;
+
+        roller.SetOGPos(transform);
+        transform.localScale = scaleInPlayerBase;
+
+        ChangeLayerRecursive(transform, "Dice");
+
+    }
+    public TowerBaseParent ReturnCurrentTowerParent()
+    {
+        return currentTowerParent;
+    }
+    public DieRoller ReturnDieRoller()
+    {
+        return roller;
+    }
+
+    public bool ReturnIsLocked()
+    {
+        return isLocked;
     }
 }
 

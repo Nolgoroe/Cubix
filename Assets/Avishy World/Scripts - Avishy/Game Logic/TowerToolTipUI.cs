@@ -24,6 +24,9 @@ public class TowerToolTipUI : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+
+
+
     public void DisplayTowerBuffs(TowerBaseParent tower)
     {
         if (!GameGridControls.Instance.ReturnCurrentCell()) return; // if no cell

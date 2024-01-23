@@ -11,14 +11,15 @@ public struct EnemyPath
 
 public class ToolEnemySpawnerCell : ToolGridCell
 {
+    [Header("Paths")]
+    [SerializeField] private EnemyPath currentPathBeingCreated;
     [SerializeField] private List<EnemyPath> enemyPaths;
-
     [SerializeField] private int currentPathIndex = -1;
 
-    [SerializeField] private EnemyPath currentPathBeingCreated;
+    [Header("Waypoints")]
     [SerializeField] private List<Transform> waypointTransforms;
 
-
+    [Header("Visuals")]
     [SerializeField] private TMP_Text spawnerNumberText;
 
     private void Start()
@@ -75,6 +76,22 @@ public class ToolEnemySpawnerCell : ToolGridCell
         }
 
     }
+
+    [ContextMenu("Rotate now!")]
+    private void RotateWaypoints()
+    {
+        for (int i = 0; i < waypointTransforms.Count; i++)
+        {
+            if (i + 1 >= waypointTransforms.Count) return;
+            waypointTransforms[i].transform.LookAt(waypointTransforms[i + 1]);
+        }
+    }
+
+
+
+
+
+
     public void AddToEnemyPath(ToolGridCell toAdd, Vector2Int ToAddPos)
     {
         if (currentPathBeingCreated.waypoints.Contains(ToAddPos) || toAdd.ReturnTypeOfCell() == TypeOfCell.enemySpawner) return;
@@ -256,15 +273,5 @@ public class ToolEnemySpawnerCell : ToolGridCell
     public void DestroySpawnerNumberText()
     {
         DestroyImmediate(spawnerNumberText.gameObject, true);
-    }
-
-    [ContextMenu("Rotate now!")]
-    private void RotateWaypoints()
-    {
-        for (int i = 0; i < waypointTransforms.Count; i++)
-        {
-            if (i + 1 >= waypointTransforms.Count) return;
-            waypointTransforms[i].transform.LookAt(waypointTransforms[i + 1]);
-        }
     }
 }

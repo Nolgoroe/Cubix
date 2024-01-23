@@ -7,11 +7,19 @@ public class GridManager : MonoBehaviour
 {
     public static GridManager Instance { get; private set; }
 
+    [Header("Grid Data")]
     [SerializeField] private int gridHeight;
     [SerializeField] private int gridWidth;
     [SerializeField] private float gridSpacing;
+
+    [Header("Cells")]
     [SerializeField] private List<GridCell> gameGridCellsList = new List<GridCell>();
+
+    [Header("Spawners")]
     [SerializeField] private List<EnemySpawnerCell> enemySpawnerCells;
+
+    [Header("Tower Bases")]
+    [SerializeField] List<GridCell> towerPlacementCells = new List<GridCell>();
 
     private GridCell[,] GridCellsArray;
 
@@ -66,18 +74,6 @@ public class GridManager : MonoBehaviour
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     public GridCell ReturnCellFromList(Vector2Int vector)
     {
         int cellToSwapIndex = gameGridCellsList.IndexOf(gameGridCellsList.Where(x => x.ReturnPositionInGridArray() == vector).FirstOrDefault());
@@ -114,6 +110,14 @@ public class GridManager : MonoBehaviour
     {
         gameGridCellsList.Add(cell);
     }
+    public void AddCellToTowerBaseCells(GridCell cell)
+    {
+        towerPlacementCells.Add(cell);
+    }
+    public void RemoveCellFromTowerBaseCells(GridCell cell)
+    {
+        towerPlacementCells.Remove(cell);
+    }
 
 
     public void CopyOtherGrid(ToolGameGrid toolGameGrid)
@@ -122,5 +126,29 @@ public class GridManager : MonoBehaviour
         gridHeight = (int)pos.y;
         gridWidth = (int)pos.x;
         gridSpacing = toolGameGrid.ReturnSpacing();
+    }
+
+    //for now this only takes care of the condition "needs paths" - in the future this will take care of more conditions
+    // temp
+    public void ToggleAllRelaventSlots(bool needsPaths)
+    {
+        if(needsPaths)
+        {
+            foreach (GridCell cell in towerPlacementCells)
+            {
+                if (!cell.ReturnNextToPath())
+                {
+                    cell.gameObject.SetActive(false);
+                }
+            }
+        }
+    }
+    public void ActivateAllTowerBaseCells()
+    {
+        foreach (GridCell cell in towerPlacementCells)
+        {
+            cell.gameObject.SetActive(true);
+
+        }
     }
 }

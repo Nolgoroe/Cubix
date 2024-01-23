@@ -10,6 +10,7 @@ public class ToolReferencerObject : MonoBehaviour
 {
     public static ToolReferencerObject Instance;
 
+    [Header("References")]
     public LevelCreationToolControls controls;
     public LevelCreationToolSO levelCreationToolSO;
     public LevelCreationToolUI toolUI;
@@ -43,23 +44,6 @@ public class ToolReferencerObject : MonoBehaviour
         }
     }
 
-    [ContextMenu("Load Levels To List")]
-    public void LoadLevelsToList()
-    {
-#if UNITY_EDITOR
-
-        levelList.Clear();
-
-        string[] foldersToSearchIn = new string[] { "Assets/Avishy World/Tool Level Prefabs" };
-
-        levelList = AssetDatabase.FindAssets("t:prefab", foldersToSearchIn)
-            .Select(p => AssetDatabase.GUIDToAssetPath(p))
-            .Select(g => AssetDatabase.LoadAssetAtPath<GameObject>(g))
-            .ToList();
-
-#endif
-    }
-
     private void PopulateAllEnemiesList()
     {
 #if UNITY_EDITOR
@@ -76,4 +60,27 @@ public class ToolReferencerObject : MonoBehaviour
 #endif
     }
 
+
+
+
+
+
+
+
+    [ContextMenu("Load Levels To List")]
+    public void LoadLevelsToList()
+    {
+#if UNITY_EDITOR
+
+        levelList.Clear();
+
+        string[] foldersToSearchIn = new string[] { "Assets/Avishy World/Tool Level Prefabs" };
+
+        levelList = AssetDatabase.FindAssets("t:prefab", foldersToSearchIn)
+            .Select(p => AssetDatabase.GUIDToAssetPath(p))
+            .Select(g => AssetDatabase.LoadAssetAtPath<GameObject>(g))
+            .ToList();
+
+#endif
+    }
 }

@@ -8,22 +8,26 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public static int gameSpeed = 1;
-    
+    public static int gameSpeed = 1;   
     public int gameSpeedTemp = 1;// Temp
 
-    [SerializeField] private List<EnemyParent> allEnemies;
+    public static bool playerTurn = true;
+    public static bool isDead = false;
+    public static bool gamePaused = isDead || gameSpeed == 0;
+
+    [Header("Cameras")]
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Camera diceCamera;
 
+    [Header("Enemies")]
+    [SerializeField] private List<EnemyParent> allEnemies;
+
+    [Header("Towers")]
     [SerializeField] List<TowerBaseParent> allTowersPrefabs;
     [SerializeField] List<RangeTowerParentScript> summonedRangeTowers;
     [SerializeField] List<MeleeTowerParentScript> summonedMeleeTowers;
 
-    public static bool playerTurn = true;
-    public static bool isDead = false;
 
-    public static bool gamePaused = isDead || gameSpeed == 0;
     private void Awake()
     {
         Instance = this;
@@ -36,6 +40,9 @@ public class GameManager : MonoBehaviour
         DiceManager.Instance.InitDiceManager();
 
         isDead = false;
+
+        playerTurn = true;
+
     }
 
     private void Update()
@@ -53,6 +60,8 @@ public class GameManager : MonoBehaviour
 
 
 
+
+
     public IEnumerator SetPlayerTurn(bool isPlayerTurn)
     {
         ChangeGameSpeed(1);
@@ -63,12 +72,12 @@ public class GameManager : MonoBehaviour
         {
             foreach (TowerBaseParent tower in summonedRangeTowers)
             {
-                tower.OnStartPlayerTurn();
+                StartCoroutine(tower.OnStartPlayerTurn());
             }
 
             foreach (TowerBaseParent tower in summonedMeleeTowers)
             {
-                tower.OnStartPlayerTurn();
+                StartCoroutine(tower.OnStartPlayerTurn());
             }
 
             yield return new WaitForSeconds(1f); //temp
@@ -102,6 +111,11 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
+    public void ClearTowerToRelaventList()
+    {
+        summonedRangeTowers.Clear();
+        summonedMeleeTowers.Clear();
+    }
 
     public List<MeleeTowerParentScript> ReturnMeleeTowersList()
     {
@@ -126,6 +140,7 @@ public class GameManager : MonoBehaviour
 
     public void CloseGame()
     {
+        // called from button
         Application.Quit();
     }
     public void RestartRun()
@@ -141,6 +156,7 @@ public class GameManager : MonoBehaviour
 
     public void ChangeGameSpeed(int speed)
     {
+        //also called from button - has to be public
         gameSpeedTemp = speed;
     }
 }

@@ -49,6 +49,51 @@ public class LevelCreationToolUI : MonoBehaviour
         StartCoroutine(DisplaySystemMessage("Welcome to our level creation tool! have fun!"));
     }
 
+    private void PopupateCellTypesDropdownList()
+    {
+        string[] enumName = Enum.GetNames(typeof(TypeOfCell));
+        List<string> nameList = new List<string>(enumName);
+
+        dropDownCellType.AddOptions(nameList);
+    }
+    private void PopupateLevelPrefabList()
+    {
+        ToolReferencerObject.Instance.LoadLevelsToList();
+
+        List<string> nameList = ToolReferencerObject.Instance.levelList.Select(gameObject => gameObject.name).ToList();
+
+        dropDownLevelList.ClearOptions();
+        dropDownLevelList.AddOptions(nameList);
+    }
+
+    private void PopupateCellTypeCellColorDropdownList()
+    {
+        string[] enumName = Enum.GetNames(typeof(CellTypeColor));
+        List<string> nameList = new List<string>(enumName);
+
+        dropDownCellTypeColor.AddOptions(nameList);
+    }
+
+    private IEnumerator ReActivateButton(int time, Button button)
+    {
+        yield return new WaitForSeconds(time);
+        button.interactable = true;
+    }
+
+    private IEnumerator DisplaySystemMessage(string message)
+    {
+        systemText.text = message;
+        systemText.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(3);
+        systemText.gameObject.SetActive(false);
+
+    }
+
+
+
+
+
     public void Dropdown_IndexChangedCellType()
     {
         int index = dropDownCellType.value;
@@ -94,7 +139,6 @@ public class LevelCreationToolUI : MonoBehaviour
         ToolReferencerObject.Instance.controls.CallSavePathCreated();
     }
 
-
     public void ShowPathByIndex(bool show)
     {
         int index = -1;
@@ -119,14 +163,6 @@ public class LevelCreationToolUI : MonoBehaviour
 
         StartCoroutine(ReActivateButton(2, deleteWaypointsButton));
     }
-
-    private IEnumerator ReActivateButton(int time, Button button)
-    {
-        yield return new WaitForSeconds(time);
-        button.interactable = true;
-    }
-
-
 
     public void LoadSelectedLevel()
     {
@@ -157,15 +193,6 @@ public class LevelCreationToolUI : MonoBehaviour
     public void CallDisplaySystemMessage(string message)
     {
         StartCoroutine(DisplaySystemMessage(message));
-    }
-    private IEnumerator DisplaySystemMessage(string message)
-    {
-        systemText.text = message;
-        systemText.gameObject.SetActive(true);
-
-        yield return new WaitForSeconds(3);
-        systemText.gameObject.SetActive(false);
-
     }
     public void DisplayAmountOfPathsOnSpawner(int amount)
     {
@@ -222,30 +249,6 @@ public class LevelCreationToolUI : MonoBehaviour
     }
 #endif
 
-    private void PopupateCellTypesDropdownList()
-    {
-        string[] enumName = Enum.GetNames(typeof (TypeOfCell));
-        List<string> nameList = new List<string>(enumName);
-
-        dropDownCellType.AddOptions(nameList);
-    }
-    private void PopupateLevelPrefabList()
-    {
-        ToolReferencerObject.Instance.LoadLevelsToList();
-
-        List<string> nameList = ToolReferencerObject.Instance.levelList.Select(gameObject => gameObject.name).ToList();
-
-        dropDownLevelList.ClearOptions();
-        dropDownLevelList.AddOptions(nameList);
-    }
-
-    private void PopupateCellTypeCellColorDropdownList()
-    {
-        string[] enumName = Enum.GetNames(typeof(CellTypeColor));
-        List<string> nameList = new List<string>(enumName);
-
-        dropDownCellTypeColor.AddOptions(nameList);
-    }
 
     public void ToggleBuildModeToggle(bool isOn)
     {

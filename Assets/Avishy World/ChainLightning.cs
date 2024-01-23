@@ -36,6 +36,8 @@ public class ChainLightning : MonoBehaviour
         startObject = gameObject;
 
         singleSpawns = 1;
+
+        Destroy(gameObject, 1);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -48,6 +50,10 @@ public class ChainLightning : MonoBehaviour
                 singleSpawns--;
                 damage -= damageLoss;
 
+                if(damage <= 0)
+                {
+                    damage = 1;
+                }
 
                 endObject = other.gameObject;
 
@@ -74,10 +80,6 @@ public class ChainLightning : MonoBehaviour
                 particleSystem.Emit(emitParams, 1);
                 emitParams.position = endObject.transform.position;
                 particleSystem.Emit(emitParams, 1);
-
-
-
-                Destroy(gameObject, 1);
             }
         }
     }

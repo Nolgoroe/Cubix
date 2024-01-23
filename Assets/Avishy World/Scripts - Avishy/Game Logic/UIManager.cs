@@ -7,6 +7,7 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
+    public static bool menuOpened = false;
 
     [Header("Wave UI")]
     [SerializeField] private Transform winScreen;
@@ -38,12 +39,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Transform pauseMenu;
 
 
-    public static bool menuOpened = false;
 
     private void Awake()
     {
         Instance = this;
     }
+
+
+
+
     public void InitUIManager()
     {
         TogglePauseMenu(false);

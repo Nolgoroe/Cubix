@@ -143,6 +143,11 @@ public class ToolEnemyPathCell : ToolGridCell
         return pathSides;
     }
 
+
+
+
+
+
     public void DecideOnPathMesh()
     {
         //This function will change to change the mesh of this object instead of spawining a new one and passing on data.
