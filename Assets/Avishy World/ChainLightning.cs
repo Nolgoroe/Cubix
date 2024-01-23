@@ -50,6 +50,10 @@ public class ChainLightning : MonoBehaviour
                 singleSpawns--;
                 damage -= damageLoss;
 
+                if(damage <= 0)
+                {
+                    damage = 1;
+                }
 
                 endObject = other.gameObject;
 
