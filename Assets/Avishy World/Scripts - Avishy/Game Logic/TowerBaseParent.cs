@@ -114,7 +114,7 @@ public abstract class TowerBaseParent : MonoBehaviour
             towerDie.DisplayResources();
 
             DiceManager.Instance.ResetDiceToWorldList();
-            DiceManager.Instance.AddDiceToResources(towerDie.ReturnDieRoller());
+            DiceManager.Instance.AddDiceToResources(towerDie);
 
             GridManager.Instance.ReturnCellAtVector(currentCellOnPos).ResetCellOnStartTurn();
             gameObject.SetActive(false);

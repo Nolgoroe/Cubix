@@ -34,7 +34,7 @@ public class DieRoller : MonoBehaviour
         die.OnDragEndEvent.AddListener(OnConnectedDieEndDragging);
         die.OnPlaceEvent.AddListener(OnConnectedDiePlace);
 
-        DiceManager.Instance.AddDiceToResources(this);
+        DiceManager.Instance.AddDiceToResources(die);
     }
 
     private void LateUpdate()
@@ -97,7 +97,7 @@ public class DieRoller : MonoBehaviour
     }
     private void OnConnectedDiePlace()
     {
-        DiceManager.Instance.RemoveDiceToResources(this);
+        DiceManager.Instance.RemoveDiceToResources(die);
         DiceManager.Instance.AddDiceToWorld(this);
 
         //maybe better way?

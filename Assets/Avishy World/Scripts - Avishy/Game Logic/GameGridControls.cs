@@ -74,6 +74,8 @@ public class GameGridControls : MonoBehaviour
                     //currentDieDragging.OnDestroyDieEvent?.Invoke();
 
                     SetCurrentDieDragging(null);
+
+                    SoundManager.Instance.ActivateSoundImmediate(Sounds.PlaceTower);
                 }
                 else
                 {
