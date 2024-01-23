@@ -2,19 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class DiceTypeToPrefab
-{
-    public DiceSO diceSO;
-    public GameObject dicePrefab;
-}
 public class DiceManager : MonoBehaviour
 {
     public static DiceManager Instance;
 
     [Header("Preset data")]
-    //[SerializeField] private List<DiceSO> allDiceSO;
-    [SerializeField] private List<DiceTypeToPrefab> startingDice;
+    [SerializeField] private List<DiceSO> ownedDice;
     [SerializeField] private List<DiceSlot> diceSlots;
 
     [Header("Live data")]
@@ -47,21 +40,22 @@ public class DiceManager : MonoBehaviour
             buffTypeToIcon.Add((BuffType)i, allBuffIcons[i]);
         }
 
-        for (int i = 0; i < startingDice.Count; i++)
+        for (int i = 0; i < ownedDice.Count; i++)
         {
-            GameObject go = Instantiate(startingDice[i].dicePrefab, diceSlots[i].transform);
+            GameObject go = Instantiate(ownedDice[i].diePrefab, diceSlots[i].transform);
             go.TryGetComponent<Die>(out Die newDie);
             if(newDie)
             {
-                newDie.InitDiceInSlot(diceSlots[i].ReturnLockTransform(), startingDice[i].diceSO);
+                newDie.InitDiceInSlot(diceSlots[i].ReturnLockTransform(), ownedDice[i]);
             }
         }
 
-        Player.Instance.ConnectPlayerAndDice();
+        Player.Instance.ConnectPlayerAndDiceOnStartLevel();
     }
 
     public void RollResources()
     {
+        //called from button
         foreach (var roller in resourceDice)
         {
             roller.Roll();
@@ -75,40 +69,38 @@ public class DiceManager : MonoBehaviour
         }
     }
 
-    //public Color returnRandomDiceColor()
-    //{
-    //    int random = Random.Range(0, diceColors.Count);
-    //    return diceColors[random];
-    //}
 
-    //the next 4 functions are temp???? - try to find better way
-    public void AddDiceToResources(DieRoller die) //temp
+
+    public void AddDiceToResources(DieRoller die)
     {
         if (!resourceDice.Contains(die))
         {
             resourceDice.Add(die);
         }
     }
-    public void RemoveDiceToResources(DieRoller die) //temp
+    public void RemoveDiceToResources(DieRoller die)
     {
         resourceDice.Remove(die);
     }
 
-    public void AddDiceToWorld(DieRoller die) //temp
+    public void AddDiceToWorld(DieRoller die)
     {
         if(!worldDice.Contains(die))
         {
             worldDice.Add(die);
         }
     }
-    public void RemoveDiceToWorld(DieRoller die) //temp
-    {
-        worldDice.Remove(die);
-    }
-    public void ResetDiceToWorld() //temp
+
+    public void ResetDiceToWorldList()
     {
         worldDice.Clear();
     }
+
+    public void AddDieFromShop(DiceSO die)
+    {
+        ownedDice.Add(die);
+    }
+
 
     public Sprite ReturnIconByType(ResourceType resourceType)
     {

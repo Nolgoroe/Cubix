@@ -7,4 +7,10 @@ public class ResourceBundleSO : ItemShopParentSO
 {
     [Header("To Buy")]
     public ResourceTypeCombo[] resourcesToRecieve;
+
+
+    public void AddResources(ResourceTypeCombo combo)
+    {
+        Player.Instance.AddResources(combo.resource, combo.amount);
+    }
 }

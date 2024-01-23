@@ -15,6 +15,10 @@ public class DiceFaceDisplayUI : MonoBehaviour
         connectedImage = GetComponent<Image>();
     }
 
+
+
+
+
     public void SetImage(DieFaceValue diceFaceValue, Die die, bool isResource)
     {
         if (isResource)

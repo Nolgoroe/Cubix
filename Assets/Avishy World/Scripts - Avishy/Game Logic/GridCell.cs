@@ -95,7 +95,6 @@ public class GridCell : MonoBehaviour
         }
     }
 
-
     public Vector2Int ReturnPositionInGridArray()
     {
         return positionXYInGridArray;
@@ -177,18 +176,6 @@ public class GridCell : MonoBehaviour
 
     }
 
-
-    // relavent for tool for tower placement
-    public void ChangeCellTypeColor(CellTypeColor _cellTypeColor)
-    {
-        if (slotTypeSpriteRenderer == null) return;
-        cellTypeColor = _cellTypeColor;
-
-
-        Color color = ToolReferencerObject.Instance.levelCreationToolSO.ReturnColorByCellTypeColor(cellTypeColor);
-
-        slotTypeSpriteRenderer.color = color;
-    }
     public void ResetCellOnStartTurn()
     {
         if (slotTypeSpriteRenderer == null) return;

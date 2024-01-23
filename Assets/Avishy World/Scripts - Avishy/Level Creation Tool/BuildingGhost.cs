@@ -60,6 +60,9 @@ public class BuildingGhost : MonoBehaviour {
         }
     }
 
+
+
+
     public void ToggleGhost()
     {
         isActive = !isActive;

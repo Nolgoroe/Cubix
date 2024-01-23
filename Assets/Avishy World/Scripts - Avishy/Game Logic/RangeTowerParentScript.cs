@@ -8,16 +8,25 @@ public class RangeTowerParentScript : TowerBaseParent
     [Header ("Live data")]
     [SerializeField] private Transform currentTarget;
 
-    [Header("Preset Data")] 
+    [Header("Combat")] 
     [SerializeField] private float range = 15;
     [SerializeField] private float rotationSpeed = 15;
+    [SerializeField] protected float bulltDMG = 1;
+
+    [Header("Combat Timers")]
     [SerializeField] protected float fireRate = 1;
     [SerializeField] protected float fireCountDown = 0;
-    [SerializeField] protected float bulltDMG = 1;
+
+    [SerializeField] protected float specialFireRate = 1;
+    [SerializeField] protected float specialFireRateCooldown = 0;
+    [SerializeField] protected bool isSpecialBullet = false;
+
+
+    [Header("Preset Refs")]
     [SerializeField] private Transform partToRotate;
-    [SerializeField] private LayerMask enemyLayerMask;
-    [SerializeField] protected GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
+    [SerializeField] protected GameObject bulletPrefab;
+    [SerializeField] private LayerMask enemyLayerMask;
 
 
     private float originalRange;
@@ -27,6 +36,8 @@ public class RangeTowerParentScript : TowerBaseParent
 
     protected override void Start()
     {
+        fireCountDown = (1 * fireRate) / GameManager.gameSpeed;
+        specialFireRateCooldown = (1 * specialFireRate) / GameManager.gameSpeed;
         originalRange = range;
         originalRotationSpeed = rotationSpeed;
         originalFireRate = fireRate;
@@ -60,13 +71,25 @@ public class RangeTowerParentScript : TowerBaseParent
 
         partToRotate.rotation = Quaternion.Euler(rotation);
 
-        if(fireCountDown <= 0)
+        if(specialFireRateCooldown <= 0)
         {
-            Shoot();
-            fireCountDown = (1 / fireRate) / GameManager.gameSpeed;
+            isSpecialBullet = true;
+            specialFireRateCooldown = (1 * specialFireRate) / GameManager.gameSpeed;
         }
 
-        fireCountDown -= Time.deltaTime;
+        if (fireCountDown <= 0)
+        {
+            Shoot();
+            fireCountDown = (1 * fireRate) / GameManager.gameSpeed;
+
+            if(isSpecialBullet)
+            {
+                isSpecialBullet = false;
+            }
+        }
+
+        fireCountDown -= Time.deltaTime * GameManager.gameSpeed;
+        specialFireRateCooldown -= Time.deltaTime * GameManager.gameSpeed;
     }
 
     private void Shoot()
@@ -78,7 +101,7 @@ public class RangeTowerParentScript : TowerBaseParent
         
         if(bullet)
         {
-            bullet.InitBullet(currentTarget, bulltDMG);
+            bullet.InitBullet(currentTarget, bulltDMG, isSpecialBullet);
         }
     }
 

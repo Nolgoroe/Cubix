@@ -9,15 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f88873b035785a14e89c062e06bc2175, type: 3}
-  m_Name: Resource Bundle 1
+  m_Script: {fileID: 11500000, guid: b3bf2c7264c30214b94a921c4eb1d2e0, type: 3}
+  m_Name: Stats Bundle Creation 1
   m_EditorClassIdentifier: 
-  icon: {fileID: -1490314167, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+  icon: {fileID: -1766819994, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   resourcesNeeded:
   - resource: 0
-    amount: 300
-  resourcesToRecieve:
-  - resource: 2
     amount: 50
   - resource: 1
     amount: 50
+  statsToBuy:
+  - statToBuy: 1
+    amount: 10

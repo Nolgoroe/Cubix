@@ -39,25 +39,15 @@ public class PlayerHomeBaseCell : GridCell
         return false;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, detectionRange);
     }
+
+
+
+
 
 
 

@@ -21,6 +21,7 @@ public class EnemySpawnerCell : GridCell
     }
     protected override void Start()
     {
+        // nothing on start but still overriding.
     }
 
     private void SpawnEnemy(GameObject enemyPrefab, int followPathIndex)
@@ -38,22 +39,6 @@ public class EnemySpawnerCell : GridCell
             enemy.InitEnemy(enemyPathcells[followPathIndex].pathCells);
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

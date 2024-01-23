@@ -4,20 +4,26 @@ using UnityEngine;
 
 public class DieRoller : MonoBehaviour
 {
+    [Header("Die Data")]
     [SerializeField] private Die die;
-    [SerializeField] private Vector3 posConstraintRange;
-    [SerializeField] private Vector3 rotationForceMin;
-    [SerializeField] private Vector3 rotationForceMax;
+
+    [Header("Roll Data")]
     [SerializeField] private float throwForce;
     [SerializeField] private float tpHeight;
+
+    [Header("Contraints")]
     [SerializeField] private bool constraintX;
     [SerializeField] private bool constraintY;
     [SerializeField] private bool constraintZ;
-
+    [SerializeField] private Vector3 posConstraintRange;
+    [SerializeField] private Vector3 rotationForceMin;
+    [SerializeField] private Vector3 rotationForceMax;
     [SerializeField] private Vector3 massCenter;
 
 
     private Vector3 _ogPos;
+
+
 
     private void Start()
     {        
@@ -36,28 +42,6 @@ public class DieRoller : MonoBehaviour
         if (die.RB.velocity.magnitude != 0 || die.RB.angularVelocity.magnitude != 0)
         {
             Contraint();
-        }
-    }
-
-    public void Roll()
-    {
-        die.RB.velocity = Vector3.zero;
-
-        if (!die.isLocked && isActiveAndEnabled)
-        {
-            die.OnRollStartEvent.Invoke();
-            die.RB.ResetCenterOfMass();
-            StartCoroutine(ChangeMassAtTop());//Change mass only on apex of throw to look more organic
-            die.transform.position += Vector3.up * tpHeight;
-            Vector3 throwVec = new Vector3(0, throwForce, 0);
-
-            Vector3 rotForce = new Vector3();
-            rotForce.x = Random.Range(rotationForceMin.x, rotationForceMax.x);
-            rotForce.y = Random.Range(rotationForceMin.y, rotationForceMax.y);
-            rotForce.z = Random.Range(rotationForceMin.z, rotationForceMax.z);
-
-            die.RB.AddForce(throwVec, ForceMode.Impulse);
-            die.RB.AddTorque(rotForce, ForceMode.Impulse);
         }
     }
 
@@ -100,13 +84,13 @@ public class DieRoller : MonoBehaviour
     }
 
     private void OnConnectedDieStartDragging()
-    {       
+    {
         constraintX = false;
         constraintY = false;
         constraintZ = false;
     }
     private void OnConnectedDieEndDragging()
-    {        
+    {
         constraintX = true;
         constraintY = false;
         constraintZ = true;
@@ -130,6 +114,32 @@ public class DieRoller : MonoBehaviour
         constraintZ = true;
 
         gameObject.SetActive(false);
+    }
+
+
+
+
+
+    public void Roll()
+    {
+        die.RB.velocity = Vector3.zero;
+
+        if (!die.ReturnIsLocked() && isActiveAndEnabled)
+        {
+            die.OnRollStartEvent.Invoke();
+            die.RB.ResetCenterOfMass();
+            StartCoroutine(ChangeMassAtTop());//Change mass only on apex of throw to look more organic
+            die.transform.position += Vector3.up * tpHeight;
+            Vector3 throwVec = new Vector3(0, throwForce, 0);
+
+            Vector3 rotForce = new Vector3();
+            rotForce.x = Random.Range(rotationForceMin.x, rotationForceMax.x);
+            rotForce.y = Random.Range(rotationForceMin.y, rotationForceMax.y);
+            rotForce.z = Random.Range(rotationForceMin.z, rotationForceMax.z);
+
+            die.RB.AddForce(throwVec, ForceMode.Impulse);
+            die.RB.AddTorque(rotForce, ForceMode.Impulse);
+        }
     }
 
     public void SetOGPos(Transform _transform)

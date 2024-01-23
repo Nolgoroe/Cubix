@@ -8,6 +8,24 @@ public class ResultDiceDisplay : MonoBehaviour
     [SerializeField] private DieFace _currentTopFace;
     [SerializeField] private Vector3 offsetForRay;
 
+    private void Update()
+    {
+        Vector3 diretion = Camera.main.transform.position - transform.position;
+
+        Debug.DrawLine(transform.position + offsetForRay, diretion);
+
+        transform.LookAt(Camera.main.transform);
+    }
+
+    private void OnEnable()
+    {
+        GetCameraFacingValue();
+    }
+
+
+
+
+
     public void InitDiceDisplay(Die towerDie)
     {
         localFaces = new List<DieFace>();
@@ -38,14 +56,6 @@ public class ResultDiceDisplay : MonoBehaviour
 
         GetCameraFacingValue();
     }
-    private void Update()
-    {
-        Vector3 diretion = Camera.main.transform.position - transform.position;
-
-        Debug.DrawLine(transform.position + offsetForRay, diretion);
-
-        transform.LookAt(Camera.main.transform);
-    }
 
     [ContextMenu("Now")]
     public void GetCameraFacingValue()
@@ -73,8 +83,4 @@ public class ResultDiceDisplay : MonoBehaviour
         }
     }
 
-    private void OnEnable()
-    {
-        GetCameraFacingValue();
-    }
 }

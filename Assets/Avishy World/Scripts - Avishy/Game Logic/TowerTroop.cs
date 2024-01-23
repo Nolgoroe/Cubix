@@ -11,10 +11,12 @@ public class TowerTroop : MonoBehaviour
     [SerializeField] protected Transform currentTarget;
     [SerializeField] protected MeleeTowerParentScript connectedTower;
 
-    [Header("Preset Data")] 
+    [Header("Preset Data Combat")] 
     [SerializeField] protected float attackRate = 1;
     [SerializeField] protected float currentAttackCooldown = 0;
     [SerializeField] protected float rotationSpeed = 10;
+
+    [Header("Preset Refs")]
     [SerializeField] protected Transform rangeIndicator;
     [SerializeField] private LayerMask enemyLayerMask;
     [SerializeField] private Animator anim;
@@ -27,7 +29,6 @@ public class TowerTroop : MonoBehaviour
     private float range = 15;
     private float damage = 1;
     bool isDead;
-
     Vector3 originalScale;
 
     virtual protected void Start()
@@ -71,7 +72,7 @@ public class TowerTroop : MonoBehaviour
         if (currentAttackCooldown <= 0)
         {
             Attack();
-            currentAttackCooldown = (1 / attackRate) / GameManager.gameSpeed;
+            currentAttackCooldown = (1 * attackRate) / GameManager.gameSpeed;
         }
 
     }
@@ -153,6 +154,10 @@ public class TowerTroop : MonoBehaviour
 
         health -= damage;
     }
+
+
+
+
 
     private void OnDrawGizmosSelected()
     {

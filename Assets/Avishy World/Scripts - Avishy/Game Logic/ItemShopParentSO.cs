@@ -5,12 +5,12 @@ using UnityEngine;
 [System.Serializable]
 public class ResourceTypeCombo
 {
-    public ResourceType neededResource;
+    public ResourceType resource;
     public int amount;
 }
 public abstract class ItemShopParentSO : ScriptableObject
 {
     [Header("Shop Required")]
-    public Sprite sprite;
+    public Sprite icon;
     public ResourceTypeCombo[] resourcesNeeded;
 }

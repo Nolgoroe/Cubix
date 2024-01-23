@@ -7,11 +7,18 @@ public class GridManager : MonoBehaviour
 {
     public static GridManager Instance { get; private set; }
 
+    [Header("Grid Data")]
     [SerializeField] private int gridHeight;
     [SerializeField] private int gridWidth;
     [SerializeField] private float gridSpacing;
+
+    [Header("Cells")]
     [SerializeField] private List<GridCell> gameGridCellsList = new List<GridCell>();
+
+    [Header("Spawners")]
     [SerializeField] private List<EnemySpawnerCell> enemySpawnerCells;
+
+    [Header("Tower Bases")]
     [SerializeField] List<GridCell> towerPlacementCells = new List<GridCell>();
 
     private GridCell[,] GridCellsArray;
@@ -60,18 +67,6 @@ public class GridManager : MonoBehaviour
             }
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

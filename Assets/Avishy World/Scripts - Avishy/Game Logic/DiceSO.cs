@@ -5,11 +5,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Dice Creation", menuName = "ScriptableObjects/Dice")]
 public class DiceSO : ItemShopParentSO
 {
-    [Header("Dice Related")]
+    [Header("Dice")]
+    public GameObject diePrefab;
+    public DieType dieType;
     public TowerBaseParent towerPrefab;
     public Material dieMaterial;
-    public DieType dieType;
 
+    [Header("Faces")]
     public List<ResourceData> resouceDataList;
     public List<BuffData> buffDataList;
 }

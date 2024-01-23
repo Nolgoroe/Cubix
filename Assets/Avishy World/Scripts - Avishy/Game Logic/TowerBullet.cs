@@ -7,16 +7,22 @@ public class TowerBullet : MonoBehaviour
 {
     //this might turn to a parent script for any and all "tower bullets" in the future for different towers that require differnt bullets
 
+    [Header("Target Data")]
     [SerializeField] Transform currentTarget;
     [SerializeField] GameObject colldiedObject;
-    [SerializeField] GameObject chainLightningEffect; //temp here
 
-    [SerializeField] float speed = 10;
+    [Header("Combat data")]
+    [SerializeField] private float speed = 10;
     [SerializeField] private float damage = 1;
-    
-    
+    [SerializeField] private bool isSpecial;
+
+    [Header("Special Attack")]
+    [SerializeField] GameObject chainLightningEffect; //temp here - will probably move to specific bullet.
+
     void Update()
     {
+        //KEEP THIS HERE! if we ever need to go back to physically moving bullets, this is how we do it.
+
         //if (GameManager.gameSpeed == 0) return;
 
         //if (currentTarget == null)
@@ -52,10 +58,14 @@ public class TowerBullet : MonoBehaviour
             enemyHit.RecieveDMG(damage);
         }
 
-        //this is temp here - will move to new bullet script. a bullet that will be shot on a different cooldown.
-        Instantiate(chainLightningEffect, currentTarget.transform.position, Quaternion.identity);
+        if(isSpecial)
+        {
+            Instantiate(chainLightningEffect, currentTarget.transform.position, Quaternion.identity);
+        }
+
         Destroy(gameObject);
     }
+
 
 
 
@@ -69,9 +79,10 @@ public class TowerBullet : MonoBehaviour
     }
 
 
-    public void InitBullet(Transform target, float bulletDMG)
+    public void InitBullet(Transform target, float bulletDMG, bool isSpecialBullet)
     {
         currentTarget = target;
         damage = bulletDMG;
+        isSpecial = isSpecialBullet;
     }
 }

@@ -145,7 +145,6 @@ public class LevelCreationToolControls : MonoBehaviour
             currentCellHovered.ChangeCellColor(ToolReferencerObject.Instance.levelCreationToolSO.ConvertTypeToColor(TypeOfCell.None));
         }
     }
-
     private void BuildModeControls()
     {
         if (Input.GetMouseButtonDown(0))
@@ -256,7 +255,6 @@ public class LevelCreationToolControls : MonoBehaviour
             StartCoroutine(currentSpawnerSelected.RemoveFromEnemyPath(currentCellHovered));
         }
     }
-
     private void DefiningCellTypeControls()
     {
         if (Input.GetMouseButtonDown(0))
@@ -308,7 +306,6 @@ public class LevelCreationToolControls : MonoBehaviour
 
         ToolReferencerObject.Instance.toolUI.SetDropdownToValue((int)currentTypeOfCellSelected);
     }
-
     private ToolGridCell MouseOverGridCell()
     {
         currentCellHovered = null;
@@ -323,6 +320,10 @@ public class LevelCreationToolControls : MonoBehaviour
 
         return currentCellHovered;
     }
+
+
+
+
     public Vector3 MouseOverWorldNormal()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -335,7 +336,6 @@ public class LevelCreationToolControls : MonoBehaviour
 
         return Vector3.zero;
     }
-
     public void CallGenerateLevel()
     {
         ToolReferencerObject.Instance.toolGameGrid.GenerateTheLevel();
@@ -367,7 +367,6 @@ public class LevelCreationToolControls : MonoBehaviour
         }
         ToolReferencerObject.Instance.toolUI.SetDropdownToValue((int)currentTypeOfCellSelected);
     }
-
     public void SetCurrentCellTypeColor(CellTypeColor cellColor)
     {
         currentCellColorTypeSelected = cellColor;
@@ -377,7 +376,6 @@ public class LevelCreationToolControls : MonoBehaviour
         isDrawingWaypoints = false;
         isInDefiningCellTypes = false;
     }
-
     public void CallSavePathCreated()
     {
         if (currentSpawnerSelected)
@@ -406,7 +404,6 @@ public class LevelCreationToolControls : MonoBehaviour
         SetCurrentTypeOfCellSelected(TypeOfCell.None);
         ToolReferencerObject.Instance.toolUI.ToggleBuildModeToggle(isInBuildMode);
     }
-
     public ToolGridCell ReturnCurrentCellHovered()
     {
         return currentCellHovered;

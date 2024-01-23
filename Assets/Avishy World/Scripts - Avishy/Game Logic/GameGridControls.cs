@@ -12,14 +12,13 @@ public class GameGridControls : MonoBehaviour
     [SerializeField] private LayerMask gridCellLayer;
     [SerializeField] private GameObject currentTowerPrefab;
 
-    [Header("Automated data")]
+    [Header("Live data")]
     [SerializeField] private GridCell currentCellHovered;
     [SerializeField] private Die currentDieDragging;
-
     [SerializeField] private List<Die> currentDieToLock;
 
-
-    public bool rapidControls;
+    [Header("Temp variables")]
+    public bool rapidControls; //temp
 
     private Vector3 positionOfMouse;
 
@@ -167,7 +166,7 @@ public class GameGridControls : MonoBehaviour
 
     private GridCell MouseOverGridCell()
     {
-        if (UIManager.menuOpened) return null;
+        if (UIManager.menuOpened || EventSystem.current.IsPointerOverGameObject()) return null;
 
         if(currentCellHovered)
         {
@@ -193,6 +192,10 @@ public class GameGridControls : MonoBehaviour
 
         return currentCellHovered;
     }
+
+
+
+
     public GridCell ReturnCurrentCell()
     {        
 

@@ -12,21 +12,24 @@ public class TowerBuffDataHolder
 }
 public abstract class TowerBaseParent : MonoBehaviour
 {
-    [SerializeField] protected Vector2Int currentCellOnPos;
+    [Header("Requirements")]
+    [SerializeField] protected bool requiresPathCells;
     [SerializeField] protected CellTypeColor requiredCellColorType;
-    [SerializeField] protected Color towerRequiredColor;
+
+    [Header("Dice Data")]
     [SerializeField] protected Die towerDie;
-    //[SerializeField] protected ResultDiceDisplay resultDiceDisplay;
-    [SerializeField] protected Transform rangeIndicator;
     [SerializeField] protected Transform resultDiceHolder;
     [SerializeField] protected List<TowerBuffDataHolder> currentTowerBuffs;
 
+    [Header("Visuals")]
+    [SerializeField] protected Transform rangeIndicator;
     [SerializeField] protected ParticleSystem onSpawnParticle;
-
-    [SerializeField] protected bool requiresPathCells;
+    [SerializeField] protected Vector2Int currentCellOnPos;
 
 
     protected Vector3 originalScale;
+
+
     private void OnEnable()
     {
         if (GameGridControls.Instance.rapidControls)
@@ -71,6 +74,8 @@ public abstract class TowerBaseParent : MonoBehaviour
 
     protected void AddNewTowerBuff(DieFaceValue diceFaceValue, Die die)
     {
+        if (diceFaceValue.Buff.Type == BuffType.None) return;
+
         TowerBuffDataHolder holder = new TowerBuffDataHolder();
         holder.buffType = diceFaceValue.Buff.Type;
         holder.bgColor = die.ReturnDiceColor();
@@ -79,6 +84,10 @@ public abstract class TowerBaseParent : MonoBehaviour
 
         currentTowerBuffs.Add(holder);
     }
+
+
+
+
     public abstract void InitTowerData(Vector2Int positionOfCell, Die connectedDie);
     public abstract void RecieveBuffAfterRoll(Die die);
     public abstract void OnHoverOverOccupyingCell(bool isHover);
@@ -103,8 +112,8 @@ public abstract class TowerBaseParent : MonoBehaviour
             yield return new WaitForSeconds(7); // temp time
             towerDie.BackToPlayerArea();
             towerDie.DisplayResources();
-            //GameManager.Instance.ClearTowerToRelaventList();
-            DiceManager.Instance.ResetDiceToWorld();
+
+            DiceManager.Instance.ResetDiceToWorldList();
             DiceManager.Instance.AddDiceToResources(towerDie.ReturnDieRoller());
 
             GridManager.Instance.ReturnCellAtVector(currentCellOnPos).ResetCellOnStartTurn();
@@ -146,14 +155,6 @@ public abstract class TowerBaseParent : MonoBehaviour
     }
 
 
-    public Color ReturnTowerRequiredColor()
-    {
-        return towerRequiredColor;
-    }
-    public Transform ReturnResultDiceTransform()
-    {
-        return resultDiceHolder;
-    }
     public bool ReturnRequiresPathCells()
     {
         return requiresPathCells;
@@ -163,9 +164,4 @@ public abstract class TowerBaseParent : MonoBehaviour
     {
 
     }
-
-    //public Vector3 ReturnOriginalTowerScale()
-    //{
-    //    return originalScale;
-    //}
 }

@@ -17,34 +17,49 @@ public class Die : MonoBehaviour
     public UnityEvent OnPlaceEvent;
     public UnityEvent OnDestroyDieEvent;
 
-    public bool isLocked;
-    [SerializeField] private Camera diceCam;
-    [SerializeField] private Rigidbody _rb;
-    [SerializeField] private List<DieFace> faces;
-    [SerializeField] private DieElement element;
+
+    [Header("Dice Data")]
     [SerializeField] private DieType DieType;
-    [SerializeField] private TowerBaseParent towerPrefabConnected;
-    [SerializeField] private TowerBaseParent currentTowerParent;
-    [SerializeField] private float _reqStagnantTime = 1;
-    [SerializeField] private Transform lockTransform;
-    [SerializeField] private Outline outline;
+    [SerializeField] private DieElement element;
     [SerializeField] private Color diceColor;
-    [SerializeField] private Transform rangeIndicator;
+    [SerializeField] private bool isLocked;
+
+    [Header("Dice Transform Data")]
     [SerializeField] private Vector3 scaleOnDrag = new Vector3(0.5f, 0.5f, 0.5f);
     [SerializeField] private Vector3 scaleInPlayerBase = Vector3.one;
 
+    [Header("Faces")]
+    [SerializeField] private List<DieFace> faces;
+    [SerializeField] private DieFace _currentTopFace;
+
+    [Header("Tower Connected")]
+    [SerializeField] private TowerBaseParent towerPrefabConnected;
+    [SerializeField] private TowerBaseParent currentTowerParent;
+
+    [Header("Roll Data")]
+    [SerializeField] private float _reqStagnantTime = 1;
+
+    [Header("References")]
+    [SerializeField] private Camera diceCam;
+    [SerializeField] private Rigidbody _rb;
+    [SerializeField] private Transform lockTransform;
+    [SerializeField] private Outline outline;
+    [SerializeField] private Transform rangeIndicator;
+    [SerializeField] private Transform originalParent;
+
+
     private bool _isDragging;
     private bool _isInWorld;
-    private float _stagnantTimer;
-    [SerializeField] private DieFace _currentTopFace;
-    private Vector3 originalPos;
-    //private Vector3 originalScale;
+    private bool isRolling;
+
     private float timeTillStartDrag = 0.2f;
     private float currentTimeTillStartDrag = 0;
+    private float _stagnantTimer;
+
+    private Vector3 originalPos;
     private Quaternion targetQuat;
-    [SerializeField] private Transform originalParent;
-    bool isRolling;
-    DieRoller roller;
+
+    private DieRoller roller;
 
     public bool IsRolling { get { return isRolling; } }
     public Rigidbody RB { get { return _rb; } }
@@ -78,6 +93,10 @@ public class Die : MonoBehaviour
 
         roller = GetComponent<DieRoller>();
     }
+    private void LateUpdate()
+    {
+        CheckState();
+    }
 
     private void SetRangeIndicator()
     {
@@ -103,30 +122,6 @@ public class Die : MonoBehaviour
             rangeIndicator.localScale = new Vector3(range * 2 / originalScale.x, range * 2 / originalScale.y, range * 2 / originalScale.z);
             rangeIndicator.gameObject.SetActive(false);
         }
-    }
-
-    public void InitDiceInSlot(Transform _lockTransform, DiceSO diceData)
-    {
-        lockTransform = _lockTransform;
-
-        towerPrefabConnected = diceData.towerPrefab;
-        diceColor = diceData.dieMaterial.color;
-
-
-        switch (diceData.dieType)
-        {
-            case DieType.D6:
-                SetDiceValueSpecific(6, diceData);
-                break;
-            case DieType.D8:
-                SetDiceValueSpecific(8, diceData);
-                break;
-            default:
-                break;
-        }
-
-        originalParent = transform.parent;
-
     }
 
     private void SetDiceValueSpecific(int amountOfFaces, DiceSO diceData)
@@ -177,10 +172,6 @@ public class Die : MonoBehaviour
 
             faces[i].DisplayResource();
         }
-    }
-    private void LateUpdate()
-    {
-        CheckState();
     }
 
     private void OrientCubeToCamrea(Die die)
@@ -253,50 +244,6 @@ public class Die : MonoBehaviour
         isRolling = false;
     }
 
-    public DieFaceValue GetTopValue()
-    {
-        float lowestAngle = float.MaxValue;
-        Vector3 tmpFaceVec;
-        float tmpAngle;
-        foreach (var face in faces)//find the face with the angle closest to up
-        {
-            tmpFaceVec = face.transform.position - transform.position;
-            tmpAngle = Vector3.Angle(Vector3.up, tmpFaceVec);
-
-            if (tmpAngle < lowestAngle)
-            {
-                lowestAngle = tmpAngle;
-                _currentTopFace = face;
-            }
-        }
-        AdjustRotation();
-
-        return _currentTopFace.GetFaceValue();
-    }
-
-    public DieFace[] GetAllFaces()
-    {
-        return faces.ToArray();
-    }
-
-    [ContextMenu("DisplayBuffs")]
-    public void DisplayBuffs()
-    {
-        foreach (var face in faces)
-        {
-            face.DisplayBuff();
-        }
-    }
-
-    [ContextMenu("DisplayResources")]
-    public void DisplayResources()
-    {
-        foreach (var face in faces)
-        {
-            face.DisplayResource();
-        }
-    }
-
     private void OnMouseDrag()
     {
         if (isLocked || !GameManager.playerTurn) return;
@@ -358,8 +305,6 @@ public class Die : MonoBehaviour
 
     }
 
-
-
     private void SetValuesOnDragStart()
     {
         RB.isKinematic = true;
@@ -414,10 +359,6 @@ public class Die : MonoBehaviour
         ChangeLayerRecursive(transform, "Default");
     }
 
-    public void InitDie(TowerBaseParent tower)
-    {
-        currentTowerParent = tower;
-    }
     private void ChangeLayerRecursive(Transform trans, string nameOfLayer)
     {
 
@@ -443,6 +384,83 @@ public class Die : MonoBehaviour
         Destroy(gameObject);
     }
 
+
+
+
+
+
+    public void InitDiceInSlot(Transform _lockTransform, DiceSO diceData)
+    {
+        lockTransform = _lockTransform;
+
+        towerPrefabConnected = diceData.towerPrefab;
+        diceColor = diceData.dieMaterial.color;
+
+
+        switch (diceData.dieType)
+        {
+            case DieType.D6:
+                SetDiceValueSpecific(6, diceData);
+                break;
+            case DieType.D8:
+                SetDiceValueSpecific(8, diceData);
+                break;
+            default:
+                break;
+        }
+
+        originalParent = transform.parent;
+
+    }
+
+    public DieFaceValue GetTopValue()
+    {
+        float lowestAngle = float.MaxValue;
+        Vector3 tmpFaceVec;
+        float tmpAngle;
+        foreach (var face in faces)//find the face with the angle closest to up
+        {
+            tmpFaceVec = face.transform.position - transform.position;
+            tmpAngle = Vector3.Angle(Vector3.up, tmpFaceVec);
+
+            if (tmpAngle < lowestAngle)
+            {
+                lowestAngle = tmpAngle;
+                _currentTopFace = face;
+            }
+        }
+        AdjustRotation();
+
+        return _currentTopFace.GetFaceValue();
+    }
+
+    public DieFace[] GetAllFaces()
+    {
+        return faces.ToArray();
+    }
+
+    [ContextMenu("DisplayBuffs")]
+    public void DisplayBuffs()
+    {
+        foreach (var face in faces)
+        {
+            face.DisplayBuff();
+        }
+    }
+
+    [ContextMenu("DisplayResources")]
+    public void DisplayResources()
+    {
+        foreach (var face in faces)
+        {
+            face.DisplayResource();
+        }
+    }
+
+    public void InitDie(TowerBaseParent tower)
+    {
+        currentTowerParent = tower;
+    }
 
     public void LockDie(bool isLocking)
     {
@@ -503,6 +521,11 @@ public class Die : MonoBehaviour
     public DieRoller ReturnDieRoller()
     {
         return roller;
+    }
+
+    public bool ReturnIsLocked()
+    {
+        return isLocked;
     }
 }
 

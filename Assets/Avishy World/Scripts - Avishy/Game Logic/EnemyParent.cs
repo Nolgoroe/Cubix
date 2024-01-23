@@ -80,7 +80,7 @@ public class EnemyParent : MonoBehaviour
         if (currentAttackCooldown <= 0)
         {
             Attack();
-            currentAttackCooldown = (1 / attackRate) / GameManager.gameSpeed;
+            currentAttackCooldown = (1 * attackRate) / GameManager.gameSpeed;
         }
     }
     private void FixedUpdate()
@@ -202,7 +202,10 @@ public class EnemyParent : MonoBehaviour
         }
     }
 
-
+    private void OnDestroy()
+    {
+        WaveManager.Instance.ChangeEnemyCount(-1);
+    }
 
 
 
@@ -249,16 +252,15 @@ public class EnemyParent : MonoBehaviour
     }
 
 
+
+
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
     }
 
-    private void OnDestroy()
-    {
-        WaveManager.Instance.ChangeEnemyCount(-1);
-    }
 
 
 

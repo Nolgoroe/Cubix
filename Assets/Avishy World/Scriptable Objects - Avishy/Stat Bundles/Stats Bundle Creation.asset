@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3bf2c7264c30214b94a921c4eb1d2e0, type: 3}
   m_Name: Stats Bundle Creation
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  resourcesNeeded: []
-  playerStat: 0
-  amount: 0
+  icon: {fileID: 0}
+  resourcesNeeded:
+  - resource: 0
+    amount: 50
+  - resource: 1
+    amount: 50
+  statsToBuy:
+  - statToBuy: 0
+    amount: 10
