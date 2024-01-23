@@ -17,12 +17,19 @@ public class ForgeManager : MonoBehaviour
     [SerializeField] private DisplayDicePair d6Die;
     [SerializeField] private DisplayDicePair d8Die;
 
+    [Header("Settings")]
+    [SerializeField] private List<ForgeDieData> dice;
+
     private DisplayDicePair currentDisplayDice;
 
-    [SerializeField] private List<ForgeDieData> dice;
     private int currentDieIndex;
     private ResourceData _currentEditResource;
     private BuffData _currentEditBuff;
+
+    private void Start()
+    {
+        UpdateCurrentDieView();
+    }
 
     public void Init(List<Die> _dice)
     {
@@ -68,17 +75,55 @@ public class ForgeManager : MonoBehaviour
         ForgeDieData currentDie = dice[currentDieIndex];
         //temp text diplay, change it to actual die display later
         cubeNameTxt.text = "Die: " + currentDie.die.name;
-        faceNumTxt.text = (currentDie.currentFaceindex + 1).ToString();
+        faceNumTxt.text = "Face " + (currentDie.currentFaceindex + 1).ToString();
         resourceTypeTxt.text = currentDie.GetCurrentFace().GetFaceValue().Resource.Type.ToString();
         buffTypeTxt.text = currentDie.GetCurrentFace().GetFaceValue().Buff.Type.ToString();
         resourceValueTxt.text = currentDie.GetCurrentFace().GetFaceValue().Resource.Value.ToString();
         buffValueTxt.text = currentDie.GetCurrentFace().GetFaceValue().Buff.Value.ToString();
 
+
+        //dice display
+
+        //determine wihch die model should be used
+        switch (currentDie.die.ReturnDieType())
+        {
+            case DieType.D6:
+
+                d8Die.buffDie.gameObject.SetActive(false);
+                d8Die.resourceDie.gameObject.SetActive(false);
+
+                d6Die.buffDie.gameObject.SetActive(true);
+                d6Die.resourceDie.gameObject.SetActive(true);
+
+                currentDisplayDice = d6Die;
+                break;
+            case DieType.D8:
+
+                d8Die.buffDie.gameObject.SetActive(true);
+                d8Die.resourceDie.gameObject.SetActive(true);
+
+                d6Die.buffDie.gameObject.SetActive(false);
+                d6Die.resourceDie.gameObject.SetActive(false);
+
+                currentDisplayDice = d8Die;
+                break;
+            default:
+                break;
+        }
+
         //update display buff die
-        //currentDisplayDice.buffDie.UpdateDisplay(
-        //    currentDie.GetCurrentFace().
-        //    currentDie.GetCurrentFace().GetFaceValue().Buff.Type.ToString(),
-        //    currentDie.GetCurrentFace().GetFaceValue().Buff.Icon);
+        currentDisplayDice.buffDie.UpdateDisplay(
+            currentDie.GetCurrentFace().GetMesh().material,
+            currentDie.GetCurrentFace().GetFaceValue().Buff.Value.ToString() + "%",
+            currentDie.GetCurrentFace().GetFaceValue().Buff.Icon);
+
+        //update display buff die
+        currentDisplayDice.resourceDie.UpdateDisplay(
+            currentDie.GetCurrentFace().GetMesh().material,
+            "+" + currentDie.GetCurrentFace().GetFaceValue().Resource.Value.ToString(),
+            currentDie.GetCurrentFace().GetFaceValue().Resource.Icon);
+
+
     }
 
     public void ChangeCurrentFacePair()
@@ -88,7 +133,7 @@ public class ForgeManager : MonoBehaviour
 
         UpdateCurrentDieView();
     }
-    
+
     public void ChangeCurrentFaceResource()
     {
         dice[currentDieIndex].GetCurrentFace().SetResource(_currentEditResource);
@@ -132,6 +177,8 @@ public class ForgeManager : MonoBehaviour
     {
 
     }
+
+
 
 }
 

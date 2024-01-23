@@ -1423,9 +1423,12 @@ MonoBehaviour:
   OnDestroyDieEvent:
     m_PersistentCalls:
       m_Calls: []
+  DieType: 0
+  element: 0
+  diceColor: {r: 1, g: 0.827451, b: 0, a: 1}
   isLocked: 0
-  diceCam: {fileID: 0}
-  _rb: {fileID: 3925297638537684283}
+  scaleOnDrag: {x: 0.5, y: 0.5, z: 0.5}
+  scaleInPlayerBase: {x: 1, y: 1, z: 1}
   faces:
   - {fileID: 4849900254507665944}
   - {fileID: 2894920232093282644}
@@ -1433,19 +1436,16 @@ MonoBehaviour:
   - {fileID: 6175280074255596313}
   - {fileID: 4452473064458570596}
   - {fileID: 773725086819462835}
-  element: 0
-  DieType: 0
+  _currentTopFace: {fileID: 0}
   towerPrefabConnected: {fileID: 7779022226387808478, guid: 7cb2a2d3c330104478cf0c451e0c362b,
     type: 3}
   currentTowerParent: {fileID: 0}
   _reqStagnantTime: 0.5
+  diceCam: {fileID: 0}
+  _rb: {fileID: 3925297638537684283}
   lockTransform: {fileID: 0}
   outline: {fileID: 9168484862997919747}
-  diceColor: {r: 1, g: 0.827451, b: 0, a: 1}
   rangeIndicator: {fileID: 2473994983393537120}
-  scaleOnDrag: {x: 0.5, y: 0.5, z: 0.5}
-  scaleInPlayerBase: {x: 1, y: 1, z: 1}
-  _currentTopFace: {fileID: 0}
   originalParent: {fileID: 0}
 --- !u!114 &910382848661441555
 MonoBehaviour:
@@ -1460,14 +1460,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   die: {fileID: 5556330122468636267}
-  posConstraintRange: {x: 0, y: 0, z: 0}
-  rotationForceMin: {x: -1, y: -1, z: -1}
-  rotationForceMax: {x: 1, y: 1, z: 1}
   throwForce: 7
   tpHeight: 0.5
   constraintX: 1
   constraintY: 0
   constraintZ: 1
+  posConstraintRange: {x: 0, y: 0, z: 0}
+  rotationForceMin: {x: -1, y: -1, z: -1}
+  rotationForceMax: {x: 1, y: 1, z: 1}
   massCenter: {x: 0, y: 0, z: 0}
 --- !u!114 &9168484862997919747
 MonoBehaviour:

@@ -96,6 +96,11 @@ public class DieFace : MonoBehaviour
     {
         return orientationEndRollInWorld;
     }
+
+    public MeshRenderer GetMesh()
+    {
+        return renderer;
+    }
 }
 
 

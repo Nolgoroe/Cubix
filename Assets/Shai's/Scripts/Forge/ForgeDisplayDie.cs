@@ -5,7 +5,6 @@ using TMPro;
 
 public class ForgeDisplayDie : MonoBehaviour
 {
-    [SerializeField] private Material material;
     [SerializeField] private TMP_Text valTxt;
     [SerializeField] private SpriteRenderer icon;
     [SerializeField] private List<MeshRenderer> facesMesh;
