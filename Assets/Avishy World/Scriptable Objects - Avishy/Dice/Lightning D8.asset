@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0c52002280ceed42adf58f782e7a246, type: 3}
   m_Name: Lightning D8
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: fb9c5c1e5a42dcb42bf9271db8b5e931, type: 3}
+  icon: {fileID: 21300000, guid: 1a43326f22a7a624f80d0c012d98157e, type: 3}
   resourcesNeeded:
   - resource: 0
     amount: 25
