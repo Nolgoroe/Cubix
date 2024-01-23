@@ -39,6 +39,8 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.InitUIManager();
         DiceManager.Instance.InitDiceManager();
 
+        UIManager.Instance.UpdateStaminaAmount(Player.Instance.ReturnRerollAmount());
+
         isDead = false;
 
         playerTurn = true;

@@ -20,6 +20,9 @@ public class Player : MonoBehaviour
     [SerializeField] int maxHP;
     [SerializeField] int currentPlayerHealth;
 
+    [Header("Rerolls")]
+    [SerializeField] private int rerollAmount;
+
     private void Awake()
     {
         Instance = this;
@@ -32,7 +35,11 @@ public class Player : MonoBehaviour
 
         UIManager.Instance.UpdatePlayerHealth(currentPlayerHealth, maxHP);
     }
-    private void AddResourcesAfterRoll(Die die)
+
+
+
+
+    public void AddResourcesFromDice(Die die)
     {
         //maybe this needs a fix since all dice will call this function even if they are part of the world.
         if (die.ReturnInWorld()) return;
@@ -59,19 +66,6 @@ public class Player : MonoBehaviour
     }
 
 
-
-
-
-    public void ConnectPlayerAndDiceOnStartLevel()
-    {
-        allDieInPlay = new List<Die>();
-        allDieInPlay.AddRange(FindObjectsOfType<Die>());
-
-        foreach (Die die in allDieInPlay)
-        {
-            die.OnRollEndEvent.AddListener(AddResourcesAfterRoll);
-        }
-    }
     public void RecieveRandomResource()
     {
         ResourceType[] myEnums = (ResourceType[])System.Enum.GetValues(typeof(ResourceType));
@@ -172,5 +166,14 @@ public class Player : MonoBehaviour
     public bool ReturnIsHurt()
     {
         return currentPlayerHealth < maxHP;
+    }
+
+    public void ChangeRerollAmount(int amount)
+    {
+        rerollAmount += amount;
+    }
+    public int ReturnRerollAmount()
+    {
+        return rerollAmount;
     }
 }

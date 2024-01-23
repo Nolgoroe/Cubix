@@ -587,6 +587,7 @@ MonoBehaviour:
   diceFaceUIDisplayPreafb: {fileID: 8648066081239103102, guid: e10957a92c9cdc84c9caf1bdfa9d57ae,
     type: 3}
   pauseMenu: {fileID: 1675742893}
+  staminaText: {fileID: 538082571}
 --- !u!1 &141641284
 GameObject:
   m_ObjectHideFlags: 0
@@ -4608,11 +4609,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allDieInPlay: []
-  iron: 350
+  iron: 0
   energy: 0
   lightning: 0
   maxHP: 0
   currentPlayerHealth: 0
+  rerollAmount: 5
 --- !u!4 &921852820
 Transform:
   m_ObjectHideFlags: 0

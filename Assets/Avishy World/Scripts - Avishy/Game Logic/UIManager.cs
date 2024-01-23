@@ -38,6 +38,8 @@ public class UIManager : MonoBehaviour
     [Header("Pause Menu")]
     [SerializeField] private Transform pauseMenu;
 
+    [Header("Stamina")]
+    [SerializeField] private TMP_Text staminaText;
 
 
     private void Awake()
@@ -165,5 +167,10 @@ public class UIManager : MonoBehaviour
 
         int maxWaves = WaveManager.Instance.ReturnWaveCount() - 1;
         waveCounterText.text = "Wave " + currentWave + "/" + maxWaves;
+    }
+
+    public void UpdateStaminaAmount(int amount)
+    {
+        staminaText.text = amount.ToString();
     }
 }

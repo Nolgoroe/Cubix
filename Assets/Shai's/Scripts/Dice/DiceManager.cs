@@ -11,7 +11,7 @@ public class DiceManager : MonoBehaviour
     [SerializeField] private List<DiceSlot> diceSlots;
 
     [Header("Live data")]
-    [SerializeField] private List<DieRoller> resourceDice;
+    [SerializeField] private List<Die> resourceDice;
     [SerializeField] private List<DieRoller> worldDice;
 
     [Header("Dictionary data")]
@@ -50,16 +50,21 @@ public class DiceManager : MonoBehaviour
             }
         }
 
-        Player.Instance.ConnectPlayerAndDiceOnStartLevel();
+        //Player.Instance.ConnectPlayerAndDiceOnStartLevel();
     }
 
     public void RollResources()
     {
+        if (Player.Instance.ReturnRerollAmount() <= 0) return;
+
         //called from button
         foreach (var roller in resourceDice)
         {
-            roller.Roll();
+            roller.ReturnDieRoller().Roll();
         }
+
+        Player.Instance.ChangeRerollAmount(-1);
+        UIManager.Instance.UpdateStaminaAmount(Player.Instance.ReturnRerollAmount());
     }
     public void RollInWorld()
     {
@@ -71,14 +76,14 @@ public class DiceManager : MonoBehaviour
 
 
 
-    public void AddDiceToResources(DieRoller die)
+    public void AddDiceToResources(Die die)
     {
         if (!resourceDice.Contains(die))
         {
             resourceDice.Add(die);
         }
     }
-    public void RemoveDiceToResources(DieRoller die)
+    public void RemoveDiceToResources(Die die)
     {
         resourceDice.Remove(die);
     }
@@ -109,5 +114,10 @@ public class DiceManager : MonoBehaviour
     public Sprite ReturnIconByType(BuffType resourceType)
     {
         return buffTypeToIcon[resourceType];
+    }
+
+    public List<Die> ReturnResourceDice()
+    {
+        return resourceDice;
     }
 }
