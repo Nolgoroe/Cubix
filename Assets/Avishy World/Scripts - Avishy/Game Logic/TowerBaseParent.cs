@@ -12,27 +12,70 @@ public class TowerBuffDataHolder
 }
 public abstract class TowerBaseParent : MonoBehaviour
 {
-    [SerializeField] protected Vector2Int currentCellOnPos;
+    [Header("Requirements")]
+    [SerializeField] protected bool requiresPathCells;
     [SerializeField] protected CellTypeColor requiredCellColorType;
+
+    [Header("Dice Data")]
     [SerializeField] protected Die towerDie;
-    [SerializeField] protected ResultDiceDisplay resultDiceDisplay;
-    [SerializeField] protected Transform rangeIndicator;
     [SerializeField] protected Transform resultDiceHolder;
     [SerializeField] protected List<TowerBuffDataHolder> currentTowerBuffs;
 
+    [Header("Visuals")]
+    [SerializeField] protected Transform rangeIndicator;
+    [SerializeField] protected ParticleSystem onSpawnParticle;
+    [SerializeField] protected Vector2Int currentCellOnPos;
 
+
+    protected Vector3 originalScale;
+
+
+    private void OnEnable()
+    {
+        if (GameGridControls.Instance.rapidControls)
+        {
+            if (towerDie)
+            {
+                towerDie.OnRollEndEvent.AddListener(RecieveBuffAfterRoll);
+            }
+        }
+    }
+    private void OnDisable()
+    {
+        if (GameGridControls.Instance.rapidControls)
+        {
+            if (towerDie)
+            {
+                towerDie.OnRollEndEvent.RemoveListener(RecieveBuffAfterRoll);
+            }
+        }
+    }
     virtual protected void Start()
     {
-        if (towerDie)
-        {
-            towerDie.OnRollEndEvent.AddListener(RecieveBuffAfterRoll);
-            towerDie.OnRollEndEvent.AddListener(DisplayBuffAfterRoll);
-        }
+        originalScale = transform.localScale;
+        transform.localScale = Vector3.zero;
 
         GameManager.Instance.AddTowerToRelaventList(this);
+
+        if(!GameGridControls.Instance.rapidControls)
+        {
+            if (towerDie)
+            {
+                towerDie.OnRollEndEvent.AddListener(RecieveBuffAfterRoll);
+            }
+        }
+
+        //spawn effect
+        Vector3 newPos = new Vector3(transform.position.x, transform.position.y + 0.2f, transform.position.z);
+        Instantiate(onSpawnParticle, newPos, Quaternion.identity);
+
+        LeanTween.scale(gameObject, originalScale, 0.5f).setEase(LeanTweenType.easeOutBounce);
     }
+
     protected void AddNewTowerBuff(DieFaceValue diceFaceValue, Die die)
     {
+        if (diceFaceValue.Buff.Type == BuffType.None) return;
+
         TowerBuffDataHolder holder = new TowerBuffDataHolder();
         holder.buffType = diceFaceValue.Buff.Type;
         holder.bgColor = die.ReturnDiceColor();
@@ -41,42 +84,12 @@ public abstract class TowerBaseParent : MonoBehaviour
 
         currentTowerBuffs.Add(holder);
     }
-    protected void SpawnBuffCubeOnCreation()
-    {
-        if(towerDie)
-        {
-            GameObject go =  Instantiate(towerDie.gameObject, resultDiceHolder);
-            go.transform.localPosition = Vector3.zero;
-            go.transform.localRotation = Quaternion.Euler(Vector3.zero);
 
-            foreach (Component comp in go.GetComponents<Component>())
-            {
-                if (!(comp is Transform))
-                {
-                    Destroy(comp);
-                }
-            }
 
-            ResultDiceDisplay diceDisplay = go.AddComponent<ResultDiceDisplay>();
-            diceDisplay.InitDiceDisplay(towerDie);
-            diceDisplay.GetCameraFacingValue();
 
-            resultDiceDisplay = diceDisplay;
-        }
 
-        resultDiceHolder.gameObject.SetActive(false);
-    }
     public abstract void InitTowerData(Vector2Int positionOfCell, Die connectedDie);
     public abstract void RecieveBuffAfterRoll(Die die);
-    protected void DisplayBuffAfterRoll(Die die)
-    {
-        DieFaceValue dieFaceValue = die.GetTopValue();
-
-        resultDiceHolder.gameObject.SetActive(true);
-
-        resultDiceDisplay.SetFaceData(dieFaceValue.Buff);
-        towerDie.gameObject.SetActive(false);
-    }
     public abstract void OnHoverOverOccupyingCell(bool isHover);
 
     public CellTypeColor ReturnCellColorType()
@@ -89,14 +102,66 @@ public abstract class TowerBaseParent : MonoBehaviour
         return currentTowerBuffs;
     }
 
-    public void OnStartPlayerTurn()
+    public IEnumerator OnStartPlayerTurn()
     {
-        towerDie.gameObject.SetActive(true);
+        if(GameGridControls.Instance.rapidControls)
+        {
+            resultDiceHolder.gameObject.SetActive(true);
+            towerDie.gameObject.SetActive(true);
+
+            yield return new WaitForSeconds(7); // temp time
+            towerDie.BackToPlayerArea();
+            towerDie.DisplayResources();
+
+            DiceManager.Instance.ResetDiceToWorldList();
+            DiceManager.Instance.AddDiceToResources(towerDie);
+
+            GridManager.Instance.ReturnCellAtVector(currentCellOnPos).ResetCellOnStartTurn();
+            gameObject.SetActive(false);
+            CleanTroopsCompletely();
+        }
+        else
+        {
+            resultDiceHolder.gameObject.SetActive(true);
+            towerDie.gameObject.SetActive(true);
+        }
     }
+
     public void OnEndPlayerTurn()
     {
+        towerDie.ResetTransformData();
         towerDie.gameObject.SetActive(false);
         resultDiceHolder.gameObject.SetActive(false);
+    }
+
+    public void RotateTowardsCameraEndRoll()
+    {
+        Vector3 offset = Vector3.zero;
+        switch (towerDie.ReturnDieType())
+        {
+            case DieType.D6:
+                break;
+            case DieType.D8:
+                offset = new Vector3(0,25,0);
+                break;
+            default:
+                break;
+        }
+        Vector3 direction = (GameManager.Instance.ReturnMainCamera().transform.position + offset) - towerDie.ReturnCurrentTopFace().transform.position;
+
+        Debug.DrawLine(resultDiceHolder.position, direction * 1000, Color.red, Mathf.Infinity);
+        Quaternion lookAt = Quaternion.LookRotation(direction);
+        LeanTween.rotate(resultDiceHolder.gameObject, lookAt.eulerAngles, 0.2f);
+    }
+
+
+    public bool ReturnRequiresPathCells()
+    {
+        return requiresPathCells;
+    }
+
+    public virtual void CleanTroopsCompletely()
+    {
 
     }
 }

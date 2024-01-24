@@ -8,52 +8,92 @@ public class RangeTowerParentScript : TowerBaseParent
     [Header ("Live data")]
     [SerializeField] private Transform currentTarget;
 
-    [Header("Preset Data")] 
+    [Header("Combat")] 
     [SerializeField] private float range = 15;
     [SerializeField] private float rotationSpeed = 15;
+    [SerializeField] protected float bulltDMG = 1;
+
+    [Header("Combat Timers")]
     [SerializeField] protected float fireRate = 1;
     [SerializeField] protected float fireCountDown = 0;
+
+    [SerializeField] protected float specialFireRate = 1;
+    [SerializeField] protected float specialFireRateCooldown = 0;
+    [SerializeField] protected bool isSpecialBullet = false;
+
+
+    [Header("Preset Refs")]
     [SerializeField] private Transform partToRotate;
-    [SerializeField] private LayerMask enemyLayerMask;
-    [SerializeField] protected GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
+    [SerializeField] protected GameObject bulletPrefab;
+    [SerializeField] private LayerMask enemyLayerMask;
+
+
+    private float originalRange;
+    private float originalRotationSpeed;
+    private float originalFireRate;
+    private float originalBulletDMG;
 
     protected override void Start()
     {
+        fireCountDown = (1 * fireRate) / GameManager.gameSpeed;
+        specialFireRateCooldown = (1 * specialFireRate) / GameManager.gameSpeed;
+        originalRange = range;
+        originalRotationSpeed = rotationSpeed;
+        originalFireRate = fireRate;
+        originalBulletDMG = bulltDMG;
+
         base.Start();
+
+        SetRangeIndicator();
+    }
+
+    private void SetRangeIndicator()
+    {
         //radius is half of the diameter of a circle
-        if(rangeIndicator)
+        if (rangeIndicator)
         {
-            rangeIndicator.localScale = new Vector3(range * 2 / transform.localScale.x, range * 2 / transform.localScale.y, range * 2 / transform.localScale.z);
+            rangeIndicator.localScale = new Vector3(range * 2 / originalScale.x, range * 2 / originalScale.y, range * 2 / originalScale.z);
             rangeIndicator.gameObject.SetActive(false);
         }
     }
     protected virtual void Update()
     {
-        if (GameManager.gameSpeed == 0) return;
+        if (GameManager.gamePaused) return;
+
         UpdateTarget();
         if (currentTarget == null) return;
 
         //locking on target
         Vector3 direction = currentTarget.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
-        Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * (rotationSpeed * GameManager.gameSpeed)).eulerAngles;
+        Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * rotationSpeed * GameManager.gameSpeed).eulerAngles;
 
         partToRotate.rotation = Quaternion.Euler(rotation);
 
-        if(fireCountDown <= 0)
+        if(specialFireRateCooldown <= 0)
         {
-            Shoot();
-            fireCountDown = (1 / fireRate) / GameManager.gameSpeed;
+            isSpecialBullet = true;
+            specialFireRateCooldown = (1 * specialFireRate) / GameManager.gameSpeed;
         }
 
-        fireCountDown -= Time.deltaTime;
+        if (fireCountDown <= 0)
+        {
+            Shoot();
+            fireCountDown = (1 * fireRate) / GameManager.gameSpeed;
+
+            if(isSpecialBullet)
+            {
+                isSpecialBullet = false;
+            }
+        }
+
+        fireCountDown -= Time.deltaTime * GameManager.gameSpeed;
+        specialFireRateCooldown -= Time.deltaTime * GameManager.gameSpeed;
     }
 
     private void Shoot()
     {
-        Debug.Log("Shoot");
-
         GameObject go = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         
         TowerBullet bullet;
@@ -61,7 +101,7 @@ public class RangeTowerParentScript : TowerBaseParent
         
         if(bullet)
         {
-            bullet.InitBullet(currentTarget);
+            bullet.InitBullet(currentTarget, bulltDMG, isSpecialBullet);
         }
     }
 
@@ -105,7 +145,8 @@ public class RangeTowerParentScript : TowerBaseParent
 
         towerDie = connectedDie;
 
-        SpawnBuffCubeOnCreation();
+        towerDie.transform.SetParent(resultDiceHolder);
+        //SpawnBuffCubeOnCreation();
     }
 
     private void OnDrawGizmos()
@@ -120,15 +161,19 @@ public class RangeTowerParentScript : TowerBaseParent
 
         switch (dieFaceValue.Buff.Type)
         {
-            case BuffType.Speed:
+            case BuffType.None:
                 break;
-            case BuffType.Damage:
+            case BuffType.Dmg:
+                bulltDMG += originalBulletDMG * (dieFaceValue.Buff.Value / 100);
                 break;
-            case BuffType.Fire:
+            case BuffType.Range:
+                range += originalRange * (dieFaceValue.Buff.Value / 100);
+
+                SetRangeIndicator();
                 break;
-            case BuffType.AttackSpeed:
-                //add attack speed to relavent tower
-                fireRate += 0.1f;
+            case BuffType.HP:
+                break;
+            case BuffType.time:
                 break;
             default:
                 break;
@@ -141,5 +186,10 @@ public class RangeTowerParentScript : TowerBaseParent
     {
         if (rangeIndicator)
             rangeIndicator.gameObject.SetActive(isHover ? true : false);
+    }
+    
+    public float ReturnRangeTower()
+    {
+        return range;
     }
 }

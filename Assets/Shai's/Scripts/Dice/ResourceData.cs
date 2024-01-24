@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ResourceType{Coins, Scraps }
+public enum ResourceType{Iron, Energy, Lightning }
 
 [System.Serializable]
 public class ResourceData 

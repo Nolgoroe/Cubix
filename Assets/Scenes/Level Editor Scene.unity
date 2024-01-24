@@ -8104,6 +8104,7 @@ MonoBehaviour:
   toolUI: {fileID: 1308028817}
   toolWaveCreator: {fileID: 294619734}
   toolGameGrid: {fileID: 0}
+  gameGrid: {fileID: 0}
   levelList: []
   allEnemies: []
 --- !u!4 &1155849637
@@ -9773,6 +9774,8 @@ MonoBehaviour:
   toolGameGridPrefab: {fileID: 7369130845250804221, guid: 93338a55e2281db4a9c1c498d9579981,
     type: 3}
   buildingGhost: {fileID: 1798974556}
+  towerSpawnPrefab: {fileID: 2858862490237690784, guid: 457710efe7ec8e8449d106d2fc2343d3,
+    type: 3}
   cellIndicator: {fileID: 478979399}
   gridCellLayer:
     serializedVersion: 2

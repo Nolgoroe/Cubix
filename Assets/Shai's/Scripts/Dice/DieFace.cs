@@ -10,9 +10,16 @@ public class DieFace : MonoBehaviour
     [SerializeField] private TMP_Text valueText;
     [SerializeField] private ResourceData resource;
     [SerializeField] private BuffData buff;
+    [SerializeField] private MeshRenderer renderer;
+    [SerializeField] private Vector3 orientationEndRoll;
+    [SerializeField] private Vector3 orientationEndRollInWorld;
 
     public Transform DisplayObject { get { return displayObject; } }
 
+    private void OnValidate()
+    {
+        renderer = GetComponent<MeshRenderer>();
+    }
     public DieFaceValue GetFaceValue()
     {
         return new DieFaceValue(resource, buff);
@@ -21,6 +28,9 @@ public class DieFace : MonoBehaviour
     public void SetResource(ResourceData _resource)
     {
         resource = _resource;
+        resource.Type = _resource.Type;
+        resource.Value = _resource.Value;
+        resource.Icon = _resource.Icon;
     }
 
     public void SetResource(ResourceType type, int value, Sprite icon)
@@ -49,7 +59,16 @@ public class DieFace : MonoBehaviour
     public void DisplayBuff()
     {
         faceIcon.sprite = buff.Icon;
-        valueText.text = "+" + buff.Value;
+        if(buff.Type == BuffType.None)
+        {
+            valueText.gameObject.SetActive(false);
+        }
+        else
+        {
+            valueText.gameObject.SetActive(true);
+
+            valueText.text = "+" + buff.Value + "%";
+        }
     }
 
     public void DisplayResource()
@@ -58,7 +77,21 @@ public class DieFace : MonoBehaviour
         valueText.text = "+" + resource.Value;
     }
 
+    public void ChangeFaceMat(Material mat)
+    {
+        renderer.material = mat;
+    }
+
+    public Vector3 ReturnOrientationOnEndRoll()
+    {
+        return orientationEndRoll;
+    }
+    public Vector3 ReturnOrientationOnEndRollWorld()
+    {
+        return orientationEndRollInWorld;
+    }
 }
+
 
 public struct DieFaceValue
 {

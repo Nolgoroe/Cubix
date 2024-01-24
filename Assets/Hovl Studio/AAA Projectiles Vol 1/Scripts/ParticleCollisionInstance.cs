@@ -13,17 +13,27 @@ public class ParticleCollisionInstance : MonoBehaviour
     public bool useOnlyRotationOffset = true;
     public bool UseFirePointRotation;
     public bool DestoyMainEffect = true;
-    private ParticleSystem part;
+    [SerializeField] private ParticleSystem[] parts;
     private List<ParticleCollisionEvent> collisionEvents = new List<ParticleCollisionEvent>();
     private ParticleSystem ps;
+    ParticleSystem.MainModule control;
 
-    void Start()
+    private void Start()
     {
-        part = GetComponent<ParticleSystem>();
+        foreach (ParticleSystem system in parts)
+        {
+            control = system.main;
+            control.simulationSpeed = GameManager.gameSpeed;
+        }
     }
     void OnParticleCollision(GameObject other)
     {
-        int numCollisionEvents = part.GetCollisionEvents(other, collisionEvents);
+        TowerBullet bullet;
+        TryGetComponent<TowerBullet>(out bullet);
+        if (bullet)
+            bullet.OnCollidedWithObject(other);
+
+        int numCollisionEvents = parts[0].GetCollisionEvents(other, collisionEvents);     
         for (int i = 0; i < numCollisionEvents; i++)
         {
             foreach (var effect in EffectsOnCollision)
@@ -43,14 +53,6 @@ public class ParticleCollisionInstance : MonoBehaviour
         if (DestoyMainEffect == true)
         {
             Destroy(gameObject, DestroyTimeDelay + 0.5f);
-        }
-
-        TowerBullet bullet;
-        TryGetComponent<TowerBullet>(out bullet);
-
-        if (bullet)
-        {
-            bullet.OnCollidedWithObject(other);
         }
     }
 }

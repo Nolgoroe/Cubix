@@ -10,74 +10,102 @@ public class MeleeTowerParentScript : TowerBaseParent
     [SerializeField] List<GridCell> connectedPathCells;
 
     [Header("Troop Spawn Data")]
-    [SerializeField] protected GameObject troopPrefab;
-    [SerializeField] int maxNumOfTroops;
     [SerializeField] protected float spawnRate = 1;
     [SerializeField] protected float currentSpawnCooldown = 0;
+    [SerializeField] int maxNumOfTroops;
     [SerializeField] int currentNumOfTroops;
     [SerializeField] List<TowerTroop> currentTowerTroops;
 
+    [Header("Troop Combat Data")]
+    [SerializeField] protected float troopDMG = 1;
+    [SerializeField] protected float troopHP = 1;
+    [SerializeField] protected float troopRange = 1;
+
+    [Header("Preset Refs")]
+    [SerializeField] protected GameObject troopPrefab;
+
+
+    private float originalSpawnRate;
+    private float originalTroopHP;
+    private float originalTroopRange;
+    private float originalTroopDMG;
+
+    private void OnEnable()
+    {
+        currentNumOfTroops = 0;
+        currentTowerTroops.Clear();
+        connectedPathCells.Clear();
+    }
+
     protected override void Start()
     {
+        originalSpawnRate = spawnRate;
+        originalTroopHP = troopHP;
+        originalTroopRange = troopRange;
+        originalTroopDMG = troopDMG;
+
         base.Start();
-        GridCell[,] gameGridCellsArray = GridManager.Instance.ReturnGridCellsArray();
 
-        int currentX = currentCellOnPos.x;
-        int currentY = currentCellOnPos.y;
+        #region rotation to path
+        //GridCell[,] gameGridCellsArray = GridManager.Instance.ReturnGridCellsArray();
 
-        //check up
-        if (currentY + 1 < GridManager.Instance.ReturnWidthHeight().y)
-        {
-            if (gameGridCellsArray[currentX, currentY + 1].ReturnTypeOfCell() == TypeOfCell.enemyPath)
-            {
-                transform.LookAt(gameGridCellsArray[currentX, currentY + 1].transform);
-                return;
-            }
-        }
+        //int currentX = currentCellOnPos.x;
+        //int currentY = currentCellOnPos.y;
 
-        //check left
-        if (currentX - 1 > -1)
-        {
-            if (gameGridCellsArray[currentX - 1, currentY].ReturnTypeOfCell() == TypeOfCell.enemyPath)
-            {
-                transform.LookAt(gameGridCellsArray[currentX - 1, currentY].transform);
+        ////check up
+        //if (currentY + 1 < GridManager.Instance.ReturnWidthHeight().y)
+        //{
+        //    if (gameGridCellsArray[currentX, currentY + 1].ReturnTypeOfCell() == TypeOfCell.enemyPath)
+        //    {
+        //        transform.LookAt(gameGridCellsArray[currentX, currentY + 1].transform);
+        //        return;
+        //    }
+        //}
 
-                return;
-            }
-        }
+        ////check left
+        //if (currentX - 1 > -1)
+        //{
+        //    if (gameGridCellsArray[currentX - 1, currentY].ReturnTypeOfCell() == TypeOfCell.enemyPath)
+        //    {
+        //        transform.LookAt(gameGridCellsArray[currentX - 1, currentY].transform);
 
-        //check down
-        if (currentY - 1 > -1)
-        {
-            if (gameGridCellsArray[currentX, currentY - 1].ReturnTypeOfCell() == TypeOfCell.enemyPath)
-            {
-                transform.LookAt(gameGridCellsArray[currentX, currentY - 1].transform);
+        //        return;
+        //    }
+        //}
 
-                return;
-            }
-        }
+        ////check down
+        //if (currentY - 1 > -1)
+        //{
+        //    if (gameGridCellsArray[currentX, currentY - 1].ReturnTypeOfCell() == TypeOfCell.enemyPath)
+        //    {
+        //        transform.LookAt(gameGridCellsArray[currentX, currentY - 1].transform);
 
-        //check right
-        if (currentX + 1 < GridManager.Instance.ReturnWidthHeight().x)
-        {
-            if (gameGridCellsArray[currentX + 1, currentY].ReturnTypeOfCell() == TypeOfCell.enemyPath)
-            {
-                transform.LookAt(gameGridCellsArray[currentX + 1, currentY].transform);
+        //        return;
+        //    }
+        //}
 
-                return;
-            }
-        }
+        ////check right
+        //if (currentX + 1 < GridManager.Instance.ReturnWidthHeight().x)
+        //{
+        //    if (gameGridCellsArray[currentX + 1, currentY].ReturnTypeOfCell() == TypeOfCell.enemyPath)
+        //    {
+        //        transform.LookAt(gameGridCellsArray[currentX + 1, currentY].transform);
+
+        //        return;
+        //    }
+        //}
+        #endregion
     }
     protected virtual void Update()
     {
-        if (GameManager.gameSpeed == 0) return;
+        if (GameManager.gamePaused) return;
 
         if (currentNumOfTroops < maxNumOfTroops)
         {
             if (currentSpawnCooldown <= 0)
             {
                 SpawnTroop();
-                currentSpawnCooldown = (1 / spawnRate) / GameManager.gameSpeed;
+                currentSpawnCooldown = (1 * spawnRate) / GameManager.gameSpeed;
             }
 
             currentSpawnCooldown -= Time.deltaTime;
@@ -106,7 +134,7 @@ public class MeleeTowerParentScript : TowerBaseParent
 
             if (troop)
             {
-                troop.InitTroopData(this);
+                troop.InitTroopData(this, troopHP, troopRange, troopDMG);
                 currentTowerTroops.Add(troop);
             }
         }
@@ -126,7 +154,7 @@ public class MeleeTowerParentScript : TowerBaseParent
     {
         currentCellOnPos = positionOfCell;
 
-        currentSpawnCooldown = (1 / spawnRate) / GameManager.gameSpeed;
+        currentSpawnCooldown = (1 * spawnRate) / GameManager.gameSpeed;
 
         //check left, right up and down for path cells
         Vector2Int checkDown = new Vector2Int(currentCellOnPos.x, currentCellOnPos.y - 1);
@@ -151,19 +179,12 @@ public class MeleeTowerParentScript : TowerBaseParent
         
 
         towerDie = connectedDie;
-
-        SpawnBuffCubeOnCreation();
+        towerDie.transform.SetParent(resultDiceHolder);
     }
 
     public void LoseTroop(TowerTroop lostTroop)
     {
         currentNumOfTroops--;
-
-        if(currentNumOfTroops < 0)
-        {
-            currentNumOfTroops = 0;
-        }
-
     }
 
     public void CleanTroopsAtWaveStart()
@@ -177,21 +198,35 @@ public class MeleeTowerParentScript : TowerBaseParent
 
         }
     }
+    public override void CleanTroopsCompletely()
+    {
+        for (int i = currentTowerTroops.Count - 1; i >= 0; i--)
+        {
+            if(currentTowerTroops[i] != null)
+            Destroy(currentTowerTroops[i].gameObject);
+
+            currentTowerTroops.RemoveAt(i);
+        }
+    }
     public override void RecieveBuffAfterRoll(Die die)
     {
         DieFaceValue dieFaceValue = towerDie.GetTopValue();
 
         switch (dieFaceValue.Buff.Type)
         {
-            case BuffType.Speed:
+            case BuffType.None:
                 break;
-            case BuffType.Damage:
+            case BuffType.Dmg:
+                troopDMG += originalTroopDMG * (dieFaceValue.Buff.Value / 100);
                 break;
-            case BuffType.Fire:
+            case BuffType.Range:
+                troopRange += originalTroopRange * (dieFaceValue.Buff.Value / 100);
                 break;
-            case BuffType.AttackSpeed:
-                //add attack speed to relavent tower
-                spawnRate += 0.1f;
+            case BuffType.HP:
+                troopHP += originalTroopHP * (dieFaceValue.Buff.Value / 100);
+                break;
+            case BuffType.time:
+                spawnRate -= originalSpawnRate * (dieFaceValue.Buff.Value / 100);
                 break;
             default:
                 break;

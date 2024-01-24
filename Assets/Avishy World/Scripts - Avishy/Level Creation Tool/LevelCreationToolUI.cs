@@ -49,6 +49,51 @@ public class LevelCreationToolUI : MonoBehaviour
         StartCoroutine(DisplaySystemMessage("Welcome to our level creation tool! have fun!"));
     }
 
+    private void PopupateCellTypesDropdownList()
+    {
+        string[] enumName = Enum.GetNames(typeof(TypeOfCell));
+        List<string> nameList = new List<string>(enumName);
+
+        dropDownCellType.AddOptions(nameList);
+    }
+    private void PopupateLevelPrefabList()
+    {
+        ToolReferencerObject.Instance.LoadLevelsToList();
+
+        List<string> nameList = ToolReferencerObject.Instance.levelList.Select(gameObject => gameObject.name).ToList();
+
+        dropDownLevelList.ClearOptions();
+        dropDownLevelList.AddOptions(nameList);
+    }
+
+    private void PopupateCellTypeCellColorDropdownList()
+    {
+        string[] enumName = Enum.GetNames(typeof(CellTypeColor));
+        List<string> nameList = new List<string>(enumName);
+
+        dropDownCellTypeColor.AddOptions(nameList);
+    }
+
+    private IEnumerator ReActivateButton(int time, Button button)
+    {
+        yield return new WaitForSeconds(time);
+        button.interactable = true;
+    }
+
+    private IEnumerator DisplaySystemMessage(string message)
+    {
+        systemText.text = message;
+        systemText.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(3);
+        systemText.gameObject.SetActive(false);
+
+    }
+
+
+
+
+
     public void Dropdown_IndexChangedCellType()
     {
         int index = dropDownCellType.value;
@@ -94,7 +139,6 @@ public class LevelCreationToolUI : MonoBehaviour
         ToolReferencerObject.Instance.controls.CallSavePathCreated();
     }
 
-
     public void ShowPathByIndex(bool show)
     {
         int index = -1;
@@ -120,14 +164,6 @@ public class LevelCreationToolUI : MonoBehaviour
         StartCoroutine(ReActivateButton(2, deleteWaypointsButton));
     }
 
-    private IEnumerator ReActivateButton(int time, Button button)
-    {
-        yield return new WaitForSeconds(time);
-        button.interactable = true;
-    }
-
-
-
     public void LoadSelectedLevel()
     {
         int index = dropDownLevelList.value;
@@ -140,13 +176,13 @@ public class LevelCreationToolUI : MonoBehaviour
         GameObject go = Instantiate(ToolReferencerObject.Instance.levelList[index]);
         levelName.text = ToolReferencerObject.Instance.levelList[index].name;
 
-        ToolGameGrid grid;
-        go.TryGetComponent<ToolGameGrid>(out grid);
+        //ToolGameGrid grid;
+        //go.TryGetComponent<ToolGameGrid>(out grid);
 
-        if(grid)
-        {
-            Camera.main.transform.position = new Vector3(0, grid.transform.position.y + 20, grid.transform.position.z - 20);
-        }
+        //if(grid)
+        //{
+            //Camera.main.transform.position = new Vector3(0, grid.transform.position.y + 20, grid.transform.position.z - 20);
+        //}
     }
 
     public void ResetLevelName()
@@ -158,25 +194,18 @@ public class LevelCreationToolUI : MonoBehaviour
     {
         StartCoroutine(DisplaySystemMessage(message));
     }
-    private IEnumerator DisplaySystemMessage(string message)
-    {
-        systemText.text = message;
-        systemText.gameObject.SetActive(true);
-
-        yield return new WaitForSeconds(3);
-        systemText.gameObject.SetActive(false);
-
-    }
     public void DisplayAmountOfPathsOnSpawner(int amount)
     {
         amountOfWaypoints.text = "Amount of waypoint lists: " + amount.ToString();
     }
 
+#if UNITY_EDITOR
+
     public void CallCreatePrefabFromGridTool()
     {
         StartCoroutine(CreatePrefabFromGridTool());
     }
-
+#endif
 #if UNITY_EDITOR
     public IEnumerator CreatePrefabFromGridTool()
     {
@@ -187,49 +216,39 @@ public class LevelCreationToolUI : MonoBehaviour
             yield break;
         }
 
+        if(ToolReferencerObject.Instance.toolGameGrid)
         ToolReferencerObject.Instance.toolGameGrid.CleanupBeforePrefab();
         yield return new WaitForSeconds(2); 
 
         string levelName = "/" + decidedLevelName + ".prefab";
-        string[] paths = new string[] { pathToLevelToolPrefabFolder + levelName,
+
+
+        if(ToolReferencerObject.Instance.toolGameGrid)
+        {
+            string[] paths = new string[] { pathToLevelToolPrefabFolder + levelName,
                                         pathToGameLevelPrefabFolder + levelName };
 
-
-        foreach (string path in paths)
-        {
-            PrefabUtility.SaveAsPrefabAsset(ToolReferencerObject.Instance.toolGameGrid.gameObject, path);
+            foreach (string path in paths)
+            {
+                PrefabUtility.SaveAsPrefabAsset(ToolReferencerObject.Instance.toolGameGrid.gameObject, path);
+            }
         }
 
+        if(ToolReferencerObject.Instance.gameGrid)
+        {
+            string[] paths = new string[] { pathToLevelToolPrefabFolder + levelName,
+                                        pathToGameLevelPrefabFolder + levelName };
+            foreach (string path in paths)
+            {
+                PrefabUtility.SaveAsPrefabAsset(ToolReferencerObject.Instance.gameGrid.gameObject, path);
+            }
+        }
         CallDisplaySystemMessage("Level has been saved");
 
         PopupateLevelPrefabList();
     }
 #endif
 
-    private void PopupateCellTypesDropdownList()
-    {
-        string[] enumName = Enum.GetNames(typeof (TypeOfCell));
-        List<string> nameList = new List<string>(enumName);
-
-        dropDownCellType.AddOptions(nameList);
-    }
-    private void PopupateLevelPrefabList()
-    {
-        ToolReferencerObject.Instance.LoadLevelsToList();
-
-        List<string> nameList = ToolReferencerObject.Instance.levelList.Select(gameObject => gameObject.name).ToList();
-
-        dropDownLevelList.ClearOptions();
-        dropDownLevelList.AddOptions(nameList);
-    }
-
-    private void PopupateCellTypeCellColorDropdownList()
-    {
-        string[] enumName = Enum.GetNames(typeof(CellTypeColor));
-        List<string> nameList = new List<string>(enumName);
-
-        dropDownCellTypeColor.AddOptions(nameList);
-    }
 
     public void ToggleBuildModeToggle(bool isOn)
     {

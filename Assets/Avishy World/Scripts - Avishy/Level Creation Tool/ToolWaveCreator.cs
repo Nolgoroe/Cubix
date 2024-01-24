@@ -29,16 +29,120 @@ public class ToolWaveCreator : MonoBehaviour
     [SerializeField] Transform enemyInwaveUIContent;
 
 
-
-
-
-
     private void Start()
     {
         waveList = new List<WaveData>();
 
     }
+    private void DisplayWaveAtIndex(int index)
+    {
+        if (index >= waveList.Count)
+        {
+            ToolReferencerObject.Instance.toolUI.CallDisplaySystemMessage("Your wave index is incorrect, index stat from 0 and max is wave count -1");
+            Debug.LogError("Error here");
+            return;
+        }
 
+        waveDataParent.gameObject.SetActive(true);
+
+        currentWaveSelectedIndex = index;
+
+        cooldownAtEndWave.text = waveList[index].delayBetweenWaves.ToString();
+        cooldownBetweenEnemies.text = waveList[index].delayBetweenEnemies.ToString();
+
+        if (waveList[index].enemyWaveDataList == null || waveList[index].enemyWaveDataList.Count == 0)
+        {
+            waveList[index].enemyWaveDataList = new List<EnemyWaveData>();
+        }
+
+        foreach (Transform child in enemyInwaveUIContent)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (EnemyWaveData enemyWaveData in waveList[index].enemyWaveDataList)
+        {
+            GameObject go = Instantiate(enemyInwaveUIPrefab, enemyInwaveUIContent);
+
+            if (go.TryGetComponent<EnemyInWaveUIData>(out EnemyInWaveUIData enemyInWaveData))
+            {
+                enemyInWaveData.InitEnemyInWaveUI(enemyWaveData);
+            }
+
+        }
+    }
+
+    private void ClearOnSave()
+    {
+        waveCountInputText.text = "0";
+        currentWaveIndex.text = "0";
+        cooldownAtEndWave.text = "0";
+        cooldownBetweenEnemies.text = "0";
+
+        foreach (Transform child in enemyInwaveUIContent)
+        {
+            Destroy(child.gameObject);
+        }
+
+        waveDataParent.gameObject.SetActive(false);
+        waveList.Clear();
+    }
+    private void AddWaveElements(int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            WaveData wave = new WaveData();
+
+            waveList.Add(wave);
+        }
+    }
+    private void RemoveWaveElements(int amount)
+    {
+        for (int i = amount; i > 0; i--)
+        {
+            waveList.RemoveAt(i);
+        }
+    }
+
+
+
+
+
+
+#if UNITY_EDITOR
+    [ContextMenu("Save now!")]
+    public void SaveWaveAsNew()
+    {
+
+        WaveSO wave = new WaveSO();
+        wave.Waves = new List<WaveData>();
+
+        foreach (WaveData waveData in waveList)
+        {
+            wave.Waves.Add(waveData);
+        }
+
+        string path = "Assets/Avishy World/Scriptable Objects - Avishy/Waves/newSO.asset";
+
+        string guid = AssetDatabase.AssetPathToGUID(path, AssetPathToGUIDOptions.OnlyExistingAssets);
+
+        int numWave = 0;
+
+        do
+        {
+            numWave++;
+            path = "Assets/Avishy World/Scriptable Objects - Avishy/Waves/newSO" + numWave + ".asset";
+            guid = AssetDatabase.AssetPathToGUID(path, AssetPathToGUIDOptions.OnlyExistingAssets);
+
+        } while (guid != "");
+
+        AssetDatabase.CreateAsset(wave, path);
+        AssetDatabase.SaveAssets();
+
+
+        ClearOnSave();
+    }
+#endif
 
     public void OnChangeWaveCount()
     {
@@ -110,112 +214,8 @@ public class ToolWaveCreator : MonoBehaviour
         }
     }
 
-    private void DisplayWaveAtIndex(int index)
-    {
-        if(index >= waveList.Count)
-        {
-            ToolReferencerObject.Instance.toolUI.CallDisplaySystemMessage("Your wave index is incorrect, index stat from 0 and max is wave count -1");
-            Debug.LogError("Error here");
-            return;
-        }
-
-        waveDataParent.gameObject.SetActive(true);
-
-        currentWaveSelectedIndex = index;
-
-        cooldownAtEndWave.text = waveList[index].delayBetweenWaves.ToString();
-        cooldownBetweenEnemies.text = waveList[index].delayBetweenEnemies.ToString();
-
-        if(waveList[index].enemyWaveDataList == null || waveList[index].enemyWaveDataList.Count == 0)
-        {
-            waveList[index].enemyWaveDataList = new List<EnemyWaveData>();
-        }
-
-        foreach (Transform child in enemyInwaveUIContent)
-        {
-            Destroy(child.gameObject);
-        }
-
-        foreach (EnemyWaveData enemyWaveData in waveList[index].enemyWaveDataList)
-        {
-            GameObject go = Instantiate(enemyInwaveUIPrefab, enemyInwaveUIContent);
-
-            if (go.TryGetComponent<EnemyInWaveUIData>(out EnemyInWaveUIData enemyInWaveData))
-            {
-                enemyInWaveData.InitEnemyInWaveUI(enemyWaveData);
-            }
-
-        }
-    }
-
     public void ToggleWaveCreatorUI(bool isOn)
     {
         waveCreatorUI.SetActive(isOn);
-    }
-
-
-    [ContextMenu("Save now!")]
-    public void SaveWaveAsNew()
-    {
-
-        WaveSO wave = new WaveSO();
-        wave.waves = new List<WaveData>();
-
-        foreach (WaveData waveData in waveList)
-        {
-            wave.waves.Add(waveData);
-        }
-
-        string path = "Assets/Avishy World/Scriptable Objects - Avishy/Waves/newSO.asset";
-
-        string guid = AssetDatabase.AssetPathToGUID(path, AssetPathToGUIDOptions.OnlyExistingAssets);
-
-        int numWave = 0;
-
-        do
-        {
-            numWave++;
-            path = "Assets/Avishy World/Scriptable Objects - Avishy/Waves/newSO" + numWave + ".asset";
-            guid = AssetDatabase.AssetPathToGUID(path, AssetPathToGUIDOptions.OnlyExistingAssets);
-
-        } while (guid != "");
-
-        AssetDatabase.CreateAsset(wave, path);
-        AssetDatabase.SaveAssets();
-
-
-        ClearOnSave();
-    }
-
-    private void ClearOnSave()
-    {
-        waveCountInputText.text = "0";
-        currentWaveIndex.text = "0";
-        cooldownAtEndWave.text = "0";
-        cooldownBetweenEnemies.text = "0";
-
-        foreach (Transform child in enemyInwaveUIContent)
-        {
-            Destroy(child.gameObject);
-        }
-
-        waveDataParent.gameObject.SetActive(false);
-        waveList.Clear();
-    }
-    private void AddWaveElements(int amount)
-    {
-        for (int i = 0; i < amount; i++)
-        {
-            WaveData wave = new WaveData();
-
-            waveList.Add(wave);
-        }
-    }
-    private void RemoveWaveElements(int amount)
-    {
-        for (int i = amount; i > 0; i--)
-        {
-            waveList.RemoveAt(i);
-        }
     }
 }

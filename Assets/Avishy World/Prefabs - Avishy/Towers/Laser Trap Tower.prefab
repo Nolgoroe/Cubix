@@ -194,12 +194,13 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8914096942563613024}
   - {fileID: 1497511734085220103}
   - {fileID: 324413959336960326}
+  - {fileID: 65219223168245848}
   m_Father: {fileID: 8937587347033396745}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8718649832823026979
@@ -336,37 +337,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &3271812195288528520
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5133594482985749872}
-  m_Layer: 11
-  m_Name: Result dice holder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5133594482985749872
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3271812195288528520}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.05294975, y: -0.94263816, z: -0.11339286, w: 0.30947006}
-  m_LocalPosition: {x: 0, y: 6.666666, z: 0}
-  m_LocalScale: {x: 6.666667, y: 6.666667, z: 6.6666656}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8937587347033396745}
-  m_LocalEulerAnglesHint: {x: -10.428, y: -142.739, z: -9.954}
 --- !u!1 &3881631293152255660
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,9 +363,9 @@ Transform:
   m_GameObject: {fileID: 3881631293152255660}
   serializedVersion: 2
   m_LocalRotation: {x: -0.000000021855694, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.61, z: -0}
+  m_LocalPosition: {x: 0, y: 1.308, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8937587347033396745}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -418,8 +388,39 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3, y: 0.289118, z: 3}
-  m_Center: {x: 0, y: 3.5, z: 0}
+  m_Size: {x: 3, y: 0.3, z: 3}
+  m_Center: {x: 0, y: -0.355441, z: 0}
+--- !u!1 &4144741081458676893
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1085664021410067814}
+  m_Layer: 0
+  m_Name: Cube Holder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1085664021410067814
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4144741081458676893}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0.7071068, w: 0}
+  m_LocalPosition: {x: 0, y: 1.114559, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8937587347033396745}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: -180}
 --- !u!1 &4736607198288643694
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,8 +430,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8937587347033396745}
-  - component: {fileID: 2823401611459223731}
-  - component: {fileID: 4934086247613128724}
   - component: {fileID: 3604278371290302878}
   m_Layer: 0
   m_Name: Laser Trap Tower
@@ -449,29 +448,86 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 1085664021410067814}
   - {fileID: 7773473858109246141}
-  - {fileID: 5133594482985749872}
   - {fileID: 1577759788188451376}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &2823401611459223731
-MeshFilter:
+--- !u!114 &3604278371290302878
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4736607198288643694}
-  m_Mesh: {fileID: 4300000, guid: 9a952f53b37a9724cb2ebce2de5d0fca, type: 3}
---- !u!23 &4934086247613128724
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9145c82ccccc65f419e9f06ee89b4c4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requiresPathCells: 1
+  requiredCellColorType: 0
+  towerDie: {fileID: 0}
+  resultDiceHolder: {fileID: 1085664021410067814}
+  currentTowerBuffs: []
+  rangeIndicator: {fileID: 0}
+  onSpawnParticle: {fileID: 2126513307738344185, guid: 9acd4cff9a73e654095fbac641add6bd,
+    type: 3}
+  currentCellOnPos: {x: 0, y: 0}
+  connectedPathCells: []
+  spawnRate: 1
+  currentSpawnCooldown: 0
+  maxNumOfTroops: 1
+  currentNumOfTroops: 0
+  currentTowerTroops: []
+  troopDMG: 1
+  troopHP: 1
+  troopRange: 0.9
+  troopPrefab: {fileID: 8003022479623664012, guid: fe9534263b1c04d49b47a16c609bdaa7,
+    type: 3}
+--- !u!1 &6697072006702877302
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 65219223168245848}
+  - component: {fileID: 7895016511773715691}
+  - component: {fileID: 4833814737762318657}
+  m_Layer: 0
+  m_Name: Base
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &65219223168245848
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6697072006702877302}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1577759788188451376}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &7895016511773715691
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4736607198288643694}
+  m_GameObject: {fileID: 6697072006702877302}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -507,30 +563,11 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3604278371290302878
-MonoBehaviour:
+--- !u!33 &4833814737762318657
+MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4736607198288643694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9145c82ccccc65f419e9f06ee89b4c4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentCellOnPos: {x: 0, y: 0}
-  requiredCellColorType: 0
-  towerDie: {fileID: 0}
-  resultDiceDisplay: {fileID: 0}
-  rangeIndicator: {fileID: 0}
-  resultDiceHolder: {fileID: 5133594482985749872}
-  currentTowerBuffs: []
-  connectedPathCells: []
-  troopPrefab: {fileID: 622676621953558938, guid: c5902af6230497249affd5fdf7290ee1,
-    type: 3}
-  maxNumOfTroops: 1
-  spawnRate: 1
-  currentSpawnCooldown: 0
-  currentNumOfTroops: 0
-  currentTowerTroops: []
+  m_GameObject: {fileID: 6697072006702877302}
+  m_Mesh: {fileID: 4300000, guid: 9a952f53b37a9724cb2ebce2de5d0fca, type: 3}

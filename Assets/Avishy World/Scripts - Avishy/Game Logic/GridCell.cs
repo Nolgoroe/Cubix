@@ -16,22 +16,51 @@ public class GridCell : MonoBehaviour
     [Header("Live Data")]
     [SerializeField] private bool isOccupied;
     [SerializeField] private bool occupiedByTower;
+    [SerializeField] private bool nextToPath;
     [SerializeField] private TowerBaseParent towerOnCell;
 
 
-    private Renderer rend;
+    [SerializeField] private MeshRenderer rend;
 
     private void OnValidate()
     {
         if (rend == null)
-            rend = GetComponent<Renderer>();
+            rend = GetComponent<MeshRenderer>();
 
         if (outline == null)
             outline = GetComponent<Outline>();
     }
     protected virtual void Start()
     {
+        if (rend == null)
+            rend = GetComponent<MeshRenderer>();
+
+        if (outline == null)
+            outline = GetComponent<Outline>();
+
         startColor = rend.material.color;
+
+
+        Vector2Int checkDown = new Vector2Int(positionXYInGridArray.x, positionXYInGridArray.y - 1);
+        Vector2Int checkUp = new Vector2Int(positionXYInGridArray.x, positionXYInGridArray.y + 1);
+        Vector2Int checkLeft = new Vector2Int(positionXYInGridArray.x - 1, positionXYInGridArray.y);
+        Vector2Int checkRight = new Vector2Int(positionXYInGridArray.x + 1, positionXYInGridArray.y);
+
+        Vector2Int[] directions = new Vector2Int[] { checkDown, checkUp, checkLeft, checkRight };
+
+        foreach (Vector2Int pos in directions)
+        {
+            if (pos.x > -1 && pos.x < GridManager.Instance.ReturnWidthHeight().x
+                && pos.y > -1 && pos.y < GridManager.Instance.ReturnWidthHeight().y)
+            {
+                GridCell cell = GridManager.Instance.ReturnCellAtVector(pos);
+                if (cell.ReturnTypeOfCell() == TypeOfCell.enemyPath)
+                {
+                    nextToPath = true;
+                    return;
+                }
+            }
+        }
     }
 
 
@@ -65,7 +94,6 @@ public class GridCell : MonoBehaviour
             towerOnCell.OnHoverOverOccupyingCell(isHoveredOn);
         }
     }
-
 
     public Vector2Int ReturnPositionInGridArray()
     {
@@ -146,5 +174,20 @@ public class GridCell : MonoBehaviour
         }
 
 
+    }
+
+    public void ResetCellOnStartTurn()
+    {
+        if (slotTypeSpriteRenderer == null) return;
+        cellTypeColor = CellTypeColor.None;
+        isOccupied = true;
+        occupiedByTower = false;
+        towerOnCell = null;
+        GridManager.Instance.RemoveCellFromTowerBaseCells(this);
+        slotTypeSpriteRenderer.gameObject.SetActive(false);
+    }
+    public bool ReturnNextToPath()
+    {
+        return nextToPath;
     }
 }

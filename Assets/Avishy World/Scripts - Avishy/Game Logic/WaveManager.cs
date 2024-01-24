@@ -6,129 +6,239 @@ public class WaveManager : MonoBehaviour
 {
     public static WaveManager Instance;
 
+    [Header("Wave data")]
     [SerializeField] private WaveSO waveSO;
-    [SerializeField] private List<EnemySpawnerCell> currentLevelEnemySpawners;
+    [SerializeField] private WaveSO currentWaveSO;
     [SerializeField] private int currentIndexInWave;
+    [SerializeField] private bool waveDone = true;
+    [SerializeField] private bool levelComplete = false;
+    [SerializeField] private float timeForNextWave = 0;
+    [SerializeField] private float currentCountdown = 0;
+
+    [Header("Enemy data")]
+    [SerializeField] private List<EnemySpawnerCell> currentLevelEnemySpawners;
+    [SerializeField] private List<EnemyWaveData> enemiesForWave; 
+    [SerializeField] private int currentIndexOfEnemies; 
     [SerializeField] private int currentAmountOfEnemies;
+    [SerializeField] private float enemySpawnTime; 
+    [SerializeField] private float currentEnemySpawnTime; 
 
 
 
-    private EnemySpawnerCell selectedSpawner;
-    private bool waveDone = false;
-    private bool levelComplete = false;
-    private float timeForNextWave = 0;
-    private float currentCountdown = 0;
+    [Header("Normal Wave Spawn")]
+    [SerializeField] private EnemySpawnerCell selectedSpawner;
+
+    [Header("Random Wave Spawn")]
+    [SerializeField] private List<EnemySpawnerCell> selectedMultipleSpawners;
+    [SerializeField] private bool testRandomSpawners = false;
+    private List<EnemySpawnerCell> tempSpawnersList;
+
+
+
+
 
     private void Awake()
     {
         Instance = this;
     }
 
-    private void Start() 
-    {
-        currentLevelEnemySpawners = GridManager.Instance.ReturnLevelEnemySpawners();
-        currentIndexInWave = 0;
-
-        
-        timeForNextWave = waveSO.waves[currentIndexInWave].delayBetweenWaves / GameManager.gameSpeed;
-        currentCountdown = timeForNextWave;
-
-        //StartNextWave();
-    }
-
     private void Update()
     {
-        if (GameManager.gameSpeed == 0) return;
+        if (GameManager.gamePaused) return;
 
-        if (!waveDone || levelComplete) return;
-        
-        if(/*currentCountdown <= 0 &&*/ !GameManager.playerTurn /*&& currentAmountOfEnemies == 0*/)
+        if (!waveDone && currentAmountOfEnemies > 0)
         {
-            //StartNextWave();
-        }
+            CommenceWave();
 
-        //if(currentCountdown > 0 /*&& currentAmountOfEnemies == 0*/)
-        //{
-        //    currentCountdown -= Time.deltaTime * GameManager.gameSpeed;
-
-        //    UIManager.Instance.SetWaveCountdownText(currentCountdown);
-        //}
-        //else
-        //{
-        //    //temp - this is called on update...
-        //    UIManager.Instance.DisplayTimerText(false);
-        //}
-    }
-
-
-    [ContextMenu("Start Next Wave")]
-    public void StartNextWave()
-    {
-        if (currentIndexInWave > waveSO.waves.Count - 1)
-        {
-            Debug.Log("no more waves! weeeeee");
-            levelComplete = true;
             return;
         }
 
-        StartCoroutine(StartWave());
+        if (!waveDone && currentAmountOfEnemies == 0)
+        {
+            AtWaveEnd();
 
+            return;
+        }
+
+        if (!waveDone || levelComplete || currentAmountOfEnemies > 0 ) return;
+
+        if (currentCountdown <= 0)
+        {
+            UIManager.Instance.DisplayTimerText(false);
+
+            StartNextWave();
+            return;
+        }
+
+        if (currentCountdown > 0)
+        {
+            currentCountdown -= Time.deltaTime * GameManager.gameSpeed;
+
+            UIManager.Instance.SetWaveCountdownText(currentCountdown);
+
+            UIManager.Instance.DisplayTimerText(true);
+        }
     }
 
-    private IEnumerator StartWave()
+
+    private void CommenceWave()
     {
-        BeforeWaveStart();
+        if (GameManager.gameSpeed == 0) return;
 
-        // this is the player's turn.
-        yield return new WaitUntil(() => GameManager.playerTurn == false);
-
-        if (currentLevelEnemySpawners.Count > 0)
+        if (testRandomSpawners)
         {
-            waveDone = false;
+            RandomSpawnEnemies();
+        }
+        else
+        {
+            PredeterminedSpawnEnemies();
+        }
+    }
 
-            foreach (EnemyWaveData enemyWaveData in waveSO.waves[currentIndexInWave].enemyWaveDataList)
+    private void PredeterminedSpawnEnemies()
+    {
+        if (currentLevelEnemySpawners.Count > 0 && currentIndexOfEnemies < enemiesForWave.Count)
+        {
+            selectedSpawner = currentLevelEnemySpawners[enemiesForWave[currentIndexOfEnemies].enemySpawnerIndex];
+
+            if (currentEnemySpawnTime < 0)
             {
-                selectedSpawner = currentLevelEnemySpawners[enemyWaveData.enemySpawnerIndex];
+                GameObject enemyToSpawn = GameManager.Instance.ReturnEnemyByType(enemiesForWave[currentIndexOfEnemies].enemyType);
+                selectedSpawner.CallSpawnEnemy(enemyToSpawn, enemiesForWave[currentIndexOfEnemies].enemyPathIndex);
 
-                for (int i = 0; i < enemyWaveData.amountOfThisEnemy; i++)
+                ChangeEnemyCount(1); //add 1 to enemy count
+
+                enemiesForWave[currentIndexOfEnemies].amountOfThisEnemy--;
+                if (enemiesForWave[currentIndexOfEnemies].amountOfThisEnemy <= 0)
                 {
-                    while (GameManager.gameSpeed == 0)
-                    {
-                        yield return null;
-                    }
-
-                    GameObject enemyToSpawn = GameManager.Instance.ReturnEnemyByType(enemyWaveData.enemyType);
-                    selectedSpawner.CallSpawnEnemy(enemyToSpawn);
-
-                    ChangeEnemyCount(1);
-                    yield return new WaitForSeconds(waveSO.waves[currentIndexInWave].delayBetweenEnemies / GameManager.gameSpeed);
+                    currentIndexOfEnemies++;
                 }
+
+                currentEnemySpawnTime = enemySpawnTime;
             }
+            else
+            {
+                currentEnemySpawnTime -= Time.deltaTime * GameManager.gameSpeed;
+            }
+        }
+    }
 
-           //This will need work.
+    private void RandomSpawnEnemies()
+    {
+        if (selectedMultipleSpawners.Count > 0 && currentIndexOfEnemies < enemiesForWave.Count)
+        {
+            if (currentEnemySpawnTime < 0)
+            {
+                int randomSpawner = Random.Range(0, selectedMultipleSpawners.Count);
+                GameObject enemyToSpawn = GameManager.Instance.ReturnEnemyByType(enemiesForWave[currentIndexOfEnemies].enemyType);
 
+                int randomPath = Random.Range(0, selectedMultipleSpawners[randomSpawner].ReturnEnemyPathCellsList().Count);
+                selectedMultipleSpawners[randomSpawner].CallSpawnEnemy(enemyToSpawn, randomPath);
 
-            //timeForNextWave = waveSO.waves[currentIndexInWave].delayBetweenWaves;
-            //currentCountdown = timeForNextWave;
-            //UIManager.Instance.DisplayTimerText(true);
+                ChangeEnemyCount(1); //add 1 to enemy count
 
-            waveDone = true;
+                enemiesForWave[currentIndexOfEnemies].amountOfThisEnemy--;
+                if (enemiesForWave[currentIndexOfEnemies].amountOfThisEnemy <= 0)
+                {
+                    currentIndexOfEnemies++;
+                }
 
-            currentIndexInWave++;
-
-            //from this point on it's the players turn.
-
-            yield return new WaitUntil(() => currentAmountOfEnemies == 0);
-
-            GameManager.Instance.SetPlayerTurn(true);
+                currentEnemySpawnTime = enemySpawnTime;
+            }
+            else
+            {
+                currentEnemySpawnTime -= Time.deltaTime * GameManager.gameSpeed;
+            }
         }
     }
 
     private void BeforeWaveStart()
     {
+        StartCoroutine(GameManager.Instance.SetPlayerTurn(false));
+
         foreach (MeleeTowerParentScript meleeTower in GameManager.Instance.ReturnMeleeTowersList())
         {
             meleeTower.CleanTroopsAtWaveStart();
+        }
+
+        //disable all spawner danger Icons
+        foreach (EnemySpawnerCell spawnerCell in currentLevelEnemySpawners)
+        {
+            spawnerCell.DisplayDangerIcon(false);
+        }
+
+        currentIndexOfEnemies = 0;
+
+        enemiesForWave.Clear();
+        enemiesForWave.AddRange(currentWaveSO.Waves[currentIndexInWave].enemyWaveDataList);
+
+        enemySpawnTime = waveSO.Waves[currentIndexInWave].delayBetweenEnemies;
+        currentEnemySpawnTime = -1;
+
+        timeForNextWave = waveSO.Waves[currentIndexInWave].delayBetweenWaves;
+        currentCountdown = timeForNextWave;
+
+        waveDone = false;
+    }
+
+    private void AtWaveEnd()
+    {
+        foreach (EnemySpawnerCell spawnerCell in currentLevelEnemySpawners)
+        {
+            spawnerCell.DisplayDangerIcon(false);
+        }
+
+        StartCoroutine(GameManager.Instance.SetPlayerTurn(true));
+
+
+        waveDone = true;
+
+
+
+
+        if (currentIndexInWave + 1 == waveSO.Waves.Count)
+        {
+            //No need to do after wave end if there is no next wave.
+            return;
+        }
+
+
+        UIManager.Instance.UpdateWaveCounter();
+
+        if (testRandomSpawners)
+        {
+            DisplayRandomSpawnersDangerIcons();
+        }
+        else
+        {
+            foreach (EnemyWaveData waveData in waveSO.Waves[currentIndexInWave].enemyWaveDataList)
+            {
+                currentLevelEnemySpawners[waveData.enemySpawnerIndex].DisplayDangerIcon(true);
+            }
+        }
+    }
+
+    private void DisplayRandomSpawnersDangerIcons()
+    {
+        selectedMultipleSpawners.Clear();
+        tempSpawnersList = new List<EnemySpawnerCell>();
+
+        int ramdomAmountOfSpawners = Random.Range(1, currentLevelEnemySpawners.Count + 1);
+
+        tempSpawnersList.AddRange(currentLevelEnemySpawners);
+
+
+        for (int i = 0; i < ramdomAmountOfSpawners; i++)
+        {
+            int randomSpawner = Random.Range(0, tempSpawnersList.Count);
+            selectedMultipleSpawners.Add(tempSpawnersList[randomSpawner]);
+
+            tempSpawnersList.RemoveAt(randomSpawner);
+        }
+
+        foreach (EnemySpawnerCell spawner in selectedMultipleSpawners)
+        {
+            spawner.DisplayDangerIcon(true);
         }
     }
 
@@ -136,13 +246,109 @@ public class WaveManager : MonoBehaviour
 
 
 
+    public void InitWaveManager()
+    {
+        currentLevelEnemySpawners = GridManager.Instance.ReturnLevelEnemySpawners();
+        currentIndexInWave = 0;
 
 
+        timeForNextWave = waveSO.Waves[currentIndexInWave].delayBetweenWaves / GameManager.gameSpeed;
+        currentCountdown = timeForNextWave;
 
+        currentWaveSO = new WaveSO();
+        currentWaveSO.Waves = new List<WaveData>();
 
+        for (int i = 0; i < waveSO.Waves.Count; i++)
+        {
+            WaveData waveData = new WaveData();
+            waveData.delayBetweenWaves = waveSO.Waves[i].delayBetweenWaves;
+            waveData.delayBetweenEnemies = waveSO.Waves[i].delayBetweenEnemies;
+
+            waveData.enemyWaveDataList = new List<EnemyWaveData>();
+
+            if (waveSO.Waves[i].enemyWaveDataList.Count > 0)
+            {
+                for (int k = 0; k < waveSO.Waves[i].enemyWaveDataList.Count; k++)
+                {
+                    EnemyWaveData enemyWaveData = new EnemyWaveData();
+                    enemyWaveData.amountOfThisEnemy = waveSO.Waves[i].enemyWaveDataList[k].amountOfThisEnemy;
+                    enemyWaveData.enemySpawnerIndex = waveSO.Waves[i].enemyWaveDataList[k].enemySpawnerIndex;
+                    enemyWaveData.enemyPathIndex = waveSO.Waves[i].enemyWaveDataList[k].enemyPathIndex;
+                    enemyWaveData.enemyType = waveSO.Waves[i].enemyWaveDataList[k].enemyType;
+
+                    waveData.enemyWaveDataList.Add(enemyWaveData);
+                }
+            }
+
+            currentWaveSO.Waves.Add(waveData);
+        }
+
+        if (testRandomSpawners)
+        {
+            DisplayRandomSpawnersDangerIcons();
+        }
+        else
+        {
+            foreach (EnemyWaveData waveData in waveSO.Waves[currentIndexInWave + 1].enemyWaveDataList)
+            {
+                currentLevelEnemySpawners[waveData.enemySpawnerIndex].DisplayDangerIcon(true);
+
+            }
+        }
+
+        enemiesForWave = new List<EnemyWaveData>();
+
+        UIManager.Instance.UpdateWaveCounter();
+    }
+
+    [ContextMenu("Start Next Wave")]
+    public void StartNextWave()
+    {
+        foreach (Die die in DiceManager.Instance.ReturnResourceDice())
+        {
+            Player.Instance.AddResourcesFromDice(die);
+        }
+
+        currentIndexInWave++;
+
+        //this is reached when we try to start a wave but finished them all, meaning we won
+        if (currentIndexInWave >= waveSO.Waves.Count)
+        {
+            Debug.Log("no more waves! weeeeee");
+            levelComplete = true;
+            UIManager.Instance.DisplayEndGameScreen(true);
+            return;
+        }
+
+        SoundManager.Instance.CallActivateSoundTimed(Sounds.WaveStart);
+
+        BeforeWaveStart();
+
+        CommenceWave();
+    }
 
     public void ChangeEnemyCount(int amount)
     {
         currentAmountOfEnemies += amount;
+    }
+
+    public void StartWaveEarly()
+    {
+        // called from button
+        if (!waveDone || levelComplete) return;
+
+        currentCountdown = 0;
+        UIManager.Instance.DisplayTimerText(false);
+        Player.Instance.RecieveRandomResource();
+    }
+
+    public int ReturnCurrentWaveIndex()
+    {
+        return currentIndexInWave;
+    }
+
+    public int ReturnWaveCount()
+    {
+        return waveSO.Waves.Count;
     }
 }

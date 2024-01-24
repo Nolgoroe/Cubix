@@ -23337,14 +23337,14 @@ ParticleSystem:
         m_RotationOrder: 4
     minKillSpeed: 0
     maxKillSpeed: 10000
-    radiusScale: 1
+    radiusScale: 1.35
     collidesWith:
       serializedVersion: 2
-      m_Bits: 128
+      m_Bits: 640
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
@@ -24436,7 +24436,7 @@ ParticleSystem:
   serializedVersion: 8
   lengthInSec: 1
   simulationSpeed: 1
-  stopAction: 0
+  stopAction: 2
   cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -28246,7 +28246,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minKillSpeed: 0
     maxKillSpeed: 10000
-    radiusScale: 1
+    radiusScale: 1.35
     collidesWith:
       serializedVersion: 2
       m_Bits: 640
@@ -29356,7 +29356,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 8.44e-43, y: 7.1e-44, z: 0, w: 4.434087e-37}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 7.8e-44, z: 6.42e-42, w: -2.318883e-35}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -29382,6 +29382,13 @@ MonoBehaviour:
   useOnlyRotationOffset: 1
   UseFirePointRotation: 0
   DestoyMainEffect: 1
+  parts:
+  - {fileID: 1004941427649482221}
+  - {fileID: 799905194309524388}
+  - {fileID: 3102030470980736642}
+  - {fileID: 2902594375173146748}
+  - {fileID: 9166598657615548652}
+  - {fileID: 2208107184573765848}
 --- !u!114 &3057511303850532991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29420,4 +29427,7 @@ MonoBehaviour:
   currentTarget: {fileID: 0}
   colldiedObject: {fileID: 0}
   speed: 15
-  damage: 3
+  damage: 0
+  isSpecial: 0
+  chainLightningEffect: {fileID: 8551618965700826368, guid: 3cea48a209eec4d4992b2e3b239d38d5,
+    type: 3}

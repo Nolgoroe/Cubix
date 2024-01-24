@@ -3,42 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ToolGridCell : MonoBehaviour
-{    public int GetRotationAngle()
-    {
-        switch (pathMeshSides)
-        {
-            case PathSides.up: return 0;
-            case PathSides.left: return 90;
-            case PathSides.down: return 0;
-            case PathSides.right: return -90;
-            case PathSides.leftUp: return 180;
-            case PathSides.rightUp: return 90;
-            case PathSides.leftDown: return -90;
-            case PathSides.rightDown: return 0;
-            case PathSides.leftRightUp: return 90;
-            case PathSides.leftUpDown: return 180;
-            case PathSides.rightUpDown: return 0;
-            case PathSides.leftRightDown: return -90;
-            case PathSides.downLeftUp: return -180;
-            case PathSides.downRightUp: return 0;
-            case PathSides.leftRightUpDown: return 0;
-            case PathSides.None: return 0;
-            default: return 0;
-        }
-
-    }
-    public int GetRotationAngle(Dir dir)
-    {
-        switch (dir)
-        {
-            case Dir.Down: return 0;
-            case Dir.Up: return 180;
-            case Dir.Left: return 90;
-            case Dir.Right: return 270;
-            default: return -1;
-        }
-
-    }
+{   
 
     [Header ("Placement Data")]
     [SerializeField] protected Vector2Int positionXYInGridArray;
@@ -76,6 +41,9 @@ public class ToolGridCell : MonoBehaviour
         Quaternion RotationByDir = Quaternion.Euler(0, 0, GetRotationAngle());
         transform.localRotation = RotationByDir;
     }
+
+
+
 
     #region Public Actions
     public void SetXYInGrid(int x, int y)
@@ -154,7 +122,7 @@ public class ToolGridCell : MonoBehaviour
 
         ChangeCellColor(Color.white);
 
-    }
+    }   
     #endregion
 
     #region Returned Data
@@ -203,6 +171,41 @@ public class ToolGridCell : MonoBehaviour
         return slotTypeSpriteRenderer;
     }
 
+    public int GetRotationAngle()
+    {
+        switch (pathMeshSides)
+        {
+            case PathSides.up: return 0;
+            case PathSides.left: return 90;
+            case PathSides.down: return 0;
+            case PathSides.right: return -90;
+            case PathSides.leftUp: return 180;
+            case PathSides.rightUp: return 90;
+            case PathSides.leftDown: return -90;
+            case PathSides.rightDown: return 0;
+            case PathSides.leftRightUp: return 90;
+            case PathSides.leftUpDown: return 180;
+            case PathSides.rightUpDown: return 0;
+            case PathSides.leftRightDown: return -90;
+            case PathSides.downLeftUp: return -180;
+            case PathSides.downRightUp: return 0;
+            case PathSides.leftRightUpDown: return 0;
+            case PathSides.None: return 0;
+            default: return 0;
+        }
+
+    }
+    public int GetRotationAngle(Dir dir)
+    {
+        switch (dir)
+        {
+            case Dir.Down: return 0;
+            case Dir.Up: return 180;
+            case Dir.Left: return 90;
+            case Dir.Right: return 270;
+            default: return -1;
+        }
+    }
     #endregion
 
 }

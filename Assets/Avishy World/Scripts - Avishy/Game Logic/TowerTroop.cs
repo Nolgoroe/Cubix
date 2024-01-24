@@ -11,28 +11,49 @@ public class TowerTroop : MonoBehaviour
     [SerializeField] protected Transform currentTarget;
     [SerializeField] protected MeleeTowerParentScript connectedTower;
 
-    [Header("Preset Data")] 
-    [SerializeField] private float range = 15;
-    [SerializeField] private float damage = 1;
-    [SerializeField] protected float health = 3;
+    [Header("Preset Data Combat")] 
     [SerializeField] protected float attackRate = 1;
     [SerializeField] protected float currentAttackCooldown = 0;
     [SerializeField] protected float rotationSpeed = 10;
+
+    [Header("Preset Refs")]
     [SerializeField] protected Transform rangeIndicator;
     [SerializeField] private LayerMask enemyLayerMask;
+    [SerializeField] private Animator anim;
+
+
+    [Header("Particles Data")]
+    [SerializeField] protected GameObject onSpawnParticle;
+
+    protected float health = 3;
+    private float range = 15;
+    private float damage = 1;
+    bool isDead;
+    Vector3 originalScale;
 
     virtual protected void Start()
     {
+        originalScale = transform.localScale;
+        transform.localScale = Vector3.zero;
+
+        SetRangeIndicator();
+
+        Instantiate(onSpawnParticle, transform);
+
+        LeanTween.scale(gameObject, originalScale, 0.5f).setEase(LeanTweenType.easeOutBounce);
+    }
+
+    private void SetRangeIndicator()
+    {
         if (rangeIndicator)
         {
-            rangeIndicator.localScale = new Vector3(range * 2 / rangeIndicator.lossyScale.x, range * 2 / rangeIndicator.lossyScale.y, range * 2 / rangeIndicator.lossyScale.z);
+            rangeIndicator.localScale = new Vector3(range * 2 / originalScale.x, range * 2 / originalScale.y, range * 2 / originalScale.z);
             rangeIndicator.gameObject.SetActive(false);
         }
-
     }
     protected virtual void Update()
     {
-        if (GameManager.gameSpeed == 0) return;
+        if (GameManager.gamePaused) return;
 
         UpdateTarget();
 
@@ -51,7 +72,7 @@ public class TowerTroop : MonoBehaviour
         if (currentAttackCooldown <= 0)
         {
             Attack();
-            currentAttackCooldown = (1 / attackRate) / GameManager.gameSpeed;
+            currentAttackCooldown = (1 * attackRate) / GameManager.gameSpeed;
         }
 
     }
@@ -63,6 +84,9 @@ public class TowerTroop : MonoBehaviour
 
         if (enemyHit)
         {
+            if(anim)
+            anim.SetTrigger("Attack Now");
+
             enemyHit.RecieveDMG(damage);
         }
     }
@@ -106,24 +130,34 @@ public class TowerTroop : MonoBehaviour
         }
     }
 
-    public void InitTroopData(MeleeTowerParentScript tower)
+    public void InitTroopData(MeleeTowerParentScript tower, float _HP, float _range, float _dmg)
     {
         connectedTower = tower;
+        health = _HP;
+        range = _range;
+        damage = _dmg;
     }
 
     public void RecieveDMG(int damage)
     {
-        health -= damage;
-
+        if (isDead) return;
         if (health <= 0)
         {
-            connectedTower.LoseTroop(this);
-
+            isDead = true;
+            Debug.Log("Recieve dmg");
             Destroy(gameObject);
+
+            connectedTower.LoseTroop(this);
 
             return;
         }
+
+        health -= damage;
     }
+
+
+
+
 
     private void OnDrawGizmosSelected()
     {

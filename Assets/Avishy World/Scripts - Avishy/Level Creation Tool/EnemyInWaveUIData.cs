@@ -13,11 +13,22 @@ using UnityEditor;
 
 public class EnemyInWaveUIData : MonoBehaviour
 {
+    [Header("Wave Creation Tool Data")]
     [SerializeField] TMP_Dropdown enemyTypeDropdown;
     [SerializeField] TMP_InputField amountOfEnemy;
     [SerializeField] TMP_InputField spawnerIndex;
     [SerializeField] TMP_InputField pathIndex;
     [SerializeField] EnemyWaveData localEnemyData;
+
+
+    private void PopupateEnemyDropdown()
+    {
+        string[] enumName = Enum.GetNames(typeof(EnemyTypes));
+        List<string> nameList = new List<string>(enumName);
+
+        enemyTypeDropdown.AddOptions(nameList);
+    }
+
 
 
 
@@ -35,21 +46,10 @@ public class EnemyInWaveUIData : MonoBehaviour
         pathIndex.text = data.enemyPathIndex.ToString();
     }
 
-    private void PopupateEnemyDropdown()
-    {
-        string[] enumName = Enum.GetNames(typeof(EnemyTypes));
-        List<string> nameList = new List<string>(enumName);
-
-        enemyTypeDropdown.AddOptions(nameList);
-    }
-
-
-
-
-
-
     public void UpdateEnemyType()
     {
+        //called from ui element
+
         int index = enemyTypeDropdown.value;
         EnemyTypes enemyTypeSelected = (EnemyTypes)index;
 
@@ -61,9 +61,9 @@ public class EnemyInWaveUIData : MonoBehaviour
             EnemyParent enemy;
             go.TryGetComponent<EnemyParent>(out enemy);
 
-            if(enemy)
+            if (enemy)
             {
-                if(enemy.RetrunEnemyType() == enemyTypeSelected)
+                if (enemy.RetrunEnemyType() == enemyTypeSelected)
                 {
                     localEnemyData.enemyType = enemyTypeSelected;
                     return;
@@ -73,6 +73,8 @@ public class EnemyInWaveUIData : MonoBehaviour
     }
     public void UpdateAmountEnemy()
     {
+        //called from ui element
+
         int amount = 0;
 
         int.TryParse(amountOfEnemy.text, out amount);
@@ -81,6 +83,8 @@ public class EnemyInWaveUIData : MonoBehaviour
     }
     public void UpdateSpawnerToSpawnFrom()
     {
+        //called from ui element
+
         int index = 0;
 
         int.TryParse(spawnerIndex.text, out index);
@@ -98,6 +102,7 @@ public class EnemyInWaveUIData : MonoBehaviour
     }
     public void UpdatePathToTake()
     {
+        //called from ui element
         int index = 0;
 
         int.TryParse(pathIndex.text, out index);
@@ -116,6 +121,7 @@ public class EnemyInWaveUIData : MonoBehaviour
     }
     public void DeleteThisEnemy()
     {
+        //called from ui element
         ToolReferencerObject.Instance.toolWaveCreator.RemoveEnemyFromWave(localEnemyData);
 
         Destroy(gameObject);

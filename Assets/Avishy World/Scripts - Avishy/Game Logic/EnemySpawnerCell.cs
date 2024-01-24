@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-struct EnemyPathCells
+public struct EnemyPathCells
 {
     public List<GridCell> pathCells;
 }
@@ -13,8 +13,18 @@ public class EnemySpawnerCell : GridCell
     [SerializeField] private List<EnemyPath> enemyPaths;
 
     [SerializeField] private List<EnemyPathCells> enemyPathcells;
+    [SerializeField] Transform dangerIcon;
 
-    private void SpawnEnemy(GameObject enemyPrefab)
+    private void Awake()
+    {
+        dangerIcon = transform.GetChild(0); // temp
+    }
+    protected override void Start()
+    {
+        // nothing on start but still overriding.
+    }
+
+    private void SpawnEnemy(GameObject enemyPrefab, int followPathIndex)
     {
         if (enemyPaths.Count == 0) return;
 
@@ -23,36 +33,12 @@ public class EnemySpawnerCell : GridCell
 
         go.TryGetComponent<EnemyParent>(out enemy);
 
+
         if(enemy)
         {
-            if(enemyPaths.Count > 1)
-            {
-                int randomNum = Random.Range(0, enemyPaths.Count);
-                enemy.InitEnemy(enemyPathcells[randomNum].pathCells);
-
-            }
-            else
-            {
-                enemy.InitEnemy(enemyPathcells[0].pathCells);
-            }
+            enemy.InitEnemy(enemyPathcells[followPathIndex].pathCells);
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -80,11 +66,15 @@ public class EnemySpawnerCell : GridCell
         }
     }
 
-    public void CallSpawnEnemy(GameObject enemyPrefab)
+    public void CallSpawnEnemy(GameObject enemyPrefab, int followPathIndex)
     {
-        SpawnEnemy(enemyPrefab);
+        SpawnEnemy(enemyPrefab, followPathIndex);
     }
 
+    public void DisplayDangerIcon(bool display)
+    {
+        dangerIcon.gameObject.SetActive(display);
+    }
     public override void CopyDataFromToolCell(ToolGridCell toolGridCell)
     {
         ToolEnemySpawnerCell toolSpawnerCell = toolGridCell as ToolEnemySpawnerCell;
@@ -98,5 +88,10 @@ public class EnemySpawnerCell : GridCell
         enemyPaths = toolSpawnerCell.ReturnEnemyPaths();
 
         base.CopyDataFromToolCell(toolGridCell);
+    }
+
+    public List<EnemyPathCells> ReturnEnemyPathCellsList()
+    {
+        return enemyPathcells;
     }
 }
