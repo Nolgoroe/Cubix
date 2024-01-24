@@ -21,7 +21,7 @@ public class Die : MonoBehaviour
     [Header("Dice Data")]
     [SerializeField] private DieType DieType;
     [SerializeField] private DieElement element;
-    [SerializeField] private Color diceColor;
+    [SerializeField] private Material diceMat;
     [SerializeField] private bool isLocked;
 
     [Header("Dice Transform Data")]
@@ -67,7 +67,7 @@ public class Die : MonoBehaviour
 
     private void Start()
     {
-        
+
         OnRollStartEvent.AddListener(SetMovingTrue);
         OnRollEndEvent.AddListener(OrientCubeToCamrea);
         OnRollEndEvent.AddListener(TransformAfterRoll);
@@ -113,7 +113,7 @@ public class Die : MonoBehaviour
 
                     originalScale = scaleOnDrag;
                     //originalScale = rangeTower.ReturnOriginalTowerScale();
-                        break;
+                    break;
                 default:
                     break;
             }
@@ -199,7 +199,7 @@ public class Die : MonoBehaviour
         LeanTween.rotate(gameObject, die.targetQuat.eulerAngles, 0.2f).setOnComplete(TowerRotate);// speed is temp here
 
         if (die._isInWorld)
-        LeanTween.scale(gameObject, transform.localScale * 2, 0.2f);// speed is temp here
+            LeanTween.scale(gameObject, transform.localScale * 2, 0.2f);// speed is temp here
     }
 
     private void TowerRotate()
@@ -224,7 +224,7 @@ public class Die : MonoBehaviour
                     //Debug.Log("Roll ended");
                 }
             }
-            else if(_stagnantTimer > 0)
+            else if (_stagnantTimer > 0)
             {
                 _stagnantTimer = 0;
             }
@@ -249,7 +249,7 @@ public class Die : MonoBehaviour
         if (isLocked || !GameManager.playerTurn) return;
         currentTimeTillStartDrag += Time.deltaTime;
 
-        if(currentTimeTillStartDrag >= timeTillStartDrag)
+        if (currentTimeTillStartDrag >= timeTillStartDrag)
         {
             OnDragStartEvent?.Invoke();
             _isDragging = true;
@@ -308,8 +308,8 @@ public class Die : MonoBehaviour
     private void SetValuesOnDragStart()
     {
         RB.isKinematic = true;
-        
-        if(rangeIndicator)
+
+        if (rangeIndicator)
         {
             rangeIndicator.gameObject.SetActive(true);
         }
@@ -394,7 +394,7 @@ public class Die : MonoBehaviour
         lockTransform = _lockTransform;
 
         towerPrefabConnected = diceData.towerPrefab;
-        diceColor = diceData.dieMaterial.color;
+        diceMat = diceData.dieMaterial;
 
 
         switch (diceData.dieType)
@@ -479,7 +479,7 @@ public class Die : MonoBehaviour
     }
     public Color ReturnDiceColor()
     {
-        return diceColor;
+        return diceMat.color;
     }
     public DieType ReturnDieType()
     {
@@ -527,5 +527,44 @@ public class Die : MonoBehaviour
     {
         return isLocked;
     }
+
+    public DieData ExportTransferData()
+    {
+        DieData data = new DieData();
+
+        data.DieType = DieType;
+        data.element = element;
+        data.material = diceMat;
+
+        List<DieFaceValue> tmpFaceValues = new List<DieFaceValue>();
+        foreach (var face in faces)
+        {
+            tmpFaceValues.Add(face.GetFaceValue());
+        }
+        data.facesValues = tmpFaceValues;
+
+        data.towerPrefabConnected = towerPrefabConnected;
+
+        return data;
+    }
+
+    public void ImportTransferData(DieData data)
+    {
+        DieType = data.DieType;
+        element = data.element;
+        diceMat = data.material;
+
+        for (int i = 0; i < data.facesValues.Count; i++)
+        {
+            faces[0].SetBuff(data.facesValues[i].Buff);
+            faces[0].SetResource(data.facesValues[i].Resource);
+        }
+
+        towerPrefabConnected = data.towerPrefabConnected;
+    }
+
+
 }
+
+
 
