@@ -19,6 +19,8 @@ public class ForgeManager : MonoBehaviour
 
     [Header("Settings")]
     [SerializeField] private List<ForgeDieData> dice;
+    [SerializeField] private Die blankD6Prefab;
+    [SerializeField] private Die blankD8Prefab;
 
     private DisplayDicePair currentDisplayDice;
 
@@ -26,25 +28,42 @@ public class ForgeManager : MonoBehaviour
     private ResourceData _currentEditResource;
     private BuffData _currentEditBuff;
 
-    private void Start()
+    [Header("Temp Settings")]//for standalone testing
+    [SerializeField] private List<Die> realDice;
+
+    private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            Init(TempDieDataExtractor());
+        }
+    }
+
+    private List<DieData> TempDieDataExtractor()
+    {
+        List<DieData> extractedData = new List<DieData>();
+        foreach (var die in realDice)
+        {
+            extractedData.Add(die.ExportTransferData());
+        }
+
+        return extractedData;
+    }
+
+    public void Init(List<DieData> _diceData)
+    {
+        AssignDice(_diceData);
         UpdateCurrentDieView();
     }
 
-    public void Init(List<Die> _dice)
-    {
-        AssignDice(_dice);
-        UpdateCurrentDieView();
-    }
-
-    public void AssignDice(List<Die> _dice)
+    public void AssignDice(List<DieData> _diceData)
     {
         dice.Clear();
 
-        //assign new
-        foreach (var die in _dice)
+        //assign new dice
+        foreach (var dieData in _diceData)
         {
-            dice.Add(new ForgeDieData(die));
+            dice.Add(new ForgeDieData(dieData));
         }
     }
 
@@ -66,7 +85,7 @@ public class ForgeManager : MonoBehaviour
         ForgeDieData currentforgeDie = dice[currentDieIndex];
 
         currentforgeDie.currentFaceindex += step;
-        currentforgeDie.currentFaceindex = Mathf.Clamp(currentforgeDie.currentFaceindex, 0, currentforgeDie.die.GetAllFaces().Length - 1);
+        currentforgeDie.currentFaceindex = Mathf.Clamp(currentforgeDie.currentFaceindex, 0, currentforgeDie.dieData.facesValue.Count - 1);
         UpdateCurrentDieView();
     }
 
@@ -74,18 +93,18 @@ public class ForgeManager : MonoBehaviour
     {
         ForgeDieData currentDie = dice[currentDieIndex];
         //temp text diplay, change it to actual die display later
-        cubeNameTxt.text = "Die: " + currentDie.die.name;
+        //cubeNameTxt.text = "Die: " + currentDie.die.name; 
         faceNumTxt.text = "Face " + (currentDie.currentFaceindex + 1).ToString();
-        resourceTypeTxt.text = currentDie.GetCurrentFace().GetFaceValue().Resource.Type.ToString();
-        buffTypeTxt.text = currentDie.GetCurrentFace().GetFaceValue().Buff.Type.ToString();
-        resourceValueTxt.text = currentDie.GetCurrentFace().GetFaceValue().Resource.Value.ToString();
-        buffValueTxt.text = currentDie.GetCurrentFace().GetFaceValue().Buff.Value.ToString();
+        resourceTypeTxt.text = currentDie.GetCurrentFaceValue().Resource.Type.ToString();
+        buffTypeTxt.text = currentDie.GetCurrentFaceValue().Buff.Type.ToString();
+        resourceValueTxt.text = currentDie.GetCurrentFaceValue().Resource.Value.ToString();
+        buffValueTxt.text = currentDie.GetCurrentFaceValue().Buff.Value.ToString();
 
 
         //dice display
 
         //determine wihch die model should be used
-        switch (currentDie.die.ReturnDieType())
+        switch (currentDie.dieData.DieType)
         {
             case DieType.D6:
 
@@ -113,48 +132,47 @@ public class ForgeManager : MonoBehaviour
 
         //update display buff die
         currentDisplayDice.buffDie.UpdateDisplay(
-            currentDie.GetCurrentFace().GetMesh().material,
-            currentDie.GetCurrentFace().GetFaceValue().Buff.Value.ToString() + "%",
-            currentDie.GetCurrentFace().GetFaceValue().Buff.Icon);
+            currentDie.dieData.material,
+            currentDie.GetCurrentFaceValue().Buff.Value.ToString() + "%",
+            currentDie.GetCurrentFaceValue().Buff.Icon);
 
         //update display buff die
         currentDisplayDice.resourceDie.UpdateDisplay(
-            currentDie.GetCurrentFace().GetMesh().material,
-            "+" + currentDie.GetCurrentFace().GetFaceValue().Resource.Value.ToString(),
-            currentDie.GetCurrentFace().GetFaceValue().Resource.Icon);
+            currentDie.dieData.material,
+            "+" + currentDie.GetCurrentFaceValue().Resource.Value.ToString(),
+            currentDie.GetCurrentFaceValue().Resource.Icon);
 
 
     }
 
     public void ChangeCurrentFacePair()
     {
-        dice[currentDieIndex].GetCurrentFace().SetResource(_currentEditResource);
-        dice[currentDieIndex].GetCurrentFace().SetBuff(_currentEditBuff);
+        dice[currentDieIndex].GetCurrentFaceValue().SetResource(_currentEditResource);
+        dice[currentDieIndex].GetCurrentFaceValue().SetBuff(_currentEditBuff);
 
         UpdateCurrentDieView();
     }
 
     public void ChangeCurrentFaceResource()
     {
-        dice[currentDieIndex].GetCurrentFace().SetResource(_currentEditResource);
+        dice[currentDieIndex].GetCurrentFaceValue().SetResource(_currentEditResource);
         UpdateCurrentDieView();
-        dice[currentDieIndex].die.DisplayResources();
+        //dice[currentDieIndex].die.DisplayResources();
     }
 
     public void ChangeCurrentFaceBuff()
     {
-        dice[currentDieIndex].GetCurrentFace().SetBuff(_currentEditBuff);
+        dice[currentDieIndex].GetCurrentFaceValue().SetBuff(_currentEditBuff);
         UpdateCurrentDieView();
-        dice[currentDieIndex].die.DisplayBuffs();
-
+        //dice[currentDieIndex].die.DisplayBuffs();
     }
 
     public void UpgradeCurrentDieFace()
     {
-        dice[currentDieIndex].GetCurrentFace().UpgradeFace(2, 2);
+        dice[currentDieIndex].GetCurrentFaceValue().UpgradeFace(2, 2);
         UpdateCurrentDieView();
-
     }
+
     public void SetForgeCurrentEditFacePair(DieFaceValue faceValue)
     {
         _currentEditResource = faceValue.Resource;
@@ -185,18 +203,18 @@ public class ForgeManager : MonoBehaviour
 [System.Serializable]
 public class ForgeDieData
 {
-    public Die die;
+    public DieData dieData;
     public int currentFaceindex;
 
-    public ForgeDieData(Die _die)
+    public ForgeDieData(DieData _dieData)
     {
-        die = _die;
+        dieData = _dieData;
         currentFaceindex = 0;
     }
 
-    public DieFace GetCurrentFace()
+    public DieFaceValue GetCurrentFaceValue()
     {
-        return die.GetAllFaces()[currentFaceindex];
+        return dieData.facesValue[currentFaceindex];
     }
 }
 

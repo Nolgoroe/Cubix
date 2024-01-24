@@ -111,11 +111,26 @@ public struct DieFaceValue
 
     public ResourceData Resource { get { return resource; } }
     public BuffData Buff { get { return buff; } }
-
     public DieFaceValue(ResourceData _resource, BuffData _buff)
     {
         resource = _resource;
         buff = _buff;
+    }
+
+    public void SetResource(ResourceData _resource)
+    {
+        resource = _resource;
+    }
+
+    public void SetBuff(BuffData _buff)
+    {
+        buff = _buff;
+    }
+
+    public void UpgradeFace(int resourceToAdd, float damage)
+    {
+        resource.Value += resourceToAdd;
+        buff.Value += damage;
     }
 }
 
