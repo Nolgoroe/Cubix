@@ -9,6 +9,7 @@ public class WaveData
     public float delayBetweenEnemies;
     public float delayBetweenWaves;
     public List<EnemyWaveData> enemyWaveDataList;
+    public List<EnemyWaveCombo> enemyWaveCombo;
 }
 [System.Serializable]
 public class EnemyWaveData
@@ -17,6 +18,12 @@ public class EnemyWaveData
     public int enemySpawnerIndex;
     public int enemyPathIndex;
     public EnemyTypes enemyType;
+}
+[System.Serializable]
+public class EnemyWaveCombo
+{
+    public List<EnemyWaveData> enemyWaveDataList;
+    public float timeToNextEnemies;
 }
 
 [CreateAssetMenu(fileName = "Wave Creation", menuName = "ScriptableObjects/Waves")]
