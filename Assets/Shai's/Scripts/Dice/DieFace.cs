@@ -103,14 +103,14 @@ public class DieFace : MonoBehaviour
     }
 }
 
-
-public struct DieFaceValue
+[System.Serializable]//serializing just to view data in scene
+public class DieFaceValue
 {
-    private ResourceData resource;
-    private BuffData buff;
+    [SerializeField] private ResourceData resource;//serializing just to view data in scene
+    [SerializeField] private BuffData buff;//serializing just to view data in scene
 
     public ResourceData Resource { get { return resource; } }
-    public BuffData Buff { get { return buff; } }
+    public BuffData Buff { get  => buff; } 
     public DieFaceValue(ResourceData _resource, BuffData _buff)
     {
         resource = _resource;

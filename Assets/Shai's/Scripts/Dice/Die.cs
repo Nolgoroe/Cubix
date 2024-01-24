@@ -541,7 +541,7 @@ public class Die : MonoBehaviour
         {
             tmpFaceValues.Add(face.GetFaceValue());
         }
-        data.facesValue = tmpFaceValues;
+        data.facesValues = tmpFaceValues;
 
         data.towerPrefabConnected = towerPrefabConnected;
 
@@ -554,10 +554,10 @@ public class Die : MonoBehaviour
         element = data.element;
         diceMat = data.material;
 
-        for (int i = 0; i < data.facesValue.Count; i++)
+        for (int i = 0; i < data.facesValues.Count; i++)
         {
-            faces[0].SetBuff(data.facesValue[i].Buff);
-            faces[0].SetResource(data.facesValue[i].Resource);
+            faces[0].SetBuff(data.facesValues[i].Buff);
+            faces[0].SetResource(data.facesValues[i].Resource);
         }
 
         towerPrefabConnected = data.towerPrefabConnected;

@@ -31,6 +31,7 @@ public class ForgeManager : MonoBehaviour
     [Header("Temp Settings")]//for standalone testing
     [SerializeField] private List<Die> realDice;
 
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.S))
@@ -85,7 +86,7 @@ public class ForgeManager : MonoBehaviour
         ForgeDieData currentforgeDie = dice[currentDieIndex];
 
         currentforgeDie.currentFaceindex += step;
-        currentforgeDie.currentFaceindex = Mathf.Clamp(currentforgeDie.currentFaceindex, 0, currentforgeDie.dieData.facesValue.Count - 1);
+        currentforgeDie.currentFaceindex = Mathf.Clamp(currentforgeDie.currentFaceindex, 0, currentforgeDie.dieData.facesValues.Count - 1);
         UpdateCurrentDieView();
     }
 
@@ -157,6 +158,7 @@ public class ForgeManager : MonoBehaviour
     {
         dice[currentDieIndex].GetCurrentFaceValue().SetResource(_currentEditResource);
         UpdateCurrentDieView();
+
         //dice[currentDieIndex].die.DisplayResources();
     }
 
@@ -164,6 +166,8 @@ public class ForgeManager : MonoBehaviour
     {
         dice[currentDieIndex].GetCurrentFaceValue().SetBuff(_currentEditBuff);
         UpdateCurrentDieView();
+
+
         //dice[currentDieIndex].die.DisplayBuffs();
     }
 
@@ -193,7 +197,23 @@ public class ForgeManager : MonoBehaviour
     //increase number of faces
     public void UpgradeCurrentDie()
     {
+        switch (dice[currentDieIndex].dieData.DieType)
+        {
+            case DieType.D6:
+                dice[currentDieIndex].dieData.DieType = DieType.D8;
 
+                //add two faces, might want to change the logic
+                //dice[currentDieIndex].dieData.facesValues.Add(new DieFaceValue());
+                //dice[currentDieIndex].dieData.facesValues.Add(new DieFaceValue());
+                break;
+            case DieType.D8:
+                Debug.Log("Still dont have upgrade for d8");
+                break;
+            default:
+                break;
+        }
+
+        UpdateCurrentDieView();
     }
 
 
@@ -214,7 +234,7 @@ public class ForgeDieData
 
     public DieFaceValue GetCurrentFaceValue()
     {
-        return dieData.facesValue[currentFaceindex];
+        return dieData.facesValues[currentFaceindex];
     }
 }
 
