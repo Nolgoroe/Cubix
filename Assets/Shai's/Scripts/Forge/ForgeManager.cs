@@ -17,7 +17,8 @@ public class ForgeManager : MonoBehaviour
     [SerializeField] private DisplayDicePair d6Die;
     [SerializeField] private DisplayDicePair d8Die;
 
-    [Header("Settings")]
+    [Header("References")]
+    [SerializeField] private BaseDiceDataSO baseDiceInfo;
     [SerializeField] private List<ForgeDieData> dice;
     [SerializeField] private Die blankD6Prefab;
     [SerializeField] private Die blankD8Prefab;
@@ -200,11 +201,12 @@ public class ForgeManager : MonoBehaviour
         switch (dice[currentDieIndex].dieData.DieType)
         {
             case DieType.D6:
+                //add two faces, might want to change the logic
+                AddFacesToDie(2);
+
+
                 dice[currentDieIndex].dieData.DieType = DieType.D8;
 
-                //add two faces, might want to change the logic
-                //dice[currentDieIndex].dieData.facesValues.Add(new DieFaceValue());
-                //dice[currentDieIndex].dieData.facesValues.Add(new DieFaceValue());
                 break;
             case DieType.D8:
                 Debug.Log("Still dont have upgrade for d8");
@@ -216,7 +218,16 @@ public class ForgeManager : MonoBehaviour
         UpdateCurrentDieView();
     }
 
-
+    public void AddFacesToDie(int facesAmount)
+    {
+        DieData currentDieData = dice[currentDieIndex].dieData;
+        for (int i = 0; i < facesAmount; i++)
+        {
+            DieFaceValue newFace;
+            newFace = baseDiceInfo.GetBaseFaceValueOfDie(currentDieData.element, currentDieData.DieType, currentDieData.facesValues.Count);
+            currentDieData.facesValues.Add(newFace);
+        }
+    }
 
 }
 

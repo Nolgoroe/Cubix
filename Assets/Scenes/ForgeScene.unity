@@ -1211,6 +1211,7 @@ MonoBehaviour:
   d8Die:
     buffDie: {fileID: 1272424467}
     resourceDie: {fileID: 1799908274}
+  baseDiceInfo: {fileID: 11400000, guid: e529ecc5b13c54640b5cdf4d28c95b64, type: 2}
   dice: []
   blankD6Prefab: {fileID: 5556330122468636267, guid: d2ec9798ac4598a4884994598f1bf9ba,
     type: 3}
