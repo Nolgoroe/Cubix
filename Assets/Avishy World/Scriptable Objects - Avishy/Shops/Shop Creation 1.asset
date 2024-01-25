@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Shop Creation 1
   m_EditorClassIdentifier: 
   allShopItems:
+  - {fileID: 11400000, guid: c9945a74df352e04a959340385242da7, type: 2}
+  - {fileID: 11400000, guid: 8cf119f89d23f614f9d6088a1602e97c, type: 2}
+  - {fileID: 11400000, guid: 8ea65ad390c770a4499a107654cd2191, type: 2}
   - {fileID: 11400000, guid: 5f8dbbc03b4fe89479910bb1534f8b2f, type: 2}
-  - {fileID: 11400000, guid: 5f8dbbc03b4fe89479910bb1534f8b2f, type: 2}
-  - {fileID: 11400000, guid: 5f8dbbc03b4fe89479910bb1534f8b2f, type: 2}
-  - {fileID: 11400000, guid: 00f657a75e0bcd741aba5902a95380e2, type: 2}
-  - {fileID: 11400000, guid: 00f657a75e0bcd741aba5902a95380e2, type: 2}
   - {fileID: 11400000, guid: c47d6d562959687419e0a091e6324cc6, type: 2}
+  - {fileID: 11400000, guid: 00f657a75e0bcd741aba5902a95380e2, type: 2}

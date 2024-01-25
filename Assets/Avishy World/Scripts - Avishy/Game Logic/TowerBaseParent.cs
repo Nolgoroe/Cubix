@@ -21,6 +21,10 @@ public abstract class TowerBaseParent : MonoBehaviour
     [SerializeField] protected Transform resultDiceHolder;
     [SerializeField] protected List<TowerBuffDataHolder> currentTowerBuffs;
 
+    [Header("Combat")]
+    [SerializeField] protected float range = 15;
+    [SerializeField] protected bool specialAttackUnlocked = false;
+
     [Header("Visuals")]
     [SerializeField] protected Transform rangeIndicator;
     [SerializeField] protected ParticleSystem onSpawnParticle;
@@ -30,7 +34,7 @@ public abstract class TowerBaseParent : MonoBehaviour
     protected Vector3 originalScale;
 
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         if (GameGridControls.Instance.rapidControls)
         {
@@ -56,13 +60,10 @@ public abstract class TowerBaseParent : MonoBehaviour
         transform.localScale = Vector3.zero;
 
         GameManager.Instance.AddTowerToRelaventList(this);
-
-        if(!GameGridControls.Instance.rapidControls)
+        
+        if (towerDie)
         {
-            if (towerDie)
-            {
-                towerDie.OnRollEndEvent.AddListener(RecieveBuffAfterRoll);
-            }
+            towerDie.OnRollEndEvent.AddListener(RecieveBuffAfterRoll);
         }
 
         //spawn effect
@@ -85,6 +86,15 @@ public abstract class TowerBaseParent : MonoBehaviour
         currentTowerBuffs.Add(holder);
     }
 
+    protected void SetRangeIndicator()
+    {
+        //radius is half of the diameter of a circle
+        if (rangeIndicator)
+        {
+            rangeIndicator.localScale = new Vector3(range * 2 / originalScale.x, range * 2 / originalScale.y, range * 2 / originalScale.z);
+            rangeIndicator.gameObject.SetActive(false);
+        }
+    }
 
 
 
@@ -110,6 +120,9 @@ public abstract class TowerBaseParent : MonoBehaviour
             towerDie.gameObject.SetActive(true);
 
             yield return new WaitForSeconds(7); // temp time
+
+            UIManager.Instance.DisplayTowerBuffData(false, this);
+
             towerDie.BackToPlayerArea();
             towerDie.DisplayResources();
 

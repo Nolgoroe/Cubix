@@ -18,6 +18,7 @@ MonoBehaviour:
     amount: 25
   - resource: 0
     amount: 30
+  itemName: Cyber D6
   diePrefab: {fileID: 7206346690176520411, guid: 30f61d566fa189c4182947b8e23103e5,
     type: 3}
   dieType: 0

@@ -35,6 +35,7 @@ public class Die : MonoBehaviour
     [Header("Tower Connected")]
     [SerializeField] private TowerBaseParent towerPrefabConnected;
     [SerializeField] private TowerBaseParent currentTowerParent;
+    [SerializeField] private bool specialAttackUnlcoked;
 
     [Header("Roll Data")]
     [SerializeField] private float _reqStagnantTime = 1;
@@ -124,11 +125,11 @@ public class Die : MonoBehaviour
         }
     }
 
-    private void SetDiceValueSpecific(int amountOfFaces, DiceSO diceData)
+    private void SetDiceValueSpecific(int amountOfFaces, DieData diceData)
     {
         for (int i = 0; i < amountOfFaces; i++)
         {
-            faces[i].ChangeFaceMat(diceData.dieMaterial);
+            faces[i].ChangeFaceMat(diceData.material);
 
             int randomResourceFaceIndex = Random.Range(0, System.Enum.GetValues(typeof(ResourceType)).Length);
             ResourceData resourceData = new ResourceData();
@@ -140,8 +141,8 @@ public class Die : MonoBehaviour
 
 
             BuffData buffData = new BuffData();
-            buffData.Type = diceData.buffDataList[i].Type;
-            buffData.Value = diceData.buffDataList[i].Value;
+            buffData.Type = diceData.facesValues[i].Buff.Type;
+            buffData.Value = diceData.facesValues[i].Buff.Value;
             buffData.Icon = DiceManager.Instance.ReturnIconByType(buffData.Type);
             faces[i].SetBuff(buffData);
 
@@ -179,17 +180,7 @@ public class Die : MonoBehaviour
         isRolling = false;
         DieFaceValue faceValue = die.GetTopValue(); // _currentTopFace value is always set in this function. we call it to be safe that we don't use a null value 
 
-        if (!_isInWorld)
-        {
-            targetQuat = Quaternion.Euler(die.ReturnCurrentTopFace().ReturnOrientationOnEndRoll());
-        }
-        else
-        {
-            targetQuat = Quaternion.Euler(die.ReturnCurrentTopFace().ReturnOrientationOnEndRoll());
-
-            //Vector3 direction = (GameManager.Instance.ReturnMainCamera().transform.position - transform.position).normalized;
-            //targetQuat = Quaternion.FromToRotation(Vector3.forward, direction);
-        }
+        targetQuat = Quaternion.Euler(die.ReturnCurrentTopFace().ReturnOrientationOnEndRoll());
 
         RB.isKinematic = true;
     }
@@ -389,12 +380,12 @@ public class Die : MonoBehaviour
 
 
 
-    public void InitDiceInSlot(Transform _lockTransform, DiceSO diceData)
+    public void InitDiceInSlot(Transform _lockTransform, DieData diceData)
     {
         lockTransform = _lockTransform;
 
-        towerPrefabConnected = diceData.towerPrefab;
-        diceMat = diceData.dieMaterial;
+        towerPrefabConnected = diceData.towerPrefabConnected;
+        diceMat = diceData.material;
 
 
         switch (diceData.dieType)
@@ -532,7 +523,7 @@ public class Die : MonoBehaviour
     {
         DieData data = new DieData();
 
-        data.DieType = DieType;
+        data.dieType = DieType;
         data.element = element;
         data.material = diceMat;
 
@@ -550,7 +541,7 @@ public class Die : MonoBehaviour
 
     public void ImportTransferData(DieData data)
     {
-        DieType = data.DieType;
+        DieType = data.dieType;
         element = data.element;
         diceMat = data.material;
 
@@ -563,7 +554,15 @@ public class Die : MonoBehaviour
         towerPrefabConnected = data.towerPrefabConnected;
     }
 
+    public bool ReturnSpecialAttackUnlcoked()
+    {
+        return specialAttackUnlcoked;
+    }
 
+    public DieElement ReturnDieElement()
+    {
+        return element;
+    }
 }
 
 

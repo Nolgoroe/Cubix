@@ -252,7 +252,7 @@ public class WaveManager : MonoBehaviour
         currentIndexInWave = 0;
 
 
-        timeForNextWave = waveSO.Waves[currentIndexInWave].delayBetweenWaves / GameManager.gameSpeed;
+        timeForNextWave = waveSO.Waves[currentIndexInWave].delayBetweenWaves;
         currentCountdown = timeForNextWave;
 
         currentWaveSO = new WaveSO();

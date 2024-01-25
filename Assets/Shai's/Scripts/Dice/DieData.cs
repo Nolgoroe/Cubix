@@ -5,9 +5,10 @@ using UnityEngine;
 [System.Serializable]//serializing just to view data in scene
 public class DieData 
 {
-    public DieType DieType;
+    public DieType dieType;
     public DieElement element;
     public Material material;
     public List<DieFaceValue> facesValues;
     public TowerBaseParent towerPrefabConnected;
+    public GameObject diePrefab;
 }

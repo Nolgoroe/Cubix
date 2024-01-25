@@ -526,15 +526,16 @@ MonoBehaviour:
   towerDie: {fileID: 0}
   resultDiceHolder: {fileID: 812075692817609639}
   currentTowerBuffs: []
+  range: 5
+  specialAttackUnlocked: 0
   rangeIndicator: {fileID: 4549348150687164023}
   onSpawnParticle: {fileID: 2126513307738344185, guid: 9acd4cff9a73e654095fbac641add6bd,
     type: 3}
   currentCellOnPos: {x: 0, y: 0}
   currentTarget: {fileID: 0}
-  range: 5
   rotationSpeed: 15
   bulltDMG: 1
-  fireRate: 1
+  fireRate: 0.8
   fireCountDown: 0
   specialFireRate: 5
   specialFireRateCooldown: 0

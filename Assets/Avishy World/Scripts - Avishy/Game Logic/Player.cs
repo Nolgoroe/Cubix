@@ -9,12 +9,13 @@ public class Player : MonoBehaviour
     public static Player Instance;
 
     [Header("Dice")]
-    [SerializeField] private List<Die> allDieInPlay; //used to write events to dice on thier spawn.
+    [SerializeField] private List<DieData> playerDice; // This becomes the main and ONLY reference to player dice after first level of game!
 
     [Header("Resource")]
     [SerializeField] private int iron;
     [SerializeField] private int energy;
     [SerializeField] private int lightning;
+    [SerializeField] private int scrap;
 
     [Header("Health")]
     [SerializeField] int maxHP;
@@ -25,7 +26,16 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
@@ -62,7 +72,12 @@ public class Player : MonoBehaviour
                 break;
         }
 
-        UIManager.Instance.UpdateResources(iron, energy, lightning);
+        UIManager.Instance.UpdateResources(iron, energy, lightning, scrap);
+    }
+    public void AddResourcesFromEnemy(int amount)
+    {
+        scrap += amount;
+        UIManager.Instance.UpdateResources(iron, energy, lightning, scrap);
     }
 
 
@@ -74,7 +89,7 @@ public class Player : MonoBehaviour
 
         AddResources(myEnums[randomResource], 10);
 
-        UIManager.Instance.UpdateResources(iron, energy, lightning);
+        UIManager.Instance.UpdateResources(iron, energy, lightning, scrap);
     }
 
     public void AddResources(ResourceType resourceType, int amount)
@@ -175,5 +190,14 @@ public class Player : MonoBehaviour
     public int ReturnRerollAmount()
     {
         return rerollAmount;
+    }
+
+    public void AddDieData(DieData dieData)
+    {
+        playerDice.Add(dieData);
+    }
+    public List<DieData> ReturnPlayerDice()
+    {
+        return playerDice;
     }
 }

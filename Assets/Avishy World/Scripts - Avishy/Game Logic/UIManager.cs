@@ -31,6 +31,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text ironText;
     [SerializeField] private TMP_Text energyText;
     [SerializeField] private TMP_Text lightningText;
+    [SerializeField] private TMP_Text scrapText;
 
     [Header("Prefabs")]
     [SerializeField] private DiceFaceDisplayUI diceFaceUIDisplayPreafb;
@@ -54,7 +55,7 @@ public class UIManager : MonoBehaviour
     {
         TogglePauseMenu(false);
 
-        UpdateResources(0, 0, 0); //temp?
+        UpdateResources(0, 0, 0, 0); //temp?
 
         winScreen.gameObject.SetActive(false);
         loseScreen.gameObject.SetActive(false);
@@ -144,11 +145,12 @@ public class UIManager : MonoBehaviour
         Debug.Log("Open Settings");
     }
 
-    public void UpdateResources(int _iron, int _energy, int _lightning)
+    public void UpdateResources(int _iron, int _energy, int _lightning, int _scrap)
     {
         ironText.text = _iron.ToString();
         energyText.text = _energy.ToString();
         lightningText.text = _lightning.ToString();
+        scrapText.text = _scrap.ToString();
     }
     public void UpdatePlayerHealth(int currentHealth, int maxHealth)
     {

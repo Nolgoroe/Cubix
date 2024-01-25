@@ -11,13 +11,14 @@ public class ShopItemUI : MonoBehaviour
     [SerializeField] Image itemIcon;
     [SerializeField] Transform priceDisplayParent;
     [SerializeField] TMP_Text neededResourceUITextPrefab;
+    [SerializeField] TMP_Text itemName;
     [SerializeField] List<TMP_Text> intantiatedTexsts;
 
     public void InitShopItem(Sprite icon, ItemShopParentSO item)
     {
         connectedItemSO = item;
         itemIcon.sprite = icon;
-
+        itemName.text = item.itemName;
 
         for (int i = 0; i < item.resourcesNeeded.Length; i++)
         {

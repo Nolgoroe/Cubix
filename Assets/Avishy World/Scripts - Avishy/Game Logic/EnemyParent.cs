@@ -26,6 +26,10 @@ public class EnemyParent : MonoBehaviour
     [SerializeField] private Transform target;
     [SerializeField] private EnemyTypes enemyType;
 
+    [Header("Economy Data")]
+    [SerializeField] float percentageToGiveScrap;
+    [SerializeField] int scrapAmount;
+
     [Header("Live Data")]
     [SerializeField] private Transform currentTarget;
     [SerializeField] private float startingHeight;
@@ -80,7 +84,7 @@ public class EnemyParent : MonoBehaviour
         if (currentAttackCooldown <= 0)
         {
             Attack();
-            currentAttackCooldown = (1 * attackRate) / GameManager.gameSpeed;
+            currentAttackCooldown = attackRate;
         }
     }
     private void FixedUpdate()
@@ -222,11 +226,24 @@ public class EnemyParent : MonoBehaviour
 
         if(enemyHealth <= 0)
         {
+            RollGiveScrap();
             Instantiate(onDeathParticle, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
 
 
+    }
+
+    private void RollGiveScrap()
+    {
+        int randomNum = UnityEngine.Random.Range(0, 101);
+
+        if(randomNum <= percentageToGiveScrap)
+        {
+            //if scrap is 30 then we want the number to be 30 to 0, that's 30%;
+
+            Player.Instance.AddResourcesFromEnemy(scrapAmount);
+        }
     }
 
     private void AfterRecieveDMG()

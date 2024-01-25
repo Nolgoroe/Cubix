@@ -18,6 +18,7 @@ MonoBehaviour:
     amount: 25
   - resource: 0
     amount: 30
+  itemName: Lightning D8
   diePrefab: {fileID: 6895173316381504982, guid: 89c80393a1704c540a3de66fa30dd966,
     type: 3}
   dieType: 1

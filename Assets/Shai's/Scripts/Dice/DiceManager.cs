@@ -7,7 +7,7 @@ public class DiceManager : MonoBehaviour
     public static DiceManager Instance;
 
     [Header("Preset data")]
-    [SerializeField] private List<DiceSO> ownedDice;
+    [SerializeField] private List<DiceSO> startDice;
     [SerializeField] private List<DiceSlot> diceSlots;
 
     [Header("Live data")]
@@ -40,19 +40,66 @@ public class DiceManager : MonoBehaviour
             buffTypeToIcon.Add((BuffType)i, allBuffIcons[i]);
         }
 
-        for (int i = 0; i < ownedDice.Count; i++)
+        if (Player.Instance.ReturnPlayerDice().Count > 0)
         {
-            GameObject go = Instantiate(ownedDice[i].diePrefab, diceSlots[i].transform);
-            go.TryGetComponent<Die>(out Die newDie);
-            if(newDie)
+            List<DieData> dieDataList = new List<DieData>();
+            dieDataList.AddRange(Player.Instance.ReturnPlayerDice());
+
+            for (int i = 0; i < dieDataList.Count; i++)
             {
-                newDie.InitDiceInSlot(diceSlots[i].ReturnLockTransform(), ownedDice[i]);
+                GameObject go = Instantiate(dieDataList[i].diePrefab, diceSlots[i].transform);
+
+                go.TryGetComponent<Die>(out Die newDie);
+                if (newDie)
+                {
+                    newDie.InitDiceInSlot(diceSlots[i].ReturnLockTransform(), dieDataList[i]);
+
+                }
             }
         }
+        else
+        {
+            for (int i = 0; i < startDice.Count; i++)
+            {
+                GameObject go = Instantiate(startDice[i].diePrefab, diceSlots[i].transform);
 
-        //Player.Instance.ConnectPlayerAndDiceOnStartLevel();
+                go.TryGetComponent<Die>(out Die newDie);
+                if (newDie)
+                {
+                    DieData data = CreateNewDieData(startDice[i]);
+
+                    newDie.InitDiceInSlot(diceSlots[i].ReturnLockTransform(), data);
+
+                }
+            }
+        }
     }
 
+    private DieData CreateNewDieData(DiceSO diceSO)
+    {
+        //there is the exact same funcion in the shop manager - maybe create a static dice class
+
+        DieData data = new DieData();
+
+        data.dieType = diceSO.dieType;
+        data.element = diceSO.element;
+        data.material = diceSO.dieMaterial;
+
+        List<DieFaceValue> tmpFaceValues = new List<DieFaceValue>();
+        for (int i = 0; i < diceSO.resouceDataList.Count; i++)
+        {
+            DieFaceValue faceValue = new DieFaceValue(diceSO.resouceDataList[i], diceSO.buffDataList[i]);
+            tmpFaceValues.Add(faceValue);
+        }
+
+        data.facesValues = tmpFaceValues;
+        data.towerPrefabConnected = diceSO.towerPrefab;
+        data.diePrefab = diceSO.diePrefab;
+
+        Player.Instance.AddDieData(data);
+
+        return data;
+    }
     public void RollResources()
     {
         if (Player.Instance.ReturnRerollAmount() <= 0) return;
@@ -66,7 +113,14 @@ public class DiceManager : MonoBehaviour
         Player.Instance.ChangeRerollAmount(-1);
         UIManager.Instance.UpdateStaminaAmount(Player.Instance.ReturnRerollAmount());
     }
-    public void RollInWorld()
+    public void RollResourcesAutomatic()
+    {
+        foreach (var roller in resourceDice)
+        {
+            roller.ReturnDieRoller().Roll();
+        }
+    }
+    public void RollInWorldAutomatic()
     {
         foreach (var roller in worldDice)
         {
@@ -103,7 +157,7 @@ public class DiceManager : MonoBehaviour
 
     public void AddDieFromShop(DiceSO die)
     {
-        ownedDice.Add(die);
+        startDice.Add(die);
     }
 
 

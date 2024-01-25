@@ -67,7 +67,7 @@ public class ShopManager : MonoBehaviour
         switch (item)
         {
             case DiceSO die:
-                DiceManager.Instance.AddDieFromShop(die);
+                DieData data = CreateNewDieData(die);
                 break;
             case StatsBundleSO statsBundle:
                 foreach (StatToAmoutCombo combo in statsBundle.statsToBuy)
@@ -150,5 +150,32 @@ public class ShopManager : MonoBehaviour
         yield return new WaitForSeconds(2);
         shopMessage.gameObject.SetActive(false);
 
+    }
+
+
+    private DieData CreateNewDieData(DiceSO diceSO)
+    {
+        //there is the exact same funcion in the Dice Manager - maybe create a static dice class
+
+        DieData data = new DieData();
+
+        data.dieType = diceSO.dieType;
+        data.element = diceSO.element;
+        data.material = diceSO.dieMaterial;
+
+        List<DieFaceValue> tmpFaceValues = new List<DieFaceValue>();
+        for (int i = 0; i < diceSO.resouceDataList.Count; i++)
+        {
+            DieFaceValue faceValue = new DieFaceValue(diceSO.resouceDataList[i], diceSO.buffDataList[i]);
+            tmpFaceValues.Add(faceValue);
+        }
+
+        data.facesValues = tmpFaceValues;
+        data.towerPrefabConnected = diceSO.towerPrefab;
+        data.diePrefab = diceSO.diePrefab;
+
+        Player.Instance.AddDieData(data);
+
+        return data;
     }
 }

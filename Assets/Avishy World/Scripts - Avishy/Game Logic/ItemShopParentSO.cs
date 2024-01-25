@@ -13,4 +13,5 @@ public abstract class ItemShopParentSO : ScriptableObject
     [Header("Shop Required")]
     public Sprite icon;
     public ResourceTypeCombo[] resourcesNeeded;
+    public string itemName;
 }

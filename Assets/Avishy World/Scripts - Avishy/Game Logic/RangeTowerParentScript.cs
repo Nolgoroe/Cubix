@@ -8,8 +8,7 @@ public class RangeTowerParentScript : TowerBaseParent
     [Header ("Live data")]
     [SerializeField] private Transform currentTarget;
 
-    [Header("Combat")] 
-    [SerializeField] private float range = 15;
+    [Header("Local Combat")] 
     [SerializeField] private float rotationSpeed = 15;
     [SerializeField] protected float bulltDMG = 1;
 
@@ -36,8 +35,8 @@ public class RangeTowerParentScript : TowerBaseParent
 
     protected override void Start()
     {
-        fireCountDown = (1 * fireRate) / GameManager.gameSpeed;
-        specialFireRateCooldown = (1 * specialFireRate) / GameManager.gameSpeed;
+        fireCountDown = fireRate;
+        specialFireRateCooldown = specialFireRate;
         originalRange = range;
         originalRotationSpeed = rotationSpeed;
         originalFireRate = fireRate;
@@ -48,15 +47,6 @@ public class RangeTowerParentScript : TowerBaseParent
         SetRangeIndicator();
     }
 
-    private void SetRangeIndicator()
-    {
-        //radius is half of the diameter of a circle
-        if (rangeIndicator)
-        {
-            rangeIndicator.localScale = new Vector3(range * 2 / originalScale.x, range * 2 / originalScale.y, range * 2 / originalScale.z);
-            rangeIndicator.gameObject.SetActive(false);
-        }
-    }
     protected virtual void Update()
     {
         if (GameManager.gamePaused) return;
@@ -67,29 +57,35 @@ public class RangeTowerParentScript : TowerBaseParent
         //locking on target
         Vector3 direction = currentTarget.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
-        Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * rotationSpeed * GameManager.gameSpeed).eulerAngles;
+        Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, (Time.deltaTime * rotationSpeed * GameManager.gameSpeed)).eulerAngles;
 
         partToRotate.rotation = Quaternion.Euler(rotation);
 
-        if(specialFireRateCooldown <= 0)
+        if(specialAttackUnlocked)
         {
-            isSpecialBullet = true;
-            specialFireRateCooldown = (1 * specialFireRate) / GameManager.gameSpeed;
+            if (specialFireRateCooldown <= 0)
+            {
+                isSpecialBullet = true;
+                specialFireRateCooldown = specialFireRate;
+            }
+
+            specialFireRateCooldown -= Time.deltaTime * GameManager.gameSpeed;
         }
 
         if (fireCountDown <= 0)
         {
             Shoot();
-            fireCountDown = (1 * fireRate) / GameManager.gameSpeed;
+            fireCountDown = fireRate;
 
             if(isSpecialBullet)
             {
                 isSpecialBullet = false;
             }
+
+            return;
         }
 
         fireCountDown -= Time.deltaTime * GameManager.gameSpeed;
-        specialFireRateCooldown -= Time.deltaTime * GameManager.gameSpeed;
     }
 
     private void Shoot()
@@ -107,6 +103,11 @@ public class RangeTowerParentScript : TowerBaseParent
 
     private void UpdateTarget()
     {
+        if (fireCountDown <= fireCountDown / 5)
+        {
+            return;
+        }
+
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, range, enemyLayerMask);
 
         float shortestDistance = Mathf.Infinity;
@@ -146,7 +147,8 @@ public class RangeTowerParentScript : TowerBaseParent
         towerDie = connectedDie;
 
         towerDie.transform.SetParent(resultDiceHolder);
-        //SpawnBuffCubeOnCreation();
+
+        specialAttackUnlocked = towerDie.ReturnSpecialAttackUnlcoked();
     }
 
     private void OnDrawGizmos()

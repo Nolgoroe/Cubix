@@ -17,11 +17,18 @@ public class GameGridControls : MonoBehaviour
     [SerializeField] private Die currentDieDragging;
     [SerializeField] private List<Die> currentDieToLock;
 
+
+    [Header("Rally Point")]
+    [SerializeField] TowerBaseParent currentTower;
+
     [Header("Temp variables")]
     public bool rapidControls; //temp
 
-    private Vector3 positionOfMouse;
 
+
+
+    private Vector3 positionOfMouse;
+    bool SettingRallyPoint = false;
 
     private void Awake()
     {
@@ -33,9 +40,44 @@ public class GameGridControls : MonoBehaviour
     {
         MouseOverGridCell();
 
+        RallyPointControls();
+
         NormalControls();
 
-        if(currentDieDragging)
+        DieDraggingControls();
+    }
+
+    private void RallyPointControls()
+    {
+        if (!SettingRallyPoint) return;
+        currentTower.OnHoverOverOccupyingCell(true);
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector3 screenPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, GameManager.Instance.ReturnMainCamera().transform.position.y);
+            Ray ray = GameManager.Instance.ReturnMainCamera().ScreenPointToRay(screenPos);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, 1000, gridCellLayer))
+            {
+                MeleeTowerParentScript meleeTower = currentTower as MeleeTowerParentScript;
+                if (meleeTower)
+                {
+                    meleeTower.SetRallyPoint(currentCellHovered);
+                }
+            }
+            else
+            {
+            }
+
+            currentTower.OnHoverOverOccupyingCell(false);
+            SettingRallyPoint = false;
+        }
+    }
+
+    private void DieDraggingControls()
+    {
+        if (currentDieDragging)
         {
             Vector3 screenPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, GameManager.Instance.ReturnMainCamera().transform.position.y);
             Ray ray = GameManager.Instance.ReturnMainCamera().ScreenPointToRay(screenPos);
@@ -53,11 +95,22 @@ public class GameGridControls : MonoBehaviour
                 currentDieDragging.transform.position = worldPos;
 
             }
-        } 
+        }
     }
 
     private void NormalControls()
     {
+        if (SettingRallyPoint) return;
+
+        if (currentCellHovered && currentCellHovered.ReturnIsOccipiedByTower())
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                currentTower = currentCellHovered.ReturnTowerOnCell();
+                SettingRallyPoint = true;
+            }
+        }
+            
         if (currentDieDragging)
         {
             if (Input.GetMouseButtonUp(0))
@@ -71,8 +124,6 @@ public class GameGridControls : MonoBehaviour
                         Player.Instance.RecieveRandomResource();
                     }
 
-                    //currentDieDragging.OnDestroyDieEvent?.Invoke();
-
                     SetCurrentDieDragging(null);
 
                     SoundManager.Instance.ActivateSoundImmediate(Sounds.PlaceTower);
@@ -84,14 +135,6 @@ public class GameGridControls : MonoBehaviour
                     SetCurrentDieDragging(null);
 
                 }
-            }
-        }
-
-        if (Input.GetMouseButtonDown(1))
-        {
-            if (currentCellHovered && currentCellHovered.ReturnIsOccipied() && currentCellHovered.ReturnIsOccipiedByTower())
-            {
-                currentCellHovered.EmptyCell();
             }
         }
     }

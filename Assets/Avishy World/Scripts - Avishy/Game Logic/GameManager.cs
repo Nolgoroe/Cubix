@@ -83,8 +83,10 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(tower.OnStartPlayerTurn());
             }
 
-            yield return new WaitForSeconds(1f); //temp
-            DiceManager.Instance.RollInWorld();
+            DiceManager.Instance.RollResourcesAutomatic();
+            yield return new WaitForSeconds(1f); //temp here to let dice fall into place before rolling
+            DiceManager.Instance.RollInWorldAutomatic();
+
         }
         else
         {
