@@ -182,27 +182,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9145c82ccccc65f419e9f06ee89b4c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentCellOnPos: {x: 0, y: 0}
-  requiredCellColorType: 0
-  towerRequiredColor: {r: 0.14509805, g: 0.8039216, b: 0.9529412, a: 1}
+  requiresPathCells: 1
+  requiredCellColorType: 2
   towerDie: {fileID: 0}
-  rangeIndicator: {fileID: 0}
   resultDiceHolder: {fileID: 1251664290582245430}
   currentTowerBuffs: []
+  rangeIndicator: {fileID: 0}
   onSpawnParticle: {fileID: 2126513307738344185, guid: 9acd4cff9a73e654095fbac641add6bd,
     type: 3}
-  requiresPathCells: 1
+  currentCellOnPos: {x: 0, y: 0}
   connectedPathCells: []
-  troopPrefab: {fileID: 8425342904263200654, guid: 880e3787047504344a32a7cd14e6eb16,
-    type: 3}
-  maxNumOfTroops: 1
   spawnRate: 1
+  currentSpawnCooldown: 0
+  maxNumOfTroops: 1
+  currentNumOfTroops: 0
+  currentTowerTroops: []
   troopDMG: 1
   troopHP: 10
   troopRange: 1.5
-  currentSpawnCooldown: 0
-  currentNumOfTroops: 0
-  currentTowerTroops: []
+  troopPrefab: {fileID: 8425342904263200654, guid: 880e3787047504344a32a7cd14e6eb16,
+    type: 3}
 --- !u!1 &2429202334905192601
 GameObject:
   m_ObjectHideFlags: 0
