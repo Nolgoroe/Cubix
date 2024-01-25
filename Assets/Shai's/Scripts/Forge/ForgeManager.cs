@@ -204,7 +204,6 @@ public class ForgeManager : MonoBehaviour
                 //add two faces, might want to change the logic
                 AddFacesToDie(2);
 
-
                 dice[currentDieIndex].dieData.DieType = DieType.D8;
 
                 break;
