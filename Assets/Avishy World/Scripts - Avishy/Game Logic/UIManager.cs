@@ -42,6 +42,10 @@ public class UIManager : MonoBehaviour
     [Header("Stamina")]
     [SerializeField] private TMP_Text staminaText;
 
+    [Header("Map Dice")]
+    [SerializeField] private DataDieDisplayUI diceDataDisplayUI;
+    [SerializeField] private Transform diceDataDisplayParent;
+
 
     private void Awake()
     {
@@ -54,8 +58,6 @@ public class UIManager : MonoBehaviour
     public void InitUIManager()
     {
         TogglePauseMenu(false);
-
-        UpdateResources(0, 0, 0, 0); //temp?
 
         winScreen.gameObject.SetActive(false);
         loseScreen.gameObject.SetActive(false);
@@ -128,6 +130,48 @@ public class UIManager : MonoBehaviour
         diceFacesResourcesDisplayParent.gameObject.SetActive(isDisplay);
         diceFacesBuffDisplayParent.gameObject.SetActive(isDisplay);
     }
+    public void DisplayDiceFacesUI(bool isDisplay, DieData dieData)
+    {
+        if(isDisplay)
+        {
+            foreach (DieFaceValue faceValue in dieData.facesValues)
+            {
+                GameObject resource = Instantiate(diceFaceUIDisplayPreafb.gameObject, diceFacesResourcesDisplayParent);
+                GameObject buff = Instantiate(diceFaceUIDisplayPreafb.gameObject, diceFacesBuffDisplayParent);
+
+                DiceFaceDisplayUI displayUIResource;
+                DiceFaceDisplayUI displayUIBuff;
+
+                resource.TryGetComponent<DiceFaceDisplayUI>(out displayUIResource);
+                buff.TryGetComponent<DiceFaceDisplayUI>(out displayUIBuff);
+
+                if (displayUIResource)
+                {
+                    displayUIResource.SetImage(faceValue, dieData, true);
+                }
+
+                if (displayUIBuff)
+                {
+                    displayUIBuff.SetImage(faceValue, dieData, false);
+                }
+            }
+        }
+        else
+        {
+            foreach (Transform child in diceFacesResourcesDisplayParent)
+            {
+                Destroy(child.gameObject);
+            }
+
+            foreach (Transform child in diceFacesBuffDisplayParent)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+
+        diceFacesResourcesDisplayParent.gameObject.SetActive(isDisplay);
+        diceFacesBuffDisplayParent.gameObject.SetActive(isDisplay);
+    }
 
     public void TogglePauseMenu(bool displayPause)
     {
@@ -174,5 +218,14 @@ public class UIManager : MonoBehaviour
     public void UpdateStaminaAmount(int amount)
     {
         staminaText.text = amount.ToString();
+    }
+
+    public void UpdateMapDiceDisplay()
+    {
+        foreach (DieData data in Player.Instance.ReturnPlayerDice())
+        {
+            DataDieDisplayUI dataDieDisplay = Instantiate(diceDataDisplayUI, diceDataDisplayParent);
+            dataDieDisplay.InitDisplay(data);
+        }
     }
 }

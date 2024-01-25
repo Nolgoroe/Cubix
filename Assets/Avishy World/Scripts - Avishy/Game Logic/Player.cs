@@ -8,7 +8,11 @@ public class Player : MonoBehaviour
 {
     public static Player Instance;
 
+    [Header("References")]
+    [SerializeField] private DieDataSpawner diceDataSpawner;
+
     [Header("Dice")]
+    [SerializeField] private List<DiceSO> startDice;
     [SerializeField] private List<DieData> playerDice; // This becomes the main and ONLY reference to player dice after first level of game!
 
     [Header("Resource")]
@@ -33,20 +37,29 @@ public class Player : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            return;
         }
 
         DontDestroyOnLoad(gameObject);
+
+        foreach (DiceSO diceSO in startDice)
+        {
+            diceDataSpawner.CreateNewDieData(diceSO);
+        }
     }
 
     private void Start()
     {
         maxHP = 1000; //temp
         currentPlayerHealth = maxHP;
-
-        UIManager.Instance.UpdatePlayerHealth(currentPlayerHealth, maxHP);
     }
 
+    public void InitPlayer()
+    {
+        UIManager.Instance.UpdatePlayerHealth(currentPlayerHealth, maxHP);
 
+        UIManager.Instance.UpdateResources(iron, energy, lightning, scrap);
+    }
 
 
     public void AddResourcesFromDice(Die die)

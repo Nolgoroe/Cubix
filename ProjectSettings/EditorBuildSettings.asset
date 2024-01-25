@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Avishy Testing.unity
     guid: 84a98cec4beba6748b86a61c665b5c18
+  - enabled: 1
+    path: Assets/Scenes/WorldMapTest.unity
+    guid: f07544ab786d58d489ebaeb6979acbe4
   m_configObjects: {}

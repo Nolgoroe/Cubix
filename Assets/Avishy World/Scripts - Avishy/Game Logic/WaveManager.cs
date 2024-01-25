@@ -255,7 +255,8 @@ public class WaveManager : MonoBehaviour
         timeForNextWave = waveSO.Waves[currentIndexInWave].delayBetweenWaves;
         currentCountdown = timeForNextWave;
 
-        currentWaveSO = new WaveSO();
+        //currentWaveSO = new WaveSO();
+        currentWaveSO = ScriptableObject.CreateInstance<WaveSO>();
         currentWaveSO.Waves = new List<WaveData>();
 
         for (int i = 0; i < waveSO.Waves.Count; i++)
@@ -317,6 +318,8 @@ public class WaveManager : MonoBehaviour
             Debug.Log("no more waves! weeeeee");
             levelComplete = true;
             UIManager.Instance.DisplayEndGameScreen(true);
+
+            StartCoroutine(GameManager.Instance.BackToMap());
             return;
         }
 

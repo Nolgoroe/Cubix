@@ -22,6 +22,7 @@ MonoBehaviour:
   diePrefab: {fileID: 6895173316381504982, guid: 89c80393a1704c540a3de66fa30dd966,
     type: 3}
   dieType: 1
+  element: 0
   towerPrefab: {fileID: 7779022226387808478, guid: 7cb2a2d3c330104478cf0c451e0c362b,
     type: 3}
   dieMaterial: {fileID: 2100000, guid: ee99e325a81704b4788b9a4237401ee7, type: 2}
@@ -54,16 +55,16 @@ MonoBehaviour:
   - Type: 0
     Value: 0
     Icon: {fileID: 0}
-  - Type: 1
+  - Type: 0
+    Value: 3
+    Icon: {fileID: 775649512, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+  - Type: 0
     Value: 3
     Icon: {fileID: 775649512, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   - Type: 1
     Value: 3
     Icon: {fileID: 775649512, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
-  - Type: 1
-    Value: 3
-    Icon: {fileID: 775649512, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
-  - Type: 4
+  - Type: 0
     Value: 3
     Icon: {fileID: -1439601924, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   - Type: 4

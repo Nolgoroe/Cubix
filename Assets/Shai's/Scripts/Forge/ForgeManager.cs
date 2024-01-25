@@ -204,7 +204,7 @@ public class ForgeManager : MonoBehaviour
                 //add two faces, might want to change the logic
                 AddFacesToDie(2);
 
-                dice[currentDieIndex].dieData.DieType = DieType.D8;
+                dice[currentDieIndex].dieData.dieType = DieType.D8;
 
                 break;
             case DieType.D8:
@@ -223,7 +223,7 @@ public class ForgeManager : MonoBehaviour
         for (int i = 0; i < facesAmount; i++)
         {
             DieFaceValue newFace;
-            newFace = baseDiceInfo.GetBaseFaceValueOfDie(currentDieData.element, currentDieData.DieType, currentDieData.facesValues.Count);
+            newFace = baseDiceInfo.GetBaseFaceValueOfDie(currentDieData.element, currentDieData.dieType, currentDieData.facesValues.Count);
             currentDieData.facesValues.Add(newFace);
         }
     }

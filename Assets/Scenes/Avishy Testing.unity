@@ -718,6 +718,8 @@ MonoBehaviour:
     type: 3}
   pauseMenu: {fileID: 1675742893}
   staminaText: {fileID: 538082571}
+  diceDataDisplayUI: {fileID: 0}
+  diceDataDisplayParent: {fileID: 0}
 --- !u!1 &141641284
 GameObject:
   m_ObjectHideFlags: 0
@@ -1200,6 +1202,7 @@ MonoBehaviour:
     type: 3}
   shopItemsParent: {fileID: 1209716802}
   shopScreen: {fileID: 2038647221}
+  diceDataSpawner: {fileID: 1143557499}
   instantiatedItems: []
   shopMessage: {fileID: 599141687}
 --- !u!4 &252510165
@@ -5210,6 +5213,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d84ec9d64cd87524995a7993554977e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  diceDataSpawner: {fileID: 0}
+  startDice: []
   playerDice: []
   iron: 300
   energy: 0
@@ -6053,6 +6058,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1143557498}
   - component: {fileID: 1143557497}
+  - component: {fileID: 1143557499}
   m_Layer: 0
   m_Name: Dice Manager
   m_TagString: Untagged
@@ -6072,14 +6078,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 747e243d13caf2a499ae7ea61d7e057d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startDice:
-  - {fileID: 11400000, guid: dad15f1d9ec28a14ba0b206482db999d, type: 2}
-  - {fileID: 11400000, guid: c9945a74df352e04a959340385242da7, type: 2}
-  - {fileID: 11400000, guid: 8ea65ad390c770a4499a107654cd2191, type: 2}
-  - {fileID: 11400000, guid: e3d76e11d0a7eff408077d33057fc92a, type: 2}
-  - {fileID: 11400000, guid: 93b673bd7a4f12744891f428571e97d8, type: 2}
-  - {fileID: 11400000, guid: c47d6d562959687419e0a091e6324cc6, type: 2}
-  - {fileID: 11400000, guid: c47d6d562959687419e0a091e6324cc6, type: 2}
   diceSlots:
   - {fileID: 1025675676}
   - {fileID: 759683701}
@@ -6093,16 +6091,6 @@ MonoBehaviour:
   - {fileID: 318401420}
   resourceDice: []
   worldDice: []
-  allResourceIcons:
-  - {fileID: -1631459450, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
-  - {fileID: -1490314167, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
-  - {fileID: 1196769475, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
-  allBuffIcons:
-  - {fileID: 0}
-  - {fileID: 775649512, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
-  - {fileID: -1766819994, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
-  - {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
-  - {fileID: -1439601924, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
 --- !u!4 &1143557498
 Transform:
   m_ObjectHideFlags: 0
@@ -6118,6 +6106,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1143557499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143557496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eca808656a9086f44b2d1d9f67ff9bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1185034521
 GameObject:
   m_ObjectHideFlags: 0
@@ -7505,7 +7505,6 @@ GameObject:
   - component: {fileID: 1548779738}
   - component: {fileID: 1548779739}
   - component: {fileID: 1548779740}
-  - component: {fileID: 1548779741}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -7562,18 +7561,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac9db4ee9b0cb0e4487a9946c06950f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1548779741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1548779737}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6406d144367baca4a80d1f4534616015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1553985056
@@ -9440,7 +9427,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2038647222
 RectTransform:
   m_ObjectHideFlags: 0

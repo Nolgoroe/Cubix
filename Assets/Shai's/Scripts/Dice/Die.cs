@@ -131,11 +131,10 @@ public class Die : MonoBehaviour
         {
             faces[i].ChangeFaceMat(diceData.material);
 
-            int randomResourceFaceIndex = Random.Range(0, System.Enum.GetValues(typeof(ResourceType)).Length);
             ResourceData resourceData = new ResourceData();
-            resourceData.Type = (ResourceType)randomResourceFaceIndex;
-            resourceData.Value = Random.Range(1, 10); //temp
-            resourceData.Icon = DiceManager.Instance.ReturnIconByType(resourceData.Type);
+            resourceData.Type = diceData.facesValues[i].Resource.Type;
+            resourceData.Value = diceData.facesValues[i].Resource.Value;
+            resourceData.Icon = Helpers.ReturnIconByType(resourceData.Type);
 
             faces[i].SetResource(resourceData);
 
@@ -143,38 +142,38 @@ public class Die : MonoBehaviour
             BuffData buffData = new BuffData();
             buffData.Type = diceData.facesValues[i].Buff.Type;
             buffData.Value = diceData.facesValues[i].Buff.Value;
-            buffData.Icon = DiceManager.Instance.ReturnIconByType(buffData.Type);
+            buffData.Icon = Helpers.ReturnIconByType(buffData.Type);
             faces[i].SetBuff(buffData);
 
             faces[i].DisplayResource();
         }
     }
-    private void SetDiceValueRandom(int amountOfFaces, DiceSO diceData)
-    {
-        for (int i = 0; i < amountOfFaces; i++)
-        {
-            faces[i].ChangeFaceMat(diceData.dieMaterial);
 
-            int randomResource = Random.Range(0, System.Enum.GetValues(typeof(ResourceType)).Length);
-            ResourceData resourceData = new ResourceData();
-            resourceData.Type = (ResourceType)randomResource;
-            resourceData.Value = Random.Range(1, 10); //temp
-            resourceData.Icon = DiceManager.Instance.ReturnIconByType(resourceData.Type);
+    //private void SetDiceValueRandom(int amountOfFaces, DiceSO diceData)
+    //{
+    //    for (int i = 0; i < amountOfFaces; i++)
+    //    {
+    //        faces[i].ChangeFaceMat(diceData.dieMaterial);
 
-            faces[i].SetResource(resourceData);
+    //        int randomResource = Random.Range(0, System.Enum.GetValues(typeof(ResourceType)).Length);
+    //        ResourceData resourceData = new ResourceData();
+    //        resourceData.Type = (ResourceType)randomResource;
+    //        resourceData.Value = Random.Range(1, 10); //temp
+    //        resourceData.Icon = Helpers.ReturnIconByType(resourceData.Type);
 
-            int randomBuff = Random.Range(0, System.Enum.GetValues(typeof(BuffType)).Length);
-            BuffData buffData = new BuffData();
-            buffData.Type = (BuffType)randomBuff;
-            buffData.Value = Random.Range(1, 10); //temp
-            buffData.Icon = DiceManager.Instance.ReturnIconByType(buffData.Type);
-            faces[i].SetBuff(buffData);
+    //        faces[i].SetResource(resourceData);
+
+    //        int randomBuff = Random.Range(0, System.Enum.GetValues(typeof(BuffType)).Length);
+    //        BuffData buffData = new BuffData();
+    //        buffData.Type = (BuffType)randomBuff;
+    //        buffData.Value = Random.Range(1, 10); //temp
+    //        buffData.Icon = Helpers.ReturnIconByType(buffData.Type);
+    //        faces[i].SetBuff(buffData);
 
 
-            faces[i].DisplayResource();
-        }
-    }
-
+    //        faces[i].DisplayResource();
+    //    }
+    //}
     private void OrientCubeToCamrea(Die die)
     {
         isRolling = false;

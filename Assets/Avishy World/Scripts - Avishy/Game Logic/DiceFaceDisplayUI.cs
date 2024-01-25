@@ -43,4 +43,28 @@ public class DiceFaceDisplayUI : MonoBehaviour
             }
         }
     }
+    public void SetImage(DieFaceValue diceFaceValue, DieData dieData, bool isResource)
+    {
+        if (isResource)
+        {
+            connectedImage.color = dieData.material.color;
+            iconImage.sprite = diceFaceValue.Resource.Icon;
+            textAmount.text = diceFaceValue.Resource.Value.ToString();
+        }
+        else
+        {
+            connectedImage.color = dieData.material.color - Color.white * 0.2f; //temp
+            iconImage.sprite = diceFaceValue.Buff.Icon;
+
+            if (diceFaceValue.Buff.Type == BuffType.None)
+            {
+                textAmount.gameObject.SetActive(false);
+            }
+            else
+            {
+                textAmount.gameObject.SetActive(true);
+                textAmount.text = diceFaceValue.Buff.Value.ToString() + "%";
+            }
+        }
+    }
 }

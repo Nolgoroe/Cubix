@@ -11,4 +11,5 @@ public class DieData
     public List<DieFaceValue> facesValues;
     public TowerBaseParent towerPrefabConnected;
     public GameObject diePrefab;
+    public Sprite dieIcon;
 }
