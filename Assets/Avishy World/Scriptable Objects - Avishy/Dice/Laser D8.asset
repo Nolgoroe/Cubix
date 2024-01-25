@@ -55,16 +55,16 @@ MonoBehaviour:
   - Type: 0
     Value: 0
     Icon: {fileID: 0}
-  - Type: 0
+  - Type: 3
     Value: 2
     Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
-  - Type: 0
+  - Type: 3
     Value: 2
     Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   - Type: 1
     Value: 3
     Icon: {fileID: 775649512, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
-  - Type: 0
+  - Type: 1
     Value: 3
     Icon: {fileID: 775649512, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   - Type: 4
