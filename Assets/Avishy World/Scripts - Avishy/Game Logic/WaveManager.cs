@@ -17,9 +17,11 @@ public class WaveManager : MonoBehaviour
 
     [Header("Enemy data")]
     [SerializeField] private List<EnemySpawnerCell> currentLevelEnemySpawners;
-    [SerializeField] private List<EnemyWaveData> enemiesForWave; 
-    [SerializeField] private int currentIndexOfEnemies; 
+    [SerializeField] private List<EnemyWaveCombo> currentEnemiesCombo; 
+    //[SerializeField] private int currentIndexOfEnemiesCombo;
+    [SerializeField] private int currentIndexInCombo; 
     [SerializeField] private int currentAmountOfEnemies;
+    [SerializeField] private int currentAmountOfEnemiesForCombo;
     [SerializeField] private float enemySpawnTime; 
     [SerializeField] private float currentEnemySpawnTime; 
 
@@ -46,21 +48,21 @@ public class WaveManager : MonoBehaviour
     {
         if (GameManager.gamePaused) return;
 
-        if (!waveDone && currentAmountOfEnemies > 0)
+        if ((!waveDone && (currentAmountOfEnemies > 0 || currentAmountOfEnemiesForCombo > 0)))
         {
             CommenceWave();
 
             return;
         }
 
-        if (!waveDone && currentAmountOfEnemies == 0)
+        if (!waveDone && currentAmountOfEnemies == 0 && currentAmountOfEnemiesForCombo == 0)
         {
             AtWaveEnd();
 
             return;
         }
 
-        if (!waveDone || levelComplete || currentAmountOfEnemies > 0 ) return;
+        if (!waveDone || levelComplete || currentAmountOfEnemiesForCombo > 0 ) return;
 
         if (currentCountdown <= 0)
         {
@@ -97,58 +99,89 @@ public class WaveManager : MonoBehaviour
 
     private void PredeterminedSpawnEnemies()
     {
-        if (currentLevelEnemySpawners.Count > 0 && currentIndexOfEnemies < enemiesForWave.Count)
+        if (currentLevelEnemySpawners.Count > 0 && currentIndexInCombo < currentEnemiesCombo.Count)
         {
-            selectedSpawner = currentLevelEnemySpawners[enemiesForWave[currentIndexOfEnemies].enemySpawnerIndex];
-
             if (currentEnemySpawnTime < 0)
             {
-                GameObject enemyToSpawn = GameManager.Instance.ReturnEnemyByType(enemiesForWave[currentIndexOfEnemies].enemyType);
-                selectedSpawner.CallSpawnEnemy(enemyToSpawn, enemiesForWave[currentIndexOfEnemies].enemyPathIndex);
+                currentEnemySpawnTime = enemySpawnTime;
 
-                ChangeEnemyCount(1); //add 1 to enemy count
+                bool enemiesAvailable = false;
 
-                enemiesForWave[currentIndexOfEnemies].amountOfThisEnemy--;
-                if (enemiesForWave[currentIndexOfEnemies].amountOfThisEnemy <= 0)
+                foreach (EnemyWaveData enemyData in currentEnemiesCombo[currentIndexInCombo].enemyWaveDataList)
                 {
-                    currentIndexOfEnemies++;
+                    if (enemyData.amountOfThisEnemy <= 0)  continue;
+
+                    GameObject enemyToSpawn = GameManager.Instance.ReturnEnemyByType(enemyData.enemyType);
+
+                    selectedSpawner = currentLevelEnemySpawners[enemyData.enemySpawnerIndex];
+                    selectedSpawner.CallSpawnEnemy(enemyToSpawn, enemyData.enemyPathIndex);
+
+                    ChangeEnemyCount(1); //add 1 to enemy count
+                    currentAmountOfEnemiesForCombo--;
+
+                    enemyData.amountOfThisEnemy--;
+
+                    enemiesAvailable = true;
                 }
 
-                currentEnemySpawnTime = enemySpawnTime;
+                if(!enemiesAvailable)
+                {
+                    currentEnemySpawnTime = currentEnemiesCombo[currentIndexInCombo].timeToNextEnemies;
+
+                    //combo is done, move to next combo if available.
+                    currentIndexInCombo++;
+                    // if currentIndexInCombo will be equal or  greater than the count of combo's, we won't summon anymore.
+
+                }
             }
-            else
-            {
-                currentEnemySpawnTime -= Time.deltaTime * GameManager.gameSpeed;
-            }
+
+            currentEnemySpawnTime -= Time.deltaTime * GameManager.gameSpeed;
         }
     }
 
     private void RandomSpawnEnemies()
     {
-        if (selectedMultipleSpawners.Count > 0 && currentIndexOfEnemies < enemiesForWave.Count)
+        if (currentLevelEnemySpawners.Count > 0 && currentIndexInCombo < currentEnemiesCombo.Count)
         {
             if (currentEnemySpawnTime < 0)
             {
-                int randomSpawner = Random.Range(0, selectedMultipleSpawners.Count);
-                GameObject enemyToSpawn = GameManager.Instance.ReturnEnemyByType(enemiesForWave[currentIndexOfEnemies].enemyType);
+                currentEnemySpawnTime = enemySpawnTime;
 
-                int randomPath = Random.Range(0, selectedMultipleSpawners[randomSpawner].ReturnEnemyPathCellsList().Count);
-                selectedMultipleSpawners[randomSpawner].CallSpawnEnemy(enemyToSpawn, randomPath);
+                bool enemiesAvailable = false;
 
-                ChangeEnemyCount(1); //add 1 to enemy count
-
-                enemiesForWave[currentIndexOfEnemies].amountOfThisEnemy--;
-                if (enemiesForWave[currentIndexOfEnemies].amountOfThisEnemy <= 0)
+                foreach (EnemyWaveData enemyData in currentEnemiesCombo[currentIndexInCombo].enemyWaveDataList)
                 {
-                    currentIndexOfEnemies++;
+                    if (enemyData.amountOfThisEnemy <= 0) continue;
+
+                    GameObject enemyToSpawn = GameManager.Instance.ReturnEnemyByType(enemyData.enemyType);
+
+                    int randomSpawner = Random.Range(0, selectedMultipleSpawners.Count);
+
+                    selectedSpawner = selectedMultipleSpawners[randomSpawner];
+
+                    int randomPath = Random.Range(0, selectedSpawner.ReturnEnemyPathCellsList().Count);
+                    selectedSpawner.CallSpawnEnemy(enemyToSpawn, randomPath);
+
+                    ChangeEnemyCount(1); //add 1 to enemy count
+                    currentAmountOfEnemiesForCombo--;
+
+                    enemyData.amountOfThisEnemy--;
+
+                    enemiesAvailable = true;
                 }
 
-                currentEnemySpawnTime = enemySpawnTime;
+                if (!enemiesAvailable)
+                {
+                    currentEnemySpawnTime = currentEnemiesCombo[currentIndexInCombo].timeToNextEnemies;
+
+                    //combo is done, move to next combo if available.
+                    currentIndexInCombo++;
+                    // if currentIndexInCombo will be equal or  greater than the count of combo's, we won't summon anymore.
+
+                }
             }
-            else
-            {
-                currentEnemySpawnTime -= Time.deltaTime * GameManager.gameSpeed;
-            }
+
+            currentEnemySpawnTime -= Time.deltaTime * GameManager.gameSpeed;
         }
     }
 
@@ -167,10 +200,20 @@ public class WaveManager : MonoBehaviour
             spawnerCell.DisplayDangerIcon(false);
         }
 
-        currentIndexOfEnemies = 0;
+        currentIndexInCombo = 0;
+        currentAmountOfEnemiesForCombo = 0;
 
-        enemiesForWave.Clear();
-        enemiesForWave.AddRange(currentWaveSO.Waves[currentIndexInWave].enemyWaveDataList);
+        currentEnemiesCombo.Clear();
+
+        foreach (EnemyWaveCombo combo in currentWaveSO.Waves[currentIndexInWave].enemyWaveCombo)
+        {
+            currentEnemiesCombo.Add(combo);
+
+            for (int i = 0; i < combo.enemyWaveDataList.Count; i++)
+            {
+                currentAmountOfEnemiesForCombo += combo.enemyWaveDataList[i].amountOfThisEnemy;
+            }
+        }
 
         enemySpawnTime = waveSO.Waves[currentIndexInWave].delayBetweenEnemies;
         currentEnemySpawnTime = -1;
@@ -193,9 +236,6 @@ public class WaveManager : MonoBehaviour
 
         waveDone = true;
 
-
-
-
         if (currentIndexInWave + 1 == waveSO.Waves.Count)
         {
             //No need to do after wave end if there is no next wave.
@@ -211,9 +251,13 @@ public class WaveManager : MonoBehaviour
         }
         else
         {
-            foreach (EnemyWaveData waveData in waveSO.Waves[currentIndexInWave].enemyWaveDataList)
+            foreach (EnemyWaveCombo waveCombo in waveSO.Waves[currentIndexInWave + 1].enemyWaveCombo)
             {
-                currentLevelEnemySpawners[waveData.enemySpawnerIndex].DisplayDangerIcon(true);
+                for (int i = 0; i < waveCombo.enemyWaveDataList.Count; i++)
+                {
+                    currentLevelEnemySpawners[waveCombo.enemyWaveDataList[i].enemySpawnerIndex].DisplayDangerIcon(true);
+                }
+
             }
         }
     }
@@ -265,19 +309,30 @@ public class WaveManager : MonoBehaviour
             waveData.delayBetweenWaves = waveSO.Waves[i].delayBetweenWaves;
             waveData.delayBetweenEnemies = waveSO.Waves[i].delayBetweenEnemies;
 
-            waveData.enemyWaveDataList = new List<EnemyWaveData>();
+            waveData.enemyWaveCombo = new List<EnemyWaveCombo>();
 
-            if (waveSO.Waves[i].enemyWaveDataList.Count > 0)
+            if (waveSO.Waves[i].enemyWaveCombo.Count > 0)
             {
-                for (int k = 0; k < waveSO.Waves[i].enemyWaveDataList.Count; k++)
+                for (int k = 0; k < waveSO.Waves[i].enemyWaveCombo.Count; k++)
                 {
-                    EnemyWaveData enemyWaveData = new EnemyWaveData();
-                    enemyWaveData.amountOfThisEnemy = waveSO.Waves[i].enemyWaveDataList[k].amountOfThisEnemy;
-                    enemyWaveData.enemySpawnerIndex = waveSO.Waves[i].enemyWaveDataList[k].enemySpawnerIndex;
-                    enemyWaveData.enemyPathIndex = waveSO.Waves[i].enemyWaveDataList[k].enemyPathIndex;
-                    enemyWaveData.enemyType = waveSO.Waves[i].enemyWaveDataList[k].enemyType;
+                    EnemyWaveCombo combo = new EnemyWaveCombo();
+                    combo.timeToNextEnemies = waveSO.Waves[i].enemyWaveCombo[k].timeToNextEnemies;
 
-                    waveData.enemyWaveDataList.Add(enemyWaveData);
+
+                    combo.enemyWaveDataList = new List<EnemyWaveData>();
+
+                    for (int c = 0; c < waveSO.Waves[i].enemyWaveCombo[k].enemyWaveDataList.Count; c++)
+                    {
+                        EnemyWaveData enemyWaveData = new EnemyWaveData();
+                        enemyWaveData.amountOfThisEnemy = waveSO.Waves[i].enemyWaveCombo[k].enemyWaveDataList[c].amountOfThisEnemy;
+                        enemyWaveData.enemySpawnerIndex = waveSO.Waves[i].enemyWaveCombo[k].enemyWaveDataList[c].enemySpawnerIndex;
+                        enemyWaveData.enemyPathIndex = waveSO.Waves[i].enemyWaveCombo[k].enemyWaveDataList[c].enemyPathIndex;
+                        enemyWaveData.enemyType = waveSO.Waves[i].enemyWaveCombo[k].enemyWaveDataList[c].enemyType;
+
+                        combo.enemyWaveDataList.Add(enemyWaveData);
+                    }
+
+                    waveData.enemyWaveCombo.Add(combo);
                 }
             }
 
@@ -290,14 +345,17 @@ public class WaveManager : MonoBehaviour
         }
         else
         {
-            foreach (EnemyWaveData waveData in waveSO.Waves[currentIndexInWave + 1].enemyWaveDataList)
+            foreach (EnemyWaveCombo waveCombo in waveSO.Waves[currentIndexInWave + 1].enemyWaveCombo)
             {
-                currentLevelEnemySpawners[waveData.enemySpawnerIndex].DisplayDangerIcon(true);
+                for (int i = 0; i < waveCombo.enemyWaveDataList.Count; i++)
+                {
+                    currentLevelEnemySpawners[waveCombo.enemyWaveDataList[i].enemySpawnerIndex].DisplayDangerIcon(true);
+                }
 
             }
         }
 
-        enemiesForWave = new List<EnemyWaveData>();
+        currentEnemiesCombo = new List<EnemyWaveCombo>();
 
         UIManager.Instance.UpdateWaveCounter();
     }
@@ -333,6 +391,7 @@ public class WaveManager : MonoBehaviour
     public void ChangeEnemyCount(int amount)
     {
         currentAmountOfEnemies += amount;
+
     }
 
     public void StartWaveEarly()

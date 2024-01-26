@@ -50,26 +50,26 @@ public class ToolWaveCreator : MonoBehaviour
         cooldownAtEndWave.text = waveList[index].delayBetweenWaves.ToString();
         cooldownBetweenEnemies.text = waveList[index].delayBetweenEnemies.ToString();
 
-        if (waveList[index].enemyWaveDataList == null || waveList[index].enemyWaveDataList.Count == 0)
-        {
-            waveList[index].enemyWaveDataList = new List<EnemyWaveData>();
-        }
+        //if (waveList[index].enemyWaveDataList == null || waveList[index].enemyWaveDataList.Count == 0)
+        //{
+        //    waveList[index].enemyWaveDataList = new List<EnemyWaveData>();
+        //}
 
         foreach (Transform child in enemyInwaveUIContent)
         {
             Destroy(child.gameObject);
         }
 
-        foreach (EnemyWaveData enemyWaveData in waveList[index].enemyWaveDataList)
-        {
-            GameObject go = Instantiate(enemyInwaveUIPrefab, enemyInwaveUIContent);
+        //foreach (EnemyWaveData enemyWaveData in waveList[index].enemyWaveDataList)
+        //{
+        //    GameObject go = Instantiate(enemyInwaveUIPrefab, enemyInwaveUIContent);
 
-            if (go.TryGetComponent<EnemyInWaveUIData>(out EnemyInWaveUIData enemyInWaveData))
-            {
-                enemyInWaveData.InitEnemyInWaveUI(enemyWaveData);
-            }
+        //    if (go.TryGetComponent<EnemyInWaveUIData>(out EnemyInWaveUIData enemyInWaveData))
+        //    {
+        //        enemyInWaveData.InitEnemyInWaveUI(enemyWaveData);
+        //    }
 
-        }
+        //}
     }
 
     private void ClearOnSave()
@@ -204,14 +204,14 @@ public class ToolWaveCreator : MonoBehaviour
         }
 
 
-        waveList[currentWaveSelectedIndex].enemyWaveDataList.Add(enemyData);
+        //waveList[currentWaveSelectedIndex].enemyWaveDataList.Add(enemyData);
     }
     public void RemoveEnemyFromWave(EnemyWaveData data)
     {
-        if (waveList[currentWaveSelectedIndex].enemyWaveDataList.Contains(data))
-        {
-            waveList[currentWaveSelectedIndex].enemyWaveDataList.Remove(data);
-        }
+        //if (waveList[currentWaveSelectedIndex].enemyWaveDataList.Contains(data))
+        //{
+        //    waveList[currentWaveSelectedIndex].enemyWaveDataList.Remove(data);
+        //}
     }
 
     public void ToggleWaveCreatorUI(bool isOn)

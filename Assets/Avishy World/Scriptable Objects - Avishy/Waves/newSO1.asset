@@ -44,7 +44,11 @@ MonoBehaviour:
       enemySpawnerIndex: 0
       enemyPathIndex: 0
       enemyType: 2
-    enemyWaveCombo: []
+    enemyWaveCombo:
+    - enemyWaveDataList: []
+      timeToNextEnemies: 0
+    - enemyWaveDataList: []
+      timeToNextEnemies: 0
   - delayBetweenEnemies: 1.2
     delayBetweenWaves: 20
     enemyWaveDataList:
