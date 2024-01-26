@@ -19,6 +19,10 @@ public class UIManager : MonoBehaviour
 
     [Header("Tower UI")]
     [SerializeField] private TowerToolTipUI towerBuffDataHolderObject;
+    [SerializeField] private TowerStatsDisplayUI towerStatsDisplayUI;
+    [SerializeField] private Transform towerStatsDisplayScreen;
+    [SerializeField] private Transform towerStatsDisplayUIParent;
+    [SerializeField] TMP_Text towerNameText;
 
     [Header("HP UI")]
     [SerializeField] private TMP_Text playerHealthText;
@@ -226,6 +230,32 @@ public class UIManager : MonoBehaviour
         {
             DataDieDisplayUI dataDieDisplay = Instantiate(diceDataDisplayUI, diceDataDisplayParent);
             dataDieDisplay.InitDisplay(data);
+        }
+    }
+
+    public void DisplayTowerStats(bool Display, TowerBaseParent towerData)
+    {
+        foreach (Transform child in towerStatsDisplayUIParent)
+        {
+            Destroy(child.gameObject);
+        }
+
+        if (Display)
+        {
+            foreach (string text in towerData.DisplayTowerStats())
+            {
+                TowerStatsDisplayUI display = Instantiate(towerStatsDisplayUI, towerStatsDisplayUIParent);
+
+                display.SetText(text);
+            }
+
+            towerNameText.text = towerData.gameObject.name;
+
+            towerStatsDisplayScreen.gameObject.SetActive(true);
+        }
+        else
+        {
+            towerStatsDisplayScreen.gameObject.SetActive(false);
         }
     }
 }

@@ -101,6 +101,7 @@ public abstract class TowerBaseParent : MonoBehaviour
     public abstract void InitTowerData(Vector2Int positionOfCell, Die connectedDie);
     public abstract void RecieveBuffAfterRoll(Die die);
     public abstract void OnHoverOverOccupyingCell(bool isHover);
+    public abstract List<string> DisplayTowerStats();
 
     public CellTypeColor ReturnCellColorType()
     {
@@ -177,4 +178,5 @@ public abstract class TowerBaseParent : MonoBehaviour
     {
 
     }
+
 }

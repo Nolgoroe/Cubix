@@ -289,4 +289,20 @@ public class MeleeTowerParentScript : TowerBaseParent
             }
         }
     }
+
+    public override List<string> DisplayTowerStats()
+    {
+        List<string> stringList = new List<string>()
+        { "Range: " + range.ToString(),
+          "Required Color: " + requiredCellColorType.ToString(),
+          "Special Unlcoked: " + (specialAttackUnlocked ? "True" : "False"),
+          "Spawn Rate: " + spawnRate.ToString(),
+          "Max Troops: " + maxNumOfTroops.ToString(),
+          "Troop Damage: " + troopDMG.ToString(), 
+          "Troop Range: " + troopRange.ToString(),
+          "Troop Prefab: " + troopPrefab.gameObject.name
+        };
+
+        return stringList;
+    }
 }

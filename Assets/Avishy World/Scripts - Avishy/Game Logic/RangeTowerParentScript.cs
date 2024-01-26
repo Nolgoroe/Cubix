@@ -194,4 +194,19 @@ public class RangeTowerParentScript : TowerBaseParent
     {
         return range;
     }
+
+    public override List<string> DisplayTowerStats()
+    {
+        List<string> stringList = new List<string>()
+        { "Range: " + range.ToString(),
+          "Required Color: " + requiredCellColorType.ToString(),
+          "Special Unlcoked: " + (specialAttackUnlocked ? "True" : "False"),
+          "Rotation Speed: " + rotationSpeed.ToString(),
+          "Bullet Damage: " + bulltDMG.ToString(),
+          "Fire Rate: " + fireRate.ToString(),
+          "Special Attack Rate: " + specialFireRate.ToString()          
+        };
+
+        return stringList;
+    }
 }

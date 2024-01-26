@@ -149,31 +149,6 @@ public class Die : MonoBehaviour
         }
     }
 
-    //private void SetDiceValueRandom(int amountOfFaces, DiceSO diceData)
-    //{
-    //    for (int i = 0; i < amountOfFaces; i++)
-    //    {
-    //        faces[i].ChangeFaceMat(diceData.dieMaterial);
-
-    //        int randomResource = Random.Range(0, System.Enum.GetValues(typeof(ResourceType)).Length);
-    //        ResourceData resourceData = new ResourceData();
-    //        resourceData.Type = (ResourceType)randomResource;
-    //        resourceData.Value = Random.Range(1, 10); //temp
-    //        resourceData.Icon = Helpers.ReturnIconByType(resourceData.Type);
-
-    //        faces[i].SetResource(resourceData);
-
-    //        int randomBuff = Random.Range(0, System.Enum.GetValues(typeof(BuffType)).Length);
-    //        BuffData buffData = new BuffData();
-    //        buffData.Type = (BuffType)randomBuff;
-    //        buffData.Value = Random.Range(1, 10); //temp
-    //        buffData.Icon = Helpers.ReturnIconByType(buffData.Type);
-    //        faces[i].SetBuff(buffData);
-
-
-    //        faces[i].DisplayResource();
-    //    }
-    //}
     private void OrientCubeToCamrea(Die die)
     {
         isRolling = false;
@@ -257,10 +232,14 @@ public class Die : MonoBehaviour
         outline.SetOutlineMode(Outline.Mode.OutlineHidden);
 
         UIManager.Instance.DisplayDiceFacesUI(false, this);
+
+        UIManager.Instance.DisplayTowerStats(false, towerPrefabConnected);
     }
     private void OnMouseEnter()
     {
         UIManager.Instance.DisplayDiceFacesUI(true, this);
+
+        UIManager.Instance.DisplayTowerStats(true, towerPrefabConnected);
     }
 
     private void OnMouseUp()
