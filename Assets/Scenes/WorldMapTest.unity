@@ -373,8 +373,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.2, y: 1}
-  m_AnchoredPosition: {x: 767.99994, y: 0}
-  m_SizeDelta: {x: -0.000030517578, y: 0}
+  m_AnchoredPosition: {x: 1120, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &188814822
 MonoBehaviour:
@@ -390,7 +390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridSize: {x: 5, y: 9}
   slotSize: {x: 50, y: 50}
-  gridOrigin: {x: 150, y: 100}
+  gridOrigin: {x: 1120, y: 150}
   heightSpacing: 200
   widthSpacing: 400
   siteNodePrefab: {fileID: 7652812141820951943, guid: 3a989d7972fe170429819fa99f282091,
@@ -1576,6 +1576,10 @@ MonoBehaviour:
   timerText: {fileID: 0}
   waveCounterText: {fileID: 0}
   towerBuffDataHolderObject: {fileID: 0}
+  towerStatsDisplayUI: {fileID: 0}
+  towerStatsDisplayScreen: {fileID: 0}
+  towerStatsDisplayUIParent: {fileID: 0}
+  towerNameText: {fileID: 0}
   playerHealthText: {fileID: 521315729}
   diceFacesResourcesDisplayParent: {fileID: 1571469550}
   diceFacesBuffDisplayParent: {fileID: 609467600}
