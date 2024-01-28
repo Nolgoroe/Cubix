@@ -14755,7 +14755,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1878987882032996}
   serializedVersion: 8
   lengthInSec: 1
-  simulationSpeed: 30
+  simulationSpeed: 1
   stopAction: 0
   cullingMode: 3
   ringBufferMode: 0
@@ -14882,7 +14882,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 20
+      scalar: 1000
       minScalar: 3
       maxCurve:
         serializedVersion: 2
@@ -18569,7 +18569,7 @@ ParticleSystem:
     radiusScale: 0.0001
     collidesWith:
       serializedVersion: 2
-      m_Bits: 704
+      m_Bits: 4294967295
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5

@@ -44,7 +44,7 @@ public class Die : MonoBehaviour
     [SerializeField] private Camera diceCam;
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private Transform lockTransform;
-    [SerializeField] private Outline outline;
+    //[SerializeField] private Outline outline;
     [SerializeField] private Transform rangeIndicator;
     [SerializeField] private Transform originalParent;
 
@@ -223,13 +223,12 @@ public class Die : MonoBehaviour
 
     private void OnMouseOver()
     {
-        outline.SetOutlineMode(Outline.Mode.OutlineVisible);
-
+        //outline.SetOutlineMode(Outline.Mode.OutlineVisible);
     }
 
     private void OnMouseExit()
     {
-        outline.SetOutlineMode(Outline.Mode.OutlineHidden);
+        //outline.SetOutlineMode(Outline.Mode.OutlineHidden);
 
         UIManager.Instance.DisplayDiceFacesUI(false, this);
 

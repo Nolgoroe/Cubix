@@ -59,6 +59,11 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(0);
         }
+
+        if(Input.GetKeyDown(KeyCode.L))
+        {
+            SceneManager.LoadScene(2);
+        }
     }
 
 
