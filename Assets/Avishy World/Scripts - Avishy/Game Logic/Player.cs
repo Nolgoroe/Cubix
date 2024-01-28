@@ -87,10 +87,18 @@ public class Player : MonoBehaviour
 
         UIManager.Instance.UpdateResources(iron, energy, lightning, scrap);
     }
-    public void AddResourcesFromEnemy(int amount)
+    public bool AddRemoveScrap(int amount)
     {
         scrap += amount;
         UIManager.Instance.UpdateResources(iron, energy, lightning, scrap);
+    
+        if(scrap <= 0)
+        {
+            scrap = 0;
+            return false;
+        }
+
+        return true;
     }
 
 

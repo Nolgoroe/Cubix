@@ -242,7 +242,7 @@ public class EnemyParent : MonoBehaviour
         {
             //if scrap is 30 then we want the number to be 30 to 0, that's 30%;
 
-            Player.Instance.AddResourcesFromEnemy(scrapAmount);
+            Player.Instance.AddRemoveScrap(scrapAmount);
         }
     }
 

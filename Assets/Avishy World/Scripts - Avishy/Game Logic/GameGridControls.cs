@@ -66,9 +66,6 @@ public class GameGridControls : MonoBehaviour
                     meleeTower.SetRallyPoint(currentCellHovered);
                 }
             }
-            else
-            {
-            }
 
             currentTower.OnHoverOverOccupyingCell(false);
             SettingRallyPoint = false;
