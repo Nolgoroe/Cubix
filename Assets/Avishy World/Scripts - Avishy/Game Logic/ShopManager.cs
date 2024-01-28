@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ShopManager : MonoBehaviour
 {
@@ -153,5 +154,13 @@ public class ShopManager : MonoBehaviour
         yield return new WaitForSeconds(2);
         shopMessage.gameObject.SetActive(false);
 
+    }
+
+
+
+    public void BackToMap()
+    {
+        // called from button
+        SceneManager.LoadScene(1);
     }
 }
