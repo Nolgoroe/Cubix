@@ -12,4 +12,73 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebe545f2d7f7c274e9e99a513e06a83e, type: 3}
   m_Name: BaseDiceData
   m_EditorClassIdentifier: 
-  baseDice: []
+  baseDice:
+  - DieType: 0
+    element: 0
+    material: {fileID: 0}
+    facesValues:
+    - resource:
+        Type: 0
+        Value: 0
+        Icon: {fileID: 0}
+      buff:
+        Type: 0
+        Value: 0
+        Icon: {fileID: 0}
+    - resource:
+        Type: 0
+        Value: 0
+        Icon: {fileID: 0}
+      buff:
+        Type: 0
+        Value: 0
+        Icon: {fileID: 0}
+    - resource:
+        Type: 0
+        Value: 0
+        Icon: {fileID: 0}
+      buff:
+        Type: 0
+        Value: 0
+        Icon: {fileID: 0}
+    - resource:
+        Type: 0
+        Value: 0
+        Icon: {fileID: 0}
+      buff:
+        Type: 0
+        Value: 0
+        Icon: {fileID: 0}
+    - resource:
+        Type: 0
+        Value: 0
+        Icon: {fileID: 0}
+      buff:
+        Type: 0
+        Value: 0
+        Icon: {fileID: 0}
+    - resource:
+        Type: 0
+        Value: 0
+        Icon: {fileID: 0}
+      buff:
+        Type: 0
+        Value: 0
+        Icon: {fileID: 0}
+    - resource:
+        Type: 0
+        Value: 0
+        Icon: {fileID: 0}
+      buff:
+        Type: 0
+        Value: 0
+        Icon: {fileID: 0}
+    - resource:
+        Type: 1
+        Value: 99
+        Icon: {fileID: -1490314167, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+      buff:
+        Type: 2
+        Value: 99
+        Icon: {fileID: -1766819994, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+    towerPrefabConnected: {fileID: 0}

@@ -15,7 +15,10 @@ public class ForgeBuff : MonoBehaviour
     {
         forge = _forge;
         buff = _buff;
-        buttonTxt.text = buff.Value.ToString() + " " + buff.Type.ToString();
+        if (buttonTxt)
+        {
+            buttonTxt.text = buff.Value.ToString() + " " + buff.Type.ToString();
+        }
     }
 
     public void SetForgeBuff()
@@ -26,6 +29,9 @@ public class ForgeBuff : MonoBehaviour
 
     private void OnValidate()
     {
-        buttonTxt.text = buff.Value.ToString() + " " + buff.Type.ToString();
+        if (buttonTxt)
+        {
+            buttonTxt.text = buff.Value.ToString() + " " + buff.Type.ToString();
+        }
     }
 }

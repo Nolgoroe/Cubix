@@ -33,12 +33,23 @@ public class ForgeManager : MonoBehaviour
     [SerializeField] private List<Die> realDice;
 
 
+    private void Start()
+    {
+        if (Player.Instance)
+        {
+            Init(Player.Instance.ReturnPlayerDice());
+        }
+    }
+
+
     private void Update()
     {
+#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.S))
         {
             Init(TempDieDataExtractor());
         }
+#endif
     }
 
     private List<DieData> TempDieDataExtractor()
