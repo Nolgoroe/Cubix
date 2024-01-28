@@ -35,16 +35,21 @@ public class ForgeManager : MonoBehaviour
 
     private void Start()
     {
-       // Init(Player.Instance.)
+        if (Player.Instance)
+        {
+            Init(Player.Instance.ReturnPlayerDice());
+        }
     }
 
 
     private void Update()
     {
+#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.S))
         {
             Init(TempDieDataExtractor());
         }
+#endif
     }
 
     private List<DieData> TempDieDataExtractor()

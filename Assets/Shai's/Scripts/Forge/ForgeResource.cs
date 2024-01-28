@@ -13,7 +13,10 @@ public class ForgeResource : MonoBehaviour
     {
         forge = _forge;
         resource = _resource;
-        buttonTxt.text = resource.Value.ToString() + " " + resource.Type.ToString();
+        if (buttonTxt)
+        {
+            buttonTxt.text = resource.Value.ToString() + " " + resource.Type.ToString();
+        }
     }
 
     public void SetForgeResource()
@@ -24,6 +27,9 @@ public class ForgeResource : MonoBehaviour
 
     private void OnValidate()
     {
-        buttonTxt.text = resource.Value.ToString() + " " + resource.Type.ToString();
+        if (buttonTxt)
+        {
+            buttonTxt.text = resource.Value.ToString() + " " + resource.Type.ToString();
+        }
     }
 }
