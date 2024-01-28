@@ -90,13 +90,16 @@ public class Player : MonoBehaviour
     public bool AddRemoveScrap(int amount)
     {
         scrap += amount;
-        UIManager.Instance.UpdateResources(iron, energy, lightning, scrap);
     
         if(scrap <= 0)
         {
             scrap = 0;
+
+            UIManager.Instance.UpdateResources(iron, energy, lightning, scrap);
             return false;
         }
+
+        UIManager.Instance.UpdateResources(iron, energy, lightning, scrap);
 
         return true;
     }

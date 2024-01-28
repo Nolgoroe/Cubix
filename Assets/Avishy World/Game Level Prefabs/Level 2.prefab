@@ -489,7 +489,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &6053271540158698193
 MonoBehaviour:
@@ -509,7 +509,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 3
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 5715714230940355905}
@@ -902,7 +902,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &1832588442158508294
 MonoBehaviour:
@@ -922,7 +922,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 4572979518280056035}
@@ -1053,7 +1053,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &7978096151376091119
 MonoBehaviour:
@@ -1073,7 +1073,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 1058887525948350740}
@@ -1204,7 +1204,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &1173477360579213661
 MonoBehaviour:
@@ -1224,7 +1224,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 2909732798805990984}
@@ -1654,7 +1654,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &1787558520495969760
 MonoBehaviour:
@@ -1674,7 +1674,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 3915830023283827451}
@@ -1889,7 +1889,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &7219261572176628861
 MonoBehaviour:
@@ -1909,7 +1909,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 146918812029683711}
@@ -2208,7 +2208,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &1049617594189306068
 MonoBehaviour:
@@ -2228,7 +2228,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 8995753737767660741}
@@ -2574,7 +2574,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &669240703728430155
 MonoBehaviour:
@@ -2594,7 +2594,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 5746942107769767063}
@@ -2725,7 +2725,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &18603603089034667
 MonoBehaviour:
@@ -2745,7 +2745,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 4531957157960575667}
@@ -3306,7 +3306,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &8692539054622690025
 MonoBehaviour:
@@ -3326,7 +3326,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 578586612458480623}
@@ -3713,7 +3713,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &7119640203118662299
 MonoBehaviour:
@@ -3733,7 +3733,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 8396522061698886502}
@@ -3864,7 +3864,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &1539023267199306239
 MonoBehaviour:
@@ -3884,7 +3884,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 4677199378523101178}
@@ -4015,7 +4015,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &8280730367171589091
 MonoBehaviour:
@@ -4035,7 +4035,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 5422254960018202236}
@@ -4418,7 +4418,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &7475817296191005849
 MonoBehaviour:
@@ -4438,7 +4438,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 2
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 732835084184230889}
@@ -4569,7 +4569,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &6321612854877213785
 MonoBehaviour:
@@ -4589,7 +4589,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 3535501602374939499}
@@ -5140,7 +5140,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &5803134240560574517
 MonoBehaviour:
@@ -5160,7 +5160,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 73133857135374516}
@@ -5291,7 +5291,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &7960823144952194630
 MonoBehaviour:
@@ -5311,7 +5311,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 5374578665626262942}
@@ -6080,7 +6080,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &5703888970298213345
 MonoBehaviour:
@@ -6100,7 +6100,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 2409014534386052052}
@@ -6399,7 +6399,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &4360596539930110719
 MonoBehaviour:
@@ -6419,7 +6419,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 3
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 4046462090785833142}
@@ -6765,7 +6765,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &3922049058339759842
 MonoBehaviour:
@@ -6785,7 +6785,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 122655276821471252}
@@ -6916,7 +6916,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &5171185114697778233
 MonoBehaviour:
@@ -6936,7 +6936,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 8073101864591143496}
@@ -7067,7 +7067,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &4113726666034720582
 MonoBehaviour:
@@ -7087,7 +7087,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 4733605653355445919}
@@ -7218,7 +7218,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &7205458860364135421
 MonoBehaviour:
@@ -7238,7 +7238,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 2453913895727014253}
@@ -7705,7 +7705,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &6124852976455303858
 MonoBehaviour:
@@ -7725,7 +7725,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 2424501205379727465}
@@ -7940,7 +7940,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &5356283349130660006
 MonoBehaviour:
@@ -7960,7 +7960,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 5989635040587841401}
@@ -8091,7 +8091,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &7767074503743256902
 MonoBehaviour:
@@ -8111,7 +8111,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 855119371713490533}
@@ -8242,7 +8242,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &2528014043485111435
 MonoBehaviour:
@@ -8262,7 +8262,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 3087438178265134675}
@@ -8592,7 +8592,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &404220858561180771
 MonoBehaviour:
@@ -8612,7 +8612,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 3564800445731523718}
@@ -8827,7 +8827,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &697604129927077482
 MonoBehaviour:
@@ -8847,7 +8847,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 6875880776218800632}
@@ -9109,7 +9109,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &5914143520889727321
 MonoBehaviour:
@@ -9129,7 +9129,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 1522430728838121505}
@@ -9260,7 +9260,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &452536879492948681
 MonoBehaviour:
@@ -9280,7 +9280,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 528065240480621515}
@@ -9411,7 +9411,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &5978695580042645657
 MonoBehaviour:
@@ -9431,7 +9431,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 4999532168222634475}
@@ -9562,7 +9562,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &7956688838296027030
 MonoBehaviour:
@@ -9582,7 +9582,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 3760069732450514318}
@@ -9713,7 +9713,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &7975151120358037806
 MonoBehaviour:
@@ -9733,7 +9733,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 2936872151664562122}
@@ -9864,7 +9864,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &7616994619054042570
 MonoBehaviour:
@@ -9884,7 +9884,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 7245392992873330121}
@@ -10099,7 +10099,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &3599688536969906648
 MonoBehaviour:
@@ -10119,7 +10119,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 7740984279544882816}
@@ -10334,7 +10334,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &2946990451510799702
 MonoBehaviour:
@@ -10354,7 +10354,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 4059739738498190275}
@@ -10485,7 +10485,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &249205788493837269
 MonoBehaviour:
@@ -10505,7 +10505,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 7487599316674170867}
@@ -10636,7 +10636,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &814025063085537296
 MonoBehaviour:
@@ -10656,7 +10656,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 7744793630455289593}
@@ -10787,7 +10787,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &2033201322861074785
 MonoBehaviour:
@@ -10807,7 +10807,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 2763483617645550002}
@@ -11274,7 +11274,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &1461310728060627804
 MonoBehaviour:
@@ -11294,7 +11294,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 7315283175655633603}
@@ -11640,7 +11640,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &9133564308674317045
 MonoBehaviour:
@@ -11660,7 +11660,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 8903410815848195511}
@@ -11959,7 +11959,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &6442160246224902317
 MonoBehaviour:
@@ -11979,7 +11979,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 6171899216070957172}
@@ -12110,7 +12110,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &4599759000172133838
 MonoBehaviour:
@@ -12130,7 +12130,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 4348401585761417245}
@@ -12261,7 +12261,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &6472573023991057559
 MonoBehaviour:
@@ -12281,7 +12281,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 3794254934538355784}
@@ -12412,7 +12412,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &5645517854498875769
 MonoBehaviour:
@@ -12432,7 +12432,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 3801462556347614207}
@@ -12563,7 +12563,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &1797774558221010196
 MonoBehaviour:
@@ -12583,7 +12583,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 5178131790725691649}
@@ -13013,7 +13013,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &7433800205959408882
 MonoBehaviour:
@@ -13033,7 +13033,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 5158498059278750792}
@@ -13164,7 +13164,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &5298222163011412104
 MonoBehaviour:
@@ -13184,7 +13184,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 8917731646231523932}
@@ -13819,7 +13819,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &3303517050252927003
 MonoBehaviour:
@@ -13839,7 +13839,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 5047681013719713751}
@@ -13970,7 +13970,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &5225869483509671724
 MonoBehaviour:
@@ -13990,7 +13990,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 914420373908251788}
@@ -14252,7 +14252,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &2855933398702215211
 MonoBehaviour:
@@ -14272,7 +14272,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 3130095415519486404}
@@ -14403,7 +14403,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &7350951314473411186
 MonoBehaviour:
@@ -14423,7 +14423,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 1554788551659300952}
@@ -14638,7 +14638,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &116750304987111060
 MonoBehaviour:
@@ -14658,7 +14658,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 7906986783672369492}
@@ -14789,7 +14789,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &1673990654987710763
 MonoBehaviour:
@@ -14809,7 +14809,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 7607414118359847221}
@@ -15024,7 +15024,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &4164482420571411541
 MonoBehaviour:
@@ -15044,7 +15044,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 5943990309968132810}
@@ -15343,7 +15343,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &7456365678924802636
 MonoBehaviour:
@@ -15363,7 +15363,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 1001760966587632424}
@@ -15578,7 +15578,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &4919758910441692102
 MonoBehaviour:
@@ -15598,7 +15598,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 1519883362573738851}
@@ -15729,7 +15729,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &968886429117296228
 MonoBehaviour:
@@ -15749,7 +15749,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 5851433000574372828}
@@ -15947,7 +15947,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &510423367539778081
 MonoBehaviour:
@@ -15967,7 +15967,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 3381841759931632088}
@@ -16098,7 +16098,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &5650941105969909979
 MonoBehaviour:
@@ -16118,7 +16118,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 1286472412577202157}
@@ -16585,7 +16585,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &8331361820425624649
 MonoBehaviour:
@@ -16605,7 +16605,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 6118300472464896580}
@@ -16736,7 +16736,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &8216081853581711271
 MonoBehaviour:
@@ -16756,7 +16756,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 5100630656953369593}
@@ -16887,7 +16887,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &4406946500288974096
 MonoBehaviour:
@@ -16907,7 +16907,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 7858283782842007158}
@@ -17038,7 +17038,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &6744820903159241600
 MonoBehaviour:
@@ -17058,7 +17058,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 5759538600265172517}
@@ -17189,7 +17189,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &8387797391245413946
 MonoBehaviour:
@@ -17209,7 +17209,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 3749326604358700357}
@@ -17424,7 +17424,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &6072474194517601055
 MonoBehaviour:
@@ -17444,7 +17444,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 4723397225850495773}
@@ -17874,7 +17874,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &6401041273216983177
 MonoBehaviour:
@@ -17894,7 +17894,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 1863115132626129250}
@@ -18109,7 +18109,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &3735606709414822077
 MonoBehaviour:
@@ -18129,7 +18129,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 4453205327201093885}
@@ -18260,7 +18260,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &3068174922000779616
 MonoBehaviour:
@@ -18280,7 +18280,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 8980881910263934491}
@@ -18526,7 +18526,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &2049115255384874231
 MonoBehaviour:
@@ -18546,7 +18546,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 249725166646612824}
@@ -18845,7 +18845,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &1575052981666346174
 MonoBehaviour:
@@ -18865,7 +18865,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 6182004298411827991}
@@ -18996,7 +18996,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &3792433018077563255
 MonoBehaviour:
@@ -19016,7 +19016,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 8517713657003324793}
@@ -19231,7 +19231,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &8035802179459101524
 MonoBehaviour:
@@ -19251,7 +19251,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 1686934039052606001}
@@ -19550,7 +19550,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &9111063095706178775
 MonoBehaviour:
@@ -19570,7 +19570,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 3631525711993816569}
@@ -19785,7 +19785,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &4967797846020552319
 MonoBehaviour:
@@ -19805,7 +19805,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 2655467753846493669}
@@ -19936,7 +19936,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &8186157462866088310
 MonoBehaviour:
@@ -19956,7 +19956,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 8833788742788807114}
@@ -20339,7 +20339,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &6615510584192667877
 MonoBehaviour:
@@ -20359,7 +20359,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 3
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 6475084549535793345}
@@ -20490,7 +20490,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &3641321198723154639
 MonoBehaviour:
@@ -20510,7 +20510,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 3
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 3194187244884679202}
@@ -20641,7 +20641,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &7514521829577625296
 MonoBehaviour:
@@ -20661,7 +20661,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 6754602188340340107}
@@ -20876,7 +20876,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &6829903483254043930
 MonoBehaviour:
@@ -20896,7 +20896,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 4731055372668556145}
@@ -21447,7 +21447,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &5847587829845354930
 MonoBehaviour:
@@ -21467,7 +21467,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 9071830139996920779}
@@ -21713,7 +21713,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &1743953782110893303
 MonoBehaviour:
@@ -21733,7 +21733,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 7567247293988405857}
@@ -21948,7 +21948,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &8442588770256850987
 MonoBehaviour:
@@ -21968,7 +21968,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 334083098980630874}
@@ -22099,7 +22099,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &5035086142980640089
 MonoBehaviour:
@@ -22119,7 +22119,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 2379323159799694590}
@@ -22347,7 +22347,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &5734983866874793850
 MonoBehaviour:
@@ -22367,7 +22367,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 2586141624582344578}
@@ -22498,7 +22498,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &1681285620071370858
 MonoBehaviour:
@@ -22518,7 +22518,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 2685728991982313433}
@@ -22649,7 +22649,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &4029875782650634063
 MonoBehaviour:
@@ -22669,7 +22669,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 6079609680437775528}
@@ -22800,7 +22800,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &6431522721296777663
 MonoBehaviour:
@@ -22820,7 +22820,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 5565644677723015137}
@@ -23035,7 +23035,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &3682705301571199698
 MonoBehaviour:
@@ -23055,7 +23055,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 1815963534485664548}
@@ -23186,7 +23186,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &938829694342091656
 MonoBehaviour:
@@ -23206,7 +23206,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 5358575564805097518}
@@ -23421,7 +23421,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &1146867105275320492
 MonoBehaviour:
@@ -23441,7 +23441,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 5101047817117052675}
@@ -23572,7 +23572,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &1127490102894163746
 MonoBehaviour:
@@ -23592,7 +23592,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 3
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 8877821213831008612}
@@ -23723,7 +23723,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &4721196191562949197
 MonoBehaviour:
@@ -23743,7 +23743,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 8328988301479163680}
@@ -24173,7 +24173,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &2756978110780433009
 MonoBehaviour:
@@ -24193,7 +24193,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 9205403736733777110}
@@ -24324,7 +24324,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &9035401701315479039
 MonoBehaviour:
@@ -24344,7 +24344,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 478017102747311238}
@@ -24475,7 +24475,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &3452724177220302380
 MonoBehaviour:
@@ -24495,7 +24495,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 3845956672163825179}
@@ -24626,7 +24626,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &2440222180059018724
 MonoBehaviour:
@@ -24646,7 +24646,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 8611731982011170576}
@@ -24945,7 +24945,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &4893732114007679807
 MonoBehaviour:
@@ -24965,7 +24965,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 884743049288531401}
@@ -25096,7 +25096,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &5726469663517971970
 MonoBehaviour:
@@ -25116,7 +25116,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 3
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 832081667347077744}
@@ -25331,7 +25331,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &5872807357189431692
 MonoBehaviour:
@@ -25351,7 +25351,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 1
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 1819290446793272955}
@@ -25566,7 +25566,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &4375227782951657351
 MonoBehaviour:
@@ -25586,7 +25586,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 3944230880812443946}
@@ -26184,7 +26184,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &6310389573078639762
 MonoBehaviour:
@@ -26204,7 +26204,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 3608876624005091254}
@@ -26335,7 +26335,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &1820478162190830122
 MonoBehaviour:
@@ -26355,7 +26355,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 7967943427525979345}
@@ -26486,7 +26486,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &5626722602636919349
 MonoBehaviour:
@@ -26506,7 +26506,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 3137168325159881272}
@@ -26721,7 +26721,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &3925905523985126090
 MonoBehaviour:
@@ -26741,7 +26741,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 2298361717364673297}
@@ -26872,7 +26872,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &6566356396596393524
 MonoBehaviour:
@@ -26892,7 +26892,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 7136810873592115752}
@@ -27023,7 +27023,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &7624004192044354575
 MonoBehaviour:
@@ -27043,7 +27043,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 220439890797633183}
@@ -27174,7 +27174,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &837485002677156823
 MonoBehaviour:
@@ -27194,7 +27194,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 2936567747712487989}
@@ -27792,7 +27792,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &5121522879199687203
 MonoBehaviour:
@@ -27812,7 +27812,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 7383849879674094093}
@@ -27943,7 +27943,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &538065152107590173
 MonoBehaviour:
@@ -27963,7 +27963,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 1030599261196608919}
@@ -28346,7 +28346,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &1901676606092509857
 MonoBehaviour:
@@ -28366,7 +28366,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 8394452286064969001}
@@ -28665,7 +28665,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &9203204289062494303
 MonoBehaviour:
@@ -28685,7 +28685,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 427064196220975418}
@@ -28816,7 +28816,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &4187943076505645202
 MonoBehaviour:
@@ -28836,7 +28836,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 1705327381943656084}
@@ -29518,7 +29518,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &3766668911525645438
 MonoBehaviour:
@@ -29538,7 +29538,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 154529151150061931}
@@ -29850,7 +29850,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &2005140260458709581
 MonoBehaviour:
@@ -29870,7 +29870,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 6899419868632531412}
@@ -30505,7 +30505,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &7969951540116279602
 MonoBehaviour:
@@ -30525,7 +30525,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 7404866638266551328}
@@ -30740,7 +30740,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &4707204556807317024
 MonoBehaviour:
@@ -30760,7 +30760,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 4034706381713274616}
@@ -31106,7 +31106,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &6291740767769509686
 MonoBehaviour:
@@ -31126,7 +31126,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 1014390094637558659}
@@ -31257,7 +31257,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &1945324357677695327
 MonoBehaviour:
@@ -31277,7 +31277,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 5883515390708597542}
@@ -31744,7 +31744,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &5349806881730463170
 MonoBehaviour:
@@ -31764,7 +31764,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 8661504460006557911}
@@ -31895,7 +31895,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &51846408633802749
 MonoBehaviour:
@@ -31915,7 +31915,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 5455751110857603142}
@@ -32298,7 +32298,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &2885934202377746989
 MonoBehaviour:
@@ -32318,7 +32318,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 7681105018123537977}
@@ -32449,7 +32449,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &5453933683032312469
 MonoBehaviour:
@@ -32469,7 +32469,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 8568724191305365052}
@@ -32684,7 +32684,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &2133763193858095354
 MonoBehaviour:
@@ -32704,7 +32704,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 3312347942434100616}
@@ -32835,7 +32835,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &2223211276574177891
 MonoBehaviour:
@@ -32855,7 +32855,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 5996438111494794453}
@@ -33537,7 +33537,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &8613299732257928210
 MonoBehaviour:
@@ -33557,7 +33557,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 6022914115795249281}
@@ -33925,7 +33925,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &5561084875133474648
 MonoBehaviour:
@@ -33945,7 +33945,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 9206586918767431501}
@@ -34191,7 +34191,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &1657280525859971739
 MonoBehaviour:
@@ -34211,7 +34211,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 4257642453381957266}
@@ -34522,7 +34522,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &5284228026598181975
 MonoBehaviour:
@@ -34542,7 +34542,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 3
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 3350436755106902388}
@@ -34757,7 +34757,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &9212497193721377711
 MonoBehaviour:
@@ -34777,7 +34777,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 6659853609670219450}
@@ -34908,7 +34908,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &5683363614582306144
 MonoBehaviour:
@@ -34928,7 +34928,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 7434502959307427352}
@@ -35059,7 +35059,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &5980440465408722460
 MonoBehaviour:
@@ -35079,7 +35079,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 413688252357450994}
@@ -35593,7 +35593,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &1877429209275002811
 MonoBehaviour:
@@ -35613,7 +35613,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 7982896995910397897}
@@ -35912,7 +35912,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &5100285795320157537
 MonoBehaviour:
@@ -35932,7 +35932,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 4760465777689986074}
@@ -36063,7 +36063,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &3345021402271309474
 MonoBehaviour:
@@ -36083,7 +36083,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 3
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 4438846529318971182}
@@ -36214,7 +36214,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &5242073511324543058
 MonoBehaviour:
@@ -36234,7 +36234,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 4846540016114475525}
@@ -36533,7 +36533,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &1730679501340188607
 MonoBehaviour:
@@ -36553,7 +36553,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 6138185266969682550}
@@ -36768,7 +36768,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &71043498325046506
 MonoBehaviour:
@@ -36788,7 +36788,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 8481264807554002144}
@@ -37134,7 +37134,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &7820257894034379319
 MonoBehaviour:
@@ -37154,7 +37154,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 2726287442530113275}
@@ -37285,7 +37285,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &21348247627874471
 MonoBehaviour:
@@ -37305,7 +37305,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 7181743700879784011}
@@ -37436,7 +37436,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &654080569696434130
 MonoBehaviour:
@@ -37456,7 +37456,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 9136564689897867178}
@@ -37587,7 +37587,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &8515551876192978622
 MonoBehaviour:
@@ -37607,7 +37607,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 5039636533468887009}
@@ -37953,7 +37953,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &6789091699922456808
 MonoBehaviour:
@@ -37973,7 +37973,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 4709291383623262822}
@@ -38188,7 +38188,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &3009659603089465615
 MonoBehaviour:
@@ -38208,7 +38208,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 7702428860559083603}
@@ -38423,7 +38423,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &2752594445665640867
 MonoBehaviour:
@@ -38443,7 +38443,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 1451427098880158771}
@@ -38574,7 +38574,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &770543962700318367
 MonoBehaviour:
@@ -38594,7 +38594,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 3607241513172133222}
@@ -39108,7 +39108,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &2709032834454262756
 MonoBehaviour:
@@ -39128,7 +39128,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 3394333103881677492}
@@ -39474,7 +39474,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &7051732051130522929
 MonoBehaviour:
@@ -39494,7 +39494,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 5703638284966353017}
@@ -39877,7 +39877,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &6431564570113832131
 MonoBehaviour:
@@ -39897,7 +39897,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 7439399647185316736}
@@ -40196,7 +40196,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &493356055422507054
 MonoBehaviour:
@@ -40216,7 +40216,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 1858937142078821911}
@@ -40515,7 +40515,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &8928522000690057635
 MonoBehaviour:
@@ -40535,7 +40535,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 6755139874955987586}
@@ -40797,7 +40797,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &8804453664679192246
 MonoBehaviour:
@@ -40817,7 +40817,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 1459433683235618888}
@@ -41284,7 +41284,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &7095291702762216990
 MonoBehaviour:
@@ -41304,7 +41304,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 8765305337867028342}
@@ -41435,7 +41435,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &3146345712081123691
 MonoBehaviour:
@@ -41455,7 +41455,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 3164308950055492696}
@@ -41586,7 +41586,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &5615429308928618849
 MonoBehaviour:
@@ -41606,7 +41606,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 4924844825131242898}
@@ -41737,7 +41737,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &2821916803301725263
 MonoBehaviour:
@@ -41972,7 +41972,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &4082996574882848795
 MonoBehaviour:
@@ -41992,7 +41992,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 5530908833634462678}
@@ -42123,7 +42123,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &59376325494532373
 MonoBehaviour:
@@ -42143,7 +42143,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 727599286244379082}
@@ -42442,7 +42442,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &5728446737786613000
 MonoBehaviour:
@@ -42462,7 +42462,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 1112464447248145000}
@@ -42593,7 +42593,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &4120414408385931810
 MonoBehaviour:
@@ -42613,7 +42613,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 598423922494239994}
@@ -42744,7 +42744,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &2300437908556964582
 MonoBehaviour:
@@ -42764,7 +42764,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 7340100474798379053}
@@ -43063,7 +43063,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &2321735993764915212
 MonoBehaviour:
@@ -43083,7 +43083,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 8505103603372753064}
@@ -43298,7 +43298,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &7344679412247397584
 MonoBehaviour:
@@ -43318,7 +43318,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 8190431755142100632}
@@ -43449,7 +43449,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &3913532295994065244
 MonoBehaviour:
@@ -43469,7 +43469,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 17690806362573059}
@@ -43600,7 +43600,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &6232452971414827738
 MonoBehaviour:
@@ -43620,7 +43620,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 2973385960874681922}
@@ -43835,7 +43835,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &8844699779837045763
 MonoBehaviour:
@@ -43855,7 +43855,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 5295591457684322057}
@@ -44322,7 +44322,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &5188501767425582679
 MonoBehaviour:
@@ -44342,7 +44342,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 6236659865071201515}
@@ -44473,7 +44473,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &2891344416095592074
 MonoBehaviour:
@@ -44493,7 +44493,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 3786951165765321858}
@@ -44624,7 +44624,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &8658409057497636027
 MonoBehaviour:
@@ -44644,7 +44644,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 3908284986868455300}
@@ -44859,7 +44859,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &914128845771599782
 MonoBehaviour:
@@ -44879,7 +44879,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 4858080062481296480}
@@ -45010,7 +45010,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &2167454378874606520
 MonoBehaviour:
@@ -45030,7 +45030,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 2635780512404126091}
@@ -45329,7 +45329,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &3882911723281051073
 MonoBehaviour:
@@ -45349,7 +45349,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 1766504679529958318}
@@ -45779,7 +45779,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &2944771713813443543
 MonoBehaviour:
@@ -45799,7 +45799,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 7299671469633958692}
@@ -46182,7 +46182,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &5373975771678923797
 MonoBehaviour:
@@ -46202,7 +46202,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 2492845870798308589}
@@ -46417,7 +46417,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &4676858068459146183
 MonoBehaviour:
@@ -46437,7 +46437,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 8354250386272528328}
@@ -46652,7 +46652,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &7021889028723832724
 MonoBehaviour:
@@ -46672,7 +46672,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 4102874017852891711}
@@ -46887,7 +46887,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &209855535483967935
 MonoBehaviour:
@@ -46907,7 +46907,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 3979449311739378831}
@@ -47038,7 +47038,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &3662949659276582789
 MonoBehaviour:
@@ -47058,7 +47058,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 794596204281304188}
@@ -47189,7 +47189,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &3902886357872705973
 MonoBehaviour:
@@ -47209,7 +47209,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 3658308143104336666}
@@ -47508,7 +47508,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &8848808555036667291
 MonoBehaviour:
@@ -47528,7 +47528,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 6961830926194563278}
@@ -47659,7 +47659,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &4965709965570950587
 MonoBehaviour:
@@ -47679,7 +47679,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 5128409520594288053}
@@ -47810,7 +47810,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &1728554976521066488
 MonoBehaviour:
@@ -47830,7 +47830,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 8512813807007656994}
@@ -47961,7 +47961,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &7509405100238351048
 MonoBehaviour:
@@ -47981,7 +47981,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 1936003547852674222}
@@ -48327,7 +48327,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &8112374377065909879
 MonoBehaviour:
@@ -48347,7 +48347,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 3
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 7007855435252411797}
@@ -48797,7 +48797,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &3323315817475721336
 MonoBehaviour:
@@ -48817,7 +48817,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 3851958086016304145}
@@ -48948,7 +48948,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &1418781152215843191
 MonoBehaviour:
@@ -48968,7 +48968,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 927656453299652627}
@@ -49099,7 +49099,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &3703267880604396150
 MonoBehaviour:
@@ -49119,7 +49119,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 4885243399919325385}
@@ -49250,7 +49250,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &3115845759823125729
 MonoBehaviour:
@@ -49270,7 +49270,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 9162722869346004535}
@@ -49401,7 +49401,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &2706758567981146173
 MonoBehaviour:
@@ -49421,7 +49421,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 5317008685685190111}
@@ -49804,7 +49804,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &5917962568616816690
 MonoBehaviour:
@@ -49824,7 +49824,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 2880710724993260042}
@@ -50254,7 +50254,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &5198893378915690257
 MonoBehaviour:
@@ -50274,7 +50274,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 6929313355134998879}
@@ -50405,7 +50405,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &3223420635679651870
 MonoBehaviour:
@@ -50425,7 +50425,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 8475086892751328425}
@@ -50687,7 +50687,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0.000000076252036}
 --- !u!114 &7748322040223873393
 MonoBehaviour:
@@ -50707,7 +50707,7 @@ MonoBehaviour:
   isOccupied: 0
   cellType: 4
   currentDir: 0
-  cellTypeColor: 4
+  cellTypeColor: 0
   waypointPrefab: {fileID: 785819540799236878, guid: c95bb3f3a9f293c419784ba1292cb3df,
     type: 3}
   slotTypeSpriteRenderer: {fileID: 7322053785803664894}

@@ -11,6 +11,7 @@ public class PlayerWeapon : MonoBehaviour
     [Header("Combat")]
     [SerializeField] float damage;
     [SerializeField] float bulletsPerShot = 1, TimeBetweenBullets, TimeBetweenShots, range;
+    [SerializeField] float rotationSpeed;
     [SerializeField] bool allowHold;
     [SerializeField] LayerMask layersToHit;
 
@@ -42,11 +43,9 @@ public class PlayerWeapon : MonoBehaviour
 
         if(isReadyToShoot && isShooting)
         {
-            Debug.Log("Test");
             currentBulletsPerShot = bulletsPerShot;
             StartCoroutine(Shoot());
         }
-
     }
 
     private IEnumerator Shoot()
