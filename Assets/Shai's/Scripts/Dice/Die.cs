@@ -35,6 +35,7 @@ public class Die : MonoBehaviour
     [Header("Tower Connected")]
     [SerializeField] private TowerBaseParent towerPrefabConnected;
     [SerializeField] private TowerBaseParent currentTowerParent;
+    [SerializeField] private bool specialAttackUnlcoked;
 
     [Header("Roll Data")]
     [SerializeField] private float _reqStagnantTime = 1;
@@ -124,51 +125,25 @@ public class Die : MonoBehaviour
         }
     }
 
-    private void SetDiceValueSpecific(int amountOfFaces, DiceSO diceData)
+    private void SetDiceValueSpecific(int amountOfFaces, DieData diceData)
     {
         for (int i = 0; i < amountOfFaces; i++)
         {
-            faces[i].ChangeFaceMat(diceData.dieMaterial);
+            faces[i].ChangeFaceMat(diceData.material);
 
-            int randomResourceFaceIndex = Random.Range(0, System.Enum.GetValues(typeof(ResourceType)).Length);
             ResourceData resourceData = new ResourceData();
-            resourceData.Type = (ResourceType)randomResourceFaceIndex;
-            resourceData.Value = Random.Range(1, 10); //temp
-            resourceData.Icon = DiceManager.Instance.ReturnIconByType(resourceData.Type);
+            resourceData.Type = diceData.facesValues[i].Resource.Type;
+            resourceData.Value = diceData.facesValues[i].Resource.Value;
+            resourceData.Icon = Helpers.ReturnIconByType(resourceData.Type);
 
             faces[i].SetResource(resourceData);
 
 
             BuffData buffData = new BuffData();
-            buffData.Type = diceData.buffDataList[i].Type;
-            buffData.Value = diceData.buffDataList[i].Value;
-            buffData.Icon = DiceManager.Instance.ReturnIconByType(buffData.Type);
+            buffData.Type = diceData.facesValues[i].Buff.Type;
+            buffData.Value = diceData.facesValues[i].Buff.Value;
+            buffData.Icon = Helpers.ReturnIconByType(buffData.Type);
             faces[i].SetBuff(buffData);
-
-            faces[i].DisplayResource();
-        }
-    }
-    private void SetDiceValueRandom(int amountOfFaces, DiceSO diceData)
-    {
-        for (int i = 0; i < amountOfFaces; i++)
-        {
-            faces[i].ChangeFaceMat(diceData.dieMaterial);
-
-            int randomResource = Random.Range(0, System.Enum.GetValues(typeof(ResourceType)).Length);
-            ResourceData resourceData = new ResourceData();
-            resourceData.Type = (ResourceType)randomResource;
-            resourceData.Value = Random.Range(1, 10); //temp
-            resourceData.Icon = DiceManager.Instance.ReturnIconByType(resourceData.Type);
-
-            faces[i].SetResource(resourceData);
-
-            int randomBuff = Random.Range(0, System.Enum.GetValues(typeof(BuffType)).Length);
-            BuffData buffData = new BuffData();
-            buffData.Type = (BuffType)randomBuff;
-            buffData.Value = Random.Range(1, 10); //temp
-            buffData.Icon = DiceManager.Instance.ReturnIconByType(buffData.Type);
-            faces[i].SetBuff(buffData);
-
 
             faces[i].DisplayResource();
         }
@@ -179,17 +154,7 @@ public class Die : MonoBehaviour
         isRolling = false;
         DieFaceValue faceValue = die.GetTopValue(); // _currentTopFace value is always set in this function. we call it to be safe that we don't use a null value 
 
-        if (!_isInWorld)
-        {
-            targetQuat = Quaternion.Euler(die.ReturnCurrentTopFace().ReturnOrientationOnEndRoll());
-        }
-        else
-        {
-            targetQuat = Quaternion.Euler(die.ReturnCurrentTopFace().ReturnOrientationOnEndRoll());
-
-            //Vector3 direction = (GameManager.Instance.ReturnMainCamera().transform.position - transform.position).normalized;
-            //targetQuat = Quaternion.FromToRotation(Vector3.forward, direction);
-        }
+        targetQuat = Quaternion.Euler(die.ReturnCurrentTopFace().ReturnOrientationOnEndRoll());
 
         RB.isKinematic = true;
     }
@@ -267,10 +232,14 @@ public class Die : MonoBehaviour
         outline.SetOutlineMode(Outline.Mode.OutlineHidden);
 
         UIManager.Instance.DisplayDiceFacesUI(false, this);
+
+        UIManager.Instance.DisplayTowerStats(false, towerPrefabConnected);
     }
     private void OnMouseEnter()
     {
         UIManager.Instance.DisplayDiceFacesUI(true, this);
+
+        UIManager.Instance.DisplayTowerStats(true, towerPrefabConnected);
     }
 
     private void OnMouseUp()
@@ -389,12 +358,12 @@ public class Die : MonoBehaviour
 
 
 
-    public void InitDiceInSlot(Transform _lockTransform, DiceSO diceData)
+    public void InitDiceInSlot(Transform _lockTransform, DieData diceData)
     {
         lockTransform = _lockTransform;
 
-        towerPrefabConnected = diceData.towerPrefab;
-        diceMat = diceData.dieMaterial;
+        towerPrefabConnected = diceData.towerPrefabConnected;
+        diceMat = diceData.material;
 
 
         switch (diceData.dieType)
@@ -532,7 +501,7 @@ public class Die : MonoBehaviour
     {
         DieData data = new DieData();
 
-        data.DieType = DieType;
+        data.dieType = DieType;
         data.element = element;
         data.material = diceMat;
 
@@ -550,7 +519,7 @@ public class Die : MonoBehaviour
 
     public void ImportTransferData(DieData data)
     {
-        DieType = data.DieType;
+        DieType = data.dieType;
         element = data.element;
         diceMat = data.material;
 
@@ -563,7 +532,15 @@ public class Die : MonoBehaviour
         towerPrefabConnected = data.towerPrefabConnected;
     }
 
+    public bool ReturnSpecialAttackUnlcoked()
+    {
+        return specialAttackUnlcoked;
+    }
 
+    public DieElement ReturnDieElement()
+    {
+        return element;
+    }
 }
 
 

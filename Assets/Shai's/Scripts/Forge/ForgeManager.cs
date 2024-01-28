@@ -112,7 +112,7 @@ public class ForgeManager : MonoBehaviour
         //dice display
 
         //determine wihch die model should be used
-        switch (currentDie.dieData.DieType)
+        switch (currentDie.dieData.dieType)
         {
             case DieType.D6:
 
@@ -204,13 +204,13 @@ public class ForgeManager : MonoBehaviour
     //increase number of faces
     public void UpgradeCurrentDie()
     {
-        switch (dice[currentDieIndex].dieData.DieType)
+        switch (dice[currentDieIndex].dieData.dieType)
         {
             case DieType.D6:
                 //add two faces, might want to change the logic
                 AddFacesToDie(2);
 
-                dice[currentDieIndex].dieData.DieType = DieType.D8;
+                dice[currentDieIndex].dieData.dieType = DieType.D8;
 
                 break;
             case DieType.D8:
@@ -229,7 +229,7 @@ public class ForgeManager : MonoBehaviour
         for (int i = 0; i < facesAmount; i++)
         {
             DieFaceValue newFace;
-            newFace = baseDiceInfo.GetBaseFaceValueOfDie(currentDieData.element, currentDieData.DieType, currentDieData.facesValues.Count);
+            newFace = baseDiceInfo.GetBaseFaceValueOfDie(currentDieData.element, currentDieData.dieType, currentDieData.facesValues.Count);
             currentDieData.facesValues.Add(newFace);
         }
     }

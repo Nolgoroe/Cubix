@@ -110,8 +110,8 @@ MonoBehaviour:
     Value: 1
     Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   renderer: {fileID: 5948315110727767615}
-  orientationEndRoll: {x: 15, y: 60, z: 20}
-  orientationEndRollInWorld: {x: 15, y: 60, z: 20}
+  orientationEndRoll: {x: 15, y: 50, z: 20}
+  orientationEndRollInWorld: {x: 15, y: 50, z: 20}
 --- !u!135 &7154853897263874914
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -951,8 +951,8 @@ MonoBehaviour:
     Value: 3
     Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   renderer: {fileID: 806391039214534055}
-  orientationEndRoll: {x: -15, y: -120, z: -20}
-  orientationEndRollInWorld: {x: -15, y: -120, z: -20}
+  orientationEndRoll: {x: -15, y: -130, z: -20}
+  orientationEndRollInWorld: {x: -15, y: -130, z: -20}
 --- !u!135 &2686496043034668722
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2197,8 +2197,8 @@ MonoBehaviour:
     Value: 12
     Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   renderer: {fileID: 5580322752317608937}
-  orientationEndRoll: {x: 20, y: -30, z: -20}
-  orientationEndRollInWorld: {x: 20, y: -30, z: -20}
+  orientationEndRoll: {x: 15, y: -50, z: -20}
+  orientationEndRollInWorld: {x: 15, y: -50, z: -20}
 --- !u!135 &5367615208742894722
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2587,8 +2587,8 @@ MonoBehaviour:
     Value: 33
     Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   renderer: {fileID: 6646556091922366402}
-  orientationEndRoll: {x: 10, y: 60, z: -160}
-  orientationEndRollInWorld: {x: 10, y: 60, z: -160}
+  orientationEndRoll: {x: 30, y: 60, z: -160}
+  orientationEndRollInWorld: {x: 30, y: 60, z: -160}
 --- !u!135 &4317146342107078436
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3124,9 +3124,9 @@ MonoBehaviour:
   OnDestroyDieEvent:
     m_PersistentCalls:
       m_Calls: []
-  DieType: 0
+  DieType: 1
   element: 0
-  diceColor: {r: 0.14509805, g: 0.8039216, b: 0.9529412, a: 1}
+  diceMat: {fileID: 0}
   isLocked: 0
   scaleOnDrag: {x: 0.5, y: 0.5, z: 0.5}
   scaleInPlayerBase: {x: 1, y: 1, z: 1}
@@ -3143,6 +3143,7 @@ MonoBehaviour:
   towerPrefabConnected: {fileID: 7544678564594478742, guid: 80d1f37f29ffab84db83beb313155a00,
     type: 3}
   currentTowerParent: {fileID: 0}
+  specialAttackUnlcoked: 0
   _reqStagnantTime: 1
   diceCam: {fileID: 0}
   _rb: {fileID: 438417151495276943}
@@ -3300,8 +3301,8 @@ MonoBehaviour:
     Value: 4
     Icon: {fileID: 1289876841, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   renderer: {fileID: 1293781095424484987}
-  orientationEndRoll: {x: 30, y: -45, z: 160}
-  orientationEndRollInWorld: {x: 30, y: -45, z: 160}
+  orientationEndRoll: {x: 15, y: -45, z: 160}
+  orientationEndRollInWorld: {x: 15, y: -45, z: 160}
 --- !u!135 &8328979420217508278
 SphereCollider:
   m_ObjectHideFlags: 0

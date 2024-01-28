@@ -7,6 +7,14 @@ public class WorldProgression : MonoBehaviour
     [SerializeField] private WorldGrid worldGrid;
     private List<SiteNode> openNodes = new List<SiteNode>();
 
+    private void Start()
+    {
+        //temp function
+
+        Player.Instance.InitPlayer(); // this also updates the UI health and resource count
+
+        UIManager.Instance.UpdateMapDiceDisplay();
+    }
     public void Init()
     {
         openNodes.Clear();

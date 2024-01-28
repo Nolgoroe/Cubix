@@ -72,7 +72,7 @@ public class TowerTroop : MonoBehaviour
         if (currentAttackCooldown <= 0)
         {
             Attack();
-            currentAttackCooldown = (1 * attackRate) / GameManager.gameSpeed;
+            currentAttackCooldown = attackRate;
         }
 
     }

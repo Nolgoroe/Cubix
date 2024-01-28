@@ -12,6 +12,9 @@ public class ShopManager : MonoBehaviour
     [SerializeField] Transform shopItemsParent;
     [SerializeField] GameObject shopScreen;
 
+    [Header("References")]
+    [SerializeField] private DieDataSpawner diceDataSpawner;
+
     [SerializeField] List<ShopItemUI> instantiatedItems;
 
     [SerializeField] TMP_Text shopMessage;
@@ -67,7 +70,7 @@ public class ShopManager : MonoBehaviour
         switch (item)
         {
             case DiceSO die:
-                DiceManager.Instance.AddDieFromShop(die);
+                diceDataSpawner.CreateNewDieData(die);
                 break;
             case StatsBundleSO statsBundle:
                 foreach (StatToAmoutCombo combo in statsBundle.statsToBuy)

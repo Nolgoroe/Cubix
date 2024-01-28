@@ -18,9 +18,11 @@ MonoBehaviour:
     amount: 25
   - resource: 0
     amount: 30
+  itemName: Cyber D8
   diePrefab: {fileID: 6895173316381504982, guid: 89c80393a1704c540a3de66fa30dd966,
     type: 3}
   dieType: 1
+  element: 0
   towerPrefab: {fileID: 7544678564594478742, guid: 80d1f37f29ffab84db83beb313155a00,
     type: 3}
   dieMaterial: {fileID: 2100000, guid: 12221e435a3bdf84a9f6090b32cd02dc, type: 2}

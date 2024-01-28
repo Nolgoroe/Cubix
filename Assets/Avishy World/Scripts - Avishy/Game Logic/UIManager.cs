@@ -19,6 +19,10 @@ public class UIManager : MonoBehaviour
 
     [Header("Tower UI")]
     [SerializeField] private TowerToolTipUI towerBuffDataHolderObject;
+    [SerializeField] private TowerStatsDisplayUI towerStatsDisplayUI;
+    [SerializeField] private Transform towerStatsDisplayScreen;
+    [SerializeField] private Transform towerStatsDisplayUIParent;
+    [SerializeField] TMP_Text towerNameText;
 
     [Header("HP UI")]
     [SerializeField] private TMP_Text playerHealthText;
@@ -31,6 +35,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text ironText;
     [SerializeField] private TMP_Text energyText;
     [SerializeField] private TMP_Text lightningText;
+    [SerializeField] private TMP_Text scrapText;
 
     [Header("Prefabs")]
     [SerializeField] private DiceFaceDisplayUI diceFaceUIDisplayPreafb;
@@ -40,6 +45,10 @@ public class UIManager : MonoBehaviour
 
     [Header("Stamina")]
     [SerializeField] private TMP_Text staminaText;
+
+    [Header("Map Dice")]
+    [SerializeField] private DataDieDisplayUI diceDataDisplayUI;
+    [SerializeField] private Transform diceDataDisplayParent;
 
 
     private void Awake()
@@ -53,8 +62,6 @@ public class UIManager : MonoBehaviour
     public void InitUIManager()
     {
         TogglePauseMenu(false);
-
-        UpdateResources(0, 0, 0); //temp?
 
         winScreen.gameObject.SetActive(false);
         loseScreen.gameObject.SetActive(false);
@@ -127,6 +134,48 @@ public class UIManager : MonoBehaviour
         diceFacesResourcesDisplayParent.gameObject.SetActive(isDisplay);
         diceFacesBuffDisplayParent.gameObject.SetActive(isDisplay);
     }
+    public void DisplayDiceFacesUI(bool isDisplay, DieData dieData)
+    {
+        if(isDisplay)
+        {
+            foreach (DieFaceValue faceValue in dieData.facesValues)
+            {
+                GameObject resource = Instantiate(diceFaceUIDisplayPreafb.gameObject, diceFacesResourcesDisplayParent);
+                GameObject buff = Instantiate(diceFaceUIDisplayPreafb.gameObject, diceFacesBuffDisplayParent);
+
+                DiceFaceDisplayUI displayUIResource;
+                DiceFaceDisplayUI displayUIBuff;
+
+                resource.TryGetComponent<DiceFaceDisplayUI>(out displayUIResource);
+                buff.TryGetComponent<DiceFaceDisplayUI>(out displayUIBuff);
+
+                if (displayUIResource)
+                {
+                    displayUIResource.SetImage(faceValue, dieData, true);
+                }
+
+                if (displayUIBuff)
+                {
+                    displayUIBuff.SetImage(faceValue, dieData, false);
+                }
+            }
+        }
+        else
+        {
+            foreach (Transform child in diceFacesResourcesDisplayParent)
+            {
+                Destroy(child.gameObject);
+            }
+
+            foreach (Transform child in diceFacesBuffDisplayParent)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+
+        diceFacesResourcesDisplayParent.gameObject.SetActive(isDisplay);
+        diceFacesBuffDisplayParent.gameObject.SetActive(isDisplay);
+    }
 
     public void TogglePauseMenu(bool displayPause)
     {
@@ -144,11 +193,12 @@ public class UIManager : MonoBehaviour
         Debug.Log("Open Settings");
     }
 
-    public void UpdateResources(int _iron, int _energy, int _lightning)
+    public void UpdateResources(int _iron, int _energy, int _lightning, int _scrap)
     {
         ironText.text = _iron.ToString();
         energyText.text = _energy.ToString();
         lightningText.text = _lightning.ToString();
+        scrapText.text = _scrap.ToString();
     }
     public void UpdatePlayerHealth(int currentHealth, int maxHealth)
     {
@@ -172,5 +222,40 @@ public class UIManager : MonoBehaviour
     public void UpdateStaminaAmount(int amount)
     {
         staminaText.text = amount.ToString();
+    }
+
+    public void UpdateMapDiceDisplay()
+    {
+        foreach (DieData data in Player.Instance.ReturnPlayerDice())
+        {
+            DataDieDisplayUI dataDieDisplay = Instantiate(diceDataDisplayUI, diceDataDisplayParent);
+            dataDieDisplay.InitDisplay(data);
+        }
+    }
+
+    public void DisplayTowerStats(bool Display, TowerBaseParent towerData)
+    {
+        foreach (Transform child in towerStatsDisplayUIParent)
+        {
+            Destroy(child.gameObject);
+        }
+
+        if (Display)
+        {
+            foreach (string text in towerData.DisplayTowerStats())
+            {
+                TowerStatsDisplayUI display = Instantiate(towerStatsDisplayUI, towerStatsDisplayUIParent);
+
+                display.SetText(text);
+            }
+
+            towerNameText.text = towerData.gameObject.name;
+
+            towerStatsDisplayScreen.gameObject.SetActive(true);
+        }
+        else
+        {
+            towerStatsDisplayScreen.gameObject.SetActive(false);
+        }
     }
 }

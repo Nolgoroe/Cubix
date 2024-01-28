@@ -1425,7 +1425,7 @@ MonoBehaviour:
       m_Calls: []
   DieType: 0
   element: 0
-  diceColor: {r: 1, g: 0.827451, b: 0, a: 1}
+  diceMat: {fileID: 0}
   isLocked: 0
   scaleOnDrag: {x: 0.5, y: 0.5, z: 0.5}
   scaleInPlayerBase: {x: 1, y: 1, z: 1}
@@ -1440,6 +1440,7 @@ MonoBehaviour:
   towerPrefabConnected: {fileID: 7779022226387808478, guid: 7cb2a2d3c330104478cf0c451e0c362b,
     type: 3}
   currentTowerParent: {fileID: 0}
+  specialAttackUnlcoked: 0
   _reqStagnantTime: 0.5
   diceCam: {fileID: 0}
   _rb: {fileID: 3925297638537684283}

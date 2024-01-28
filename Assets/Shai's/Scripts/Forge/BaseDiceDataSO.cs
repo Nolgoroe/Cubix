@@ -11,7 +11,7 @@ public class BaseDiceDataSO : ScriptableObject
     {
         foreach (var die in baseDice)
         {
-            if (die.DieType == type && die.element == element)
+            if (die.dieType == type && die.element == element)
             {
                 return die.facesValues[faceNum];
             }

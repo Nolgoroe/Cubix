@@ -16,6 +16,7 @@ MonoBehaviour:
   resourcesNeeded:
   - resource: 0
     amount: 300
+  itemName: Resource Bundle 50 lightning + 50 energy
   resourcesToRecieve:
   - resource: 2
     amount: 50

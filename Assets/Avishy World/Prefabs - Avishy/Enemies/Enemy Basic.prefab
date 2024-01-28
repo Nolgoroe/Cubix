@@ -1170,6 +1170,8 @@ MonoBehaviour:
     m_Bits: 256
   target: {fileID: 0}
   enemyType: 1
+  percentageToGiveScrap: 50
+  scrapAmount: 1
   currentTarget: {fileID: 0}
   startingHeight: 0
   rend: {fileID: 1174288248164449539}

@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4d5047e48962ce746a256b0cd1284e32, type: 2}
+  - {fileID: 2100000, guid: 3375f5322eff3554589c532b9e9888d9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -246,6 +246,7 @@ MonoBehaviour:
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 128
+  anim: {fileID: 0}
   onSpawnParticle: {fileID: 1631939584518712, guid: cde2ea000bb3dac4da5b347bfa9a9a95,
     type: 3}
   lifetime: 2
