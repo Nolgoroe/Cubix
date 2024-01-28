@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum GridDirection { BottomUp, LeftRight}
+
 public class WorldGrid : MonoBehaviour
 {
     [Header("Grid Settings")]
     [SerializeField] private Vector2Int gridSize;
     [SerializeField] private Vector2 slotSize;
-    [SerializeField] private Vector2 gridOrigin;
+    [SerializeField] private Vector2 gridOriginOffset;
     [SerializeField] private float heightSpacing;
     [SerializeField] private float widthSpacing;
     [SerializeField] private GameObject siteNodePrefab;
     [SerializeField] private LinesParent linesParent;
     [SerializeField] private WorldProgression progression;
+    [SerializeField] private GridDirection direction;
 
     [Header("Node Linking")]
     [SerializeField] private int maxSinngleLinkStreak;
@@ -65,10 +68,28 @@ public class WorldGrid : MonoBehaviour
 
     private Vector3 GetPosAtSlot(int slotX, int slotY)
     {
+        //add modifiers for grid generation direction
+        Vector2 gridOrigin;
         Vector3 resPos = new Vector3();
 
-        resPos.x = widthSpacing * slotX + gridOrigin.x;
-        resPos.y = heightSpacing * slotY + gridOrigin.y;
+        switch (direction)
+        {
+            case GridDirection.BottomUp:
+                resPos.x = widthSpacing * slotX + gridOriginOffset.x;
+                resPos.y = heightSpacing * slotY + gridOriginOffset.y;
+                break;
+            case GridDirection.LeftRight:
+                resPos.x = widthSpacing * slotY + gridOriginOffset.y;
+                resPos.y = heightSpacing * slotX + gridOriginOffset.x;
+                break;
+            default:
+                break;
+        }
+
+
+
+        //resPos.x = widthSpacing * slotX + gridOriginOffset.x;
+        //resPos.y = heightSpacing * slotY + gridOriginOffset.y;
 
         if (slotY > 0) //dont add random offset to first tier
         {
