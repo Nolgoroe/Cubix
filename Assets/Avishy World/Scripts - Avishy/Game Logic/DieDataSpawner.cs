@@ -33,7 +33,7 @@ public class DieDataSpawner : MonoBehaviour
         return data;
     }
 
-    private ResourceData SetDiceResourcesRandom()
+    private ResourceData SetDiceResourcesRandom() //temp?
     {
         ResourceData resourceData = new ResourceData();
 

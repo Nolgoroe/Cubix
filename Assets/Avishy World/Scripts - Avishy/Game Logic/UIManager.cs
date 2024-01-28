@@ -258,4 +258,13 @@ public class UIManager : MonoBehaviour
             towerStatsDisplayScreen.gameObject.SetActive(false);
         }
     }
+
+    public void ToggleMapDieDisplay()
+    {
+        //called from button
+
+        bool isActive = diceDataDisplayParent.gameObject.activeInHierarchy;
+
+        diceDataDisplayParent.gameObject.SetActive(!isActive);
+    }
 }
