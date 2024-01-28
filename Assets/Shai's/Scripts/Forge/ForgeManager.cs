@@ -33,6 +33,12 @@ public class ForgeManager : MonoBehaviour
     [SerializeField] private List<Die> realDice;
 
 
+    private void Start()
+    {
+       // Init(Player.Instance.)
+    }
+
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.S))
