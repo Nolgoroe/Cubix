@@ -29,6 +29,8 @@ public class PlayerWeapon : MonoBehaviour
     }
     private void Update()
     {
+        if (!PlayerWeaponManager.isUsingWeapon) return;
+
         if (allowHold)
         {
             isShooting = Input.GetMouseButton(0);
@@ -70,7 +72,7 @@ public class PlayerWeapon : MonoBehaviour
             {
                 transform.LookAt(rayHit.point, Vector3.forward);
                 GameObject shot = Instantiate(shotEffect, shotOrigin.position, shotOrigin.rotation);
-
+                 
                 EnemyParent enemy;
 
                 rayHit.transform.TryGetComponent<EnemyParent>(out enemy);
