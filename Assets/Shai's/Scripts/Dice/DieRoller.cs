@@ -30,7 +30,7 @@ public class DieRoller : MonoBehaviour
 
         _ogPos = transform.position;
 
-        die.OnDragStartEvent.AddListener(OnConnectedDieStartDragging);
+        die.OnDragEvent.AddListener(OnConnectedDieStartDragging);
         die.OnDragEndEvent.AddListener(OnConnectedDieEndDragging);
         die.OnPlaceEvent.AddListener(OnConnectedDiePlace);
 
@@ -145,6 +145,13 @@ public class DieRoller : MonoBehaviour
     public void SetOGPos(Transform _transform)
     {
         _ogPos = _transform.position;
+    }
+
+    public void ConstraintManually(bool X, bool Y, bool Z)
+    {
+        constraintX = X;
+        constraintY = Y;
+        constraintZ = Z;
     }
 }
 

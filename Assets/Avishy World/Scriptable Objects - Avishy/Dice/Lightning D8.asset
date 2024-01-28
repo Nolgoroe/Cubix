@@ -23,6 +23,7 @@ MonoBehaviour:
     type: 3}
   dieType: 1
   element: 0
+  colorType: 1
   towerPrefab: {fileID: 7779022226387808478, guid: 7cb2a2d3c330104478cf0c451e0c362b,
     type: 3}
   dieMaterial: {fileID: 2100000, guid: ee99e325a81704b4788b9a4237401ee7, type: 2}

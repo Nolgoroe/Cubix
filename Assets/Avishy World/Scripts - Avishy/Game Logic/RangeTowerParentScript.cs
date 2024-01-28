@@ -47,9 +47,11 @@ public class RangeTowerParentScript : TowerBaseParent
         SetRangeIndicator();
     }
 
-    protected virtual void Update()
+    protected override void Update()
     {
-        if (GameManager.gamePaused) return;
+        base.Update();
+
+        if (GameManager.gamePaused || isBeingDragged || isDisabled) return;
 
         UpdateTarget();
         if (currentTarget == null) return;
@@ -140,7 +142,8 @@ public class RangeTowerParentScript : TowerBaseParent
 
 
     public override void InitTowerData(Vector2Int positionOfCell, Die connectedDie)
-    {        
+    {
+        fireCountDown = fireRate;
 
         currentCellOnPos = positionOfCell;
 
@@ -164,6 +167,38 @@ public class RangeTowerParentScript : TowerBaseParent
         switch (dieFaceValue.Buff.Type)
         {
             case BuffType.None:
+                break;
+            case BuffType.Dmg:
+                bulltDMG += originalBulletDMG * (dieFaceValue.Buff.Value / 100);
+                break;
+            case BuffType.Range:
+                range += originalRange * (dieFaceValue.Buff.Value / 100);
+
+                SetRangeIndicator();
+                break;
+            case BuffType.HP:
+                break;
+            case BuffType.time:
+                break;
+            default:
+                break;
+        }
+
+        AddNewTowerBuff(dieFaceValue, die);
+    }
+
+    public override void RecieveRandomBuff(Die die)
+    {
+        int randomBuffIndex = UnityEngine.Random.Range(0, die.GetAllFaces().Length);
+
+        DieFaceValue dieFaceValue = die.GetAllFaces()[randomBuffIndex].GetFaceValue();
+
+        switch (dieFaceValue.Buff.Type)
+        {
+            case BuffType.None:
+                //if we get none, just return Damage for now - Temp
+                bulltDMG += originalBulletDMG * (dieFaceValue.Buff.Value / 100);
+                dieFaceValue = die.GetAllFaces()[2].GetFaceValue(); //temp
                 break;
             case BuffType.Dmg:
                 bulltDMG += originalBulletDMG * (dieFaceValue.Buff.Value / 100);
@@ -209,4 +244,5 @@ public class RangeTowerParentScript : TowerBaseParent
 
         return stringList;
     }
+
 }

@@ -24,16 +24,26 @@ MonoBehaviour:
         enemySpawnerIndex: 0
         enemyPathIndex: 0
         enemyType: 1
+      - amountOfThisEnemy: 20
+        enemySpawnerIndex: 0
+        enemyPathIndex: 0
+        enemyType: 2
       timeToNextEnemies: 0
   - delayBetweenEnemies: 1
     delayBetweenWaves: 30
-    enemyWaveCombo: []
-  - delayBetweenEnemies: 3
+    enemyWaveCombo:
+    - enemyWaveDataList:
+      - amountOfThisEnemy: 20
+        enemySpawnerIndex: 0
+        enemyPathIndex: 0
+        enemyType: 1
+      timeToNextEnemies: 0
+  - delayBetweenEnemies: 1
     delayBetweenWaves: 30
-    enemyWaveCombo: []
-  - delayBetweenEnemies: 3
-    delayBetweenWaves: 30
-    enemyWaveCombo: []
-  - delayBetweenEnemies: 0
-    delayBetweenWaves: 0
-    enemyWaveCombo: []
+    enemyWaveCombo:
+    - enemyWaveDataList:
+      - amountOfThisEnemy: 20
+        enemySpawnerIndex: 0
+        enemyPathIndex: 0
+        enemyType: 1
+      timeToNextEnemies: 0

@@ -129,21 +129,22 @@ public class GridCell : MonoBehaviour
         occupiedByTower = true; //temp
     }
 
-    public void EmptyCell()
-    {
-        if(towerOnCell)
-        {
-            Destroy(towerOnCell);
-        }
+    //public void EmptyCell(bool destroyTower)
+    //{
+    //    if(towerOnCell && destroyTower)
+    //    {
+    //        Destroy(towerOnCell);
+    //    }
 
-        isOccupied = false;
+    //    isOccupied = false;
 
         
-        if(occupiedByTower) //temp
-        {
-            occupiedByTower = false;
-        }
-    }
+    //    if(occupiedByTower) //temp
+    //    {
+    //        towerOnCell = null;
+    //        occupiedByTower = false;
+    //    }
+    //}
 
     public virtual void CopyDataFromToolCell(ToolGridCell toolGridCell)
     {
@@ -176,15 +177,13 @@ public class GridCell : MonoBehaviour
 
     }
 
-    public void ResetCellOnStartTurn()
+    public void ResetCell()
     {
-        if (slotTypeSpriteRenderer == null) return;
-        cellTypeColor = CellTypeColor.None;
-        isOccupied = true;
+        isOccupied = false;
         occupiedByTower = false;
         towerOnCell = null;
-        GridManager.Instance.RemoveCellFromTowerBaseCells(this);
-        slotTypeSpriteRenderer.gameObject.SetActive(false);
+        //GridManager.Instance.RemoveCellFromTowerBaseCells(this);
+        //slotTypeSpriteRenderer.gameObject.SetActive(false);
     }
     public bool ReturnNextToPath()
     {

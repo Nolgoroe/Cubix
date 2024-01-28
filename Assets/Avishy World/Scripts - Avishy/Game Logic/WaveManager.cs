@@ -121,6 +121,8 @@ public class WaveManager : MonoBehaviour
 
                     enemyData.amountOfThisEnemy--;
 
+                    currentLevelEnemySpawners[enemyData.enemySpawnerIndex].ChangeTowerEnemyText(enemyData.amountOfThisEnemy);
+
                     enemiesAvailable = true;
                 }
 
@@ -194,11 +196,11 @@ public class WaveManager : MonoBehaviour
             meleeTower.CleanTroopsAtWaveStart();
         }
 
-        //disable all spawner danger Icons
-        foreach (EnemySpawnerCell spawnerCell in currentLevelEnemySpawners)
-        {
-            spawnerCell.DisplayDangerIcon(false);
-        }
+        ////disable all spawner danger Icons
+        //foreach (EnemySpawnerCell spawnerCell in currentLevelEnemySpawners)
+        //{
+        //    spawnerCell.DisplayTowerIcons(false, 0);
+        //}
 
         currentIndexInCombo = 0;
         currentAmountOfEnemiesForCombo = 0;
@@ -228,7 +230,12 @@ public class WaveManager : MonoBehaviour
     {
         foreach (EnemySpawnerCell spawnerCell in currentLevelEnemySpawners)
         {
-            spawnerCell.DisplayDangerIcon(false);
+            spawnerCell.DisplayTowerIcons(false, 0);
+        }
+
+        foreach (Die die in DiceManager.Instance.ReturnResourceDice())
+        {
+            Player.Instance.AddResourcesFromDice(die);
         }
 
         StartCoroutine(GameManager.Instance.SetPlayerTurn(true));
@@ -255,9 +262,20 @@ public class WaveManager : MonoBehaviour
             {
                 for (int i = 0; i < waveCombo.enemyWaveDataList.Count; i++)
                 {
-                    currentLevelEnemySpawners[waveCombo.enemyWaveDataList[i].enemySpawnerIndex].DisplayDangerIcon(true);
+                    currentLevelEnemySpawners[waveCombo.enemyWaveDataList[i].enemySpawnerIndex].DisplayTowerIcons(true, waveCombo.enemyWaveDataList[i].amountOfThisEnemy);
                 }
+            }
 
+            currentEnemiesCombo.Clear();
+
+            foreach (EnemyWaveCombo combo in currentWaveSO.Waves[currentIndexInWave].enemyWaveCombo)
+            {
+                currentEnemiesCombo.Add(combo);
+
+                for (int i = 0; i < combo.enemyWaveDataList.Count; i++)
+                {
+                    currentAmountOfEnemiesForCombo += combo.enemyWaveDataList[i].amountOfThisEnemy;
+                }
             }
         }
     }
@@ -282,7 +300,7 @@ public class WaveManager : MonoBehaviour
 
         foreach (EnemySpawnerCell spawner in selectedMultipleSpawners)
         {
-            spawner.DisplayDangerIcon(true);
+            spawner.DisplayTowerIcons(true, 0);
         }
     }
 
@@ -349,9 +367,8 @@ public class WaveManager : MonoBehaviour
             {
                 for (int i = 0; i < waveCombo.enemyWaveDataList.Count; i++)
                 {
-                    currentLevelEnemySpawners[waveCombo.enemyWaveDataList[i].enemySpawnerIndex].DisplayDangerIcon(true);
+                    currentLevelEnemySpawners[waveCombo.enemyWaveDataList[i].enemySpawnerIndex].DisplayTowerIcons(true, waveCombo.enemyWaveDataList[i].amountOfThisEnemy);
                 }
-
             }
         }
 
@@ -363,11 +380,6 @@ public class WaveManager : MonoBehaviour
     [ContextMenu("Start Next Wave")]
     public void StartNextWave()
     {
-        foreach (Die die in DiceManager.Instance.ReturnResourceDice())
-        {
-            Player.Instance.AddResourcesFromDice(die);
-        }
-
         currentIndexInWave++;
 
         //this is reached when we try to start a wave but finished them all, meaning we won

@@ -7,6 +7,7 @@ public class DieData
 {
     public DieType dieType;
     public DieElement element;
+    public CellTypeColor colorType;
     public Material material;
     public List<DieFaceValue> facesValues;
     public TowerBaseParent towerPrefabConnected;

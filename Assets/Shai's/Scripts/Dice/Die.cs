@@ -12,7 +12,7 @@ public class Die : MonoBehaviour
 {
     public UnityEvent OnRollStartEvent;
     public UnityEvent<Die> OnRollEndEvent;
-    public UnityEvent OnDragStartEvent;
+    public UnityEvent OnDragEvent;
     public UnityEvent OnDragEndEvent;
     public UnityEvent OnPlaceEvent;
     public UnityEvent OnDestroyDieEvent;
@@ -21,6 +21,7 @@ public class Die : MonoBehaviour
     [Header("Dice Data")]
     [SerializeField] private DieType DieType;
     [SerializeField] private DieElement element;
+    [SerializeField] private CellTypeColor colorType;
     [SerializeField] private Material diceMat;
     [SerializeField] private bool isLocked;
 
@@ -73,8 +74,8 @@ public class Die : MonoBehaviour
         OnRollEndEvent.AddListener(OrientCubeToCamrea);
         OnRollEndEvent.AddListener(TransformAfterRoll);
 
-        OnDragStartEvent.AddListener(SetValuesOnDragStart);
-        OnDragStartEvent.AddListener(SetMovingFalse);
+        OnDragEvent.AddListener(SetValuesOnDragStart);
+        OnDragEvent.AddListener(SetMovingFalse);
 
         OnDragEndEvent.AddListener(SetValuesOnDragEnd);
 
@@ -121,7 +122,7 @@ public class Die : MonoBehaviour
 
 
             rangeIndicator.localScale = new Vector3(range * 2 / originalScale.x, range * 2 / originalScale.y, range * 2 / originalScale.z);
-            rangeIndicator.gameObject.SetActive(false);
+            ToggleRangeIndicator(false);
         }
     }
 
@@ -211,12 +212,12 @@ public class Die : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        if (isLocked || !GameManager.playerTurn) return;
+        if (isLocked) return;
         currentTimeTillStartDrag += Time.deltaTime;
 
         if (currentTimeTillStartDrag >= timeTillStartDrag)
         {
-            OnDragStartEvent?.Invoke();
+            OnDragEvent?.Invoke();
             _isDragging = true;
         }
     }
@@ -277,10 +278,7 @@ public class Die : MonoBehaviour
     {
         RB.isKinematic = true;
 
-        if (rangeIndicator)
-        {
-            rangeIndicator.gameObject.SetActive(true);
-        }
+        ToggleRangeIndicator(true);
 
         transform.localScale = scaleOnDrag;
 
@@ -292,11 +290,12 @@ public class Die : MonoBehaviour
 
 
     }
+
     private void SetValuesOnDragEnd()
     {
         if (rangeIndicator)
         {
-            rangeIndicator.gameObject.SetActive(false);
+            ToggleRangeIndicator(false);
         }
 
         //called if we stopped dragging and DIDN'T place a tower.
@@ -314,7 +313,7 @@ public class Die : MonoBehaviour
     {
         if (rangeIndicator)
         {
-            rangeIndicator.gameObject.SetActive(false);
+            ToggleRangeIndicator(false);
         }
 
         DisplayBuffs();
@@ -344,7 +343,7 @@ public class Die : MonoBehaviour
 
         OnRollStartEvent.RemoveAllListeners();
         OnRollEndEvent.RemoveAllListeners();
-        OnDragStartEvent.RemoveAllListeners();
+        OnDragEvent.RemoveAllListeners();
         OnDragEndEvent.RemoveAllListeners();
         OnPlaceEvent.RemoveAllListeners();
         OnDestroyDieEvent.RemoveAllListeners();
@@ -363,7 +362,7 @@ public class Die : MonoBehaviour
 
         towerPrefabConnected = diceData.towerPrefabConnected;
         diceMat = diceData.material;
-
+        colorType = diceData.colorType;
 
         switch (diceData.dieType)
         {
@@ -467,7 +466,7 @@ public class Die : MonoBehaviour
     {
         if (rangeIndicator)
         {
-            rangeIndicator.gameObject.SetActive(false);
+            ToggleRangeIndicator(false);
         }
 
         RB.isKinematic = false;
@@ -477,6 +476,7 @@ public class Die : MonoBehaviour
         _isInWorld = false;
 
         roller.SetOGPos(transform);
+        roller.ConstraintManually(true, false, true);
         transform.localScale = scaleInPlayerBase;
 
         ChangeLayerRecursive(transform, "Dice");
@@ -502,6 +502,7 @@ public class Die : MonoBehaviour
 
         data.dieType = DieType;
         data.element = element;
+        data.colorType = colorType;
         data.material = diceMat;
 
         List<DieFaceValue> tmpFaceValues = new List<DieFaceValue>();
@@ -520,6 +521,7 @@ public class Die : MonoBehaviour
     {
         DieType = data.dieType;
         element = data.element;
+        colorType = data.colorType;
         diceMat = data.material;
 
         for (int i = 0; i < data.facesValues.Count; i++)
@@ -539,6 +541,24 @@ public class Die : MonoBehaviour
     public DieElement ReturnDieElement()
     {
         return element;
+    }
+
+    public void ToggleRangeIndicator(bool active)
+    {
+        if (rangeIndicator)
+        {
+            rangeIndicator.gameObject.SetActive(active);
+        }
+    }
+
+    public CellTypeColor ReturnDieColorType()
+    {
+        return colorType;
+    }
+
+    public void ManualSetOGPos(Transform _transform)
+    {
+        roller.SetOGPos(_transform);
     }
 }
 

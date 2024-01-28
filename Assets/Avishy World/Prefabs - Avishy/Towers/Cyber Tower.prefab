@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 5868918835685646711}
   - component: {fileID: 2142863599682973752}
   - component: {fileID: 7544678564594478742}
+  - component: {fileID: 2843882677993000622}
   m_Layer: 0
   m_Name: Cyber Tower
   m_TagString: Untagged
@@ -189,6 +190,7 @@ MonoBehaviour:
   resultDiceHolder: {fileID: 1251664290582245430}
   currentTowerBuffs: []
   range: 5
+  specialAttackUnlocked: 0
   rangeIndicator: {fileID: 1290485655830646418}
   onSpawnParticle: {fileID: 2126513307738344185, guid: 9acd4cff9a73e654095fbac641add6bd,
     type: 3}
@@ -205,6 +207,27 @@ MonoBehaviour:
   troopRange: 1.5
   troopPrefab: {fileID: 8425342904263200654, guid: 880e3787047504344a32a7cd14e6eb16,
     type: 3}
+--- !u!135 &2843882677993000622
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233123589084303925}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.53378886
+  m_Center: {x: 0, y: 0.19485073, z: -0.0143021345}
 --- !u!1 &1575746532576646216
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,7 +239,6 @@ GameObject:
   - component: {fileID: 1290485655830646418}
   - component: {fileID: 4276087206425255710}
   - component: {fileID: 4891958542587858384}
-  - component: {fileID: 3749000202375618403}
   m_Layer: 11
   m_Name: Range Indicator
   m_TagString: Untagged
@@ -289,27 +311,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &3749000202375618403
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1575746532576646216}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Radius: 0.49999994
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2429202334905192601
 GameObject:
   m_ObjectHideFlags: 0
