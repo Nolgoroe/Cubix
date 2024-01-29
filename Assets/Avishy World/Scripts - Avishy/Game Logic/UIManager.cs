@@ -51,6 +51,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private DataDieDisplayUI diceDataDisplayUI;
     [SerializeField] private Transform diceDataDisplayParent;
 
+    [Header("Scene Management")]
+    [SerializeField] bool AddActionsToButtons;
 
     private void Awake()
     {
@@ -59,12 +61,15 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        //SceneManager.activeSceneChanged += AddActionToAllButotns;
         AddActionToAllButotns();
+
+        TogglePauseMenu(false);
     }
 
     private void AddActionToAllButotns()
     {
+        if (!AddActionsToButtons) return;
+
         Button[] buttons = FindObjectsOfType<Button>();
 
         foreach (Button button in buttons)
@@ -75,8 +80,6 @@ public class UIManager : MonoBehaviour
 
     public void InitUIManager()
     {
-        TogglePauseMenu(false);
-
         winScreen.gameObject.SetActive(false);
         loseScreen.gameObject.SetActive(false);
 

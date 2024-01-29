@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SpellParent : MonoBehaviour
 {
@@ -9,10 +10,13 @@ public class SpellParent : MonoBehaviour
     [SerializeField] int cooldown;
     [SerializeField] int currentCooldown;
     [SerializeField] CellTypeColor requiredColor;
+    [SerializeField] TMP_Text currentContdownText;
 
     private void Start()
     {
         //SpellManager.Instance.AddSpellToList(this);
+
+        currentContdownText.text = "Usable!";
     }
 
     public bool SnapToHolder(Die die)
@@ -29,18 +33,29 @@ public class SpellParent : MonoBehaviour
     public virtual bool UseSpell(Die dieDragging)
     {
         if (!ReturnCanUseSpell()) return false;
+
         //activate spell here.
         currentDieInSpell = dieDragging;
 
         SpellManager.Instance.AddSpellToCooldownList(this);
         currentCooldown = cooldown;
 
+        currentContdownText.text =  "Cooldown: " + currentCooldown.ToString();
         return true;
     }
 
     public void CountdownCooldown()
     {
         currentCooldown--;
+
+        if(currentCooldown <= 0)
+        {
+            currentContdownText.text = "Usable!";
+        }
+        else
+        {
+            currentContdownText.text = "Cooldown: " + currentCooldown.ToString();
+        }
     }
 
     public bool ReturnCanUseSpell()
