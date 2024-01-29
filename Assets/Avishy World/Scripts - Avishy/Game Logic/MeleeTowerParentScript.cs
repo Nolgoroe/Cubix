@@ -105,9 +105,10 @@ public class MeleeTowerParentScript : TowerBaseParent
         //}
         #endregion
     }
-    protected virtual void Update()
+    protected override void Update()
     {
-        if (GameManager.gamePaused) return;
+        base.Update();
+        if (GameManager.gamePaused || isBeingDragged || isDisabled) return;
 
         if (currentNumOfTroops < maxNumOfTroops)
         {
@@ -171,6 +172,8 @@ public class MeleeTowerParentScript : TowerBaseParent
 
     public override void InitTowerData(Vector2Int positionOfCell, Die connectedDie)
     {
+        connectedPathCells.Clear();
+
         currentCellOnPos = positionOfCell;
 
         currentSpawnCooldown = spawnRate;
@@ -222,15 +225,17 @@ public class MeleeTowerParentScript : TowerBaseParent
 
         }
     }
-    public override void CleanTroopsCompletely()
+    protected override void CleanTroopsCompletely()
     {
         for (int i = currentTowerTroops.Count - 1; i >= 0; i--)
         {
             if(currentTowerTroops[i] != null)
-            Destroy(currentTowerTroops[i].gameObject);
-
-            currentTowerTroops.RemoveAt(i);
+            {
+                Destroy(currentTowerTroops[i].gameObject);
+            }
         }
+        currentNumOfTroops = 0;
+        currentTowerTroops.Clear();
     }
     public override void RecieveBuffAfterRoll(Die die)
     {
@@ -239,6 +244,39 @@ public class MeleeTowerParentScript : TowerBaseParent
         switch (dieFaceValue.Buff.Type)
         {
             case BuffType.None:
+                break;
+            case BuffType.Dmg:
+                troopDMG += originalTroopDMG * (dieFaceValue.Buff.Value / 100);
+                break;
+            case BuffType.Range:
+                troopRange += originalTroopRange * (dieFaceValue.Buff.Value / 100);
+                range += originalRange * (dieFaceValue.Buff.Value / 100);
+
+                SetRangeIndicator();
+                break;
+            case BuffType.HP:
+                troopHP += originalTroopHP * (dieFaceValue.Buff.Value / 100);
+                break;
+            case BuffType.time:
+                spawnRate -= originalSpawnRate * (dieFaceValue.Buff.Value / 100);
+                break;
+            default:
+                break;
+        }
+
+        AddNewTowerBuff(dieFaceValue, die);
+    }
+    public override void RecieveRandomBuff(Die die)
+    {
+        int randomBuffIndex = UnityEngine.Random.Range(0, die.GetAllFaces().Length);
+        DieFaceValue dieFaceValue = die.GetAllFaces()[randomBuffIndex].GetFaceValue();
+
+        switch (dieFaceValue.Buff.Type)
+        {
+            case BuffType.None:
+                //if we get none, just return Damage for now - Temp
+                troopDMG += originalTroopDMG * (dieFaceValue.Buff.Value / 100);
+                dieFaceValue = die.GetAllFaces()[2].GetFaceValue(); //temp
                 break;
             case BuffType.Dmg:
                 troopDMG += originalTroopDMG * (dieFaceValue.Buff.Value / 100);

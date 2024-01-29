@@ -21,8 +21,9 @@ MonoBehaviour:
   itemName: Laser D8
   diePrefab: {fileID: 6895173316381504982, guid: 89c80393a1704c540a3de66fa30dd966,
     type: 3}
-  dieType: 1
+  dieType: 0
   element: 0
+  colorType: 0
   towerPrefab: {fileID: 3604278371290302878, guid: a73571feaaefd0746904ed2002b90da1,
     type: 3}
   dieMaterial: {fileID: 2100000, guid: 3c28b1779aea3e642848366b538bdcb3, type: 2}

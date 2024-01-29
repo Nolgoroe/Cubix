@@ -12,6 +12,7 @@ public class DiceManager : MonoBehaviour
     [Header("Live data")]
     [SerializeField] private List<Die> resourceDice;
     [SerializeField] private List<DieRoller> worldDice;
+    [SerializeField] private List<Die> spellDice;
 
 
     private void Awake()

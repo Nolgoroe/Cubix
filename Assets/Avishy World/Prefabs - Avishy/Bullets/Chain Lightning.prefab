@@ -4952,6 +4952,6 @@ MonoBehaviour:
   chainLightningEffect: {fileID: 8551618965700826368}
   beenStruck: {fileID: 5052066345026475232, guid: 70dd58b88dcfbc0498d1701116e9a3a2,
     type: 3}
-  amountToChain: 5
-  damage: 1
+  amountToChain: 7
+  damage: 15
   damageLoss: 2

@@ -536,6 +536,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8937587347033396745}
   - component: {fileID: 3604278371290302878}
+  - component: {fileID: 3835319345847183020}
   m_Layer: 0
   m_Name: Laser Trap Tower
   m_TagString: Untagged
@@ -580,11 +581,13 @@ MonoBehaviour:
   resultDiceHolder: {fileID: 1085664021410067814}
   currentTowerBuffs: []
   range: 5
+  specialAttackUnlocked: 0
   rangeIndicator: {fileID: 183081081390235119}
   onSpawnParticle: {fileID: 2126513307738344185, guid: 9acd4cff9a73e654095fbac641add6bd,
     type: 3}
   currentCellOnPos: {x: 0, y: 0}
   connectedPathCells: []
+  RallyPoint: {fileID: 0}
   spawnRate: 1
   currentSpawnCooldown: 0
   maxNumOfTroops: 1
@@ -595,6 +598,27 @@ MonoBehaviour:
   troopRange: 0.9
   troopPrefab: {fileID: 8003022479623664012, guid: fe9534263b1c04d49b47a16c609bdaa7,
     type: 3}
+--- !u!135 &3835319345847183020
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4736607198288643694}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0.3434406, z: 0}
 --- !u!1 &6697072006702877302
 GameObject:
   m_ObjectHideFlags: 0

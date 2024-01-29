@@ -10,6 +10,7 @@ public class DieDataSpawner : MonoBehaviour
 
         data.dieType = diceSO.dieType;
         data.element = diceSO.element;
+        data.colorType = diceSO.colorType;
         data.material = diceSO.dieMaterial;
 
         List<DieFaceValue> tmpFaceValues = new List<DieFaceValue>();

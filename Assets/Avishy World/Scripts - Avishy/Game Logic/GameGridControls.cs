@@ -9,7 +9,7 @@ public class GameGridControls : MonoBehaviour
     public static GameGridControls Instance;
 
     [Header("Preset Data")]
-    [SerializeField] private LayerMask gridCellLayer;
+    [SerializeField] private LayerMask cellDetectionLayer;
     [SerializeField] private GameObject currentTowerPrefab;
 
     [Header("Live data")]
@@ -18,8 +18,20 @@ public class GameGridControls : MonoBehaviour
     [SerializeField] private List<Die> currentDieToLock;
 
 
+    [Header("Tower Stamina System")]
+    [SerializeField] private float timeToStartMoving = 1;
+    [SerializeField] private float currentTimeToStartMoving = 1;
+    [SerializeField] private bool isMovingTower;
+    [SerializeField] private Vector3 originalTowerPos;
+    [SerializeField] private GridCell originalCell;
+    [SerializeField] TowerBaseParent currentTowerMoving;
+
     [Header("Rally Point")]
-    [SerializeField] TowerBaseParent currentTower;
+    [SerializeField] TowerBaseParent currentTowerSelected;
+
+    [Header("Spell Controls")]
+    [SerializeField] SpellParent currentSpell;
+    [SerializeField] bool isUsingSpell;
 
     [Header("Temp variables")]
     public bool rapidControls; //temp
@@ -40,17 +52,93 @@ public class GameGridControls : MonoBehaviour
     {
         MouseOverGridCell();
 
+        if (isMovingTower)
+        {
+            MovingTowerControls();
+            return;
+        }
+        MouseOverSpellCell();
+        if (isUsingSpell)
+        {
+            UsingSpellControls();
+            return;
+        }
+
+
         RallyPointControls();
 
-        NormalControls();
-
         DieDraggingControls();
+
+
+        if (SettingRallyPoint || isUsingSpell) return;
+        NormalControls();
+    }
+
+    private void MovingTowerControls()
+    {
+        Vector3 screenPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, GameManager.Instance.ReturnMainCamera().transform.position.y);
+        Ray ray = GameManager.Instance.ReturnMainCamera().ScreenPointToRay(screenPos);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 1000, cellDetectionLayer))
+        {
+            Vector3 offset = new Vector3(0, 0.5f, 0);
+            currentTowerMoving.transform.position = hit.point + offset;
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                if(currentCellHovered && !currentCellHovered.ReturnIsOccipied() && currentCellHovered !=originalCell)
+                {
+                    currentCellHovered.SetAsOccupied(currentTowerMoving);
+                    isMovingTower = false;
+                    currentTowerMoving.SetAsDisabled(true);
+                    currentTowerMoving.SetAsBeingDragged(false);
+                    currentTowerMoving.ManualSetTowerOnCell(currentCellHovered.ReturnPositionInGridArray());
+
+                    Vector3 cellpos = currentCellHovered.transform.position;
+                    Vector3 fixedPos = new Vector3(cellpos.x, cellpos.y + currentTowerPrefab.transform.position.y, cellpos.z);
+
+                    currentTowerMoving.transform.position = fixedPos;
+                    return;
+                }
+                else
+                {
+                    ReturnTowerToOriginalPos();
+                    return;
+                }
+            }
+
+        }
+        else
+        {
+            Vector3 worldPos = GameManager.Instance.ReturnMainCamera().ScreenToWorldPoint(screenPos);
+
+            currentTowerMoving.transform.position = worldPos;
+
+        }
+
+
+        if(Input.GetMouseButtonUp(0))
+        {
+            ReturnTowerToOriginalPos();
+            return;
+        }
+    }
+
+    private void ReturnTowerToOriginalPos()
+    {
+        //move tower back to original pos
+        currentTowerMoving.SetAsBeingDragged(false);
+        originalCell.SetAsOccupied(currentTowerMoving);
+        UIManager.Instance.DisplayTowerBuffData(false, null);
+        currentTowerMoving.transform.position = originalTowerPos;
+        isMovingTower = false;
     }
 
     private void RallyPointControls()
     {
         if (!SettingRallyPoint) return;
-        currentTower.OnHoverOverOccupyingCell(true);
+        currentTowerSelected.OnHoverOverOccupyingCell(true);
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -58,16 +146,16 @@ public class GameGridControls : MonoBehaviour
             Ray ray = GameManager.Instance.ReturnMainCamera().ScreenPointToRay(screenPos);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, 1000, gridCellLayer))
+            if (Physics.Raycast(ray, out hit, 1000, cellDetectionLayer))
             {
-                MeleeTowerParentScript meleeTower = currentTower as MeleeTowerParentScript;
+                MeleeTowerParentScript meleeTower = currentTowerSelected as MeleeTowerParentScript;
                 if (meleeTower)
                 {
                     meleeTower.SetRallyPoint(currentCellHovered);
                 }
             }
 
-            currentTower.OnHoverOverOccupyingCell(false);
+            currentTowerSelected.OnHoverOverOccupyingCell(false);
             SettingRallyPoint = false;
         }
     }
@@ -80,7 +168,7 @@ public class GameGridControls : MonoBehaviour
             Ray ray = GameManager.Instance.ReturnMainCamera().ScreenPointToRay(screenPos);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, 1000, gridCellLayer))
+            if (Physics.Raycast(ray, out hit, 1000, cellDetectionLayer))
             {
                 Vector3 offset = new Vector3(0, 0.5f, 0);
                 currentDieDragging.transform.position = hit.point + offset;
@@ -97,14 +185,41 @@ public class GameGridControls : MonoBehaviour
 
     private void NormalControls()
     {
-        if (SettingRallyPoint) return;
 
         if (currentCellHovered && currentCellHovered.ReturnIsOccipiedByTower())
         {
+            if (Input.GetMouseButtonUp(0))
+            {
+                currentTowerSelected = currentCellHovered.ReturnTowerOnCell();
+                SettingRallyPoint = true;
+                return;
+            }
+
             if (Input.GetMouseButtonDown(0))
             {
-                currentTower = currentCellHovered.ReturnTowerOnCell();
-                SettingRallyPoint = true;
+                currentTimeToStartMoving = timeToStartMoving;
+            }
+
+            if (Input.GetMouseButton(0))
+            {
+                if(currentTimeToStartMoving <= 0)
+                {
+                    currentTimeToStartMoving = timeToStartMoving;
+                    isMovingTower = true;
+                    currentTowerMoving = currentCellHovered.ReturnTowerOnCell();
+                    currentTowerMoving.SetAsBeingDragged(true);
+                    UIManager.Instance.DisplayTowerBuffData(false, null);
+
+                    originalCell = currentCellHovered;
+                    currentCellHovered.ResetCell();
+
+                    originalTowerPos = currentTowerMoving.transform.position;
+
+                    return;
+                }
+
+                currentTimeToStartMoving -= Time.deltaTime * GameManager.gameSpeed;
+                //we are holding down the mousebutton on a base, meaning we want to drag it.
             }
         }
             
@@ -112,14 +227,9 @@ public class GameGridControls : MonoBehaviour
         {
             if (Input.GetMouseButtonUp(0))
             {
-                if (currentCellHovered && !currentCellHovered.ReturnIsOccipied())
+                if (currentCellHovered && !currentCellHovered.ReturnIsOccipied() && GameManager.playerTurn)
                 {
                     InstantiateTower();
-
-                    if (CheckCanPlaceTowerOnCell())
-                    {
-                        Player.Instance.RecieveRandomResource();
-                    }
 
                     SetCurrentDieDragging(null);
 
@@ -131,6 +241,32 @@ public class GameGridControls : MonoBehaviour
                     currentDieDragging.OnDragEndEvent?.Invoke();
                     SetCurrentDieDragging(null);
 
+                }
+            }
+        }
+    }
+    private void UsingSpellControls()
+    {            
+        if (currentDieDragging)
+        {
+            if (Input.GetMouseButtonUp(0))
+            {
+                if(currentSpell)
+                {
+                    /// call activate spell here
+                    if(currentSpell.UseSpell(currentDieDragging))
+                    {
+                        DiceManager.Instance.RemoveDiceToResources(currentDieDragging);
+
+                        currentSpell = null;
+                        isUsingSpell = false;
+                        currentDieDragging = null;
+                    }
+                }
+                else
+                {
+                    currentDieDragging.OnDragEndEvent?.Invoke();
+                    SetCurrentDieDragging(null);
                 }
             }
         }
@@ -200,9 +336,16 @@ public class GameGridControls : MonoBehaviour
             currentDieDragging.OnPlaceEvent?.Invoke();
             currentDieDragging.InitDie(towerSpawned);
 
-            SetCurrentDieDragging(null);
 
             currentCellHovered.SetAsOccupied(towerSpawned);
+
+            if(CheckCanPlaceTowerOnCell())
+            {
+                towerSpawned.RecieveRandomBuff(currentDieDragging);
+            }
+
+            SetCurrentDieDragging(null);
+
         }
     }
 
@@ -222,7 +365,7 @@ public class GameGridControls : MonoBehaviour
 
         positionOfMouse = Vector3.zero;
 
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, Mathf.Infinity, gridCellLayer))
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, Mathf.Infinity, cellDetectionLayer))
         {
             hitInfo.transform.TryGetComponent<GridCell>(out currentCellHovered);
         }
@@ -233,6 +376,37 @@ public class GameGridControls : MonoBehaviour
         }
 
         return currentCellHovered;
+    }
+    private bool MouseOverSpellCell()
+    {
+        if (UIManager.menuOpened || 
+            EventSystem.current.IsPointerOverGameObject() ||
+            GameManager.playerTurn) return false;
+
+        currentSpell = null;
+        isUsingSpell = false;
+        Ray ray = GameManager.Instance.ReturnMainCamera().ScreenPointToRay(Input.mousePosition);
+
+        positionOfMouse = Vector3.zero;
+
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, Mathf.Infinity, cellDetectionLayer))
+        {
+            hitInfo.transform.TryGetComponent<SpellParent>(out currentSpell);
+        
+            if(currentDieDragging && currentSpell)
+            {
+                currentDieDragging.ToggleRangeIndicator(false);
+
+                if (currentSpell.SnapToHolder(currentDieDragging))
+                {
+                    isUsingSpell = true;
+                    return true;
+                }
+
+            }
+        }
+
+        return false;
     }
 
 
