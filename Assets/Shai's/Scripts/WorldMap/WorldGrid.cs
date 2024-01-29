@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum GridDirection { BottomUp, LeftRight }
+
 public class WorldGrid : MonoBehaviour
 {
     [Header("Grid Settings")]
     [SerializeField] private Vector2Int gridSize;
     [SerializeField] private Vector2 slotSize;
-    [SerializeField] private Vector2 gridOrigin;
+    [SerializeField] private Vector2 gridOriginOffset;
     [SerializeField] private float heightSpacing;
     [SerializeField] private float widthSpacing;
     [SerializeField] private GameObject siteNodePrefab;
     [SerializeField] private LinesParent linesParent;
-    [SerializeField] private WorldProgression progression;
+    [SerializeField] private MapProgression progression;
+    [SerializeField] private GridDirection direction;
+    [SerializeField] private List<SiteNode> nodes;
 
     [Header("Node Linking")]
     [SerializeField] private int maxSinngleLinkStreak;
@@ -22,16 +26,46 @@ public class WorldGrid : MonoBehaviour
 
     private void Start()
     {
-        CreateWorldMap();
+        if (nodes == null)
+        {
+            CreateWorldMap();
+        }
+        else
+        {
+            _grid = new SiteNode[gridSize.x, gridSize.y];
+            foreach (var node in nodes)
+            {
+                _grid[node.gridPos.x, node.gridPos.y] = node;
+            }
+            progression.Init();
+        }
     }
 
-    [ContextMenu("CreateWorldMap")]
     public void CreateWorldMap()
     {
         GenerateGrid();
         ConnectNodes();
         linesParent.AdoptLines();
         progression.Init();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Debug.Log("zff");
+        }
+    }
+
+    [ContextMenu("GenerateLines")]
+    public void UpdateLines()
+    {
+        foreach (var node in nodes)
+        {
+            node.CreateLinks();
+        }
+
+        linesParent.AdoptLines();
     }
 
 
@@ -47,7 +81,7 @@ public class WorldGrid : MonoBehaviour
                 SiteNode tmpNode;
                 Vector3 nodePos = GetPosAtSlot(x, y);
                 Instantiate(siteNodePrefab, nodePos, Quaternion.identity, transform).TryGetComponent<SiteNode>(out tmpNode);
-                tmpNode.gridPos = new Vector2(x, y);
+                tmpNode.gridPos = new Vector2Int(x, y);
                 _grid[x, y] = tmpNode;
             }
         }
@@ -65,10 +99,28 @@ public class WorldGrid : MonoBehaviour
 
     private Vector3 GetPosAtSlot(int slotX, int slotY)
     {
+        //add modifiers for grid generation direction
+        Vector2 gridOrigin;
         Vector3 resPos = new Vector3();
 
-        resPos.x = widthSpacing * slotX + gridOrigin.x;
-        resPos.y = heightSpacing * slotY + gridOrigin.y;
+        switch (direction)
+        {
+            case GridDirection.BottomUp:
+                resPos.x = widthSpacing * slotX + gridOriginOffset.x;
+                resPos.y = heightSpacing * slotY + gridOriginOffset.y;
+                break;
+            case GridDirection.LeftRight:
+                resPos.x = widthSpacing * slotY + gridOriginOffset.y;
+                resPos.y = heightSpacing * slotX + gridOriginOffset.x;
+                break;
+            default:
+                break;
+        }
+
+
+
+        //resPos.x = widthSpacing * slotX + gridOriginOffset.x;
+        //resPos.y = heightSpacing * slotY + gridOriginOffset.y;
 
         if (slotY > 0) //dont add random offset to first tier
         {
@@ -119,9 +171,9 @@ public class WorldGrid : MonoBehaviour
                     //if node's singleLinkStreak exceeds max, create another link
                     if (currentNode.singleLinkStreak > maxSinngleLinkStreak && Upper3Nodes.Count > 0)
                     {
-                            tmpNode = Upper3Nodes[Random.Range(0, Upper3Nodes.Count)];
-                            currentNode.CreateLink(tmpNode);
-                            Upper3Nodes.Remove(tmpNode);
+                        tmpNode = Upper3Nodes[Random.Range(0, Upper3Nodes.Count)];
+                        currentNode.CreateLink(tmpNode);
+                        Upper3Nodes.Remove(tmpNode);
                     }
 
                     //try to link rest of nodes
@@ -136,7 +188,6 @@ public class WorldGrid : MonoBehaviour
                             }
                         }
                     }
-
                     //increase singleLinkStreak if needed
                     if (currentNode.exitLinks == 1)
                     {

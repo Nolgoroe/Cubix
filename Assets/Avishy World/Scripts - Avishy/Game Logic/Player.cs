@@ -85,10 +85,17 @@ public class Player : MonoBehaviour
                 break;
         }
 
+        SoundManager.Instance.PlaySoundOneShot(Sounds.RecieveResources);
+
         UIManager.Instance.UpdateResources(iron, energy, lightning, scrap);
     }
     public bool AddRemoveScrap(int amount)
     {
+        if(amount > 0)
+        {
+            SoundManager.Instance.PlaySoundOneShot(Sounds.RecieveResources); // maybe not here
+        }
+
         scrap += amount;
     
         if(scrap <= 0)
@@ -132,6 +139,8 @@ public class Player : MonoBehaviour
             default:
                 break;
         }
+
+        SoundManager.Instance.PlaySoundOneShot(Sounds.RecieveResources);
     }
 
     public int ReturnAmountOfResource(ResourceType resourceType)

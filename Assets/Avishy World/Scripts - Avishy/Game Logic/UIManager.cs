@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -56,8 +57,21 @@ public class UIManager : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        //SceneManager.activeSceneChanged += AddActionToAllButotns;
+        AddActionToAllButotns();
+    }
 
+    private void AddActionToAllButotns()
+    {
+        Button[] buttons = FindObjectsOfType<Button>();
 
+        foreach (Button button in buttons)
+        {
+            button.onClick.AddListener(() => SoundManager.Instance.PlaySoundOneShot(Sounds.UIClick));
+        }
+    }
 
     public void InitUIManager()
     {
@@ -65,6 +79,9 @@ public class UIManager : MonoBehaviour
 
         winScreen.gameObject.SetActive(false);
         loseScreen.gameObject.SetActive(false);
+
+
+        //find all buttons and add the ui sound to on click.
     }
 
     public void DisplayTimerText(bool show)

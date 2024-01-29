@@ -17,7 +17,7 @@ public class SpellParent : MonoBehaviour
 
     public bool SnapToHolder(Die die)
     {
-        if(die.ReturnDieColorType() == requiredColor || currentCooldown > 0)
+        if(die.ReturnDieColorType() == requiredColor && ReturnCanUseSpell())
         {
             die.transform.position = diceHolder.transform.position;
             return true;
@@ -28,7 +28,7 @@ public class SpellParent : MonoBehaviour
 
     public virtual bool UseSpell(Die dieDragging)
     {
-        if (currentCooldown > 0) return false;
+        if (!ReturnCanUseSpell()) return false;
         //activate spell here.
         currentDieInSpell = dieDragging;
 
@@ -45,7 +45,7 @@ public class SpellParent : MonoBehaviour
 
     public bool ReturnCanUseSpell()
     {
-        return currentCooldown <= 0;
+        return currentCooldown <= 0 && currentDieInSpell == null;
     }
 
     public Die ReturnCurrentDieInSpell()

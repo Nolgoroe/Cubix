@@ -162,6 +162,9 @@ public class Die : MonoBehaviour
 
     private void TransformAfterRoll(Die die)
     {
+        SoundManager.Instance.PlaySoundOneShot(Sounds.DiceDisplayResult);
+        SoundManager.Instance.PlaySoundOneShot(Sounds.DiceEndRoll);
+
         LeanTween.rotate(gameObject, die.targetQuat.eulerAngles, 0.2f).setOnComplete(TowerRotate);// speed is temp here
 
         if (die._isInWorld)
@@ -433,6 +436,8 @@ public class Die : MonoBehaviour
     {
         isLocked = isLocking ? true : false;
         lockTransform.gameObject.SetActive(isLocking ? true : false);
+
+        SoundManager.Instance.PlaySoundOneShot(Sounds.LockDice);
     }
 
     public GameObject ReturnTowerPrefab()

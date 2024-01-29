@@ -126,6 +126,9 @@ public class DieRoller : MonoBehaviour
 
         if (!die.ReturnIsLocked() && isActiveAndEnabled)
         {
+            SoundManager.Instance.PlaySoundOneShot(Sounds.DiceStartRolling);
+            SoundManager.Instance.PlaySoundOneShot(Sounds.DiceRolling);
+
             die.OnRollStartEvent.Invoke();
             die.RB.ResetCenterOfMass();
             StartCoroutine(ChangeMassAtTop());//Change mass only on apex of throw to look more organic

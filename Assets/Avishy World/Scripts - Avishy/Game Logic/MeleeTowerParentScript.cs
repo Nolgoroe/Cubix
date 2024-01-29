@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+public enum MeleeTowerType
+{
+    Normal, Laser
+}
 public class MeleeTowerParentScript : TowerBaseParent
 {
     [Header("Live data")]
@@ -11,6 +15,7 @@ public class MeleeTowerParentScript : TowerBaseParent
     [SerializeField] GridCell RallyPoint;
 
     [Header("Troop Spawn Data")]
+    [SerializeField] protected MeleeTowerType meleeType;
     [SerializeField] protected float spawnRate = 1;
     [SerializeField] protected float currentSpawnCooldown = 0;
     [SerializeField] int maxNumOfTroops;
@@ -144,6 +149,18 @@ public class MeleeTowerParentScript : TowerBaseParent
             {
                 troop.InitTroopData(this, troopHP, troopRange, troopDMG);
                 currentTowerTroops.Add(troop);
+            }
+
+            switch (meleeType)
+            {
+                case MeleeTowerType.Normal:
+                    SoundManager.Instance.PlaySoundOneShot(Sounds.CyberTroopSpawn);
+                    break;
+                case MeleeTowerType.Laser:
+                    SoundManager.Instance.PlaySoundOneShot(Sounds.LazerTrapSpawn);
+                    break;
+                default:
+                    break;
             }
         }
 
