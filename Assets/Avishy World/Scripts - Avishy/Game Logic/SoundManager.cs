@@ -4,7 +4,27 @@ using UnityEngine;
 
 public enum Sounds
 {
-    GameStart, WaveStart, PlaceTower
+    BuyItem, 
+    CyberTroopSpawn, 
+    DiceDisplayResult, 
+    DiceEndRoll, 
+    DiceRolling, 
+    DiceStartRolling,
+    ElectricBasicAttack,
+    ElectricSpecialAttack,
+    EnemyDies,
+    EnemyEnterBase,
+    EnemyHit,
+    EnemySpawn,
+    LazerTrapSpawn,
+    LockDice,
+    PlacingTower,
+    RecieveResources,
+    TimerTicking,
+    TowerRecieveBuff,
+    UIClick,
+    WaveStart
+
 }
 
 [System.Serializable]
@@ -24,7 +44,17 @@ public class SoundManager : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        DontDestroyOnLoad(this);
+
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
 
         SoundToAudioSourceDict = new Dictionary<Sounds, AudioSourceCombo>();
 
@@ -34,7 +64,7 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    private IEnumerator ActivateSoundTimed(Sounds sound)
+    private IEnumerator PlaySoundTimed(Sounds sound)
     {
         float time = SoundToAudioSourceDict[sound].source.clip.length;
 
@@ -61,18 +91,26 @@ public class SoundManager : MonoBehaviour
     }
 
 
-    public void CallActivateSoundTimed(Sounds sound)
+    public void CallPlaySoundTimed(Sounds sound)
     {
-        StartCoroutine(ActivateSoundTimed(sound));
+        StartCoroutine(PlaySoundTimed(sound));
     }
 
-    public void ActivateSoundImmediate(Sounds sound)
+    public void PlaySoundOneShot(Sounds sound)
+    {
+        SoundToAudioSourceDict[sound].source.PlayOneShot(SoundToAudioSourceDict[sound].source.clip, SoundToAudioSourceDict[sound].maxVolume);
+    }
+    public void PlaySoundNormal(Sounds sound)
     {
         SoundToAudioSourceDict[sound].source.Play();
-
+    }
+    public void PlaySoundIfInactive(Sounds sound)
+    {
+        if(!SoundToAudioSourceDict[sound].source.isPlaying)
+        SoundToAudioSourceDict[sound].source.Play();
     }
 
-    public void StopSound(Sounds sound)
+    public void StopSoundTimed(Sounds sound)
     {
         SoundToAudioSourceDict[sound].source.volume = 1;
 
@@ -84,6 +122,11 @@ public class SoundManager : MonoBehaviour
             {
                 SoundToAudioSourceDict[sound].source.volume = val;
             });
+    }
+    public void StopSound(Sounds sound)
+    {
+        if(SoundToAudioSourceDict[sound].source.isPlaying)
+        SoundToAudioSourceDict[sound].source.Stop();
     }
 
 }

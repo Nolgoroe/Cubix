@@ -45,8 +45,6 @@ public class GameManager : MonoBehaviour
         isDead = false;
 
         playerTurn = true;
-
-        SoundManager.Instance.CallActivateSoundTimed(Sounds.GameStart);
     }
 
     private void Update()
@@ -79,6 +77,8 @@ public class GameManager : MonoBehaviour
 
         if (isPlayerTurn)
         {
+            SoundManager.Instance.PlaySoundNormal(Sounds.TimerTicking);
+
             foreach (TowerBaseParent tower in summonedRangeTowers)
             {
                 StartCoroutine(tower.OnStartPlayerTurn());

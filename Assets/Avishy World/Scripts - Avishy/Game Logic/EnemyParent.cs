@@ -61,6 +61,8 @@ public class EnemyParent : MonoBehaviour
 
     private void Start()
     {
+        SoundManager.Instance.PlaySoundOneShot(Sounds.EnemySpawn);
+
         startingHeight = transform.position.y;
 
         rend.material = spawnMat;
@@ -165,6 +167,8 @@ public class EnemyParent : MonoBehaviour
 
             if(playerBase)
             {
+                SoundManager.Instance.PlaySoundOneShot(Sounds.EnemyEnterBase);
+
                 playerBase.RecieveDamage(this);
             }
 
@@ -226,9 +230,15 @@ public class EnemyParent : MonoBehaviour
 
         if(enemyHealth <= 0)
         {
+            SoundManager.Instance.PlaySoundOneShot(Sounds.EnemyDies);
+
             RollGiveScrap();
             Instantiate(onDeathParticle, transform.position, Quaternion.identity);
             Destroy(gameObject);
+        }
+        else
+        {
+            SoundManager.Instance.PlaySoundOneShot(Sounds.EnemyHit);
         }
 
 

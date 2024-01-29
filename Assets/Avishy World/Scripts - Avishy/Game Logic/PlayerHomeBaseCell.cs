@@ -53,7 +53,7 @@ public class PlayerHomeBaseCell : GridCell
 
     public void RecieveDamage(EnemyParent enemy)
     {
-        StartCoroutine(CameraShake.Shake(0.3f, 0.2f));
+        StartCoroutine(CameraShake.Shake(0.2f, 0.1f));
 
         Player.Instance.RecieveDMG(1);
     }

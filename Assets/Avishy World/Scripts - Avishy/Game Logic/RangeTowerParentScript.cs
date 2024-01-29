@@ -97,7 +97,15 @@ public class RangeTowerParentScript : TowerBaseParent
         TowerBullet bullet;
         go.TryGetComponent<TowerBullet>(out bullet);
         
-        if(bullet)
+        if(isSpecialBullet)
+        {
+            SoundManager.Instance.PlaySoundOneShot(Sounds.ElectricSpecialAttack);
+        }
+        else
+        {
+            SoundManager.Instance.PlaySoundOneShot(Sounds.ElectricBasicAttack);
+        }
+        if (bullet)
         {
             bullet.InitBullet(currentTarget, bulltDMG, isSpecialBullet);
         }
