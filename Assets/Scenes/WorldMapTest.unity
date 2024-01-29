@@ -387,9 +387,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61b8f8251a0dca241a80d793183da7ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridSize: {x: 5, y: 9}
+  gridSize: {x: 5, y: 5}
   slotSize: {x: 50, y: 50}
-  gridOrigin: {x: 1120, y: 150}
+  gridOrigin: {x: 150, y: 40}
   heightSpacing: 200
   widthSpacing: 400
   siteNodePrefab: {fileID: 7652812141820951943, guid: 3a989d7972fe170429819fa99f282091,
