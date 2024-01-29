@@ -55,6 +55,8 @@ public class ShopManager : MonoBehaviour
             }
 
             AddItemsToPlayer(item);
+
+            SoundManager.Instance.PlaySoundOneShot(Sounds.BuyItem);
         }
 
         if(shopMessageString != "")

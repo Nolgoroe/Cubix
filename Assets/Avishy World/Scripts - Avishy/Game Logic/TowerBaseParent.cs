@@ -64,6 +64,8 @@ public abstract class TowerBaseParent : MonoBehaviour
     }
     virtual protected void Start()
     {
+        SoundManager.Instance.PlaySoundOneShot(Sounds.PlacingTower);
+
         originalDiceHolderRotation = resultDiceHolder.rotation;
         originalScale = transform.localScale;
         transform.localScale = Vector3.zero;
@@ -111,6 +113,8 @@ public abstract class TowerBaseParent : MonoBehaviour
         holder.amount = diceFaceValue.Buff.Value;
 
         currentTowerBuffs.Add(holder);
+
+        SoundManager.Instance.PlaySoundOneShot(Sounds.TowerRecieveBuff);
     }
 
     protected void SetRangeIndicator()

@@ -233,7 +233,6 @@ public class GameGridControls : MonoBehaviour
 
                     SetCurrentDieDragging(null);
 
-                    SoundManager.Instance.ActivateSoundImmediate(Sounds.PlaceTower);
                 }
                 else
                 {
@@ -345,7 +344,6 @@ public class GameGridControls : MonoBehaviour
             }
 
             SetCurrentDieDragging(null);
-
         }
     }
 

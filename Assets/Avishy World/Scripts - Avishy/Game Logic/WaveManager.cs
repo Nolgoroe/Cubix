@@ -44,6 +44,11 @@ public class WaveManager : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        SoundManager.Instance.PlaySoundNormal(Sounds.TimerTicking);
+    }
+
     private void Update()
     {
         if (GameManager.gamePaused) return;
@@ -64,8 +69,10 @@ public class WaveManager : MonoBehaviour
 
         if (!waveDone || levelComplete || currentAmountOfEnemiesForCombo > 0 ) return;
 
+
         if (currentCountdown <= 0)
         {
+            SoundManager.Instance.StopSound(Sounds.TimerTicking);
             UIManager.Instance.DisplayTimerText(false);
 
             StartNextWave();
@@ -75,6 +82,13 @@ public class WaveManager : MonoBehaviour
         if (currentCountdown > 0)
         {
             currentCountdown -= Time.deltaTime * GameManager.gameSpeed;
+
+            //if (currentCountdown <= 5)
+            //{
+            //    SoundManager.Instance.StopSound(Sounds.TimerTicking);
+
+            //    SoundManager.Instance.PlaySoundIfInactive(Sounds.TimerTicking);
+            //}
 
             UIManager.Instance.SetWaveCountdownText(currentCountdown);
 
@@ -121,7 +135,7 @@ public class WaveManager : MonoBehaviour
 
                     enemyData.amountOfThisEnemy--;
 
-                    currentLevelEnemySpawners[enemyData.enemySpawnerIndex].ChangeTowerEnemyText(enemyData.amountOfThisEnemy);
+                    currentLevelEnemySpawners[enemyData.enemySpawnerIndex].ChangeTowerEnemyText(1);
 
                     enemiesAvailable = true;
                 }
@@ -393,7 +407,7 @@ public class WaveManager : MonoBehaviour
             return;
         }
 
-        SoundManager.Instance.CallActivateSoundTimed(Sounds.WaveStart);
+        SoundManager.Instance.PlaySoundOneShot(Sounds.WaveStart);
 
         BeforeWaveStart();
 
