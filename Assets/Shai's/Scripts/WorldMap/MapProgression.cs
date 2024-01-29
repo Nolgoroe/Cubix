@@ -9,10 +9,6 @@ public class MapProgression : MonoBehaviour
 
     private void Start()
     {
-        //temp function
-
-        Player.Instance.InitPlayer(); // this also updates the UI health and resource count
-
         UIManager.Instance.UpdateMapDiceDisplay();
     }
     public void Init()
@@ -55,6 +51,19 @@ public class MapProgression : MonoBehaviour
             node.Unlock();
             openNodes.Add(node);
         }
+    }
+
+
+
+    //these two functions are temp here
+    public void CloseGame()
+    {
+        // called from button
+        Application.Quit();
+    }
+    public void RestartRun()
+    {
+        Debug.Log("Restart game");
     }
 
 }
