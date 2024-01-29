@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WorldProgression : MonoBehaviour
+public class MapProgression : MonoBehaviour
 {
     [SerializeField] private WorldGrid worldGrid;
     private List<SiteNode> openNodes = new List<SiteNode>();

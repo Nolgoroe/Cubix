@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class SiteNode : MonoBehaviour
 {
     [Header("BaseSettings")]
-    public Vector2 gridPos;
+    public Vector2Int gridPos;
     public RectTransform rect;
     public Button button;
     public UnityEvent<SiteNode> OnClicked;
@@ -20,6 +20,7 @@ public class SiteNode : MonoBehaviour
 
     [Header("Progression")]
     public bool isLocked;
+    public bool isComplete;
     public int entryLinks;
     public int exitLinks;
     public int singleLinkStreak;
@@ -30,8 +31,10 @@ public class SiteNode : MonoBehaviour
 
     #region Properties
 
-    public int LinksSum { get { return exitLinks + entryLinks; } }
-    public int MaxLinks { get { return maxLinks; } }
+    public int LinksSum { get => exitLinks + entryLinks; }
+    public int MaxLinks { get => maxLinks; }
+    public string ID { get => gridPos.x.ToString() + gridPos.y.ToString(); }
+
 
     #endregion
 
@@ -59,6 +62,19 @@ public class SiteNode : MonoBehaviour
         lines.Add(newLine);
     }
 
+    public void CreateLinks()
+    {
+        foreach (var node in nextNodes)
+        {
+            MapLine newLine = null;
+            GameObject newLineGO = Instantiate(mapLinePrefab, transform.position, Quaternion.identity, transform);
+            newLineGO.TryGetComponent<MapLine>(out newLine);
+            newLine.Init(this, node);
+            newLine.RenderLine();
+            lines.Add(newLine);
+        }
+    }
+
     public void ChangeLinesParent(Transform parent)
     {
         foreach (var line in lines)
@@ -78,10 +94,16 @@ public class SiteNode : MonoBehaviour
         image.color = unlockedColor;
     }
 
-    public void Pick()
+    public void Complete()
     {
         isLocked = true;
+        image.color = unlockedColor;
         completedIcon.SetActive(true);
+    }
+
+    public void Pick()
+    {
+        Complete();
         site.LaunchSite();
     }
 
@@ -93,4 +115,10 @@ public class SiteNode : MonoBehaviour
             OnClicked.Invoke(this);
         }
     }
+
+    //public NodeData ExportData()
+    //{
+    //    NodeData data;
+    //}
+
 }
