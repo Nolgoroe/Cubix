@@ -20,7 +20,7 @@ MonoBehaviour:
     delayBetweenWaves: 30
     enemyWaveCombo:
     - enemyWaveDataList:
-      - amountOfThisEnemy: 20
+      - amountOfThisEnemy: 25
         enemySpawnerIndex: 0
         enemyPathIndex: 0
         enemyType: 1

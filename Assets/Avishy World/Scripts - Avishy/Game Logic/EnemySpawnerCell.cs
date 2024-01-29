@@ -16,6 +16,7 @@ public class EnemySpawnerCell : GridCell
     [SerializeField] private List<EnemyPathCells> enemyPathcells;
     [SerializeField] Transform dangerIcon;
     [SerializeField] TMP_Text amountText;
+    [SerializeField] int amountOfEnemiesForWave;
 
     private void Awake()
     {
@@ -76,12 +77,14 @@ public class EnemySpawnerCell : GridCell
 
     public void DisplayTowerIcons(bool display, int amount)
     {
+        amountOfEnemiesForWave += amount;
+
         dangerIcon.gameObject.SetActive(display);
 
         if(display && amount > 0)
         {
             amountText.gameObject.SetActive(display);
-            amountText.text = amount.ToString();
+            amountText.text = amountOfEnemiesForWave.ToString();
         }
 
         if(!display)
@@ -91,7 +94,8 @@ public class EnemySpawnerCell : GridCell
     }
     public void ChangeTowerEnemyText(int amount)
     {
-        amountText.text = amount.ToString();
+        amountOfEnemiesForWave -= amount;
+        amountText.text = amountOfEnemiesForWave.ToString();
     }
 
     public override void CopyDataFromToolCell(ToolGridCell toolGridCell)

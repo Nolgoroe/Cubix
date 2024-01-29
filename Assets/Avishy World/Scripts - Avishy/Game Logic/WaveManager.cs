@@ -121,7 +121,7 @@ public class WaveManager : MonoBehaviour
 
                     enemyData.amountOfThisEnemy--;
 
-                    currentLevelEnemySpawners[enemyData.enemySpawnerIndex].ChangeTowerEnemyText(enemyData.amountOfThisEnemy);
+                    currentLevelEnemySpawners[enemyData.enemySpawnerIndex].ChangeTowerEnemyText(1);
 
                     enemiesAvailable = true;
                 }
