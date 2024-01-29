@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
         WaveManager.Instance.InitWaveManager();
         UIManager.Instance.InitUIManager();
         DiceManager.Instance.InitDiceManager();
+        Player.Instance.InitPlayer();
 
         UIManager.Instance.UpdateStaminaAmount(Player.Instance.ReturnRerollAmount());
 
@@ -57,6 +58,11 @@ public class GameManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(0);
+        }
+
+        if(Input.GetKeyDown(KeyCode.L))
+        {
+            SceneManager.LoadScene(2);
         }
     }
 
@@ -83,8 +89,12 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(tower.OnStartPlayerTurn());
             }
 
-            yield return new WaitForSeconds(1f); //temp
-            DiceManager.Instance.RollInWorld();
+            SpellManager.Instance.CountdownAllSpells();
+
+            DiceManager.Instance.RollResourcesAutomatic();
+            yield return new WaitForSeconds(1f); //temp here to let dice fall into place before rolling
+            DiceManager.Instance.RollInWorldAutomatic();
+
         }
         else
         {
@@ -161,5 +171,11 @@ public class GameManager : MonoBehaviour
     {
         //also called from button - has to be public
         gameSpeedTemp = speed;
+    }
+
+    public IEnumerator BackToMap()
+    {
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene(1);
     }
 }

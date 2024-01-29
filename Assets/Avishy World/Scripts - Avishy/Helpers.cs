@@ -7,6 +7,39 @@ public class Helpers : MonoBehaviour
 {
     public static Helpers Instance;
 
+    [Header("Dictionary data")]
+    [SerializeField] private Sprite[] allResourceIcons;
+    [SerializeField] private Sprite[] allBuffIcons;
+
+    private static Dictionary<ResourceType, Sprite> resourceTypeToIcon;
+    private static Dictionary<BuffType, Sprite> buffTypeToIcon;
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        resourceTypeToIcon = new Dictionary<ResourceType, Sprite>();
+        buffTypeToIcon = new Dictionary<BuffType, Sprite>();
+
+        for (int i = 0; i < allResourceIcons.Length; i++)
+        {
+            resourceTypeToIcon.Add((ResourceType)i, allResourceIcons[i]);
+        }
+
+        for (int i = 0; i < allBuffIcons.Length; i++)
+        {
+            buffTypeToIcon.Add((BuffType)i, allBuffIcons[i]);
+        }
+    }
 
     //Adding the "This" before Transform just means that it becomes an extension method of the Transform type.
     //Without the "This" before it, it can't be used anywhere in the script.
@@ -50,5 +83,15 @@ public class Helpers : MonoBehaviour
         {
             mat.SetFloat(keyName, val);
         });
+    }
+
+    public static Sprite ReturnIconByType(ResourceType resourceType)
+    {
+        return resourceTypeToIcon[resourceType];
+    }
+
+    public static Sprite ReturnIconByType(BuffType resourceType)
+    {
+        return buffTypeToIcon[resourceType];
     }
 }

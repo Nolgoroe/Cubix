@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3bf2c7264c30214b94a921c4eb1d2e0, type: 3}
   m_Name: Stats Bundle Creation
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: fef100ea7f4a14e49bd2e2c097c5825d, type: 3}
   resourcesNeeded:
   - resource: 0
     amount: 50
   - resource: 1
     amount: 50
+  itemName: Add 10 max HP
   statsToBuy:
   - statToBuy: 0
     amount: 10

@@ -8,8 +8,7 @@ public class RangeTowerParentScript : TowerBaseParent
     [Header ("Live data")]
     [SerializeField] private Transform currentTarget;
 
-    [Header("Combat")] 
-    [SerializeField] private float range = 15;
+    [Header("Local Combat")] 
     [SerializeField] private float rotationSpeed = 15;
     [SerializeField] protected float bulltDMG = 1;
 
@@ -36,8 +35,8 @@ public class RangeTowerParentScript : TowerBaseParent
 
     protected override void Start()
     {
-        fireCountDown = (1 * fireRate) / GameManager.gameSpeed;
-        specialFireRateCooldown = (1 * specialFireRate) / GameManager.gameSpeed;
+        fireCountDown = fireRate;
+        specialFireRateCooldown = specialFireRate;
         originalRange = range;
         originalRotationSpeed = rotationSpeed;
         originalFireRate = fireRate;
@@ -48,18 +47,11 @@ public class RangeTowerParentScript : TowerBaseParent
         SetRangeIndicator();
     }
 
-    private void SetRangeIndicator()
+    protected override void Update()
     {
-        //radius is half of the diameter of a circle
-        if (rangeIndicator)
-        {
-            rangeIndicator.localScale = new Vector3(range * 2 / originalScale.x, range * 2 / originalScale.y, range * 2 / originalScale.z);
-            rangeIndicator.gameObject.SetActive(false);
-        }
-    }
-    protected virtual void Update()
-    {
-        if (GameManager.gamePaused) return;
+        base.Update();
+
+        if (GameManager.gamePaused || isBeingDragged || isDisabled) return;
 
         UpdateTarget();
         if (currentTarget == null) return;
@@ -67,29 +59,35 @@ public class RangeTowerParentScript : TowerBaseParent
         //locking on target
         Vector3 direction = currentTarget.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
-        Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * rotationSpeed * GameManager.gameSpeed).eulerAngles;
+        Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, (Time.deltaTime * rotationSpeed * GameManager.gameSpeed)).eulerAngles;
 
         partToRotate.rotation = Quaternion.Euler(rotation);
 
-        if(specialFireRateCooldown <= 0)
+        if(specialAttackUnlocked)
         {
-            isSpecialBullet = true;
-            specialFireRateCooldown = (1 * specialFireRate) / GameManager.gameSpeed;
+            if (specialFireRateCooldown <= 0)
+            {
+                isSpecialBullet = true;
+                specialFireRateCooldown = specialFireRate;
+            }
+
+            specialFireRateCooldown -= Time.deltaTime * GameManager.gameSpeed;
         }
 
         if (fireCountDown <= 0)
         {
             Shoot();
-            fireCountDown = (1 * fireRate) / GameManager.gameSpeed;
+            fireCountDown = fireRate;
 
             if(isSpecialBullet)
             {
                 isSpecialBullet = false;
             }
+
+            return;
         }
 
         fireCountDown -= Time.deltaTime * GameManager.gameSpeed;
-        specialFireRateCooldown -= Time.deltaTime * GameManager.gameSpeed;
     }
 
     private void Shoot()
@@ -107,6 +105,11 @@ public class RangeTowerParentScript : TowerBaseParent
 
     private void UpdateTarget()
     {
+        if (fireCountDown <= fireCountDown / 5)
+        {
+            return;
+        }
+
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, range, enemyLayerMask);
 
         float shortestDistance = Mathf.Infinity;
@@ -139,14 +142,16 @@ public class RangeTowerParentScript : TowerBaseParent
 
 
     public override void InitTowerData(Vector2Int positionOfCell, Die connectedDie)
-    {        
+    {
+        fireCountDown = fireRate;
 
         currentCellOnPos = positionOfCell;
 
         towerDie = connectedDie;
 
         towerDie.transform.SetParent(resultDiceHolder);
-        //SpawnBuffCubeOnCreation();
+
+        specialAttackUnlocked = towerDie.ReturnSpecialAttackUnlcoked();
     }
 
     private void OnDrawGizmos()
@@ -182,6 +187,38 @@ public class RangeTowerParentScript : TowerBaseParent
         AddNewTowerBuff(dieFaceValue, die);
     }
 
+    public override void RecieveRandomBuff(Die die)
+    {
+        int randomBuffIndex = UnityEngine.Random.Range(0, die.GetAllFaces().Length);
+
+        DieFaceValue dieFaceValue = die.GetAllFaces()[randomBuffIndex].GetFaceValue();
+
+        switch (dieFaceValue.Buff.Type)
+        {
+            case BuffType.None:
+                //if we get none, just return Damage for now - Temp
+                bulltDMG += originalBulletDMG * (dieFaceValue.Buff.Value / 100);
+                dieFaceValue = die.GetAllFaces()[2].GetFaceValue(); //temp
+                break;
+            case BuffType.Dmg:
+                bulltDMG += originalBulletDMG * (dieFaceValue.Buff.Value / 100);
+                break;
+            case BuffType.Range:
+                range += originalRange * (dieFaceValue.Buff.Value / 100);
+
+                SetRangeIndicator();
+                break;
+            case BuffType.HP:
+                break;
+            case BuffType.time:
+                break;
+            default:
+                break;
+        }
+
+        AddNewTowerBuff(dieFaceValue, die);
+    }
+
     public override void OnHoverOverOccupyingCell(bool isHover)
     {
         if (rangeIndicator)
@@ -192,4 +229,20 @@ public class RangeTowerParentScript : TowerBaseParent
     {
         return range;
     }
+
+    public override List<string> DisplayTowerStats()
+    {
+        List<string> stringList = new List<string>()
+        { "Range: " + range.ToString(),
+          "Required Color: " + requiredCellColorType.ToString(),
+          "Special Unlcoked: " + (specialAttackUnlocked ? "True" : "False"),
+          "Rotation Speed: " + rotationSpeed.ToString(),
+          "Bullet Damage: " + bulltDMG.ToString(),
+          "Fire Rate: " + fireRate.ToString(),
+          "Special Attack Rate: " + specialFireRate.ToString()          
+        };
+
+        return stringList;
+    }
+
 }

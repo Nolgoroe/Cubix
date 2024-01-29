@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 [System.Serializable]
 public struct EnemyPathCells
@@ -14,10 +15,12 @@ public class EnemySpawnerCell : GridCell
 
     [SerializeField] private List<EnemyPathCells> enemyPathcells;
     [SerializeField] Transform dangerIcon;
+    [SerializeField] TMP_Text amountText;
 
     private void Awake()
     {
         dangerIcon = transform.GetChild(0); // temp
+        amountText = transform.GetChild(1).GetComponent<TMP_Text>(); // temp
     }
     protected override void Start()
     {
@@ -28,7 +31,7 @@ public class EnemySpawnerCell : GridCell
     {
         if (enemyPaths.Count == 0) return;
 
-        EnemyParent enemy = new EnemyParent();
+        EnemyParent enemy;
         GameObject go = Instantiate(enemyPrefab, transform.position + enemyPrefab.transform.position, transform.rotation);
 
         go.TryGetComponent<EnemyParent>(out enemy);
@@ -71,10 +74,26 @@ public class EnemySpawnerCell : GridCell
         SpawnEnemy(enemyPrefab, followPathIndex);
     }
 
-    public void DisplayDangerIcon(bool display)
+    public void DisplayTowerIcons(bool display, int amount)
     {
         dangerIcon.gameObject.SetActive(display);
+
+        if(display && amount > 0)
+        {
+            amountText.gameObject.SetActive(display);
+            amountText.text = amount.ToString();
+        }
+
+        if(!display)
+        {
+            amountText.gameObject.SetActive(display);
+        }
     }
+    public void ChangeTowerEnemyText(int amount)
+    {
+        amountText.text = amount.ToString();
+    }
+
     public override void CopyDataFromToolCell(ToolGridCell toolGridCell)
     {
         ToolEnemySpawnerCell toolSpawnerCell = toolGridCell as ToolEnemySpawnerCell;

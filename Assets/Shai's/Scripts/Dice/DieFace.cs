@@ -71,6 +71,12 @@ public class DieFace : MonoBehaviour
         }
     }
 
+    public void UpgradeFace(int resourceToAdd, float damage)
+    {
+        resource.Value += resourceToAdd;
+        buff.Value += damage;
+    }
+
     public void DisplayResource()
     {
         faceIcon.sprite = resource.Icon;
@@ -90,21 +96,41 @@ public class DieFace : MonoBehaviour
     {
         return orientationEndRollInWorld;
     }
+
+    public MeshRenderer GetMesh()
+    {
+        return renderer;
+    }
 }
 
-
-public struct DieFaceValue
+[System.Serializable]//serializing just to view data in scene
+public class DieFaceValue
 {
-    private ResourceData resource;
-    private BuffData buff;
+    [SerializeField] private ResourceData resource;//serializing just to view data in scene
+    [SerializeField] private BuffData buff;//serializing just to view data in scene
 
     public ResourceData Resource { get { return resource; } }
-    public BuffData Buff { get { return buff; } }
-
+    public BuffData Buff { get  => buff; } 
     public DieFaceValue(ResourceData _resource, BuffData _buff)
     {
         resource = _resource;
         buff = _buff;
+    }
+
+    public void SetResource(ResourceData _resource)
+    {
+        resource = _resource;
+    }
+
+    public void SetBuff(BuffData _buff)
+    {
+        buff = _buff;
+    }
+
+    public void UpgradeFace(int resourceToAdd, float damage)
+    {
+        resource.Value += resourceToAdd;
+        buff.Value += damage;
     }
 }
 

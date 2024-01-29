@@ -8,6 +8,8 @@ public class DiceSO : ItemShopParentSO
     [Header("Dice")]
     public GameObject diePrefab;
     public DieType dieType;
+    public DieElement element;
+    public CellTypeColor colorType;
     public TowerBaseParent towerPrefab;
     public Material dieMaterial;
 

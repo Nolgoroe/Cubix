@@ -8,13 +8,18 @@ public class Player : MonoBehaviour
 {
     public static Player Instance;
 
+    [Header("References")]
+    [SerializeField] private DieDataSpawner diceDataSpawner;
+
     [Header("Dice")]
-    [SerializeField] private List<Die> allDieInPlay; //used to write events to dice on thier spawn.
+    [SerializeField] private List<DiceSO> startDice;
+    [SerializeField] private List<DieData> playerDice; // This becomes the main and ONLY reference to player dice after first level of game!
 
     [Header("Resource")]
     [SerializeField] private int iron;
     [SerializeField] private int energy;
     [SerializeField] private int lightning;
+    [SerializeField] private int scrap;
 
     [Header("Health")]
     [SerializeField] int maxHP;
@@ -25,18 +30,36 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        DontDestroyOnLoad(gameObject);
+
+        foreach (DiceSO diceSO in startDice)
+        {
+            diceDataSpawner.CreateNewDieData(diceSO);
+        }
     }
 
     private void Start()
     {
         maxHP = 1000; //temp
         currentPlayerHealth = maxHP;
-
-        UIManager.Instance.UpdatePlayerHealth(currentPlayerHealth, maxHP);
     }
 
+    public void InitPlayer()
+    {
+        UIManager.Instance.UpdatePlayerHealth(currentPlayerHealth, maxHP);
 
+        UIManager.Instance.UpdateResources(iron, energy, lightning, scrap);
+    }
 
 
     public void AddResourcesFromDice(Die die)
@@ -62,7 +85,23 @@ public class Player : MonoBehaviour
                 break;
         }
 
-        UIManager.Instance.UpdateResources(iron, energy, lightning);
+        UIManager.Instance.UpdateResources(iron, energy, lightning, scrap);
+    }
+    public bool AddRemoveScrap(int amount)
+    {
+        scrap += amount;
+    
+        if(scrap <= 0)
+        {
+            scrap = 0;
+
+            UIManager.Instance.UpdateResources(iron, energy, lightning, scrap);
+            return false;
+        }
+
+        UIManager.Instance.UpdateResources(iron, energy, lightning, scrap);
+
+        return true;
     }
 
 
@@ -74,7 +113,7 @@ public class Player : MonoBehaviour
 
         AddResources(myEnums[randomResource], 10);
 
-        UIManager.Instance.UpdateResources(iron, energy, lightning);
+        UIManager.Instance.UpdateResources(iron, energy, lightning, scrap);
     }
 
     public void AddResources(ResourceType resourceType, int amount)
@@ -175,5 +214,14 @@ public class Player : MonoBehaviour
     public int ReturnRerollAmount()
     {
         return rerollAmount;
+    }
+
+    public void AddDieData(DieData dieData)
+    {
+        playerDice.Add(dieData);
+    }
+    public List<DieData> ReturnPlayerDice()
+    {
+        return playerDice;
     }
 }

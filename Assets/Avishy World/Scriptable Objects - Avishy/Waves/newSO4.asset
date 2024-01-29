@@ -13,113 +13,37 @@ MonoBehaviour:
   m_Name: newSO4
   m_EditorClassIdentifier: 
   waves:
-  - delayBetweenEnemies: 1
-    delayBetweenWaves: 30
-    enemyWaveDataList:
-    - amountOfThisEnemy: 5
-      enemySpawnerIndex: 0
-      enemyPathIndex: 0
-      enemyType: 1
-    - amountOfThisEnemy: 7
-      enemySpawnerIndex: 0
-      enemyPathIndex: 0
-      enemyType: 1
-  - delayBetweenEnemies: 1
-    delayBetweenWaves: 30
-    enemyWaveDataList:
-    - amountOfThisEnemy: 7
-      enemySpawnerIndex: 0
-      enemyPathIndex: 0
-      enemyType: 1
-    - amountOfThisEnemy: 6
-      enemySpawnerIndex: 0
-      enemyPathIndex: 0
-      enemyType: 1
-    - amountOfThisEnemy: 8
-      enemySpawnerIndex: 0
-      enemyPathIndex: 0
-      enemyType: 1
-    - amountOfThisEnemy: 2
-      enemySpawnerIndex: 0
-      enemyPathIndex: 0
-      enemyType: 2
-    - amountOfThisEnemy: 10
-      enemySpawnerIndex: 0
-      enemyPathIndex: 0
-      enemyType: 1
-  - delayBetweenEnemies: 1
-    delayBetweenWaves: 30
-    enemyWaveDataList:
-    - amountOfThisEnemy: 6
-      enemySpawnerIndex: 0
-      enemyPathIndex: 0
-      enemyType: 1
-    - amountOfThisEnemy: 6
-      enemySpawnerIndex: 0
-      enemyPathIndex: 0
-      enemyType: 0
-    - amountOfThisEnemy: 6
-      enemySpawnerIndex: 0
-      enemyPathIndex: 0
-      enemyType: 0
-    - amountOfThisEnemy: 4
-      enemySpawnerIndex: 0
-      enemyPathIndex: 0
-      enemyType: 2
-  - delayBetweenEnemies: 3
-    delayBetweenWaves: 30
-    enemyWaveDataList:
-    - amountOfThisEnemy: 0
-      enemySpawnerIndex: 0
-      enemyPathIndex: 0
-      enemyType: 0
-    - amountOfThisEnemy: 6
-      enemySpawnerIndex: 0
-      enemyPathIndex: 0
-      enemyType: 2
-    - amountOfThisEnemy: 10
-      enemySpawnerIndex: 0
-      enemyPathIndex: 0
-      enemyType: 1
-    - amountOfThisEnemy: 6
-      enemySpawnerIndex: 0
-      enemyPathIndex: 0
-      enemyType: 2
-  - delayBetweenEnemies: 3
-    delayBetweenWaves: 30
-    enemyWaveDataList:
-    - amountOfThisEnemy: 6
-      enemySpawnerIndex: 0
-      enemyPathIndex: 0
-      enemyType: 2
-    - amountOfThisEnemy: 10
-      enemySpawnerIndex: 0
-      enemyPathIndex: 0
-      enemyType: 1
-    - amountOfThisEnemy: 10
-      enemySpawnerIndex: 0
-      enemyPathIndex: 0
-      enemyType: 1
-    - amountOfThisEnemy: 3
-      enemySpawnerIndex: 0
-      enemyPathIndex: 0
-      enemyType: 2
   - delayBetweenEnemies: 0
-    delayBetweenWaves: 0
-    enemyWaveDataList:
-    - amountOfThisEnemy: 10
-      enemySpawnerIndex: 0
-      enemyPathIndex: 0
-      enemyType: 1
-    - amountOfThisEnemy: 4
-      enemySpawnerIndex: 0
-      enemyPathIndex: 0
-      enemyType: 2
-    - amountOfThisEnemy: 10
-      enemySpawnerIndex: 0
-      enemyPathIndex: 0
-      enemyType: 1
-    - amountOfThisEnemy: 7
-      enemySpawnerIndex: 0
-      enemyPathIndex: 0
-      enemyType: 2
+    delayBetweenWaves: 30
+    enemyWaveCombo: []
+  - delayBetweenEnemies: 1
+    delayBetweenWaves: 30
+    enemyWaveCombo:
+    - enemyWaveDataList:
+      - amountOfThisEnemy: 20
+        enemySpawnerIndex: 0
+        enemyPathIndex: 0
+        enemyType: 1
+      - amountOfThisEnemy: 20
+        enemySpawnerIndex: 0
+        enemyPathIndex: 0
+        enemyType: 2
+      timeToNextEnemies: 0
+  - delayBetweenEnemies: 1
+    delayBetweenWaves: 30
+    enemyWaveCombo:
+    - enemyWaveDataList:
+      - amountOfThisEnemy: 20
+        enemySpawnerIndex: 0
+        enemyPathIndex: 0
+        enemyType: 1
+      timeToNextEnemies: 0
+  - delayBetweenEnemies: 1
+    delayBetweenWaves: 30
+    enemyWaveCombo:
+    - enemyWaveDataList:
+      - amountOfThisEnemy: 20
+        enemySpawnerIndex: 0
+        enemyPathIndex: 0
+        enemyType: 1
+      timeToNextEnemies: 0

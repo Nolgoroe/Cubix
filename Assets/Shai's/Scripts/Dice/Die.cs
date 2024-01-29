@@ -12,7 +12,7 @@ public class Die : MonoBehaviour
 {
     public UnityEvent OnRollStartEvent;
     public UnityEvent<Die> OnRollEndEvent;
-    public UnityEvent OnDragStartEvent;
+    public UnityEvent OnDragEvent;
     public UnityEvent OnDragEndEvent;
     public UnityEvent OnPlaceEvent;
     public UnityEvent OnDestroyDieEvent;
@@ -21,7 +21,8 @@ public class Die : MonoBehaviour
     [Header("Dice Data")]
     [SerializeField] private DieType DieType;
     [SerializeField] private DieElement element;
-    [SerializeField] private Color diceColor;
+    [SerializeField] private CellTypeColor colorType;
+    [SerializeField] private Material diceMat;
     [SerializeField] private bool isLocked;
 
     [Header("Dice Transform Data")]
@@ -35,6 +36,7 @@ public class Die : MonoBehaviour
     [Header("Tower Connected")]
     [SerializeField] private TowerBaseParent towerPrefabConnected;
     [SerializeField] private TowerBaseParent currentTowerParent;
+    [SerializeField] private bool specialAttackUnlcoked;
 
     [Header("Roll Data")]
     [SerializeField] private float _reqStagnantTime = 1;
@@ -43,7 +45,7 @@ public class Die : MonoBehaviour
     [SerializeField] private Camera diceCam;
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private Transform lockTransform;
-    [SerializeField] private Outline outline;
+    //[SerializeField] private Outline outline;
     [SerializeField] private Transform rangeIndicator;
     [SerializeField] private Transform originalParent;
 
@@ -67,13 +69,13 @@ public class Die : MonoBehaviour
 
     private void Start()
     {
-        
+
         OnRollStartEvent.AddListener(SetMovingTrue);
         OnRollEndEvent.AddListener(OrientCubeToCamrea);
         OnRollEndEvent.AddListener(TransformAfterRoll);
 
-        OnDragStartEvent.AddListener(SetValuesOnDragStart);
-        OnDragStartEvent.AddListener(SetMovingFalse);
+        OnDragEvent.AddListener(SetValuesOnDragStart);
+        OnDragEvent.AddListener(SetMovingFalse);
 
         OnDragEndEvent.AddListener(SetValuesOnDragEnd);
 
@@ -113,62 +115,36 @@ public class Die : MonoBehaviour
 
                     originalScale = scaleOnDrag;
                     //originalScale = rangeTower.ReturnOriginalTowerScale();
-                        break;
+                    break;
                 default:
                     break;
             }
 
 
             rangeIndicator.localScale = new Vector3(range * 2 / originalScale.x, range * 2 / originalScale.y, range * 2 / originalScale.z);
-            rangeIndicator.gameObject.SetActive(false);
+            ToggleRangeIndicator(false);
         }
     }
 
-    private void SetDiceValueSpecific(int amountOfFaces, DiceSO diceData)
+    private void SetDiceValueSpecific(int amountOfFaces, DieData diceData)
     {
         for (int i = 0; i < amountOfFaces; i++)
         {
-            faces[i].ChangeFaceMat(diceData.dieMaterial);
+            faces[i].ChangeFaceMat(diceData.material);
 
-            int randomResourceFaceIndex = Random.Range(0, System.Enum.GetValues(typeof(ResourceType)).Length);
             ResourceData resourceData = new ResourceData();
-            resourceData.Type = (ResourceType)randomResourceFaceIndex;
-            resourceData.Value = Random.Range(1, 10); //temp
-            resourceData.Icon = DiceManager.Instance.ReturnIconByType(resourceData.Type);
+            resourceData.Type = diceData.facesValues[i].Resource.Type;
+            resourceData.Value = diceData.facesValues[i].Resource.Value;
+            resourceData.Icon = Helpers.ReturnIconByType(resourceData.Type);
 
             faces[i].SetResource(resourceData);
 
 
             BuffData buffData = new BuffData();
-            buffData.Type = diceData.buffDataList[i].Type;
-            buffData.Value = diceData.buffDataList[i].Value;
-            buffData.Icon = DiceManager.Instance.ReturnIconByType(buffData.Type);
+            buffData.Type = diceData.facesValues[i].Buff.Type;
+            buffData.Value = diceData.facesValues[i].Buff.Value;
+            buffData.Icon = Helpers.ReturnIconByType(buffData.Type);
             faces[i].SetBuff(buffData);
-
-            faces[i].DisplayResource();
-        }
-    }
-    private void SetDiceValueRandom(int amountOfFaces, DiceSO diceData)
-    {
-        for (int i = 0; i < amountOfFaces; i++)
-        {
-            faces[i].ChangeFaceMat(diceData.dieMaterial);
-
-            int randomResource = Random.Range(0, System.Enum.GetValues(typeof(ResourceType)).Length);
-            ResourceData resourceData = new ResourceData();
-            resourceData.Type = (ResourceType)randomResource;
-            resourceData.Value = Random.Range(1, 10); //temp
-            resourceData.Icon = DiceManager.Instance.ReturnIconByType(resourceData.Type);
-
-            faces[i].SetResource(resourceData);
-
-            int randomBuff = Random.Range(0, System.Enum.GetValues(typeof(BuffType)).Length);
-            BuffData buffData = new BuffData();
-            buffData.Type = (BuffType)randomBuff;
-            buffData.Value = Random.Range(1, 10); //temp
-            buffData.Icon = DiceManager.Instance.ReturnIconByType(buffData.Type);
-            faces[i].SetBuff(buffData);
-
 
             faces[i].DisplayResource();
         }
@@ -179,17 +155,7 @@ public class Die : MonoBehaviour
         isRolling = false;
         DieFaceValue faceValue = die.GetTopValue(); // _currentTopFace value is always set in this function. we call it to be safe that we don't use a null value 
 
-        if (!_isInWorld)
-        {
-            targetQuat = Quaternion.Euler(die.ReturnCurrentTopFace().ReturnOrientationOnEndRoll());
-        }
-        else
-        {
-            targetQuat = Quaternion.Euler(die.ReturnCurrentTopFace().ReturnOrientationOnEndRoll());
-
-            //Vector3 direction = (GameManager.Instance.ReturnMainCamera().transform.position - transform.position).normalized;
-            //targetQuat = Quaternion.FromToRotation(Vector3.forward, direction);
-        }
+        targetQuat = Quaternion.Euler(die.ReturnCurrentTopFace().ReturnOrientationOnEndRoll());
 
         RB.isKinematic = true;
     }
@@ -199,7 +165,7 @@ public class Die : MonoBehaviour
         LeanTween.rotate(gameObject, die.targetQuat.eulerAngles, 0.2f).setOnComplete(TowerRotate);// speed is temp here
 
         if (die._isInWorld)
-        LeanTween.scale(gameObject, transform.localScale * 2, 0.2f);// speed is temp here
+            LeanTween.scale(gameObject, transform.localScale * 2, 0.2f);// speed is temp here
     }
 
     private void TowerRotate()
@@ -224,7 +190,7 @@ public class Die : MonoBehaviour
                     //Debug.Log("Roll ended");
                 }
             }
-            else if(_stagnantTimer > 0)
+            else if (_stagnantTimer > 0)
             {
                 _stagnantTimer = 0;
             }
@@ -246,31 +212,34 @@ public class Die : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        if (isLocked || !GameManager.playerTurn) return;
+        if (isLocked) return;
         currentTimeTillStartDrag += Time.deltaTime;
 
-        if(currentTimeTillStartDrag >= timeTillStartDrag)
+        if (currentTimeTillStartDrag >= timeTillStartDrag)
         {
-            OnDragStartEvent?.Invoke();
+            OnDragEvent?.Invoke();
             _isDragging = true;
         }
     }
 
     private void OnMouseOver()
     {
-        outline.SetOutlineMode(Outline.Mode.OutlineVisible);
-
+        //outline.SetOutlineMode(Outline.Mode.OutlineVisible);
     }
 
     private void OnMouseExit()
     {
-        outline.SetOutlineMode(Outline.Mode.OutlineHidden);
+        //outline.SetOutlineMode(Outline.Mode.OutlineHidden);
 
         UIManager.Instance.DisplayDiceFacesUI(false, this);
+
+        UIManager.Instance.DisplayTowerStats(false, towerPrefabConnected);
     }
     private void OnMouseEnter()
     {
         UIManager.Instance.DisplayDiceFacesUI(true, this);
+
+        UIManager.Instance.DisplayTowerStats(true, towerPrefabConnected);
     }
 
     private void OnMouseUp()
@@ -308,11 +277,8 @@ public class Die : MonoBehaviour
     private void SetValuesOnDragStart()
     {
         RB.isKinematic = true;
-        
-        if(rangeIndicator)
-        {
-            rangeIndicator.gameObject.SetActive(true);
-        }
+
+        ToggleRangeIndicator(true);
 
         transform.localScale = scaleOnDrag;
 
@@ -324,11 +290,12 @@ public class Die : MonoBehaviour
 
 
     }
+
     private void SetValuesOnDragEnd()
     {
         if (rangeIndicator)
         {
-            rangeIndicator.gameObject.SetActive(false);
+            ToggleRangeIndicator(false);
         }
 
         //called if we stopped dragging and DIDN'T place a tower.
@@ -346,7 +313,7 @@ public class Die : MonoBehaviour
     {
         if (rangeIndicator)
         {
-            rangeIndicator.gameObject.SetActive(false);
+            ToggleRangeIndicator(false);
         }
 
         DisplayBuffs();
@@ -376,7 +343,7 @@ public class Die : MonoBehaviour
 
         OnRollStartEvent.RemoveAllListeners();
         OnRollEndEvent.RemoveAllListeners();
-        OnDragStartEvent.RemoveAllListeners();
+        OnDragEvent.RemoveAllListeners();
         OnDragEndEvent.RemoveAllListeners();
         OnPlaceEvent.RemoveAllListeners();
         OnDestroyDieEvent.RemoveAllListeners();
@@ -389,13 +356,13 @@ public class Die : MonoBehaviour
 
 
 
-    public void InitDiceInSlot(Transform _lockTransform, DiceSO diceData)
+    public void InitDiceInSlot(Transform _lockTransform, DieData diceData)
     {
         lockTransform = _lockTransform;
 
-        towerPrefabConnected = diceData.towerPrefab;
-        diceColor = diceData.dieMaterial.color;
-
+        towerPrefabConnected = diceData.towerPrefabConnected;
+        diceMat = diceData.material;
+        colorType = diceData.colorType;
 
         switch (diceData.dieType)
         {
@@ -479,7 +446,7 @@ public class Die : MonoBehaviour
     }
     public Color ReturnDiceColor()
     {
-        return diceColor;
+        return diceMat.color;
     }
     public DieType ReturnDieType()
     {
@@ -499,7 +466,7 @@ public class Die : MonoBehaviour
     {
         if (rangeIndicator)
         {
-            rangeIndicator.gameObject.SetActive(false);
+            ToggleRangeIndicator(false);
         }
 
         RB.isKinematic = false;
@@ -509,6 +476,7 @@ public class Die : MonoBehaviour
         _isInWorld = false;
 
         roller.SetOGPos(transform);
+        roller.ConstraintManually(true, false, true);
         transform.localScale = scaleInPlayerBase;
 
         ChangeLayerRecursive(transform, "Dice");
@@ -527,5 +495,72 @@ public class Die : MonoBehaviour
     {
         return isLocked;
     }
+
+    public DieData ExportTransferData()
+    {
+        DieData data = new DieData();
+
+        data.dieType = DieType;
+        data.element = element;
+        data.colorType = colorType;
+        data.material = diceMat;
+
+        List<DieFaceValue> tmpFaceValues = new List<DieFaceValue>();
+        foreach (var face in faces)
+        {
+            tmpFaceValues.Add(face.GetFaceValue());
+        }
+        data.facesValues = tmpFaceValues;
+
+        data.towerPrefabConnected = towerPrefabConnected;
+
+        return data;
+    }
+
+    public void ImportTransferData(DieData data)
+    {
+        DieType = data.dieType;
+        element = data.element;
+        colorType = data.colorType;
+        diceMat = data.material;
+
+        for (int i = 0; i < data.facesValues.Count; i++)
+        {
+            faces[0].SetBuff(data.facesValues[i].Buff);
+            faces[0].SetResource(data.facesValues[i].Resource);
+        }
+
+        towerPrefabConnected = data.towerPrefabConnected;
+    }
+
+    public bool ReturnSpecialAttackUnlcoked()
+    {
+        return specialAttackUnlcoked;
+    }
+
+    public DieElement ReturnDieElement()
+    {
+        return element;
+    }
+
+    public void ToggleRangeIndicator(bool active)
+    {
+        if (rangeIndicator)
+        {
+            rangeIndicator.gameObject.SetActive(active);
+        }
+    }
+
+    public CellTypeColor ReturnDieColorType()
+    {
+        return colorType;
+    }
+
+    public void ManualSetOGPos(Transform _transform)
+    {
+        roller.SetOGPos(_transform);
+    }
 }
+
+
 

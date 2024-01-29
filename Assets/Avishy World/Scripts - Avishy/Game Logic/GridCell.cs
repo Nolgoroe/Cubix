@@ -11,7 +11,7 @@ public class GridCell : MonoBehaviour
     [SerializeField] private Color startColor;
     [SerializeField] private SpriteRenderer slotTypeSpriteRenderer;
     [SerializeField] private CellTypeColor cellTypeColor;
-    [SerializeField] private Outline outline;
+    //[SerializeField] private Outline outline;
 
     [Header("Live Data")]
     [SerializeField] private bool isOccupied;
@@ -27,16 +27,16 @@ public class GridCell : MonoBehaviour
         if (rend == null)
             rend = GetComponent<MeshRenderer>();
 
-        if (outline == null)
-            outline = GetComponent<Outline>();
+        //if (outline == null)
+        //    outline = GetComponent<Outline>();
     }
     protected virtual void Start()
     {
         if (rend == null)
             rend = GetComponent<MeshRenderer>();
 
-        if (outline == null)
-            outline = GetComponent<Outline>();
+        //if (outline == null)
+        //    outline = GetComponent<Outline>();
 
         startColor = rend.material.color;
 
@@ -66,15 +66,15 @@ public class GridCell : MonoBehaviour
 
     public void SetOnMouseHover(bool isHoveredOn)
     {
-        if (outline)
-            outline.enabled = isHoveredOn ? true : false;
+        //if (outline)
+        //    outline.enabled = isHoveredOn ? true : false;
 
         if(isHoveredOn)
         {
-            if (outline)
-            {
-                outline.SetOutlineMode(Outline.Mode.OutlineAll);
-            }
+            //if (outline)
+            //{
+            //    outline.SetOutlineMode(Outline.Mode.OutlineAll);
+            //}
 
             if (occupiedByTower)
             {
@@ -129,21 +129,22 @@ public class GridCell : MonoBehaviour
         occupiedByTower = true; //temp
     }
 
-    public void EmptyCell()
-    {
-        if(towerOnCell)
-        {
-            Destroy(towerOnCell);
-        }
+    //public void EmptyCell(bool destroyTower)
+    //{
+    //    if(towerOnCell && destroyTower)
+    //    {
+    //        Destroy(towerOnCell);
+    //    }
 
-        isOccupied = false;
+    //    isOccupied = false;
 
         
-        if(occupiedByTower) //temp
-        {
-            occupiedByTower = false;
-        }
-    }
+    //    if(occupiedByTower) //temp
+    //    {
+    //        towerOnCell = null;
+    //        occupiedByTower = false;
+    //    }
+    //}
 
     public virtual void CopyDataFromToolCell(ToolGridCell toolGridCell)
     {
@@ -154,12 +155,12 @@ public class GridCell : MonoBehaviour
 
 
         //rend.material.color = Color.white;
-        outline = GetComponent<Outline>(); //temp
-        if(outline)
-        {
-            outline.enabled = false;
-            outline.SetOutlineMode(Outline.Mode.OutlineAll);
-        }
+        //outline = GetComponent<Outline>(); //temp
+        //if(outline)
+        //{
+        //    outline.enabled = false;
+        //    outline.SetOutlineMode(Outline.Mode.OutlineAll);
+        //}
 
         slotTypeSpriteRenderer = toolGridCell.ReturnSlotTypeSpriteRenderer();
 
@@ -176,15 +177,13 @@ public class GridCell : MonoBehaviour
 
     }
 
-    public void ResetCellOnStartTurn()
+    public void ResetCell()
     {
-        if (slotTypeSpriteRenderer == null) return;
-        cellTypeColor = CellTypeColor.None;
-        isOccupied = true;
+        isOccupied = false;
         occupiedByTower = false;
         towerOnCell = null;
-        GridManager.Instance.RemoveCellFromTowerBaseCells(this);
-        slotTypeSpriteRenderer.gameObject.SetActive(false);
+        //GridManager.Instance.RemoveCellFromTowerBaseCells(this);
+        //slotTypeSpriteRenderer.gameObject.SetActive(false);
     }
     public bool ReturnNextToPath()
     {

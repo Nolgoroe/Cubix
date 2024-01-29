@@ -25,6 +25,8 @@ public class ParticleCollisionInstance : MonoBehaviour
             control = system.main;
             control.simulationSpeed = GameManager.gameSpeed;
         }
+
+        Destroy(gameObject, DestroyTimeDelay + 0.5f);
     }
     void OnParticleCollision(GameObject other)
     {
@@ -52,7 +54,7 @@ public class ParticleCollisionInstance : MonoBehaviour
         }
         if (DestoyMainEffect == true)
         {
-            Destroy(gameObject, DestroyTimeDelay + 0.5f);
+            Destroy(gameObject);
         }
     }
 }
