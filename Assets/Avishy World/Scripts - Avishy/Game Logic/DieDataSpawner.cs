@@ -38,7 +38,7 @@ public class DieDataSpawner : MonoBehaviour
     {
         ResourceData resourceData = new ResourceData();
 
-        int randomResource = Random.Range(0, System.Enum.GetValues(typeof(ResourceType)).Length);
+        int randomResource = Random.Range(0, System.Enum.GetValues(typeof(ResourceType)).Length - 1);
         resourceData.Type = (ResourceType)randomResource;
         resourceData.Value = Random.Range(1, 10); //temp
         resourceData.Icon = Helpers.ReturnIconByType(resourceData.Type);

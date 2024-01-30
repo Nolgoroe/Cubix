@@ -3170,8 +3170,8 @@ MonoBehaviour:
   constraintY: 0
   constraintZ: 1
   posConstraintRange: {x: 0, y: 0, z: 0}
-  rotationForceMin: {x: -1, y: -1, z: -1}
-  rotationForceMax: {x: 1, y: 1, z: 1}
+  rotationForceMin: {x: -5, y: -5, z: -5}
+  rotationForceMax: {x: 5, y: 5, z: 5}
   massCenter: {x: 0, y: 0, z: 0}
 --- !u!114 &2362081514624229054
 MonoBehaviour:

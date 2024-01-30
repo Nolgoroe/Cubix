@@ -252,8 +252,6 @@ public class WaveManager : MonoBehaviour
             Player.Instance.AddResourcesFromDice(die);
         }
 
-        StartCoroutine(GameManager.Instance.SetPlayerTurn(true));
-
 
         waveDone = true;
 
@@ -263,6 +261,7 @@ public class WaveManager : MonoBehaviour
             return;
         }
 
+        StartCoroutine(GameManager.Instance.SetPlayerTurn(true));
 
         UIManager.Instance.UpdateWaveCounter();
 

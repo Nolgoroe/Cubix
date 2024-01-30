@@ -56,12 +56,14 @@ public class PlayerWeapon : MonoBehaviour
 
         for (int i = 0; i < bulletsPerShot; i++)
         {
-            if (!player.AddRemoveScrap(-1))
+            if (!player.ReturnHasScrap())
             {
                 isReadyToShoot = true;
                 StopAllCoroutines();
                 yield break;
             }
+
+            player.AddResources(ResourceType.scrap, -1);
 
             Vector3 screenPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, GameManager.Instance.ReturnMainCamera().transform.position.y);
             Ray ray = GameManager.Instance.ReturnMainCamera().ScreenPointToRay(screenPos);

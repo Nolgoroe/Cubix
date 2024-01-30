@@ -852,9 +852,13 @@ MonoBehaviour:
   playerHealthText: {fileID: 609496941}
   diceFacesResourcesDisplayParent: {fileID: 2076793791}
   diceFacesBuffDisplayParent: {fileID: 2061921738}
+  ironParent: {fileID: 931438475}
   ironText: {fileID: 595769690}
+  energyParent: {fileID: 646737048}
   energyText: {fileID: 1257231058}
+  lightningParent: {fileID: 1255986829}
   lightningText: {fileID: 1059549753}
+  scrapParent: {fileID: 1242080151}
   scrapText: {fileID: 566664285}
   diceFaceUIDisplayPreafb: {fileID: 8648066081239103102, guid: e10957a92c9cdc84c9caf1bdfa9d57ae,
     type: 3}
@@ -863,6 +867,25 @@ MonoBehaviour:
   diceDataDisplayUI: {fileID: 0}
   diceDataDisplayParent: {fileID: 0}
   AddActionsToButtons: 1
+  lootUIDisplayPrefab: {fileID: -4912861610387134029, guid: 8fcac9c18e8159847923284859d10778,
+    type: 3}
+  resourceTypeToAmountHolderArray:
+  - resourceType: 0
+    resourceTypeToAmountList: []
+    timeDisplayLoot: 0.4
+    currentTimeDisplayLoot: 0
+  - resourceType: 1
+    resourceTypeToAmountList: []
+    timeDisplayLoot: 0.4
+    currentTimeDisplayLoot: 0
+  - resourceType: 2
+    resourceTypeToAmountList: []
+    timeDisplayLoot: 0.4
+    currentTimeDisplayLoot: 0
+  - resourceType: 3
+    resourceTypeToAmountList: []
+    timeDisplayLoot: 0.1
+    currentTimeDisplayLoot: 0
 --- !u!1 &141641284
 GameObject:
   m_ObjectHideFlags: 0
@@ -3058,6 +3081,7 @@ MonoBehaviour:
   - {fileID: -1631459450, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   - {fileID: -1490314167, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   - {fileID: 1196769475, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+  - {fileID: 21300000, guid: fef100ea7f4a14e49bd2e2c097c5825d, type: 3}
   allBuffIcons:
   - {fileID: 0}
   - {fileID: 775649512, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
