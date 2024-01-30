@@ -3052,7 +3052,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6895173316381504982}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: c2af5cba2e27c274499b0e2cd82f2acf, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -3164,14 +3164,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   die: {fileID: 7359763932789077676}
-  throwForce: 7
+  throwForce: 10
+  gravityModifier: -20
   tpHeight: 0.5
   constraintX: 1
   constraintY: 0
   constraintZ: 1
   posConstraintRange: {x: 0, y: 0, z: 0}
-  rotationForceMin: {x: -5, y: -5, z: -5}
-  rotationForceMax: {x: 5, y: 5, z: 5}
+  rotationForceMin: {x: -3, y: -3, z: -3}
+  rotationForceMax: {x: 3, y: 3, z: 3}
   massCenter: {x: 0, y: 0, z: 0}
 --- !u!114 &2362081514624229054
 MonoBehaviour:
