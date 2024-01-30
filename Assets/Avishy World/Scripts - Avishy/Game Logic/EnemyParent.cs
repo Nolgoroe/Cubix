@@ -78,7 +78,7 @@ public class EnemyParent : MonoBehaviour
 
         if (currentAttackCooldown > 0)
         {
-            currentAttackCooldown -= Time.deltaTime;
+            currentAttackCooldown -= Time.deltaTime * GameManager.gameSpeed;
         }
 
         if (currentTarget == null) return;
@@ -252,7 +252,7 @@ public class EnemyParent : MonoBehaviour
         {
             //if scrap is 30 then we want the number to be 30 to 0, that's 30%;
 
-            Player.Instance.AddRemoveScrap(scrapAmount);
+            Player.Instance.AddResources(ResourceType.scrap, scrapAmount);
         }
     }
 

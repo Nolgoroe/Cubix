@@ -17,14 +17,21 @@ public class PlayerWeaponManager : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
+
+        isUsingWeapon = false;
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.S))
+        if(Input.GetKeyDown(KeyCode.S) && !GameManager.playerTurn)
         {
-            anim.SetTrigger("ToggleWeapon");
-            isUsingWeapon = !isUsingWeapon;
+            ToggleWeapon(!isUsingWeapon);
         }
+    }
+
+    public void ToggleWeapon(bool isOn)
+    {
+        isUsingWeapon = isOn;
+        anim.SetTrigger("ToggleWeapon");
     }
 }

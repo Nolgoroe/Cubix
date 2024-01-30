@@ -15,6 +15,9 @@ public class TowerTroop : MonoBehaviour
     [SerializeField] protected float attackRate = 1;
     [SerializeField] protected float currentAttackCooldown = 0;
     [SerializeField] protected float rotationSpeed = 10;
+    [SerializeField] protected float timeToWaitForHealing = 3;
+    [SerializeField] protected float currentTimeToWaitForHealing = 0;
+    [SerializeField] protected float healingRate = 0.1f;
 
     [Header("Preset Refs")]
     [SerializeField] protected Transform rangeIndicator;
@@ -25,7 +28,8 @@ public class TowerTroop : MonoBehaviour
     [Header("Particles Data")]
     [SerializeField] protected GameObject onSpawnParticle;
 
-    protected float health = 3;
+    [SerializeField] protected float currentHealth = 3;
+    protected float originalHealth = 3;
     private float range = 15;
     private float damage = 1;
     bool isDead;
@@ -59,7 +63,18 @@ public class TowerTroop : MonoBehaviour
 
         if(currentAttackCooldown > 0)
         {
-            currentAttackCooldown -= Time.deltaTime;
+            currentAttackCooldown -= Time.deltaTime * GameManager.gameSpeed;
+        }
+
+
+        if(currentTimeToWaitForHealing <= 0)
+        {
+            currentTimeToWaitForHealing = 0;
+            Heal();
+        }
+        else
+        {
+            currentTimeToWaitForHealing -= Time.deltaTime * GameManager.gameSpeed;
         }
 
         if (currentTarget == null) return;
@@ -75,6 +90,16 @@ public class TowerTroop : MonoBehaviour
             currentAttackCooldown = attackRate;
         }
 
+    }
+
+    private void Heal()
+    {
+        currentHealth += healingRate * Time.deltaTime * GameManager.gameSpeed;
+
+        if(currentHealth > originalHealth)
+        {
+            currentHealth = originalHealth;
+        }
     }
 
     private void Attack()
@@ -133,7 +158,8 @@ public class TowerTroop : MonoBehaviour
     public void InitTroopData(MeleeTowerParentScript tower, float _HP, float _range, float _dmg)
     {
         connectedTower = tower;
-        health = _HP;
+        currentHealth = _HP;
+        originalHealth = _HP;
         range = _range;
         damage = _dmg;
     }
@@ -141,7 +167,10 @@ public class TowerTroop : MonoBehaviour
     public void RecieveDMG(int damage)
     {
         if (isDead) return;
-        if (health <= 0)
+
+        currentTimeToWaitForHealing = timeToWaitForHealing;
+
+        if (currentHealth <= 0)
         {
             isDead = true;
             Debug.Log("Recieve dmg");
@@ -152,11 +181,8 @@ public class TowerTroop : MonoBehaviour
             return;
         }
 
-        health -= damage;
+        currentHealth -= damage;
     }
-
-
-
 
 
     private void OnDrawGizmosSelected()

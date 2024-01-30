@@ -129,7 +129,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.35
   m_Center: {x: 0.17677668, y: 0, z: -0.17677668}
@@ -837,7 +837,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.35
   m_Center: {x: 0.17677668, y: 0, z: 0.17677623}
@@ -970,7 +970,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.35
   m_Center: {x: -0.17677668, y: 0, z: 0.1767762}
@@ -1638,7 +1638,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.35
   m_Center: {x: -0.17677668, y: 0, z: 0.1767762}
@@ -2216,7 +2216,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.35
   m_Center: {x: -0.17677668, y: 0, z: -0.17677668}
@@ -2606,7 +2606,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.35
   m_Center: {x: -0.17677668, y: 0, z: -0.17677668}
@@ -2996,7 +2996,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.35
   m_Center: {x: 0.17677668, y: 0, z: 0.17677623}
@@ -3052,7 +3052,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6895173316381504982}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: c2af5cba2e27c274499b0e2cd82f2acf, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -3112,7 +3112,7 @@ MonoBehaviour:
   OnRollEndEvent:
     m_PersistentCalls:
       m_Calls: []
-  OnDragStartEvent:
+  OnDragEvent:
     m_PersistentCalls:
       m_Calls: []
   OnDragEndEvent:
@@ -3126,6 +3126,7 @@ MonoBehaviour:
       m_Calls: []
   DieType: 1
   element: 0
+  colorType: 0
   diceMat: {fileID: 0}
   isLocked: 0
   scaleOnDrag: {x: 0.5, y: 0.5, z: 0.5}
@@ -3148,7 +3149,6 @@ MonoBehaviour:
   diceCam: {fileID: 0}
   _rb: {fileID: 438417151495276943}
   lockTransform: {fileID: 0}
-  outline: {fileID: 2362081514624229054}
   rangeIndicator: {fileID: 5878988004076108666}
   originalParent: {fileID: 0}
 --- !u!114 &3904737591059714462
@@ -3164,14 +3164,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   die: {fileID: 7359763932789077676}
-  throwForce: 7
+  throwForce: 10
+  gravityModifier: -20
   tpHeight: 0.5
   constraintX: 1
   constraintY: 0
   constraintZ: 1
   posConstraintRange: {x: 0, y: 0, z: 0}
-  rotationForceMin: {x: -1, y: -1, z: -1}
-  rotationForceMax: {x: 1, y: 1, z: 1}
+  rotationForceMin: {x: -3, y: -3, z: -3}
+  rotationForceMax: {x: 3, y: 3, z: 3}
   massCenter: {x: 0, y: 0, z: 0}
 --- !u!114 &2362081514624229054
 MonoBehaviour:
@@ -3320,7 +3321,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.35
   m_Center: {x: 0.17677668, y: 0, z: -0.17677668}

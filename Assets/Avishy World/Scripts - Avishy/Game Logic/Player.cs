@@ -52,6 +52,8 @@ public class Player : MonoBehaviour
     {
         maxHP = 1000; //temp
         currentPlayerHealth = maxHP;
+
+        InitPlayer();
     }
 
     public void InitPlayer()
@@ -67,48 +69,13 @@ public class Player : MonoBehaviour
         //maybe this needs a fix since all dice will call this function even if they are part of the world.
         if (die.ReturnInWorld()) return;
 
+        DieFaceValue dieFaceValue = die.GetTopValue();
 
-        DieFaceValue dieFaceVakue = die.GetTopValue();
-
-        switch (dieFaceVakue.Resource.Type)
-        {
-            case ResourceType.Iron:
-                iron += dieFaceVakue.Resource.Value;
-                break;
-            case ResourceType.Energy:
-                energy += dieFaceVakue.Resource.Value;
-                break;
-            case ResourceType.Lightning:
-                lightning += dieFaceVakue.Resource.Value;
-                break;
-            default:
-                break;
-        }
-
-        SoundManager.Instance.PlaySoundOneShot(Sounds.RecieveResources);
-
-        UIManager.Instance.UpdateResources(iron, energy, lightning, scrap);
+        AddResources(dieFaceValue.Resource.Type, dieFaceValue.Resource.Value);
     }
-    public bool AddRemoveScrap(int amount)
+    public bool ReturnHasScrap()
     {
-        if(amount > 0)
-        {
-            SoundManager.Instance.PlaySoundOneShot(Sounds.RecieveResources); // maybe not here
-        }
-
-        scrap += amount;
-    
-        if(scrap <= 0)
-        {
-            scrap = 0;
-
-            UIManager.Instance.UpdateResources(iron, energy, lightning, scrap);
-            return false;
-        }
-
-        UIManager.Instance.UpdateResources(iron, energy, lightning, scrap);
-
-        return true;
+        return scrap > 0;
     }
 
 
@@ -116,11 +83,9 @@ public class Player : MonoBehaviour
     {
         ResourceType[] myEnums = (ResourceType[])System.Enum.GetValues(typeof(ResourceType));
 
-        int randomResource = UnityEngine.Random.Range(0, myEnums.Length);
+        int randomResource = UnityEngine.Random.Range(0, myEnums.Length - 1);
 
         AddResources(myEnums[randomResource], 10);
-
-        UIManager.Instance.UpdateResources(iron, energy, lightning, scrap);
     }
 
     public void AddResources(ResourceType resourceType, int amount)
@@ -136,11 +101,21 @@ public class Player : MonoBehaviour
             case ResourceType.Lightning:
                 lightning += amount;
                 break;
+            case ResourceType.scrap:
+                scrap += amount;
+                break;
             default:
                 break;
         }
 
+        if(amount > 0)
         SoundManager.Instance.PlaySoundOneShot(Sounds.RecieveResources);
+
+        UIManager.Instance.UpdateResources(iron, energy, lightning, scrap);
+
+        UIManager.Instance.AddNewResourceToGive(resourceType, amount);
+        //UIManager.Instance.InstantiateLootDisplayUI(resourceType, amount);
+
     }
 
     public int ReturnAmountOfResource(ResourceType resourceType)

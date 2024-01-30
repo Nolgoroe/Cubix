@@ -77,6 +77,9 @@ public class GameManager : MonoBehaviour
 
         if (isPlayerTurn)
         {
+            if(PlayerWeaponManager.isUsingWeapon)
+            PlayerWeaponManager.Instance.ToggleWeapon(false);
+
             SoundManager.Instance.PlaySoundNormal(Sounds.TimerTicking);
 
             foreach (TowerBaseParent tower in summonedRangeTowers)
@@ -175,7 +178,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator BackToMap()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(4);
         SceneManager.LoadScene(1);
     }
 }
