@@ -78,7 +78,7 @@ public class EnemyParent : MonoBehaviour
 
         if (currentAttackCooldown > 0)
         {
-            currentAttackCooldown -= Time.deltaTime;
+            currentAttackCooldown -= Time.deltaTime * GameManager.gameSpeed;
         }
 
         if (currentTarget == null) return;
