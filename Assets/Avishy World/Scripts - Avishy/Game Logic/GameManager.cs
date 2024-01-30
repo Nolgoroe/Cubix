@@ -77,6 +77,9 @@ public class GameManager : MonoBehaviour
 
         if (isPlayerTurn)
         {
+            if(PlayerWeaponManager.isUsingWeapon)
+            PlayerWeaponManager.Instance.ToggleWeapon(false);
+
             SoundManager.Instance.PlaySoundNormal(Sounds.TimerTicking);
 
             foreach (TowerBaseParent tower in summonedRangeTowers)

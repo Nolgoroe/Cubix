@@ -94,6 +94,15 @@ public class UIManager : MonoBehaviour
 
     public void SetWaveCountdownText(float time)
     {
+        if(time <= 5.5f)
+        {
+            timerText.color = Color.red;
+        }
+        else
+        {
+            timerText.color = Color.white;
+        }
+
         timerText.text = Mathf.Round(time).ToString();
     }
 

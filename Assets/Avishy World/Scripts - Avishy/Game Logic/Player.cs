@@ -52,6 +52,8 @@ public class Player : MonoBehaviour
     {
         maxHP = 1000; //temp
         currentPlayerHealth = maxHP;
+
+        InitPlayer();
     }
 
     public void InitPlayer()

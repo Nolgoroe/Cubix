@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerWeapon : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class PlayerWeapon : MonoBehaviour
     }
     private void Update()
     {
-        if (!PlayerWeaponManager.isUsingWeapon) return;
+        if (!PlayerWeaponManager.isUsingWeapon || EventSystem.current.IsPointerOverGameObject()) return;
 
         if (allowHold)
         {
@@ -93,7 +94,6 @@ public class PlayerWeapon : MonoBehaviour
     private IEnumerator ResetShot()
     {
         yield return new WaitForSeconds(TimeBetweenShots);
-        Debug.Log("Reset Shoot");
 
         isReadyToShoot = true;
     }
