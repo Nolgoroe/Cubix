@@ -103,13 +103,13 @@ public class SiteNode : MonoBehaviour
         isComplete = true;
         iconImage.color = unlockedColor;
         bgImage.color = unlockedColor;
-        completedIcon.SetActive(true);
+        //completedIcon.SetActive(true);
     }
 
     public void Pick()
     {
         Complete();
-        //site.LaunchSite();
+        site.LaunchSite();
     }
 
     public void InvokeClicked()
