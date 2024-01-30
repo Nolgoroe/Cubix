@@ -15,7 +15,8 @@ public class SiteNode : MonoBehaviour
     [SerializeField] private GameObject completedIcon;
     [SerializeField] private Color lockedColor;
     [SerializeField] private Color unlockedColor;
-    [SerializeField] private Image image;
+    [SerializeField] private Image iconImage;
+    [SerializeField] private Image bgImage;
     [SerializeField] private BaseSite site;
 
     [Header("Progression")]
@@ -86,19 +87,22 @@ public class SiteNode : MonoBehaviour
     public void Lock()
     {
         isLocked = true;
-        image.color = lockedColor;
+        iconImage.color = lockedColor;
+        bgImage.color = lockedColor;
     }
     public void Unlock()
     {
         isLocked = false;
-        image.color = unlockedColor;
+        iconImage.color = unlockedColor;
+        bgImage.color = unlockedColor;
     }
 
     public void Complete()
     {
         isLocked = true;
         isComplete = true;
-        image.color = unlockedColor;
+        iconImage.color = unlockedColor;
+        bgImage.color = unlockedColor;
         completedIcon.SetActive(true);
     }
 
