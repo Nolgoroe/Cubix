@@ -9,6 +9,8 @@ public class MapLoader : MonoBehaviour
 
     public void SaveData(List<SiteNode> nodes)
     {
+        nodesData.Clear();
+
         foreach (var node in nodes)
         {
             nodesData.Add(node.ExportData());
@@ -23,13 +25,25 @@ public class MapLoader : MonoBehaviour
             {
                 if (node.ID == data.id)
                 {
-
+                    if (data.isComplete)
+                    {
+                        node.Complete();
+                    }
+                    else if (data.isLocked)
+                    {
+                        node.Lock();
+                    }
+                    else 
+                    {
+                        node.Unlock();
+                    }
                 }
             }
         }
     }
 }
 
+[System.Serializable]
 public class NodeData
 {
     public bool isComplete;

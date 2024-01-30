@@ -251,16 +251,17 @@ MonoBehaviour:
   mapLinePrefab: {fileID: 2435942467119948087, guid: ae10fee6c1ee39745bf9c5adc7bfacfb,
     type: 3}
   completedIcon: {fileID: 3440026941648573577}
-  lockedColor: {r: 0.16226411, g: 0.16226411, b: 0.16226411, a: 1}
+  lockedColor: {r: 0.335849, g: 0.335849, b: 0.335849, a: 1}
   unlockedColor: {r: 1, g: 1, b: 1, a: 1}
   image: {fileID: 4405359440059982689}
   site: {fileID: 4314460061440536362, guid: 35893574434554d4c95af6e3c393e0e3, type: 3}
   isLocked: 0
+  isComplete: 0
   entryLinks: 0
   exitLinks: 0
   singleLinkStreak: 0
   nextNodes: []
-  chanceToLink: 0.181
+  chanceToLink: 0.304
   maxLinks: 4
 --- !u!114 &7562143748950493806
 MonoBehaviour:

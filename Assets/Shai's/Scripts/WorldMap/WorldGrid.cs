@@ -15,6 +15,7 @@ public class WorldGrid : MonoBehaviour
     [SerializeField] private GameObject siteNodePrefab;
     [SerializeField] private LinesParent linesParent;
     [SerializeField] private MapProgression progression;
+    [SerializeField] private MapLoader loader; 
     [SerializeField] private GridDirection direction;
     [SerializeField] private List<SiteNode> nodes;
 
@@ -49,13 +50,6 @@ public class WorldGrid : MonoBehaviour
         progression.Init();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            Debug.Log("zff");
-        }
-    }
 
     [ContextMenu("GenerateLines")]
     public void UpdateLines()
@@ -241,4 +235,5 @@ public class WorldGrid : MonoBehaviour
 
         return allNodes;
     }
+
 }

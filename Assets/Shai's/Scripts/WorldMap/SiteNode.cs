@@ -97,6 +97,7 @@ public class SiteNode : MonoBehaviour
     public void Complete()
     {
         isLocked = true;
+        isComplete = true;
         image.color = unlockedColor;
         completedIcon.SetActive(true);
     }
@@ -104,7 +105,7 @@ public class SiteNode : MonoBehaviour
     public void Pick()
     {
         Complete();
-        site.LaunchSite();
+        //site.LaunchSite();
     }
 
     public void InvokeClicked()
