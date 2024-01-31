@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.InitUIManager();
         DiceManager.Instance.InitDiceManager();
         Player.Instance.InitPlayer();
+        SpellManager.Instance.Init();
 
         UIManager.Instance.UpdateStaminaAmount(Player.Instance.ReturnRerollAmount());
 

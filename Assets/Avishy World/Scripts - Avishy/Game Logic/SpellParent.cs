@@ -11,14 +11,14 @@ public class SpellParent : MonoBehaviour
     [SerializeField] int currentCooldown;
     [SerializeField] CellTypeColor requiredColor;
     [SerializeField] TMP_Text currentContdownText;
+    [SerializeField] Spells spellType;
 
-    private void Start()
+    private void Awake()
     {
-        //SpellManager.Instance.AddSpellToList(this);
+        SpellManager.Instance.AddSpellToList(this);
 
         currentContdownText.text = "Usable!";
     }
-
     public bool SnapToHolder(Die die)
     {
         if(die.ReturnDieColorType() == requiredColor && ReturnCanUseSpell())
@@ -73,5 +73,10 @@ public class SpellParent : MonoBehaviour
         DiceManager.Instance.AddDiceToResources(currentDieInSpell);
         currentDieInSpell.BackToPlayerArea();
         currentDieInSpell = null;
+    }
+
+    public Spells ReturnSpellType()
+    {
+        return spellType;
     }
 }

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public enum Sounds
 {
     BuyItem, 
@@ -62,6 +62,8 @@ public class SoundManager : MonoBehaviour
         {
             SoundToAudioSourceDict.Add((Sounds)i, allAudioSources[i]);
         }
+
+        SceneManager.activeSceneChanged += StopAllSound;
     }
 
     private IEnumerator PlaySoundTimed(Sounds sound)
@@ -129,4 +131,12 @@ public class SoundManager : MonoBehaviour
         SoundToAudioSourceDict[sound].source.Stop();
     }
 
+
+    private void StopAllSound(Scene arg1, Scene arg2)
+    {
+        foreach (AudioSourceCombo combo in allAudioSources)
+        {
+            combo.source.Stop();
+        }
+    }
 }

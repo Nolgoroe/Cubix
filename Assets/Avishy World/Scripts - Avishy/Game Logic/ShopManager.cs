@@ -88,6 +88,9 @@ public class ShopManager : MonoBehaviour
                     resourceBundle.AddResources(combo);
                 }
                 break;
+            case SpellSO spell:
+                spell.AddSpellToPlayer(spell);
+                break;
             default:
                 break;
         }
@@ -133,6 +136,13 @@ public class ShopManager : MonoBehaviour
 
                 return true;
             case ResourceBundleSO resourceBundle:
+                return true; // no conditions
+
+            case SpellSO spell:
+                bool has = spell.CheckHasSpell(out shopMessageString); // we can buy a spell if we don't have the spell
+
+                if (has) return false;
+
                 return true; // no conditions
         }
 
