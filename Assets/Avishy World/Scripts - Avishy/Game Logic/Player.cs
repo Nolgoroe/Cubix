@@ -28,6 +28,9 @@ public class Player : MonoBehaviour
     [Header("Rerolls")]
     [SerializeField] private int rerollAmount;
 
+    [Header("Rerolls")]
+    [SerializeField] private List<Spells> unlockedSpells;
+
     private void Awake()
     {
         if(Instance == null)
@@ -207,5 +210,14 @@ public class Player : MonoBehaviour
     public List<DieData> ReturnPlayerDice()
     {
         return playerDice;
+    }
+    public List<Spells> ReturnUnlockedSpells()
+    {
+        return unlockedSpells;
+    }
+    public void AddToUnlockedSpells(Spells spell)
+    {
+        if(!unlockedSpells.Contains(spell))
+        unlockedSpells.Add(spell);
     }
 }

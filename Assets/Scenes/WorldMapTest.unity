@@ -3504,6 +3504,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 930069349}
   m_CullTransparentMesh: 1
+--- !u!114 &955908056 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 831061813449202693, guid: 68e8a4055e5d2e24c95b9b3ff77f327f,
+    type: 3}
+  m_PrefabInstance: {fileID: 582743511034273016}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e072e7d7c40ee74bb0329f4b0b39d60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &961370499
 GameObject:
   m_ObjectHideFlags: 0
@@ -3679,9 +3691,13 @@ MonoBehaviour:
   playerHealthText: {fileID: 521315729}
   diceFacesResourcesDisplayParent: {fileID: 1571469550}
   diceFacesBuffDisplayParent: {fileID: 609467600}
+  ironParent: {fileID: 0}
   ironText: {fileID: 1199746155}
+  energyParent: {fileID: 0}
   energyText: {fileID: 1782353750}
+  lightningParent: {fileID: 0}
   lightningText: {fileID: 930069351}
+  scrapParent: {fileID: 0}
   scrapText: {fileID: 143652654}
   diceFaceUIDisplayPreafb: {fileID: 8648066081239103102, guid: e10957a92c9cdc84c9caf1bdfa9d57ae,
     type: 3}
@@ -3691,6 +3707,8 @@ MonoBehaviour:
     type: 3}
   diceDataDisplayParent: {fileID: 777257296}
   AddActionsToButtons: 1
+  lootUIDisplayPrefab: {fileID: 0}
+  resourceTypeToAmountHolderArray: []
 --- !u!4 &972462717
 Transform:
   m_ObjectHideFlags: 0
@@ -6211,6 +6229,7 @@ MonoBehaviour:
   maxHP: 0
   currentPlayerHealth: 0
   rerollAmount: 5
+  unlockedSpells: 00000000
 --- !u!4 &1759441904
 Transform:
   m_ObjectHideFlags: 0
@@ -8779,6 +8798,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 129
       objectReference: {fileID: 0}
+    - target: {fileID: 6535343794117944358, guid: 68e8a4055e5d2e24c95b9b3ff77f327f,
+        type: 3}
+      propertyPath: site
+      value: 
+      objectReference: {fileID: 955908056}
     - target: {fileID: 6535343794117944358, guid: 68e8a4055e5d2e24c95b9b3ff77f327f,
         type: 3}
       propertyPath: bgImage

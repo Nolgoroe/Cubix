@@ -13,7 +13,7 @@ public enum EnemyTypes
 public class EnemyParent : MonoBehaviour
 {
     [Header("Enemy Stats")]
-    [SerializeField] private float Speed;
+    [SerializeField] private float speed;
     [SerializeField] private float range = 0.5f;
     [SerializeField] private float stopRange = 0.5f;
     [SerializeField] private float rotationSpeed = 2;
@@ -25,6 +25,9 @@ public class EnemyParent : MonoBehaviour
     [SerializeField] private LayerMask playerTroopsLayer;
     [SerializeField] private Transform target;
     [SerializeField] private EnemyTypes enemyType;
+    [SerializeField] private float speedModifier = 1;
+    [SerializeField] private float timeToEndSlow;
+    [SerializeField] private float currentTimeSlowed;
 
     [Header("Economy Data")]
     [SerializeField] float percentageToGiveScrap;
@@ -81,6 +84,16 @@ public class EnemyParent : MonoBehaviour
             currentAttackCooldown -= Time.deltaTime * GameManager.gameSpeed;
         }
 
+        if(currentTimeSlowed > 0)
+        {
+            currentTimeSlowed -= Time.deltaTime * GameManager.gameSpeed;
+
+            if(currentTimeSlowed <= 0)
+            {
+                speedModifier = 1;
+            }
+        }
+
         if (currentTarget == null) return;
 
         if (currentAttackCooldown <= 0)
@@ -89,6 +102,7 @@ public class EnemyParent : MonoBehaviour
             currentAttackCooldown = attackRate;
         }
     }
+    
     private void FixedUpdate()
     {
         anim.SetBool("Is Walking", false);
@@ -107,7 +121,7 @@ public class EnemyParent : MonoBehaviour
             {
                 anim.SetBool("Is Walking", true);
 
-                transform.Translate((direction.normalized * Speed * GameManager.gameSpeed) * Time.fixedDeltaTime, Space.World);
+                transform.Translate((direction.normalized * speed * speedModifier * GameManager.gameSpeed) * Time.fixedDeltaTime, Space.World);
             }
 
             return;
@@ -117,7 +131,7 @@ public class EnemyParent : MonoBehaviour
             anim.SetBool("Is Walking", true);
 
             Vector3 direction = target.position - transform.position;
-            transform.Translate((direction.normalized * Speed * GameManager.gameSpeed) * Time.fixedDeltaTime, Space.World);
+            transform.Translate((direction.normalized * speed * speedModifier * GameManager.gameSpeed) * Time.fixedDeltaTime, Space.World);
             transform.position = new Vector3(transform.position.x, startingHeight, transform.position.z);
 
             Quaternion lookRotation = Quaternion.LookRotation(direction);
@@ -154,7 +168,6 @@ public class EnemyParent : MonoBehaviour
 
         waypointIndex++;
         target = waypointsList[waypointIndex].transform;
-
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -216,8 +229,6 @@ public class EnemyParent : MonoBehaviour
     }
 
 
-
-
     public void RecieveDMG(float amount)
     {
         StopAllCoroutines();
@@ -240,8 +251,14 @@ public class EnemyParent : MonoBehaviour
         {
             SoundManager.Instance.PlaySoundOneShot(Sounds.EnemyHit);
         }
+    }
+    public void BecomeSlowed(float speedMod, float timeToSlow)
+    {
+        speedModifier = speedMod;
 
+        timeToEndSlow = timeToSlow;
 
+        currentTimeSlowed = timeToEndSlow;
     }
 
     private void RollGiveScrap()
@@ -287,14 +304,4 @@ public class EnemyParent : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
     }
-
-
-
-
-
-
-
-
-
-
 }

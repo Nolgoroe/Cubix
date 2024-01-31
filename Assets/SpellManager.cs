@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Spells
+{
+    Damage, Slow, Freeze
+}
 public class SpellManager : MonoBehaviour
 {
     public static SpellManager Instance;
@@ -13,6 +17,18 @@ public class SpellManager : MonoBehaviour
         Instance = this;
     }
 
+    public void Init()
+    {
+        foreach (SpellParent spellParent in gameSpells)
+        {
+            spellParent.gameObject.SetActive(false);
+
+            if (Player.Instance.ReturnUnlockedSpells().Contains(spellParent.ReturnSpellType()))
+            {
+                spellParent.gameObject.SetActive(true);
+            }
+        }
+    }
     public void AddSpellToList(SpellParent spell)
     {
         gameSpells.Add(spell);
