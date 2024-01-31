@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
+
+//take all ui elements and logic into a new ui script
 public class ForgeManager : MonoBehaviour
 {
     [Header("Text Display")]
@@ -12,6 +15,12 @@ public class ForgeManager : MonoBehaviour
     [SerializeField] private TMP_Text buffTypeTxt;
     [SerializeField] private TMP_Text resourceValueTxt;
     [SerializeField] private TMP_Text buffValueTxt;
+    [SerializeField] private TMP_Text UpgradeDiePriceTxt;
+    [SerializeField] private TMP_Text UpgradeFacePriceTxt;
+    [SerializeField] private Button nextFaceButton;
+    [SerializeField] private Button prevFaceButton;
+    [SerializeField] private Button nextDieButton;
+    [SerializeField] private Button prevDieButton;
 
     [Header("DieDisplay")]
     [SerializeField] private DisplayDicePair d6Die;
@@ -31,6 +40,8 @@ public class ForgeManager : MonoBehaviour
 
     [Header("Temp Settings")]//for standalone testing
     [SerializeField] private List<Die> realDice;
+    [SerializeField] private int upgradeDiePrice;//TEMP!!!!!
+    [SerializeField] private int upgradeFacePrice;//TEMP!!!!!
 
 
     private void Start()
@@ -39,6 +50,10 @@ public class ForgeManager : MonoBehaviour
         {
             Init(Player.Instance.ReturnPlayerDice());
         }
+
+        UpgradeDiePriceTxt.text = "Price: " + upgradeDiePrice;//TEMP!!!!!
+        UpgradeFacePriceTxt.text = "Price: " + upgradeFacePrice;//TEMP!!!!!
+
     }
 
 
@@ -90,6 +105,27 @@ public class ForgeManager : MonoBehaviour
     {
         currentDieIndex += step;
         currentDieIndex = Mathf.Clamp(currentDieIndex, 0, dice.Count - 1);
+
+        //from here
+        if (currentDieIndex >= dice.Count - 1)
+        {
+            nextDieButton.gameObject.SetActive(false);
+        }
+        else
+        {
+            nextDieButton.gameObject.SetActive(true);
+        }
+
+        if (currentDieIndex == 0)
+        {
+            prevDieButton.gameObject.SetActive(false);
+        }
+        else
+        {
+            prevDieButton.gameObject.SetActive(true);
+        }
+        //to here: trash. please do this better without ifs
+
         UpdateCurrentDieView();
     }
 
@@ -99,6 +135,27 @@ public class ForgeManager : MonoBehaviour
 
         currentforgeDie.currentFaceindex += step;
         currentforgeDie.currentFaceindex = Mathf.Clamp(currentforgeDie.currentFaceindex, 0, currentforgeDie.dieData.facesValues.Count - 1);
+
+        //from here
+        if (currentforgeDie.currentFaceindex >= currentforgeDie.dieData.facesValues.Count - 1)
+        {
+            nextFaceButton.gameObject.SetActive(false);
+        }
+        else
+        {
+            nextFaceButton.gameObject.SetActive(true);
+        }
+
+        if (currentforgeDie.currentFaceindex == 0)
+        {
+            prevFaceButton.gameObject.SetActive(false);
+        }
+        else
+        {
+            prevFaceButton.gameObject.SetActive(true);
+        }
+        //to here: trash. please do this better without ifs
+
         UpdateCurrentDieView();
     }
 
@@ -185,6 +242,15 @@ public class ForgeManager : MonoBehaviour
 
     public void UpgradeCurrentDieFace()
     {
+        if (Player.Instance)//***SUPER TEMP****
+        {
+            //if scrap is currency
+            //Player.Instance.AddRemoveScrap(-upgradeFacePrice);
+
+            //if else
+            Player.Instance.RemoveResources(ResourceType.Iron, -upgradeFacePrice);
+        }
+
         dice[currentDieIndex].GetCurrentFaceValue().UpgradeFace(2, 2);
         UpdateCurrentDieView();
     }
@@ -214,6 +280,15 @@ public class ForgeManager : MonoBehaviour
             case DieType.D6:
                 //add two faces, might want to change the logic
                 AddFacesToDie(2);
+
+                if (Player.Instance)//***SUPER TEMP****
+                {
+                    //if scrap is currency
+                    //Player.Instance.AddRemoveScrap(-upgradeDiePrice);
+
+                    //if else
+                    Player.Instance.RemoveResources(ResourceType.Iron, -upgradeDiePrice);
+                }
 
                 dice[currentDieIndex].dieData.dieType = DieType.D8;
 
