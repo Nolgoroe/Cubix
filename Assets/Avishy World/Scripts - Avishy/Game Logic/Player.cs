@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private DieDataSpawner diceDataSpawner;
+    [SerializeField] private MapLoader mapLoader;
+
 
     [Header("Dice")]
     [SerializeField] private List<DiceSO> startDice;
@@ -219,5 +221,15 @@ public class Player : MonoBehaviour
     {
         if(!unlockedSpells.Contains(spell))
         unlockedSpells.Add(spell);
+    }
+
+    public void SaveMapProgression(List<SiteNode> nodes)
+    {
+        mapLoader.SaveData(nodes);
+    }
+    
+    public void LoadMapProgression(List<SiteNode> nodes)
+    {
+        mapLoader.LoadData(nodes);
     }
 }
