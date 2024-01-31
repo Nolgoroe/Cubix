@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f88873b035785a14e89c062e06bc2175, type: 3}
   m_Name: Resource Bundle 1
   m_EditorClassIdentifier: 
-  icon: {fileID: -1490314167, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+  icon: {fileID: 21300000, guid: 1c1a15c1251914c45a4d9ad7ab7770c9, type: 3}
   resourcesNeeded:
   - resource: 0
     amount: 300
