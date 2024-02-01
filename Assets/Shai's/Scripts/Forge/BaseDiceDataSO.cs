@@ -7,11 +7,11 @@ public class BaseDiceDataSO : ScriptableObject
 {
     [SerializeField] private List<DieData> baseDice;
 
-    public DieFaceValue GetBaseFaceValueOfDie(DieElement element, DieType type, int faceNum)
+    public DieFaceValue GetBaseFaceValueOfDie(CellTypeColor color, DieType type, int faceNum)
     {
         foreach (var die in baseDice)
         {
-            if (die.dieType == type && die.element == element)
+            if (die.dieType == type && die.colorType == color)
             {
                 return die.facesValues[faceNum];
             }

@@ -109,7 +109,7 @@ public class SiteNode : MonoBehaviour
     public void Pick()
     {
         Complete();
-        site.LaunchSite();
+        //site.LaunchSite();
     }
 
     public void InvokeClicked()
