@@ -26,7 +26,8 @@ public enum Sounds
     WaveStart,
     GameplayBGM,
     PlannigPhaseBGM,
-    ForgeDice
+    ForgeDice,
+    MapBGM
 
 }
 
@@ -68,6 +69,7 @@ public class SoundManager : MonoBehaviour
 
         SceneManager.activeSceneChanged += StopAllSound;
     }
+
     private void DisableAudioSourceGameobject(AudioSource source)
     {
         source.gameObject.SetActive(false);

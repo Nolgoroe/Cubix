@@ -10,6 +10,8 @@ public class MapProgression : MonoBehaviour
     private void Start()
     {
         UIManager.Instance.UpdateMapDiceDisplay();
+
+        SoundManager.Instance.PlaySoundNormal(Sounds.MapBGM);
     }
     public void Init()
     {
