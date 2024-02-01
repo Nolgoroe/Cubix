@@ -1485,6 +1485,7 @@ MonoBehaviour:
     type: 3}
   blankD8Prefab: {fileID: 6895173316381504982, guid: 89c80393a1704c540a3de66fa30dd966,
     type: 3}
+  forgeUI: {fileID: 184908665}
   D6Icons:
   - {fileID: 21300000, guid: 80014bca566c07d4f8ee0af21f3b7d2c, type: 3}
   - {fileID: 21300000, guid: f059b6c6aa73da245abbd965a5e7e599, type: 3}

@@ -31,6 +31,7 @@ public class ForgeManager : MonoBehaviour
     [SerializeField] private List<ForgeDieData> dice;
     [SerializeField] private GameObject blankD6Prefab;
     [SerializeField] private GameObject blankD8Prefab;
+    [SerializeField] private ForgeUITemp forgeUI;
     [SerializeField] private Sprite[] D6Icons;
     [SerializeField] private Sprite[] D8Icons;
 
@@ -57,6 +58,7 @@ public class ForgeManager : MonoBehaviour
         UpgradeFacePriceTxt.text = "Price: " + upgradeFacePrice;//TEMP!!!!!
         RefreshFaceNavButtons(dice[currentDieIndex]);
         RefreshDieNavButtons();
+        forgeUI.UpdateResourceText();
     }
 
     private List<DieData> TempDieDataExtractor()
@@ -152,6 +154,8 @@ public class ForgeManager : MonoBehaviour
                 break;
         }
 
+        forgeUI.UpdateResourceText();
+
         //update display buff die
         currentDisplayDice.buffDie.UpdateDisplay(
             currentDie.dieData.material,
@@ -163,7 +167,6 @@ public class ForgeManager : MonoBehaviour
             currentDie.dieData.material,
             "+" + currentDie.GetCurrentFaceValue().Resource.Value.ToString(),
             currentDie.GetCurrentFaceValue().Resource.Icon);
-
 
     }
 

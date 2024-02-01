@@ -121,6 +121,7 @@ public class SiteNode : MonoBehaviour
         }
     }
 
+
     public NodeData ExportData()
     {
         return new NodeData(isComplete, isLocked, ID);
