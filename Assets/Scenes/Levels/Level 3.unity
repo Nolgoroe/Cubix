@@ -13866,6 +13866,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6577778, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14495,6 +14499,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 471120, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577778, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -15656,6 +15664,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 471120, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577778, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -17366,6 +17378,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6577778, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17570,7 +17586,7 @@ MonoBehaviour:
   hoverColor: {r: 0, g: 0, b: 0, a: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
   slotTypeSpriteRenderer: {fileID: 4331237298384583886}
-  cellTypeColor: 3
+  cellTypeColor: 0
   isOccupied: 0
   occupiedByTower: 0
   nextToPath: 0
@@ -20506,6 +20522,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 426370, guid: e66b9a2a4f5013641b55cbac25431109, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6520186, guid: e66b9a2a4f5013641b55cbac25431109, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -26220,7 +26240,7 @@ MonoBehaviour:
   hoverColor: {r: 0, g: 0, b: 0, a: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
   slotTypeSpriteRenderer: {fileID: 8218135910915149946}
-  cellTypeColor: 3
+  cellTypeColor: 0
   isOccupied: 0
   occupiedByTower: 0
   nextToPath: 0
@@ -27240,8 +27260,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
-  m_Center: {x: 0, y: 0, z: 0.000000076252036}
+  m_Size: {x: 0.69156325, y: 0.6971715, z: 1.2052007}
+  m_Center: {x: 0.00093467534, y: 0.0037388802, z: -0.5991798}
 --- !u!33 &1123220196429150423
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -28273,6 +28293,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 471120, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577778, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -34731,6 +34755,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6520186, guid: e66b9a2a4f5013641b55cbac25431109, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -34822,7 +34850,7 @@ MonoBehaviour:
   hoverColor: {r: 0, g: 0, b: 0, a: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
   slotTypeSpriteRenderer: {fileID: 2948809268446756236}
-  cellTypeColor: 3
+  cellTypeColor: 0
   isOccupied: 0
   occupiedByTower: 0
   nextToPath: 0
@@ -35902,7 +35930,7 @@ MonoBehaviour:
   hoverColor: {r: 0, g: 0, b: 0, a: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
   slotTypeSpriteRenderer: {fileID: 1127897081306492103}
-  cellTypeColor: 1
+  cellTypeColor: 0
   isOccupied: 0
   occupiedByTower: 0
   nextToPath: 0
@@ -37255,6 +37283,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 426370, guid: e66b9a2a4f5013641b55cbac25431109, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6520186, guid: e66b9a2a4f5013641b55cbac25431109, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -39572,6 +39604,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6577778, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -40362,6 +40398,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6520186, guid: e66b9a2a4f5013641b55cbac25431109, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -40477,6 +40517,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 471120, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577778, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -40618,8 +40662,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
-  m_Center: {x: 0, y: 0, z: 0.000000076252036}
+  m_Size: {x: 0.69156325, y: 0.6971715, z: 1.2052007}
+  m_Center: {x: 0.00093467534, y: 0.0037388802, z: -0.5991798}
 --- !u!4 &2208659739563529890
 Transform:
   m_ObjectHideFlags: 0
@@ -41043,6 +41087,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 471120, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577778, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -41976,6 +42024,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 471120, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577778, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -44866,6 +44918,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6577778, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -47291,6 +47347,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6577778, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -48180,6 +48240,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 471120, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577778, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -49380,7 +49444,7 @@ MonoBehaviour:
   hoverColor: {r: 0, g: 0, b: 0, a: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
   slotTypeSpriteRenderer: {fileID: 2079170683239826575}
-  cellTypeColor: 3
+  cellTypeColor: 0
   isOccupied: 0
   occupiedByTower: 0
   nextToPath: 0
@@ -51220,6 +51284,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6577778, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -52631,6 +52699,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6520186, guid: e66b9a2a4f5013641b55cbac25431109, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -53941,6 +54013,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 426370, guid: e66b9a2a4f5013641b55cbac25431109, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6520186, guid: e66b9a2a4f5013641b55cbac25431109, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -55393,7 +55469,7 @@ MonoBehaviour:
   hoverColor: {r: 0, g: 0, b: 0, a: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
   slotTypeSpriteRenderer: {fileID: 3041324954393358905}
-  cellTypeColor: 3
+  cellTypeColor: 0
   isOccupied: 0
   occupiedByTower: 0
   nextToPath: 0
@@ -55608,6 +55684,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 471120, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577778, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -60195,6 +60275,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6577778, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -60268,6 +60352,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 426370, guid: e66b9a2a4f5013641b55cbac25431109, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6520186, guid: e66b9a2a4f5013641b55cbac25431109, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -60821,7 +60909,7 @@ MonoBehaviour:
   hoverColor: {r: 0, g: 0, b: 0, a: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
   slotTypeSpriteRenderer: {fileID: 4386110127965937365}
-  cellTypeColor: 3
+  cellTypeColor: 0
   isOccupied: 0
   occupiedByTower: 0
   nextToPath: 0
@@ -64400,6 +64488,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6577778, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -67569,8 +67661,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
-  m_Center: {x: 0, y: 0, z: 0.000000076252036}
+  m_Size: {x: 0.69156325, y: 0.6971715, z: 1.2052007}
+  m_Center: {x: 0.00093467534, y: 0.0037388802, z: -0.5991798}
 --- !u!1 &4487234491728076811
 GameObject:
   m_ObjectHideFlags: 0
@@ -69078,8 +69170,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
-  m_Center: {x: 0, y: 0, z: 0.000000076252036}
+  m_Size: {x: 0.69156325, y: 0.6971715, z: 1.2052007}
+  m_Center: {x: 0.00093467534, y: 0.0037388802, z: -0.5991798}
 --- !u!1 &4614566127884641513
 GameObject:
   m_ObjectHideFlags: 0
@@ -69756,6 +69848,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 471120, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577778, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -71410,7 +71506,7 @@ MonoBehaviour:
   hoverColor: {r: 0, g: 0, b: 0, a: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
   slotTypeSpriteRenderer: {fileID: 3556307766355096382}
-  cellTypeColor: 3
+  cellTypeColor: 0
   isOccupied: 0
   occupiedByTower: 0
   nextToPath: 0
@@ -71791,8 +71887,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
-  m_Center: {x: 0, y: 0, z: 0.000000076252036}
+  m_Size: {x: 0.69156325, y: 0.6971715, z: 1.2052007}
+  m_Center: {x: 0.00093467534, y: 0.0037388802, z: -0.5991798}
 --- !u!33 &4804936265863071414
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -72389,6 +72485,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 471120, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577778, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -76670,8 +76770,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
-  m_Center: {x: 0, y: 0, z: 0.000000076252036}
+  m_Size: {x: 0.69156325, y: 0.6971715, z: 1.2052007}
+  m_Center: {x: 0.00093467534, y: 0.0037388802, z: -0.5991798}
 --- !u!114 &5169202877681860138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77300,6 +77400,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 471120, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577778, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -78694,6 +78798,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 471120, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577778, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -81511,6 +81619,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6577778, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -82660,6 +82772,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 471120, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577778, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -84096,8 +84212,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
-  m_Center: {x: 0, y: 0, z: 0.000000076252036}
+  m_Size: {x: 0.69156325, y: 0.6971715, z: 1.2052007}
+  m_Center: {x: 0.00093467534, y: 0.0037388802, z: -0.5991798}
 --- !u!4 &5716842957626036069
 Transform:
   m_ObjectHideFlags: 0
@@ -85580,7 +85696,7 @@ MonoBehaviour:
   hoverColor: {r: 0, g: 0, b: 0, a: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
   slotTypeSpriteRenderer: {fileID: 5164541194891575304}
-  cellTypeColor: 1
+  cellTypeColor: 0
   isOccupied: 0
   occupiedByTower: 0
   nextToPath: 0
@@ -87834,8 +87950,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
-  m_Center: {x: 0, y: 0, z: 0.000000076252036}
+  m_Size: {x: 0.69156325, y: 0.6971715, z: 1.2052007}
+  m_Center: {x: 0.00093467534, y: 0.0037388802, z: -0.5991798}
 --- !u!23 &6017681768824122152
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -88892,6 +89008,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 471120, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577778, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -95685,8 +95805,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
-  m_Center: {x: 0, y: 0, z: 0.000000076252036}
+  m_Size: {x: 0.69156325, y: 0.6971715, z: 1.2052007}
+  m_Center: {x: 0.00093467534, y: 0.0037388802, z: -0.5991798}
 --- !u!33 &6678488906453432677
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -96698,6 +96818,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6577778, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -97037,6 +97161,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 471120, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577778, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -97697,6 +97825,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 426370, guid: e66b9a2a4f5013641b55cbac25431109, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6520186, guid: e66b9a2a4f5013641b55cbac25431109, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -99651,8 +99783,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
-  m_Center: {x: 0, y: 0, z: 0.000000076252036}
+  m_Size: {x: 0.69156325, y: 0.6971715, z: 1.2052007}
+  m_Center: {x: 0.00093467534, y: 0.0037388802, z: -0.5991798}
 --- !u!1 &6999629806009993751
 GameObject:
   m_ObjectHideFlags: 0
@@ -100799,8 +100931,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
-  m_Center: {x: 0, y: 0, z: 0.000000076252036}
+  m_Size: {x: 0.69156325, y: 0.6971715, z: 1.2052007}
+  m_Center: {x: 0.00093467534, y: 0.0037388802, z: -0.5991798}
 --- !u!23 &7110028385709723647
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -103632,7 +103764,7 @@ MonoBehaviour:
   hoverColor: {r: 0, g: 0, b: 0, a: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
   slotTypeSpriteRenderer: {fileID: 97484341851004953}
-  cellTypeColor: 2
+  cellTypeColor: 0
   isOccupied: 0
   occupiedByTower: 0
   nextToPath: 0
@@ -104603,6 +104735,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6577778, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -105215,8 +105351,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
-  m_Center: {x: 0, y: 0, z: 0.000000076252036}
+  m_Size: {x: 0.69156325, y: 0.6971715, z: 1.2052007}
+  m_Center: {x: 0.00093467534, y: 0.0037388802, z: -0.5991798}
 --- !u!1 &7491595454517266274
 GameObject:
   m_ObjectHideFlags: 0
@@ -109731,8 +109867,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
-  m_Center: {x: 0, y: 0, z: 0.000000076252036}
+  m_Size: {x: 0.69156325, y: 0.6971715, z: 1.2052007}
+  m_Center: {x: 0.00093467534, y: 0.0037388802, z: -0.5991798}
 --- !u!4 &7850348485785200788
 Transform:
   m_ObjectHideFlags: 0
@@ -115579,6 +115715,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6577778, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -117039,7 +117179,7 @@ MonoBehaviour:
   hoverColor: {r: 0, g: 0, b: 0, a: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
   slotTypeSpriteRenderer: {fileID: 1870125418146444524}
-  cellTypeColor: 3
+  cellTypeColor: 0
   isOccupied: 0
   occupiedByTower: 0
   nextToPath: 0
@@ -117764,8 +117904,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
-  m_Center: {x: 0, y: 0, z: 0.000000076252036}
+  m_Size: {x: 0.69156325, y: 0.6971715, z: 1.2052007}
+  m_Center: {x: 0.00093467534, y: 0.0037388802, z: -0.5991798}
 --- !u!23 &8579820222415149656
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -118001,7 +118141,7 @@ MonoBehaviour:
   hoverColor: {r: 0, g: 0, b: 0, a: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
   slotTypeSpriteRenderer: {fileID: 8894670300943585550}
-  cellTypeColor: 3
+  cellTypeColor: 0
   isOccupied: 0
   occupiedByTower: 0
   nextToPath: 0
@@ -118213,8 +118353,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.0068418887}
-  m_Center: {x: 0, y: 0, z: 0.000000076252036}
+  m_Size: {x: 0.69156325, y: 0.6971715, z: 1.2052007}
+  m_Center: {x: 0.00093467534, y: 0.0037388802, z: -0.5991798}
 --- !u!1 &8631645402064994291
 GameObject:
   m_ObjectHideFlags: 0
@@ -118651,6 +118791,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 426370, guid: e66b9a2a4f5013641b55cbac25431109, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6520186, guid: e66b9a2a4f5013641b55cbac25431109, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -119895,6 +120039,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6520186, guid: e66b9a2a4f5013641b55cbac25431109, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -120594,6 +120742,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6577778, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -121093,6 +121245,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6577778, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -121470,6 +121626,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 471120, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577778, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -122563,7 +122723,7 @@ MonoBehaviour:
   hoverColor: {r: 0, g: 0, b: 0, a: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
   slotTypeSpriteRenderer: {fileID: 4674841728840941865}
-  cellTypeColor: 3
+  cellTypeColor: 0
   isOccupied: 0
   occupiedByTower: 0
   nextToPath: 0
@@ -124941,6 +125101,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6577778, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -125413,6 +125577,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 471120, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577778, guid: cd3a6d49432a4a64287d65647680ec9b, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
