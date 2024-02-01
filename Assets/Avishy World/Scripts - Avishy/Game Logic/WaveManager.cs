@@ -46,7 +46,7 @@ public class WaveManager : MonoBehaviour
 
     private void Start()
     {
-        //SoundManager.Instance.PlaySoundNormal(Sounds.TimerTicking);
+        SoundManager.Instance.PlaySoundFade(Sounds.PlannigPhaseBGM);
     }
 
     private void Update()

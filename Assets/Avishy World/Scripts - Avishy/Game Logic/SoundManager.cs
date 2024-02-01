@@ -23,7 +23,10 @@ public enum Sounds
     TimerTicking,
     TowerRecieveBuff,
     UIClick,
-    WaveStart
+    WaveStart,
+    GameplayBGM,
+    PlannigPhaseBGM,
+    ForgeDice
 
 }
 
@@ -65,38 +68,26 @@ public class SoundManager : MonoBehaviour
 
         SceneManager.activeSceneChanged += StopAllSound;
     }
-
-    private IEnumerator PlaySoundTimed(Sounds sound)
-    {
-        float time = SoundToAudioSourceDict[sound].source.clip.length;
-
-        SoundToAudioSourceDict[sound].source.volume = 0;
-
-        SoundToAudioSourceDict[sound].source.gameObject.SetActive(true);
-
-        LeanTween.value(SoundToAudioSourceDict[sound].source.gameObject, 0, SoundToAudioSourceDict[sound].maxVolume, SoundToAudioSourceDict[sound].timeToFadeVolume).setOnUpdate((float val) =>
-        {
-            SoundToAudioSourceDict[sound].source.volume = val;
-        });
-
-        SoundToAudioSourceDict[sound].source.gameObject.SetActive(true);
-
-        yield return new WaitForSeconds(time);
-
-        SoundToAudioSourceDict[sound].source.gameObject.SetActive(false);
-    }
-
-
     private void DisableAudioSourceGameobject(AudioSource source)
     {
         source.gameObject.SetActive(false);
     }
 
-
-    public void CallPlaySoundTimed(Sounds sound)
+    public void PlaySoundFade(Sounds sound)
     {
-        StartCoroutine(PlaySoundTimed(sound));
+        float time = SoundToAudioSourceDict[sound].source.clip.length;
+
+        SoundToAudioSourceDict[sound].source.volume = 0;
+
+        SoundToAudioSourceDict[sound].source.Play();
+
+        LeanTween.value(SoundToAudioSourceDict[sound].source.gameObject, 0, SoundToAudioSourceDict[sound].maxVolume, SoundToAudioSourceDict[sound].timeToFadeVolume).setOnUpdate((float val) =>
+        {
+            SoundToAudioSourceDict[sound].source.volume = val;
+        });
     }
+
+
 
     public void PlaySoundOneShot(Sounds sound)
     {
@@ -112,18 +103,12 @@ public class SoundManager : MonoBehaviour
         SoundToAudioSourceDict[sound].source.Play();
     }
 
-    public void StopSoundTimed(Sounds sound)
+    public void StopSoundFade(Sounds sound)
     {
-        SoundToAudioSourceDict[sound].source.volume = 1;
-
-        SoundToAudioSourceDict[sound].source.gameObject.SetActive(true);
-
-        LeanTween.value(SoundToAudioSourceDict[sound].source.gameObject, SoundToAudioSourceDict[sound].source.volume, 0, SoundToAudioSourceDict[sound].timeToFadeVolume)
-            .setOnComplete(() => DisableAudioSourceGameobject(SoundToAudioSourceDict[sound].source))
-            .setOnUpdate((float val) =>
-            {
-                SoundToAudioSourceDict[sound].source.volume = val;
-            });
+        LeanTween.value(SoundToAudioSourceDict[sound].source.gameObject, SoundToAudioSourceDict[sound].source.volume, 0, SoundToAudioSourceDict[sound].timeToFadeVolume).setOnUpdate((float val) =>
+        {
+            SoundToAudioSourceDict[sound].source.volume = val;
+        });
     }
     public void StopSound(Sounds sound)
     {
