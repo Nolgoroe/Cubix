@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: BaseDiceData
   m_EditorClassIdentifier: 
   baseDice:
-  - DieType: 0
+  - dieType: 1
     element: 0
+    colorType: 1
     material: {fileID: 0}
     facesValues:
     - resource:
@@ -35,36 +36,28 @@ MonoBehaviour:
         Icon: {fileID: 0}
     - resource:
         Type: 0
-        Value: 0
-        Icon: {fileID: 0}
+        Value: 1
+        Icon: {fileID: -1631459450, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
       buff:
-        Type: 0
-        Value: 0
-        Icon: {fileID: 0}
+        Type: 1
+        Value: 10
+        Icon: {fileID: 775649512, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+    - resource:
+        Type: 1
+        Value: 1
+        Icon: {fileID: -1490314167, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+      buff:
+        Type: 1
+        Value: 10
+        Icon: {fileID: 775649512, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
     - resource:
         Type: 0
         Value: 0
         Icon: {fileID: 0}
       buff:
-        Type: 0
-        Value: 0
-        Icon: {fileID: 0}
-    - resource:
-        Type: 0
-        Value: 0
-        Icon: {fileID: 0}
-      buff:
-        Type: 0
-        Value: 0
-        Icon: {fileID: 0}
-    - resource:
-        Type: 0
-        Value: 0
-        Icon: {fileID: 0}
-      buff:
-        Type: 0
-        Value: 0
-        Icon: {fileID: 0}
+        Type: 4
+        Value: 8
+        Icon: {fileID: -1439601924, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
     - resource:
         Type: 0
         Value: 0
@@ -75,10 +68,164 @@ MonoBehaviour:
         Icon: {fileID: 0}
     - resource:
         Type: 1
-        Value: 99
+        Value: 1
         Icon: {fileID: -1490314167, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
       buff:
-        Type: 2
-        Value: 99
-        Icon: {fileID: -1766819994, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+        Type: 1
+        Value: 10
+        Icon: {fileID: 775649512, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+    - resource:
+        Type: 1
+        Value: 1
+        Icon: {fileID: -1490314167, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+      buff:
+        Type: 1
+        Value: 10
+        Icon: {fileID: 775649512, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
     towerPrefabConnected: {fileID: 0}
+    diePrefab: {fileID: 0}
+    dieIcon: {fileID: 0}
+  - dieType: 1
+    element: 0
+    colorType: 2
+    material: {fileID: 0}
+    facesValues:
+    - resource:
+        Type: 0
+        Value: 0
+        Icon: {fileID: 0}
+      buff:
+        Type: 0
+        Value: 0
+        Icon: {fileID: 0}
+    - resource:
+        Type: 0
+        Value: 0
+        Icon: {fileID: 0}
+      buff:
+        Type: 0
+        Value: 0
+        Icon: {fileID: 0}
+    - resource:
+        Type: 0
+        Value: 1
+        Icon: {fileID: -1631459450, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+      buff:
+        Type: 1
+        Value: 10
+        Icon: {fileID: 775649512, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+    - resource:
+        Type: 1
+        Value: 1
+        Icon: {fileID: -1490314167, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+      buff:
+        Type: 1
+        Value: 10
+        Icon: {fileID: 775649512, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+    - resource:
+        Type: 0
+        Value: 0
+        Icon: {fileID: 0}
+      buff:
+        Type: 4
+        Value: 8
+        Icon: {fileID: -1439601924, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+    - resource:
+        Type: 0
+        Value: 0
+        Icon: {fileID: 0}
+      buff:
+        Type: 0
+        Value: 0
+        Icon: {fileID: 0}
+    - resource:
+        Type: 1
+        Value: 1
+        Icon: {fileID: -1490314167, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+      buff:
+        Type: 1
+        Value: 10
+        Icon: {fileID: 775649512, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+    - resource:
+        Type: 1
+        Value: 1
+        Icon: {fileID: -1490314167, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+      buff:
+        Type: 1
+        Value: 10
+        Icon: {fileID: 775649512, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+    towerPrefabConnected: {fileID: 0}
+    diePrefab: {fileID: 0}
+    dieIcon: {fileID: 0}
+  - dieType: 1
+    element: 0
+    colorType: 0
+    material: {fileID: 0}
+    facesValues:
+    - resource:
+        Type: 0
+        Value: 0
+        Icon: {fileID: 0}
+      buff:
+        Type: 0
+        Value: 0
+        Icon: {fileID: 0}
+    - resource:
+        Type: 0
+        Value: 0
+        Icon: {fileID: 0}
+      buff:
+        Type: 0
+        Value: 0
+        Icon: {fileID: 0}
+    - resource:
+        Type: 0
+        Value: 1
+        Icon: {fileID: -1631459450, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+      buff:
+        Type: 1
+        Value: 10
+        Icon: {fileID: 775649512, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+    - resource:
+        Type: 1
+        Value: 1
+        Icon: {fileID: -1490314167, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+      buff:
+        Type: 1
+        Value: 10
+        Icon: {fileID: 775649512, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+    - resource:
+        Type: 0
+        Value: 0
+        Icon: {fileID: 0}
+      buff:
+        Type: 4
+        Value: 8
+        Icon: {fileID: -1439601924, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+    - resource:
+        Type: 0
+        Value: 0
+        Icon: {fileID: 0}
+      buff:
+        Type: 0
+        Value: 0
+        Icon: {fileID: 0}
+    - resource:
+        Type: 2
+        Value: 1
+        Icon: {fileID: 1196769475, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+      buff:
+        Type: 1
+        Value: 10
+        Icon: {fileID: 775649512, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+    - resource:
+        Type: 2
+        Value: 1
+        Icon: {fileID: 1196769475, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+      buff:
+        Type: 1
+        Value: 10
+        Icon: {fileID: 775649512, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+    towerPrefabConnected: {fileID: 0}
+    diePrefab: {fileID: 0}
+    dieIcon: {fileID: 0}

@@ -272,7 +272,7 @@ public class ForgeManager : MonoBehaviour
         for (int i = 0; i < facesAmount; i++)
         {
             DieFaceValue newFace;
-            newFace = baseDiceInfo.GetBaseFaceValueOfDie(currentDieData.element, currentDieData.dieType, currentDieData.facesValues.Count);
+            newFace = baseDiceInfo.GetBaseFaceValueOfDie(currentDieData.colorType, currentDieData.dieType, currentDieData.facesValues.Count);
             currentDieData.facesValues.Add(newFace);
         }
     }
