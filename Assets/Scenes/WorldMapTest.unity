@@ -11907,76 +11907,76 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allAudioSources:
   - source: {fileID: 823328819}
-    maxVolume: 0.5
+    maxVolume: 1
     timeToFadeVolume: 0.3
   - source: {fileID: 1740159620}
-    maxVolume: 0.5
+    maxVolume: 1
     timeToFadeVolume: 0.3
   - source: {fileID: 410725518}
-    maxVolume: 0.5
+    maxVolume: 1
     timeToFadeVolume: 0.3
   - source: {fileID: 1516418496}
-    maxVolume: 0.5
+    maxVolume: 1
     timeToFadeVolume: 0.3
   - source: {fileID: 2145723150}
-    maxVolume: 0.5
+    maxVolume: 1
     timeToFadeVolume: 0.3
   - source: {fileID: 1961982393}
-    maxVolume: 0.5
+    maxVolume: 1
     timeToFadeVolume: 0.3
   - source: {fileID: 1968628136}
-    maxVolume: 0.5
+    maxVolume: 1
     timeToFadeVolume: 0.3
   - source: {fileID: 1304237046}
-    maxVolume: 0.5
+    maxVolume: 1
     timeToFadeVolume: 0.3
   - source: {fileID: 692341601}
-    maxVolume: 0.5
+    maxVolume: 1
     timeToFadeVolume: 0.3
   - source: {fileID: 828770326}
-    maxVolume: 0.5
+    maxVolume: 1
     timeToFadeVolume: 0.3
   - source: {fileID: 911327310}
-    maxVolume: 0.5
+    maxVolume: 1
     timeToFadeVolume: 0.3
   - source: {fileID: 366880894}
-    maxVolume: 0.5
+    maxVolume: 1
     timeToFadeVolume: 0.3
   - source: {fileID: 575102903}
-    maxVolume: 0.5
+    maxVolume: 1
     timeToFadeVolume: 0.3
   - source: {fileID: 1061625581}
-    maxVolume: 0.5
+    maxVolume: 1
     timeToFadeVolume: 0.3
   - source: {fileID: 1390296670}
-    maxVolume: 0.5
+    maxVolume: 1
     timeToFadeVolume: 0.3
   - source: {fileID: 306494799}
-    maxVolume: 0.5
+    maxVolume: 1
     timeToFadeVolume: 0.3
   - source: {fileID: 151159802}
-    maxVolume: 0.5
+    maxVolume: 1
     timeToFadeVolume: 0.3
   - source: {fileID: 1652686517}
-    maxVolume: 0.5
+    maxVolume: 1
     timeToFadeVolume: 0.3
   - source: {fileID: 1375886081}
-    maxVolume: 0.5
+    maxVolume: 1
     timeToFadeVolume: 0.3
   - source: {fileID: 1292552950}
-    maxVolume: 0.5
+    maxVolume: 1
     timeToFadeVolume: 0.3
   - source: {fileID: 1823705809}
-    maxVolume: 0.5
-    timeToFadeVolume: 0.3
+    maxVolume: 1
+    timeToFadeVolume: 0.1
   - source: {fileID: 59772129}
-    maxVolume: 0.5
-    timeToFadeVolume: 0.3
+    maxVolume: 1
+    timeToFadeVolume: 0.1
   - source: {fileID: 1554416331}
-    maxVolume: 0.5
+    maxVolume: 1
     timeToFadeVolume: 0.3
   - source: {fileID: 2099199818}
-    maxVolume: 0.5
+    maxVolume: 1
     timeToFadeVolume: 0.3
 --- !u!4 &1847634198
 Transform:
