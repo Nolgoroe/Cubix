@@ -210,7 +210,7 @@ public class ForgeManager : MonoBehaviour
 
         SoundManager.Instance.PlaySoundOneShot(Sounds.ForgeDice);
 
-        dice[currentDieIndex].GetCurrentFaceValue().UpgradeFace(2, 2);
+        dice[currentDieIndex].GetCurrentFaceValue().UpgradeFace(1, 5);
         UpdateCurrentDieView();
     }
 
