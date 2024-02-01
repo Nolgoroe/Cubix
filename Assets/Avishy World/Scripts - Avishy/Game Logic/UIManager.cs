@@ -51,10 +51,10 @@ public class UIManager : MonoBehaviour
     [Header("Resources UI")]
     [SerializeField] private Transform ironParent;
     [SerializeField] private TMP_Text ironText;
-    [SerializeField] private Transform energyParent;
+    [SerializeField] private Transform novaParent;
+    [SerializeField] private TMP_Text novaText;
+    [SerializeField] private Transform eneryParent;
     [SerializeField] private TMP_Text energyText;
-    [SerializeField] private Transform lightningParent;
-    [SerializeField] private TMP_Text lightningText;
     [SerializeField] private Transform scrapParent;
     [SerializeField] private TMP_Text scrapText;
 
@@ -88,6 +88,16 @@ public class UIManager : MonoBehaviour
         AddActionToAllButotns();
 
         TogglePauseMenu(false);
+
+        if (Player.Instance)///Temp!
+        {
+            int iron = Player.Instance.ReturnAmountOfResource(ResourceType.Iron);
+            int nova = Player.Instance.ReturnAmountOfResource(ResourceType.Nova);
+            int energy = Player.Instance.ReturnAmountOfResource(ResourceType.Energy);
+            int scrap = Player.Instance.ReturnAmountOfResource(ResourceType.scrap);
+
+            UpdateResources(iron, nova, energy, scrap);
+        }
     }
 
     private void Update()
@@ -264,11 +274,11 @@ public class UIManager : MonoBehaviour
         Debug.Log("Open Settings");
     }
 
-    public void UpdateResources(int _iron, int _energy, int _lightning, int _scrap)
+    public void UpdateResources(int _iron, int _nova, int _energy, int _scrap)
     {
         ironText.text = _iron.ToString();
+        novaText.text = _nova.ToString();
         energyText.text = _energy.ToString();
-        lightningText.text = _lightning.ToString();
         scrapText.text = _scrap.ToString();
     }
     public void UpdatePlayerHealth(int currentHealth, int maxHealth)
@@ -376,11 +386,11 @@ public class UIManager : MonoBehaviour
             case ResourceType.Iron:
                 parent = ironParent;
                 break;
-            case ResourceType.Energy:
-                parent = energyParent;
+            case ResourceType.Nova:
+                parent = novaParent;
                 break;
-            case ResourceType.Lightning:
-                parent = lightningParent;
+            case ResourceType.Energy:
+                parent = eneryParent;
                 break;
             case ResourceType.scrap:
                 parent = scrapParent;

@@ -16,18 +16,14 @@ MonoBehaviour:
   - delayBetweenEnemies: 0
     delayBetweenWaves: 30
     enemyWaveCombo: []
-  - delayBetweenEnemies: 0.1
+  - delayBetweenEnemies: 1
     delayBetweenWaves: 30
     enemyWaveCombo:
     - enemyWaveDataList:
-      - amountOfThisEnemy: 2
+      - amountOfThisEnemy: 20
         enemySpawnerIndex: 0
         enemyPathIndex: 0
         enemyType: 1
-      - amountOfThisEnemy: 20
-        enemySpawnerIndex: 1
-        enemyPathIndex: 0
-        enemyType: 2
       timeToNextEnemies: 0
   - delayBetweenEnemies: 1
     delayBetweenWaves: 30
