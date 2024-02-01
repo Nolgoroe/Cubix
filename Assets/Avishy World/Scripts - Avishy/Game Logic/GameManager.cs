@@ -81,7 +81,8 @@ public class GameManager : MonoBehaviour
             if(PlayerWeaponManager.isUsingWeapon)
             PlayerWeaponManager.Instance.ToggleWeapon(false);
 
-            //SoundManager.Instance.PlaySoundNormal(Sounds.TimerTicking);
+            SoundManager.Instance.StopSoundFade(Sounds.GameplayBGM);
+            SoundManager.Instance.PlaySoundFade(Sounds.PlannigPhaseBGM);
 
             foreach (TowerBaseParent tower in summonedRangeTowers)
             {
@@ -102,6 +103,9 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            SoundManager.Instance.PlaySoundFade(Sounds.GameplayBGM);
+            SoundManager.Instance.StopSoundFade(Sounds.PlannigPhaseBGM);
+
             foreach (TowerBaseParent tower in summonedRangeTowers)
             {
                 tower.OnEndPlayerTurn();

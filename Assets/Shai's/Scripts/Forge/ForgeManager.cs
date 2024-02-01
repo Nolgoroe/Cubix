@@ -172,6 +172,8 @@ public class ForgeManager : MonoBehaviour
 
     public void ChangeCurrentFacePair()
     {
+        SoundManager.Instance.PlaySoundOneShot(Sounds.ForgeDice);
+
         dice[currentDieIndex].GetCurrentFaceValue().SetResource(_currentEditResource);
         dice[currentDieIndex].GetCurrentFaceValue().SetBuff(_currentEditBuff);
 
@@ -205,6 +207,8 @@ public class ForgeManager : MonoBehaviour
             //if else
             Player.Instance.RemoveResources(ResourceType.Iron, -upgradeFacePrice);
         }
+
+        SoundManager.Instance.PlaySoundOneShot(Sounds.ForgeDice);
 
         dice[currentDieIndex].GetCurrentFaceValue().UpgradeFace(2, 2);
         UpdateCurrentDieView();
@@ -257,6 +261,7 @@ public class ForgeManager : MonoBehaviour
             default:
                 break;
         }
+        SoundManager.Instance.PlaySoundOneShot(Sounds.ForgeDice);
 
         UpdateCurrentDieView();
     }
