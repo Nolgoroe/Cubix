@@ -46,25 +46,15 @@ public class ForgeManager : MonoBehaviour
 
     private void Start()
     {
+        Init(TempDieDataExtractor());//only for testing
         if (Player.Instance)
         {
             Init(Player.Instance.ReturnPlayerDice());
         }
-
         UpgradeDiePriceTxt.text = "Price: " + upgradeDiePrice;//TEMP!!!!!
         UpgradeFacePriceTxt.text = "Price: " + upgradeFacePrice;//TEMP!!!!!
-
-    }
-
-
-    private void Update()
-    {
-#if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            Init(TempDieDataExtractor());
-        }
-#endif
+        RefreshFaceNavButtons(dice[currentDieIndex]);
+        RefreshDieNavButtons();
     }
 
     private List<DieData> TempDieDataExtractor()
@@ -105,27 +95,7 @@ public class ForgeManager : MonoBehaviour
     {
         currentDieIndex += step;
         currentDieIndex = Mathf.Clamp(currentDieIndex, 0, dice.Count - 1);
-
-        //from here
-        if (currentDieIndex >= dice.Count - 1)
-        {
-            nextDieButton.gameObject.SetActive(false);
-        }
-        else
-        {
-            nextDieButton.gameObject.SetActive(true);
-        }
-
-        if (currentDieIndex == 0)
-        {
-            prevDieButton.gameObject.SetActive(false);
-        }
-        else
-        {
-            prevDieButton.gameObject.SetActive(true);
-        }
-        //to here: trash. please do this better without ifs
-
+        RefreshDieNavButtons();
         UpdateCurrentDieView();
     }
 
@@ -135,27 +105,7 @@ public class ForgeManager : MonoBehaviour
 
         currentforgeDie.currentFaceindex += step;
         currentforgeDie.currentFaceindex = Mathf.Clamp(currentforgeDie.currentFaceindex, 0, currentforgeDie.dieData.facesValues.Count - 1);
-
-        //from here
-        if (currentforgeDie.currentFaceindex >= currentforgeDie.dieData.facesValues.Count - 1)
-        {
-            nextFaceButton.gameObject.SetActive(false);
-        }
-        else
-        {
-            nextFaceButton.gameObject.SetActive(true);
-        }
-
-        if (currentforgeDie.currentFaceindex == 0)
-        {
-            prevFaceButton.gameObject.SetActive(false);
-        }
-        else
-        {
-            prevFaceButton.gameObject.SetActive(true);
-        }
-        //to here: trash. please do this better without ifs
-
+        RefreshFaceNavButtons(currentforgeDie);
         UpdateCurrentDieView();
     }
 
@@ -312,6 +262,52 @@ public class ForgeManager : MonoBehaviour
             newFace = baseDiceInfo.GetBaseFaceValueOfDie(currentDieData.element, currentDieData.dieType, currentDieData.facesValues.Count);
             currentDieData.facesValues.Add(newFace);
         }
+    }
+
+    private void RefreshFaceNavButtons(ForgeDieData currentforgeDie)
+    {
+        //from here
+        if (currentforgeDie.currentFaceindex >= currentforgeDie.dieData.facesValues.Count - 1)
+        {
+            nextFaceButton.gameObject.SetActive(false);
+        }
+        else
+        {
+            nextFaceButton.gameObject.SetActive(true);
+        }
+
+        if (currentforgeDie.currentFaceindex == 0)
+        {
+            prevFaceButton.gameObject.SetActive(false);
+        }
+        else
+        {
+            prevFaceButton.gameObject.SetActive(true);
+        }
+        //to here: trash. please do this better without ifs. or maybe not?
+    }
+
+    private void RefreshDieNavButtons()
+    {
+        //from here
+        if (currentDieIndex >= dice.Count - 1)
+        {
+            nextDieButton.gameObject.SetActive(false);
+        }
+        else
+        {
+            nextDieButton.gameObject.SetActive(true);
+        }
+
+        if (currentDieIndex == 0)
+        {
+            prevDieButton.gameObject.SetActive(false);
+        }
+        else
+        {
+            prevDieButton.gameObject.SetActive(true);
+        }
+        //to here: trash. please do this better without ifs. or maybe not?
     }
 
 }

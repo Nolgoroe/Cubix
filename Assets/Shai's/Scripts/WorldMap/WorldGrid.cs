@@ -40,6 +40,9 @@ public class WorldGrid : MonoBehaviour
             }
             progression.Init();
         }
+
+        SubscribeToNodes();
+        LoadMap();
     }
 
     public void CreateWorldMap()
@@ -234,6 +237,32 @@ public class WorldGrid : MonoBehaviour
         }
 
         return allNodes;
+    }
+
+    [ContextMenu("Save")]
+    public void SaveMap()
+    {
+        if (Player.Instance)
+        {
+            Player.Instance.SaveMapProgression(GetAllNodes());
+        }
+    }
+
+    [ContextMenu("Load")]
+    public void LoadMap()
+    {
+        if (Player.Instance)
+        {
+            Player.Instance.LoadMapProgression(GetAllNodes());
+        }
+    }
+
+    private void SubscribeToNodes()
+    {
+        foreach (var node in GetAllNodes())
+        {
+            node.button.onClick.AddListener(SaveMap);
+        }
     }
 
 }

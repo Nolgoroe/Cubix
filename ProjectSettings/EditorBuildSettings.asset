@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Shop Scene.unity
     guid: fab84957feb3eeb4493c11b16615e0a8
+  - enabled: 1
+    path: Assets/Scenes/ForgeScene.unity
+    guid: db0fa5aedd44b7940b4a1f5126347012
   m_configObjects: {}
