@@ -76,7 +76,7 @@ public class Player : MonoBehaviour
 
         DieFaceValue dieFaceValue = die.GetTopValue();
 
-        AddResources(dieFaceValue.Resource.Type, dieFaceValue.Resource.Value);
+        AddResourcesLive(dieFaceValue.Resource.Type, dieFaceValue.Resource.Value);
     }
     public bool ReturnHasScrap()
     {
@@ -90,10 +90,10 @@ public class Player : MonoBehaviour
 
         int randomResource = UnityEngine.Random.Range(0, myEnums.Length - 1);
 
-        AddResources(myEnums[randomResource], 10);
+        AddResourcesLive(myEnums[randomResource], 10);
     }
 
-    public void AddResources(ResourceType resourceType, int amount)
+    public void AddResourcesLive(ResourceType resourceType, int amount)
     {
         switch (resourceType)
         {
@@ -149,6 +149,9 @@ public class Player : MonoBehaviour
                 break;
             case ResourceType.Lightning:
                 lightning -= amount;
+                break;
+            case ResourceType.scrap:
+                scrap -= amount;
                 break;
             default:
                 break;

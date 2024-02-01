@@ -3570,13 +3570,13 @@ MonoBehaviour:
   playerHealthText: {fileID: 521315729}
   diceFacesResourcesDisplayParent: {fileID: 1571469550}
   diceFacesBuffDisplayParent: {fileID: 609467600}
-  ironParent: {fileID: 0}
+  ironParent: {fileID: 870391413}
   ironText: {fileID: 1199746155}
-  energyParent: {fileID: 0}
+  energyParent: {fileID: 226269745}
   energyText: {fileID: 1782353750}
-  lightningParent: {fileID: 0}
+  lightningParent: {fileID: 503135569}
   lightningText: {fileID: 930069351}
-  scrapParent: {fileID: 0}
+  scrapParent: {fileID: 1029398429}
   scrapText: {fileID: 143652654}
   diceFaceUIDisplayPreafb: {fileID: 8648066081239103102, guid: e10957a92c9cdc84c9caf1bdfa9d57ae,
     type: 3}
@@ -3586,8 +3586,25 @@ MonoBehaviour:
     type: 3}
   diceDataDisplayParent: {fileID: 777257296}
   AddActionsToButtons: 1
-  lootUIDisplayPrefab: {fileID: 0}
-  resourceTypeToAmountHolderArray: []
+  lootUIDisplayPrefab: {fileID: -4912861610387134029, guid: 8fcac9c18e8159847923284859d10778,
+    type: 3}
+  resourceTypeToAmountHolderArray:
+  - resourceType: 0
+    resourceTypeToAmountList: []
+    timeDisplayLoot: 0.4
+    currentTimeDisplayLoot: 0
+  - resourceType: 1
+    resourceTypeToAmountList: []
+    timeDisplayLoot: 0.4
+    currentTimeDisplayLoot: 0
+  - resourceType: 2
+    resourceTypeToAmountList: []
+    timeDisplayLoot: 0.4
+    currentTimeDisplayLoot: 0
+  - resourceType: 3
+    resourceTypeToAmountList: []
+    timeDisplayLoot: 0.1
+    currentTimeDisplayLoot: 0
 --- !u!4 &972462717
 Transform:
   m_ObjectHideFlags: 0

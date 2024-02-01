@@ -35,7 +35,7 @@ public class ForgeFacePair : MonoBehaviour
             //Player.Instance.AddRemoveScrap(-price);
 
             //if else
-            Player.Instance.AddResources(ResourceType.Iron, price);
+            Player.Instance.RemoveResources(ResourceType.Iron, price);
         }
 
         forge.SetForgeCurrentEditFacePair(faceValue);

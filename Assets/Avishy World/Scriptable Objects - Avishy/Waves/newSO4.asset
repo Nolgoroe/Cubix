@@ -16,7 +16,7 @@ MonoBehaviour:
   - delayBetweenEnemies: 0
     delayBetweenWaves: 30
     enemyWaveCombo: []
-  - delayBetweenEnemies: 5
+  - delayBetweenEnemies: 0.1
     delayBetweenWaves: 30
     enemyWaveCombo:
     - enemyWaveDataList:

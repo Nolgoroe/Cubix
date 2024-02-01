@@ -63,7 +63,7 @@ public class PlayerWeapon : MonoBehaviour
                 yield break;
             }
 
-            player.AddResources(ResourceType.scrap, -1);
+            player.AddResourcesLive(ResourceType.scrap, -1);
 
             Vector3 screenPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, GameManager.Instance.ReturnMainCamera().transform.position.y);
             Ray ray = GameManager.Instance.ReturnMainCamera().ScreenPointToRay(screenPos);
