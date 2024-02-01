@@ -48,6 +48,10 @@ public class SiteNode : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        site = GetComponent<BaseSite>();//temp trash gross disgusting fix for wrong level loading
+    }
 
     public void CreateLink(SiteNode connectNode)
     {
@@ -116,8 +120,8 @@ public class SiteNode : MonoBehaviour
     {
         if (!isLocked)
         {
+            OnClicked.Invoke(this);  
             Pick();
-            OnClicked.Invoke(this);
         }
     }
 

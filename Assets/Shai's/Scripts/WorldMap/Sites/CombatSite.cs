@@ -8,6 +8,7 @@ public class CombatSite : BaseSite
 {
     [SerializeField] private int levelSceneNum;
 
+    [ContextMenu("sweoop")]
     public override void LaunchSite()
     {
         SceneManager.LoadScene(levelSceneNum);
