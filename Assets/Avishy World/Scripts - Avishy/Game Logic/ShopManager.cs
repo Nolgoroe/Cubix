@@ -173,6 +173,6 @@ public class ShopManager : MonoBehaviour
     public void BackToMap()
     {
         // called from button
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 }

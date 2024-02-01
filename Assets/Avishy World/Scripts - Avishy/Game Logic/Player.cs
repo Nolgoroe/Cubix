@@ -19,8 +19,8 @@ public class Player : MonoBehaviour
 
     [Header("Resource")]
     [SerializeField] private int iron;
+    [SerializeField] private int nova;
     [SerializeField] private int energy;
-    [SerializeField] private int lightning;
     [SerializeField] private int scrap;
 
     [Header("Health")]
@@ -65,7 +65,7 @@ public class Player : MonoBehaviour
     {
         UIManager.Instance.UpdatePlayerHealth(currentPlayerHealth, maxHP);
 
-        UIManager.Instance.UpdateResources(iron, energy, lightning, scrap);
+        UIManager.Instance.UpdateResources(iron, nova, energy, scrap);
     }
 
 
@@ -100,11 +100,11 @@ public class Player : MonoBehaviour
             case ResourceType.Iron:
                 iron += amount;
                 break;
+            case ResourceType.Nova:
+                nova += amount;
+                break;
             case ResourceType.Energy:
                 energy += amount;
-                break;
-            case ResourceType.Lightning:
-                lightning += amount;
                 break;
             case ResourceType.scrap:
                 scrap += amount;
@@ -116,7 +116,7 @@ public class Player : MonoBehaviour
         if(amount > 0)
         SoundManager.Instance.PlaySoundOneShot(Sounds.RecieveResources);
 
-        UIManager.Instance.UpdateResources(iron, energy, lightning, scrap);
+        UIManager.Instance.UpdateResources(iron, nova, energy, scrap);
 
         UIManager.Instance.AddNewResourceToGive(resourceType, amount);
         //UIManager.Instance.InstantiateLootDisplayUI(resourceType, amount);
@@ -129,10 +129,12 @@ public class Player : MonoBehaviour
         {
             case ResourceType.Iron:
                 return iron;
+            case ResourceType.Nova:
+                return nova;
             case ResourceType.Energy:
                 return energy;
-            case ResourceType.Lightning:
-                return lightning;
+            case ResourceType.scrap:
+                return scrap;
             default:
                 return -1;
         }
@@ -144,11 +146,11 @@ public class Player : MonoBehaviour
             case ResourceType.Iron:
                 iron -= amount;
                 break;
+            case ResourceType.Nova:
+                nova -= amount;
+                break;
             case ResourceType.Energy:
                 energy -= amount;
-                break;
-            case ResourceType.Lightning:
-                lightning -= amount;
                 break;
             case ResourceType.scrap:
                 scrap -= amount;

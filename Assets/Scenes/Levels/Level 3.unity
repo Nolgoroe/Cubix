@@ -885,10 +885,10 @@ MonoBehaviour:
   diceFacesBuffDisplayParent: {fileID: 2061921738}
   ironParent: {fileID: 266776362}
   ironText: {fileID: 1032195562}
-  energyParent: {fileID: 1883587392}
-  energyText: {fileID: 507938779}
-  lightningParent: {fileID: 1625966343}
-  lightningText: {fileID: 1069434387}
+  novaParent: {fileID: 1883587392}
+  novaText: {fileID: 507938779}
+  eneryParent: {fileID: 1625966343}
+  energyText: {fileID: 1069434387}
   scrapParent: {fileID: 574196357}
   scrapText: {fileID: 2032201294}
   diceFaceUIDisplayPreafb: {fileID: 8648066081239103102, guid: e10957a92c9cdc84c9caf1bdfa9d57ae,
@@ -3826,7 +3826,7 @@ GameObject:
   - component: {fileID: 507938780}
   - component: {fileID: 507938779}
   m_Layer: 5
-  m_Name: Energy amount text
+  m_Name: Nova amount text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7284,7 +7284,7 @@ GameObject:
   - component: {fileID: 1069434388}
   - component: {fileID: 1069434387}
   m_Layer: 5
-  m_Name: Lightning amount text
+  m_Name: Energy amount text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10021,7 +10021,7 @@ GameObject:
   - component: {fileID: 1625966345}
   - component: {fileID: 1625966344}
   m_Layer: 5
-  m_Name: Lighting
+  m_Name: Energy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11333,7 +11333,7 @@ GameObject:
   - component: {fileID: 1883587394}
   - component: {fileID: 1883587393}
   m_Layer: 5
-  m_Name: Energy
+  m_Name: Nova
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12370,8 +12370,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c47d6d562959687419e0a091e6324cc6, type: 2}
   playerDice: []
   iron: 300
+  nova: 0
   energy: 0
-  lightning: 0
   scrap: 5000
   maxHP: 0
   currentPlayerHealth: 0
