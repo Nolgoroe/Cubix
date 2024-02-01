@@ -23,6 +23,7 @@ public class MapProgression : MonoBehaviour
         }
     }
 
+
     private void SetNodeStatusOnStart(SiteNode node)
     {
         if (node.gridPos.y == 0)
@@ -56,6 +57,10 @@ public class MapProgression : MonoBehaviour
     }
 
 
+    public void SetOpenNodes(List<SiteNode> _openNodes)
+    {
+        openNodes = _openNodes;
+    }
 
     //these two functions are temp here
     public void CloseGame()

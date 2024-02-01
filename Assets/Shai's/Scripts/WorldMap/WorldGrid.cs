@@ -254,6 +254,17 @@ public class WorldGrid : MonoBehaviour
         if (Player.Instance)
         {
             Player.Instance.LoadMapProgression(GetAllNodes());
+
+            //sync progression
+            List<SiteNode> openNodes = new List<SiteNode>();
+            foreach (var node in GetAllNodes())
+            {
+                if (!node.isLocked)
+                {
+                    openNodes.Add(node);
+                }
+            }
+            progression.SetOpenNodes(openNodes);
         }
     }
 
