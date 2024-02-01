@@ -1481,10 +1481,18 @@ MonoBehaviour:
     resourceDie: {fileID: 1799908274}
   baseDiceInfo: {fileID: 11400000, guid: e529ecc5b13c54640b5cdf4d28c95b64, type: 2}
   dice: []
-  blankD6Prefab: {fileID: 5556330122468636267, guid: d2ec9798ac4598a4884994598f1bf9ba,
+  blankD6Prefab: {fileID: 7206346690176520411, guid: 30f61d566fa189c4182947b8e23103e5,
     type: 3}
-  blankD8Prefab: {fileID: 7359763932789077676, guid: ccfa0ff5b5706ed458068d0d2fbde551,
+  blankD8Prefab: {fileID: 6895173316381504982, guid: 89c80393a1704c540a3de66fa30dd966,
     type: 3}
+  D6Icons:
+  - {fileID: 21300000, guid: 80014bca566c07d4f8ee0af21f3b7d2c, type: 3}
+  - {fileID: 21300000, guid: f059b6c6aa73da245abbd965a5e7e599, type: 3}
+  - {fileID: 21300000, guid: bb846e0b47d9b064697c75e3b5367290, type: 3}
+  D8Icons:
+  - {fileID: 21300000, guid: fb9c5c1e5a42dcb42bf9271db8b5e931, type: 3}
+  - {fileID: 21300000, guid: 1a43326f22a7a624f80d0c012d98157e, type: 3}
+  - {fileID: 21300000, guid: 149785a35973be24d9e4655c5c481ea2, type: 3}
   realDice:
   - {fileID: 603294770}
   - {fileID: 472119450}

@@ -393,7 +393,5 @@ public class UIManager : MonoBehaviour
         string modifier = amount > 0 ? "+" : "-";
 
         Instantiate(lootUIDisplayPrefab, parent).SetTextUI(modifier + amount.ToString(), color);
-
-
     }
 }

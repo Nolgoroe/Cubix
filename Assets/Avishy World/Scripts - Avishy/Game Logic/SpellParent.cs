@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class SpellParent : MonoBehaviour
@@ -10,20 +11,22 @@ public class SpellParent : MonoBehaviour
     [SerializeField] int cooldown;
     [SerializeField] int currentCooldown;
     [SerializeField] CellTypeColor requiredColor;
-    [SerializeField] TMP_Text currentContdownText;
+    //[SerializeField] TMP_Text currentContdownText;
     [SerializeField] Spells spellType;
+    [SerializeField] Image cooldownImage;
 
     private void Awake()
     {
         SpellManager.Instance.AddSpellToList(this);
 
-        currentContdownText.text = "Usable!";
+        cooldownImage.fillAmount = 0;
     }
     public bool SnapToHolder(Die die)
     {
         if(die.ReturnDieColorType() == requiredColor && ReturnCanUseSpell())
         {
             die.transform.position = diceHolder.transform.position;
+            die.transform.rotation = diceHolder.transform.rotation;
             return true;
         }
 
@@ -40,7 +43,7 @@ public class SpellParent : MonoBehaviour
         SpellManager.Instance.AddSpellToCooldownList(this);
         currentCooldown = cooldown;
 
-        currentContdownText.text =  "Cooldown: " + currentCooldown.ToString();
+        cooldownImage.fillAmount =  1;
         return true;
     }
 
@@ -48,14 +51,10 @@ public class SpellParent : MonoBehaviour
     {
         currentCooldown--;
 
-        if(currentCooldown <= 0)
+        LeanTween.value(cooldownImage.gameObject, cooldownImage.fillAmount, (float)currentCooldown / cooldown, 0.5f).setOnUpdate((float val) =>
         {
-            currentContdownText.text = "Usable!";
-        }
-        else
-        {
-            currentContdownText.text = "Cooldown: " + currentCooldown.ToString();
-        }
+            cooldownImage.fillAmount = val;
+        });
     }
 
     public bool ReturnCanUseSpell()

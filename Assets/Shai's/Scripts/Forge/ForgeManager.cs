@@ -29,8 +29,10 @@ public class ForgeManager : MonoBehaviour
     [Header("References")]
     [SerializeField] private BaseDiceDataSO baseDiceInfo;
     [SerializeField] private List<ForgeDieData> dice;
-    [SerializeField] private Die blankD6Prefab;
-    [SerializeField] private Die blankD8Prefab;
+    [SerializeField] private GameObject blankD6Prefab;
+    [SerializeField] private GameObject blankD8Prefab;
+    [SerializeField] private Sprite[] D6Icons;
+    [SerializeField] private Sprite[] D8Icons;
 
     private DisplayDicePair currentDisplayDice;
 
@@ -241,7 +243,10 @@ public class ForgeManager : MonoBehaviour
                 }
 
                 dice[currentDieIndex].dieData.dieType = DieType.D8;
-
+                dice[currentDieIndex].dieData.diePrefab = blankD8Prefab;
+                dice[currentDieIndex].dieData.dieIcon = D8Icons[(int)dice[currentDieIndex].dieData.colorType];
+                
+                
                 break;
             case DieType.D8:
                 Debug.Log("Still dont have upgrade for d8");
