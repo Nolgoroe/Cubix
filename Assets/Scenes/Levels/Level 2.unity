@@ -28070,7 +28070,7 @@ MonoBehaviour:
   hoverColor: {r: 0, g: 0, b: 0, a: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
   slotTypeSpriteRenderer: {fileID: 3208831243490663403}
-  cellTypeColor: 0
+  cellTypeColor: 2
   isOccupied: 0
   occupiedByTower: 0
   nextToPath: 0
@@ -38196,7 +38196,7 @@ MonoBehaviour:
   hoverColor: {r: 0, g: 0, b: 0, a: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
   slotTypeSpriteRenderer: {fileID: 3294026594538737086}
-  cellTypeColor: 0
+  cellTypeColor: 3
   isOccupied: 0
   occupiedByTower: 0
   nextToPath: 0
@@ -50029,7 +50029,7 @@ MonoBehaviour:
   hoverColor: {r: 0, g: 0, b: 0, a: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
   slotTypeSpriteRenderer: {fileID: 1458971853844076304}
-  cellTypeColor: 0
+  cellTypeColor: 1
   isOccupied: 0
   occupiedByTower: 0
   nextToPath: 0
@@ -50522,7 +50522,7 @@ MonoBehaviour:
   hoverColor: {r: 0, g: 0, b: 0, a: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
   slotTypeSpriteRenderer: {fileID: 268263829151449574}
-  cellTypeColor: 0
+  cellTypeColor: 3
   isOccupied: 0
   occupiedByTower: 0
   nextToPath: 0
@@ -92211,7 +92211,7 @@ MonoBehaviour:
   hoverColor: {r: 0, g: 0, b: 0, a: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
   slotTypeSpriteRenderer: {fileID: 6062960954590979201}
-  cellTypeColor: 0
+  cellTypeColor: 3
   isOccupied: 0
   occupiedByTower: 0
   nextToPath: 0
@@ -106062,7 +106062,7 @@ MonoBehaviour:
   hoverColor: {r: 0, g: 0, b: 0, a: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
   slotTypeSpriteRenderer: {fileID: 7936254033430405173}
-  cellTypeColor: 0
+  cellTypeColor: 3
   isOccupied: 0
   occupiedByTower: 0
   nextToPath: 0
@@ -117401,7 +117401,7 @@ MonoBehaviour:
   hoverColor: {r: 0, g: 0, b: 0, a: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
   slotTypeSpriteRenderer: {fileID: 18354563117866123}
-  cellTypeColor: 0
+  cellTypeColor: 3
   isOccupied: 0
   occupiedByTower: 0
   nextToPath: 0
