@@ -91,12 +91,7 @@ public class UIManager : MonoBehaviour
 
         if (Player.Instance)///Temp!
         {
-            int iron = Player.Instance.ReturnAmountOfResource(ResourceType.Iron);
-            int nova = Player.Instance.ReturnAmountOfResource(ResourceType.Nova);
-            int energy = Player.Instance.ReturnAmountOfResource(ResourceType.Energy);
-            int scrap = Player.Instance.ReturnAmountOfResource(ResourceType.scrap);
-
-            UpdateResources(iron, nova, energy, scrap);
+            Player.Instance.UpdatePlayerUI();
         }
     }
 

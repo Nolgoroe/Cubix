@@ -58,10 +58,10 @@ public class Player : MonoBehaviour
         maxHP = 1000; //temp
         currentPlayerHealth = maxHP;
 
-        InitPlayer();
+        UpdatePlayerUI();
     }
 
-    public void InitPlayer()
+    public void UpdatePlayerUI()
     {
         UIManager.Instance.UpdatePlayerHealth(currentPlayerHealth, maxHP);
 

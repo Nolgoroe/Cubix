@@ -237,6 +237,11 @@ public class ForgeManager : MonoBehaviour
         switch (dice[currentDieIndex].dieData.dieType)
         {
             case DieType.D6:
+
+                dice[currentDieIndex].dieData.dieType = DieType.D8;
+                dice[currentDieIndex].dieData.diePrefab = blankD8Prefab;
+                dice[currentDieIndex].dieData.dieIcon = D8Icons[(int)dice[currentDieIndex].dieData.colorType];
+
                 //add two faces, might want to change the logic
                 AddFacesToDie(2);
 
@@ -246,12 +251,9 @@ public class ForgeManager : MonoBehaviour
                     //Player.Instance.AddRemoveScrap(-upgradeDiePrice);
 
                     //if else
-                    Player.Instance.RemoveResources(ResourceType.Iron, -upgradeDiePrice);
+                    Player.Instance.RemoveResources(ResourceType.Iron, upgradeDiePrice);
                 }
 
-                dice[currentDieIndex].dieData.dieType = DieType.D8;
-                dice[currentDieIndex].dieData.diePrefab = blankD8Prefab;
-                dice[currentDieIndex].dieData.dieIcon = D8Icons[(int)dice[currentDieIndex].dieData.colorType];
                 
                 
                 break;
