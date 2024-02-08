@@ -15,6 +15,7 @@ public class WorldGrid : MonoBehaviour
     [SerializeField] private GameObject siteNodePrefab;
     [SerializeField] private LinesParent linesParent;
     [SerializeField] private MapProgression progression;
+    [SerializeField] private MapLoader loader; 
     [SerializeField] private GridDirection direction;
     [SerializeField] private List<SiteNode> nodes;
 
@@ -39,6 +40,9 @@ public class WorldGrid : MonoBehaviour
             }
             progression.Init();
         }
+
+        SubscribeToNodes();
+        LoadMap();
     }
 
     public void CreateWorldMap()
@@ -49,13 +53,6 @@ public class WorldGrid : MonoBehaviour
         progression.Init();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            Debug.Log("zff");
-        }
-    }
 
     [ContextMenu("GenerateLines")]
     public void UpdateLines()
@@ -241,4 +238,42 @@ public class WorldGrid : MonoBehaviour
 
         return allNodes;
     }
+
+    [ContextMenu("Save")]
+    public void SaveMap()
+    {
+        if (Player.Instance)
+        {
+            Player.Instance.SaveMapProgression(GetAllNodes());
+        }
+    }
+
+    [ContextMenu("Load")]
+    public void LoadMap()
+    {
+        if (Player.Instance)
+        {
+            Player.Instance.LoadMapProgression(GetAllNodes());
+
+            //sync progression
+            List<SiteNode> openNodes = new List<SiteNode>();
+            foreach (var node in GetAllNodes())
+            {
+                if (!node.isLocked)
+                {
+                    openNodes.Add(node);
+                }
+            }
+            progression.SetOpenNodes(openNodes);
+        }
+    }
+
+    private void SubscribeToNodes()
+    {
+        foreach (var node in GetAllNodes())
+        {
+            node.button.onClick.AddListener(SaveMap);
+        }
+    }
+
 }

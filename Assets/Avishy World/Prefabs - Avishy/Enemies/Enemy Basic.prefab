@@ -1156,7 +1156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ef73575e600a0478f3bf7c8bc69977, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 2
+  speed: 1.5
   range: 1.5
   stopRange: 0.8
   rotationSpeed: 8
@@ -1170,6 +1170,9 @@ MonoBehaviour:
     m_Bits: 256
   target: {fileID: 0}
   enemyType: 1
+  speedModifier: 1
+  timeToEndSlow: 0
+  currentTimeSlowed: 0
   percentageToGiveScrap: 50
   scrapAmount: 1
   currentTarget: {fileID: 0}

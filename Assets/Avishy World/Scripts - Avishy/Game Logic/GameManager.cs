@@ -38,7 +38,8 @@ public class GameManager : MonoBehaviour
         WaveManager.Instance.InitWaveManager();
         UIManager.Instance.InitUIManager();
         DiceManager.Instance.InitDiceManager();
-        Player.Instance.InitPlayer();
+        Player.Instance.UpdatePlayerUI();
+        SpellManager.Instance.Init();
 
         UIManager.Instance.UpdateStaminaAmount(Player.Instance.ReturnRerollAmount());
 
@@ -77,7 +78,11 @@ public class GameManager : MonoBehaviour
 
         if (isPlayerTurn)
         {
-            SoundManager.Instance.PlaySoundNormal(Sounds.TimerTicking);
+            if(PlayerWeaponManager.isUsingWeapon)
+            PlayerWeaponManager.Instance.ToggleWeapon(false);
+
+            SoundManager.Instance.StopSoundFade(Sounds.GameplayBGM);
+            SoundManager.Instance.PlaySoundFade(Sounds.PlannigPhaseBGM);
 
             foreach (TowerBaseParent tower in summonedRangeTowers)
             {
@@ -98,6 +103,9 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            SoundManager.Instance.PlaySoundFade(Sounds.GameplayBGM);
+            SoundManager.Instance.StopSoundFade(Sounds.PlannigPhaseBGM);
+
             foreach (TowerBaseParent tower in summonedRangeTowers)
             {
                 tower.OnEndPlayerTurn();
@@ -175,7 +183,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator BackToMap()
     {
-        yield return new WaitForSeconds(2);
-        SceneManager.LoadScene(1);
+        yield return new WaitForSeconds(4);
+        SceneManager.LoadScene(0);
     }
 }

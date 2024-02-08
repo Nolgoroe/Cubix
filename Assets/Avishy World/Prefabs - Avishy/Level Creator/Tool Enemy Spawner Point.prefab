@@ -13,12 +13,12 @@ GameObject:
   - component: {fileID: 4774296753481728975}
   - component: {fileID: 7795345293460177980}
   m_Layer: 5
-  m_Name: Spawner Index text
+  m_Name: Spanwer number
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6861699164403342079
 RectTransform:
   m_ObjectHideFlags: 0
@@ -507,7 +507,7 @@ MonoBehaviour:
   enemyPaths: []
   currentPathIndex: -1
   waypointTransforms: []
-  spawnerNumberText: {fileID: 0}
+  spawnerNumberText: {fileID: 7795345293460177980}
 --- !u!1001 &7041141915267156595
 PrefabInstance:
   m_ObjectHideFlags: 0

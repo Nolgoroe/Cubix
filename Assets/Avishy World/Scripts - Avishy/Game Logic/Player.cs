@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private DieDataSpawner diceDataSpawner;
+    [SerializeField] private MapLoader mapLoader;
+
 
     [Header("Dice")]
     [SerializeField] private List<DiceSO> startDice;
@@ -17,8 +19,8 @@ public class Player : MonoBehaviour
 
     [Header("Resource")]
     [SerializeField] private int iron;
+    [SerializeField] private int nova;
     [SerializeField] private int energy;
-    [SerializeField] private int lightning;
     [SerializeField] private int scrap;
 
     [Header("Health")]
@@ -27,6 +29,9 @@ public class Player : MonoBehaviour
 
     [Header("Rerolls")]
     [SerializeField] private int rerollAmount;
+
+    [Header("Rerolls")]
+    [SerializeField] private List<Spells> unlockedSpells;
 
     private void Awake()
     {
@@ -52,13 +57,15 @@ public class Player : MonoBehaviour
     {
         maxHP = 1000; //temp
         currentPlayerHealth = maxHP;
+
+        UpdatePlayerUI();
     }
 
-    public void InitPlayer()
+    public void UpdatePlayerUI()
     {
         UIManager.Instance.UpdatePlayerHealth(currentPlayerHealth, maxHP);
 
-        UIManager.Instance.UpdateResources(iron, energy, lightning, scrap);
+        UIManager.Instance.UpdateResources(iron, nova, energy, scrap);
     }
 
 
@@ -67,48 +74,13 @@ public class Player : MonoBehaviour
         //maybe this needs a fix since all dice will call this function even if they are part of the world.
         if (die.ReturnInWorld()) return;
 
+        DieFaceValue dieFaceValue = die.GetTopValue();
 
-        DieFaceValue dieFaceVakue = die.GetTopValue();
-
-        switch (dieFaceVakue.Resource.Type)
-        {
-            case ResourceType.Iron:
-                iron += dieFaceVakue.Resource.Value;
-                break;
-            case ResourceType.Energy:
-                energy += dieFaceVakue.Resource.Value;
-                break;
-            case ResourceType.Lightning:
-                lightning += dieFaceVakue.Resource.Value;
-                break;
-            default:
-                break;
-        }
-
-        SoundManager.Instance.PlaySoundOneShot(Sounds.RecieveResources);
-
-        UIManager.Instance.UpdateResources(iron, energy, lightning, scrap);
+        AddResourcesLive(dieFaceValue.Resource.Type, dieFaceValue.Resource.Value);
     }
-    public bool AddRemoveScrap(int amount)
+    public bool ReturnHasScrap()
     {
-        if(amount > 0)
-        {
-            SoundManager.Instance.PlaySoundOneShot(Sounds.RecieveResources); // maybe not here
-        }
-
-        scrap += amount;
-    
-        if(scrap <= 0)
-        {
-            scrap = 0;
-
-            UIManager.Instance.UpdateResources(iron, energy, lightning, scrap);
-            return false;
-        }
-
-        UIManager.Instance.UpdateResources(iron, energy, lightning, scrap);
-
-        return true;
+        return scrap > 0;
     }
 
 
@@ -116,31 +88,39 @@ public class Player : MonoBehaviour
     {
         ResourceType[] myEnums = (ResourceType[])System.Enum.GetValues(typeof(ResourceType));
 
-        int randomResource = UnityEngine.Random.Range(0, myEnums.Length);
+        int randomResource = UnityEngine.Random.Range(0, myEnums.Length - 1);
 
-        AddResources(myEnums[randomResource], 10);
-
-        UIManager.Instance.UpdateResources(iron, energy, lightning, scrap);
+        AddResourcesLive(myEnums[randomResource], 10);
     }
 
-    public void AddResources(ResourceType resourceType, int amount)
+    public void AddResourcesLive(ResourceType resourceType, int amount)
     {
         switch (resourceType)
         {
             case ResourceType.Iron:
                 iron += amount;
                 break;
+            case ResourceType.Nova:
+                nova += amount;
+                break;
             case ResourceType.Energy:
                 energy += amount;
                 break;
-            case ResourceType.Lightning:
-                lightning += amount;
+            case ResourceType.scrap:
+                scrap += amount;
                 break;
             default:
                 break;
         }
 
+        if(amount > 0)
         SoundManager.Instance.PlaySoundOneShot(Sounds.RecieveResources);
+
+        UIManager.Instance.UpdateResources(iron, nova, energy, scrap);
+
+        UIManager.Instance.AddNewResourceToGive(resourceType, amount);
+        //UIManager.Instance.InstantiateLootDisplayUI(resourceType, amount);
+
     }
 
     public int ReturnAmountOfResource(ResourceType resourceType)
@@ -149,10 +129,12 @@ public class Player : MonoBehaviour
         {
             case ResourceType.Iron:
                 return iron;
+            case ResourceType.Nova:
+                return nova;
             case ResourceType.Energy:
                 return energy;
-            case ResourceType.Lightning:
-                return lightning;
+            case ResourceType.scrap:
+                return scrap;
             default:
                 return -1;
         }
@@ -164,11 +146,14 @@ public class Player : MonoBehaviour
             case ResourceType.Iron:
                 iron -= amount;
                 break;
+            case ResourceType.Nova:
+                nova -= amount;
+                break;
             case ResourceType.Energy:
                 energy -= amount;
                 break;
-            case ResourceType.Lightning:
-                lightning -= amount;
+            case ResourceType.scrap:
+                scrap -= amount;
                 break;
             default:
                 break;
@@ -232,5 +217,24 @@ public class Player : MonoBehaviour
     public List<DieData> ReturnPlayerDice()
     {
         return playerDice;
+    }
+    public List<Spells> ReturnUnlockedSpells()
+    {
+        return unlockedSpells;
+    }
+    public void AddToUnlockedSpells(Spells spell)
+    {
+        if(!unlockedSpells.Contains(spell))
+        unlockedSpells.Add(spell);
+    }
+
+    public void SaveMapProgression(List<SiteNode> nodes)
+    {
+        mapLoader.SaveData(nodes);
+    }
+    
+    public void LoadMapProgression(List<SiteNode> nodes)
+    {
+        mapLoader.LoadData(nodes);
     }
 }

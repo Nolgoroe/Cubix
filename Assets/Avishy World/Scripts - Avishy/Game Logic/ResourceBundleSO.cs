@@ -11,6 +11,6 @@ public class ResourceBundleSO : ItemShopParentSO
 
     public void AddResources(ResourceTypeCombo combo)
     {
-        Player.Instance.AddResources(combo.resource, combo.amount);
+        Player.Instance.AddResourcesLive(combo.resource, combo.amount);
     }
 }

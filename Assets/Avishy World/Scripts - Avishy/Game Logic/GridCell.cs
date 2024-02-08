@@ -153,7 +153,7 @@ public class GridCell : MonoBehaviour
         cellType = toolGridCell.ReturnTypeOfCell();
         cellTypeColor = toolGridCell.ReturnCellTypeColor();
 
-
+        Debug.Log("This has reset the data");
         //rend.material.color = Color.white;
         //outline = GetComponent<Outline>(); //temp
         //if(outline)

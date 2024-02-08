@@ -1396,6 +1396,9 @@ MonoBehaviour:
   attackRate: 1
   currentAttackCooldown: 0
   rotationSpeed: 10
+  timeToWaitForHealing: 3
+  currentTimeToWaitForHealing: 0
+  healingRate: 0.1
   rangeIndicator: {fileID: 8916942059906036733}
   enemyLayerMask:
     serializedVersion: 2

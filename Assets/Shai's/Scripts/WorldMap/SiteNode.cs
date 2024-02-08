@@ -15,7 +15,8 @@ public class SiteNode : MonoBehaviour
     [SerializeField] private GameObject completedIcon;
     [SerializeField] private Color lockedColor;
     [SerializeField] private Color unlockedColor;
-    [SerializeField] private Image image;
+    [SerializeField] private Image iconImage;
+    [SerializeField] private Image bgImage;
     [SerializeField] private BaseSite site;
 
     [Header("Progression")]
@@ -47,6 +48,10 @@ public class SiteNode : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        site = GetComponent<BaseSite>();//temp trash gross disgusting fix for wrong level loading
+    }
 
     public void CreateLink(SiteNode connectNode)
     {
@@ -86,19 +91,23 @@ public class SiteNode : MonoBehaviour
     public void Lock()
     {
         isLocked = true;
-        image.color = lockedColor;
+        iconImage.color = lockedColor;
+        bgImage.color = lockedColor;
     }
     public void Unlock()
     {
         isLocked = false;
-        image.color = unlockedColor;
+        iconImage.color = unlockedColor;
+        bgImage.color = unlockedColor;
     }
 
     public void Complete()
     {
         isLocked = true;
-        image.color = unlockedColor;
-        completedIcon.SetActive(true);
+        isComplete = true;
+        iconImage.color = unlockedColor;
+        bgImage.color = unlockedColor;
+        //completedIcon.SetActive(true);
     }
 
     public void Pick()
@@ -111,14 +120,15 @@ public class SiteNode : MonoBehaviour
     {
         if (!isLocked)
         {
+            OnClicked.Invoke(this);  
             Pick();
-            OnClicked.Invoke(this);
         }
     }
 
-    //public NodeData ExportData()
-    //{
-    //    NodeData data;
-    //}
+
+    public NodeData ExportData()
+    {
+        return new NodeData(isComplete, isLocked, ID);
+    }
 
 }

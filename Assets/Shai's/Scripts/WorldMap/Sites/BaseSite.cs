@@ -1,19 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public enum SiteType { Shop, Healing, Forge, Combat, Unknown, Junkyard, Boss }
+public enum SiteType { Shop, Healing, Forge, Combat, Mystery, Junkyard, Boss }
 
 
-public class BaseSite : MonoBehaviour
+public abstract class BaseSite : MonoBehaviour
 {
+    [Header("BaseSiteSettings")]
     public SiteType type;
     public Sprite icon;
-    [SerializeField] private int lvlSceneNum;
 
-    public void LaunchSite()
-    {
-        SceneManager.LoadScene(lvlSceneNum);
-    }
+    public abstract void LaunchSite();
+    
 }

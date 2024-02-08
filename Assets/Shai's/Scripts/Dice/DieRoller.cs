@@ -9,6 +9,7 @@ public class DieRoller : MonoBehaviour
 
     [Header("Roll Data")]
     [SerializeField] private float throwForce;
+    [SerializeField] private float gravityModifier;
     [SerializeField] private float tpHeight;
 
     [Header("Contraints")]
@@ -118,7 +119,10 @@ public class DieRoller : MonoBehaviour
 
 
 
-
+    private void FixedUpdate()
+    {
+        die.RB.AddForce(0, gravityModifier, 0, ForceMode.Acceleration);
+    }
 
     public void Roll()
     {

@@ -4,7 +4,23 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Linq;
+using System;
 
+[System.Serializable]
+public class ResourceTypeToAmount
+{
+    public ResourceType resourceType;
+    public int amount;
+}
+[System.Serializable]
+public class ResourceTypeToAmountHolder
+{
+    public ResourceType resourceType;
+    public List<ResourceTypeToAmount> resourceTypeToAmountList;
+    public float timeDisplayLoot;
+    public float currentTimeDisplayLoot;
+}
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
@@ -33,9 +49,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Transform diceFacesBuffDisplayParent;
 
     [Header("Resources UI")]
+    [SerializeField] private Transform ironParent;
     [SerializeField] private TMP_Text ironText;
+    [SerializeField] private Transform novaParent;
+    [SerializeField] private TMP_Text novaText;
+    [SerializeField] private Transform eneryParent;
     [SerializeField] private TMP_Text energyText;
-    [SerializeField] private TMP_Text lightningText;
+    [SerializeField] private Transform scrapParent;
     [SerializeField] private TMP_Text scrapText;
 
     [Header("Prefabs")]
@@ -51,6 +71,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private DataDieDisplayUI diceDataDisplayUI;
     [SerializeField] private Transform diceDataDisplayParent;
 
+    [Header("Scene Management")]
+    [SerializeField] bool AddActionsToButtons;
+
+    [Header("Loot Display UI")]
+    [SerializeField] LootDisplayUI lootUIDisplayPrefab;
+    [SerializeField] List<ResourceTypeToAmountHolder> resourceTypeToAmountHolderArray;
 
     private void Awake()
     {
@@ -59,12 +85,38 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        //SceneManager.activeSceneChanged += AddActionToAllButotns;
         AddActionToAllButotns();
+
+        TogglePauseMenu(false);
+
+        if (Player.Instance)///Temp!
+        {
+            Player.Instance.UpdatePlayerUI();
+        }
     }
 
+    private void Update()
+    {
+        foreach (ResourceTypeToAmountHolder holder in resourceTypeToAmountHolderArray)
+        {
+            if (holder.resourceTypeToAmountList.Count > 0)
+            {
+                holder.currentTimeDisplayLoot -= Time.deltaTime;
+
+                if (holder.currentTimeDisplayLoot <= 0)
+                {
+                    holder.currentTimeDisplayLoot = holder.timeDisplayLoot;
+
+                    InstantiateLootDisplayUI(holder.resourceTypeToAmountList[0].resourceType, holder.resourceTypeToAmountList[0].amount);
+                    holder.resourceTypeToAmountList.RemoveAt(0);
+                }
+            }
+        }
+    }
     private void AddActionToAllButotns()
     {
+        if (!AddActionsToButtons) return;
+
         Button[] buttons = FindObjectsOfType<Button>();
 
         foreach (Button button in buttons)
@@ -75,8 +127,6 @@ public class UIManager : MonoBehaviour
 
     public void InitUIManager()
     {
-        TogglePauseMenu(false);
-
         winScreen.gameObject.SetActive(false);
         loseScreen.gameObject.SetActive(false);
 
@@ -91,6 +141,15 @@ public class UIManager : MonoBehaviour
 
     public void SetWaveCountdownText(float time)
     {
+        if(time <= 5.5f)
+        {
+            timerText.color = Color.red;
+        }
+        else
+        {
+            timerText.color = Color.white;
+        }
+
         timerText.text = Mathf.Round(time).ToString();
     }
 
@@ -210,11 +269,11 @@ public class UIManager : MonoBehaviour
         Debug.Log("Open Settings");
     }
 
-    public void UpdateResources(int _iron, int _energy, int _lightning, int _scrap)
+    public void UpdateResources(int _iron, int _nova, int _energy, int _scrap)
     {
         ironText.text = _iron.ToString();
+        novaText.text = _nova.ToString();
         energyText.text = _energy.ToString();
-        lightningText.text = _lightning.ToString();
         scrapText.text = _scrap.ToString();
     }
     public void UpdatePlayerHealth(int currentHealth, int maxHealth)
@@ -283,5 +342,61 @@ public class UIManager : MonoBehaviour
         bool isActive = diceDataDisplayParent.gameObject.activeInHierarchy;
 
         diceDataDisplayParent.gameObject.SetActive(!isActive);
+    }
+
+    public void AddNewResourceToGive(ResourceType resourceType, int amount)
+    {
+        ResourceTypeToAmount newCombo = new ResourceTypeToAmount();
+        newCombo.resourceType = resourceType;
+        newCombo.amount = amount;
+
+        ResourceTypeToAmountHolder foundItem = resourceTypeToAmountHolderArray.Where(x => x.resourceType == resourceType).FirstOrDefault();
+
+        int index = (int)resourceType;
+
+        if(foundItem != null)
+        {
+            index = resourceTypeToAmountHolderArray.IndexOf(foundItem, 0);
+        }
+
+        resourceTypeToAmountHolderArray[index].resourceTypeToAmountList.Add(newCombo);
+    }
+    public void InstantiateLootDisplayUI(ResourceType resourceType, int amount)
+    {
+        Color color = Color.white;
+        Transform parent = null;
+
+        if (amount > 0)
+        {
+            color = Color.green;
+        }
+        else
+        {
+            color = Color.red;
+        }
+
+
+        switch (resourceType)
+        {
+            case ResourceType.Iron:
+                parent = ironParent;
+                break;
+            case ResourceType.Nova:
+                parent = novaParent;
+                break;
+            case ResourceType.Energy:
+                parent = eneryParent;
+                break;
+            case ResourceType.scrap:
+                parent = scrapParent;
+                break;
+            default:
+                break;
+        }
+
+
+        string modifier = amount > 0 ? "+" : "-";
+
+        Instantiate(lootUIDisplayPrefab, parent).SetTextUI(modifier + amount.ToString(), color);
     }
 }

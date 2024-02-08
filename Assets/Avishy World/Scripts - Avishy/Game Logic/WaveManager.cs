@@ -46,7 +46,7 @@ public class WaveManager : MonoBehaviour
 
     private void Start()
     {
-        SoundManager.Instance.PlaySoundNormal(Sounds.TimerTicking);
+        SoundManager.Instance.PlaySoundFade(Sounds.PlannigPhaseBGM);
     }
 
     private void Update()
@@ -83,12 +83,10 @@ public class WaveManager : MonoBehaviour
         {
             currentCountdown -= Time.deltaTime * GameManager.gameSpeed;
 
-            //if (currentCountdown <= 5)
-            //{
-            //    SoundManager.Instance.StopSound(Sounds.TimerTicking);
-
-            //    SoundManager.Instance.PlaySoundIfInactive(Sounds.TimerTicking);
-            //}
+            if (currentCountdown <= 5.5f)
+            {
+                SoundManager.Instance.PlaySoundIfInactive(Sounds.TimerTicking);
+            }
 
             UIManager.Instance.SetWaveCountdownText(currentCountdown);
 
@@ -252,8 +250,6 @@ public class WaveManager : MonoBehaviour
             Player.Instance.AddResourcesFromDice(die);
         }
 
-        StartCoroutine(GameManager.Instance.SetPlayerTurn(true));
-
 
         waveDone = true;
 
@@ -263,6 +259,7 @@ public class WaveManager : MonoBehaviour
             return;
         }
 
+        StartCoroutine(GameManager.Instance.SetPlayerTurn(true));
 
         UIManager.Instance.UpdateWaveCounter();
 

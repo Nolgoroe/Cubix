@@ -1351,7 +1351,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7206346690176520411}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: c2af5cba2e27c274499b0e2cd82f2acf, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1411,7 +1411,7 @@ MonoBehaviour:
   OnRollEndEvent:
     m_PersistentCalls:
       m_Calls: []
-  OnDragStartEvent:
+  OnDragEvent:
     m_PersistentCalls:
       m_Calls: []
   OnDragEndEvent:
@@ -1425,6 +1425,7 @@ MonoBehaviour:
       m_Calls: []
   DieType: 0
   element: 0
+  colorType: 0
   diceMat: {fileID: 0}
   isLocked: 0
   scaleOnDrag: {x: 0.5, y: 0.5, z: 0.5}
@@ -1445,7 +1446,6 @@ MonoBehaviour:
   diceCam: {fileID: 0}
   _rb: {fileID: 3925297638537684283}
   lockTransform: {fileID: 0}
-  outline: {fileID: 9168484862997919747}
   rangeIndicator: {fileID: 2473994983393537120}
   originalParent: {fileID: 0}
 --- !u!114 &910382848661441555
@@ -1461,14 +1461,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   die: {fileID: 5556330122468636267}
-  throwForce: 7
+  throwForce: 10
+  gravityModifier: -20
   tpHeight: 0.5
   constraintX: 1
   constraintY: 0
   constraintZ: 1
   posConstraintRange: {x: 0, y: 0, z: 0}
-  rotationForceMin: {x: -1, y: -1, z: -1}
-  rotationForceMax: {x: 1, y: 1, z: 1}
+  rotationForceMin: {x: -3, y: -3, z: -3}
+  rotationForceMax: {x: 3, y: 3, z: 3}
   massCenter: {x: 0, y: 0, z: 0}
 --- !u!114 &9168484862997919747
 MonoBehaviour:

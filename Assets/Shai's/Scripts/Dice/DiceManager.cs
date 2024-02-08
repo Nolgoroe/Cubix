@@ -41,7 +41,7 @@ public class DiceManager : MonoBehaviour
 
     public void RollResources()
     {
-        if (Player.Instance.ReturnRerollAmount() <= 0) return;
+        if (Player.Instance.ReturnRerollAmount() <= 0 || !GameManager.playerTurn) return;
 
         //called from button
         foreach (var roller in resourceDice)

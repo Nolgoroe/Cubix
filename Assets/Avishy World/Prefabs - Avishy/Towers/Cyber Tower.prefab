@@ -113,8 +113,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1290485655830646418}
   - {fileID: 1251664290582245430}
@@ -188,18 +188,25 @@ MonoBehaviour:
   requiredCellColorType: 2
   towerDie: {fileID: 0}
   resultDiceHolder: {fileID: 1251664290582245430}
+  originalDiceHolderRotation: {x: 0, y: 0, z: 0, w: 0}
   currentTowerBuffs: []
   range: 5
   specialAttackUnlocked: 0
+  isDisabled: 0
+  isBeingDragged: 0
+  timeToEnable: 5
+  currentTimeToEnable: 5
+  targetCell: {fileID: 0}
   rangeIndicator: {fileID: 1290485655830646418}
   onSpawnParticle: {fileID: 2126513307738344185, guid: 9acd4cff9a73e654095fbac641add6bd,
     type: 3}
   currentCellOnPos: {x: 0, y: 0}
   connectedPathCells: []
   RallyPoint: {fileID: 0}
+  meleeType: 0
   spawnRate: 1
   currentSpawnCooldown: 0
-  maxNumOfTroops: 5
+  maxNumOfTroops: 1
   currentNumOfTroops: 0
   currentTowerTroops: []
   troopDMG: 1

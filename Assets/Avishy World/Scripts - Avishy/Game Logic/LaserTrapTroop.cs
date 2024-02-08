@@ -9,7 +9,7 @@ public class LaserTrapTroop : TowerTroop
 
     override protected void Start()
     {
-        health = Mathf.Infinity;
+        currentHealth = Mathf.Infinity;
         base.Start();
     }
 
