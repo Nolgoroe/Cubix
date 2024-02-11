@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: newSO1
   m_EditorClassIdentifier: 
   waves:
-  - delayBetweenEnemies: 0
-    delayBetweenWaves: 25
-    enemyWaveDataList: []
+  - delayBetweenEnemies: 1
+    delayBetweenWaves: 30
     enemyWaveCombo:
     - enemyWaveDataList:
       - amountOfThisEnemy: 10
@@ -35,15 +34,6 @@ MonoBehaviour:
       timeToNextEnemies: 10
   - delayBetweenEnemies: 1.5
     delayBetweenWaves: 25
-    enemyWaveDataList:
-    - amountOfThisEnemy: 10
-      enemySpawnerIndex: 0
-      enemyPathIndex: 0
-      enemyType: 1
-    - amountOfThisEnemy: 5
-      enemySpawnerIndex: 0
-      enemyPathIndex: 0
-      enemyType: 2
     enemyWaveCombo:
     - enemyWaveDataList: []
       timeToNextEnemies: 0
@@ -51,21 +41,7 @@ MonoBehaviour:
       timeToNextEnemies: 0
   - delayBetweenEnemies: 1.2
     delayBetweenWaves: 20
-    enemyWaveDataList:
-    - amountOfThisEnemy: 25
-      enemySpawnerIndex: 0
-      enemyPathIndex: 0
-      enemyType: 1
     enemyWaveCombo: []
   - delayBetweenEnemies: 1
     delayBetweenWaves: 0
-    enemyWaveDataList:
-    - amountOfThisEnemy: 20
-      enemySpawnerIndex: 0
-      enemyPathIndex: 0
-      enemyType: 1
-    - amountOfThisEnemy: 20
-      enemySpawnerIndex: 0
-      enemyPathIndex: 0
-      enemyType: 2
     enemyWaveCombo: []
