@@ -33,7 +33,7 @@ public class MapLoader : MonoBehaviour
                     {
                         node.Lock();
                     }
-                    else 
+                    else
                     {
                         node.Unlock();
                     }

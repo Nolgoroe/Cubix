@@ -51,7 +51,7 @@ public class MapProgression : MonoBehaviour
 
         foreach (var node in clickedNode.nextNodes)
         {
-            node.Unlock();
+            node.isLocked = false;
             openNodes.Add(node);
         }
     }

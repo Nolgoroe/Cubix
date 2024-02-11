@@ -6771,6 +6771,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 521315727}
   m_CullTransparentMesh: 1
+--- !u!114 &533357357 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6138439674399209513, guid: 68e8a4055e5d2e24c95b9b3ff77f327f,
+    type: 3}
+  m_PrefabInstance: {fileID: 582743511034273016}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04c2c2218b839ec45bb4c2ec474ed696, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &538755638
 GameObject:
   m_ObjectHideFlags: 0
@@ -7105,6 +7117,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &632476700 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8529391008242555067, guid: 68e8a4055e5d2e24c95b9b3ff77f327f,
+    type: 3}
+  m_PrefabInstance: {fileID: 582743511034273016}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e072e7d7c40ee74bb0329f4b0b39d60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &635572345
 GameObject:
   m_ObjectHideFlags: 0
@@ -13536,6 +13560,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Forge node
       objectReference: {fileID: 0}
+    - target: {fileID: 2129430060778928565, guid: 68e8a4055e5d2e24c95b9b3ff77f327f,
+        type: 3}
+      propertyPath: site
+      value: 
+      objectReference: {fileID: 533357357}
     - target: {fileID: 2848576744111656675, guid: 68e8a4055e5d2e24c95b9b3ff77f327f,
         type: 3}
       propertyPath: m_Name
@@ -13621,6 +13650,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Combat node
       objectReference: {fileID: 0}
+    - target: {fileID: 5454386535089040725, guid: 68e8a4055e5d2e24c95b9b3ff77f327f,
+        type: 3}
+      propertyPath: site
+      value: 
+      objectReference: {fileID: 632476700}
     - target: {fileID: 5928061138596176359, guid: 68e8a4055e5d2e24c95b9b3ff77f327f,
         type: 3}
       propertyPath: site

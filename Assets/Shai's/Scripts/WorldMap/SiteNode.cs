@@ -94,6 +94,7 @@ public class SiteNode : MonoBehaviour
         iconImage.color = lockedColor;
         bgImage.color = lockedColor;
     }
+
     public void Unlock()
     {
         isLocked = false;
