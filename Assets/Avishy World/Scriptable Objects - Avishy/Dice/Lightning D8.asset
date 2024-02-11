@@ -28,52 +28,52 @@ MonoBehaviour:
     type: 3}
   dieMaterial: {fileID: 2100000, guid: ee99e325a81704b4788b9a4237401ee7, type: 2}
   resouceDataList:
-  - Type: 0
+  - Type: 4
     Value: 0
     Icon: {fileID: 0}
   - Type: 0
-    Value: 0
-    Icon: {fileID: 0}
+    Value: 1
+    Icon: {fileID: -1631459450, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   - Type: 0
-    Value: 0
-    Icon: {fileID: 0}
+    Value: 1
+    Icon: {fileID: -1631459450, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   - Type: 0
-    Value: 0
-    Icon: {fileID: 0}
-  - Type: 0
-    Value: 0
-    Icon: {fileID: 0}
-  - Type: 0
-    Value: 0
-    Icon: {fileID: 0}
-  - Type: 0
-    Value: 0
-    Icon: {fileID: 0}
-  - Type: 0
-    Value: 0
-    Icon: {fileID: 0}
+    Value: 1
+    Icon: {fileID: -1631459450, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+  - Type: 2
+    Value: 1
+    Icon: {fileID: 1196769475, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+  - Type: 2
+    Value: 1
+    Icon: {fileID: 1196769475, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+  - Type: 1
+    Value: 1
+    Icon: {fileID: -1490314167, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+  - Type: 1
+    Value: 1
+    Icon: {fileID: -1490314167, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   buffDataList:
   - Type: 0
     Value: 0
     Icon: {fileID: 0}
   - Type: 1
-    Value: 3
+    Value: 8
     Icon: {fileID: 775649512, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   - Type: 1
-    Value: 3
+    Value: 8
     Icon: {fileID: 775649512, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   - Type: 1
-    Value: 3
+    Value: 8
     Icon: {fileID: 775649512, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   - Type: 4
-    Value: 3
+    Value: 8
     Icon: {fileID: -1439601924, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   - Type: 4
-    Value: 3
+    Value: 8
     Icon: {fileID: -1439601924, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   - Type: 1
-    Value: 5
+    Value: 10
     Icon: {fileID: 775649512, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   - Type: 1
-    Value: 5
+    Value: 10
     Icon: {fileID: 775649512, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}

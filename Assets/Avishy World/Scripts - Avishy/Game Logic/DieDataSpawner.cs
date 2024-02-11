@@ -18,9 +18,9 @@ public class DieDataSpawner : MonoBehaviour
         for (int i = 0; i < _diceSO.resouceDataList.Count; i++)
         {
             // for now we do the resources as random.
-            ResourceData resourceData = SetDiceResourcesRandom();
+            //ResourceData resourceData = SetDiceResourcesRandom();
 
-            DieFaceValue faceValue = new DieFaceValue(resourceData, _diceSO.buffDataList[i]);
+            DieFaceValue faceValue = new DieFaceValue(_diceSO.resouceDataList[i], _diceSO.buffDataList[i]);
             tmpFaceValues.Add(faceValue);
         }
 

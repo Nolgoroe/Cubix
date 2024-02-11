@@ -59,7 +59,7 @@ public class DieFace : MonoBehaviour
     public void DisplayBuff()
     {
         faceIcon.sprite = buff.Icon;
-        if(buff.Type == BuffType.None)
+        if (buff.Type == BuffType.None)
         {
             valueText.gameObject.SetActive(false);
         }
@@ -79,8 +79,19 @@ public class DieFace : MonoBehaviour
 
     public void DisplayResource()
     {
-        faceIcon.sprite = resource.Icon;
-        valueText.text = "+" + resource.Value;
+        if (resource.Type == ResourceType.None)
+        {
+            valueText.gameObject.SetActive(false);
+            faceIcon.gameObject.SetActive(false);
+        }
+        else
+        {
+            faceIcon.gameObject.SetActive(true);
+            valueText.gameObject.SetActive(true);
+
+            faceIcon.sprite = resource.Icon;
+            valueText.text = "+" + resource.Value;
+        }
     }
 
     public void ChangeFaceMat(Material mat)
@@ -110,7 +121,7 @@ public class DieFaceValue
     [SerializeField] private BuffData buff;//serializing just to view data in scene
 
     public ResourceData Resource { get { return resource; } }
-    public BuffData Buff { get  => buff; } 
+    public BuffData Buff { get => buff; }
     public DieFaceValue(ResourceData _resource, BuffData _buff)
     {
         resource = _resource;
@@ -129,8 +140,9 @@ public class DieFaceValue
 
     public void UpgradeFace(int resourceToAdd, float damage)
     {
-        resource.Value += resourceToAdd;
-        buff.Value += damage;
+        //retarded null check, this is very very temp
+        if (resource.Icon) resource.Value += resourceToAdd;
+        if (buff.Icon) buff.Value += damage;
     }
 }
 

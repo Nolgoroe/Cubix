@@ -10645,6 +10645,8 @@ MonoBehaviour:
   - {fileID: -1631459450, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   - {fileID: -1490314167, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
   - {fileID: 1196769475, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   allBuffIcons:
   - {fileID: 0}
   - {fileID: 775649512, guid: dcbd53f2491083b4099566b8f7e66eab, type: 3}
